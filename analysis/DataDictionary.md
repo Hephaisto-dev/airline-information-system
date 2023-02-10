@@ -14,7 +14,7 @@
 	Status: Current state of the flight (schedules, delayed, cancel…) 
 	Ticket id: unique ticket number for the specific flight
 	
-# Passenger:
+## Passenger:
 	Id: unique identifier for each passenger
 	Passenger type: The type of the passenger (Adult, child, student)
 	First name: first name of the passenger
