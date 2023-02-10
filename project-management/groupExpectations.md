@@ -24,6 +24,8 @@ Trust: There should be a high level of trust between team members, we need to re
 
 Professionalism: Team members should conduct themselves in a professional manner, treat each other with respect and maintain a positive attitude.
 
+Grade: The team aims for a score of 8 or more
+
 By following these rules, group work can be productive, enjoyable, and effective.
 
 Chairman: Mathias Filliol
