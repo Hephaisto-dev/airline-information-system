@@ -4,7 +4,7 @@
 
     Id: Unique airplane number
 	Capacity: Number of total seats in the airplane
-	Seat mapping: Contains the mapping of the plain seats
+	Seat mapping: Contains the mapping of the plane seats
     Type: What type of airplanes (Airbus A320, Boeing 737 -> small, medium, large)
 
 ## Baggage:
@@ -20,29 +20,29 @@
 ## Booking:
 
     Id: Unique identifier for each booking
-	Employee id: Identifier of the employee that create the booking.
+	Employee id: Identifier of the employee that create the booking
     Flight id: Identifier of the flight of the booking
-	Passenger id: Identifier of the passenger related to the booking.
+	Passenger id: Identifier of the passenger related to the booking
 	Ticket: The ticket of this booking
-	Booking date: Date when booking was made.
-	Seat number: Seat number assigned to the passenger.
+	Booking date: Date when booking was made
+	Seat number: Seat number assigned to the passenger
 
 ## Discount:
 
 	Id: Unique identifier for each discount
-	Static: Whether this discount in status (will take off a fixed amount of the price)
+	Static: Whether this discount is static (will take off a fixed amount of the price)
 	Dynamic: Whether this discount is dynamic (will take off a percentage of the price)
 	Value: The value of the discount (percentage discount if not static)
 
 ## Employee:
 
-    id: Unique identifier for each employee
-	First name: First name of the employee.
-	Last name: Last name of the employee.
+    Id: Unique identifier for each employee
+	First name: First name of the employee
+	Last name: Last name of the employee
 	Birthdate: The birthdate of the employee
-	Phone: Phone number of the employee.
+	Phone: Phone number of the employee
 	Email: Email address of the employee
-    Job title: This defines what a person's job is in the company.
+    Job title: This defines what a person's job is in the company
 
 
 ## Flight:
@@ -50,13 +50,13 @@
     Id: Unique identifier for each flight
 	Arrival: City where the flight arrives at
 	Departure: City where the flight departs from
-    Arrival datetime: Time and date when the flight arrives.
-    Airplane: Type of airplane used for the flight.
+    Arrival datetime: Time and date when the flight arrives
+    Airplane: Type of airplane used for the flight
     Capacity: Maximum number of seats in the flight (linked to airplane)
-	Departure datetime: Time and date when the flight departs.
+	Departure datetime: Time and date when the flight departs
 	Flight duration: Total duration of the flight
     Flight number: Flight number for the airline
-    Status: Current state of the flight (scheduled, delayed, canceled, on going, landed, boarding, ?)
+    Status: Current state of the flight (scheduled, delayed, canceled, ongoing, landed, boarding, ?)
 	Tickets: Different ticket types for this flight 
 	Ticket id: Unique ticket number for the specific flight
 	Cost: Cost of the flight
@@ -78,17 +78,17 @@
 
 	Availability: Whether the seat is available or not
     Class: The class of the current seat (1st, 2nd, eco)
-    Column: Column number of the Seat
-	Row: Row number of the Seat
-	Number: The seat number.
+    Column: Column number of the seat
+	Row: Row number of the seat
+	Number: The seat number
 	Door of entrance: The door of entrance of the seat
 
 ## Ticket:
 
-	Baggage: The baggage allowed this ticket
+	Baggage: The baggage allowed for this ticket
 	Discount: The discount of the ticket
     Price: The price of the ticket
-    Seat: The of Seat this ticket
+    Seat: The seat of this ticket
 	Currency: The currency of the ticket
 
 ## Route
