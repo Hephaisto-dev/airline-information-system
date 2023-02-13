@@ -2,21 +2,20 @@
 
 ## Airplane:
 
-    Id: unique airplane number
-	Capacity: number of total seats in the airplane
+    Id: Unique airplane number
+	Capacity: Number of total seats in the airplane
 	Seat mapping: Contains the mapping of the plain seats
-    Type: what type of airplanes (Airbus A320, Boeing 737 -> small, medium, large)
+    Type: What type of airplanes (Airbus A320, Boeing 737 -> small, medium, large)
 
 ## Baggage:
 
-	Id:
+	Id: Unique identifier for each baggage
 	Height: The maximum height of the baggage
 	Length: The maximum length of the baggage
     Weight: The maximum weight of the baggage
     Width: The maximum width of the baggage
-
-	Carry on:
-	Car go:
+	Carry on: Whether the baggage is a carry on or not
+	Cargo: Whether the baggage is cargo or not 
 
 ## Booking:
 
@@ -24,54 +23,54 @@
 	Employee id: Identifier of the employee that create the booking.
     Flight id: Identifier of the flight of the booking
 	Passenger id: Identifier of the passenger related to the booking.
-	Ticket: the ticket of this booking
-	Booking date: date when booking was made.
-	Seat number: seat number assigned to the passenger.
+	Ticket: The ticket of this booking
+	Booking date: Date when booking was made.
+	Seat number: Seat number assigned to the passenger.
 
 ## Discount:
 
-	id:
-	Static: Whether this discount in status (will take off the value from the price)
-	Dynamic:
+	Id: Unique identifier for each discount
+	Static: Whether this discount in status (will take off a fixed amount of the price)
+	Dynamic: Whether this discount is dynamic (will take off a percentage of the price)
 	Value: The value of the discount (percentage discount if not static)
 
 ## Employee:
 
-    id: unique identifier for each employee
-	First name: first name of the employee.
-	Last name: last name of the employee.
-	Birthdate: the birthdate of the employee
-	Phone: phone number of the employee.
-	Email: email address of the employee
-    Job title: this defines what a person's job is in the company.
+    id: Unique identifier for each employee
+	First name: First name of the employee.
+	Last name: Last name of the employee.
+	Birthdate: The birthdate of the employee
+	Phone: Phone number of the employee.
+	Email: Email address of the employee
+    Job title: This defines what a person's job is in the company.
 
 
 ## Flight:
 
-    Id: unique identifier for each flight
-	Arrival: city where the flight arrives at
-	Departure: city where the flight departs from
-    Arrival datetime: time and date when the flight arrives.
+    Id: Unique identifier for each flight
+	Arrival: City where the flight arrives at
+	Departure: City where the flight departs from
+    Arrival datetime: Time and date when the flight arrives.
     Airplane: Type of airplane used for the flight.
     Capacity: Maximum number of seats in the flight (linked to airplane)
-	Departure datetime: time and date when the flight departs.
+	Departure datetime: Time and date when the flight departs.
 	Flight duration: Total duration of the flight
-    Flight number: flight number for the airline
-    Status: Current state of the flight (schedules, delayed, cancel…)
+    Flight number: Flight number for the airline
+    Status: Current state of the flight (scheduled, delayed, canceled, on going, landed, boarding, ?)
 	Tickets: Different ticket types for this flight 
-	Ticket id: unique ticket number for the specific flight
-	Coast:
-	Gate:
+	Ticket id: Unique ticket number for the specific flight
+	Cost: Cost of the flight
+	Gate: The gate of the flight
 
 
 ## Passenger:
 
-    Id: unique identifier for each passenger
-	First name: first name of the passenger
+    Id: Unique identifier for each passenger
+	First name: First name of the passenger
 	Last name: Last name of the passenger
-	Nationality:
+	Nationality: Nationality of the passenger
 	Passport/ID number: Passport number of the passenger (if applicable)
-	Phone: phone number of the passenger
+	Phone: Phone number of the passenger
 	Email: Email address of the passenger
     Passenger type: The type of the passenger (Adult, child, student)
 
@@ -81,20 +80,20 @@
     Class: The class of the current seat (1st, 2nd, eco)
     Column: Column number of the Seat
 	Row: Row number of the Seat
-	Number: the seat number.
-	Door of entrance:
+	Number: The seat number.
+	Door of entrance: The door of entrance of the seat
 
 ## Ticket:
 
-	Baggage: the baggage allowed this ticket
+	Baggage: The baggage allowed this ticket
 	Discount: The discount of the ticket
     Price: The price of the ticket
     Seat: The of Seat this ticket
-	Currency:
+	Currency: The currency of the ticket
 
 ## Route
 
-	Flights:
-	Route duration:
-	Route coast:
-	Tranzit times:
+	Flights: The flights of the route
+	Route duration: The duration of the route
+	Route cost: The cost of the route
+	Transit times: The transit time of each flights
