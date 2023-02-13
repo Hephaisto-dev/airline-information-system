@@ -1,99 +1,14 @@
 # Data Dictionary
 
-## Airplane:
-
-    Id: Unique airplane number
-	Capacity: Number of total seats in the airplane
-	Seat mapping: Contains the mapping of the plane seats
-    Type: What type of airplanes (Airbus A320, Boeing 737 -> small, medium, large)
-
-## Baggage:
-
-	Id: Unique identifier for each baggage
-	Height: The maximum height of the baggage
-	Length: The maximum length of the baggage
-    Weight: The maximum weight of the baggage
-    Width: The maximum width of the baggage
-	Carry on: Whether the baggage is a carry on or not
-	Cargo: Whether the baggage is cargo or not 
-
-## Booking:
-
-    Id: Unique identifier for each booking
-	Employee id: Identifier of the employee that create the booking
-    Flight id: Identifier of the flight of the booking
-	Passenger id: Identifier of the passenger related to the booking
-	Ticket: The ticket of this booking
-	Booking date: Date when booking was made
-	Seat number: Seat number assigned to the passenger
-
-## Discount:
-
-	Id: Unique identifier for each discount
-	Static: Whether this discount is static (will take off a fixed amount of the price)
-	Dynamic: Whether this discount is dynamic (will take off a percentage of the price)
-	Value: The value of the discount (percentage discount if not static)
-
-## Employee:
-
-    Id: Unique identifier for each employee
-	First name: First name of the employee
-	Last name: Last name of the employee
-	Birthdate: The birthdate of the employee
-	Phone: Phone number of the employee
-	Email: Email address of the employee
-    Job title: This defines what a person's job is in the company
-
-
-## Flight:
-
-    Id: Unique identifier for each flight
-	Arrival: City where the flight arrives at
-	Departure: City where the flight departs from
-    Arrival datetime: Time and date when the flight arrives
-    Airplane: Type of airplane used for the flight
-    Capacity: Maximum number of seats in the flight (linked to airplane)
-	Departure datetime: Time and date when the flight departs
-	Flight duration: Total duration of the flight
-    Flight number: Flight number for the airline
-    Status: Current state of the flight (scheduled, delayed, canceled, ongoing, landed, boarding, ?)
-	Tickets: Different ticket types for this flight 
-	Ticket id: Unique ticket number for the specific flight
-	Cost: Cost of the flight
-	Gate: The gate of the flight
-
-
-## Passenger:
-
-    Id: Unique identifier for each passenger
-	First name: First name of the passenger
-	Last name: Last name of the passenger
-	Nationality: Nationality of the passenger
-	Passport/ID number: Passport number of the passenger (if applicable)
-	Phone: Phone number of the passenger
-	Email: Email address of the passenger
-    Passenger type: The type of the passenger (Adult, child, student)
-
-## Seat:
-
-	Availability: Whether the seat is available or not
-    Class: The class of the current seat (1st, 2nd, eco)
-    Column: Column number of the seat
-	Row: Row number of the seat
-	Number: The seat number
-	Door of entrance: The door of entrance of the seat
-
-## Ticket:
-
-	Baggage: The baggage allowed for this ticket
-	Discount: The discount of the ticket
-    Price: The price of the ticket
-    Seat: The seat of this ticket
-	Currency: The currency of the ticket
-
-## Route
-
-	Flights: The flights of the route
-	Route duration: The duration of the route
-	Route cost: The cost of the route
-	Transit times: The transit time of each flights
+| Term      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Airplane  | <ul><li>Id: Unique airplane number</li><li>Capacity: Number of total seats in the airplane</li><li>Seat mapping: Contains the mapping of the plane seats</li><li>Type: What type of airplanes (Airbus A320, Boeing 737 -> small, medium, large)</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Baggage   | <ul><li>Id: Unique identifier for each baggage</li><li>Height: The maximum height of the baggage</li><li>Length: The maximum length of the baggage</li><li>Weight: The maximum weight of the baggage</li><li>Width: The maximum width of the baggage</li><li>Carry on: Whether the baggage is a carry on or not</li><li>Cargo: Whether the baggage is cargo or not</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Booking   | <ul><li>Id: Unique identifier for each booking</li><li>Employee id: Identifier of the employee that create the booking</li><li>Flight id: Identifier of the flight of the booking</li><li>Passenger id: Identifier of the passenger related to the booking</li><li>Ticket: The ticket of this booking</li><li>Booking date: Date when booking was made</li><li>Seat number: Seat number assigned to the passenger</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Discount  | <ul><li>Id: Unique identifier for each discount</li><li>Static: Whether this discount is static (will take off a fixed amount of the price)</li><li>Dynamic: Whether this discount is dynamic (will take off a percentage of the price)</li><li>Value: The value of the discount (percentage discount if not static)</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Employee  | <ul><li>Id: Unique identifier for each employee</li><li>First name: First name of the employee</li><li>Last name: Last name of the employee</li><li>Birthdate: The birthdate of the employee</li><li>Phone: Phone number of the employee</li><li>Email: Email address of the employee</li><li>Job title: This defines what a person's job is in the company</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| Flight    | <ul><li>Id: Unique identifier for each flight</li><li>Arrival: City where the flight arrives at</li><li>Departure: City where the flight departs from</li><li>Arrival datetime: Time and date when the flight arrives</li><li>Airplane: Type of airplane used for the flight</li><li>Capacity: Maximum number of seats in the flight (linked to airplane)</li><li>Departure datetime: Time and date when the flight departs</li><li>Flight duration: Total duration of the flight</li><li>Flight number: Flight number for the airline</li><li>Status: Current state of the flight (scheduled, delayed, canceled, ongoing, landed, boarding, ?)</li><li>Tickets: Different ticket types for this flight</li><li>Ticket id: Unique ticket number for the specific flight</li><li>Cost: Cost of the flight</li><li>Gate: The gate of the flight</li></ul> |
+| Passenger | <ul><li>Id: Unique identifier for each passenger</li><li>First name: First name of the passenger</li><li>Last name: Last name of the passenger</li><li>Nationality: Nationality of the passenger</li><li>Passport/ID number: Passport number of the passenger (if applicable)</li><li>Phone: Phone number of the passenger</li><li>Email: Email address of the passenger</li><li>Passenger type: The type of the passenger (Adult, child, student)</li></ul>                                                                                                                                                                                                                                                                                                                                                                                            |
+| Seat      | <ul><li>Availability: Whether the seat is available or not</li><li>Class: The class of the current seat (1st, 2nd, eco)</li><li>Column: Column number of the seat</li><li>Row: Row number of the seat</li><li>Number: The seat number</li><li>Door of entrance: The door of entrance of the seat</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Ticket    | <ul><li>Baggage: The baggage allowed for this ticket</li><li>Discount: The discount of the ticket</li><li>Price: The price of the ticket</li><li>Seat: The seat of this ticket</li><li>Currency: The currency of the ticket</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| Route     | <ul><li>Flights: The flights of the route</li><li>Route duration: The duration of the route</li><li>Route cost: The cost of the route</li><li>Transit times: The transit time of each flights</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
