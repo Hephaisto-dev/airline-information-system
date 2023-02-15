@@ -1,7 +1,7 @@
 # Project Management
 
 This directory is for all the project management (PM) artefacts.  
-Group expectation can be found [here](groupExpectation.md)
+Group expectation can be found [here](groupExpectations.md)
 
 Use the build-in GitHub project board.
 
