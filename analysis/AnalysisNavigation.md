@@ -5,3 +5,5 @@ Here we collect the links to all our files of the Analysis folder for easier nav
 ## [User Stories](UserStories.md)
 
 ## [Data Dictionary](DataDictionary.md)
+
+## [RandomText](https://github.com/FontysVenlo/prj2-2023-prj2-2023-17/blob/main/TableOfContents.md)
