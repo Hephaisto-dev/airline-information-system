@@ -4,6 +4,5 @@ Here we collect the links of our files in this folder to make traversal as smoot
 
 ## [Domain Model](DomainModelShow.md)
 
-## [DomainModel2](design/DomainModelShow.md)
 
 ## [Back to Table of Contents](https://github.com/FontysVenlo/prj2-2023-prj2-2023-17/blob/main/TableOfContents.md)

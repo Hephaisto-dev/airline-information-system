@@ -8,7 +8,7 @@
 
 ## [Design](/design/DesignNavigation.md)
 
-> [Domain Model](/DomainModelShow.md)
+> [Domain Model](/design/DomainModelShow.md)
 
 ## [Implementation](/implementation/ImplementationNavigation.md)
 
