@@ -6,6 +6,10 @@
 
 > [Domain Model](/analysis/DomainModelShow.md)
 
+> [Test Scenarios](/analysis/TestScenarios.md)
+
+> [Use Cases](/analysis/Use%20Cases.md)
+
 > [User Stories](/analysis/UserStories.md)
 
 ## [Design](/design/DesignNavigation.md)
