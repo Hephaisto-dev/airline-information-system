@@ -4,11 +4,13 @@
 
 > [Data Dictinonary](/analysis/DataDictionary.md)
 
+> [Domain Model](/analysis/DomainModelShow.md)
+
 > [User Stories](/analysis/UserStories.md)
 
 ## [Design](/design/DesignNavigation.md)
 
-> [Domain Model](/design/DomainModelShow.md)
+> Newly empty
 
 ## [Implementation](/implementation/ImplementationNavigation.md)
 
