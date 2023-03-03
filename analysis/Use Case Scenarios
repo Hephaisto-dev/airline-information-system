@@ -12,15 +12,6 @@ Adding Extras
 4.	The system displays the Customers flight details and allows the Sales employee to view and add extras to his reservation.
 5.	The Sales employee selects the extras that the Customer  requested and adds them to his reservation. The system automatically calculates the total cost of the extras and updates the reservation with the new price.
 
-
-
-
-
-
-
-
-
-
 Canceling booking
 1.	The sales employee gets a call by a Customer who wants to cancel his next flight. 
 2.	The Customer provides his name and flight confirmation number to the Sales empoyee.
