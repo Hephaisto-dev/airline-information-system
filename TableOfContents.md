@@ -10,6 +10,8 @@
 
 > [Use Cases](/analysis/Use%20Cases.md)
 
+> [Use Case Diagram](/analysis/UseCaseDiagram.md)
+
 > [User Stories](/analysis/UserStories.md)
 
 ## [Design](/design/DesignNavigation.md)
