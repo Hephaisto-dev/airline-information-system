@@ -43,32 +43,71 @@
 >   Sales Employee
 
 #### Description
->   Actor buys a ticket for a person standing near them
+>   Actor buys a ticket for a person
 
 #### Pre-condition
 >   Logged in as Sales Employee
 
 #### Scenario
->1. Actor selects the "Purchase Ticket" option
+>1. Actor navigates to the "Purchase Ticket" option
 >2. System provides the according GUI
->3. Actor asks for and selects the flight their customer demands
->4. System shows that this flight has been selected and asks if there are further questions
+>3. Actor selects the flight their customer desires
+>4. System shows that this flight has been selected and asks if there's anything else
 >5. Actor denies the question
->6. System provides the ticket and returns back to initial screen
+>6. System provides the GUI to enter the personal information for the ticket
+>7. Actor either enters the information on behalf of the customer or lets them do it themselves and finalises the purchase
+>7. System provides the ticket and returns back to initial screen
 
 #### Result
 >   The Sales Employee gets a ticket to the according flight for their customer
 
 #### Extensions
->5. Actor selects the option "Apply discount". Handled by the Use Case "Apply discount"
+>5.a. Actor selects the option "Apply discount". Handled by the Use Case "Apply discount"
 
->5. Actor selects the option "Apply voucher". Handled by the use Case "Apply voucher"
+>5.b. Actor selects the option "Apply voucher". Handled by the use Case "Apply voucher"
 
->5. Actor selects the option "Add extras". Handled by the Use Case "Apply extras"
+>5.c. Actor selects the option "Add extras". Handled by the Use Case "Apply extras"
 
 #### Exceptions
 >5. Actor cancels the ticket selction. System moves back to the initial screen
+
 ---
+### Use Case "Apply discount"
+
+#### Name
+>   Apply discount
+
+#### Actor
+>   Sales Employee
+
+#### Description
+>   Actor applies a discount on a ticket before continuing with the sale of the ticket
+
+#### Pre-condition
+>   Logged in as Sales Employee
+>   Selected option to "Apply discount" in Use Case "Purchase Ticket"
+
+#### Scenario
+>1. Actor informs the system of what discount needs to be added
+>2. System asks the actor to fill in the amount of the discount that is to be applied
+>3. Actor fills in what the correct amount is
+>4. System asks actor to confirm if the shown amount is the cirrect amount
+>5. Actor confirms this
+>6. System puts the actor back to the previous page
+
+#### Result
+>   A discount has been applied to the ticket that is being bought
+
+#### Exceptions
+>4.a.   If the actor enters an amount greater than or equal to the price of the ticket, the system informs them of this and asks them to enter a viable amount
+
+>5.a.   Should the actor deny this as a correct amount, the system reverts back to step 2.
+
+#### Extensions
+>   None
+
+---
+
 #### Name
 >   Login
 
@@ -120,6 +159,7 @@
 >2. system notifies that there are no previous flights
     2.1 case ends
 
+---
 
 #### Name
 >   Start sales process
@@ -186,6 +226,8 @@
 >>      3.1 Use case ends here.
 ---
 
+---
+
 ### Use Case Use Management Dashboard <Mathias\>
 
 #### Name
@@ -245,3 +287,7 @@
 
 #### Exceptions
 >   None.
+
+---
+
+## [Back to Table of Contents](https://github.com/FontysVenlo/prj2-2023-prj2-2023-17/blob/main/TableOfContents.md)
