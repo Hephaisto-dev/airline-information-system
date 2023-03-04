@@ -186,10 +186,10 @@
 >  Sales employee is logged in
 
 #### Scenario
->1. Actor navigates to the previous flight records
+>1. Actor navigates to the previous flight records page.
 >2. The system displays the previous flight records page. 
->3. The actor navigates to a flight which already happened. 
->4. .the system displays the flight information for the selected flight. 
+>3. The actor selects a flight which already happened. 
+>4. the system displays the flight information for the selected flight. 
 
 
 #### Result
@@ -197,6 +197,10 @@
 #### Exceptions
 >2. system notifies that there are no previous flights
     2.1 case ends
+#### Extensions
+    3a. Actor applies a filter to the list
+        1. System shows a list of filters.
+        2. Actor selects the filter he wants to use. Return to step 3. 
 
 ---
 ### Use Case Start sales process <Lucas>
@@ -213,14 +217,13 @@
 >  Sales officer is logged in
 
 #### Scenario
->1. Actor opens the application. 
->2. The system displays the homepage of the application. 
->3. The actor navigates to the flights. 
->4. the system displays all upcoming flights.
->5. the actor selects a flight. 
->6. the system shows the selected flight.
->7. the actor activates the sales process
->8. the system indicates it was successfully activated.
+    
+>1. The actor navigates to the flights. 
+>2. the system displays all registered flights.
+>3. the actor selects a flight. 
+>4. the system shows the selected flight.
+>5. the actor activates the sales process
+>6. the system indicates it was successfully activated.
 
 
 #### Result
@@ -228,6 +231,8 @@
 #### Exceptions
 >3. system notifies that there are no active flights.
 3.1 case ends here
+>4. System notifies that an error accured when trying to initiate the sales process
+    4.1 case ends here
 ---
 
 
