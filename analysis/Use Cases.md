@@ -214,7 +214,7 @@
 >   3. System shows that an error occurred when using the dashboard.
 >>      3.1 Use case ends here.
 
-### Use Case View Financial Sheets In Statistics
+### Use Case View Financial Sheets In Statistics <Mathias\>
 
 #### Name
 >   View Financial Sheets In Statistics.
