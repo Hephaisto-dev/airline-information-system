@@ -331,84 +331,84 @@
 ## [Back to Table of Contents](https://github.com/FontysVenlo/prj2-2023-prj2-2023-17/blob/main/TableOfContents.md)
 
     
-    ----
+
     Use Case Searching for a flight
-####Name
+Name
 > Search for a flight
 
-####Actor
+Actor
 > Sales employee
 
-####Description
+Description
 > A sales employee is searching for one or more flights
 
 ####Pre-condition
 > Sales Employee is signed into their account.
 
-Sales Employee is provided with the information for searching a flight
+> Sales Employee is provided with the information for searching a flight
 
-####Scenario
+Scenario
 > 1.Actor navigates to the area/menu for searching a flight. 
 > 2.The system displays an area/menu. 
 > 3.The actor enters the necessary information for searching a flight and confirms it. 
 > 4.The system gives the necessary information, that was asked 
 > 5.The actor is choosing the information that is need
 
-####Result
+Result
 > The actor has successfully found a flight
 
-####Exceptions
+Exceptions
 > The system informs the user that something went wrong while searching for a route.
 
     ---
     
-####Use case Search for a route
-####Name
+Use case Search for a route
+Name
 > Search for a route
 
-####Actor
+Actor
 > Sales employee
 
-####Description
+Description
 > A sales employee is searching for one or more routes
 
-####Pre-condition
+Pre-condition
  > Sales Employee is signed into their account.
 
-Sales Employee is provided with the information for searching a route
+> Sales Employee is provided with the information for searching a route
 
-####Scenario
+Scenario
 > 1.Actor navigates to the area/menu for searching a route. 
 > 2.The system displays an area/menu. 
 > 3.The actor enters the necessary information for searching a route and confirms it. 
 > 4.The system gives the necessary information, that was asked 
 > 5.The actor is choosing the information that is needed
 
-####Result
+Result
 > The actor has successfully found a route.
 
-####Exceptions
+Exceptions
 > The system informs the user that something went wrong while searching for a route.
 
     
     -----
     
-####Use case View flight information
-####Name
+Use case View flight information
+Name
 > View flight information
 
 ####Actor
 > Sales employee
 
-####Description
+Description
 > A sales employee is viewing the upcoming fight information
 
-####Pre-condition
+Pre-condition
 > Sales Employee is signed into their account.
 
-Sales Employee is provided with the information for viewing the upcoming flight information
+> Sales Employee is provided with the information for viewing the upcoming flight information
 
-####Scenario
+Scenario
 > 1.Actor navigates to the area/menu for searching 
 > 2.The system displays an area/menu. 
 > 3.The actor enters the necessary information for searching a specific flight and confirms it. 
@@ -417,31 +417,31 @@ Sales Employee is provided with the information for viewing the upcoming flight 
 > 6.System gives the page of the flight that was chosen 
 > 7.The actor I able to see all the information about a specific upcoming flight
 
-####Result
+Result
 > The actor has successfully found the information about an upcoming flight.
 
-####Exceptions
+Exceptions
 > The system informs the user that something went wrong while searching for a flight or displaying its information.
 
     
     -----
     
-####Use case Edit personal information for a costumer
-####Name
+Use case Edit personal information for a costumer
+Name
 > Edit personal information for a costumer
 
-####Actor
+Actor
 > Sales employee
 
-####Description
+Description
 > A sales employee is editing costumers personal
 
-####Pre-condition
+Pre-condition
 > Sales Employee is signed into their account.
 
 > Sales Employee is provided with the information for editing customers information
 
-####Scenario
+Scenario
 > 1.Actor navigates to the menu for editing the customers 
 > 2.The system displays a menu. 
 > 3.The actor edits the necessary information for the customer 
@@ -449,8 +449,8 @@ Sales Employee is provided with the information for viewing the upcoming flight 
 > 5.The system checks all the modified data 
 > 6.The system confirms the modifications
 
-####Result
+Result
 > The actor has edited the customers information
 
-####Exceptions
+Exceptions
 > The system informs the user that something went wrong while editing the information.
