@@ -143,7 +143,8 @@
 >   None
 
 ---
-
+### Use Case Login <Lucas>
+    
 #### Name
 >   Login
 
@@ -170,6 +171,7 @@
 #### Exceptions
 >5. The system informs the user that his credentials were incorrect.
 ---
+### Use Case Access previous flight records <Lucas>
 #### Name
 >   Access previous flight records
 
@@ -196,7 +198,7 @@
     2.1 case ends
 
 ---
-
+### Use Case Start sales process <Lucas>
 #### Name
 >   Start sales process
 
@@ -224,7 +226,7 @@
 >   The sales process has successfully begun
 #### Exceptions
 >3. system notifies that there are no active flights.
-3.1 case ends
+3.1 case ends here
 ---
 
 
