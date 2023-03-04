@@ -66,7 +66,7 @@
 
 >5.b. Actor selects the option "Apply voucher". Handled by the use Case "Apply voucher"
 
->5.c. Actor selects the option "Add extras". Handled by the Use Case "Apply extras"
+>5.c. Actor selects the option "Add extras". Handled by the Use Case "Choose Travel extras / options"
 
 #### Exceptions
 >5. Actor cancels the ticket selction. System moves back to the initial screen
@@ -91,7 +91,7 @@
 >1. Actor informs the system of what discount needs to be added
 >2. System asks the actor to fill in the amount of the discount that is to be applied
 >3. Actor fills in what the correct amount is
->4. System asks actor to confirm if the shown amount is the cirrect amount
+>4. System asks actor to confirm if the shown amount is the correct amount
 >5. Actor confirms this
 >6. System puts the actor back to the previous page
 
@@ -100,6 +100,42 @@
 
 #### Exceptions
 >4.a.   If the actor enters an amount greater than or equal to the price of the ticket, the system informs them of this and asks them to enter a viable amount
+
+>5.a.   Should the actor deny this as a correct amount, the system reverts back to step 2.
+
+#### Extensions
+>   None
+
+---
+
+### Use Case "Apply voucher"
+
+#### Name
+>   Apply voucher
+
+#### Actor
+>   Sales Employee
+
+#### Description
+>   Actor applies a voucher (percentage discount) on a ticket before continuing with the sale of the ticket
+
+#### Pre-condition
+>   Logged in as Sales Employee
+>   Selected option to "Apply voucher" in Use Case "Purchase Ticket"
+
+#### Scenario
+>1. Actor informs the system of what voucher needs to be added
+>2. System asks the actor to fill in the amount of the voucher that is to be applied
+>3. Actor fills in what the correct amount is
+>4. System asks actor to confirm if the shown amount is the correct amount
+>5. Actor confirms this
+>6. System puts the actor back to the previous page
+
+#### Result
+>   A voucher has been applied to the ticket that is being bought
+
+#### Exceptions
+>4.a.   If the actor enters an amount greater than or equal to 100%, the system informs them of this and asks them to enter a viable amount
 
 >5.a.   Should the actor deny this as a correct amount, the system reverts back to step 2.
 
