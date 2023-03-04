@@ -184,6 +184,7 @@
 #### Exceptions
 >   3. System informs user no booking was found.
 >>      3.1 Use case ends here.
+---
 
 ### Use Case Use Management Dashboard <Mathias\>
 
@@ -213,6 +214,8 @@
 #### Exceptions
 >   3. System shows that an error occurred when using the dashboard.
 >>      3.1 Use case ends here.
+---
+
 
 ### Use Case View Financial Sheets In Statistics <Mathias\>
 
