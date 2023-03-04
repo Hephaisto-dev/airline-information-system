@@ -203,7 +203,7 @@
 #### Scenario
 >   1. Actor selects management dashboard.
 >   2. System displays the management dashboard.
->   3. Actor interact with the dashboard (e.g., <u>[view financial sheets in statistics](Use%20Cases.md#use-case-view-financial-sheets-in-statistics--mathias))</u>.
+>   3. Actor interact with the dashboard (e.g., <isn>[view financial sheets in statistics](Use%20Cases.md#use-case-view-financial-sheets-in-statistics--mathias))</isn>.
 
 #### Result
 >   Sales manager viewed the key performance indicators and other important data.
