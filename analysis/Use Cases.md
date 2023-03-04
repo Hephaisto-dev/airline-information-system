@@ -333,7 +333,7 @@
     
 
     Use Case Searching for a flight
-Name
+#### Name
 > Search for a flight
 
 Actor
@@ -363,7 +363,7 @@ Exceptions
     ---
     
 Use case Search for a route
-Name
+#### Name
 > Search for a route
 
 Actor
@@ -394,7 +394,7 @@ Exceptions
     -----
     
 Use case View flight information
-Name
+#### Name
 > View flight information
 
 ####Actor
@@ -427,7 +427,7 @@ Exceptions
     -----
     
 Use case Edit personal information for a costumer
-Name
+#### Name
 > Edit personal information for a costumer
 
 Actor
