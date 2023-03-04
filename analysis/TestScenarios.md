@@ -138,7 +138,7 @@ The sales employee can view the flight information for any previous flight that 
 >   If there are no previous flights available, the system notifies the user that there are no previous flights.
 The test scenario ends in this case.
 
-### Test Scenario Login Verification <Lucas\>
+### Test Scenario start sales process <Lucas\>
 
 #### Name
 >   Start Sales Process
