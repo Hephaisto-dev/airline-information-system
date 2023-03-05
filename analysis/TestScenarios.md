@@ -169,3 +169,129 @@ The system indicates that the sales process was successfully activated.
 The test scenario ends in this case.
 >6. The system indicates that a error occured when trying to activate the sales process.
 
+---
+
+
+### Test Scenario "Purchase Ticket"
+
+####    Name
+>   Purchase Ticket
+
+####    Scenario
+>1. Actor navigates to the "Purchase Ticket" option
+>2. System provides the according GUI
+>3. Actor selects the flight "414, Duesseldorf - New York"
+>4. System shows that this flight has been selected and asks if there's anything else
+>5. Actor denies the question
+>6. System provides the GUI to enter the personal information for the ticket
+>7. Actor enters "Jan Mustermann, example@mail.com"
+>7. System provides the ticket and returns back to initial screen
+
+#### Result
+>   The Sales Employee gets a ticket to the according flight for their customer
+
+#### Extensions
+>5.a. Actor selects the option "Apply discount". Handled by the Use Case "Apply discount"
+
+>5.b. Actor selects the option "Apply voucher". Handled by the use Case "Apply voucher"
+
+>5.c. Actor selects the option "Add extras". Handled by the Use Case "Choose Travel extras / options"
+
+#### Exceptions
+>5. Actor cancels the ticket selction. System moves back to the initial screen
+
+---
+
+### Test Scenario "Apply Discount"
+
+####    Name
+>   Apply Discount
+####    Scenario
+>1. Actor informs the system that a discount is to be added
+>2. System asks the actor to fill in the amount of the discount that is to be applied
+>3. Actor fills in "15.50"
+>4. System asks actor to confirm if the shown amount is the correct amount
+>5. Actor confirms this
+>6. System puts the actor back to the previous page
+
+#### Result
+>   A discount has been applied to the ticket that is being bought
+
+#### Exceptions
+>4.a.   If the actor enters an amount greater than or equal to the price of the ticket, the system informs them of this and asks them to enter a viable amount
+
+>5.a.   Should the actor deny this as a correct amount, the system reverts back to step 2.
+
+---
+
+### Test Scenario "Apply voucher"
+
+####    Name
+>   Apply voucher
+
+####    Scenario
+>1. Actor informs the system of what voucher needs to be added
+>2. System asks the actor to fill in the amount of the voucher that is to be applied
+>3. Actor fills in "0.05" (meaning 5%)
+>4. System asks actor to confirm if the shown amount is the correct amount
+>5. Actor confirms this
+>6. System puts the actor back to the previous page
+
+#### Result
+>   A voucher has been applied to the ticket that is being bought
+
+#### Exceptions
+>4.a.   If the actor enters an amount greater than or equal to 100%, the system informs them of this and asks them to enter a viable amount
+
+>5.a.   Should the actor deny this as a correct amount, the system reverts back to step 2.
+
+#### Extensions
+>   None
+
+---
+
+### Test Scenario "Cancel booking"
+
+####    Name
+>   Cancel Booking
+
+####    Scenario
+>1. Actor selects the option to cancel a booking
+>2. System provides the according GUI
+>3. Actor indicates that ticket for flight "414, Dusseldorf - New York" needs to be canceled
+>4. System asks for confirmation if this is the correct Ticket to delete
+>5. Actor confirms the choice
+>6. System informs that "5.00" (5 Euros) is to be refunded
+>7. Actor informs the system that the refund has been completed
+>8. System returns to the previous screen
+
+#### Result
+>   The Ticket has been successfully canceled. Refundment has been handed out
+
+#### Exceptions
+>5.a. If actor denies the confirmation, the system moves back to step 3
+
+---
+
+### Test Scenario "Register employee"
+
+####    Name
+>   Register employee
+
+####    Scenario
+>1. Actor selects the option to register new employees
+>2. System provides the according GUI
+>3. Actor enters the information "John Green, Sales Employee, green@mail.com"
+>4. System saves the info and informs actor that the ID is "SEjogr001"
+>5. Actor selects the option to go back to inital screen
+>6. System moves back to initial screen
+
+#### Result
+>   New employee john Green has been registered and been given an ID
+
+#### Exceptions
+>   None
+
+---
+
+## [Back to Table of Contents](https://github.com/FontysVenlo/prj2-2023-prj2-2023-17/blob/main/TableOfContents.md)
