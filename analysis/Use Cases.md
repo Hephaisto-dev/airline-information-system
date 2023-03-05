@@ -34,7 +34,7 @@
 <!-- Further Use Cases can be edited now-->
 
 
-### Use Case Purchase Ticket
+### Use Case Purchase Ticket <Daniel>
 
 #### Name
 >   Purchase Ticket
@@ -72,7 +72,7 @@
 >5. Actor cancels the ticket selction. System moves back to the initial screen
 
 ---
-### Use Case "Apply discount"
+### Use Case "Apply discount" <Daniel>
 
 #### Name
 >   Apply discount
@@ -108,7 +108,7 @@
 
 ---
 
-### Use Case "Apply voucher"
+### Use Case "Apply voucher" <Daniel>
 
 #### Name
 >   Apply voucher
@@ -329,11 +329,11 @@
 >   None.
 
 #### Exceptions
->   None.
+> 5. System informs the actor that something went wrong when loading the information and allows the user to try again. 
 
 ---
         
-Use Case Searching for a flight
+Use Case Searching for a flight <Jazz>
 #### Name
 > Search for a flight
 
@@ -361,9 +361,9 @@ Result
 Exceptions
 > The system informs the user that something went wrong while searching for a route.
 
-    ---
+---
     
-Use case Search for a route
+Use case Search for a route <Jazz>
 #### Name
 > Search for a route
 
@@ -392,9 +392,9 @@ Exceptions
 > The system informs the user that something went wrong while searching for a route.
 
     
-    -----
+---
     
-Use case View flight information
+Use case View flight information <Jazz>
 #### Name
 > View flight information
 
@@ -427,7 +427,7 @@ Exceptions
     
     -----
     
-Use case Edit personal information for a costumer
+Use case Edit personal information for a costumer <Jazz>
 #### Name
 > Edit personal information for a costumer
 
@@ -455,8 +455,8 @@ Result
 
 Exceptions
 > The system informs the user that something went wrong while editing the information.
-
-### Use Case Cancel a booking
+----
+### Use Case Cancel a booking <Jazz>
 
 #### Name
 >   Cancel a booking
@@ -488,7 +488,7 @@ Exceptions
 
 ---
 
-### Use Case "Register Employee"
+### Use Case "Register Employee" <???>
 
 #### Name
 >   Register Employee
@@ -517,5 +517,166 @@ Exceptions
 >   None
 
 ---
+
+### Create a route <Martin>
+
+#### Name
+>   Create a route
+
+#### Actor
+>   Sales officer
+
+#### Description
+>   A sales officer creates one or more routes
+
+#### Pre-condition
+>   Sales officer is signed into their account.
+
+#### Scenario
+>1. Actor navigates to the menu for creating  route.
+>2. The system displays an editing page.
+>3. The actor enters the necessary information for creating a route.
+>4. The actor saves the made changes.
+>5. The system asks the actor to confirm their choice.
+>6. The actor confirms their choice.
+>7. The system indicates the success of the execution of the action.
+
+
+#### Result
+>   The actor has successfully created a route.
+
+#### Exceptions
+>7.  The system informs the user that something went wrong when creating the route.
+>>7.1 Use case ends here.
+
+#### Extensions
+> None
+
+---
+
+### Edit a route <Martin>
+
+#### Name
+>   Edit a route
+
+#### Actor
+>   Sales officer
+
+#### Description
+>   Sales officer edits an existing route
+
+#### Pre-condition
+>   Sales officer is signed into their account.
+>   Sales officer has created a route that he can edit.
+
+
+#### Scenario
+>1. Actor navigates to the menu for managing routes.
+>2. The system displays a list of existing routes.
+>3. Actor selects the route they want to edit.
+>4. The system displays an editing page with the current details of the route.
+>5. Actor makes the necessary changes.
+>6. Actor saves the changes.
+>7. The system asks the actor to confirm their choice.
+>8. Actor confirms changes.
+>9. The system updates the route with the new information and indicates the success of the execution of the action. 
+
+
+
+#### Result
+>   The actor has successfully edited the route.
+
+#### Exceptions
+>8. The actor does not confirm the changes.
+>>8.1   The system returns the user to the editing page.
+    
+>9. The system informs the user that something went wrong when updating the route.
+    >>9.1  The system displays an error message and allows the actor to try again.
+
+
+#### Extensions
+> None
+
+---  
+
+### Update upcoming flight information <Martin>
+
+#### Name
+>   Update upcoming flight information
+
+#### Actor
+>   Sales officer
+
+#### Description
+>   Sales officer updates information about a flight.
+
+#### Pre-condition
+>   Sales officer is signed into their account.
+
+
+#### Scenario
+>1. Actor navigates to the menu for managing flights.
+>2. The system displays a list of existing flights.
+>3. Actor selects the flight they want to update.
+>4. The system displays a page with the current details of the flight.
+>5. Actor makes the necessary changes to the flight.
+>6. Actor saves the changes.
+>7. The system asks for confirmation of the changes.
+>8. Actor confirms changes.
+>9. The system updates the flight with the new information and indicates the success of the execution of the action.
+
+
+
+#### Result
+>   The actor has successfully updated the flight information.
+
+#### Exceptions
+>9. The system informs the user that something went wrong when updating the flight.
+ >>   9.1 The system displays an error message and allows the airline staff to try again.
+
+
+#### Extensions
+> None
+    
+---  
+
+### Register upcoming flight <Martin>
+
+#### Name
+>   Register upcoming flight
+
+#### Actor
+>   Sales officer
+
+#### Description
+>   Sales officer updates information about a flight.
+
+#### Pre-condition
+> Sales officer is signed into their account
+> Sales officer has the necessary information to register the upcoming flight
+
+
+
+#### Scenario
+
+>1. Actor navigates to the menu for registering flights.
+>2. The system displays an editing page for registering flights.
+>3. Actor enters the necessary information for the upcoming flight.
+>4. Actor saves the changes.
+>5. The system asks the user to confirm their choice.
+>6. Actor confirms the registration for the upcoming flight.
+>7. The system updates the database with the new flight information and indicates the success of then execution.
+
+
+#### Result
+> The actor has successfully registered the upcoming flight.
+
+#### Exceptions
+>7. The system informs the user that something went wrong when registering the flight.
+    >7.1 The system displays an error message and allows the actor to try again.
+
+
+#### Extensions
+> None
 
 ## [Back to Table of Contents](https://github.com/FontysVenlo/prj2-2023-prj2-2023-17/blob/main/TableOfContents.md)
