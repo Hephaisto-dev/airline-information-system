@@ -268,7 +268,6 @@
 #### Exceptions
 >   3. System informs user no booking was found.
 >>      3.1 Use case ends here.
----
 
 ---
 
@@ -456,5 +455,67 @@ Result
 
 Exceptions
 > The system informs the user that something went wrong while editing the information.
+
+### Use Case Cancel a booking
+
+#### Name
+>   Cancel a booking
+
+#### Actor
+>   Sales Employee
+
+#### Description
+>   The Sales Employee cancels a booking on behalf of a customer
+
+#### Pre-condition
+>   Logged in as a Sales Officer
+
+#### Scenario
+>1. Actor selects the option to cancel a booking
+>2. System provides the according GUI
+>3. Actor indicates which ticket should be deleted
+>4. System asks for confirmation if this is the correct Ticket to delete
+>5. Actor confirms the choice
+>6. System informs how much money is to be refunded
+>7. Actor informs the system that the refund has been completed
+>8. System returns to the previous screen
+
+#### Result
+>   The Ticket has been successfully canceled. Refundment has been handed out
+
+#### Exceptions
+>5.a. If actor denies the confirmation, the system moves back to step 3
+
+---
+
+### Use Case "Register Employee"
+
+#### Name
+>   Register Employee
+
+#### Actor
+>   Sales Manager
+
+#### Description
+>   Sales Manager registers new employee
+
+#### Pre-condition
+>   Logged in as Sales Manager
+
+#### Scenario
+>1. Actor selects the option to register new employees
+>2. System provides the according GUI
+>3. Actor enters the information (i.e. name, contact info, job title) and confirms
+>4. System saves the info and informs actor what the ID of the new employee is
+>5. Actor selects the option to go back to inital screen
+>6. System moves back to initial screen
+
+#### Result
+>   New employee has been registered and been given an ID
+
+#### Exceptions
+>   None
+
+---
 
 ## [Back to Table of Contents](https://github.com/FontysVenlo/prj2-2023-prj2-2023-17/blob/main/TableOfContents.md)
