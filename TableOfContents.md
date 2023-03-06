@@ -8,7 +8,7 @@
 
 > [Test Scenarios](/analysis/TestScenarios.md)
 
-> [Use Cases](/analysis/Use%20Cases.md)
+> [Use Cases](analysis/Use%20Cases.md)
 
 > [Use Case Diagram](/analysis/UseCaseDiagram.md)
 
