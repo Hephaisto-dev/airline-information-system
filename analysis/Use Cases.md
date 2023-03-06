@@ -6,24 +6,84 @@
     - [Use Case "Apply discount" ](#use-case-apply-discount-)
     - [Use Case "Apply voucher" ](#use-case-apply-voucher-)
     - [Use Case Login ](#use-case-login-)
+      - [Exceptions](#exceptions)
     - [Use Case Access previous flight records ](#use-case-access-previous-flight-records-)
+      - [Name](#name)
+      - [Result](#result)
+      - [Exceptions](#exceptions-1)
+      - [Extensions](#extensions)
     - [Use Case Start sales process ](#use-case-start-sales-process-)
+      - [Result](#result-1)
+      - [Exceptions](#exceptions-2)
     - [Use Case Search For Booking \<Mathias\>](#use-case-search-for-booking-mathias)
     - [Use Case Use Management Dashboard \<Mathias\>](#use-case-use-management-dashboard-mathias)
     - [Use Case View Financial Sheets In Statistics \<Mathias\>](#use-case-view-financial-sheets-in-statistics-mathias)
     - [Use Case Searching for a flight ](#use-case-searching-for-a-flight-)
-    - [Use case Search for a route ](#use-case-search-for-a-route-)
-    - [Use case View flight information ](#use-case-view-flight-information-)
-    - [Use case Edit personal information for a costumer ](#use-case-edit-personal-information-for-a-costumer-)
+      - [Name](#name-1)
+      - [Name](#name-2)
+      - [Name](#name-3)
     - [Use Case Cancel a booking ](#use-case-cancel-a-booking-)
     - [Use Case "Register Employee" ](#use-case-register-employee-)
     - [Create a route ](#create-a-route-)
+      - [Name](#name-4)
+      - [Actor](#actor)
+      - [Description](#description)
+      - [Pre-condition](#pre-condition)
+      - [Scenario](#scenario)
+      - [Result](#result-2)
+      - [Exceptions](#exceptions-3)
+      - [Extensions](#extensions-1)
     - [Edit a route ](#edit-a-route-)
+      - [Name](#name-5)
+      - [Actor](#actor-1)
+      - [Description](#description-1)
+      - [Pre-condition](#pre-condition-1)
+      - [Scenario](#scenario-1)
+      - [Result](#result-3)
+      - [Exceptions](#exceptions-4)
+      - [Extensions](#extensions-2)
     - [Update upcoming flight information ](#update-upcoming-flight-information-)
+      - [Name](#name-6)
+      - [Actor](#actor-2)
+      - [Description](#description-2)
+      - [Pre-condition](#pre-condition-2)
+      - [Scenario](#scenario-2)
+      - [Result](#result-4)
+      - [Exceptions](#exceptions-5)
     - [Register upcoming flight ](#register-upcoming-flight-)
+      - [Name](#name-7)
+      - [Actor](#actor-3)
+      - [Description](#description-3)
+      - [Pre-condition](#pre-condition-3)
+      - [Scenario](#scenario-3)
+      - [Result](#result-5)
+      - [Exceptions](#exceptions-6)
+      - [Extensions](#extensions-3)
     - [Creare a booking ](#creare-a-booking-)
+      - [Actor](#actor-4)
+      - [Description](#description-4)
+      - [Pre-condition](#pre-condition-4)
+      - [Scenario](#scenario-4)
+      - [Result](#result-6)
+      - [Exceptions](#exceptions-7)
+      - [Extensions](#extensions-4)
     - [Adding Extras ](#adding-extras-)
+      - [Actor](#actor-5)
+      - [Description](#description-5)
+      - [Pre-condition](#pre-condition-5)
+      - [Scenario](#scenario-5)
+      - [Result](#result-7)
+      - [Exceptions](#exceptions-8)
+      - [Extensions](#extensions-5)
     - [Canceling a booking ](#canceling-a-booking-)
+      - [Name](#name-8)
+      - [Actor](#actor-6)
+      - [Description](#description-6)
+      - [Pre-condition](#pre-condition-6)
+      - [Scenario](#scenario-6)
+      - [Result](#result-8)
+      - [Exceptions](#exceptions-9)
+      - [Extensions](#extensions-6)
   - [Back to Table of Contents](#back-to-table-of-contents)
 
 
@@ -103,7 +163,23 @@
 | Exceptions    | <ol start = "3"><li><ol type = "a"><li>The system informs the user that his credentials were incorrect<ol><li>Return to step 2</li></ol></li></ol></li></ol><ol start = "4"><li><ol type = "a"><li>The system informs the user there was an error attempting to log in<ol><li>Return to step 2</li></ol></li></ol></li></ol>            |
 
 
+#### Description
+>   Actor logs in to gain access to their account
+
+#### Pre-condition
+>   Actor has a account and is logged out
+
+#### Scenario
+>1. Actor opens the application.
+>2. The system displays the login page of the application
+>3. The actor fills in the required fields with his credentials.
+>4. The system indicates the success of the login
+
+#### Result
+>   The actor has successfully logged in.
+
 ---
+
 ### Use Case Access previous flight records <Lucas>
 
 |               | Description |
@@ -116,6 +192,16 @@
 | Result        | The actor can look at the records of previous flights            |
 | Extensions    | <ol start = "3"><li><ol type = "a"><li>System notifies that there are no previous flights<ol><li>System shows a list of filters</li><li>Actor selects the filter he wants to use</li><li>Return to step 3</li></ol></li></ol></li></ol>            |
 | Exceptions    | <ol start = "2"><li><ol type = "a"><li>System notifies that there are no previous flights<ol><li>Use case ends here</li></ol></li></ol></li></ol>            |
+
+
+#### Pre-condition
+>  Sales employee is logged in
+
+#### Scenario
+>1. Actor navigates to the previous flight records page.
+>2. The system displays the previous flight records page. 
+>3. The actor selects a flight which already happened. 
+>4. the system displays the flight information for the selected flight. 
 
 
 
@@ -132,6 +218,19 @@
 | Result        | The sales process has successfully begun            |
 | Extensions    | None            |
 | Exceptions    | <ol start = "3"><li><ol type = "a"><li>System notifies that there are no active flights<ol><li>Use case ends here</li></ol></li></ol></li></ol><ol start = "4"><li><ol type = "a"><li>System notifies that an error accured when trying to initiate the sales process<ol><li>Use case ends here</li></ol></li></ol></li></ol>            |
+
+
+#### Pre-condition
+>  Sales officer is logged in
+
+#### Scenario
+    
+>1. The actor navigates to the flights. 
+>2. the system displays all registered flights.
+>3. the actor selects a flight. 
+>4. the system shows the selected flight.
+>5. the actor activates the sales process
+>6. the system indicates it was successfully activated.
 
 
 ---

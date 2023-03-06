@@ -1,3 +1,3 @@
-![Domain Model](Domain%20Model/D.M-PRJ2.svg)
+![Use Case Diagram](Activity%20Diagram.svg)
 
 ## [Back to Table of Contents](../TableOfContents.md)
