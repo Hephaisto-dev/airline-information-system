@@ -29,3 +29,5 @@ Grade: The team aims for a score of 8 or more
 By following these rules, group work can be productive, enjoyable, and effective.
 
 Chairman: Mathias Filliol
+
+## [Back to Table of Contents](../TableOfContents.md)
