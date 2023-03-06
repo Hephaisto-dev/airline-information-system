@@ -520,10 +520,10 @@ The test scenario ends in this case.
 #### Name
 > Search for a flight
 #### Scenario
-> 1.Actor is searching for a flight to bruxelles.
-> 2.The system gives upcoming flights to different destinations: from Eindhoven - Bruxelles, Bruxelles - Paris, Cyprus - Riga.
-> 3.The actor selecting specific flights: Bruxelles - Paris.
-> 4.The system gives all the information about the flight Bruxelles - Paris: departure time from Bruxelles: 2pm; arrival time to Paris: 3 pm; total time of the flight: 1h.
+> 1.Actor is searching for a flight to Brusselles.
+> 2.The system gives upcoming flights to different destinations: from Eindhoven - Brusselles, Brusselles - Paris, Cyprus - Riga.
+> 3.The actor selecting specific flights: Brusselles - Paris.
+> 4.The system gives all the information about the flight Brusselles - Paris: departure time from Brusselles: 2pm; arrival time to Paris: 3 pm; total time of the flight: 1h.
 
 #### Result
 > The actor has successfully found a flight
@@ -540,7 +540,7 @@ The test scenario ends in this case.
 > 1.Actor is searching for a rout from Dusseldorf to Los Angeles.
 > 2.The system gives upcoming flights: from Dusseldorf - New York - Los Angeles, Dusseldorf - Frankfurt - Los Angeles.
 > 3.The actor selecting specific route: Dusseldorf - Frankfurt - Los Angeles.
-> 4.The system gives all the information about the route Dusseldorf - Frankfurt - Los Angeles: departure time from Dusseldorf: 2pm; arrival time to Frankfurt: 3:30 pm; tranzit time in Frankfurt: 1.5h; departure from Frankfurt: 5 pm; arrival time to Los Angeles: 12pm.
+> 4.The system gives all the information about the route Dusseldorf - Frankfurt - Los Angeles: departure time from Dusseldorf: 2pm; arrival time to Frankfurt: 3:30 pm; transit time in Frankfurt: 1.5h; departure from Frankfurt: 5 pm; arrival time to Los Angeles: 12pm.
 
 #### Result
 > The actor has successfully found a route.
@@ -554,9 +554,9 @@ The test scenario ends in this case.
 > View flight information
 
 #### Scenario
-> 1.Actor searching for the previous flight Bruxelles - Paris.
-> 2.The system displays all the information about the flight Bruxelles - Paris.
-> 3.The actor views information about flight Bruxelles - Paris: departure time from Bruxelles: 2pm; arrival time to Paris: 3 pm; total time of the flight: 1h.
+> 1.Actor searching for a previous flight Brusselles - Paris.
+> 2.The system displays all the information about the flight Brusselles - Paris.
+> 3.The actor views information about flight Brusselles - Paris: departure time from Brusselles: 2pm; arrival time to Paris: 3 pm; total time of the flight: 1h.
 
 #### Result
 > The actor has successfully found the information about an upcoming flight.
@@ -570,8 +570,8 @@ The test scenario ends in this case.
 > Edit personal information for a costumer
 
 #### Scenario
-> 1.Actor searching for a page of a costumer Martin.
-> 2.The system displays the page and all the personal infromation about a costumer Martin.
+> 1.Actor searching for a page of a customer Martin.
+> 2.The system displays the page and all the personal infromation about a customer Martin.
 > 3.The actor edits Martins age to 20 on the 30th of June.
 > 4.The actor confirms Martins modified age.
 > 5.The system checks all the modified data 
