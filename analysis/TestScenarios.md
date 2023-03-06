@@ -43,6 +43,7 @@
 >   5. System informs user no booking was found.
 >>      5.1 Test Scenario ends here.
 
+---
 ### Test Scenario Use Management Dashboard <Mathias\>
 
 #### Name
@@ -51,7 +52,7 @@
 #### Scenario
 >   1. Actor selects management dashboard.
 >   2. System displays the management dashboard.
->   3. Actor interact with the dashboard and [look financial sheet In Statistics](Use%20Cases.md#use-case-view-financial-sheets-in-statistics--mathias).
+>   3. Actor interact with the dashboard by reviewing how many tickets were and were not sold per flight. 
 
 #### Result
 >   Sales manager used the management dashboard.
@@ -63,6 +64,7 @@
 >   3. System shows that an error occurred when using the dashboard.
 >>      3.1 Test Scenario ends here.
 
+---
 ### Test Scenario View Financial Sheets In Statistics <Mathias\>
 
 #### Name
@@ -81,8 +83,12 @@
 >   None.
 
 #### Exceptions
->   None.
+>   2. System informs the user that no registered flights were found.
+>>   2.1 Test scenario ends here.
+>   4. System informs the user that an error occurred.
+>   4.1 Test Scenario ends here.
 
+---
 ### Test Scenario Login Verification <Lucas\>
 
 #### Name
@@ -108,6 +114,7 @@ The sales employee is directed to their account page and can access the necessar
 #### Exceptions
 >   4. If the actor enters incorrect login credentials, the system informs the actor that their credentials are incorrect.
 
+---
 ### Test Scenario Access previous flight records <Lucas\>
 
 #### Name
@@ -138,6 +145,7 @@ The sales employee can view the flight information for any previous flight that 
 >   2. If there are no previous flights available, the system notifies the user that there are no previous flights.
 The test scenario ends in this case.
 
+---
 ### Test Scenario start sales process <Lucas\>
 
 #### Name
@@ -172,7 +180,7 @@ The test scenario ends in this case.
 ---
 
 
-### Test Scenario "Purchase Ticket"
+### Test Scenario "Purchase Ticket" <Daniel>
 
 ####    Name
 >   Purchase Ticket
@@ -202,7 +210,7 @@ The test scenario ends in this case.
 
 ---
 
-### Test Scenario "Apply Discount"
+### Test Scenario "Apply Discount"  <Daniel>
 
 ####    Name
 >   Apply Discount
@@ -224,7 +232,7 @@ The test scenario ends in this case.
 
 ---
 
-### Test Scenario "Apply voucher"
+### Test Scenario "Apply voucher" <Daniel>
 
 ####    Name
 >   Apply voucher
@@ -250,7 +258,7 @@ The test scenario ends in this case.
 
 ---
 
-### Test Scenario "Cancel booking"
+### Test Scenario "Cancel booking" <Daniel>
 
 ####    Name
 >   Cancel Booking
@@ -273,7 +281,7 @@ The test scenario ends in this case.
 
 ---
 
-### Test Scenario "Register employee"
+### Test Scenario "Register employee" <Daniel>
 
 ####    Name
 >   Register employee
@@ -291,6 +299,113 @@ The test scenario ends in this case.
 
 #### Exceptions
 >   None
+
+---
+
+### Creating a new route  <Martin\>
+
+#### Name
+>   Creating a new route 
+
+#### Scenario
+>1.The actor navigates to the editing route menu of the application.
+>2. The system displays an editing page with fields to enter route information for each segment of the route.
+>3. The actor enters the necessary information for creating a route, such as route name "Route A", start location "New York City", end location "Los Angeles", departure date and time "2023-04-01 10:00 AM", arrival date and time "2023-04-01 10:00 PM", and flight numbers "101", "202", and "303" for each segment of the route.
+>4. The actor chooses to save changes.
+>5. The system displays asks the user for confirmation.
+>6. The actor confirms their choice.
+>7. The system indicates the success of the execution of the action by displaying successful message.
+
+
+#### Result
+>   The actor has successfully created a route.
+
+#### Extensions
+>6. The actor does not confirm.
+     >>6.1 Return to step 2. 
+#### Exceptions
+>7 The system informs the employee that something went wrong when creating the route, such as a database connection error.
+     >>7.2 Return to step 2.
+
+
+---
+
+### Edit a route <Martin\>
+
+#### Name
+>   Edit a route
+
+#### Scenario
+>1. The actor navigates to the menu for managing routes. 
+>2.The system displays a list of existing routes.
+>3. The actor selects which flight they want to edit: route from Canada (CND) to Tokyo (TKY) with a layover in Seoul (SEO).
+>4.The system displays an editing page with the current details of the route.
+>5. The actor changes the departure time from "2023-04-01 08:00" to "2023-04-01 09:00".
+-The actor adds a new stopover at “CBD airport”
+-The actor changes the arrival time at the final destination from "2023-04-01 12:00" to "2023-04-01 13:00".
+>6. The airline administrator saves the changes.
+>7.The system asks the airline administrator to confirm their choice.
+>8. The airline administrator confirms the changes.
+>9.The system updates the route with the new information and indicates the success of the execution of the action.
+
+
+#### Result
+>   The actor has successfully edited a route.
+
+#### Exceptions
+>8. The actor does not confirm the changes.
+     >>8.1 The system returns the airline administrator to the editing page.
+>9. The system informs the actor that something went wrong when updating the route. 
+     >>9.1 The system displays an error message and allows the airline administrator to try again.
+
+---
+
+### Update upcoming flight information  <Martin\>
+
+#### Name
+>   Change/update upcoming flight information 
+
+#### Scenario
+>1. Actor navigates to the menu for managing flights.
+>2.The system displays a list of existing flights.
+>3. Actor selects the flight they want to update. 4.The system displays a page with the current details of the flight: Flight number: UA123 Departure airport: CBD, arrival airport: LAX, Departure time: 2023-03-15 08:30 AM, arrival time: 2023-03-15 11:45 AM.
+>5.Actor makes the necessary changes to the flight. Flight number: UA123 Departure airport: JFK Arrival airport: SFO Departure time: 2023-03-15 08:30 AM EST Arrival time: 2023-03-15 12:15 PM.
+>6. Actor saves the changes.
+>7.The system asks for confirmation of the changes.
+>8. Actor confirms changes. 
+>9.The system updates the flight with the new information and indicates the success of the execution of the action.
+
+
+#### Result
+>   MThe actor has successfully updated the flight information.
+
+#### Exceptions
+> 9.The system informs the user that something went wrong when updating the flight. 
+     >> 9.1 The system displays an error message and allows the airline staff to try again.
+
+---
+
+### Register upcoming flight <Martin\>
+
+#### Name
+>   Register upcoming flight
+
+#### Scenario
+>1. Actor navigates to the menu for registering flights.
+>2.The system displays an editing page for registering flights.
+>3. Actor enters the following information for the upcoming flight: Flight number: AA123 Departure airport: LAX (Los Angeles International Airport) Destination airport: CBD (Car Nicobar Airport) Departure date and time: 2023-03-15 08:00 AM Arrival date and time: 2023-03-15 04:00 PM  Number of available seats: 100.
+>4.Actor saves the changes.
+>5. The system asks the user to confirm their choice.
+>6.Actor confirms the registration for the upcoming flight.
+>7. The system updates the database with the new flight information and indicates the success of the execution. 
+
+
+#### Result
+>   The actor has successfully registered the upcoming flight with the specified information.
+
+#### Extensions
+>7. The system informs the user that something went wrong when registering the flight.
+     >> 7.1 The system displays an error message and allows the actor to try again.
 
 ---
 
