@@ -406,17 +406,10 @@ The test scenario ends in this case.
 #### Extensions
 >7. The system informs the user that something went wrong when registering the flight.
      >> 7.1 The system displays an error message and allows the actor to try again.
-
----
-
-     @@ -329,3 +329,128 @@
----
-
-## [Back to Table of Contents](https://github.com/FontysVenlo/prj2-2023-prj2-2023-17/blob/main/TableOfContents.md)
-
-    
+     
     ----
-### Use Case Searching for a flight
+     
+### Use Case Searching for a flight<Jazz>
 #### Name
 > Search for a flight
 
@@ -446,7 +439,7 @@ The test scenario ends in this case.
 
     ---
     
-### Use case Search for a route
+### Use case Search for a route<Jazz>
 #### Name
 > Search for a route
 
@@ -477,7 +470,7 @@ The test scenario ends in this case.
     
     -----
     
-### Use case View flight information
+### Use case View flight information<Jazz>
 #### Name
 > View flight information
 
@@ -510,7 +503,7 @@ The test scenario ends in this case.
     
     -----
     
-### Use case Edit personal information for a costumer
+### Use case Edit personal information for a costumer<Jazz>
 #### Name
 > Edit personal information for a costumer
 
