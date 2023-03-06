@@ -2,6 +2,8 @@
 <!--TODO: Add short description of each content-->
 Here we collect the links to all our files of the Analysis folder for easier navigation
 
+## [Activity Diagram](ActivityDiagram.md)
+
 ## [Data Dictionary](DataDictionary.md)
 
 ## [Domain Model](DomainModelShow.md)
