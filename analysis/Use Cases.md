@@ -2,16 +2,22 @@
 
 ---
 * [USE CASES](#use-cases)
-    * [Use Case Template <Assignee?>](#use-case-template--assignee-)
-    * [Use Case Purchase Ticket](#use-case-purchase-ticket)
-    * [Use Case "Apply discount"](#use-case--apply-discount-)
-    * [Use Case "Apply voucher"](#use-case--apply-voucher-)
+    * [Use Case Purchase Ticket <Daniel>](#use-case-purchase-ticket-daniel)
+    * [Use Case "Apply discount" <Daniel>](#use-case--apply-discount--daniel)
+    * [Use Case "Apply voucher" <Daniel>](#use-case--apply-voucher--daniel)
+    * [Use Case Login <Lucas>](#use-case-login-lucas)
+    * [Use Case Access previous flight records <Lucas>](#use-case-access-previous-flight-records-lucas)
+    * [Use Case Start sales process <Lucas>](#use-case-start-sales-process-lucas)
     * [Use Case Search For Booking <Mathias\>](#use-case-search-for-booking--mathias)
     * [Use Case Use Management Dashboard <Mathias\>](#use-case-use-management-dashboard--mathias)
     * [Use Case View Financial Sheets In Statistics <Mathias\>](#use-case-view-financial-sheets-in-statistics--mathias)
+    * [Use Case Cancel a booking <Jazz>](#use-case-cancel-a-booking-jazz)
+    * [Use Case "Register Employee" <???>](#use-case--register-employee----)
+    * [Create a route <Martin>](#create-a-route-martin)
+    * [Edit a route <Martin>](#edit-a-route-martin)
+    * [Update upcoming flight information <Martin>](#update-upcoming-flight-information-martin)
+    * [Register upcoming flight <Martin>](#register-upcoming-flight-martin)
   * [Back to Table of Contents](#back-to-table-of-contents)
-  
-### Use Case Template <Assignee?>
 
 #### Name
 >   Template
