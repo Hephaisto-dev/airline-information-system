@@ -694,4 +694,133 @@ Exceptions
 #### Extensions
 > None
 
+
+
+### Creare a booking <Janis>
+
+#### Name
+>   Creare a booking
+
+#### Actor
+>   Sales employee
+
+#### Description
+>   Sales employee is dooing a booking for a Customer.
+
+#### Pre-condition
+> Sales employee is signed into their account
+> Sales employee has the necessary information to register the upcoming flight
+
+
+
+#### Scenario
+
+1.	 Sales employee at a travel agency logs into the company's booking system to create a new booking for a customer,  who wants to book a flight to Tokyo for a business trip.
+2.	Sales employee navigates to the booking section of the system and enters the travel details of the Customer, including departure and arrival airports, travel dates, and any other relevant information.
+3.	The system presents the Sales employee a list of available flights that match the Customers requirements. She can filter and sort the results by price, duration, or airline.
+4.	The Sales employee selects a flight that fits the Customers schedule and budget and enters his personal and payment information into the system. The system generates a booking confirmation, which the Sales employee sends to the Customer via email.
+5.	A few days before the flight, the system sends the Customer a reminder email with his flight details and instructions for check-in and baggage.
+
+
+
+#### Result
+> The actor has successfully create a booking.
+
+#### Exceptions
+>7. The system informs the user that something went wrong with creating the booking.
+    >7.1 The system displays an error message and allows the actor to try again.
+
+
+#### Extensions
+> None
+
+
+
+
+### Adding Extras <Janis>
+
+#### Name
+>   Adding Extras
+
+#### Actor
+>   Sales employee
+
+#### Description
+>   Sales employee is adding Extras for a Customer.
+
+#### Pre-condition
+> Sales employee is signed into their account
+> Sales employee has the necessary information to register the upcoming flight
+
+
+
+#### Scenario
+
+1.	 Sales employee at a travel agency and a customer has already purchased a flight ticket for a trip.
+2.	Customer  calls the Sales employee to add extras to his flight, such as seat selection, in-flight meals, and baggage allowance upgrades.
+3.	The Sales employee logs into the company's booking system and finds the Customers reservation by entering his name and confirmation number.
+4.	The system displays the Customers flight details and allows the Sales employee to view and add extras to his reservation.
+5.	The Sales employee selects the extras that the Customer  requested and adds them to his reservation. The system automatically calculates the total cost of the extras and updates the reservation with the new price.
+
+
+
+#### Result
+> The actor has successfully add extras.
+
+#### Exceptions
+>7. The system informs the user that something went wrong while adding extras.
+    >7.1 The system displays an error message and allows the actor to try again.
+
+
+#### Extensions
+> None
+
+
+
+
+### Canceling a booking <Janis>
+
+#### Name
+>   Canceling a booking
+
+#### Actor
+>   Sales employee
+
+#### Description
+>   Sales employee is caneling a booking for a Customer.
+
+#### Pre-condition
+> Sales employee is signed into their account
+> Sales employee has the necessary information to register the upcoming flight
+
+
+
+#### Scenario
+
+1.	The sales employee gets a call by a Customer who wants to cancel his next flight. 
+2.	The Customer provides his name and flight confirmation number to the Sales empoyee.
+3.	The Sales employee logs into the company's booking system and enters the Customers name and confirmation number to retrieve his flight details.
+4.	The system displays the Customers flight information, including the flight number, departure time, and booking details.
+5.	The sales Employee confirms the details with the Customer and informs him of the cancellation policy and any applicable fees.
+6.	The sales Employee enters the cancellation request into the system and initiates the refund process.
+7.	The system generates a cancellation confirmation and a refund receipt for the Customer.
+
+
+
+#### Result
+> The actor has successfully canceled the booking.
+
+#### Exceptions
+>7. The system informs the user that something went wrong while canceling tuhe booking.
+    >7.1 The system displays an error message and allows the actor to try again.
+
+
+#### Extensions
+> None
+
+
+
+
+
+
 ## [Back to Table of Contents](../TableOfContents.md)
