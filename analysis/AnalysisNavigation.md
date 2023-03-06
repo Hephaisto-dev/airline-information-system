@@ -14,4 +14,4 @@ Here we collect the links to all our files of the Analysis folder for easier nav
 
 ## [Test Scenarios](TestScenarios.md)
 
-## [Back to Table of Contents](https://github.com/FontysVenlo/prj2-2023-prj2-2023-17/blob/main/TableOfContents.md)
+## [Back to Table of Contents](../TableOfContents.md)

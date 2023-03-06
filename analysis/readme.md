@@ -16,6 +16,6 @@ This directory is for all the analysis artefacts.
 
 ## [Test Scenarios](TestScenarios.md)
 
-## [Back to Table of Contents](https://github.com/FontysVenlo/prj2-2023-prj2-2023-17/blob/main/TableOfContents.md)
+## [Back to Table of Contents](../TableOfContents.md)
 
 Make sure to also write documentation here.
