@@ -93,33 +93,21 @@
       - [Extensions](#extensions-10)
     - [Test Scenario "Searching for a flight" ](#test-scenario-searching-for-a-flight-)
       - [Name](#name-16)
-      - [Actor](#actor)
-      - [Description](#description)
-      - [Pre-condition](#pre-condition)
       - [Scenario](#scenario-16)
       - [Result](#result-16)
       - [Exceptions](#exceptions-14)
     - [Test Scenario "Search for a route" ](#test-scenario-search-for-a-route-)
       - [Name](#name-17)
-      - [Actor](#actor-1)
-      - [Description](#description-1)
-      - [Pre-condition](#pre-condition-1)
       - [Scenario](#scenario-17)
       - [Result](#result-17)
       - [Exceptions](#exceptions-15)
     - [Test Scenario "View flight information" ](#test-scenario-view-flight-information-)
       - [Name](#name-18)
-      - [Actor](#actor-2)
-      - [Description](#description-2)
-      - [Pre-condition](#pre-condition-2)
       - [Scenario](#scenario-18)
       - [Result](#result-18)
       - [Exceptions](#exceptions-16)
     - [Test Scenario "Edit personal information for a costumer" ](#test-scenario-edit-personal-information-for-a-costumer-)
       - [Name](#name-19)
-      - [Actor](#actor-3)
-      - [Description](#description-3)
-      - [Pre-condition](#pre-condition-3)
       - [Scenario](#scenario-19)
       - [Result](#result-19)
       - [Exceptions](#exceptions-17)
@@ -246,8 +234,7 @@ The sales employee is directed to their account page and can access the necessar
 >1. Actor navigates to the previous flight records menu.
 >2. System displays the previous flight records menu.
 >3. Actor selects flight from canada to tokyo that happend on 11-02-2003
->4. System displays a page with more details about flight 112 from canada to tokyo that happend on 11-02-2003
-like amount of seats etc.
+>4. System displays a page with more details about flight 112 from canada to tokyo that happend on 11-02-2003 like amount of seats etc.
 
 
 
@@ -532,18 +519,6 @@ The test scenario ends in this case.
 ### Test Scenario "Searching for a flight" <Jazz>
 #### Name
 > Search for a flight
-
-#### Actor
-> Sales employee
-
-#### Description
-> A sales employee is searching for one or more flights
-
-#### Pre-condition
-> Sales Employee is signed into their account.
-
-> Sales Employee is provided with the information for searching a flight
-
 #### Scenario
 > 1.Actor is searching for a flight to bruxelles.
 > 2.The system gives upcoming flights to different destinations: from Eindhoven - Bruxelles, Bruxelles - Paris, Cyprus - Riga.
@@ -560,17 +535,6 @@ The test scenario ends in this case.
 ### Test Scenario "Search for a route" <Jazz>
 #### Name
 > Search for a route
-
-#### Actor
-> Sales employee
-
-#### Description
-> A sales employee is searching for one or more routes
-
-#### Pre-condition
-> Sales Employee is signed into their account.
-
-> Sales Employee is provided with the information for searching a route
 
 #### Scenario
 > 1.Actor is searching for a rout from Dusseldorf to Los Angeles.
@@ -589,17 +553,6 @@ The test scenario ends in this case.
 #### Name
 > View flight information
 
-#### Actor
-> Sales employee
-
-#### Description
-> A sales employee is viewing the upcoming fight information
-
-#### Pre-condition
-> Sales Employee is signed into their account.
-
-> Sales Employee is provided with the information for viewing the upcoming flight information
-
 #### Scenario
 > 1.Actor searching for the previous flight Bruxelles - Paris.
 > 2.The system displays all the information about the flight Bruxelles - Paris.
@@ -615,17 +568,6 @@ The test scenario ends in this case.
 ### Test Scenario "Edit personal information for a costumer" <Jazz>
 #### Name
 > Edit personal information for a costumer
-
-#### Actor
-> Sales employee
-
-#### Description
-> A sales employee is editing costumers personal
-
-#### Pre-condition
-> Sales Employee is signed into their account.
-
-> Sales Employee is provided with the information for editing customers information
 
 #### Scenario
 > 1.Actor searching for a page of a costumer Martin.
