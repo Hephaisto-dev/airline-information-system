@@ -43,7 +43,7 @@
 <!-- Further Use Cases can be edited now-->
 
 
-### Use Case Purchase Ticket
+### Use Case Purchase Ticket <Daniel>
 
 #### Name
 >   Purchase Ticket
@@ -81,7 +81,7 @@
 >5. Actor cancels the ticket selction. System moves back to the initial screen
 
 ---
-### Use Case "Apply discount"
+### Use Case "Apply discount" <Daniel>
 
 #### Name
 >   Apply discount
@@ -117,7 +117,7 @@
 
 ---
 
-### Use Case "Apply voucher"
+### Use Case "Apply voucher" <Daniel>
 
 #### Name
 >   Apply voucher
@@ -152,33 +152,36 @@
 >   None
 
 ---
-
+### Use Case Login <Lucas>
+    
 #### Name
 >   Login
 
 #### Actor
->   Sales employee
+>   Sales employee, sales officer and sales manager
 
 #### Description
->   A sales employee logins in to gain access to their account
+>   Actor logs in to gain access to their account
 
 #### Pre-condition
->   sales employee has a account and is logged out
+>   Actor has a account and is logged out
 
 #### Scenario
 >1. Actor opens the application.
->2. The system displays the homepage of the application
->3. The actor navigates to the log in page.
->4. The system displays the log in page
->5. The actor fills in the required fields with his credentials.
->6. The system indicates the success of the login
+>2. The system displays the login page of the application
+>3. The actor fills in the required fields with his credentials.
+>4. The system indicates the success of the login
 
 #### Result
 >   The actor has successfully logged in.
 
 #### Exceptions
->5. The system informs the user that his credentials were incorrect.
+>3. The system informs the user that his credentials were incorrect.
+    3.1 return to step 2
+>4. The system informs the user there was an error attempting to log in
+    4.1 return to step 2
 ---
+### Use Case Access previous flight records <Lucas>
 #### Name
 >   Access previous flight records
 
@@ -192,10 +195,10 @@
 >  Sales employee is logged in
 
 #### Scenario
->1. Actor navigates to the previous flight records
+>1. Actor navigates to the previous flight records page.
 >2. The system displays the previous flight records page. 
->3. The actor navigates to a flight which already happened. 
->4. .the system displays the flight information for the selected flight. 
+>3. The actor selects a flight which already happened. 
+>4. the system displays the flight information for the selected flight. 
 
 
 #### Result
@@ -203,9 +206,13 @@
 #### Exceptions
 >2. system notifies that there are no previous flights
     2.1 case ends
+#### Extensions
+    3a. Actor applies a filter to the list
+        1. System shows a list of filters.
+        2. Actor selects the filter he wants to use. Return to step 3. 
 
 ---
-
+### Use Case Start sales process <Lucas>
 #### Name
 >   Start sales process
 
@@ -219,21 +226,22 @@
 >  Sales officer is logged in
 
 #### Scenario
->1. Actor opens the application. 
->2. The system displays the homepage of the application. 
->3. The actor navigates to the flights. 
->4. the system displays all upcoming flights.
->5. the actor selects a flight. 
->6. the system shows the selected flight.
->7. the actor activates the sales process
->8. the system indicates it was successfully activated.
+    
+>1. The actor navigates to the flights. 
+>2. the system displays all registered flights.
+>3. the actor selects a flight. 
+>4. the system shows the selected flight.
+>5. the actor activates the sales process
+>6. the system indicates it was successfully activated.
 
 
 #### Result
 >   The sales process has successfully begun
 #### Exceptions
 >3. system notifies that there are no active flights.
-3.1 case ends
+3.1 case ends here
+>4. System notifies that an error accured when trying to initiate the sales process
+    4.1 case ends here
 ---
 
 
@@ -269,7 +277,6 @@
 #### Exceptions
 >   3. System informs user no booking was found.
 >>      3.1 Use case ends here.
----
 
 ---
 
@@ -331,8 +338,354 @@
 >   None.
 
 #### Exceptions
->   None.
+> 5. System informs the actor that something went wrong when loading the information and allows the user to try again. 
 
 ---
+        
+Use Case Searching for a flight <Jazz>
+#### Name
+> Search for a flight
+
+Actor
+> Sales employee
+
+Description
+> A sales employee is searching for one or more flights
+
+####Pre-condition
+> Sales Employee is signed into their account.
+
+> Sales Employee is provided with the information for searching a flight
+
+Scenario
+> 1.Actor navigates to the area/menu for searching a flight. 
+> 2.The system displays an area/menu. 
+> 3.The actor enters the necessary information for searching a flight and confirms it. 
+> 4.The system gives the necessary information, that was asked 
+> 5.The actor is choosing the information that is need
+
+Result
+> The actor has successfully found a flight
+
+Exceptions
+> The system informs the user that something went wrong while searching for a route.
+
+---
+    
+Use case Search for a route <Jazz>
+#### Name
+> Search for a route
+
+Actor
+> Sales employee
+
+Description
+> A sales employee is searching for one or more routes
+
+Pre-condition
+ > Sales Employee is signed into their account.
+
+> Sales Employee is provided with the information for searching a route
+
+Scenario
+> 1.Actor navigates to the area/menu for searching a route. 
+> 2.The system displays an area/menu. 
+> 3.The actor enters the necessary information for searching a route and confirms it. 
+> 4.The system gives the necessary information, that was asked 
+> 5.The actor is choosing the information that is needed
+
+Result
+> The actor has successfully found a route.
+
+Exceptions
+> The system informs the user that something went wrong while searching for a route.
+
+    
+---
+    
+Use case View flight information <Jazz>
+#### Name
+> View flight information
+
+####Actor
+> Sales employee
+
+Description
+> A sales employee is viewing the upcoming fight information
+
+Pre-condition
+> Sales Employee is signed into their account.
+
+> Sales Employee is provided with the information for viewing the upcoming flight information
+
+Scenario
+> 1.Actor navigates to the area/menu for searching 
+> 2.The system displays an area/menu. 
+> 3.The actor enters the necessary information for searching a specific flight and confirms it. 
+> 4.The system lists the necessary information(flights) 
+> 5.The actor is choosing the flight that is needed 
+> 6.System gives the page of the flight that was chosen 
+> 7.The actor I able to see all the information about a specific upcoming flight
+
+Result
+> The actor has successfully found the information about an upcoming flight.
+
+Exceptions
+> The system informs the user that something went wrong while searching for a flight or displaying its information.
+
+    
+    -----
+    
+Use case Edit personal information for a costumer <Jazz>
+#### Name
+> Edit personal information for a costumer
+
+Actor
+> Sales employee
+
+Description
+> A sales employee is editing costumers personal
+
+Pre-condition
+> Sales Employee is signed into their account.
+
+> Sales Employee is provided with the information for editing customers information
+
+Scenario
+> 1.Actor navigates to the menu for editing the customers 
+> 2.The system displays a menu. 
+> 3.The actor edits the necessary information for the customer 
+> 4.The actor confirms the modified data 
+> 5.The system checks all the modified data 
+> 6.The system confirms the modifications
+
+Result
+> The actor has edited the customers information
+
+Exceptions
+> The system informs the user that something went wrong while editing the information.
+----
+### Use Case Cancel a booking <Jazz>
+
+#### Name
+>   Cancel a booking
+
+#### Actor
+>   Sales Employee
+
+#### Description
+>   The Sales Employee cancels a booking on behalf of a customer
+
+#### Pre-condition
+>   Logged in as a Sales Officer
+
+#### Scenario
+>1. Actor selects the option to cancel a booking
+>2. System provides the according GUI
+>3. Actor indicates which ticket should be deleted
+>4. System asks for confirmation if this is the correct Ticket to delete
+>5. Actor confirms the choice
+>6. System informs how much money is to be refunded
+>7. Actor informs the system that the refund has been completed
+>8. System returns to the previous screen
+
+#### Result
+>   The Ticket has been successfully canceled. Refundment has been handed out
+
+#### Exceptions
+>5.a. If actor denies the confirmation, the system moves back to step 3
+
+---
+
+### Use Case "Register Employee" <???>
+
+#### Name
+>   Register Employee
+
+#### Actor
+>   Sales Manager
+
+#### Description
+>   Sales Manager registers new employee
+
+#### Pre-condition
+>   Logged in as Sales Manager
+
+#### Scenario
+>1. Actor selects the option to register new employees
+>2. System provides the according GUI
+>3. Actor enters the information (i.e. name, contact info, job title) and confirms
+>4. System saves the info and informs actor what the ID of the new employee is
+>5. Actor selects the option to go back to inital screen
+>6. System moves back to initial screen
+
+#### Result
+>   New employee has been registered and been given an ID
+
+#### Exceptions
+>   None
+
+---
+
+### Create a route <Martin>
+
+#### Name
+>   Create a route
+
+#### Actor
+>   Sales officer
+
+#### Description
+>   A sales officer creates one or more routes
+
+#### Pre-condition
+>   Sales officer is signed into their account.
+
+#### Scenario
+>1. Actor navigates to the menu for creating  route.
+>2. The system displays an editing page.
+>3. The actor enters the necessary information for creating a route.
+>4. The actor saves the made changes.
+>5. The system asks the actor to confirm their choice.
+>6. The actor confirms their choice.
+>7. The system indicates the success of the execution of the action.
+
+
+#### Result
+>   The actor has successfully created a route.
+
+#### Exceptions
+>7.  The system informs the user that something went wrong when creating the route.
+>>7.1 Use case ends here.
+
+#### Extensions
+> None
+
+---
+
+### Edit a route <Martin>
+
+#### Name
+>   Edit a route
+
+#### Actor
+>   Sales officer
+
+#### Description
+>   Sales officer edits an existing route
+
+#### Pre-condition
+>   Sales officer is signed into their account.
+>   Sales officer has created a route that he can edit.
+
+
+#### Scenario
+>1. Actor navigates to the menu for managing routes.
+>2. The system displays a list of existing routes.
+>3. Actor selects the route they want to edit.
+>4. The system displays an editing page with the current details of the route.
+>5. Actor makes the necessary changes.
+>6. Actor saves the changes.
+>7. The system asks the actor to confirm their choice.
+>8. Actor confirms changes.
+>9. The system updates the route with the new information and indicates the success of the execution of the action. 
+
+
+
+#### Result
+>   The actor has successfully edited the route.
+
+#### Exceptions
+>8. The actor does not confirm the changes.
+>>8.1   The system returns the user to the editing page.
+    
+>9. The system informs the user that something went wrong when updating the route.
+    >>9.1  The system displays an error message and allows the actor to try again.
+
+
+#### Extensions
+> None
+
+---  
+
+### Update upcoming flight information <Martin>
+
+#### Name
+>   Update upcoming flight information
+
+#### Actor
+>   Sales officer
+
+#### Description
+>   Sales officer updates information about a flight.
+
+#### Pre-condition
+>   Sales officer is signed into their account.
+
+
+#### Scenario
+>1. Actor navigates to the menu for managing flights.
+>2. The system displays a list of existing flights.
+>3. Actor selects the flight they want to update.
+>4. The system displays a page with the current details of the flight.
+>5. Actor makes the necessary changes to the flight.
+>6. Actor saves the changes.
+>7. The system asks for confirmation of the changes.
+>8. Actor confirms changes.
+>9. The system updates the flight with the new information and indicates the success of the execution of the action.
+
+
+
+#### Result
+>   The actor has successfully updated the flight information.
+
+#### Exceptions
+>9. The system informs the user that something went wrong when updating the flight.
+ >>   9.1 The system displays an error message and allows the airline staff to try again.
+
+
+#### Extensions
+> None
+    
+---  
+
+### Register upcoming flight <Martin>
+
+#### Name
+>   Register upcoming flight
+
+#### Actor
+>   Sales officer
+
+#### Description
+>   Sales officer updates information about a flight.
+
+#### Pre-condition
+> Sales officer is signed into their account
+> Sales officer has the necessary information to register the upcoming flight
+
+
+
+#### Scenario
+
+>1. Actor navigates to the menu for registering flights.
+>2. The system displays an editing page for registering flights.
+>3. Actor enters the necessary information for the upcoming flight.
+>4. Actor saves the changes.
+>5. The system asks the user to confirm their choice.
+>6. Actor confirms the registration for the upcoming flight.
+>7. The system updates the database with the new flight information and indicates the success of then execution.
+
+
+#### Result
+> The actor has successfully registered the upcoming flight.
+
+#### Exceptions
+>7. The system informs the user that something went wrong when registering the flight.
+    >7.1 The system displays an error message and allows the actor to try again.
+
+
+#### Extensions
+> None
 
 ## [Back to Table of Contents](https://github.com/FontysVenlo/prj2-2023-prj2-2023-17/blob/main/TableOfContents.md)
