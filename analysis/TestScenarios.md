@@ -546,4 +546,4 @@ The test scenario ends in this case.
 #### Exceptions
 > The system informs the user that something went wrong while editing the information.
      
-## [Back to Table of Contents](https://github.com/FontysVenlo/prj2-2023-prj2-2023-17/blob/main/TableOfContents.md)
+## [Back to Table of Contents](../TableOfContents.md)
