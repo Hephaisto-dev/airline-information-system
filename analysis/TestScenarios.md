@@ -407,7 +407,7 @@ The test scenario ends in this case.
 >7. The system informs the user that something went wrong when registering the flight.
      >> 7.1 The system displays an error message and allows the actor to try again.
      
-### Test Scenario "Searching for a flight"<Jazz>
+### Test Scenario "Searching for a flight" <Jazz>
 #### Name
 > Search for a flight
 
@@ -435,9 +435,8 @@ The test scenario ends in this case.
 #### Exceptions
 > The system informs the user that something went wrong while searching for a route.
 
-    ---
-    
-### Test Scenario "Search for a route"<Jazz>
+
+### Test Scenario "Search for a route" <Jazz>
 #### Name
 > Search for a route
 
@@ -465,10 +464,8 @@ The test scenario ends in this case.
 #### Exceptions
 > The system informs the user that something went wrong while searching for a route.
 
-    
-    -----
-    
-### Test Scenario "View flight information"<Jazz>
+
+### Test Scenario "View flight information" <Jazz>
 #### Name
 > View flight information
 
@@ -498,10 +495,8 @@ The test scenario ends in this case.
 #### Exceptions
 > The system informs the user that something went wrong while searching for a flight or displaying its information.
 
-    
-    -----
-    
-### Test Scenario "Edit personal information for a costumer"<Jazz>
+     
+### Test Scenario "Edit personal information for a costumer" <Jazz>
 #### Name
 > Edit personal information for a costumer
 
