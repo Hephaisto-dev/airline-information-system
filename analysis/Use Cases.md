@@ -1,7 +1,16 @@
 # USE CASES
 
 ---
-
+* [USE CASES](#use-cases)
+    * [Use Case Template <Assignee?>](#use-case-template--assignee-)
+    * [Use Case Purchase Ticket](#use-case-purchase-ticket)
+    * [Use Case "Apply discount"](#use-case--apply-discount-)
+    * [Use Case "Apply voucher"](#use-case--apply-voucher-)
+    * [Use Case Search For Booking <Mathias\>](#use-case-search-for-booking--mathias)
+    * [Use Case Use Management Dashboard <Mathias\>](#use-case-use-management-dashboard--mathias)
+    * [Use Case View Financial Sheets In Statistics <Mathias\>](#use-case-view-financial-sheets-in-statistics--mathias)
+  * [Back to Table of Contents](#back-to-table-of-contents)
+  
 ### Use Case Template <Assignee?>
 
 #### Name
