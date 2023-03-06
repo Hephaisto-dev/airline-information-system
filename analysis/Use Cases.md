@@ -185,9 +185,11 @@
 >3. The system informs the user that his credentials were incorrect.
     3.1 return to step 2
 >4. The system informs the user there was an error attempting to log in
-    4.1 return to step 2
+>>4.1   return to step 2
 ---
+
 ### Use Case Access previous flight records <Lucas>
+
 #### Name
 >   Access previous flight records
 
@@ -209,13 +211,15 @@
 
 #### Result
 >   The actor can look at the records of previous flights
+
 #### Exceptions
 >2. system notifies that there are no previous flights
-    2.1 case ends
+>> 2.1 case ends
+
 #### Extensions
-    3a. Actor applies a filter to the list
-        1. System shows a list of filters.
-        2. Actor selects the filter he wants to use. Return to step 3. 
+> 3a. Actor applies a filter to the list
+>>1. System shows a list of filters.
+>>2. Actor selects the filter he wants to use. Return to step 3. 
 
 ---
 ### Use Case Start sales process <Lucas>
@@ -247,7 +251,7 @@
 >3. system notifies that there are no active flights.
 3.1 case ends here
 >4. System notifies that an error accured when trying to initiate the sales process
-    4.1 case ends here
+    >>4.1 case ends here
 ---
 
 
@@ -352,112 +356,111 @@ Use Case Searching for a flight <Jazz>
 #### Name
 > Search for a flight
 
-Actor
+#### Actor
 > Sales employee
 
-Description
+#### Description
 > A sales employee is searching for one or more flights
 
-####Pre-condition
+#### Pre-condition
 > Sales Employee is signed into their account.
 
 > Sales Employee is provided with the information for searching a flight
 
-Scenario
-> 1.Actor navigates to the area/menu for searching a flight. 
-> 2.The system displays an area/menu. 
-> 3.The actor enters the necessary information for searching a flight and confirms it. 
-> 4.The system gives the necessary information, that was asked 
-> 5.The actor is choosing the information that is need
+#### Scenario
+> 1. Actor navigates to the area/menu for searching a flight. 
+> 2. The system displays an area/menu. 
+> 3. The actor enters the necessary information for searching a flight and confirms it. 
+> 4. The system gives the necessary information, that was asked 
+> 5. The actor is choosing the information that is need
 
-Result
+#### Result
 > The actor has successfully found a flight
 
-Exceptions
+#### Exceptions
 > The system informs the user that something went wrong while searching for a route.
 
 ---
     
-Use case Search for a route <Jazz>
+### Use case Search for a route <Jazz>
 #### Name
 > Search for a route
 
-Actor
+#### Actor
 > Sales employee
 
-Description
+#### Description
 > A sales employee is searching for one or more routes
 
-Pre-condition
+#### Pre-condition
  > Sales Employee is signed into their account.
 
 > Sales Employee is provided with the information for searching a route
 
-Scenario
-> 1.Actor navigates to the area/menu for searching a route. 
-> 2.The system displays an area/menu. 
-> 3.The actor enters the necessary information for searching a route and confirms it. 
-> 4.The system gives the necessary information, that was asked 
-> 5.The actor is choosing the information that is needed
+#### Scenario
+> 1. Actor navigates to the area/menu for searching a route. 
+> 2. The system displays an area/menu. 
+> 3. The actor enters the necessary information for searching a route and confirms it. 
+> 4. The system gives the necessary information, that was asked 
+> 5. The actor is choosing the information that is needed
 
-Result
+#### Result
 > The actor has successfully found a route.
 
-Exceptions
+#### Exceptions
 > The system informs the user that something went wrong while searching for a route.
-
     
 ---
     
-Use case View flight information <Jazz>
+### Use case View flight information <Jazz>
 #### Name
 > View flight information
 
-####Actor
+#### Actor
 > Sales employee
 
-Description
+#### Description
 > A sales employee is viewing the upcoming fight information
 
-Pre-condition
+#### Pre-condition
 > Sales Employee is signed into their account.
 
 > Sales Employee is provided with the information for viewing the upcoming flight information
 
-Scenario
-> 1.Actor navigates to the area/menu for searching 
-> 2.The system displays an area/menu. 
-> 3.The actor enters the necessary information for searching a specific flight and confirms it. 
-> 4.The system lists the necessary information(flights) 
-> 5.The actor is choosing the flight that is needed 
-> 6.System gives the page of the flight that was chosen 
-> 7.The actor I able to see all the information about a specific upcoming flight
+#### Scenario
+> 1. Actor navigates to the area/menu for searching 
+> 2. The system displays an area/menu. 
+> 3. The actor enters the necessary information for searching a specific flight and confirms it. 
+> 4. The system lists the necessary information(flights) 
+> 5. The actor is choosing the flight that is needed 
+> 6. System gives the page of the flight that was chosen 
+> 7. The actor I able to see all the information about a specific upcoming flight
 
-Result
+#### Result
 > The actor has successfully found the information about an upcoming flight.
 
-Exceptions
+#### Exceptions
 > The system informs the user that something went wrong while searching for a flight or displaying its information.
 
+---
     
-    -----
-    
-Use case Edit personal information for a costumer <Jazz>
+### Use case Edit personal information for a costumer <Jazz>
+
 #### Name
 > Edit personal information for a costumer
 
-Actor
+#### Actor
 > Sales employee
 
-Description
+#### Description
 > A sales employee is editing costumers personal
 
-Pre-condition
+#### Pre-condition
 > Sales Employee is signed into their account.
 
 > Sales Employee is provided with the information for editing customers information
 
-Scenario
+#### Scenario
 > 1.Actor navigates to the menu for editing the customers 
 > 2.The system displays a menu. 
 > 3.The actor edits the necessary information for the customer 
@@ -465,11 +468,12 @@ Scenario
 > 5.The system checks all the modified data 
 > 6.The system confirms the modifications
 
-Result
+#### Result
 > The actor has edited the customers information
 
-Exceptions
+#### Exceptions
 > The system informs the user that something went wrong while editing the information.
+
 ----
 ### Use Case Cancel a booking <Jazz>
 
@@ -556,7 +560,6 @@ Exceptions
 >6. The actor confirms their choice.
 >7. The system indicates the success of the execution of the action.
 
-
 #### Result
 >   The actor has successfully created a route.
 
@@ -584,7 +587,6 @@ Exceptions
 >   Sales officer is signed into their account.
 >   Sales officer has created a route that he can edit.
 
-
 #### Scenario
 >1. Actor navigates to the menu for managing routes.
 >2. The system displays a list of existing routes.
@@ -595,8 +597,6 @@ Exceptions
 >7. The system asks the actor to confirm their choice.
 >8. Actor confirms changes.
 >9. The system updates the route with the new information and indicates the success of the execution of the action. 
-
-
 
 #### Result
 >   The actor has successfully edited the route.
@@ -628,7 +628,6 @@ Exceptions
 #### Pre-condition
 >   Sales officer is signed into their account.
 
-
 #### Scenario
 >1. Actor navigates to the menu for managing flights.
 >2. The system displays a list of existing flights.
@@ -639,8 +638,6 @@ Exceptions
 >7. The system asks for confirmation of the changes.
 >8. Actor confirms changes.
 >9. The system updates the flight with the new information and indicates the success of the execution of the action.
-
-
 
 #### Result
 >   The actor has successfully updated the flight information.
@@ -670,8 +667,6 @@ Exceptions
 > Sales officer is signed into their account
 > Sales officer has the necessary information to register the upcoming flight
 
-
-
 #### Scenario
 
 >1. Actor navigates to the menu for registering flights.
@@ -688,13 +683,12 @@ Exceptions
 
 #### Exceptions
 >7. The system informs the user that something went wrong when registering the flight.
-    >7.1 The system displays an error message and allows the actor to try again.
-
+>>7.1 The system displays an error message and allows the actor to try again.
 
 #### Extensions
 > None
 
-
+---
 
 ### Creare a booking <Janis>
 
@@ -711,31 +705,26 @@ Exceptions
 > Sales employee is signed into their account
 > Sales employee has the necessary information to register the upcoming flight
 
-
-
 #### Scenario
 
-1.	 Sales employee at a travel agency logs into the company's booking system to create a new booking for a customer,  who wants to book a flight to Tokyo for a business trip.
-2.	Sales employee navigates to the booking section of the system and enters the travel details of the Customer, including departure and arrival airports, travel dates, and any other relevant information.
-3.	The system presents the Sales employee a list of available flights that match the Customers requirements. She can filter and sort the results by price, duration, or airline.
-4.	The Sales employee selects a flight that fits the Customers schedule and budget and enters his personal and payment information into the system. The system generates a booking confirmation, which the Sales employee sends to the Customer via email.
-5.	A few days before the flight, the system sends the Customer a reminder email with his flight details and instructions for check-in and baggage.
-
-
+>1.	 Sales employee at a travel agency logs into the company's booking system to create a new booking for a customer,  who wants to book a flight to Tokyo for a business trip.
+>2.	Sales employee navigates to the booking section of the system and enters the travel details of the Customer, including departure and arrival airports, travel dates, and any other relevant information.
+>3.	The system presents the Sales employee a list of available flights that match the Customers requirements. She can filter and sort the results by price, duration, or airline.
+>4.	The Sales employee selects a flight that fits the Customers schedule and budget and enters his personal and payment information into the system. The system generates a booking confirmation, which the Sales employee sends to the Customer via email.
+>5.	A few days before the flight, the system sends the Customer a reminder email with his flight details and instructions for check-in and baggage.
 
 #### Result
 > The actor has successfully create a booking.
 
 #### Exceptions
 >7. The system informs the user that something went wrong with creating the booking.
-    >7.1 The system displays an error message and allows the actor to try again.
+>>7.1 The system displays an error message and allows the actor to try again.
 
 
 #### Extensions
 > None
 
-
-
+---
 
 ### Adding Extras <Janis>
 
@@ -752,31 +741,25 @@ Exceptions
 > Sales employee is signed into their account
 > Sales employee has the necessary information to register the upcoming flight
 
-
-
 #### Scenario
 
-1.	 Sales employee at a travel agency and a customer has already purchased a flight ticket for a trip.
-2.	Customer  calls the Sales employee to add extras to his flight, such as seat selection, in-flight meals, and baggage allowance upgrades.
-3.	The Sales employee logs into the company's booking system and finds the Customers reservation by entering his name and confirmation number.
-4.	The system displays the Customers flight details and allows the Sales employee to view and add extras to his reservation.
-5.	The Sales employee selects the extras that the Customer  requested and adds them to his reservation. The system automatically calculates the total cost of the extras and updates the reservation with the new price.
-
-
+>1.	 Sales employee at a travel agency and a customer has already purchased a flight ticket for a trip.
+>2.	Customer  calls the Sales employee to add extras to his flight, such as seat selection, in-flight meals, and baggage allowance upgrades.
+>3.	The Sales employee logs into the company's booking system and finds the Customers reservation by entering his name and confirmation number.
+>4.	The system displays the Customers flight details and allows the Sales employee to view and add extras to his reservation.
+>5.	The Sales employee selects the extras that the Customer  requested and adds them to his reservation. The system automatically calculates the total cost of the extras and updates the reservation with the new price.
 
 #### Result
 > The actor has successfully add extras.
 
 #### Exceptions
 >7. The system informs the user that something went wrong while adding extras.
-    >7.1 The system displays an error message and allows the actor to try again.
-
+>>7.1 The system displays an error message and allows the actor to try again.
 
 #### Extensions
 > None
 
-
-
+---
 
 ### Canceling a booking <Janis>
 
@@ -793,34 +776,27 @@ Exceptions
 > Sales employee is signed into their account
 > Sales employee has the necessary information to register the upcoming flight
 
-
-
 #### Scenario
 
-1.	The sales employee gets a call by a Customer who wants to cancel his next flight. 
-2.	The Customer provides his name and flight confirmation number to the Sales empoyee.
-3.	The Sales employee logs into the company's booking system and enters the Customers name and confirmation number to retrieve his flight details.
-4.	The system displays the Customers flight information, including the flight number, departure time, and booking details.
-5.	The sales Employee confirms the details with the Customer and informs him of the cancellation policy and any applicable fees.
-6.	The sales Employee enters the cancellation request into the system and initiates the refund process.
-7.	The system generates a cancellation confirmation and a refund receipt for the Customer.
-
-
+>1.	The sales employee gets a call by a Customer who wants to cancel his next flight. 
+>2.	The Customer provides his name and flight confirmation number to the Sales empoyee.
+>3.	The Sales employee logs into the company's booking system and enters the Customers name and confirmation number to retrieve his flight details.
+>4.	The system displays the Customers flight information, including the flight number, departure time, and booking details.
+>5.	The sales Employee confirms the details with the Customer and informs him of the cancellation policy and any applicable fees.
+>6.	The sales Employee enters the cancellation request into the system and initiates the refund process.
+>7.	The system generates a cancellation confirmation and a refund receipt for the Customer.
 
 #### Result
 > The actor has successfully canceled the booking.
 
 #### Exceptions
 >7. The system informs the user that something went wrong while canceling tuhe booking.
-    >7.1 The system displays an error message and allows the actor to try again.
+>>7.1 The system displays an error message and allows the actor to try again.
 
 
 #### Extensions
 > None
 
-
-
-
-
+---
 
 ## [Back to Table of Contents](../TableOfContents.md)
