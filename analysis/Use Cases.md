@@ -23,7 +23,7 @@
     * [Use Case Edit a route  <Martin\>](#use-case-edit-a-route--martin)
     * [Use Case Update upcoming flight information  <Martin\>](#use-case-update-upcoming-flight-information--martin)
     * [Use Case Register upcoming flight <Martin\>](#use-case-register-upcoming-flight--martin)
-    * [Use Case Creare a booking  <Janis\>](#use-case-creare-a-booking--janis)
+    * [Use Case Create a booking  <Janis\>](#use-case-create-a-booking--janis)
     * [Use Case Adding Extras  <Janis\>](#use-case-adding-extras--janis)
     * [Use Case Canceling a booking  <Janis\>](#use-case-canceling-a-booking--janis)
   * [Back to Table of Contents](#back-to-table-of-contents)
@@ -103,9 +103,7 @@
 | Extensions    | None                                                                                                                                                                                                                                                                                                                         |
 | Exceptions    | <ol start = "3"><li><ol type = "a"><li>The system informs the user that his credentials were incorrect<ol><li>Return to step 2</li></ol></li></ol></li></ol><ol start = "4"><li><ol type = "a"><li>The system informs the user there was an error attempting to log in<ol><li>Return to step 2</li></ol></li></ol></li></ol> |
 
-
 ---
-
 
 ### Use Case Access previous flight records  <Lucas\>
 
@@ -122,7 +120,6 @@
 
 ---
 
-
 ### Use Case Start sales process  <Lucas\>
 
 |               | Description                                                                                                                                                                                                                                                                                                                   |
@@ -136,9 +133,7 @@
 | Extensions    | None                                                                                                                                                                                                                                                                                                                          |
 | Exceptions    | <ol start = "3"><li><ol type = "a"><li>System notifies that there are no active flights<ol><li>Use case ends here</li></ol></li></ol></li></ol><ol start = "4"><li><ol type = "a"><li>System notifies that an error accured when trying to initiate the sales process<ol><li>Use case ends here</li></ol></li></ol></li></ol> |
 
-
 ---
-
 
 ### Use Case Search For Booking  <Mathias\>
 
@@ -152,9 +147,8 @@
 | Result        | Sales employee has successfully retrieved the booking details                                                                                                                                                                                                                                                                                                                                       |
 | Extensions    | None                                                                                                                                                                                                                                                                                                                                                                                                |
 | Exceptions    | <ol start = "3"><li><ol type = "a"><li>System informs user no booking was found<ol><li>Use case ends here</li></ol></li></ol></li></ol>                                                                                                                                                                                                                                                             |
+
 ---
-
-
 
 ### Use Case Use Management Dashboard  <Mathias\>
 
@@ -213,6 +207,7 @@
 | Result        | The actor has successfully found a route                                                                                                                                                                                                                                                                                                   |
 | Extensions    | None                                                                                                                                                                                                                                                                                                                                       |
 | Exceptions    | <ol start = "4"><li><ol type = "a"><li>The system informs the user that something went wrong while searching for a route<ol><li>Use case ends here</li></ol></li></ol></li></ol>                                                                                                                                                           |
+
 ---
 
 ### Use case View flight information  <Jazz\>
@@ -275,7 +270,6 @@
 
 ---
 
-
 ### Use Case Create a route  <Martin\>
 
 |               | Description                                                                                                                                                                                                                                                                                                                                                                                              |
@@ -323,33 +317,24 @@
 
 ### Use Case Register upcoming flight <Martin\>
 
-|                                           | Description                                                                                                 |
-|-------------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| Name                                      | Register upcoming flight                                                                                    |
-| Actor                                     | Sales officer                                                                                               |
-| Description                               | Sales officer updates information about a flight                                                            |
-| Pre-condition                             | <ul><li>Sales officer is signed into their account</li><li>Sales officer has the necessary information      |
-| to register the upcoming flight</li></ul> |                                                                                                             |
-| Scenario                                  | <ol><li>Actor navigates to the menu for registering flights</li><li>The system displays an editing page for |
-
-registering flights</li><li>Actor enters the necessary information for the upcoming flight</li><li>Actor saves the
-changes</li><li>The system asks the user to confirm their choice</li><li>Actor confirms the registration for the
-upcoming flight</li><li>The system updates the database with the new flight information and indicates the success of
-then execution</li></ol>            |
-| Result | The actor has successfully registered the upcoming flight |
-| Extensions | None |
-| Exceptions | <ol start = "7"><li><ol type = "a"><li>The system informs the user that something went wrong when
-registering the flight<ol><li>The system displays an error message and allows the actor to try
-again</li></ol></li></ol></li></ol>            |
-
+|               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | Register upcoming flight                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| Actor         | Sales officer                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Description   | Sales officer updates information about a flight                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Pre-condition | <ul><li>Sales officer is signed into their account</li><li>Sales officer has the necessary information to register the upcoming flight</li></ul>                                                                                                                                                                                                                                                                                                                                              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Scenario      | <ol><li>Actor navigates to the menu for registering flights</li><li>The system displays an editing page for registering flights</li><li>Actor enters the necessary information for the upcoming flight</li><li>Actor saves the changes</li><li>The system asks the user to confirm their choice</li><li>Actor confirms the registration for the upcoming flight</li><li>The system updates the database with the new flight information and indicates the success of then execution</li></ol> |
+| Result        | The actor has successfully registered the upcoming flight                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| Extensions    | None                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Exceptions    | <ol start = "7"><li><ol type = "a"><li>The system informs the user that something went wrong when registering the flight<ol><li>The system displays an error message and allows the actor to try again</li></ol></li></ol></li></ol>                                                                                                                                                                                                                                                          |
 
 ----
 
-### Use Case Creare a booking  <Janis\>
+### Use Case Create a booking  <Janis\>
 
 |                                                       | Description                                                                                              |
 |-------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
-| Name                                                  | Creare a booking                                                                                         |
+| Name                                                  | Create a booking                                                                                         |
 | Actor                                                 | Sales employee                                                                                           |
 | Description                                           | Sales employee is dooing a booking for a Customer                                                        |
 | Pre-condition                                         | <ul><li>Sales employee is signed into their account</li><li>Sales employee has the necessary             |
@@ -399,26 +384,15 @@ again</li></ol></li></ol></li></ol>            |
 
 ### Use Case Canceling a booking  <Janis\>
 
-|                                                       | Description                                                                                          |
-|-------------------------------------------------------|------------------------------------------------------------------------------------------------------|
-| Name                                                  | Canceling a booking                                                                                  |
-| Actor                                                 | Sales employee                                                                                       |
-| Description                                           | Sales employee is caneling a booking for a Customer                                                  |
-| Pre-condition                                         | <ul><li>Sales employee is signed into their account</li><li>Sales employee has the necessary         |
-| information to register the upcoming flight</li></ul> |                                                                                                      |
-| Scenario                                              | <ol><li>The sales employee gets a call by a Customer who wants to cancel his next flight</li><li>The |
-
-Customer provides his name and flight confirmation number to the Sales empoyee</li><li>The Sales employee logs into the
-company's booking system and enters the Customers name and confirmation number to retrieve his flight details</li><li>
-The system displays the Customers flight information, including the flight number, departure time, and booking
-details</li><li>The sales Employee confirms the details with the Customer and informs him of the cancellation policy and
-any applicable fees</li><li>The sales Employee enters the cancellation request into the system and initiates the refund
-process</li><li>The system generates a cancellation confirmation and a refund receipt for the
-Customer</li></ol>            |
-| Result | The actor has successfully canceled the booking |
-| Extensions | None |
-| Exceptions | <ol start = "7"><li><ol type = "a"><li>The system informs the user that something went wrong while
-canceling tuhe booking<ol><li>The system displays an error message and allows the actor to try
-again</li></ol></li></ol></li></ol>            |
+|               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | Canceling a booking                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Actor         | Sales employee                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| Description   | Sales employee is caneling a booking for a Customer                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Pre-condition | <ul><li>Sales employee is signed into their account</li><li>Sales employee has the necessary information to register the upcoming flight</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |                                                                                                      |
+| Scenario      | <ol><li>The sales employee gets a call by a Customer who wants to cancel his next flight</li><li>The Customer provides his name and flight confirmation number to the Sales empoyee</li><li>The Sales employee logs into the company's booking system and enters the Customers name and confirmation number to retrieve his flight details</li><li>The system displays the Customers flight information, including the flight number, departure time, and booking details</li><li>The sales Employee confirms the details with the Customer and informs him of the cancellation policy and any applicable fees</li><li>The sales Employee enters the cancellation request into the system and initiates the refund process</li><li>The system generates a cancellation confirmation and a refund receipt for the customer</li></ol> |
+| Result        | The actor has successfully canceled the booking                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| Extensions    | None                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| Exceptions    | <ol start = "7"><li><ol type = "a"><li>The system informs the user that something went wrong while canceling tuhe booking<ol><li>The system displays an error message and allows the actor to try again</li></ol></li></ol></li></ol>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 
 ## [Back to Table of Contents](../TableOfContents.md)
