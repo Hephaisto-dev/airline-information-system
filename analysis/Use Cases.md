@@ -3,40 +3,32 @@
 ---
 
 <!-- TOC -->
-* [USE CASES](#use-cases)
-    * [Use Case Purchase Ticket <Daniel>](#use-case-purchase-ticket-daniel)
-    * [Use Case "Apply discount" <Daniel>](#use-case--apply-discount--daniel)
-    * [Use Case "Apply voucher" <Daniel>](#use-case--apply-voucher--daniel)
-    * [Use Case Login <Lucas>](#use-case-login-lucas)
-      * [Description](#description)
-      * [Pre-condition](#pre-condition)
-      * [Scenario](#scenario)
-      * [Result](#result)
-    * [Use Case Access previous flight records <Lucas>](#use-case-access-previous-flight-records-lucas)
-      * [Pre-condition](#pre-condition-1)
-      * [Scenario](#scenario-1)
-    * [Use Case Start sales process <Lucas>](#use-case-start-sales-process-lucas)
-      * [Pre-condition](#pre-condition-2)
-      * [Scenario](#scenario-2)
-    * [Use Case Search For Booking <Mathias\>](#use-case-search-for-booking--mathias)
-    * [Use Case Use Management Dashboard <Mathias\>](#use-case-use-management-dashboard--mathias)
-    * [Use Case View Financial Sheets In Statistics <Mathias\>](#use-case-view-financial-sheets-in-statistics--mathias)
-    * [Use Case Searching for a flight <Jazz>](#use-case-searching-for-a-flight-jazz)
-    * [Use case Search for a route <Jazz>](#use-case-search-for-a-route-jazz)
-  * [](#)
-    * [Use case View flight information <Jazz>](#use-case-view-flight-information-jazz)
-    * [Use case Edit personal information for a costumer <Jazz>](#use-case-edit-personal-information-for-a-costumer-jazz)
-    * [Use Case Cancel a booking <Jazz>](#use-case-cancel-a-booking-jazz)
-    * [Use Case "Register Employee" <???>](#use-case--register-employee----)
-    * [Create a route <Martin>](#create-a-route-martin)
-    * [Edit a route <Martin>](#edit-a-route-martin)
-    * [Update upcoming flight information <Martin>](#update-upcoming-flight-information-martin)
-  * [](#-1)
-    * [Register upcoming flight <Martin>](#register-upcoming-flight-martin)
-    * [Creare a booking <Janis>](#creare-a-booking-janis)
-    * [Adding Extras <Janis>](#adding-extras-janis)
-    * [Canceling a booking <Janis>](#canceling-a-booking-janis)
-  * [Back to Table of Contents](#back-to-table-of-contents)
+- [USE CASES](#use-cases)
+    - [Use Case Purchase Ticket ](#use-case-purchase-ticket-)
+    - [Use Case "Apply discount" ](#use-case-apply-discount-)
+    - [Use Case "Apply voucher" ](#use-case-apply-voucher-)
+    - [Use Case Login ](#use-case-login-)
+    - [Use Case Access previous flight records ](#use-case-access-previous-flight-records-)
+    - [Use Case Start sales process ](#use-case-start-sales-process-)
+    - [Use Case Search For Booking \<Mathias\>](#use-case-search-for-booking-mathias)
+  - [| Exceptions    | System informs user no booking was foundUse case ends here                                                                                                                                                                                                                                                             |](#-exceptions-----system-informs-user-no-booking-was-founduse-case-ends-here-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------)
+    - [Use Case Use Management Dashboard \<Mathias\>](#use-case-use-management-dashboard-mathias)
+    - [Use Case View Financial Sheets In Statistics \<Mathias\>](#use-case-view-financial-sheets-in-statistics-mathias)
+    - [Use Case Searching for a flight ](#use-case-searching-for-a-flight-)
+    - [Use case Search for a route ](#use-case-search-for-a-route-)
+    - [Use case View flight information ](#use-case-view-flight-information-)
+    - [Use case Edit personal information for a costumer ](#use-case-edit-personal-information-for-a-costumer-)
+    - [Use Case Cancel a booking ](#use-case-cancel-a-booking-)
+    - [Use Case "Register Employee" ](#use-case-register-employee-)
+  - [| Exceptions    | None](#-exceptions-----none)
+    - [Create a route ](#create-a-route-)
+    - [Edit a route ](#edit-a-route-)
+    - [Update upcoming flight information ](#update-upcoming-flight-information-)
+    - [Register upcoming flight ](#register-upcoming-flight-)
+    - [Creare a booking ](#creare-a-booking-)
+    - [Adding Extras ](#adding-extras-)
+    - [Canceling a booking ](#canceling-a-booking-)
+  - [Back to Table of Contents](#back-to-table-of-contents)
 <!-- TOC -->
 
 |               | Description                                                                                                                                                                                                                                                                                                                                                                 |
@@ -113,26 +105,9 @@
 | Extensions    | None                                                                                                                                                                                                                                                                                                                         |
 | Exceptions    | <ol start = "3"><li><ol type = "a"><li>The system informs the user that his credentials were incorrect<ol><li>Return to step 2</li></ol></li></ol></li></ol><ol start = "4"><li><ol type = "a"><li>The system informs the user there was an error attempting to log in<ol><li>Return to step 2</li></ol></li></ol></li></ol> |
 
-#### Description
-
-> Actor logs in to gain access to their account
-
-#### Pre-condition
-
-> Actor has a account and is logged out
-
-#### Scenario
-
-> 1. Actor opens the application.
->2. The system displays the login page of the application
->3. The actor fills in the required fields with his credentials.
->4. The system indicates the success of the login
-
-#### Result
-
-> The actor has successfully logged in.
 
 ---
+
 
 ### Use Case Access previous flight records <Lucas>
 
@@ -147,20 +122,8 @@
 | Extensions    | <ol start = "3"><li><ol type = "a"><li>System notifies that there are no previous flights<ol><li>System shows a list of filters</li><li>Actor selects the filter he wants to use</li><li>Return to step 3</li></ol></li></ol></li></ol>                                 |
 | Exceptions    | <ol start = "2"><li><ol type = "a"><li>System notifies that there are no previous flights<ol><li>Use case ends here</li></ol></li></ol></li></ol>                                                                                                                       |
 
-#### Pre-condition
-
-> Sales employee is logged in
-
-#### Scenario
-
-> 1. Actor navigates to the previous flight records page.
->2. The system displays the previous flight records page.
->3. The actor selects a flight which already happened.
->4. the system displays the flight information for the selected flight.
-
-
-
 ---
+
 
 ### Use Case Start sales process <Lucas>
 
@@ -175,21 +138,9 @@
 | Extensions    | None                                                                                                                                                                                                                                                                                                                          |
 | Exceptions    | <ol start = "3"><li><ol type = "a"><li>System notifies that there are no active flights<ol><li>Use case ends here</li></ol></li></ol></li></ol><ol start = "4"><li><ol type = "a"><li>System notifies that an error accured when trying to initiate the sales process<ol><li>Use case ends here</li></ol></li></ol></li></ol> |
 
-#### Pre-condition
-
-> Sales officer is logged in
-
-#### Scenario
-
-> 1. The actor navigates to the flights.
->2. the system displays all registered flights.
->3. the actor selects a flight.
->4. the system shows the selected flight.
->5. the actor activates the sales process
->6. the system indicates it was successfully activated.
-
 
 ---
+
 
 ### Use Case Search For Booking <Mathias\>
 
@@ -203,8 +154,9 @@
 | Result        | Sales employee has successfully retrieved the booking details                                                                                                                                                                                                                                                                                                                                       |
 | Extensions    | None                                                                                                                                                                                                                                                                                                                                                                                                |
 | Exceptions    | <ol start = "3"><li><ol type = "a"><li>System informs user no booking was found<ol><li>Use case ends here</li></ol></li></ol></li></ol>                                                                                                                                                                                                                                                             |
-
 ---
+
+
 
 ### Use Case Use Management Dashboard <Mathias\>
 
@@ -267,6 +219,7 @@
     
 ---
 
+
 ### Use case View flight information <Jazz>
 
 |               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
@@ -323,9 +276,9 @@
 | Scenario      | <ol><li>Actor selects the option to register new employees</li><li>System provides the according GUI</li><li>Actor enters the information (i.e. name, contact info, job title) and confirms</li><li>System saves the info and informs actor what the ID of the new employee is</li><li>Actor selects the option to go back to inital screen</li><li>System moves back to initial screen</li></ol> |
 | Result        | New employee has been registered and been given an ID                                                                                                                                                                                                                                                                                                                                             |
 | Extensions    | None                                                                                                                                                                                                                                                                                                                                                                                              |
-| Exceptions    | None                                                                                                                                                                                                                                                                                                                                                                                              |
-
+| Exceptions    | None                                                                                                                                                                                                                                                                                                                                                                                             
 ---
+
 
 ### Create a route <Martin>
 
