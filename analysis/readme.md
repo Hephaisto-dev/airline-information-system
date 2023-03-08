@@ -4,7 +4,7 @@ This directory is for all the analysis artefacts.
 
 <!--comment for comment purposes-->
 
-## [activity Diagram](ActivityDiagram.md)
+## [Activity Diagram](ActivityDiagram.md)
 
 ## [Data Dictionary](DataDictionary.md)
 
