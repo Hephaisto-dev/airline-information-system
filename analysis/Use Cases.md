@@ -1,484 +1,476 @@
 # USE CASES
 
 ---
-- [USE CASES](#use-cases)
-    - [Use Case Purchase Ticket ](#use-case-purchase-ticket-)
-    - [Use Case "Apply discount" ](#use-case-apply-discount-)
-    - [Use Case "Apply voucher" ](#use-case-apply-voucher-)
-    - [Use Case Login ](#use-case-login-)
-      - [Exceptions](#exceptions)
-    - [Use Case Access previous flight records ](#use-case-access-previous-flight-records-)
-      - [Name](#name)
-      - [Result](#result)
-      - [Exceptions](#exceptions-1)
-      - [Extensions](#extensions)
-    - [Use Case Start sales process ](#use-case-start-sales-process-)
-      - [Result](#result-1)
-      - [Exceptions](#exceptions-2)
-    - [Use Case Search For Booking \<Mathias\>](#use-case-search-for-booking-mathias)
-    - [Use Case Use Management Dashboard \<Mathias\>](#use-case-use-management-dashboard-mathias)
-    - [Use Case View Financial Sheets In Statistics \<Mathias\>](#use-case-view-financial-sheets-in-statistics-mathias)
-    - [Use Case Searching for a flight ](#use-case-searching-for-a-flight-)
-      - [Name](#name-1)
-      - [Name](#name-2)
-      - [Name](#name-3)
-    - [Use Case Cancel a booking ](#use-case-cancel-a-booking-)
-    - [Use Case "Register Employee" ](#use-case-register-employee-)
-    - [Create a route ](#create-a-route-)
-      - [Name](#name-4)
-      - [Actor](#actor)
-      - [Description](#description)
-      - [Pre-condition](#pre-condition)
-      - [Scenario](#scenario)
-      - [Result](#result-2)
-      - [Exceptions](#exceptions-3)
-      - [Extensions](#extensions-1)
-    - [Edit a route ](#edit-a-route-)
-      - [Name](#name-5)
-      - [Actor](#actor-1)
-      - [Description](#description-1)
-      - [Pre-condition](#pre-condition-1)
-      - [Scenario](#scenario-1)
-      - [Result](#result-3)
-      - [Exceptions](#exceptions-4)
-      - [Extensions](#extensions-2)
-    - [Update upcoming flight information ](#update-upcoming-flight-information-)
-      - [Name](#name-6)
-      - [Actor](#actor-2)
-      - [Description](#description-2)
-      - [Pre-condition](#pre-condition-2)
-      - [Scenario](#scenario-2)
-      - [Result](#result-4)
-      - [Exceptions](#exceptions-5)
-    - [Register upcoming flight ](#register-upcoming-flight-)
-      - [Name](#name-7)
-      - [Actor](#actor-3)
-      - [Description](#description-3)
-      - [Pre-condition](#pre-condition-3)
-      - [Scenario](#scenario-3)
-      - [Result](#result-5)
-      - [Exceptions](#exceptions-6)
-      - [Extensions](#extensions-3)
-    - [Creare a booking ](#creare-a-booking-)
-      - [Actor](#actor-4)
-      - [Description](#description-4)
-      - [Pre-condition](#pre-condition-4)
-      - [Scenario](#scenario-4)
-      - [Result](#result-6)
-      - [Exceptions](#exceptions-7)
-      - [Extensions](#extensions-4)
-    - [Adding Extras ](#adding-extras-)
-      - [Actor](#actor-5)
-      - [Description](#description-5)
-      - [Pre-condition](#pre-condition-5)
-      - [Scenario](#scenario-5)
-      - [Result](#result-7)
-      - [Exceptions](#exceptions-8)
-      - [Extensions](#extensions-5)
-    - [Canceling a booking ](#canceling-a-booking-)
-      - [Name](#name-8)
-      - [Actor](#actor-6)
-      - [Description](#description-6)
-      - [Pre-condition](#pre-condition-6)
-      - [Scenario](#scenario-6)
-      - [Result](#result-8)
-      - [Exceptions](#exceptions-9)
-      - [Extensions](#extensions-6)
-  - [Back to Table of Contents](#back-to-table-of-contents)
 
+<!-- TOC -->
+* [USE CASES](#use-cases)
+    * [Use Case Purchase Ticket <Daniel>](#use-case-purchase-ticket-daniel)
+    * [Use Case "Apply discount" <Daniel>](#use-case--apply-discount--daniel)
+    * [Use Case "Apply voucher" <Daniel>](#use-case--apply-voucher--daniel)
+    * [Use Case Login <Lucas>](#use-case-login-lucas)
+      * [Description](#description)
+      * [Pre-condition](#pre-condition)
+      * [Scenario](#scenario)
+      * [Result](#result)
+    * [Use Case Access previous flight records <Lucas>](#use-case-access-previous-flight-records-lucas)
+      * [Pre-condition](#pre-condition-1)
+      * [Scenario](#scenario-1)
+    * [Use Case Start sales process <Lucas>](#use-case-start-sales-process-lucas)
+      * [Pre-condition](#pre-condition-2)
+      * [Scenario](#scenario-2)
+    * [Use Case Search For Booking <Mathias\>](#use-case-search-for-booking--mathias)
+    * [Use Case Use Management Dashboard <Mathias\>](#use-case-use-management-dashboard--mathias)
+    * [Use Case View Financial Sheets In Statistics <Mathias\>](#use-case-view-financial-sheets-in-statistics--mathias)
+    * [Use Case Searching for a flight <Jazz>](#use-case-searching-for-a-flight-jazz)
+    * [Use case Search for a route <Jazz>](#use-case-search-for-a-route-jazz)
+  * [](#)
+    * [Use case View flight information <Jazz>](#use-case-view-flight-information-jazz)
+    * [Use case Edit personal information for a costumer <Jazz>](#use-case-edit-personal-information-for-a-costumer-jazz)
+    * [Use Case Cancel a booking <Jazz>](#use-case-cancel-a-booking-jazz)
+    * [Use Case "Register Employee" <???>](#use-case--register-employee----)
+    * [Create a route <Martin>](#create-a-route-martin)
+    * [Edit a route <Martin>](#edit-a-route-martin)
+    * [Update upcoming flight information <Martin>](#update-upcoming-flight-information-martin)
+  * [](#-1)
+    * [Register upcoming flight <Martin>](#register-upcoming-flight-martin)
+    * [Creare a booking <Janis>](#creare-a-booking-janis)
+    * [Adding Extras <Janis>](#adding-extras-janis)
+    * [Canceling a booking <Janis>](#canceling-a-booking-janis)
+  * [Back to Table of Contents](#back-to-table-of-contents)
+<!-- TOC -->
 
-|               | Description |
-|---------------|-------------|
-| Name          | Template            |
-| Actor         | Developers            |
-| Description   | *The void stares back at you*            |
-| Pre-condition | Understanding how to write these            |
-| Scenario      | <ol><li>Open the .md file in Visual Studio Code</li><li>VSCode opens the code</li><li>Edit the file to include the new Use Case and save</li><li>Switch to GitHub Desktop and click on the "Fetch origin" button, wait for it to finish</li><li>After asserting that there are no issues / conflicts, name the commit, add brief description if needed and commit</li></ol>            |
-| Result        | The Use Cases have been updated, by adding, editing or deletion of one or multiple Use Cases            |
-| Extensions    | None            |
-| Exceptions    | <ol start = "5"><li>If there is an issue, handle it before committing</li></ol>            |
+|               | Description                                                                                                                                                                                                                                                                                                                                                                 |
+|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | Template                                                                                                                                                                                                                                                                                                                                                                    |
+| Actor         | Developers                                                                                                                                                                                                                                                                                                                                                                  |
+| Description   | *The void stares back at you*                                                                                                                                                                                                                                                                                                                                               |
+| Pre-condition | Understanding how to write these                                                                                                                                                                                                                                                                                                                                            |
+| Scenario      | <ol><li>Open the .md file in Visual Studio Code</li><li>VSCode opens the code</li><li>Edit the file to include the new Use Case and save</li><li>Switch to GitHub Desktop and click on the "Fetch origin" button, wait for it to finish</li><li>After asserting that there are no issues / conflicts, name the commit, add brief description if needed and commit</li></ol> |
+| Result        | The Use Cases have been updated, by adding, editing or deletion of one or multiple Use Cases                                                                                                                                                                                                                                                                                |
+| Extensions    | None                                                                                                                                                                                                                                                                                                                                                                        |
+| Exceptions    | <ol start = "5"><li>If there is an issue, handle it before committing</li></ol>                                                                                                                                                                                                                                                                                             |
 
 <!-- Here we need to double check if this'd be an exception for 4. or 5.-->
 
 ---
 <!-- Further Use Cases can be edited now-->
 
-
 ### Use Case Purchase Ticket <Daniel>
 
-|               | Description |
-|---------------|-------------|
-| Name          | Purchase Ticket            |
-| Actor         | Sales Employee            |
-| Description   | Actor buys a ticket for a person            |
-| Pre-condition | Logged in as Sales Employee            |
-| Scenario      | <ol><li>Actor navigates to the "Purchase Ticket" option</li><li>System provides the according GUI</li><li>Actor selects the flight their customer desires</li><li>System shows that this flight has been selected and asks if there's anything else</li><li>Actor denies the question</li><li>System provides the GUI to enter the personal information for the ticket</li><li>Actor either enters the information on behalf of the customer or lets them do it themselves and finalises the purchase</li><li>System provides the ticket and returns back to initial screen</li></ol>            |
-| Result        | The Sales Employee gets a ticket to the according flight for their customer            |
-| Extensions    | <ol start = "5"><li><ol type = "a"><li>Actor selects the option "Apply discount". Handled by the Use Case "Apply discount"</li><li>Actor selects the option "Apply voucher". Handled by the use Case "Apply voucher"</li><li>Actor selects the option "Add extras". Handled by the Use Case "Choose Travel extras / options"</li></ol></li></ol>            |
-| Exceptions    | <ol start = "5"><li>Actor cancels the ticket selction. System moves back to the initial screen</li></ol>            |
-
+|               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | Purchase Ticket                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Actor         | Sales Employee                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| Description   | Actor buys a ticket for a person                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| Pre-condition | Logged in as Sales Employee                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Scenario      | <ol><li>Actor navigates to the "Purchase Ticket" option</li><li>System provides the according GUI</li><li>Actor selects the flight their customer desires</li><li>System shows that this flight has been selected and asks if there's anything else</li><li>Actor denies the question</li><li>System provides the GUI to enter the personal information for the ticket</li><li>Actor either enters the information on behalf of the customer or lets them do it themselves and finalises the purchase</li><li>System provides the ticket and returns back to initial screen</li></ol> |
+| Result        | The Sales Employee gets a ticket to the according flight for their customer                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Extensions    | <ol start = "5"><li><ol type = "a"><li>Actor selects the option "Apply discount". Handled by the Use Case "Apply discount"</li><li>Actor selects the option "Apply voucher". Handled by the use Case "Apply voucher"</li><li>Actor selects the option "Add extras". Handled by the Use Case "Choose Travel extras / options"</li></ol></li></ol>                                                                                                                                                                                                                                      |
+| Exceptions    | <ol start = "5"><li>Actor cancels the ticket selction. System moves back to the initial screen</li></ol>                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 
 ---
+
 ### Use Case "Apply discount" <Daniel>
 
-|               | Description |
-|---------------|-------------|
-| Name          | Apply discount            |
-| Actor         | Sales Employee            |
-| Description   | Actor applies a discount on a ticket before continuing with the sale of the ticket            |
-| Pre-condition | <ul><li>Logged in as Sales Employee</li><li>Selected option to "Apply discount" in Use Case "Purchase Ticket"</li><ul>            |
-| Scenario      | <ol><li>Actor informs the system of what discount needs to be added</li><li>System asks the actor to fill in the amount of the discount that is to be applied</li><li>Actor fills in what the correct amount is</li><li>System asks actor to confirm if the shown amount is the correct amount</li><li>Actor confirms this</li><li>System puts the actor back to the previous page</li></ol>            |
-| Result        | A discount has been applied to the ticket that is being bought            |
-| Extensions    | None            |
-| Exceptions    | <ol start = "4"><li><ol type = "a"><li>If the actor enters an amount greater than or equal to the price of the ticket, the system informs them of this and asks them to enter a viable amount</li></ol></li></ol><ol start = "5"><li><ol type = "a"><li>Should the actor deny this as a correct amount, the system reverts back to step 2.</li></ol></li></ol>            |
-
+|               | Description                                                                                                                                                                                                                                                                                                                                                                                  |
+|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | Apply discount                                                                                                                                                                                                                                                                                                                                                                               |
+| Actor         | Sales Employee                                                                                                                                                                                                                                                                                                                                                                               |
+| Description   | Actor applies a discount on a ticket before continuing with the sale of the ticket                                                                                                                                                                                                                                                                                                           |
+| Pre-condition | <ul><li>Logged in as Sales Employee</li><li>Selected option to "Apply discount" in Use Case "Purchase Ticket"</li><ul>                                                                                                                                                                                                                                                                       |
+| Scenario      | <ol><li>Actor informs the system of what discount needs to be added</li><li>System asks the actor to fill in the amount of the discount that is to be applied</li><li>Actor fills in what the correct amount is</li><li>System asks actor to confirm if the shown amount is the correct amount</li><li>Actor confirms this</li><li>System puts the actor back to the previous page</li></ol> |
+| Result        | A discount has been applied to the ticket that is being bought                                                                                                                                                                                                                                                                                                                               |
+| Extensions    | None                                                                                                                                                                                                                                                                                                                                                                                         |
+| Exceptions    | <ol start = "4"><li><ol type = "a"><li>If the actor enters an amount greater than or equal to the price of the ticket, the system informs them of this and asks them to enter a viable amount</li></ol></li></ol><ol start = "5"><li><ol type = "a"><li>Should the actor deny this as a correct amount, the system reverts back to step 2.</li></ol></li></ol>                               |
 
 ---
+
 ### Use Case "Apply voucher" <Daniel>
 
-|               | Description |
-|---------------|-------------|
-| Name          | Apply voucher            |
-| Actor         | Sales Employee            |
-| Description   | Actor applies a voucher (percentage discount) on a ticket before continuing with the sale of the ticket            |
-| Pre-condition | <ul><li>Logged in as Sales Employee</li><li>Selected option to "Apply voucher" in Use Case "Purchase Ticket"</li></ul>            |
-| Scenario      | <ol><li>Actor informs the system of what voucher needs to be added</li><li>System asks the actor to fill in the amount of the voucher that is to be applied</li><li>Actor fills in what the correct amount is</li><li>System asks actor to confirm if the shown amount is the correct amount</li><li>Actor confirms this</li><li>System puts the actor back to the previous page</li></ol>            |
-| Result        | A voucher has been applied to the ticket that is being bought            |
-| Extensions    | None            |
-| Exceptions    | <ol start = "4"><li><ol type = "a"><li>If the actor enters an amount greater than or equal to 100%, the system informs them of this and asks them to enter a viable amount</li></ol></li></ol><ol start = "5"><li><ol type = "a"><li>Should the actor deny this as a correct amount, the system reverts back to step 2.</li></ol></li></ol>            |
+|               | Description                                                                                                                                                                                                                                                                                                                                                                                |
+|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | Apply voucher                                                                                                                                                                                                                                                                                                                                                                              |
+| Actor         | Sales Employee                                                                                                                                                                                                                                                                                                                                                                             |
+| Description   | Actor applies a voucher (percentage discount) on a ticket before continuing with the sale of the ticket                                                                                                                                                                                                                                                                                    |
+| Pre-condition | <ul><li>Logged in as Sales Employee</li><li>Selected option to "Apply voucher" in Use Case "Purchase Ticket"</li></ul>                                                                                                                                                                                                                                                                     |
+| Scenario      | <ol><li>Actor informs the system of what voucher needs to be added</li><li>System asks the actor to fill in the amount of the voucher that is to be applied</li><li>Actor fills in what the correct amount is</li><li>System asks actor to confirm if the shown amount is the correct amount</li><li>Actor confirms this</li><li>System puts the actor back to the previous page</li></ol> |
+| Result        | A voucher has been applied to the ticket that is being bought                                                                                                                                                                                                                                                                                                                              |
+| Extensions    | None                                                                                                                                                                                                                                                                                                                                                                                       |
+| Exceptions    | <ol start = "4"><li><ol type = "a"><li>If the actor enters an amount greater than or equal to 100%, the system informs them of this and asks them to enter a viable amount</li></ol></li></ol><ol start = "5"><li><ol type = "a"><li>Should the actor deny this as a correct amount, the system reverts back to step 2.</li></ol></li></ol>                                                |
 
 ---
 
 ### Use Case Login <Lucas>
 
-|               | Description |
-|---------------|-------------|
-| Name          | Login            |
-| Actor         | Sales employee, sales officer and sales manager            |
-| Description   | Actor logs in to gain access to their account            |
-| Pre-condition | Actor has a account and is logged out            |
-| Scenario      | <ol><li>Actor opens the application</li><li>VSCode opens the code</li><li>The system displays the login page of the application</li><li>The actor fills in the required fields with his credentials.</li><li>The system indicates the success of the login</li></ol>            |
-| Result        | The actor has successfully logged in            |
-| Extensions    | None            |
-| Exceptions    | <ol start = "3"><li><ol type = "a"><li>The system informs the user that his credentials were incorrect<ol><li>Return to step 2</li></ol></li></ol></li></ol><ol start = "4"><li><ol type = "a"><li>The system informs the user there was an error attempting to log in<ol><li>Return to step 2</li></ol></li></ol></li></ol>            |
-
+|               | Description                                                                                                                                                                                                                                                                                                                  |
+|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | Login                                                                                                                                                                                                                                                                                                                        |
+| Actor         | Sales employee, sales officer and sales manager                                                                                                                                                                                                                                                                              |
+| Description   | Actor logs in to gain access to their account                                                                                                                                                                                                                                                                                |
+| Pre-condition | Actor has a account and is logged out                                                                                                                                                                                                                                                                                        |
+| Scenario      | <ol><li>Actor opens the application</li><li>VSCode opens the code</li><li>The system displays the login page of the application</li><li>The actor fills in the required fields with his credentials.</li><li>The system indicates the success of the login</li></ol>                                                         |
+| Result        | The actor has successfully logged in                                                                                                                                                                                                                                                                                         |
+| Extensions    | None                                                                                                                                                                                                                                                                                                                         |
+| Exceptions    | <ol start = "3"><li><ol type = "a"><li>The system informs the user that his credentials were incorrect<ol><li>Return to step 2</li></ol></li></ol></li></ol><ol start = "4"><li><ol type = "a"><li>The system informs the user there was an error attempting to log in<ol><li>Return to step 2</li></ol></li></ol></li></ol> |
 
 #### Description
->   Actor logs in to gain access to their account
+
+> Actor logs in to gain access to their account
 
 #### Pre-condition
->   Actor has a account and is logged out
+
+> Actor has a account and is logged out
 
 #### Scenario
->1. Actor opens the application.
+
+> 1. Actor opens the application.
 >2. The system displays the login page of the application
 >3. The actor fills in the required fields with his credentials.
 >4. The system indicates the success of the login
 
 #### Result
->   The actor has successfully logged in.
+
+> The actor has successfully logged in.
 
 ---
 
 ### Use Case Access previous flight records <Lucas>
 
-|               | Description |
-|---------------|-------------|
-| Name          | Access previous flight records            |
-| Actor         | Sales employee            |
-| Description   | A sales employee is able to see the flight information of flights that already happened            |
-| Pre-condition | Sales employee is logged in            |
-| Scenario      | <ol><li>Actor navigates to the previous flight records page</li><li>The system displays the previous flight records page</li><li>The actor selects a flight which already happened</li><li>the system displays the flight information for the selected flight</li></ol>            |
-| Result        | The actor can look at the records of previous flights            |
-| Extensions    | <ol start = "3"><li><ol type = "a"><li>System notifies that there are no previous flights<ol><li>System shows a list of filters</li><li>Actor selects the filter he wants to use</li><li>Return to step 3</li></ol></li></ol></li></ol>            |
-| Exceptions    | <ol start = "2"><li><ol type = "a"><li>System notifies that there are no previous flights<ol><li>Use case ends here</li></ol></li></ol></li></ol>            |
-
+|               | Description                                                                                                                                                                                                                                                             |
+|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | Access previous flight records                                                                                                                                                                                                                                          |
+| Actor         | Sales employee                                                                                                                                                                                                                                                          |
+| Description   | A sales employee is able to see the flight information of flights that already happened                                                                                                                                                                                 |
+| Pre-condition | Sales employee is logged in                                                                                                                                                                                                                                             |
+| Scenario      | <ol><li>Actor navigates to the previous flight records page</li><li>The system displays the previous flight records page</li><li>The actor selects a flight which already happened</li><li>the system displays the flight information for the selected flight</li></ol> |
+| Result        | The actor can look at the records of previous flights                                                                                                                                                                                                                   |
+| Extensions    | <ol start = "3"><li><ol type = "a"><li>System notifies that there are no previous flights<ol><li>System shows a list of filters</li><li>Actor selects the filter he wants to use</li><li>Return to step 3</li></ol></li></ol></li></ol>                                 |
+| Exceptions    | <ol start = "2"><li><ol type = "a"><li>System notifies that there are no previous flights<ol><li>Use case ends here</li></ol></li></ol></li></ol>                                                                                                                       |
 
 #### Pre-condition
->  Sales employee is logged in
+
+> Sales employee is logged in
 
 #### Scenario
->1. Actor navigates to the previous flight records page.
->2. The system displays the previous flight records page. 
->3. The actor selects a flight which already happened. 
->4. the system displays the flight information for the selected flight. 
+
+> 1. Actor navigates to the previous flight records page.
+>2. The system displays the previous flight records page.
+>3. The actor selects a flight which already happened.
+>4. the system displays the flight information for the selected flight.
 
 
 
 ---
+
 ### Use Case Start sales process <Lucas>
 
-|               | Description |
-|---------------|-------------|
-| Name          | Start sales process            |
-| Actor         | Sales Officer            |
-| Description   | A sales officer can start the sales process for the sales employee to see            |
-| Pre-condition | Sales officer is logged in            |
-| Scenario      | <ol><li>The actor navigates to the flights</li><li>System displays all registered flights</li><li>Actor selects a flight</li><li>System shows the selected flight</li><li>Actor activates the sales process</li><li>System indicates it was successfully activated</li></ol>            |
-| Result        | The sales process has successfully begun            |
-| Extensions    | None            |
-| Exceptions    | <ol start = "3"><li><ol type = "a"><li>System notifies that there are no active flights<ol><li>Use case ends here</li></ol></li></ol></li></ol><ol start = "4"><li><ol type = "a"><li>System notifies that an error accured when trying to initiate the sales process<ol><li>Use case ends here</li></ol></li></ol></li></ol>            |
-
+|               | Description                                                                                                                                                                                                                                                                                                                   |
+|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | Start sales process                                                                                                                                                                                                                                                                                                           |
+| Actor         | Sales Officer                                                                                                                                                                                                                                                                                                                 |
+| Description   | A sales officer can start the sales process for the sales employee to see                                                                                                                                                                                                                                                     |
+| Pre-condition | Sales officer is logged in                                                                                                                                                                                                                                                                                                    |
+| Scenario      | <ol><li>The actor navigates to the flights</li><li>System displays all registered flights</li><li>Actor selects a flight</li><li>System shows the selected flight</li><li>Actor activates the sales process</li><li>System indicates it was successfully activated</li></ol>                                                  |
+| Result        | The sales process has successfully begun                                                                                                                                                                                                                                                                                      |
+| Extensions    | None                                                                                                                                                                                                                                                                                                                          |
+| Exceptions    | <ol start = "3"><li><ol type = "a"><li>System notifies that there are no active flights<ol><li>Use case ends here</li></ol></li></ol></li></ol><ol start = "4"><li><ol type = "a"><li>System notifies that an error accured when trying to initiate the sales process<ol><li>Use case ends here</li></ol></li></ol></li></ol> |
 
 #### Pre-condition
->  Sales officer is logged in
+
+> Sales officer is logged in
 
 #### Scenario
-    
->1. The actor navigates to the flights. 
+
+> 1. The actor navigates to the flights.
 >2. the system displays all registered flights.
->3. the actor selects a flight. 
+>3. the actor selects a flight.
 >4. the system shows the selected flight.
 >5. the actor activates the sales process
 >6. the system indicates it was successfully activated.
 
 
 ---
+
 ### Use Case Search For Booking <Mathias\>
 
-|               | Description |
-|---------------|-------------|
-| Name          | Search For Booking            |
-| Actor         | Sales employee            |
-| Description   | Sales employee search for one booking            |
-| Pre-condition | Sales employee is signed in to his account            |
-| Scenario      | <ol><li>Actor selects to search for booking</li><li>System asks the actor to enter booking details</li><li>Actor enter some booking details</li><li>System searches for all the booking that match the enter booking details</li><li>System shows the reservations found</li><li>Actor select one of the bookings shown</li><li>System shows the booking details for the selected booking</li></ol>            |
-| Result        | Sales employee has successfully retrieved the booking details            |
-| Extensions    | None            |
-| Exceptions    | <ol start = "3"><li><ol type = "a"><li>System informs user no booking was found<ol><li>Use case ends here</li></ol></li></ol></li></ol>            |
-
-
-
+|               | Description                                                                                                                                                                                                                                                                                                                                                                                         |
+|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | Search For Booking                                                                                                                                                                                                                                                                                                                                                                                  |
+| Actor         | Sales employee                                                                                                                                                                                                                                                                                                                                                                                      |
+| Description   | Sales employee search for one booking                                                                                                                                                                                                                                                                                                                                                               |
+| Pre-condition | Sales employee is signed in to his account                                                                                                                                                                                                                                                                                                                                                          |
+| Scenario      | <ol><li>Actor selects to search for booking</li><li>System asks the actor to enter booking details</li><li>Actor enter some booking details</li><li>System searches for all the booking that match the enter booking details</li><li>System shows the reservations found</li><li>Actor select one of the bookings shown</li><li>System shows the booking details for the selected booking</li></ol> |
+| Result        | Sales employee has successfully retrieved the booking details                                                                                                                                                                                                                                                                                                                                       |
+| Extensions    | None                                                                                                                                                                                                                                                                                                                                                                                                |
+| Exceptions    | <ol start = "3"><li><ol type = "a"><li>System informs user no booking was found<ol><li>Use case ends here</li></ol></li></ol></li></ol>                                                                                                                                                                                                                                                             |
 
 ---
+
 ### Use Case Use Management Dashboard <Mathias\>
 
-|               | Description |
-|---------------|-------------|
-| Name          | Use Management Dashboard            |
-| Actor         | Sales manager            |
-| Description   | Sales manager uses the management dashboard to view key performance indicators            |
-| Pre-condition | Sales manager is signed into his account            |
-| Scenario      | <ol><li>Actor selects management dashboard</li><li>System displays the management dashboard</li><li>Actor interact with the dashboard (e.g., [<ins>view financial sheets in statistics</ins>](Use%20Cases.md#use-case-view-financial-sheets-in-statistics--mathias))</li></ol>            |
-| Result        | Sales manager viewed the key performance indicators and other important data            |
-| Extensions    | None            |
-| Exceptions    | <ol start = "3"><li><ol type = "a"><li>System shows that an error occurred when using the dashboard<ol><li>Use case ends here</li></ol></li></ol></li></ol>            |
-
-
+|               | Description                                                                                                                                                                                                                                                                    |
+|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | Use Management Dashboard                                                                                                                                                                                                                                                       |
+| Actor         | Sales manager                                                                                                                                                                                                                                                                  |
+| Description   | Sales manager uses the management dashboard to view key performance indicators                                                                                                                                                                                                 |
+| Pre-condition | Sales manager is signed into his account                                                                                                                                                                                                                                       |
+| Scenario      | <ol><li>Actor selects management dashboard</li><li>System displays the management dashboard</li><li>Actor interact with the dashboard (e.g., [<ins>view financial sheets in statistics</ins>](Use%20Cases.md#use-case-view-financial-sheets-in-statistics--mathias))</li></ol> |
+| Result        | Sales manager viewed the key performance indicators and other important data                                                                                                                                                                                                   |
+| Extensions    | None                                                                                                                                                                                                                                                                           |
+| Exceptions    | <ol start = "3"><li><ol type = "a"><li>System shows that an error occurred when using the dashboard<ol><li>Use case ends here</li></ol></li></ol></li></ol>                                                                                                                    |
 
 ---
 
 ### Use Case View Financial Sheets In Statistics <Mathias\>
 
-|               | Description |
-|---------------|-------------|
-| Name          | View Financial Sheets In Statistics            |
-| Actor         | Sales manager            |
-| Description   | Sales manager views a financial sheet of a flight            |
-| Pre-condition | Sales manager is using the dashboard            |
+|               | Description                                                                                                                                                                                                     |
+|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | View Financial Sheets In Statistics                                                                                                                                                                             |
+| Actor         | Sales manager                                                                                                                                                                                                   |
+| Description   | Sales manager views a financial sheet of a flight                                                                                                                                                               |
+| Pre-condition | Sales manager is using the dashboard                                                                                                                                                                            |
 | Scenario      | <ol><li>Actor select to view financial sheets</li><li>System asks the actor to select a flight</li><li>Actor selects a flight.</li><li>System shows financial sheet of the selected flight</li></ol>            |
-| Result        | Sales manager successfully viewed the financial sheet for the flight selected            |
-| Extensions    | None            |
-| Exceptions    | <ol start = "5"><li><ol type = "a"><li>System informs the actor that something went wrong when loading the information and allows the user to try again<ol><li>Use case ends here</li></ol></li></ol></li></ol>            |
-
-
+| Result        | Sales manager successfully viewed the financial sheet for the flight selected                                                                                                                                   |
+| Extensions    | None                                                                                                                                                                                                            |
+| Exceptions    | <ol start = "5"><li><ol type = "a"><li>System informs the actor that something went wrong when loading the information and allows the user to try again<ol><li>Use case ends here</li></ol></li></ol></li></ol> |
 
 ---
-        
+
 ### Use Case Searching for a flight <Jazz>
 
-
-|               | Description |
-|---------------|-------------|
-| Name          | Search for a flight            |
-| Actor         | Sales employee            |
-| Description   | A sales employee is searching for one or more flights            |
-| Pre-condition | <ul><li>Sales Employee is signed into their account</li><li>Sales Employee is provided with the information for searching a flight</li></ul>            |
-| Scenario      | <ol><li>Actor navigates to the area/menu for searching a flight</li><li>The system displays an area/menu</li><li>The actor enters the necessary information for searching a flight and confirms it</li><li>The system gives the necessary information, that was asked</li><li>The actor chooses the information that they need</li></ol>            |
-| Result        | The actor has successfully found a flight            |
-| Extensions    | None            |
-| Exceptions    | <ol start = "4"><li><ol type = "a"><li>The system informs the user that something went wrong while searching for a route<ol><li>Use case ends here</li></ol></li></ol></li></ol>            |
-
+|               | Description                                                                                                                                                                                                                                                                                                                              |
+|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | Search for a flight                                                                                                                                                                                                                                                                                                                      |
+| Actor         | Sales employee                                                                                                                                                                                                                                                                                                                           |
+| Description   | A sales employee is searching for one or more flights                                                                                                                                                                                                                                                                                    |
+| Pre-condition | <ul><li>Sales Employee is signed into their account</li><li>Sales Employee is provided with the information for searching a flight</li></ul>                                                                                                                                                                                             |
+| Scenario      | <ol><li>Actor navigates to the area/menu for searching a flight</li><li>The system displays an area/menu</li><li>The actor enters the necessary information for searching a flight and confirms it</li><li>The system gives the necessary information, that was asked</li><li>The actor chooses the information that they need</li></ol> |
+| Result        | The actor has successfully found a flight                                                                                                                                                                                                                                                                                                |
+| Extensions    | None                                                                                                                                                                                                                                                                                                                                     |
+| Exceptions    | <ol start = "4"><li><ol type = "a"><li>The system informs the user that something went wrong while searching for a route<ol><li>Use case ends here</li></ol></li></ol></li></ol>                                                                                                                                                         |
 
 ---
-    
+
 ### Use case Search for a route <Jazz>
 
-|               | Description |
-|---------------|-------------|
-| Name          | Search for a route            |
-| Actor         | Sales employee            |
-| Description   | A sales employee is searching for one or more routes            |
-| Pre-condition | <ul><li>Sales Employee is signed into their account</li><li>Sales Employee is provided with the information for searching a route</li></ul>            |
-| Scenario      | <ol><li>Actor navigates to the area/menu for searching a route</li><li>The system displays an area/menu</li><li>The actor enters the necessary information for searching a route and confirms it</li><li>The system gives the necessary information, that was asked</li><li>The actor is choosing the information that is needed</li></ol>            |
-| Result        | The actor has successfully found a route            |
-| Extensions    | None            |
-| Exceptions    | <ol start = "4"><li><ol type = "a"><li>The system informs the user that something went wrong while searching for a route<ol><li>Use case ends here</li></ol></li></ol></li></ol>            |
+|               | Description                                                                                                                                                                                                                                                                                                                                |
+|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | Search for a route                                                                                                                                                                                                                                                                                                                         |
+| Actor         | Sales employee                                                                                                                                                                                                                                                                                                                             |
+| Description   | A sales employee is searching for one or more routes                                                                                                                                                                                                                                                                                       |
+| Pre-condition | <ul><li>Sales Employee is signed into their account</li><li>Sales Employee is provided with the information for searching a route</li></ul>                                                                                                                                                                                                |
+| Scenario      | <ol><li>Actor navigates to the area/menu for searching a route</li><li>The system displays an area/menu</li><li>The actor enters the necessary information for searching a route and confirms it</li><li>The system gives the necessary information, that was asked</li><li>The actor is choosing the information that is needed</li></ol> |
+| Result        | The actor has successfully found a route                                                                                                                                                                                                                                                                                                   |
+| Extensions    | None                                                                                                                                                                                                                                                                                                                                       |
+| Exceptions    | <ol start = "4"><li><ol type = "a"><li>The system informs the user that something went wrong while searching for a route<ol><li>Use case ends here</li></ol></li></ol></li></ol>                                                                                                                                                           |
 
     
 ---
-    
+
 ### Use case View flight information <Jazz>
 
-|               | Description |
-|---------------|-------------|
-| Name          | View flight information            |
-| Actor         | Sales employee            |
-| Description   | A sales employee is viewing the upcoming fight information            |
-| Pre-condition | <ul><li>Sales Employee is signed into their account</li><li>Sales Employee is provided with the information for viewing the upcoming flight information</li></ul>            |
-| Scenario      | <ol><li>Actor navigates to the area/menu for searching</li><li>The system displays an area/menu</li><li>The actor enters the necessary information for searching a specific flight and confirms it</li><li>The system lists the necessary information(flights)</li><li>The actor is choosing the flight that is needed</li><li>System gives the page of the flight that was chosen </li><li>The actor I able to see all the information about a specific upcoming flight</li></ol>            |
-| Result        | The actor has successfully found the information about an upcoming flight            |
-| Extensions    | None            |
-| Exceptions    | <ol start = "6"><li><ol type = "a"><li>The system informs the user that something went wrong while searching for a flight or displaying its information<ol><li>Use case ends here</li></ol></li></ol></li></ol>            |
-    
+|               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | View flight information                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Actor         | Sales employee                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| Description   | A sales employee is viewing the upcoming fight information                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Pre-condition | <ul><li>Sales Employee is signed into their account</li><li>Sales Employee is provided with the information for viewing the upcoming flight information</li></ul>                                                                                                                                                                                                                                                                                                                  |
+| Scenario      | <ol><li>Actor navigates to the area/menu for searching</li><li>The system displays an area/menu</li><li>The actor enters the necessary information for searching a specific flight and confirms it</li><li>The system lists the necessary information(flights)</li><li>The actor is choosing the flight that is needed</li><li>System gives the page of the flight that was chosen </li><li>The actor I able to see all the information about a specific upcoming flight</li></ol> |
+| Result        | The actor has successfully found the information about an upcoming flight                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Extensions    | None                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Exceptions    | <ol start = "6"><li><ol type = "a"><li>The system informs the user that something went wrong while searching for a flight or displaying its information<ol><li>Use case ends here</li></ol></li></ol></li></ol>                                                                                                                                                                                                                                                                    |
+
     -----
-    
+
 ### Use case Edit personal information for a costumer <Jazz>
 
-|               | Description |
-|---------------|-------------|
-| Name          | Edit personal information for a costumer            |
-| Actor         | Sales employee            |
-| Description   | A sales employee is editing costumers personal            |
-| Pre-condition | <ul><li>Sales Employee is signed into their account</li><li>Sales Employee is provided with the information for editing customers information</li></ul>            |
-| Scenario      | <ol><li>Actor navigates to the menu for editing the customers</li><li>The system displays a menu</li><li>The actor edits the necessary information for the customer</li><li>The actor confirms the modified data</li><li>The system checks all the modified data</li><li>The system confirms the modifications</li></ol>            |
-| Result        | The actor has edited the customers information            |
-| Extensions    | None            |
-| Exceptions    | <ol start = "6"><li><ol type = "a"><li>The system informs the user that something went wrong while editing the information<ol><li>Use case ends here</li></ol></li></ol></li></ol>            |
-
+|               | Description                                                                                                                                                                                                                                                                                                              |
+|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | Edit personal information for a costumer                                                                                                                                                                                                                                                                                 |
+| Actor         | Sales employee                                                                                                                                                                                                                                                                                                           |
+| Description   | A sales employee is editing costumers personal                                                                                                                                                                                                                                                                           |
+| Pre-condition | <ul><li>Sales Employee is signed into their account</li><li>Sales Employee is provided with the information for editing customers information</li></ul>                                                                                                                                                                  |
+| Scenario      | <ol><li>Actor navigates to the menu for editing the customers</li><li>The system displays a menu</li><li>The actor edits the necessary information for the customer</li><li>The actor confirms the modified data</li><li>The system checks all the modified data</li><li>The system confirms the modifications</li></ol> |
+| Result        | The actor has edited the customers information                                                                                                                                                                                                                                                                           |
+| Extensions    | None                                                                                                                                                                                                                                                                                                                     |
+| Exceptions    | <ol start = "6"><li><ol type = "a"><li>The system informs the user that something went wrong while editing the information<ol><li>Use case ends here</li></ol></li></ol></li></ol>                                                                                                                                       |
 
 ----
 
 ### Use Case Cancel a booking <Jazz>
 
-|               | Description |
-|---------------|-------------|
-| Name          | Cancel a booking            |
-| Actor         | Sales employee            |
-| Description   | The Sales Employee cancels a booking on behalf of a customer            |
-| Pre-condition | Logged in as a Sales Officer            |
-| Scenario      | <ol><li>Actor selects the option to cancel a booking</li><li>System provides the according GUI</li><li>Actor indicates which ticket should be deleted</li><li>System asks for confirmation if this is the correct Ticket to delete</li><li>Actor confirms the choice</li><li>System informs how much money is to be refunded</li><li>Actor informs the system that the refund has been completed</li><li>System returns to the previous screen</li></ol>            |
-| Result        | The Ticket has been successfully canceled. Refundment has been handed out            |
-| Extensions    | None            |
-| Exceptions    | <ol start = "5"><li><ol type = "a"><li>If actor denies the confirmation, the system moves back to step 3</li></ol></li></ol>            |
-
+|               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | Cancel a booking                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Actor         | Sales employee                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Description   | The Sales Employee cancels a booking on behalf of a customer                                                                                                                                                                                                                                                                                                                                                                                             |
+| Pre-condition | Logged in as a Sales Officer                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Scenario      | <ol><li>Actor selects the option to cancel a booking</li><li>System provides the according GUI</li><li>Actor indicates which ticket should be deleted</li><li>System asks for confirmation if this is the correct Ticket to delete</li><li>Actor confirms the choice</li><li>System informs how much money is to be refunded</li><li>Actor informs the system that the refund has been completed</li><li>System returns to the previous screen</li></ol> |
+| Result        | The Ticket has been successfully canceled. Refundment has been handed out                                                                                                                                                                                                                                                                                                                                                                                |
+| Extensions    | None                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| Exceptions    | <ol start = "5"><li><ol type = "a"><li>If actor denies the confirmation, the system moves back to step 3</li></ol></li></ol>                                                                                                                                                                                                                                                                                                                             |
 
 ---
 
 ### Use Case "Register Employee" <???>
 
-|               | Description |
-|---------------|-------------|
-| Name          | Register Employee            |
-| Actor         | Sales Manager            |
-| Description   | Sales Manager registers new employee            |
-| Pre-condition | Logged in as Sales Manager            |
-| Scenario      | <ol><li>Actor selects the option to register new employees</li><li>System provides the according GUI</li><li>Actor enters the information (i.e. name, contact info, job title) and confirms</li><li>System saves the info and informs actor what the ID of the new employee is</li><li>Actor selects the option to go back to inital screen</li><li>System moves back to initial screen</li></ol>            |
-| Result        | New employee has been registered and been given an ID            |
-| Extensions    | None            |
-| Exceptions    | None            |
-
+|               | Description                                                                                                                                                                                                                                                                                                                                                                                       |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | Register Employee                                                                                                                                                                                                                                                                                                                                                                                 |
+| Actor         | Sales Manager                                                                                                                                                                                                                                                                                                                                                                                     |
+| Description   | Sales Manager registers new employee                                                                                                                                                                                                                                                                                                                                                              |
+| Pre-condition | Logged in as Sales Manager                                                                                                                                                                                                                                                                                                                                                                        |
+| Scenario      | <ol><li>Actor selects the option to register new employees</li><li>System provides the according GUI</li><li>Actor enters the information (i.e. name, contact info, job title) and confirms</li><li>System saves the info and informs actor what the ID of the new employee is</li><li>Actor selects the option to go back to inital screen</li><li>System moves back to initial screen</li></ol> |
+| Result        | New employee has been registered and been given an ID                                                                                                                                                                                                                                                                                                                                             |
+| Extensions    | None                                                                                                                                                                                                                                                                                                                                                                                              |
+| Exceptions    | None                                                                                                                                                                                                                                                                                                                                                                                              |
 
 ---
 
 ### Create a route <Martin>
 
-|               | Description |
-|---------------|-------------|
-| Name          | Create a route            |
-| Actor         | Sales officer            |
-| Description   | A sales officer creates one or more routes            |
-| Pre-condition | Sales officer is signed into their account            |
-| Scenario      | <ol><li>Actor navigates to the menu for creating  route</li><li>The system displays an editing page</li><li>The actor enters the necessary information for creating a route</li><li>The actor saves the made changes</li><li>The system asks the actor to confirm their choice</li><li>The actor confirms their choice</li><li>The system indicates the success of the execution of the action</li></ol>            |
-| Result        | The actor has successfully created a route            |
-| Extensions    | None            |
-| Exceptions    | <ol start = "7"><li><ol type = "a"><li>The system informs the user that something went wrong when creating the route<ol><li>Use case ends here</li></ol></li></ol></li></ol>            |
+|               | Description                                                                                                                                                                                                                                                                                                                                                                                              |
+|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | Create a route                                                                                                                                                                                                                                                                                                                                                                                           |
+| Actor         | Sales officer                                                                                                                                                                                                                                                                                                                                                                                            |
+| Description   | A sales officer creates one or more routes                                                                                                                                                                                                                                                                                                                                                               |
+| Pre-condition | Sales officer is signed into their account                                                                                                                                                                                                                                                                                                                                                               |
+| Scenario      | <ol><li>Actor navigates to the menu for creating  route</li><li>The system displays an editing page</li><li>The actor enters the necessary information for creating a route</li><li>The actor saves the made changes</li><li>The system asks the actor to confirm their choice</li><li>The actor confirms their choice</li><li>The system indicates the success of the execution of the action</li></ol> |
+| Result        | The actor has successfully created a route                                                                                                                                                                                                                                                                                                                                                               |
+| Extensions    | None                                                                                                                                                                                                                                                                                                                                                                                                     |
+| Exceptions    | <ol start = "7"><li><ol type = "a"><li>The system informs the user that something went wrong when creating the route<ol><li>Use case ends here</li></ol></li></ol></li></ol>                                                                                                                                                                                                                             |
 
 ---
 
 ### Edit a route <Martin>
 
-|               | Description |
-|---------------|-------------|
-| Name          | Edit a route            |
-| Actor         | Sales officer            |
-| Description   | Sales officer edits an existing route            |
-| Pre-condition | <ul><li>Sales officer is signed into their account</li><li>Sales officer has created a route that he can edit</li></ul>            |
-| Scenario      | <ol><li>Actor navigates to the menu for managing routes</li><li>The system displays a list of existing routes</li><li>Actor selects the route they want to edit</li><li>The system displays an editing page with the current details of the route</li><li>Actor makes the necessary changes</li><li>Actor saves the changes</li><li>The system asks the actor to confirm their choice</li><li>Actor confirms changes</li><li>The system updates the route with the new information and indicates the success of the execution of the action</li></ol>            |
-| Result        | The actor has successfully edited the route            |
-| Extensions    | <ol start = "8"><li><ol type = "a"><li>The actor does not confirm the changes<ol><li>The system returns the user to the editing page</li></ol></li></ol></li></ol>            |
-| Exceptions    | <ol start = "9"><li><ol type = "a"><li>The system informs the user that something went wrong when updating the route<ol><li>The system displays an error message and allows the actor to try again</li></ol></li></ol></li></ol>            |
-
+|               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | Edit a route                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Actor         | Sales officer                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Description   | Sales officer edits an existing route                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Pre-condition | <ul><li>Sales officer is signed into their account</li><li>Sales officer has created a route that he can edit</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Scenario      | <ol><li>Actor navigates to the menu for managing routes</li><li>The system displays a list of existing routes</li><li>Actor selects the route they want to edit</li><li>The system displays an editing page with the current details of the route</li><li>Actor makes the necessary changes</li><li>Actor saves the changes</li><li>The system asks the actor to confirm their choice</li><li>Actor confirms changes</li><li>The system updates the route with the new information and indicates the success of the execution of the action</li></ol> |
+| Result        | The actor has successfully edited the route                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Extensions    | <ol start = "8"><li><ol type = "a"><li>The actor does not confirm the changes<ol><li>The system returns the user to the editing page</li></ol></li></ol></li></ol>                                                                                                                                                                                                                                                                                                                                                                                    |
+| Exceptions    | <ol start = "9"><li><ol type = "a"><li>The system informs the user that something went wrong when updating the route<ol><li>The system displays an error message and allows the actor to try again</li></ol></li></ol></li></ol>                                                                                                                                                                                                                                                                                                                      |
 
 ---  
 
 ### Update upcoming flight information <Martin>
 
-|               | Description |
-|---------------|-------------|
-| Name          | Update upcoming flight information            |
-| Actor         | Sales officer            |
-| Description   | Sales officer updates information about a flight            |
-| Pre-condition | Sales officer is signed into their account            |
-| Scenario      | <ol><li>Actor navigates to the menu for managing flights</li><li>The system displays a list of existing flights</li><li>Actor selects the flight they want to update</li><li>The system displays a page with the current details of the flight</li><li>Actor makes the necessary changes to the flight</li><li>Actor saves the changes</li><li>The system asks for confirmation of the changes</li><li>Actor confirms changes</li><li>The system updates the flight with the new information and indicates the success of the execution of the action</li></ol>            |
-| Result        | The actor has successfully updated the flight information            |
-| Extensions    | None            |
-| Exceptions    | <ol start = "9"><li><ol type = "a"><li>The system informs the user that something went wrong when updating the flight<ol><li>The system displays an error message and allows the airline staff to try again</li></ol></li></ol></li></ol>            |
+|               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | Update upcoming flight information                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Actor         | Sales officer                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| Description   | Sales officer updates information about a flight                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| Pre-condition | Sales officer is signed into their account                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| Scenario      | <ol><li>Actor navigates to the menu for managing flights</li><li>The system displays a list of existing flights</li><li>Actor selects the flight they want to update</li><li>The system displays a page with the current details of the flight</li><li>Actor makes the necessary changes to the flight</li><li>Actor saves the changes</li><li>The system asks for confirmation of the changes</li><li>Actor confirms changes</li><li>The system updates the flight with the new information and indicates the success of the execution of the action</li></ol> |
+| Result        | The actor has successfully updated the flight information                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Extensions    | None                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Exceptions    | <ol start = "9"><li><ol type = "a"><li>The system informs the user that something went wrong when updating the flight<ol><li>The system displays an error message and allows the airline staff to try again</li></ol></li></ol></li></ol>                                                                                                                                                                                                                                                                                                                       |
 
   
 ---  
 
 ### Register upcoming flight <Martin>
 
-| Name          | Register upcoming flight            |
-| Actor         | Sales officer            |
-| Description   | Sales officer updates information about a flight            |
-| Pre-condition | <ul><li>Sales officer is signed into their account</li><li>Sales officer has the necessary information to register the upcoming flight</li></ul>            |
-| Scenario      | <ol><li>Actor navigates to the menu for registering flights</li><li>The system displays an editing page for registering flights</li><li>Actor enters the necessary information for the upcoming flight</li><li>Actor saves the changes</li><li>The system asks the user to confirm their choice</li><li>Actor confirms the registration for the upcoming flight</li><li>The system updates the database with the new flight information and indicates the success of then execution</li></ol>            |
-| Result        | The actor has successfully registered the upcoming flight            |
-| Extensions    | None            |
-| Exceptions    | <ol start = "7"><li><ol type = "a"><li>The system informs the user that something went wrong when registering the flight<ol><li>The system displays an error message and allows the actor to try again</li></ol></li></ol></li></ol>            |
+|                                           | Description                                                                                                 |
+|-------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| Name                                      | Register upcoming flight                                                                                    |
+| Actor                                     | Sales officer                                                                                               |
+| Description                               | Sales officer updates information about a flight                                                            |
+| Pre-condition                             | <ul><li>Sales officer is signed into their account</li><li>Sales officer has the necessary information      |
+| to register the upcoming flight</li></ul> |                                                                                                             |
+| Scenario                                  | <ol><li>Actor navigates to the menu for registering flights</li><li>The system displays an editing page for |
+
+registering flights</li><li>Actor enters the necessary information for the upcoming flight</li><li>Actor saves the
+changes</li><li>The system asks the user to confirm their choice</li><li>Actor confirms the registration for the
+upcoming flight</li><li>The system updates the database with the new flight information and indicates the success of
+then execution</li></ol>            |
+| Result | The actor has successfully registered the upcoming flight |
+| Extensions | None |
+| Exceptions | <ol start = "7"><li><ol type = "a"><li>The system informs the user that something went wrong when
+registering the flight<ol><li>The system displays an error message and allows the actor to try
+again</li></ol></li></ol></li></ol>            |
 
 
 ----
 
 ### Creare a booking <Janis>
 
-| Name          | Creare a booking            |
-| Actor         | Sales employee            |
-| Description   | Sales employee is dooing a booking for a Customer            |
-| Pre-condition | <ul><li>Sales employee is signed into their account</li><li>Sales employee has the necessary information to register the upcoming flight</li></ul>            |
-| Scenario      | <ol><li>Sales employee at a travel agency logs into the company's booking system to create a new booking for a customer,  who wants to book a flight to Tokyo for a business trip</li><li>Sales employee navigates to the booking section of the system and enters the travel details of the Customer, including departure and arrival airports, travel dates, and any other relevant information</li><li>The system presents the Sales employee a list of available flights that match the Customers requirements. She can filter and sort the results by price, duration, or airline</li><li>The Sales employee selects a flight that fits the Customers schedule and budget and enters his personal and payment information into the system. The system generates a booking confirmation, which the Sales employee sends to the Customer via email</li><li>A few days before the flight, the system sends the Customer a reminder email with his flight details and instructions for check-in and baggage</li></ol>            |
-| Result        | The actor has successfully create a booking            |
-| Extensions    | None            |
-| Exceptions    | <ol start = "7"><li><ol type = "a"><li>The system informs the user that something went wrong with creating the booking<ol><li>The system displays an error message and allows the actor to try again</li></ol></li></ol></li></ol>            |
+|                                                       | Description                                                                                              |
+|-------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
+| Name                                                  | Creare a booking                                                                                         |
+| Actor                                                 | Sales employee                                                                                           |
+| Description                                           | Sales employee is dooing a booking for a Customer                                                        |
+| Pre-condition                                         | <ul><li>Sales employee is signed into their account</li><li>Sales employee has the necessary             |
+| information to register the upcoming flight</li></ul> |                                                                                                          |
+| Scenario                                              | <ol><li>Sales employee at a travel agency logs into the company's booking system to create a new booking |
+
+for a customer, who wants to book a flight to Tokyo for a business trip</li><li>Sales employee navigates to the booking
+section of the system and enters the travel details of the Customer, including departure and arrival airports, travel
+dates, and any other relevant information</li><li>The system presents the Sales employee a list of available flights
+that match the Customers requirements. She can filter and sort the results by price, duration, or airline</li><li>The
+Sales employee selects a flight that fits the Customers schedule and budget and enters his personal and payment
+information into the system. The system generates a booking confirmation, which the Sales employee sends to the Customer
+via email</li><li>A few days before the flight, the system sends the Customer a reminder email with his flight details
+and instructions for check-in and baggage</li></ol>            |
+| Result | The actor has successfully create a booking |
+| Extensions | None |
+| Exceptions | <ol start = "7"><li><ol type = "a"><li>The system informs the user that something went wrong with
+creating the booking<ol><li>The system displays an error message and allows the actor to try
+again</li></ol></li></ol></li></ol>            |
 
 ----
 
 ### Adding Extras <Janis>
 
-| Name          | Adding Extras            |
-| Actor         | Sales employee            |
-| Description   | Sales employee is adding Extras for a Customer            |
-| Pre-condition | <ul><li>Sales employee is signed into their account</li><li>Sales employee has the necessary information to register the upcoming flight</li></ul>            |
-| Scenario      | <ol><li>Sales employee at a travel agency and a customer has already purchased a flight ticket for a trip</li><li>Customer  calls the Sales employee to add extras to his flight, such as seat selection, in-flight meals, and baggage allowance upgrades</li><li>The Sales employee logs into the company's booking system and finds the Customers reservation by entering his name and confirmation number</li><li>The system displays the Customers flight details and allows the Sales employee to view and add extras to his reservation</li><li>The Sales employee selects the extras that the Customer  requested and adds them to his reservation. The system automatically calculates the total cost of the extras and updates the reservation with the new price</li></ol>            |
-| Result        | The actor has successfully add extras            |
-| Extensions    | None            |
-| Exceptions    | <ol start = "7"><li><ol type = "a"><li>The system informs the user that something went wrong while adding extras<ol><li>The system displays an error message and allows the actor to try again</li></ol></li></ol></li></ol>            |
+|                                                       | Description                                                                                          |
+|-------------------------------------------------------|------------------------------------------------------------------------------------------------------|
+| Name                                                  | Adding Extras                                                                                        |
+| Actor                                                 | Sales employee                                                                                       |
+| Description                                           | Sales employee is adding Extras for a Customer                                                       |
+| Pre-condition                                         | <ul><li>Sales employee is signed into their account</li><li>Sales employee has the necessary         |
+| information to register the upcoming flight</li></ul> |                                                                                                      |
+| Scenario                                              | <ol><li>Sales employee at a travel agency and a customer has already purchased a flight ticket for a |
+
+trip</li><li>Customer calls the Sales employee to add extras to his flight, such as seat selection, in-flight meals, and
+baggage allowance upgrades</li><li>The Sales employee logs into the company's booking system and finds the Customers
+reservation by entering his name and confirmation number</li><li>The system displays the Customers flight details and
+allows the Sales employee to view and add extras to his reservation</li><li>The Sales employee selects the extras that
+the Customer requested and adds them to his reservation. The system automatically calculates the total cost of the
+extras and updates the reservation with the new price</li></ol>            |
+| Result | The actor has successfully add extras |
+| Extensions | None |
+| Exceptions | <ol start = "7"><li><ol type = "a"><li>The system informs the user that something went wrong while adding
+extras<ol><li>The system displays an error message and allows the actor to try
+again</li></ol></li></ol></li></ol>            |
 
 ----
 
-
 ### Canceling a booking <Janis>
 
-| Name          | Canceling a booking            |
-| Actor         | Sales employee            |
-| Description   | Sales employee is caneling a booking for a Customer            |
-| Pre-condition | <ul><li>Sales employee is signed into their account</li><li>Sales employee has the necessary information to register the upcoming flight</li></ul>            |
-| Scenario      | <ol><li>The sales employee gets a call by a Customer who wants to cancel his next flight</li><li>The Customer provides his name and flight confirmation number to the Sales empoyee</li><li>The Sales employee logs into the company's booking system and enters the Customers name and confirmation number to retrieve his flight details</li><li>The system displays the Customers flight information, including the flight number, departure time, and booking details</li><li>The sales Employee confirms the details with the Customer and informs him of the cancellation policy and any applicable fees</li><li>The sales Employee enters the cancellation request into the system and initiates the refund process</li><li>The system generates a cancellation confirmation and a refund receipt for the Customer</li></ol>            |
-| Result        | The actor has successfully canceled the booking            |
-| Extensions    | None            |
-| Exceptions    | <ol start = "7"><li><ol type = "a"><li>The system informs the user that something went wrong while canceling tuhe booking<ol><li>The system displays an error message and allows the actor to try again</li></ol></li></ol></li></ol>            |
+|                                                       | Description                                                                                          |
+|-------------------------------------------------------|------------------------------------------------------------------------------------------------------|
+| Name                                                  | Canceling a booking                                                                                  |
+| Actor                                                 | Sales employee                                                                                       |
+| Description                                           | Sales employee is caneling a booking for a Customer                                                  |
+| Pre-condition                                         | <ul><li>Sales employee is signed into their account</li><li>Sales employee has the necessary         |
+| information to register the upcoming flight</li></ul> |                                                                                                      |
+| Scenario                                              | <ol><li>The sales employee gets a call by a Customer who wants to cancel his next flight</li><li>The |
 
+Customer provides his name and flight confirmation number to the Sales empoyee</li><li>The Sales employee logs into the
+company's booking system and enters the Customers name and confirmation number to retrieve his flight details</li><li>
+The system displays the Customers flight information, including the flight number, departure time, and booking
+details</li><li>The sales Employee confirms the details with the Customer and informs him of the cancellation policy and
+any applicable fees</li><li>The sales Employee enters the cancellation request into the system and initiates the refund
+process</li><li>The system generates a cancellation confirmation and a refund receipt for the
+Customer</li></ol>            |
+| Result | The actor has successfully canceled the booking |
+| Extensions | None |
+| Exceptions | <ol start = "7"><li><ol type = "a"><li>The system informs the user that something went wrong while
+canceling tuhe booking<ol><li>The system displays an error message and allows the actor to try
+again</li></ol></li></ol></li></ol>            |
 
 ## [Back to Table of Contents](../TableOfContents.md)
