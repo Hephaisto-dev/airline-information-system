@@ -11,19 +11,19 @@
     * [Test Scenario Login Verification  <Lucas\>](#test-scenario-login-verification--lucas)
     * [Test Scenario Access previous flight records  <Lucas\>](#test-scenario-access-previous-flight-records--lucas)
     * [Test Scenario start sales process  <Lucas\>](#test-scenario-start-sales-process--lucas)
-    * [Test Scenario "Purchase Ticket"  <Daniel>](#test-scenario--purchase-ticket--daniel)
-    * [Test Scenario "Apply Discount"  <Daniel>](#test-scenario--apply-discount--daniel)
-    * [Test Scenario "Apply voucher"  <Daniel>](#test-scenario--apply-voucher--daniel)
-    * [Test Scenario "Cancel booking"  <Daniel>](#test-scenario--cancel-booking--daniel)
-    * [Test Scenario "Register employee"  <Daniel>](#test-scenario--register-employee--daniel)
+    * [Test Scenario "Purchase Ticket"  <Daniel\>](#test-scenario--purchase-ticket---daniel)
+    * [Test Scenario "Apply Discount"  <Daniel\>](#test-scenario--apply-discount---daniel)
+    * [Test Scenario "Apply voucher"  <Daniel\>](#test-scenario--apply-voucher---daniel)
+    * [Test Scenario "Cancel booking"  <Daniel\>](#test-scenario--cancel-booking---daniel)
+    * [Test Scenario "Register employee"  <Daniel\>](#test-scenario--register-employee---daniel)
     * [Creating a new route  <Martin\>](#creating-a-new-route--martin)
     * [Edit a route  <Martin\>](#edit-a-route--martin)
     * [Update upcoming flight information  <Martin\>](#update-upcoming-flight-information--martin)
     * [Register upcoming flight  <Martin\>](#register-upcoming-flight--martin)
-    * [Test Scenario "Searching for a flight"  <Jazz>](#test-scenario--searching-for-a-flight--jazz)
-    * [Test Scenario "Search for a route"  <Jazz>](#test-scenario--search-for-a-route--jazz)
-    * [Test Scenario "View flight information"  <Jazz>](#test-scenario--view-flight-information--jazz)
-    * [Test Scenario "Edit personal information for a costumer"  <Jazz>](#test-scenario--edit-personal-information-for-a-costumer--jazz)
+    * [Test Scenario "Searching for a flight"  <Jazz\>](#test-scenario--searching-for-a-flight---jazz)
+    * [Test Scenario "Search for a route"  <Jazz\>](#test-scenario--search-for-a-route---jazz)
+    * [Test Scenario "View flight information"  <Jazz\>](#test-scenario--view-flight-information---jazz)
+    * [Test Scenario "Edit personal information for a costumer"  <Jazz\>](#test-scenario--edit-personal-information-for-a-costumer---jazz)
   * [Back to Table of Contents](#back-to-table-of-contents)
 <!-- TOC -->
 
@@ -102,7 +102,7 @@
 
 ---
 
-### Test Scenario "Purchase Ticket"  <Daniel>
+### Test Scenario "Purchase Ticket"  <Daniel\>
 
 |            | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -114,7 +114,7 @@
 
 ---
 
-### Test Scenario "Apply Discount"  <Daniel>
+### Test Scenario "Apply Discount"  <Daniel\>
 
 |            | Description                                                                                                                                                                                                                                                                                                                                                           |
 |------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -126,7 +126,7 @@
 
 ---
 
-### Test Scenario "Apply voucher"  <Daniel>
+### Test Scenario "Apply voucher"  <Daniel\>
 
 |            | Description                                                                                                                                                                                                                                                                                                                                                                         |
 |------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -138,7 +138,7 @@
 
 ---
 
-### Test Scenario "Cancel booking"  <Daniel>
+### Test Scenario "Cancel booking"  <Daniel\>
 
 |            | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -150,7 +150,7 @@
 
 ---
 
-### Test Scenario "Register employee"  <Daniel>
+### Test Scenario "Register employee"  <Daniel\>
 
 |            | Description                                                                                                                                                                                                                                                                                                                                                                          |
 |------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -210,7 +210,7 @@
 
 ---
 
-### Test Scenario "Searching for a flight"  <Jazz>
+### Test Scenario "Searching for a flight"  <Jazz\>
 
 |            | Description                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -222,7 +222,7 @@
 
 ---
 
-### Test Scenario "Search for a route"  <Jazz>
+### Test Scenario "Search for a route"  <Jazz\>
 
 |            | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -234,7 +234,7 @@
 
 ---
 
-### Test Scenario "View flight information"  <Jazz>
+### Test Scenario "View flight information"  <Jazz\>
 
 |            | Description                                                                                                                                                                                                                                                                                                                           |
 |------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -246,7 +246,7 @@
 
 ---
 
-### Test Scenario "Edit personal information for a costumer"  <Jazz>
+### Test Scenario "Edit personal information for a costumer"  <Jazz\>
 
 |            | Description                                                                                                                                                                                                                                                                                                                                                                                  |
 |------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

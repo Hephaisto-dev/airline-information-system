@@ -3,32 +3,30 @@
 ---
 
 <!-- TOC -->
-- [USE CASES](#use-cases)
-    - [Use Case Purchase Ticket ](#use-case-purchase-ticket-)
-    - [Use Case "Apply discount" ](#use-case-apply-discount-)
-    - [Use Case "Apply voucher" ](#use-case-apply-voucher-)
-    - [Use Case Login ](#use-case-login-)
-    - [Use Case Access previous flight records ](#use-case-access-previous-flight-records-)
-    - [Use Case Start sales process ](#use-case-start-sales-process-)
-    - [Use Case Search For Booking \<Mathias\>](#use-case-search-for-booking-mathias)
-  - [| Exceptions    | System informs user no booking was foundUse case ends here                                                                                                                                                                                                                                                             |](#-exceptions-----system-informs-user-no-booking-was-founduse-case-ends-here-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------)
-    - [Use Case Use Management Dashboard \<Mathias\>](#use-case-use-management-dashboard-mathias)
-    - [Use Case View Financial Sheets In Statistics \<Mathias\>](#use-case-view-financial-sheets-in-statistics-mathias)
-    - [Use Case Searching for a flight ](#use-case-searching-for-a-flight-)
-    - [Use case Search for a route ](#use-case-search-for-a-route-)
-    - [Use case View flight information ](#use-case-view-flight-information-)
-    - [Use case Edit personal information for a costumer ](#use-case-edit-personal-information-for-a-costumer-)
-    - [Use Case Cancel a booking ](#use-case-cancel-a-booking-)
-    - [Use Case "Register Employee" ](#use-case-register-employee-)
-  - [| Exceptions    | None](#-exceptions-----none)
-    - [Create a route ](#create-a-route-)
-    - [Edit a route ](#edit-a-route-)
-    - [Update upcoming flight information ](#update-upcoming-flight-information-)
-    - [Register upcoming flight ](#register-upcoming-flight-)
-    - [Creare a booking ](#creare-a-booking-)
-    - [Adding Extras ](#adding-extras-)
-    - [Canceling a booking ](#canceling-a-booking-)
-  - [Back to Table of Contents](#back-to-table-of-contents)
+* [USE CASES](#use-cases)
+    * [Use Case Purchase Ticket  <Daniel\>](#use-case-purchase-ticket--daniel)
+    * [Use Case "Apply discount"  <Daniel\>](#use-case--apply-discount---daniel)
+    * [Use Case "Apply voucher"  <Daniel\>](#use-case--apply-voucher---daniel)
+    * [Use Case Login  <Lucas\>](#use-case-login--lucas)
+    * [Use Case Access previous flight records  <Lucas\>](#use-case-access-previous-flight-records--lucas)
+    * [Use Case Start sales process  <Lucas\>](#use-case-start-sales-process--lucas)
+    * [Use Case Search For Booking  <Mathias\>](#use-case-search-for-booking--mathias)
+    * [Use Case Use Management Dashboard  <Mathias\>](#use-case-use-management-dashboard--mathias)
+    * [Use Case View Financial Sheets In Statistics  <Mathias\>](#use-case-view-financial-sheets-in-statistics--mathias)
+    * [Use Case Searching for a flight  <Jazz\>](#use-case-searching-for-a-flight--jazz)
+    * [Use case Search for a route  <Jazz\>](#use-case-search-for-a-route--jazz)
+    * [Use case View flight information  <Jazz\>](#use-case-view-flight-information--jazz)
+    * [Use case Edit personal information for a costumer  <Jazz\>](#use-case-edit-personal-information-for-a-costumer--jazz)
+    * [Use Case Cancel a booking  <Jazz\>](#use-case-cancel-a-booking--jazz)
+    * [Use Case "Register Employee"  <???>](#use-case--register-employee----)
+    * [Use Case Create a route  <Martin\>](#use-case-create-a-route--martin)
+    * [Use Case Edit a route  <Martin\>](#use-case-edit-a-route--martin)
+    * [Use Case Update upcoming flight information  <Martin\>](#use-case-update-upcoming-flight-information--martin)
+    * [Use Case Register upcoming flight <Martin\>](#use-case-register-upcoming-flight--martin)
+    * [Use Case Creare a booking  <Janis\>](#use-case-creare-a-booking--janis)
+    * [Use Case Adding Extras  <Janis\>](#use-case-adding-extras--janis)
+    * [Use Case Canceling a booking  <Janis\>](#use-case-canceling-a-booking--janis)
+  * [Back to Table of Contents](#back-to-table-of-contents)
 <!-- TOC -->
 
 |               | Description                                                                                                                                                                                                                                                                                                                                                                 |
@@ -47,7 +45,7 @@
 ---
 <!-- Further Use Cases can be edited now-->
 
-### Use Case Purchase Ticket <Daniel>
+### Use Case Purchase Ticket  <Daniel\>
 
 |               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 |---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -62,7 +60,7 @@
 
 ---
 
-### Use Case "Apply discount" <Daniel>
+### Use Case "Apply discount"  <Daniel\>
 
 |               | Description                                                                                                                                                                                                                                                                                                                                                                                  |
 |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -77,7 +75,7 @@
 
 ---
 
-### Use Case "Apply voucher" <Daniel>
+### Use Case "Apply voucher"  <Daniel\>
 
 |               | Description                                                                                                                                                                                                                                                                                                                                                                                |
 |---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -92,7 +90,7 @@
 
 ---
 
-### Use Case Login <Lucas>
+### Use Case Login  <Lucas\>
 
 |               | Description                                                                                                                                                                                                                                                                                                                  |
 |---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -109,7 +107,7 @@
 ---
 
 
-### Use Case Access previous flight records <Lucas>
+### Use Case Access previous flight records  <Lucas\>
 
 |               | Description                                                                                                                                                                                                                                                             |
 |---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -125,7 +123,7 @@
 ---
 
 
-### Use Case Start sales process <Lucas>
+### Use Case Start sales process  <Lucas\>
 
 |               | Description                                                                                                                                                                                                                                                                                                                   |
 |---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -142,7 +140,7 @@
 ---
 
 
-### Use Case Search For Booking <Mathias\>
+### Use Case Search For Booking  <Mathias\>
 
 |               | Description                                                                                                                                                                                                                                                                                                                                                                                         |
 |---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -158,7 +156,7 @@
 
 
 
-### Use Case Use Management Dashboard <Mathias\>
+### Use Case Use Management Dashboard  <Mathias\>
 
 |               | Description                                                                                                                                                                                                                                                                    |
 |---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -173,7 +171,7 @@
 
 ---
 
-### Use Case View Financial Sheets In Statistics <Mathias\>
+### Use Case View Financial Sheets In Statistics  <Mathias\>
 
 |               | Description                                                                                                                                                                                                     |
 |---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -188,7 +186,7 @@
 
 ---
 
-### Use Case Searching for a flight <Jazz>
+### Use Case Searching for a flight  <Jazz\>
 
 |               | Description                                                                                                                                                                                                                                                                                                                              |
 |---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -203,7 +201,7 @@
 
 ---
 
-### Use case Search for a route <Jazz>
+### Use case Search for a route  <Jazz\>
 
 |               | Description                                                                                                                                                                                                                                                                                                                                |
 |---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -215,12 +213,9 @@
 | Result        | The actor has successfully found a route                                                                                                                                                                                                                                                                                                   |
 | Extensions    | None                                                                                                                                                                                                                                                                                                                                       |
 | Exceptions    | <ol start = "4"><li><ol type = "a"><li>The system informs the user that something went wrong while searching for a route<ol><li>Use case ends here</li></ol></li></ol></li></ol>                                                                                                                                                           |
-
-    
 ---
 
-
-### Use case View flight information <Jazz>
+### Use case View flight information  <Jazz\>
 
 |               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -235,7 +230,7 @@
 
     -----
 
-### Use case Edit personal information for a costumer <Jazz>
+### Use case Edit personal information for a costumer  <Jazz\>
 
 |               | Description                                                                                                                                                                                                                                                                                                              |
 |---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -250,7 +245,7 @@
 
 ----
 
-### Use Case Cancel a booking <Jazz>
+### Use Case Cancel a booking  <Jazz\>
 
 |               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -265,7 +260,7 @@
 
 ---
 
-### Use Case "Register Employee" <???>
+### Use Case "Register Employee"  <???>
 
 |               | Description                                                                                                                                                                                                                                                                                                                                                                                       |
 |---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -276,11 +271,12 @@
 | Scenario      | <ol><li>Actor selects the option to register new employees</li><li>System provides the according GUI</li><li>Actor enters the information (i.e. name, contact info, job title) and confirms</li><li>System saves the info and informs actor what the ID of the new employee is</li><li>Actor selects the option to go back to inital screen</li><li>System moves back to initial screen</li></ol> |
 | Result        | New employee has been registered and been given an ID                                                                                                                                                                                                                                                                                                                                             |
 | Extensions    | None                                                                                                                                                                                                                                                                                                                                                                                              |
-| Exceptions    | None                                                                                                                                                                                                                                                                                                                                                                                             
+| Exceptions    | None                                                                                                                                                                                                                                                                                                                                                                                              |
+
 ---
 
 
-### Create a route <Martin>
+### Use Case Create a route  <Martin\>
 
 |               | Description                                                                                                                                                                                                                                                                                                                                                                                              |
 |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -295,7 +291,7 @@
 
 ---
 
-### Edit a route <Martin>
+### Use Case Edit a route  <Martin\>
 
 |               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 |---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -310,7 +306,7 @@
 
 ---  
 
-### Update upcoming flight information <Martin>
+### Use Case Update upcoming flight information  <Martin\>
 
 |               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -323,10 +319,9 @@
 | Extensions    | None                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | Exceptions    | <ol start = "9"><li><ol type = "a"><li>The system informs the user that something went wrong when updating the flight<ol><li>The system displays an error message and allows the airline staff to try again</li></ol></li></ol></li></ol>                                                                                                                                                                                                                                                                                                                       |
 
-  
 ---  
 
-### Register upcoming flight <Martin>
+### Use Case Register upcoming flight <Martin\>
 
 |                                           | Description                                                                                                 |
 |-------------------------------------------|-------------------------------------------------------------------------------------------------------------|
@@ -350,7 +345,7 @@ again</li></ol></li></ol></li></ol>            |
 
 ----
 
-### Creare a booking <Janis>
+### Use Case Creare a booking  <Janis\>
 
 |                                                       | Description                                                                                              |
 |-------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
@@ -377,7 +372,7 @@ again</li></ol></li></ol></li></ol>            |
 
 ----
 
-### Adding Extras <Janis>
+### Use Case Adding Extras  <Janis\>
 
 |                                                       | Description                                                                                          |
 |-------------------------------------------------------|------------------------------------------------------------------------------------------------------|
@@ -402,7 +397,7 @@ again</li></ol></li></ol></li></ol>            |
 
 ----
 
-### Canceling a booking <Janis>
+### Use Case Canceling a booking  <Janis\>
 
 |                                                       | Description                                                                                          |
 |-------------------------------------------------------|------------------------------------------------------------------------------------------------------|
