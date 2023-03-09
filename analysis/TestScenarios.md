@@ -241,7 +241,7 @@
 | Scenario   | <ol><li>Actor searching for a previous flight Brusselles - Paris.</li><li>The system displays all the information about the flight Brusselles - Paris.</li><li>The actor views information about flight Brusselles - Paris: departure time from Brusselles: 2pm; arrival time to Paris: 3 pm; total time of the flight: 1h.</li></ol> |
 | Result     | The actor has successfully found the information about an upcoming flight.                                                                                                                                                                                                                                                            |
 | Extensions | None.                                                                                                                                                                                                                                                                                                                                 |
-| Exceptions | None.                                                                                                                                                                                                                                                                                                                                 |
+| Exceptions | Error for viewing the flight information.                                                                                                                                                                                                                                                                                                                                 |
 
 ---
 
