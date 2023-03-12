@@ -40,8 +40,6 @@
 | Extensions    | None                                                                                                                                                                                                                                                                                                                                                                        |
 | Exceptions    | <ol start = "5"><li>If there is an issue, handle it before committing</li></ol>                                                                                                                                                                                                                                                                                             |
 
-<!-- Here we need to double check if this'd be an exception for 4. or 5.-->
-
 ---
 <!-- Further Use Cases can be edited now-->
 
