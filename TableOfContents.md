@@ -18,7 +18,7 @@
 
 ## [Design](design/DesignNavigation.md)
 
-> Newly empty
+> [Class Diagram](design/ClassDiagram.md)
 
 ## [Implementation](implementation/ImplementationNavigation.md)
 
