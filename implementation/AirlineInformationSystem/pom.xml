@@ -13,7 +13,7 @@
         <module>Persistence</module>
         <module>BusinessLogic</module>
         <module>Assembler</module>
-        <module>DataDictionary</module>
+        <module>DataRecords</module>
     </modules>
 
 
