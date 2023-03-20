@@ -1,6 +1,6 @@
 package businesslogic.api;
 
-import businesslogic.api.customer.CustomerManager;
+import businesslogic.api.manager.CustomerManager;
 
 /**
  * API of the BusinessLogic layer.
@@ -10,5 +10,4 @@ import businesslogic.api.customer.CustomerManager;
 public interface BusinessLogicAPI {
 
     CustomerManager getCustomerManager();
-
 }

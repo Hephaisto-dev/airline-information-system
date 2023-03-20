@@ -9,4 +9,6 @@ module businesslogic_module {
     exports businesslogic.api.route;
     exports businesslogic.api.customer;
     exports businesslogic.api.common;
+    exports businesslogic.api.manager;
+    exports businesslogic.implementation;
 }

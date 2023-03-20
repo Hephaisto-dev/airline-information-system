@@ -1,7 +1,7 @@
 package gui;
 
 import businesslogic.api.BusinessLogicAPI;
-import businesslogic.api.customer.CustomerManager;
+import businesslogic.api.manager.CustomerManager;
 import datarecords.CustomerData;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.MethodOrderer;

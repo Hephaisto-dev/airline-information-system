@@ -1,7 +1,7 @@
 package businesslogic.implementation;
 
 import businesslogic.api.BusinessLogicAPI;
-import businesslogic.api.customer.CustomerManager;
+import businesslogic.api.manager.CustomerManager;
 import persistence.PersistenceAPI;
 
 /**
@@ -10,7 +10,6 @@ import persistence.PersistenceAPI;
  * @author Informatics Fontys Venlo
  */
 public record BusinessLogicAPIImpl(PersistenceAPI persistenceAPI) implements BusinessLogicAPI {
-
     @Override
     public CustomerManager getCustomerManager() {
         return new CustomerManager(persistenceAPI.getCustomerStorageService());

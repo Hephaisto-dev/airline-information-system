@@ -2,24 +2,23 @@ package businesslogic.implementation;
 
 import businesslogic.api.airplane.Airplane;
 import businesslogic.api.flight.Flight;
-import businesslogic.api.route.Route;
-import businesslogic.api.route.RouteFactory;
+import datarecords.AirportData;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-public class FlightImpl implements Flight {
+public class FlightImpl extends RouteImpl implements Flight {
 
     private final String flightID;
-    private final Route route;
     private final LocalDateTime etdDateTime;
     private final LocalDateTime etaDateTime;
     private final Duration flightDuration;
     private final Airplane airplane;
 
-    public FlightImpl(Route route, LocalDateTime etdDateTime, LocalDateTime etaDateTime, Duration flightDuration,
+    public FlightImpl(String from, String to, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
+                      Duration flightDuration,
                       Airplane airplane) throws IllegalArgumentException {
-        this.route = route;
+        super(from, to);
         if (etdDateTime.isAfter(etaDateTime)) {
             throw new IllegalArgumentException("ETD must be before ETA");
         }
@@ -27,13 +26,12 @@ public class FlightImpl implements Flight {
         this.etaDateTime = etaDateTime;
         this.flightDuration = flightDuration;
         this.airplane = airplane;
-        this.flightID = "FL_" + route.getDeparturePlace() + "-" + route.getArrivalPlace() + "_"
-                + etdDateTime + "_" + airplane.getId();
+        this.flightID = "FL_" + from + "-" + to + "_" + etdDateTime + "_" + airplane.getId();
     }
 
     public FlightImpl(String from, String to, LocalDateTime etdDateTime, LocalDateTime etaDateTime, Airplane airplane)
             throws IllegalArgumentException {
-        this(RouteFactory.createRoute(from, to), etdDateTime, etaDateTime,
+        this(from, to, etdDateTime, etaDateTime,
                 Duration.between(etdDateTime, etaDateTime), airplane);
     }
 
@@ -63,15 +61,19 @@ public class FlightImpl implements Flight {
     }
 
     @Override
-    public Route getAssociatedRoute() {
-        return this.route;
+    public AirportData getDepartureAirport() {
+        throw new UnsupportedOperationException("Not implemented yet");
+    }
+
+    @Override
+    public AirportData getArrivalAirport() {
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 
     @Override
     public String toString() {
         return "FlightImpl{" +
                 "flightID='" + flightID + '\'' +
-                ", route=" + route +
                 ", etdDateTime=" + etdDateTime +
                 ", etaDateTime=" + etaDateTime +
                 ", flightDuration=" + flightDuration +

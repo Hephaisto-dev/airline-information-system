@@ -1,6 +1,6 @@
 package gui;
 
-import businesslogic.api.customer.CustomerManager;
+import businesslogic.api.manager.CustomerManager;
 import datarecords.CustomerData;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

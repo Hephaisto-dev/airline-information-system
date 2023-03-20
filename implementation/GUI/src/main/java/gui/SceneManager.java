@@ -104,7 +104,7 @@ public class SceneManager {
 
         var stackTrace =
                 Stream.of(ex.getStackTrace()).limit(10).map(StackTraceElement::toString).collect(Collectors.joining(
-                "\n"));
+                        "\n"));
         var stLabel = new Label("Stacktrace:");
         stLabel.setStyle("-fx-font-weight: bold;");
         parent.getChildren().add(stLabel);
