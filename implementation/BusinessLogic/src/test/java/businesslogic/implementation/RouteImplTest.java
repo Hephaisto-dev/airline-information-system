@@ -20,7 +20,7 @@ class RouteImplTest {
     void getArrivalPlace() {
         SoftAssertions.assertSoftly(softly->{
             softly.assertThat(Route.getArrivalPlace())
-                    .isEqualTo("ARRIVAL");
+                    .isEqualTo("ARRIVE");
         });
     }
 
