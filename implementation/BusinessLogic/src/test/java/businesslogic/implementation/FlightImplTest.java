@@ -139,13 +139,17 @@ class  FlightImplTest {
     @Test
     void getDepartureAirport() {
         SoftAssertions.assertSoftly(softly->{
-            softly.assertThat(LDTd.getDayOfYear())
-                    .isEqualTo(2012);
+            softly.assertThat(from)
+                    .isEqualTo("DEPART");
         });
     }
 
     @Test
     void getArrivalAirport() {
+        SoftAssertions.assertSoftly(softly->{
+            softly.assertThat(to)
+                    .isEqualTo("ARRIVE");
+        });
     }
 
     @Test
