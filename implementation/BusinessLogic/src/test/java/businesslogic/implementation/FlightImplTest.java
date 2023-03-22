@@ -1,13 +1,13 @@
 package businesslogic.implementation;
 
 import businesslogic.api.airport.AirportFactory;
-import businesslogic.api.route.RouteFactory;
+import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-class FlightImplTest {
+class  FlightImplTest {
 
     private String from = "DEPART";
     private String to = "ARRIVE";
@@ -34,7 +34,7 @@ class FlightImplTest {
 
     /*
     SoftAssertions.assertSoftly(softly->{
-            softly.assertThat(Route.getDeparturePlace())
+            softly.assertThat(Route.getId())
                     .isEqualTo("DEPART");
         });
      */
@@ -47,12 +47,89 @@ class FlightImplTest {
     void getFlightDuration() {
     }
 
+    // airplane info testing start
     @Test
-    void getAirplane() {
+        void testGetPlaneId1() {
+            SoftAssertions.assertSoftly(softly -> {
+                softly.assertThat(plane.getId())
+                        .isEqualTo("Hello");
+
+            });
+        }
+
+    @Test
+    void testGetPlaneName1() {
+        SoftAssertions.assertSoftly(softly -> {
+            softly.assertThat(plane.getName())
+                    .isEqualTo("There");
+        });
     }
 
     @Test
+    void testGetPlaneCapacity1() {
+        SoftAssertions.assertSoftly(softly -> {
+            softly.assertThat(plane.getCapacity())
+                    .isEqualTo(3);
+        });
+    }
+    @Test
+    void testGetPlaneId2() {
+        SoftAssertions.assertSoftly(softly -> {
+            softly.assertThat(plane2.getId())
+                    .isEqualTo("Identification");
+        });
+    }
+
+
+
+    @Test
+    void testGetPlaneName2() {
+        SoftAssertions.assertSoftly(softly -> {
+            softly.assertThat(plane2.getName())
+                    .isEqualTo("please");
+        });
+    }
+
+    @Test
+    void testGetPlaneCapacity2() {
+        SoftAssertions.assertSoftly(softly -> {
+            softly.assertThat(plane2.getCapacity())
+                    .isEqualTo(123);
+        });
+    }
+
+    @Test
+    void testGetPlaneId3() {
+        SoftAssertions.assertSoftly(softly -> {
+            softly.assertThat(plane3.getId())
+                    .isEqualTo("you are");
+        });
+    }
+
+    @Test
+    void testGetPlaneName3() {
+        SoftAssertions.assertSoftly(softly -> {
+            softly.assertThat(plane3.getName())
+                    .isEqualTo("please");
+        });
+    }
+
+    @Test
+    void testGetPlaneCapacity3() {
+        SoftAssertions.assertSoftly(softly -> {
+            softly.assertThat(plane3.getCapacity())
+                    .isEqualTo(1912);
+        });
+    }
+
+    // airplane info test end
+
+    @Test
     void getETD() {
+        SoftAssertions.assertSoftly(softly->{
+            softly.assertThat(LDTd.getDayOfYear())
+                    .isEqualTo(2012);
+        });
     }
 
     @Test
@@ -61,6 +138,10 @@ class FlightImplTest {
 
     @Test
     void getDepartureAirport() {
+        SoftAssertions.assertSoftly(softly->{
+            softly.assertThat(LDTd.getDayOfYear())
+                    .isEqualTo(2012);
+        });
     }
 
     @Test
