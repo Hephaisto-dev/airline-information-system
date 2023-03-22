@@ -4,7 +4,6 @@ import businesslogic.api.airplane.Airplane;
 import businesslogic.api.airport.Airport;
 import businesslogic.api.flight.Flight;
 import businesslogic.api.route.Route;
-import businesslogic.api.route.RouteFactory;
 import datarecords.FlightData;
 
 import java.time.Duration;
@@ -15,10 +14,10 @@ public class FlightImpl extends RouteImpl implements Flight {
     private final FlightData flightData;
     private final Airplane airplane;
 
-    public FlightImpl(Route route, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
+    public FlightImpl(Airport from, Airport to, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
                       Duration flightDuration,
                       Airplane airplane) throws IllegalArgumentException {
-        super(route.getRouteData());
+        super(from, to);
         if (etdDateTime.isAfter(etaDateTime)) {
             throw new IllegalArgumentException("ETD must be before ETA");
         }
@@ -26,12 +25,6 @@ public class FlightImpl extends RouteImpl implements Flight {
                 etdDateTime + "_" + airplane.getId(), routeData, etdDateTime, etaDateTime, flightDuration,
                 airplane.getAirplaneData());
         this.airplane = airplane;
-    }
-
-    public FlightImpl(Airport from, Airport to, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
-                      Duration flightDuration,
-                      Airplane airplane) throws IllegalArgumentException {
-        this(RouteFactory.createRoute(from, to), etdDateTime, etaDateTime, flightDuration, airplane);
     }
 
     public FlightImpl(Airport from, Airport to, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
