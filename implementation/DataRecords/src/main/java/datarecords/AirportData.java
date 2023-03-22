@@ -1,5 +1,5 @@
 package datarecords;
 
-public record AirportData(Integer id, String name, String city, String country) {
+public record AirportData(String id, String name, String city, String country) {
 
 }

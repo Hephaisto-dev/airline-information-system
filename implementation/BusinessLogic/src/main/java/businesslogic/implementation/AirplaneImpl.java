@@ -17,7 +17,7 @@ public class AirplaneImpl implements Airplane {
     }
 
     @Override
-    public int getMaxCapacity() {
+    public int getCapacity() {
         return airplaneData.capacity();
     }
 

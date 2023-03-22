@@ -6,7 +6,7 @@ import datarecords.AirplaneData;
 
 public interface Airplane extends Identifiable<String>, Nameable {
 
-    int getMaxCapacity();
+    int getCapacity();
 
     AirplaneData getAirplaneData();
 }

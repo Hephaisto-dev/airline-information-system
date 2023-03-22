@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 
 class AirplanerImplTest {
 
-    private AirplaneImpl Airplane = new AirplaneImpl("Id", "type", 2);
+    private AirplaneImpl Airplane = new AirplaneImpl("Id", "name", 2);
 
     @Test
-    void getId() {
+    void testGetId() {
         SoftAssertions.assertSoftly(softly -> {
             softly.assertThat(Airplane.getId())
                     .isEqualTo("Id");
@@ -17,17 +17,17 @@ class AirplanerImplTest {
     }
 
     @Test
-    void getPlaneType() {
+    void testGetPlaneName() {
         SoftAssertions.assertSoftly(softly -> {
-            softly.assertThat(Airplane.getId())
-                    .isEqualTo("type");
+            softly.assertThat(Airplane.getName())
+                    .isEqualTo("name");
         });
     }
 
     @Test
-    void getMaxCapacity() {
+    void testGetMaxCapacity() {
         SoftAssertions.assertSoftly(softly -> {
-            softly.assertThat(Airplane.getMaxCapacity())
+            softly.assertThat(Airplane.getCapacity())
                     .isEqualTo(2);
         });
     }

@@ -23,8 +23,8 @@ class FlightImplTest {
 
     //String, String, LocalDateTime, LocalDateTime, Duration, Airplane
     private AirplaneImpl plane3 = new AirplaneImpl("Wherever", "you are", 1912);
-    private FlightImpl FlightOne = new FlightImpl(RouteFactory.createRoute(AirportFactory.createAirport(from),
-            AirportFactory.createAirport(to)), LDTd, LDTa, dur, plane);
+    private FlightImpl FlightOne = new FlightImpl(AirportFactory.createAirport(from),
+            AirportFactory.createAirport(to), LDTd, LDTa, dur, plane);
     private FlightImpl FlightTwo = new FlightImpl(AirportFactory.createAirport(from),
             AirportFactory.createAirport(to), LDTd, LDTa, plane2);
     private FlightImpl FlightThree = new FlightImpl(AirportFactory.createAirport("Near"),

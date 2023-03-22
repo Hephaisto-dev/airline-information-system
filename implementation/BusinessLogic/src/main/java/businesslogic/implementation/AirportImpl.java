@@ -6,7 +6,7 @@ import datarecords.AirportData;
 public class AirportImpl implements Airport {
     private final AirportData airportData;
 
-    public AirportImpl(Integer id, String name, String city, String country) {
+    public AirportImpl(String id, String name, String city, String country) {
         this(new AirportData(id, name, city, country));
     }
 
@@ -30,7 +30,7 @@ public class AirportImpl implements Airport {
     }
 
     @Override
-    public Integer getId() {
+    public String getId() {
         return airportData.id();
     }
 

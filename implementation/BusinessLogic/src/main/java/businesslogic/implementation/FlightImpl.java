@@ -29,8 +29,14 @@ public class FlightImpl extends RouteImpl implements Flight {
     }
 
     public FlightImpl(Airport from, Airport to, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
+                      Duration flightDuration,
                       Airplane airplane) throws IllegalArgumentException {
-        this(RouteFactory.createRoute(from, to), etdDateTime, etaDateTime,
+        this(RouteFactory.createRoute(from, to), etdDateTime, etaDateTime, flightDuration, airplane);
+    }
+
+    public FlightImpl(Airport from, Airport to, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
+                      Airplane airplane) throws IllegalArgumentException {
+        this(from, to, etdDateTime, etaDateTime,
                 Duration.between(etdDateTime, etaDateTime), airplane);
     }
 
