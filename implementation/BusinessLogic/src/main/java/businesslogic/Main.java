@@ -2,6 +2,7 @@ package businesslogic;
 
 import businesslogic.api.airplane.Airplane;
 import businesslogic.api.airplane.AirplaneFactory;
+import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.flight.Flight;
 import businesslogic.api.flight.FlightFactory;
 
@@ -30,7 +31,8 @@ public class Main {
         System.out.println("Enter the arrival local date time: (yyyy-mm-ddThh:mm:ss)");
         String arrivalLocalDateTime = scanner.nextLine();
         LocalDateTime arrival = LocalDateTime.parse(arrivalLocalDateTime);
-        Flight flight = FlightFactory.createFlight(departurePlace, arrivalPlace, departure, arrival, airplane);
+        Flight flight = FlightFactory.createFlight(AirportFactory.createAirport(departurePlace),
+                AirportFactory.createAirport(arrivalPlace), departure, arrival, airplane);
         System.out.println("Flight " + flight.getId() + " created");
         System.out.println(flight);
     }
