@@ -23,9 +23,9 @@
     * [Use Case Edit A Route  <Martin\>](#use-case-edit-a-route--martin)
     * [Use Case Update Upcoming Flight Information  <Martin\>](#use-case-update-upcoming-flight-information--martin)
     * [Use Case Register Upcoming Flight  <Martin\>](#use-case-register-upcoming-flight--martin)
-    * [Use Case Create A Booking  <Janis\>](#use-case-create-a-booking--janis)
-    * [Use Case Adding Extras  <Janis\>](#use-case-adding-extras--janis)
-    * [Use Case Cancel A Booking  <Janis\>](#use-case-cancel-a-booking--janis)
+    * [Use Case Create A Booking  <Jazz\>](#use-case-create-a-booking--jazz)
+    * [Use Case Adding Extras  <Jazz\>](#use-case-adding-extras--jazz)
+    * [Use Case Cancel A Booking  <Jazz\>](#use-case-cancel-a-booking--jazz)
 * [Back to Table of Contents](#back-to-table-of-contents)
 <!-- TOC -->
 
