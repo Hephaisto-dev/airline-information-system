@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+
 class  FlightImplTest {
 
     private String from = "DEPART";
@@ -45,6 +48,14 @@ class  FlightImplTest {
 
     @Test
     void getFlightDuration() {
+        long expectedHours = 3;
+        long expectedMinutes = 20;
+
+        long actualHours = dur.toHours();
+        long actualMinutes = dur.toMinutes() % 60;
+
+        assertEquals(expectedHours, actualHours);
+        assertEquals(expectedMinutes, actualMinutes);
     }
 
     // airplane info testing start
@@ -126,14 +137,44 @@ class  FlightImplTest {
 
     @Test
     void getETD() {
-        SoftAssertions.assertSoftly(softly->{
-            softly.assertThat(LDTd.getDayOfYear())
+        SoftAssertions.assertSoftly(softly -> {
+            softly.assertThat(LDTd.getDayOfMonth())
+                    .as("Day of month should be 11")
+                    .isEqualTo(11);
+            softly.assertThat(LDTd.getMonthValue())
+                    .as("Month value should be 12")
+                    .isEqualTo(12);
+            softly.assertThat(LDTd.getYear())
+                    .as("Year should be 2012")
                     .isEqualTo(2012);
+            softly.assertThat(LDTd.getHour())
+                    .as("Hour should be 5")
+                    .isEqualTo(5);
+            softly.assertThat(LDTd.getMinute())
+                    .as("Minute should be 3")
+                    .isEqualTo(3);
         });
     }
 
     @Test
     void getETA() {
+        SoftAssertions.assertSoftly(softly -> {
+            softly.assertThat(LDTa.getDayOfMonth())
+                    .as("Day of month should be 11")
+                    .isEqualTo(11);
+            softly.assertThat(LDTa.getMonthValue())
+                    .as("Month value should be 12")
+                    .isEqualTo(12);
+            softly.assertThat(LDTa.getYear())
+                    .as("Year should be 2012")
+                    .isEqualTo(2012);
+            softly.assertThat(LDTa.getHour())
+                    .as("Hour should be 8")
+                    .isEqualTo(8);
+            softly.assertThat(LDTa.getMinute())
+                    .as("Minute should be 23")
+                    .isEqualTo(23);
+        });
     }
 
     @Test
@@ -155,4 +196,5 @@ class  FlightImplTest {
     @Test
     void testToString() {
     }
+
 }
