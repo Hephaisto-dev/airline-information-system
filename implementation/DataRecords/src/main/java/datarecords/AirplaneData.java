@@ -1,4 +1,4 @@
 package datarecords;
 
-public record AirplaneData(String id, int capacity, String type) {
+public record AirplaneData(String id, String name, int capacity) {
 }

@@ -9,7 +9,7 @@ class AirplanerImplTest {
 
     @Test
     void getId() {
-        SoftAssertions.assertSoftly(softly->{
+        SoftAssertions.assertSoftly(softly -> {
             softly.assertThat(Airplane.getId())
                     .isEqualTo("Id");
 
@@ -18,7 +18,7 @@ class AirplanerImplTest {
 
     @Test
     void getPlaneType() {
-        SoftAssertions.assertSoftly(softly->{
+        SoftAssertions.assertSoftly(softly -> {
             softly.assertThat(Airplane.getPlaneType())
                     .isEqualTo("type");
         });
@@ -26,7 +26,7 @@ class AirplanerImplTest {
 
     @Test
     void getMaxCapacity() {
-        SoftAssertions.assertSoftly(softly->{
+        SoftAssertions.assertSoftly(softly -> {
             softly.assertThat(Airplane.getMaxCapacity())
                     .isEqualTo(2);
         });

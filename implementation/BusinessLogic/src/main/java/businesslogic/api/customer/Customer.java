@@ -9,7 +9,7 @@ import datarecords.CustomerData;
  */
 public class Customer {
 
-    private CustomerData customerData;
+    private final CustomerData customerData;
 
     public Customer(CustomerData customerData) {
         this.customerData = customerData;

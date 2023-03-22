@@ -1,31 +1,46 @@
 package businesslogic.implementation;
 
+import businesslogic.api.airport.Airport;
+import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.route.Route;
+import datarecords.RouteData;
 
 public class RouteImpl implements Route {
-    private final String arriveIn;
-    private final String departFrom;
+    protected final RouteData routeData;
+    private final Airport departureAirport;
+    private final Airport arrivalAirport;
 
-    public RouteImpl(String from, String to) {
-        this.departFrom = from;
-        this.arriveIn = to;
+    public RouteImpl(Airport from, Airport to) {
+        this.routeData = new RouteData(from.getAirportData(), to.getAirportData());
+        this.departureAirport = from;
+        this.arrivalAirport = to;
+    }
+
+    public RouteImpl(RouteData routeData) {
+        this.routeData = routeData;
+        this.departureAirport = AirportFactory.createAirport(routeData.from());
+        this.arrivalAirport = AirportFactory.createAirport(routeData.to());
     }
 
     @Override
-    public String getDeparturePlace() {
-        return this.departFrom;
+    public Airport getDepartureAirport() {
+        return this.departureAirport;
     }
 
     @Override
-    public String getArrivalPlace() {
-        return this.arriveIn;
+    public Airport getArrivalAirport() {
+        return this.arrivalAirport;
     }
 
     @Override
     public String toString() {
         return "RouteImpl{" +
-                "arriveIn='" + arriveIn + '\'' +
-                ", departFrom='" + departFrom + '\'' +
+                "routeData=" + routeData +
                 '}';
+    }
+
+    @Override
+    public RouteData getRouteData() {
+        return routeData;
     }
 }

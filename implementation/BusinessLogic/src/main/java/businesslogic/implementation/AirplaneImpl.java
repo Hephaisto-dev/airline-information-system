@@ -1,40 +1,40 @@
 package businesslogic.implementation;
 
 import businesslogic.api.airplane.Airplane;
+import datarecords.AirplaneData;
 
 public class AirplaneImpl implements Airplane {
 
-    private final String planeID;
-    private final String planeType;
-    private final int maxCapacity;
+    private final AirplaneData airplaneData;
 
-    public AirplaneImpl(String id, String type, int capacity) {
-        this.planeID = id;
-        this.planeType = type;
-        this.maxCapacity = capacity;
+    public AirplaneImpl(String id, String name, int capacity) {
+        this.airplaneData = new AirplaneData(id, name, capacity);
     }
 
     @Override
     public String getId() {
-        return this.planeID;
-    }
-
-    @Override
-    public String getPlaneType() {
-        return this.planeType;
+        return airplaneData.id();
     }
 
     @Override
     public int getMaxCapacity() {
-        return this.maxCapacity;
+        return airplaneData.capacity();
+    }
+
+    @Override
+    public AirplaneData getAirplaneData() {
+        return airplaneData;
+    }
+
+    @Override
+    public String getName() {
+        return airplaneData.name();
     }
 
     @Override
     public String toString() {
         return "AirplaneImpl{" +
-                "planeID='" + planeID + '\'' +
-                ", planeType='" + planeType + '\'' +
-                ", maxCapacity=" + maxCapacity +
+                "airplaneData=" + airplaneData +
                 '}';
     }
 }

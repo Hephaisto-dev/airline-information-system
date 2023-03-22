@@ -2,7 +2,7 @@ package businesslogic.api.flight;
 
 import businesslogic.api.airplane.Airplane;
 import businesslogic.api.common.Identifiable;
-import datarecords.AirportData;
+import businesslogic.api.route.Route;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -16,6 +16,6 @@ public interface Flight extends Identifiable<String> {
     LocalDateTime getETD();
 
     LocalDateTime getETA();
-    AirportData getDepartureAirport();
-    AirportData getArrivalAirport();
+
+    Route getRoute();
 }

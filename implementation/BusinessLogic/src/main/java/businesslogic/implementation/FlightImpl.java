@@ -1,83 +1,66 @@
 package businesslogic.implementation;
 
 import businesslogic.api.airplane.Airplane;
+import businesslogic.api.airport.Airport;
 import businesslogic.api.flight.Flight;
-import datarecords.AirportData;
+import businesslogic.api.route.Route;
+import businesslogic.api.route.RouteFactory;
+import datarecords.FlightData;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class FlightImpl extends RouteImpl implements Flight {
 
-    private final String flightID;
-    private final LocalDateTime etdDateTime;
-    private final LocalDateTime etaDateTime;
-    private final Duration flightDuration;
+    private final FlightData flightData;
     private final Airplane airplane;
 
-    public FlightImpl(String from, String to, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
+    public FlightImpl(Route route, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
                       Duration flightDuration,
                       Airplane airplane) throws IllegalArgumentException {
-        super(from, to);
+        super(route.getRouteData());
         if (etdDateTime.isAfter(etaDateTime)) {
             throw new IllegalArgumentException("ETD must be before ETA");
         }
-        this.etdDateTime = etdDateTime;
-        this.etaDateTime = etaDateTime;
-        this.flightDuration = flightDuration;
+        this.flightData = new FlightData("FL_" + routeData.from() + "-" + routeData.to() + "_" +
+                etdDateTime + "_" + airplane.getId(), routeData, etdDateTime, etaDateTime, flightDuration,
+                airplane.getAirplaneData());
         this.airplane = airplane;
-        this.flightID = "FL_" + from + "-" + to + "_" + etdDateTime + "_" + airplane.getId();
     }
 
-    public FlightImpl(String from, String to, LocalDateTime etdDateTime, LocalDateTime etaDateTime, Airplane airplane)
-            throws IllegalArgumentException {
-        this(from, to, etdDateTime, etaDateTime,
+    public FlightImpl(Airport from, Airport to, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
+                      Airplane airplane) throws IllegalArgumentException {
+        this(RouteFactory.createRoute(from, to), etdDateTime, etaDateTime,
                 Duration.between(etdDateTime, etaDateTime), airplane);
     }
 
     @Override
     public String getId() {
-        return this.flightID;
+        return flightData.id();
     }
 
     @Override
     public Duration getFlightDuration() {
-        return this.flightDuration;
+        return flightData.flightDuration();
     }
 
     @Override
     public Airplane getAirplane() {
-        return this.airplane;
+        return airplane;
     }
 
     @Override
     public LocalDateTime getETD() {
-        return this.etdDateTime;
+        return null;
     }
 
     @Override
     public LocalDateTime getETA() {
-        return this.etaDateTime;
+        return null;
     }
 
     @Override
-    public AirportData getDepartureAirport() {
-        throw new UnsupportedOperationException("Not implemented yet");
-    }
-
-    @Override
-    public AirportData getArrivalAirport() {
-        throw new UnsupportedOperationException("Not implemented yet");
-    }
-
-    @Override
-    public String toString() {
-        return "FlightImpl{" +
-                "flightID='" + flightID + '\'' +
-                ", etdDateTime=" + etdDateTime +
-                ", etaDateTime=" + etaDateTime +
-                ", flightDuration=" + flightDuration +
-                ", airplane=" + airplane +
-                '}';
+    public Route getRoute() {
+        return this;
     }
 }

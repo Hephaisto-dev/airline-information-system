@@ -4,13 +4,14 @@ import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 class RouteImplTest {
 
     private RouteImpl Route = new RouteImpl("DEPART", "ARRIVE");
 
     @Test
     void getDeparturePlace() {
-        SoftAssertions.assertSoftly(softly->{
+        SoftAssertions.assertSoftly(softly -> {
             softly.assertThat(Route.getDeparturePlace())
                     .isEqualTo("DEPART");
         });
@@ -18,7 +19,7 @@ class RouteImplTest {
 
     @Test
     void getArrivalPlace() {
-        SoftAssertions.assertSoftly(softly->{
+        SoftAssertions.assertSoftly(softly -> {
             softly.assertThat(Route.getArrivalPlace())
                     .isEqualTo("ARRIVE");
         });
@@ -29,7 +30,7 @@ class RouteImplTest {
         String expect = "RouteImpl{arriveIn='" + Route.getArrivalPlace() + "\'";
         expect += ", departFrom='" + Route.getDeparturePlace() + "\'" + "}";
         String finalExpect = expect;
-        SoftAssertions.assertSoftly(softly->{
+        SoftAssertions.assertSoftly(softly -> {
             softly.assertThat(Route.toString())
                     .isEqualTo(finalExpect);
         });

@@ -1,6 +1,7 @@
 package gui;
 
 import businesslogic.api.airplane.AirplaneFactory;
+import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.flight.Flight;
 import businesslogic.api.flight.FlightFactory;
 import javafx.event.ActionEvent;
@@ -56,7 +57,8 @@ public class CreateFlightController implements Initializable {
 
     @FXML
     public void createFlight(ActionEvent actionEvent) {
-        Flight flight = FlightFactory.createFlight(departurePlace.getText(), arrivalPlace.getText(),
+        Flight flight = FlightFactory.createFlight(AirportFactory.createAirport(departurePlace.getText()),
+                AirportFactory.createAirport(arrivalPlace.getText()),
                 LocalDateTime.parse(deparureLocalDateTime.getText()),
                 LocalDateTime.parse(arrivalLocalDateTime.getText()),
                 AirplaneFactory.createAirplane(airplaneName.getText().toLowerCase().replace(' ', '-'),

@@ -1,7 +1,12 @@
 package businesslogic.api.route;
 
-public interface Route {
-    String getDeparturePlace();
+import businesslogic.api.airport.Airport;
+import datarecords.RouteData;
 
-    String getArrivalPlace();
+public interface Route {
+    Airport getDepartureAirport();
+
+    Airport getArrivalAirport();
+
+    RouteData getRouteData();
 }
