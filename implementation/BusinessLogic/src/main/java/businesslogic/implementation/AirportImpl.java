@@ -3,14 +3,14 @@ package businesslogic.implementation;
 import businesslogic.api.airport.Airport;
 import datarecords.AirportData;
 
-public class AiportImpl implements Airport {
+public class AirportImpl implements Airport {
     private final AirportData airportData;
 
-    public AiportImpl(Integer id, String name, String city, String country) {
+    public AirportImpl(Integer id, String name, String city, String country) {
         this(new AirportData(id, name, city, country));
     }
 
-    public AiportImpl(AirportData airportData) {
+    public AirportImpl(AirportData airportData) {
         this.airportData = airportData;
     }
 

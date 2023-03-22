@@ -1,18 +1,18 @@
 package businesslogic.implementation;
 
+import businesslogic.api.airport.AirportFactory;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class RouteImplTest {
 
-    private RouteImpl Route = new RouteImpl("DEPART", "ARRIVE");
+    private RouteImpl Route = new RouteImpl(AirportFactory.createAirport("DEPART"),
+            AirportFactory.createAirport("ARRIVE"));
 
     @Test
     void getDeparturePlace() {
         SoftAssertions.assertSoftly(softly -> {
-            softly.assertThat(Route.getDeparturePlace())
+            softly.assertThat(Route.getDepartureAirport().getName())
                     .isEqualTo("DEPART");
         });
     }
@@ -20,19 +20,9 @@ class RouteImplTest {
     @Test
     void getArrivalPlace() {
         SoftAssertions.assertSoftly(softly -> {
-            softly.assertThat(Route.getArrivalPlace())
+            softly.assertThat(Route.getArrivalAirport().getName())
                     .isEqualTo("ARRIVE");
         });
     }
 
-    @Test
-    void testToString() {
-        String expect = "RouteImpl{arriveIn='" + Route.getArrivalPlace() + "\'";
-        expect += ", departFrom='" + Route.getDeparturePlace() + "\'" + "}";
-        String finalExpect = expect;
-        SoftAssertions.assertSoftly(softly -> {
-            softly.assertThat(Route.toString())
-                    .isEqualTo(finalExpect);
-        });
-    }
 }

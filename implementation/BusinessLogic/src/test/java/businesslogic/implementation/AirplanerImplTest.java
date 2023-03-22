@@ -19,7 +19,7 @@ class AirplanerImplTest {
     @Test
     void getPlaneType() {
         SoftAssertions.assertSoftly(softly -> {
-            softly.assertThat(Airplane.getPlaneType())
+            softly.assertThat(Airplane.getId())
                     .isEqualTo("type");
         });
     }

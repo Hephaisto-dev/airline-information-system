@@ -63,4 +63,12 @@ public class FlightImpl extends RouteImpl implements Flight {
     public Route getRoute() {
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "FlightImpl{" +
+                "flightData=" + flightData +
+                ", airplane=" + airplane +
+                '}';
+    }
 }
