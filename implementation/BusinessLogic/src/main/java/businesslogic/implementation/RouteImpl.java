@@ -34,9 +34,7 @@ public class RouteImpl implements Route {
 
     @Override
     public String toString() {
-        return "RouteImpl{" +
-                "routeData=" + routeData +
-                '}';
+        return routeData.from().name() + " -> " + routeData.to().name();
     }
 
     @Override

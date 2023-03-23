@@ -25,4 +25,11 @@ class RouteImplTest {
         });
     }
 
+    @Test
+    void testToString() {
+        SoftAssertions.assertSoftly(softly -> {
+            softly.assertThat(Route.toString())
+                    .isEqualTo("DEPART -> ARRIVE");
+        });
+    }
 }
