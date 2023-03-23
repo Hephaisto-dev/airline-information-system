@@ -184,4 +184,15 @@ class FlightImplTest {
                     .isEqualTo("ARRIVE");
         });
     }
+
+    @Test
+    void getFlightImplOne() {
+        Flight FlightOne = new FlightImpl(AirportFactory.createAirport(from),
+                AirportFactory.createAirport(to), LDTd, LDTa, dur, plane);
+        assertEquals(LDTd, FlightOne.getETD());
+        assertEquals(LDTa, FlightOne.getETA());
+        assertEquals(dur, FlightOne.getFlightDuration());
+        assertEquals(plane, FlightOne.getAirplane());
+    }
+
 }
