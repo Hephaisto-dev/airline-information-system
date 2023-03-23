@@ -3,6 +3,7 @@ package businesslogic.implementation;
 import businesslogic.api.airplane.Airplane;
 import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.flight.Flight;
+import org.assertj.core.api.Assertions;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 
@@ -118,5 +119,13 @@ class FlightImplTest {
                     .isEqualTo("FlightImpl{flightData=" + tooLongFlight.getFlightData() +
                             ", airplane=" + plane2 + '}');
         });
+    }
+
+    @Test
+    void testETDBeforeETA() {
+        Assertions.assertThatThrownBy(() -> new FlightImpl(AirportFactory.createAirport(from),
+                AirportFactory.createAirport(to), ldta, ldtd, plane))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("ETD must be before ETA");
     }
 }
