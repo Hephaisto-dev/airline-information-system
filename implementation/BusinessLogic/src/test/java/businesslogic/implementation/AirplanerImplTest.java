@@ -1,34 +1,29 @@
 package businesslogic.implementation;
 
-import org.assertj.core.api.SoftAssertions;
+import businesslogic.api.airplane.Airplane;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class AirplanerImplTest {
 
-    private AirplaneImpl Airplane = new AirplaneImpl("Id", "name", 2);
+    private final Airplane Airplane = new AirplaneImpl("Id", "name", 2);
 
     @Test
     void testGetId() {
-        SoftAssertions.assertSoftly(softly -> {
-            softly.assertThat(Airplane.getId())
-                    .isEqualTo("Id");
-
-        });
+        assertThat(Airplane.getId())
+                .isEqualTo("Id");
     }
 
     @Test
     void testGetPlaneName() {
-        SoftAssertions.assertSoftly(softly -> {
-            softly.assertThat(Airplane.getName())
-                    .isEqualTo("name");
-        });
+        assertThat(Airplane.getName())
+                .isEqualTo("name");
     }
 
     @Test
     void testGetMaxCapacity() {
-        SoftAssertions.assertSoftly(softly -> {
-            softly.assertThat(Airplane.getCapacity())
-                    .isEqualTo(2);
-        });
+        assertThat(Airplane.getCapacity())
+                .isEqualTo(2);
     }
 }
