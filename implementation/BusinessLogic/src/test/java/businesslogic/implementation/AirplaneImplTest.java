@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-class AirplanerImplTest {
+class AirplaneImplTest {
 
     private final Airplane Airplane = new AirplaneImpl("Id", "name", 2);
 
