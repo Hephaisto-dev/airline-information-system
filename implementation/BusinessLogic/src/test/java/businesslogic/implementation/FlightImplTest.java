@@ -115,6 +115,7 @@ class FlightImplTest {
             softly.assertThat(flightTwo.toString())
                     .isEqualTo("FlightImpl{flightData=" + flightTwo.getFlightData() +
                             ", airplane=" + plane2 + '}');
+
             softly.assertThat(tooLongFlight.toString())
                     .isEqualTo("FlightImpl{flightData=" + tooLongFlight.getFlightData() +
                             ", airplane=" + plane2 + '}');

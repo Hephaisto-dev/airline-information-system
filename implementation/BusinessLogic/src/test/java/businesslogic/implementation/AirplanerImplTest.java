@@ -31,5 +31,4 @@ class AirplanerImplTest {
                     .isEqualTo(2);
         });
     }
-
 }
