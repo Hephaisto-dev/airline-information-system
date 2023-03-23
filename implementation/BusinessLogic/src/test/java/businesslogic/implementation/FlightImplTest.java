@@ -26,14 +26,10 @@ class FlightImplTest {
     private final Duration dur2 = Duration.between(LDTd2, LDTa2);
     private final Airplane plane = new AirplaneImpl("Hello", "There", 3);
     private final Airplane plane2 = new AirplaneImpl("Identification", "please", 123);
-    //String, String, LocalDateTime, LocalDateTime, Duration, Airplane
-    private final Airplane plane3 = new AirplaneImpl("Wherever", "you are", 1912);
     private final Flight FlightOne = new FlightImpl(AirportFactory.createAirport(from),
             AirportFactory.createAirport(to), LDTd, LDTa, dur, plane);
     private final Flight FlightTwo = new FlightImpl(AirportFactory.createAirport(from),
-            AirportFactory.createAirport(to), LDTd, LDTa, plane2);
-    private final Flight FlightThree = new FlightImpl(AirportFactory.createAirport("Near"),
-            AirportFactory.createAirport("Far"), LDTd2, LDTa2, plane3);
+            AirportFactory.createAirport(to), LDTd2, LDTa2, plane2);
     private final Flight TooLongFlight = new FlightImpl(AirportFactory.createAirport(from),
             AirportFactory.createAirport(to), LDTd, LDTa2, plane2);
 
@@ -101,30 +97,6 @@ class FlightImplTest {
         });
     }
 
-    @Test
-    void testGetPlaneId3() {
-        SoftAssertions.assertSoftly(softly -> {
-            softly.assertThat(plane3.getId())
-                    .isEqualTo("Wherever");
-        });
-    }
-
-    @Test
-    void testGetPlaneName3() {
-        SoftAssertions.assertSoftly(softly -> {
-            softly.assertThat(plane3.getName())
-                    .isEqualTo("you are");
-        });
-    }
-
-    @Test
-    void testGetPlaneCapacity3() {
-        SoftAssertions.assertSoftly(softly -> {
-            softly.assertThat(plane3.getCapacity())
-                    .isEqualTo(1912);
-        });
-    }
-
     // airplane info test end
 
     @Test
@@ -187,12 +159,25 @@ class FlightImplTest {
 
     @Test
     void getFlightImplOne() {
-        Flight FlightOne = new FlightImpl(AirportFactory.createAirport(from),
-                AirportFactory.createAirport(to), LDTd, LDTa, dur, plane);
         assertEquals(LDTd, FlightOne.getETD());
         assertEquals(LDTa, FlightOne.getETA());
         assertEquals(dur, FlightOne.getFlightDuration());
         assertEquals(plane, FlightOne.getAirplane());
+    }
+
+    @Test
+    void getFlightImplTwo() {
+        assertEquals(LDTd2, FlightTwo.getETD());
+        assertEquals(LDTa2, FlightTwo.getETA());
+        assertEquals(dur2, FlightTwo.getFlightDuration());
+        assertEquals(plane2, FlightTwo.getAirplane());
+    }
+
+    @Test
+    void getFlightImplTooLong() {
+        assertEquals(LDTd, FlightOne.getETD());
+        assertEquals(LDTa2, FlightTwo.getETA());
+        assertEquals(plane2, FlightTwo.getAirplane());
     }
 
 }

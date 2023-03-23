@@ -13,6 +13,9 @@ public class FlightImpl extends RouteImpl implements Flight {
 
     private final FlightData flightData;
     private final Airplane airplane;
+    private final LocalDateTime LDTd;
+    private final LocalDateTime LDTa;
+
 
     public FlightImpl(Airport from, Airport to, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
                       Duration flightDuration,
@@ -25,6 +28,8 @@ public class FlightImpl extends RouteImpl implements Flight {
                 etdDateTime + "_" + airplane.getId(), routeData, etdDateTime, etaDateTime, flightDuration,
                 airplane.getAirplaneData());
         this.airplane = airplane;
+        this.LDTd = etdDateTime;
+        this.LDTa = etaDateTime;
     }
 
     public FlightImpl(Airport from, Airport to, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
@@ -50,13 +55,11 @@ public class FlightImpl extends RouteImpl implements Flight {
 
     @Override
     public LocalDateTime getETD() {
-        return null;
+        return this.LDTd;
     }
 
     @Override
-    public LocalDateTime getETA() {
-        return null;
-    }
+    public LocalDateTime getETA() {return this.LDTa;}
 
     @Override
     public Route getRoute() {
