@@ -32,7 +32,8 @@ public class GUIApp extends Application {
                 new CustomerController(this::getSceneManager, businessLogicAPI.getCustomerManager());
         case "gui.PrimaryController" -> new PrimaryController(this::getSceneManager);
         case "gui.SecondaryController" -> new SecondaryController(this::getSceneManager);
-        case "gui.CreateFlightController" -> new CreateFlightController(this::getSceneManager);
+        case "gui.CreateFlightController" ->
+                new CreateFlightController(this::getSceneManager, businessLogicAPI.getFlightManager());
         default -> null;
     };
 

@@ -22,7 +22,7 @@ public class AirplaneImpl implements Airplane {
     }
 
     @Override
-    public AirplaneData getAirplaneData() {
+    public AirplaneData getData() {
         return airplaneData;
     }
 

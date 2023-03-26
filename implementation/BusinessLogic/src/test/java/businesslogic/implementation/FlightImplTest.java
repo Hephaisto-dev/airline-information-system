@@ -82,12 +82,12 @@ class FlightImplTest {
     @Test
     void testGetRoute() {
         SoftAssertions.assertSoftly(softly -> {
-            softly.assertThat(flightOne.getRoute().getDepartureAirport().getName()).isEqualTo("DEPART");
-            softly.assertThat(flightOne.getRoute().getArrivalAirport().getName()).isEqualTo("ARRIVE");
-            softly.assertThat(flightTwo.getRoute().getDepartureAirport().getName()).isEqualTo("DEPART");
-            softly.assertThat(flightTwo.getRoute().getArrivalAirport().getName()).isEqualTo("ARRIVE");
-            softly.assertThat(tooLongFlight.getRoute().getDepartureAirport().getName()).isEqualTo("DEPART");
-            softly.assertThat(tooLongFlight.getRoute().getArrivalAirport().getName()).isEqualTo("ARRIVE");
+            softly.assertThat(flightOne.getRoute().getFrom().getName()).isEqualTo("DEPART");
+            softly.assertThat(flightOne.getRoute().getTo().getName()).isEqualTo("ARRIVE");
+            softly.assertThat(flightTwo.getRoute().getFrom().getName()).isEqualTo("DEPART");
+            softly.assertThat(flightTwo.getRoute().getTo().getName()).isEqualTo("ARRIVE");
+            softly.assertThat(tooLongFlight.getRoute().getFrom().getName()).isEqualTo("DEPART");
+            softly.assertThat(tooLongFlight.getRoute().getTo().getName()).isEqualTo("ARRIVE");
         });
     }
 
@@ -110,14 +110,14 @@ class FlightImplTest {
     void testToString() {
         SoftAssertions.assertSoftly(softly -> {
             softly.assertThat(flightOne.toString())
-                    .isEqualTo("FlightImpl{flightData=" + flightOne.getFlightData() +
+                    .isEqualTo("FlightImpl{flightData=" + flightOne.getData() +
                             ", airplane=" + plane + '}');
             softly.assertThat(flightTwo.toString())
-                    .isEqualTo("FlightImpl{flightData=" + flightTwo.getFlightData() +
+                    .isEqualTo("FlightImpl{flightData=" + flightTwo.getData() +
                             ", airplane=" + plane2 + '}');
 
             softly.assertThat(tooLongFlight.toString())
-                    .isEqualTo("FlightImpl{flightData=" + tooLongFlight.getFlightData() +
+                    .isEqualTo("FlightImpl{flightData=" + tooLongFlight.getData() +
                             ", airplane=" + plane2 + '}');
         });
     }

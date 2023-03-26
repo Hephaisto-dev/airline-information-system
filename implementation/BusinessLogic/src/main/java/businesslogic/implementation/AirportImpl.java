@@ -25,7 +25,7 @@ public class AirportImpl implements Airport {
     }
 
     @Override
-    public AirportData getAirportData() {
+    public AirportData getData() {
         return airportData;
     }
 

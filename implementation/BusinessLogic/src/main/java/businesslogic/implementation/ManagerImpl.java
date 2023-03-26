@@ -6,19 +6,18 @@ import persistence.StorageService;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ManagerImpl<T> implements Manager<T> {
+public class ManagerImpl<T extends Record> implements Manager<T> {
     private final Set<T> tSet = new HashSet<>();
+    //TODO use the storageService when adding, deleting or getting all
     private final StorageService<T> storageService;
 
     public ManagerImpl(StorageService<T> storageService) {
         this.storageService = storageService;
-        tSet.addAll(storageService.getAll());
     }
 
     @Override
     public T add(T t) {
         tSet.add(t);
-        storageService.add(t);
         return t;
     }
 

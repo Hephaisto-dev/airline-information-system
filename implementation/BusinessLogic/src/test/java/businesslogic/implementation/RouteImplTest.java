@@ -13,13 +13,13 @@ class RouteImplTest {
 
     @Test
     void getDeparturePlace() {
-        assertThat(Route.getDepartureAirport().getName())
+        assertThat(Route.getFrom().getName())
                 .isEqualTo("DEPART");
     }
 
     @Test
     void getArrivalPlace() {
-        assertThat(Route.getArrivalAirport().getName())
+        assertThat(Route.getTo().getName())
                 .isEqualTo("ARRIVE");
     }
 

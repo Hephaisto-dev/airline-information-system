@@ -24,9 +24,9 @@ public class FlightImpl extends RouteImpl implements Flight {
         if (etdDateTime.isAfter(etaDateTime)) {
             throw new IllegalArgumentException("ETD must be before ETA");
         }
-        this.flightData = new FlightData("FL_" + routeData.from().name() + "-" + routeData.to().name() + "_" +
+        this.flightData = new FlightData("FL_" + from.getName() + "-" + to.getName() + "_" +
                 etdDateTime + "_" + airplane.getId(), routeData, etdDateTime, etaDateTime, flightDuration,
-                airplane.getAirplaneData());
+                airplane.getData());
         this.airplane = airplane;
         this.LDTd = etdDateTime;
         this.LDTa = etaDateTime;
@@ -67,7 +67,7 @@ public class FlightImpl extends RouteImpl implements Flight {
     }
 
     @Override
-    public FlightData getFlightData() {
+    public FlightData getData() {
         return flightData;
     }
 

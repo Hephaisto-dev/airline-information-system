@@ -4,6 +4,7 @@ import businesslogic.api.airplane.AirplaneFactory;
 import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.flight.Flight;
 import businesslogic.api.flight.FlightFactory;
+import businesslogic.api.manager.FlightManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,6 +30,7 @@ import java.util.function.Supplier;
 public class CreateFlightController implements Initializable {
 
     private final Supplier<SceneManager> sceneManagerSupplier;
+    private final FlightManager flightManager;
     @FXML
     public TextField departurePlace;
     @FXML
@@ -44,8 +46,9 @@ public class CreateFlightController implements Initializable {
     @FXML
     private Label result;
 
-    public CreateFlightController(Supplier<SceneManager> sceneManagerSupplier) {
+    public CreateFlightController(Supplier<SceneManager> sceneManagerSupplier, FlightManager flightManager) {
         this.sceneManagerSupplier = sceneManagerSupplier;
+        this.flightManager = flightManager;
     }
 
     @FXML
@@ -63,6 +66,7 @@ public class CreateFlightController implements Initializable {
                 LocalDateTime.parse(arrivalLocalDateTime.getText()),
                 AirplaneFactory.createAirplane(airplaneName.getText().toLowerCase().replace(' ', '-'),
                         airplaneName.getText(), 150));
+        flightManager.add(flight.getData());
         result.setText("Flight created!" + flight);
     }
 

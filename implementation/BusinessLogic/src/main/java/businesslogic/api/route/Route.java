@@ -4,9 +4,9 @@ import businesslogic.api.airport.Airport;
 import datarecords.RouteData;
 
 public interface Route {
-    Airport getDepartureAirport();
+    Airport getFrom();
 
-    Airport getArrivalAirport();
+    Airport getTo();
 
     RouteData getRouteData();
 }

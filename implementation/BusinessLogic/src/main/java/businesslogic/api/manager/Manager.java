@@ -1,10 +1,8 @@
 package businesslogic.api.manager;
 
-import persistence.StorageService;
-
 import java.util.Set;
 
-public interface Manager<T> {
+public interface Manager<T extends Record> {
     T add(T t);
 
     void delete(T t);
