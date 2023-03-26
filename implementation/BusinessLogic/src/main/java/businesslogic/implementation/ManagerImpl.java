@@ -6,11 +6,11 @@ import persistence.StorageService;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ManagerImpl<T, U extends StorageService<T>> implements Manager<T, U> {
+public class ManagerImpl<T> implements Manager<T> {
     private final Set<T> tSet = new HashSet<>();
     private final StorageService<T> storageService;
 
-    public ManagerImpl(U storageService) {
+    public ManagerImpl(StorageService<T> storageService) {
         this.storageService = storageService;
         tSet.addAll(storageService.getAll());
     }

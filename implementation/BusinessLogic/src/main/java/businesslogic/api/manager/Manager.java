@@ -4,7 +4,7 @@ import persistence.StorageService;
 
 import java.util.Set;
 
-public interface Manager<T, U extends StorageService<T>> {
+public interface Manager<T> {
     T add(T t);
 
     void delete(T t);

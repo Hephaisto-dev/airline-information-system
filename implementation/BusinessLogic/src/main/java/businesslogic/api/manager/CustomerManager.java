@@ -11,7 +11,7 @@ import persistence.CustomerStorageService;
  *
  * @author Informatics Fontys Venlo
  */
-public class CustomerManager extends ManagerImpl<CustomerData, CustomerStorageService> {
+public class CustomerManager extends ManagerImpl<CustomerData> {
     public CustomerManager(CustomerStorageService storageService) {
         super(storageService);
     }
