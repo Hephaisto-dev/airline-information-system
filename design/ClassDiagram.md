@@ -1,4 +1,4 @@
 
-![Class Diagram](design/ProjectClassDiagram.svg)
+![Class Diagram](ProjectClassDiagram.svg)
 
 ## [Back to Table of Contents](../TableOfContents.md)
