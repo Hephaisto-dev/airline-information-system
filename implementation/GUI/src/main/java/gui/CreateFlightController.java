@@ -3,6 +3,7 @@ package gui;
 import businesslogic.api.airplane.AirplaneFactory;
 import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.flight.Flight;
+import businesslogic.api.flight.FlightCreator;
 import businesslogic.api.flight.FlightFactory;
 import businesslogic.api.manager.FlightManager;
 import javafx.event.ActionEvent;
@@ -30,7 +31,11 @@ import java.util.function.Supplier;
 public class CreateFlightController implements Initializable {
 
     private final Supplier<SceneManager> sceneManagerSupplier;
+
     private final FlightManager flightManager;
+
+    private FlightCreator flightCreator;
+
     @FXML
     public TextField departurePlace;
     @FXML
@@ -49,6 +54,7 @@ public class CreateFlightController implements Initializable {
     public CreateFlightController(Supplier<SceneManager> sceneManagerSupplier, FlightManager flightManager) {
         this.sceneManagerSupplier = sceneManagerSupplier;
         this.flightManager = flightManager;
+        this.flightCreator = new FlightCreator(flightManager);
     }
 
     @FXML
@@ -60,14 +66,16 @@ public class CreateFlightController implements Initializable {
 
     @FXML
     public void createFlight(ActionEvent actionEvent) {
-        Flight flight = FlightFactory.createFlight(AirportFactory.createAirport(departurePlace.getText()),
-                AirportFactory.createAirport(arrivalPlace.getText()),
-                LocalDateTime.parse(deparureLocalDateTime.getText()),
-                LocalDateTime.parse(arrivalLocalDateTime.getText()),
-                AirplaneFactory.createAirplane(airplaneName.getText().toLowerCase().replace(' ', '-'),
-                        airplaneName.getText(), 150));
-        flightManager.add(flight);
-        result.setText("Flight created!" + flight);
+        String output = sendFlight(departurePlace.getText(),
+                arrivalPlace.getText(),
+                deparureLocalDateTime.getText(),
+                arrivalLocalDateTime.getText(),
+                airplaneName.getText());
+        result.setText(output);
+    }
+
+    public String sendFlight(String departPlace, String arrivePlace, String departLDT, String arriveLDT, String planeName){
+        return flightCreator.createFlight(departPlace, arrivePlace, departLDT, arriveLDT, planeName);
     }
 
 
