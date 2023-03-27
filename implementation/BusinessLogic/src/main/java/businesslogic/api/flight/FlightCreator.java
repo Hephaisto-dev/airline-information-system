@@ -7,6 +7,7 @@ import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.manager.FlightManager;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
 
 public class FlightCreator {
     private final FlightManager flightManager;
@@ -38,17 +39,13 @@ public class FlightCreator {
         }
         try{
             dLTD = LocalDateTime.parse(departLDT);
-        }catch(Exception e){
-            e.printStackTrace();
-            //figuring out what kind of exception we're dealing with here in order for this to be more precisely handled
+        }catch(DateTimeParseException dtpe) {
             errors = true;
             errorMessages += "Departure Time is not entered correctly" + "\n";
         }
         try{
             aLTD = LocalDateTime.parse(arriveLDT);
-        }catch(Exception e){
-            e.printStackTrace();
-            //figuring out what kind of exception we're dealing with here in order for this to be more precisely handled
+        }catch(DateTimeParseException dtpe){
             errors = true;
             errorMessages += "Arrival Time is not entered correctly" + "\n";
         }
