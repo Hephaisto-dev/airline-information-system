@@ -1,6 +1,7 @@
 package businesslogic.implementation;
 
 import businesslogic.api.BusinessLogicAPI;
+import businesslogic.api.common.PersistantDataContainer;
 import businesslogic.api.manager.*;
 import persistence.PersistenceAPI;
 
@@ -12,7 +13,7 @@ import java.util.List;
  * @author Informatics Fontys Venlo
  */
 public class BusinessLogicAPIImpl implements BusinessLogicAPI {
-    private final List<Manager<? extends Record>> managers;
+    private final List<Manager<? extends PersistantDataContainer<? extends Record>, ? extends Record>> managers;
 
     public BusinessLogicAPIImpl(PersistenceAPI persistenceAPI) {
         managers = List.of(
@@ -43,7 +44,7 @@ public class BusinessLogicAPIImpl implements BusinessLogicAPI {
         return getManager(FlightManager.class);
     }
 
-    private <U extends Manager<? extends Record>> U getManager(Class<U> clazz) {
+    private <D extends Record, U extends Manager<? extends PersistantDataContainer<D>, D>> U getManager(Class<U> clazz) {
         return managers.stream()
                 .filter(clazz::isInstance)
                 .map(clazz::cast)

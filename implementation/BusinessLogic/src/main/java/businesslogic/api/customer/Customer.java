@@ -1,5 +1,6 @@
 package businesslogic.api.customer;
 
+import businesslogic.api.common.PersistantDataContainer;
 import datarecords.CustomerData;
 
 /**
@@ -7,12 +8,17 @@ import datarecords.CustomerData;
  *
  * @author Informatics Fontys Venlo
  */
-public class Customer {
+public class Customer implements PersistantDataContainer<CustomerData> {
 
     private final CustomerData customerData;
 
     public Customer(CustomerData customerData) {
         this.customerData = customerData;
+    }
+
+    @Override
+    public CustomerData getData() {
+        return customerData;
     }
 
     // Write Customer Business Logic (methods) here

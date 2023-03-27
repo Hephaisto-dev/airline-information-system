@@ -1,5 +1,5 @@
 package businesslogic.api.common;
 
-public interface PersistantDataContainer<T extends Record> {
-    T getData();
+public interface PersistantDataContainer<D extends Record> {
+    D getData();
 }

@@ -1,5 +1,6 @@
 package businesslogic.api.manager;
 
+import businesslogic.api.customer.Customer;
 import businesslogic.implementation.ManagerImpl;
 import datarecords.CustomerData;
 import persistence.CustomerStorageService;
@@ -11,7 +12,7 @@ import persistence.CustomerStorageService;
  *
  * @author Informatics Fontys Venlo
  */
-public class CustomerManager extends ManagerImpl<CustomerData> {
+public class CustomerManager extends ManagerImpl<Customer, CustomerData> {
     public CustomerManager(CustomerStorageService storageService) {
         super(storageService);
     }

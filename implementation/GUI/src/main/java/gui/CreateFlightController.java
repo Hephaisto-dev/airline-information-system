@@ -66,7 +66,7 @@ public class CreateFlightController implements Initializable {
                 LocalDateTime.parse(arrivalLocalDateTime.getText()),
                 AirplaneFactory.createAirplane(airplaneName.getText().toLowerCase().replace(' ', '-'),
                         airplaneName.getText(), 150));
-        flightManager.add(flight.getData());
+        flightManager.add(flight);
         result.setText("Flight created!" + flight);
     }
 
