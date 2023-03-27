@@ -13,6 +13,12 @@ import java.util.Map;
  * @author Informatics Fontys Venlo
  */
 public class BusinessLogicAPIImpl implements BusinessLogicAPI {
+    /**
+     * Map of all managers.
+     * The key is the class of the manager.
+     * The value is the manager itself.
+     * Warning: Class type must me be the same of the manager.
+     */
     private final Map<Class<? extends Manager<? extends PersistantDataContainer<? extends Record>, ? extends Record>>,
             Manager<? extends PersistantDataContainer<? extends Record>, ? extends Record>> managers;
 
