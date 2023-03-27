@@ -5,7 +5,6 @@ import businesslogic.api.common.PersistantDataContainer;
 import businesslogic.api.manager.*;
 import persistence.PersistenceAPI;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,15 +16,12 @@ public class BusinessLogicAPIImpl implements BusinessLogicAPI {
     private final List<Manager<? extends PersistantDataContainer<? extends Record>, ? extends Record>> managers;
 
     public BusinessLogicAPIImpl(PersistenceAPI persistenceAPI) {
-        managers = new ArrayList<>();
-        registerManager(new AirplaneManager(persistenceAPI.getAirplaneStorageService()));
-        registerManager(new AirportManager(persistenceAPI.getAirportStorageService()));
-        registerManager(new CustomerManager(persistenceAPI.getCustomerStorageService()));
-        registerManager(new FlightManager(persistenceAPI.getFlightStorageService()));
-    }
-
-    private <T extends PersistantDataContainer<D>, D extends Record> void registerManager(Manager<T, D> manager) {
-        this.managers.add(manager);
+        managers = List.of(
+                new CustomerManager(persistenceAPI.getCustomerStorageService()),
+                new AirplaneManager(persistenceAPI.getAirplaneStorageService()),
+                new AirportManager(persistenceAPI.getAirportStorageService()),
+                new FlightManager(persistenceAPI.getFlightStorageService())
+        );
     }
 
     @Override
