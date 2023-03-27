@@ -5,7 +5,7 @@ import businesslogic.api.common.PersistantDataContainer;
 import businesslogic.api.manager.*;
 import persistence.PersistenceAPI;
 
-import java.util.List;
+import java.util.Map;
 
 /**
  * Actual business logic implementation.
@@ -13,14 +13,15 @@ import java.util.List;
  * @author Informatics Fontys Venlo
  */
 public class BusinessLogicAPIImpl implements BusinessLogicAPI {
-    private final List<Manager<? extends PersistantDataContainer<? extends Record>, ? extends Record>> managers;
+    private final Map<Class<? extends Manager<? extends PersistantDataContainer<? extends Record>, ? extends Record>>,
+            Manager<? extends PersistantDataContainer<? extends Record>, ? extends Record>> managers;
 
     public BusinessLogicAPIImpl(PersistenceAPI persistenceAPI) {
-        managers = List.of(
-                new CustomerManager(persistenceAPI.getCustomerStorageService()),
-                new AirplaneManager(persistenceAPI.getAirplaneStorageService()),
-                new AirportManager(persistenceAPI.getAirportStorageService()),
-                new FlightManager(persistenceAPI.getFlightStorageService())
+        managers = Map.of(
+                CustomerManager.class, new CustomerManager(persistenceAPI.getCustomerStorageService()),
+                AirplaneManager.class, new AirplaneManager(persistenceAPI.getAirplaneStorageService()),
+                AirportManager.class, new AirportManager(persistenceAPI.getAirportStorageService()),
+                FlightManager.class, new FlightManager(persistenceAPI.getFlightStorageService())
         );
     }
 
@@ -45,10 +46,6 @@ public class BusinessLogicAPIImpl implements BusinessLogicAPI {
     }
 
     private <D extends Record, U extends Manager<? extends PersistantDataContainer<D>, D>> U getManager(Class<U> clazz) {
-        return managers.stream()
-                .filter(clazz::isInstance)
-                .map(clazz::cast)
-                .findFirst()
-                .orElseThrow();
+        return clazz.cast(managers.get(clazz));
     }
 }
