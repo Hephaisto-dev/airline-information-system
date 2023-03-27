@@ -20,7 +20,7 @@ public class BusinessLogicAPIImpl implements BusinessLogicAPI {
      * Warning: Class type must me be the same of the manager.
      */
     private final Map<Class<? extends Manager<? extends PersistantDataContainer<? extends Record>, ? extends Record>>,
-            Manager<? extends PersistantDataContainer<? extends Record>, ? extends Record>> managers;
+            ? extends Manager<? extends PersistantDataContainer<? extends Record>, ? extends Record>> managers;
 
     public BusinessLogicAPIImpl(PersistenceAPI persistenceAPI) {
         managers = Map.of(
@@ -30,7 +30,6 @@ public class BusinessLogicAPIImpl implements BusinessLogicAPI {
                 FlightManager.class, new FlightManager(persistenceAPI.getFlightStorageService())
         );
     }
-
     @Override
     public AirplaneManager getAirplaneManager() {
         return getManager(AirplaneManager.class);
@@ -51,7 +50,7 @@ public class BusinessLogicAPIImpl implements BusinessLogicAPI {
         return getManager(FlightManager.class);
     }
 
-    private <D extends Record, U extends Manager<? extends PersistantDataContainer<D>, D>> U getManager(Class<U> clazz) {
+    private <U extends Manager<? extends PersistantDataContainer<D>, D>, D extends Record> U getManager(Class<U> clazz) {
         return clazz.cast(managers.get(clazz));
     }
 }
