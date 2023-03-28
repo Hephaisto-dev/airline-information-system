@@ -6,4 +6,7 @@ public interface AirplaneFactory {
     static Airplane createAirplane(String id, String type, int capacity) {
         return new AirplaneImpl(id, type, capacity);
     }
+    static AirplaneImpl createAirplaneImpl(String id, String type, int capacity){
+        return new AirplaneImpl(id, type, capacity);
+    }
 }
