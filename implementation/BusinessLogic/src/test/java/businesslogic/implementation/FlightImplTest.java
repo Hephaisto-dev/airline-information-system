@@ -2,6 +2,7 @@ package businesslogic.implementation;
 
 import businesslogic.api.airplane.Airplane;
 import businesslogic.api.airport.AirportFactory;
+import businesslogic.api.airport.NoAirportException;
 import businesslogic.api.flight.Flight;
 import org.assertj.core.api.Assertions;
 import org.assertj.core.api.SoftAssertions;
@@ -30,6 +31,9 @@ class FlightImplTest {
             AirportFactory.createAirport(to), ldtd2, ldta2, plane2);
     private final Flight tooLongFlight = new FlightImpl(AirportFactory.createAirport(from),
             AirportFactory.createAirport(to), ldtd, ldta2, plane2);
+
+    FlightImplTest() throws NoAirportException {
+    }
 
     @Test
     void testGetETD() {

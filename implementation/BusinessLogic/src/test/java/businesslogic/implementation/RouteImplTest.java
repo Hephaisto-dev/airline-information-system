@@ -1,6 +1,7 @@
 package businesslogic.implementation;
 
 import businesslogic.api.airport.AirportFactory;
+import businesslogic.api.airport.NoAirportException;
 import businesslogic.api.route.Route;
 import org.junit.jupiter.api.Test;
 
@@ -10,6 +11,9 @@ class RouteImplTest {
 
     private final Route Route = new RouteImpl(AirportFactory.createAirport("DEPART"),
             AirportFactory.createAirport("ARRIVE"));
+
+    RouteImplTest() throws NoAirportException {
+    }
 
     @Test
     void getDeparturePlace() {

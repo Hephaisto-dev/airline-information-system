@@ -3,12 +3,17 @@ package businesslogic.api.flight;
 import businesslogic.api.airplane.Airplane;
 import businesslogic.api.airport.Airport;
 import businesslogic.implementation.FlightImpl;
+import persistence.NoDBConnectionException;
 
 import java.time.LocalDateTime;
 
 public interface FlightFactory {
     static Flight createFlight(Airport from, Airport to, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
-                               Airplane airplaneData) {
-        return new FlightImpl(from, to, etdDateTime, etaDateTime, airplaneData);
+                               Airplane airplaneData) throws NoDBConnectionException {
+        if(true){
+            return new FlightImpl(from, to, etdDateTime, etaDateTime, airplaneData);
+        }else{
+            throw new NoDBConnectionException();
+        }
     }
 }
