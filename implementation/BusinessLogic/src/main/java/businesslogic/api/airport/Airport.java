@@ -1,11 +1,11 @@
 package businesslogic.api.airport;
 
-import businesslogic.api.common.PersistantDataContainer;
-import businesslogic.api.common.Identifiable;
 import businesslogic.api.common.Nameable;
+import businesslogic.api.common.PersistantDataContainer;
+import businesslogic.api.common.StringIdentifiable;
 import datarecords.AirportData;
 
-public interface Airport extends Identifiable<String>, Nameable, PersistantDataContainer<AirportData> {
+public interface Airport extends StringIdentifiable, Nameable, PersistantDataContainer<AirportData> {
     String getCity();
 
     String getCountry();

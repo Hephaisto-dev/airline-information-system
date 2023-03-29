@@ -13,10 +13,9 @@ public interface AirportFactory {
     }
 
     static Airport createAirport(String name) throws NoAirportException {
-
-        if(true){
+        if (true) {
             return new AirportImpl("AI", name, "", "");
-        }else{
+        } else {
             throw new NoAirportException();
         }
     }

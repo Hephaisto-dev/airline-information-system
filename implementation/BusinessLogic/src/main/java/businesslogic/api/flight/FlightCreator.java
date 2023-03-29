@@ -15,78 +15,79 @@ import java.time.format.DateTimeParseException;
 public class FlightCreator {
     private final FlightManager flightManager;
 
-    public FlightCreator(FlightManager manage){
+    public FlightCreator(FlightManager manage) {
         this.flightManager = manage;
     }
 
-    public String createFlight(String departPlace, String arrivePlace, String departLDT, String arriveLDT, String planeName){
+    public String createFlight(String departPlace, String arrivePlace, String departLDT, String arriveLDT,
+                               String planeName) {
         boolean errors = false;
-        String errorMessages = "";
         Airport departPort = null;
         Airport arrivePort = null;
         LocalDateTime dLTD = null;
         LocalDateTime aLTD = null;
         Airplane plane = null;
+        StringBuilder stringBuilder = new StringBuilder();
 
-        try{
+        try {
             departPort = AirportFactory.createAirport(departPlace);
-        }catch(NoAirportException a){
+        } catch (NoAirportException a) {
             errors = true;
-            errorMessages += "Departure Airport does not exist in our database" + "\n";
+            stringBuilder.append("Departure Airport does not exist in our database\n");
         }
-        try{
+        try {
             arrivePort = AirportFactory.createAirport(arrivePlace);
-        }catch(NoAirportException a){
+        } catch (NoAirportException a) {
             errors = true;
-            errorMessages += "Arrival Airport does not exist in our database" + "\n";
+            stringBuilder.append("Arrival Airport does not exist in our database\n");
         }
-        try{
+        try {
             dLTD = LocalDateTime.parse(departLDT);
-        }catch(DateTimeParseException dtpe) {
+        } catch (DateTimeParseException dtpe) {
             errors = true;
-            errorMessages += "Departure Time is not entered correctly" + "\n";
+            stringBuilder.append("Departure Time is not entered correctly\n");
         }
-        try{
+        try {
             aLTD = LocalDateTime.parse(arriveLDT);
-        }catch(DateTimeParseException dtpe){
+        } catch (DateTimeParseException dtpe) {
             errors = true;
-            errorMessages += "Arrival Time is not entered correctly" + "\n";
+            stringBuilder.append("Arrival Time is not entered correctly\n");
         }
-        if(!errorMessages.contains("Time is not entered correctly")){
-            if(!aLTD.isAfter(dLTD)){
+        if (aLTD != null && dLTD != null) {
+            if (!aLTD.isAfter(dLTD)) {
                 errors = true;
-                errorMessages += "Time of departure must be before time of arrival" + "\n";
+                stringBuilder.append("Time of departure must be before time of arrival\n");
             }
-            if(aLTD.isBefore(LocalDateTime.now()) || dLTD.isBefore(LocalDateTime.now())){
+            if (aLTD.isBefore(LocalDateTime.now()) || dLTD.isBefore(LocalDateTime.now())) {
                 errors = true;
-                errorMessages += "Ensure that the flight times aren't in the past" + "\n";
+                stringBuilder.append("Ensure that the flight times aren't in the past\n");
             }
         }
-        try{
+        try {
             plane = AirplaneFactory.createAirplane(planeName);
-        }catch(NoAirplaneException na){
+        } catch (NoAirplaneException na) {
             errors = true;
-            errorMessages += "An airplane with the provided ID does not exist in our database" + "\n";
+            stringBuilder.append("An airplane with the provided ID does not exist in our database\n");
         }
 
 
-        if(!errors){
-            try{
-                Flight flight = FlightFactory.createFlight(departPort,arrivePort,dLTD,aLTD,plane);
+        if (!errors) {
+            try {
+                Flight flight = FlightFactory.createFlight(departPort, arrivePort, dLTD, aLTD, plane);
                 flightManager.add(flight);
-            }catch(NoDBConnectionException e){
+            } catch (NoDBConnectionException e) {
                 return "There seems to be an issue with the database, please try again." + "\n"
                         + "+If the issue persists, contact the IT department";
             }
             return "Flight was successfully created";
-        }else{
-            errorMessages += "Please correct this and try again";
-            return errorMessages;
+        } else {
+            stringBuilder.append("Please correct this and try again");
+            return stringBuilder.toString();
         }
     }
 
     public String createFlight(Airport departPlace, Airport arrivePlace, LocalDateTime departLDT,
-                               LocalDateTime arriveLDT, Airplane planeName){
+                               LocalDateTime arriveLDT, Airplane planeName) {
         boolean errors = false;
         String errorMessages = "";
         Airport departPort = null;
@@ -95,69 +96,70 @@ public class FlightCreator {
         LocalDateTime aLTD = null;
         Airplane plane = null;
 
-        try{
+        try {
             departPort = departPlace;
-        }catch(Exception e){//placeholder for Exceptions saying sth about it being wrong
+        } catch (Exception e) {//placeholder for Exceptions saying sth about it being wrong
             errors = true;
             errorMessages += "Departure Airport does not exist in our database" + "\n";
         }
-        try{
+        try {
             arrivePort = arrivePlace;
-        }catch(Exception e){//placeholder for Exceptions saying sth about it being wrong
+        } catch (Exception e) {//placeholder for Exceptions saying sth about it being wrong
             errors = true;
             errorMessages += "Arrival Airport does not exist in our database" + "\n";
         }
-        try{
+        try {
             dLTD = departLDT;
-            if(dLTD == null){
+            if (dLTD == null) {
                 throw new NullPointerException();
             }
-        }catch(Exception e) {
+        } catch (Exception e) {
             errors = true;
             errorMessages += "Departure Time is not entered correctly" + "\n";
         }
-        try{
+        try {
             aLTD = arriveLDT;
-            if(aLTD == null){
+            if (aLTD == null) {
                 throw new NullPointerException();
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             errors = true;
             errorMessages += "Arrival Time is not entered correctly" + "\n";
         }
-        if(!errorMessages.contains("Time is not entered correctly")){
-            if(!aLTD.isAfter(dLTD)){
+        if (!errorMessages.contains("Time is not entered correctly")) {
+            if (!aLTD.isAfter(dLTD)) {
                 errors = true;
                 errorMessages += "Time of departure must be before time of arrival" + "\n";
             }
-            if(aLTD.isBefore(LocalDateTime.now()) || dLTD.isBefore(LocalDateTime.now())){
+            if (aLTD.isBefore(LocalDateTime.now()) || dLTD.isBefore(LocalDateTime.now())) {
                 errors = true;
                 errorMessages += "Ensure that the flight times aren't in the past" + "\n";
             }
         }
-        try{
+        try {
             plane = planeName;
-        }catch(Exception e){//placeholder for Exceptions saying sth about it being wrong
+        } catch (Exception e) {//placeholder for Exceptions saying sth about it being wrong
             errors = true;
             errorMessages += "An airplane with the provided ID does not exist in our database" + "\n";
         }
 
 
-        if(!errors){
+        if (!errors) {
 
-            try{
-                Flight flight = FlightFactory.createFlight(departPort,arrivePort,dLTD,aLTD,plane);
+            try {
+                Flight flight = FlightFactory.createFlight(departPort, arrivePort, dLTD, aLTD, plane);
                 flightManager.add(flight);
-            }catch(Exception e){
+            } catch (Exception e) {
                 return "Flight was successfully created";//DELTE WHEN ACTUAL IMPL OF .add() method has occurred
                 /*
                 e.printStackTrace();
-                //figuring out what kind of exception we're dealing with here in order for this to be more precisely handled
+                //figuring out what kind of exception we're dealing with here in order for this to be more precisely
+                handled
                 return "There seems to be an issue with the database, please try again." + "\n"
                         + "+If the issue persists, contact the IT department";*/
             }
             return "Flight was successfully created";
-        }else{
+        } else {
             errorMessages += "Please correct this and try again";
             return errorMessages;
         }

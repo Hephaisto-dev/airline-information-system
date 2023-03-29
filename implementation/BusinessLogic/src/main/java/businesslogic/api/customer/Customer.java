@@ -10,7 +10,7 @@ import datarecords.CustomerData;
  */
 public class Customer implements PersistantDataContainer<CustomerData> {
 
-    private final CustomerData customerData;
+    private CustomerData customerData;
 
     public Customer(CustomerData customerData) {
         this.customerData = customerData;

@@ -20,16 +20,17 @@ public class BusinessLogicAPIImpl implements BusinessLogicAPI {
      * Warning: Class type must me be the same of the manager.
      */
     private final Map<Class<? extends Manager<? extends PersistantDataContainer<? extends Record>, ? extends Record>>,
-            ? extends Manager<? extends PersistantDataContainer<? extends Record>, ? extends Record>> managers;
+            ? extends Manager<? extends PersistantDataContainer<? extends Record>, ? extends Record>> managerRegistry;
 
     public BusinessLogicAPIImpl(PersistenceAPI persistenceAPI) {
-        managers = Map.of(
+        managerRegistry = Map.of(
                 CustomerManager.class, new CustomerManager(persistenceAPI.getCustomerStorageService()),
                 AirplaneManager.class, new AirplaneManager(persistenceAPI.getAirplaneStorageService()),
                 AirportManager.class, new AirportManager(persistenceAPI.getAirportStorageService()),
                 FlightManager.class, new FlightManager(persistenceAPI.getFlightStorageService())
         );
     }
+
     @Override
     public AirplaneManager getAirplaneManager() {
         return getManager(AirplaneManager.class);
@@ -50,7 +51,8 @@ public class BusinessLogicAPIImpl implements BusinessLogicAPI {
         return getManager(FlightManager.class);
     }
 
-    private <U extends Manager<? extends PersistantDataContainer<D>, D>, D extends Record> U getManager(Class<U> clazz) {
-        return clazz.cast(managers.get(clazz));
+    @Override
+    public <U extends Manager<? extends PersistantDataContainer<D>, D>, D extends Record> U getManager(Class<U> clazz) {
+        return clazz.cast(managerRegistry.get(clazz));
     }
 }

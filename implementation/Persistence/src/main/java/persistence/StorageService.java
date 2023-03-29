@@ -3,10 +3,10 @@ package persistence;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface StorageService<T extends Record> {
-    T add(T data);
+public interface StorageService<D extends Record> {
+    D add(D data);
 
-    default List<T> getAll() {
+    default List<D> getAll() {
         return new ArrayList<>();
     };
 }

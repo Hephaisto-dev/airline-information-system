@@ -59,7 +59,9 @@ public class FlightImpl extends RouteImpl implements Flight {
     }
 
     @Override
-    public LocalDateTime getETA() {return this.LDTa;}
+    public LocalDateTime getETA() {
+        return this.LDTa;
+    }
 
     @Override
     public Route getRoute() {

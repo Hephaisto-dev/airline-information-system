@@ -10,9 +10,9 @@ import java.time.LocalDateTime;
 public interface FlightFactory {
     static Flight createFlight(Airport from, Airport to, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
                                Airplane airplaneData) throws NoDBConnectionException {
-        if(true){
+        if (true) {
             return new FlightImpl(from, to, etdDateTime, etaDateTime, airplaneData);
-        }else{
+        } else {
             throw new NoDBConnectionException();
         }
     }
