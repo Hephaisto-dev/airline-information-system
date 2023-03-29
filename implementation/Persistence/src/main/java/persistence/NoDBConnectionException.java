@@ -1,5 +1,6 @@
 package persistence;
 
-public class NoDBConnectionException extends Exception{
-    public NoDBConnectionException(){}
+public class NoDBConnectionException extends Exception {
+    public NoDBConnectionException() {
+    }
 }

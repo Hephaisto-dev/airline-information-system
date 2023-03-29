@@ -1,10 +1,6 @@
 package gui;
 
-import businesslogic.api.airplane.AirplaneFactory;
-import businesslogic.api.airport.AirportFactory;
-import businesslogic.api.flight.Flight;
 import businesslogic.api.flight.FlightCreator;
-import businesslogic.api.flight.FlightFactory;
 import businesslogic.api.manager.FlightManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,7 +10,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
-import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -33,9 +28,6 @@ public class CreateFlightController implements Initializable {
     private final Supplier<SceneManager> sceneManagerSupplier;
 
     private final FlightManager flightManager;
-
-    private FlightCreator flightCreator;
-
     @FXML
     public TextField departurePlace;
     @FXML
@@ -48,6 +40,7 @@ public class CreateFlightController implements Initializable {
     public TextField airplaneName;
     @FXML
     public Button createButton;
+    private FlightCreator flightCreator;
     @FXML
     private Label result;
 
@@ -74,7 +67,8 @@ public class CreateFlightController implements Initializable {
         result.setText(output);
     }
 
-    public String sendFlight(String departPlace, String arrivePlace, String departLDT, String arriveLDT, String planeName){
+    public String sendFlight(String departPlace, String arrivePlace, String departLDT, String arriveLDT,
+                             String planeName) {
         return flightCreator.createFlight(departPlace, arrivePlace, departLDT, arriveLDT, planeName);
     }
 

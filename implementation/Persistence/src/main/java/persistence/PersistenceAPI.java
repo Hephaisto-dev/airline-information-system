@@ -20,15 +20,21 @@ public interface PersistenceAPI {
 
     default AirplaneStorageService getAirplaneStorageService() {
         return new AirplaneStorageServiceImpl();
-    };
+    }
+
+
 
     default AirportStorageService getAirportStorageService() {
         return new AirportStorageServiceImpl();
-    };
+    }
+
+
 
     default FlightStorageService getFlightStorageService() {
         return new FlightStorageServiceImpl();
-    };
+    }
+
+
 
     // This interface can be extended with all services that need to be made
     // available to the business logic, e.g. to store Products:

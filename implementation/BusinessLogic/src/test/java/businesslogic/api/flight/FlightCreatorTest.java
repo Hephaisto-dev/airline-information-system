@@ -21,35 +21,8 @@ class FlightCreatorTest {
 
     static HashMap<String, Airport> AirportHash = new HashMap<>();
     static Airport port1;
-
-    static {
-        try {
-            port1 = AirportFactory.createAirport("DUS");
-        } catch (NoAirportException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     static Airport port2;
-
-    static {
-        try {
-            port2 = AirportFactory.createAirport("NYC");
-        } catch (NoAirportException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     static Airport port3;//This one is to be a wrong Airport, once we know
-
-    static {
-        try {
-            port3 = AirportFactory.createAirport("WRONG");
-        } catch (NoAirportException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     // how to do that
     static HashMap<String, LocalDateTime> LDTHash = new HashMap<>();
     static LocalDateTime LDT1 = LocalDateTime.of(2024, 2, 2, 1, 23, 45);
@@ -60,6 +33,31 @@ class FlightCreatorTest {
     static HashMap<String, Airplane> PlaneHash = new HashMap<>();
     static Airplane plane1 = AirplaneFactory.createAirplane("Fly", "me", 123);
     static Airplane plane2 = AirplaneFactory.createAirplane("Flighter", "planeType", 150);//needs to be faulty plane
+
+    static {
+        try {
+            port1 = AirportFactory.createAirport("DUS");
+        } catch (NoAirportException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    static {
+        try {
+            port2 = AirportFactory.createAirport("NYC");
+        } catch (NoAirportException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    static {
+        try {
+            port3 = AirportFactory.createAirport("WRONG");
+        } catch (NoAirportException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private final FlightStorageService FSSI = new FlightStorageServiceImpl();
     private final FlightManager FM = new FlightManager(FSSI);
     FlightCreator flightCreator = new FlightCreator(FM);
