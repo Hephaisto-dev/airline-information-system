@@ -27,9 +27,10 @@ class FlightCreatorTest {
     static AirportImpl port2 = AirportFactory.createAirportImpl("NYC");
     static AirportImpl port3 = AirportFactory.createAirportImpl("WRONG");//This one is to be a wrong Airport, once we know how to do that
     static HashMap<String, LocalDateTime> LDTHash = new HashMap<>();
-    static LocalDateTime LDT1 = LocalDateTime.of(2020,02,02,01,23,45);
-    static LocalDateTime LDT2 = LocalDateTime.of(2020,02,02,02,02,02);
-    static LocalDateTime LDT3 = LocalDateTime.of(2020,03,04,05,06,07);
+    static LocalDateTime LDT1 = LocalDateTime.of(2024,02,02,01,23,45);
+    static LocalDateTime LDT2 = LocalDateTime.of(2024,02,02,02,02,02);
+    static LocalDateTime LDT3 = LocalDateTime.of(2024,03,04,05,06,07);
+    static LocalDateTime LDT4 = LocalDateTime.of(2020,2,2,2,2,2);
     static LocalDateTime nullTime = null;
 
     static HashMap<String, AirplaneImpl> PlaneHash = new HashMap<>();
@@ -46,6 +47,7 @@ class FlightCreatorTest {
         LDTHash.put("middle",LDT2);
         LDTHash.put("late",LDT3);
         LDTHash.put("nuTime",nullTime);
+        LDTHash.put("pastTime",LDT4);
         PlaneHash.put("workingPlane",plane1);
         PlaneHash.put("faultyPlane", plane2);
     }
@@ -71,6 +73,8 @@ class FlightCreatorTest {
             //"port1,port3,early, normal,plane1,Arrival airport does not exist",
             "port1,port2,nuTime,late,plane1,Departure Time is not entered",
             "port1,port2,early,nuTime,plane1,Arrival Time is not entered",
+            "port1,port2,pastTime,early,plane1,times aren't in the past",
+            "port1,port2,early,pastTime,plane1,times aren't in the past"
             //"port1,port2,early,late,plane2,provided ID does not exist in our database"
     })//Commented out Tests are ready, but the implementation is lagging behind. Once it isn't anymore, we can use them
     void createFlightOverload(String place1, String place2, String time1, String time2, String plane, String expectation) {

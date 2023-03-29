@@ -56,6 +56,10 @@ public class FlightCreator {
                 errors = true;
                 errorMessages += "Time of departure must be before time of arrival" + "\n";
             }
+            if(aLTD.isBefore(LocalDateTime.now()) || dLTD.isBefore(LocalDateTime.now())){
+                errors = true;
+                errorMessages += "Ensure that the flight times aren't in the past" + "\n";
+            }
         }
         try{
             plane = AirplaneFactory.createAirplane(planeName.toLowerCase().replace(' ', '-'),
@@ -130,6 +134,10 @@ public class FlightCreator {
             if(!aLTD.isAfter(dLTD)){
                 errors = true;
                 errorMessages += "Time of departure must be before time of arrival" + "\n";
+            }
+            if(aLTD.isBefore(LocalDateTime.now()) || dLTD.isBefore(LocalDateTime.now())){
+                errors = true;
+                errorMessages += "Ensure that the flight times aren't in the past" + "\n";
             }
         }
         try{
