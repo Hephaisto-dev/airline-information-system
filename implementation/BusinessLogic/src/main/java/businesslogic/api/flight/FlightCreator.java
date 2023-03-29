@@ -5,8 +5,6 @@ import businesslogic.api.airplane.AirplaneFactory;
 import businesslogic.api.airport.Airport;
 import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.manager.FlightManager;
-import businesslogic.implementation.AirplaneImpl;
-import businesslogic.implementation.AirportImpl;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
@@ -90,15 +88,15 @@ public class FlightCreator {
         }
     }
 
-    public String createFlight(AirportImpl departPlace, AirportImpl arrivePlace, LocalDateTime departLDT,
-                               LocalDateTime arriveLDT, AirplaneImpl planeName){
+    public String createFlight(Airport departPlace, Airport arrivePlace, LocalDateTime departLDT,
+                               LocalDateTime arriveLDT, Airplane planeName){
         boolean errors = false;
         String errorMessages = "";
-        AirportImpl departPort = null;
-        AirportImpl arrivePort = null;
+        Airport departPort = null;
+        Airport arrivePort = null;
         LocalDateTime dLTD = null;
         LocalDateTime aLTD = null;
-        AirplaneImpl plane = null;
+        Airplane plane = null;
 
         try{
             departPort = departPlace;

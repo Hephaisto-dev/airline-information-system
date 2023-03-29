@@ -15,8 +15,4 @@ public interface AirportFactory {
     static Airport createAirport(String name) {
         return new AirportImpl("AI", name, "", "");
     }
-
-    static AirportImpl createAirportImpl(String name) {
-        return new AirportImpl("AI", name, "", "");
-    }
 }
