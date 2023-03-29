@@ -24,16 +24,16 @@ class FlightCreatorTest {
     static Airport port3 = AirportFactory.createAirport("WRONG");//This one is to be a wrong Airport, once we know
     // how to do that
     static HashMap<String, LocalDateTime> LDTHash = new HashMap<>();
-    static LocalDateTime LDT1 = LocalDateTime.of(2024, 02, 02, 01, 23, 45);
-    static LocalDateTime LDT2 = LocalDateTime.of(2024, 02, 02, 02, 02, 02);
-    static LocalDateTime LDT3 = LocalDateTime.of(2024, 03, 04, 05, 06, 07);
+    static LocalDateTime LDT1 = LocalDateTime.of(2024, 2, 2, 1, 23, 45);
+    static LocalDateTime LDT2 = LocalDateTime.of(2024, 2, 2, 2, 2, 2);
+    static LocalDateTime LDT3 = LocalDateTime.of(2024, 3, 4, 5, 6, 7);
     static LocalDateTime LDT4 = LocalDateTime.of(2020, 2, 2, 2, 2, 2);
     static LocalDateTime nullTime = null;
     static HashMap<String, Airplane> PlaneHash = new HashMap<>();
     static Airplane plane1 = AirplaneFactory.createAirplane("Fly", "me", 123);
     static Airplane plane2 = AirplaneFactory.createAirplane("Flighter", "planeType", 150);//needs to be faulty plane
-    private FlightStorageService FSSI = new FlightStorageServiceImpl();
-    private FlightManager FM = new FlightManager(FSSI);
+    private final FlightStorageService FSSI = new FlightStorageServiceImpl();
+    private final FlightManager FM = new FlightManager(FSSI);
     FlightCreator flightCreator = new FlightCreator(FM);
     // later
 
