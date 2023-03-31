@@ -20,6 +20,8 @@
 
 > [Class Diagram](design/ClassDiagram.md)
 
+> [Class Diagram: Create a Flight](design/ClassDiagramCreateFlight.md)
+
 ## [Implementation](implementation/ImplementationNavigation.md)
 
 > Not available at the moment

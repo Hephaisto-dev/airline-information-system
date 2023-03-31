@@ -4,5 +4,7 @@ Here we collect the links of our files in this folder to make traversal as smoot
 
 >   [Class Diagram](ClassDiagram.md)
 
+>   [Class Diagram](ClassDiagramCreateFlight.md)
+
 
 ## [Back to Table of Contents](../TableOfContents.md)
