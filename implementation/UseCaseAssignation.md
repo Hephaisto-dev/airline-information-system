@@ -56,10 +56,10 @@
 >>  Just
 
 >   Playing around
->    
+>
 >   Trying
 >>  Testing
->>   
->>   Enjoying
 >>
+>>   Enjoying
+>
 >>  Destroying
