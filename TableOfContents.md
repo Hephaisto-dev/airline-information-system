@@ -24,7 +24,7 @@
 
 ## [Implementation](implementation/ImplementationNavigation.md)
 
-> Not available at the moment
+> [Use Case Assignation](implementation/UseCaseAssignation.md)
 
 ## [Project-management](project-management/PRJmanagementNavigation.md)
 
