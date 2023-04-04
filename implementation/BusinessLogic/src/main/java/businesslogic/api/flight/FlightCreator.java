@@ -12,7 +12,7 @@ import persistence.NoDBConnectionException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 
-public class FlightCreator {
+public class  FlightCreator {
     private final FlightManager flightManager;
 
     public FlightCreator(FlightManager manage) {

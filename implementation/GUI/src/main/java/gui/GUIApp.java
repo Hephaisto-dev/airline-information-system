@@ -11,7 +11,7 @@ import java.io.InputStream;
 
 
 /**
- * Main GUI App. Gets Business Logic injected. Delegates the switching of scenes
+ * persistence.Main GUI App. Gets Business Logic injected. Delegates the switching of scenes
  * to the SceneManager. The controllerFactory takes care of instantiating the
  * controllers. This enables you to use parameterized constructors and to inject
  * (as in the example below regarding the CustomerController) a link to the
