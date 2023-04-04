@@ -54,7 +54,7 @@ public class GUIAppTest {
     @Test
     void testAddCustomer(FxRobot robot) {
         when(customerManager.add(any()))
-                .thenReturn(new Customer(new CustomerData(1, "Elon", "Musk", LocalDate.of(1971, Month.JUNE, 28))));
+                .thenReturn(new Customer(new CustomerData("1", "Elon", "Musk", LocalDate.of(1971, Month.JUNE, 28), "elonMusk@tesla.com")));
 
         ArgumentCaptor<Customer> customerCaptor = ArgumentCaptor.forClass(Customer.class);
 

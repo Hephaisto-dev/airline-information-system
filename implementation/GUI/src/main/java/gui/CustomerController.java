@@ -57,7 +57,7 @@ public class CustomerController implements Initializable {
     private void storeCustomer() {
 
         CustomerData customerData = new CustomerData(0, firstName.getText(), lastName.getText(),
-                LocalDate.parse(dob.getText()));
+                LocalDate.parse(dob.getText()), email);
 
         Customer addedCustomer = customerManager.add(new Customer(customerData));
 
