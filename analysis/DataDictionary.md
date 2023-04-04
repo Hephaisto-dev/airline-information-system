@@ -28,3 +28,8 @@
 
 
                                                                                                                                                                                                                                                                                                                                                                                                     
+
+<!--From here are my own Testing things-->
+|Column1   |   Column2   |Column3   |
+|---|---|---|
+|<ul><li>1</li><li>2</il></ul>   |Text   |<ul><li>a</li></ul>   |
