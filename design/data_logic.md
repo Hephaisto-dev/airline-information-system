@@ -10,6 +10,9 @@
     - [RouteData](#table-routedata)
     - [FlightData](#table-flightdata)
     
+- [Triggers]()
+    - [Flight_is_route](#trigger-flightisroute)
+    - [Plane_in_flight](#trigger-planeinflight)
                       
 ---
 
@@ -87,4 +90,42 @@ create table FlightData(
     primary key (id)
 );
 ```
+---
 
+### Trigger FlightIsRoute
+
+```sql
+create function flightisroute() returns trigger
+    language plpgsql
+as
+$$
+BEGIN
+    INSERT INTO FlightData (routeDataFrom, routeDataToo)
+    SELECT fromm, too
+    FROM RouteData
+    WHERE id = routedata.id;
+    RETURN NEW;
+END;
+$$;
+
+alter function flightisroute() owner to postgres;
+```
+---
+
+### Trigger PlaneInFlight
+
+```sql
+create function planeinflight() returns trigger
+    language plpgsql
+as
+$$
+BEGIN
+    INSERT INTO FlightData (airplaneID)
+    SELECT id
+    FROM AirplaneData;
+    RETURN NEW;
+END;
+$$;
+
+alter function planeinflight() owner to postgres;
+```
