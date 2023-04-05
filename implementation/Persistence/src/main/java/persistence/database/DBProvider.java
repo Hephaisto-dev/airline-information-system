@@ -32,6 +32,7 @@ public class DBProvider {
                     String[] serverNames = {props.getProperty(prefix + "dbhost")};
 
                     source.setServerNames(serverNames);
+                    source.setPortNumber(Integer.parseInt(props.getProperty(prefix + "port")));
                     source.setUser(props.getProperty(prefix + "username"));
                     source.setDatabaseName(props.getProperty(prefix + "dbname"));
                     source.setPassword(props.getProperty(prefix + "password"));

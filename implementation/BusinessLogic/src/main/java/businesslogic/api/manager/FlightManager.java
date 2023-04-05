@@ -19,4 +19,5 @@ public class FlightManager extends ManagerImpl<Flight, FlightData> {
                 .findFirst()
                 .orElse(null);
     }
+
 }
