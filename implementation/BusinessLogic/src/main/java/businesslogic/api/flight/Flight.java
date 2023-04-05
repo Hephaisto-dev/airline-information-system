@@ -20,4 +20,7 @@ public interface Flight extends StringIdentifiable, PersistantDataContainer<Flig
     LocalDateTime getETA();
 
     Route getRoute();
+
+    String bookSeat(int column, String row);
+    String cancelBookedSeat(String target);
 }
