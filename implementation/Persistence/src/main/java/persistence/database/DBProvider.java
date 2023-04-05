@@ -3,8 +3,8 @@ package persistence.database;
 import org.postgresql.ds.PGSimpleDataSource;
 
 import javax.sql.DataSource;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -45,7 +45,7 @@ public class DBProvider {
 
     static Properties properties(String propFileName) {
         Properties properties = new Properties();
-        try (FileInputStream fis = new FileInputStream(propFileName);) {
+        try (InputStream fis = DBProvider.class.getResourceAsStream(propFileName);) {
             properties.load(fis);
         } catch (IOException ignored) {
             Logger.getLogger(DBProvider.class.getName()).log(
