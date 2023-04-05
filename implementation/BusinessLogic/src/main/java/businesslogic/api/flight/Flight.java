@@ -19,4 +19,7 @@ public interface Flight extends PersistantDataContainer<FlightData> {
     LocalDateTime getETA();
 
     Route getRoute();
+
+    String bookSeat(int column, String row);
+    String cancelBookedSeat(String target);
 }
