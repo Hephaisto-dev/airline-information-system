@@ -1,6 +1,7 @@
 package businesslogic.implementation;
 
 import businesslogic.api.airport.Airport;
+import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.flight.Flight;
 import businesslogic.api.route.Route;
 import datarecords.RouteData;
@@ -15,24 +16,22 @@ public class RouteImpl implements Route {
     private final Map<Flight, Duration> flightTransits;
 
     public RouteImpl(Airport from, Airport to) {
-        this.flightTransits = new HashMap<>();
-        this.routeData = new RouteData(from.getData(), to.getData(), new HashMap<>());
+        this(new HashMap<>(), new RouteData(from.getData(), to.getData(), new HashMap<>()));
+    }
+
+    public RouteImpl(Map<Flight, Duration> flightTransits, RouteData routeData) {
+        this.routeData = routeData;
+        this.flightTransits = flightTransits;
     }
 
     @Override
     public Airport getFrom() {
-        return this.flightTransits.keySet().stream()
-                .min((f1, f2) -> f1.getETD().compareTo(f2.getETD()))
-                .map(flight -> flight.getRoute().getFrom())
-                .orElse(null);
+        return AirportFactory.createAirport(routeData.from());
     }
 
     @Override
     public Airport getTo() {
-        return this.flightTransits.keySet().stream()
-                .max((f1, f2) -> f1.getETA().compareTo(f2.getETA()))
-                .map(flight -> flight.getRoute().getTo())
-                .orElse(null);
+        return AirportFactory.createAirport(routeData.to());
     }
 
     @Override

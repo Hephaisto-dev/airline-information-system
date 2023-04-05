@@ -9,7 +9,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class RouteImplTest {
 
-    private final Route Route = new RouteImpl(AirportFactory.createAirport("DEPART"),
+    private final Route route = new RouteImpl(AirportFactory.createAirport("DEPART"),
             AirportFactory.createAirport("ARRIVE"));
 
     RouteImplTest() throws NoAirportException {
@@ -17,19 +17,19 @@ class RouteImplTest {
 
     @Test
     void getDeparturePlace() {
-        assertThat(Route.getFrom().getName())
+        assertThat(route.getFrom().getName())
                 .isEqualTo("DEPART");
     }
 
     @Test
     void getArrivalPlace() {
-        assertThat(Route.getTo().getName())
+        assertThat(route.getTo().getName())
                 .isEqualTo("ARRIVE");
     }
 
     @Test
     void testToString() {
-        assertThat(Route.toString())
+        assertThat(route.toString())
                 .isEqualTo("DEPART -> ARRIVE");
     }
 }
