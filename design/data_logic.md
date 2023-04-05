@@ -13,6 +13,8 @@
 - [Triggers]()
     - [Flight_is_route](#trigger-flightisroute)
     - [Plane_in_flight](#trigger-planeinflight)
+     
+- [Diagram]()
                       
 ---
 
@@ -128,3 +130,7 @@ $$;
 
 alter function planeinflight() owner to postgres;
 ```
+
+### Diagram
+
+![Diagram](images/database.svg)
