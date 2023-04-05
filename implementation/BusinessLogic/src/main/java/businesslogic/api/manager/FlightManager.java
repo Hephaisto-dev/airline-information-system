@@ -4,6 +4,7 @@ import businesslogic.api.flight.Flight;
 import businesslogic.implementation.ManagerImpl;
 import datarecords.FlightData;
 import persistence.FlightStorageService;
+import persistence.FlightStorageServiceImpl;
 
 public class FlightManager extends ManagerImpl<Flight, FlightData> {
     public FlightManager(FlightStorageService storageService) {
@@ -12,6 +13,8 @@ public class FlightManager extends ManagerImpl<Flight, FlightData> {
 
 
     }
+    FlightStorageServiceImpl flightStorageService = new FlightStorageServiceImpl();
+
 
     private Flight searchFlight(String searchPhrase) {
         return getAll().stream()
@@ -19,4 +22,5 @@ public class FlightManager extends ManagerImpl<Flight, FlightData> {
                 .findFirst()
                 .orElse(null);
     }
+
 }

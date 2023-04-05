@@ -31,8 +31,8 @@ class FlightCreatorTest {
     static LocalDateTime LDT4 = LocalDateTime.of(2020, 2, 2, 2, 2, 2);
     static LocalDateTime nullTime = null;
     static HashMap<String, Airplane> PlaneHash = new HashMap<>();
-    static Airplane plane1 = AirplaneFactory.createAirplane("Fly", "me", 123);
-    static Airplane plane2 = AirplaneFactory.createAirplane("Flighter", "planeType", 150);//needs to be faulty plane
+    static Airplane plane1 = AirplaneFactory.createAirplane("Fly", "me", 123,1);
+    static Airplane plane2 = AirplaneFactory.createAirplane("Flighter", "planeType", 150,1);//needs to be faulty plane
 
     static {
         try {
@@ -90,7 +90,6 @@ class FlightCreatorTest {
             //"FROM,,2023-12-12T12:12:12,2023-12-12T15:15:15,plane,No arrival destination was provided",
             //"FROM,TO,,2023-12-12T15:15:15,plane,No departure time was provided",
             //"FROM,TO,2023-12-12T12:12:12,,plane,No arrival time was provided",
-
             //"FROM,TO,2023-12-12T12:12:12,2023-12-12T15:15:15,,No plane was provided",
 
             //also tests about the different types of data that can be processed
