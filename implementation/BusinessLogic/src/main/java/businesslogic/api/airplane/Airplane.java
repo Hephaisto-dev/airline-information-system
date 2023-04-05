@@ -8,4 +8,6 @@ import datarecords.AirplaneData;
 public interface Airplane extends StringIdentifiable, Nameable, PersistantDataContainer<AirplaneData> {
 
     int getCapacity();
+    int getLength();
+    int getWidth();
 }

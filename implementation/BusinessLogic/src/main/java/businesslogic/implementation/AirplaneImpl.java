@@ -7,8 +7,8 @@ public class AirplaneImpl implements Airplane {
 
     private final AirplaneData airplaneData;
 
-    public AirplaneImpl(String id, String name, int capacity) {
-        this.airplaneData = new AirplaneData(id, name, capacity);
+    public AirplaneImpl(String id, String name, int length, int width) {
+        this.airplaneData = new AirplaneData(id, name, length, width);
     }
 
     @Override
@@ -18,7 +18,17 @@ public class AirplaneImpl implements Airplane {
 
     @Override
     public int getCapacity() {
-        return airplaneData.capacity();
+        return airplaneData.length() * airplaneData.width();
+    }
+
+    @Override
+    public int getLength() {
+        return airplaneData.length();
+    }
+
+    @Override
+    public int getWidth() {
+        return airplaneData.width();
     }
 
     @Override
