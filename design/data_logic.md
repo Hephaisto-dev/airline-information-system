@@ -8,7 +8,7 @@
     - [AirportData](#table-airportdata)
     - [CustomerData](#table-customerdata)
     - [RouteData](#table-routedata)
-    - [FlightData]([#table-flightdata)
+    - [FlightData](#table-flightdata)
     
                       
 ---
