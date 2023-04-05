@@ -30,6 +30,7 @@ public class FlightImpl extends RouteImpl implements Flight {
         this.airplane = airplane;
         this.LDTd = etdDateTime;
         this.LDTa = etaDateTime;
+        getFlightTransits().put(this, Duration.ZERO);
     }
 
     public FlightImpl(Airport from, Airport to, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
