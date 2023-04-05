@@ -20,6 +20,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
 import persistence.NoDBConnectionException;
 
 import java.net.URL;
@@ -33,7 +34,7 @@ public class CreateBookingController implements Initializable {
     ArrayList<String> extras = new ArrayList<>();
     ArrayList<CustomerData> customers = new ArrayList<>();
     ArrayList<String> tickets = new ArrayList<>();
-    FlightData selectedFlight;
+    FlightData selectedFlight= null;
 
     //TODO IMPLEMENT TICKETS
     @FXML
@@ -60,19 +61,23 @@ public class CreateBookingController implements Initializable {
     public Button btnFakeInfo;
     @FXML
     public ListView listViewExtras;
+    @FXML
+    public Text result;
     private BookingCreator bookCreator;
     private final Supplier<SceneManager> sceneManagerSupplier;
+    private BookingCreator bookingCreator;
     BookingManager bookingManager;
     public CreateBookingController(Supplier<SceneManager> sceneManagerSupplier, BookingManager bookingManager) {
         this.sceneManagerSupplier = sceneManagerSupplier;
         this.bookingManager = bookingManager;
-        this.bookCreator = new BookingCreator(bookingManager);
+        this.bookingCreator = new BookingCreator(bookingManager);
     }
     @FXML
     public void createBooking(ActionEvent actionEvent) {
 
 
-        Booking booking = BookingFactory.createBooking("0", empId.getText(), selectedFlight, tickets, LocalDateTime.now(), extras, customers);
+       String booking = bookingCreator.CreateBooking("0", empId.getText(), selectedFlight, tickets, LocalDateTime.now(), extras, customers);
+       result.setText(booking);
 
     }
     @FXML
@@ -114,6 +119,7 @@ public class CreateBookingController implements Initializable {
         cbExtras.getItems().add("vegetarian food");
         cbExtras.getItems().add("Extra luggage");
         cbExtras.getItems().add("Prepaid food");
+        result.setText("");
 
 
     }
