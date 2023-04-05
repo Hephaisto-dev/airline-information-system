@@ -14,7 +14,7 @@
     - [Flight_is_route](#trigger-flightisroute)
     - [Plane_in_flight](#trigger-planeinflight)
      
-- [Diagram]()
+- [Diagram](#diagram)
                       
 ---
 
