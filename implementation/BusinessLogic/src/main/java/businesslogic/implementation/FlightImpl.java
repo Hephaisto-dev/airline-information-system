@@ -5,6 +5,7 @@ import businesslogic.api.airplane.Seat;
 import businesslogic.api.airplane.SeatImpl;
 import businesslogic.api.airport.Airport;
 import businesslogic.api.flight.Flight;
+import businesslogic.api.flight.FlightStatus;
 import businesslogic.api.route.Route;
 import datarecords.FlightData;
 
@@ -18,6 +19,7 @@ public class FlightImpl extends RouteImpl implements Flight {
     private final Airplane airplane;
     private final LocalDateTime LDTd;
     private final LocalDateTime LDTa;
+    private FlightStatus flightStatus = FlightStatus.SCHEDULED;
 
     private ArrayList<Seat> bookedSeats;
 
@@ -130,5 +132,15 @@ public class FlightImpl extends RouteImpl implements Flight {
                 "flightData=" + flightData +
                 ", airplane=" + airplane +
                 '}';
+    }
+
+    @Override
+    public FlightStatus getFlightStatus() {
+        return flightStatus;
+    }
+
+    @Override
+    public void changeStatus(FlightStatus newStatus) {
+        flightStatus = newStatus;
     }
 }
