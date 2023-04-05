@@ -135,11 +135,7 @@ public class Main {
 
         //********************************************************************************//
         System.out.println("\nExample 4 - Insert a new record using prepared statement\n");
-
-        String fname = "Lisa";
-        String lname = "Anderson";
-
-
+        
         String query = "INSERT INTO flightdata (id, routedatafrom, routedatatoo, etddatetime, etadatetime, flightduration, airplaneid) values (?, ?, ?, ?, ?, ?, ?) returning *";
 
         // returning *   at the end of the sql statement makes, even in case of an insert
@@ -160,6 +156,7 @@ public class Main {
             String etadatetime = "letsgo";
             int flightduration = 3;
             String airplaneid = "1aisTest";
+
             pstm.setInt(1, id);
             pstm.setString(2, routedatafrom);
             pstm.setString(3, routedatatoo);

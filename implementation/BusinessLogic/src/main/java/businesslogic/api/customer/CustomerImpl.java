@@ -1,14 +1,15 @@
 package businesslogic.api.customer;
 
-import businesslogic.api.common.PersistantDataContainer;
 import datarecords.CustomerData;
+
+import java.time.LocalDate;
 
 /**
  * Wrapper class that contains CustomerData and Customer Business Logic.
  *
  * @author Informatics Fontys Venlo
  */
-public class CustomerImpl implements PersistantDataContainer<CustomerData> {
+public class CustomerImpl implements Customer {
 
     private CustomerData customerData;
 
@@ -26,4 +27,29 @@ public class CustomerImpl implements PersistantDataContainer<CustomerData> {
     // object and replace the existing object.
 
 
+    @Override
+    public String getId() {
+        //TODO implement customer id
+        return null;
+    }
+
+    @Override
+    public String getFirstName() {
+        return null;
+    }
+
+    @Override
+    public String getLastName() {
+        return null;
+    }
+
+    @Override
+    public LocalDate getDob() {
+        return null;
+    }
+
+    @Override
+    public String getName() {
+        return null;
+    }
 }
