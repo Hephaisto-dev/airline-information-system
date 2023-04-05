@@ -14,5 +14,4 @@ public record FlightData(String id, RouteData routeData, LocalDateTime etdDateTi
         this.flightDuration = flightDuration;
         this.airplane = airplane;
     }
-
 }
