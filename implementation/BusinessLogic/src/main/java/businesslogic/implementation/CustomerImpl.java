@@ -1,10 +1,10 @@
 package businesslogic.implementation;
 
-import businesslogic.api.customer.CustomerInterface;
+import businesslogic.api.customer.Customer;
 import datarecords.CustomerData;
 import java.time.LocalDate;
 
-public class CustomerImpl implements CustomerInterface{
+public class CustomerImpl implements Customer {
 
     private final CustomerData customerData;
 
