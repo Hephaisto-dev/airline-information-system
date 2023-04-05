@@ -22,16 +22,3 @@
 | Voucher            | helps in recording expenses or liability and further helps in its payment                                   | <ul><li>Code: A Code to identify the Voucher directly</li><li>Size: Size of the Voucher in %</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | Customer/Passenger | Customer doesn`t has to be the Passenger                                                                    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | Airport            | A place where aircraft take off and land                                                                    | <ul><li>Unique Code based on letters (e.g. DUS for Düsseldorf)</li><li>Startpoint/Endpoint for a Flight</li><li>Can also be a Stop on a Route to an other Airport </li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-
-
-
-
-
-                                                                                                                                                                                                                                                                                                                                                                                                    
-
-<!--From here are my own Testing things-->
-|Column1   |   Column2   |Column3   |
-|---|---|---|
-|<ul><li>1</li><li>2</il></ul>   |Text   |<ul><li>a</li></ul>   |
-|a   |   ABCDEFGHIJKLMNOPQRSTUVWXYZ   | asdfjklö|
-
