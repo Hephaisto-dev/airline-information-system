@@ -90,7 +90,6 @@ class FlightCreatorTest {
             //"FROM,,2023-12-12T12:12:12,2023-12-12T15:15:15,plane,No arrival destination was provided",
             //"FROM,TO,,2023-12-12T15:15:15,plane,No departure time was provided",
             //"FROM,TO,2023-12-12T12:12:12,,plane,No arrival time was provided",
-
             //"FROM,TO,2023-12-12T12:12:12,2023-12-12T15:15:15,,No plane was provided",
 
             //also tests about the different types of data that can be processed
