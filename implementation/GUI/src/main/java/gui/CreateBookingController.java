@@ -97,7 +97,7 @@ public class CreateBookingController implements Initializable {
             listViewExtras.getItems().clear();
             for(String s: extras)
             listViewExtras.getItems().add(s);
-    }
+        }
     }
     @FXML
     public void fakeInfo(ActionEvent actionEvent) throws NoDBConnectionException {
