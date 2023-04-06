@@ -26,7 +26,7 @@ class TicketImplTest {
     //Route route = new RouteImpl(from, to);//Saved for conveniece, if we decide to provide routes somewhere in the Ticket
     LocalDateTime futureFar = LocalDateTime.of(2244,2,1,4,5);
     LocalDateTime futureNear = LocalDateTime.of(2244,2,1,3,4);
-    Airplane plane = new AirplaneImpl("PLANEiD", "plane", 123);
+    Airplane plane = new AirplaneImpl("PLANEiD", "plane", 123,1);
 
     Flight flyer = new FlightImpl(from, to, futureNear, futureFar,plane);
     TicketImpl Ticket = new TicketImpl("person", flyer, "15D");
