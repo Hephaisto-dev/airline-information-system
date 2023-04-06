@@ -16,7 +16,7 @@ public class FlightManager extends ManagerImpl<Flight, FlightData> {
 
     }
 
-    private Flight searchFlight(String searchPhrase) {
+    public Flight searchFlight(String searchPhrase) {
         return getAll().stream()
                 .filter(flight -> flight.getId().contains(searchPhrase))
                 .findFirst()
