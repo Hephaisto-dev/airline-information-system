@@ -6,19 +6,20 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CustomerController">
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CreateTicketController">
    <children>
-      <ComboBox layoutX="356.0" layoutY="77.0" prefHeight="26.0" prefWidth="191.0" />
-      <Label layoutX="253.0" layoutY="33.0" text="Ticket Creation" />
-      <Label layoutX="52.0" layoutY="81.0" text="Flight" />
-      <Label layoutX="52.0" layoutY="124.0" text="Seat row (number)" />
-      <Label layoutX="53.0" layoutY="163.0" text="Seat column (letter)" />
-      <Label layoutX="52.0" layoutY="200.0" text="Customer name" />
-      <TextField layoutX="469.0" layoutY="120.0" prefHeight="26.0" prefWidth="79.0" />
-      <TextField layoutX="470.0" layoutY="159.0" prefHeight="26.0" prefWidth="79.0" />
-      <TextField layoutX="359.0" layoutY="196.0" prefHeight="26.0" prefWidth="191.0" />
-      <Label layoutX="53.0" layoutY="241.0" text="Results / Errror messages" />
-      <Button layoutX="489.0" layoutY="237.0" mnemonicParsing="false" text="Confirm" />
-      <Label layoutX="52.0" layoutY="276.0" prefHeight="107.0" prefWidth="496.0" text=" " />
+      <Label layoutX="260.0" layoutY="33.0" text="Booking Ticket" />
+      <Label layoutX="50.0" layoutY="79.0" text="Flight" />
+      <Label layoutX="51.0" layoutY="121.0" text="Seat row (Number)" />
+      <Label layoutX="51.0" layoutY="171.0" text="Seat column (number)" />
+      <Label layoutX="51.0" layoutY="212.0" text="Customer name:" />
+      <TextField layoutX="383.0" layoutY="208.0" />
+      <TextField layoutX="479.0" layoutY="167.0" prefHeight="26.0" prefWidth="55.0" />
+      <TextField layoutX="479.0" layoutY="117.0" prefHeight="26.0" prefWidth="55.0" />
+      <ComboBox layoutX="376.0" layoutY="67.0" prefHeight="26.0" prefWidth="158.0" />
+      <Button layoutX="481.0" layoutY="252.0" mnemonicParsing="false" text="Button" />
+      <Label layoutX="51.0" layoutY="256.0" text="Results / error messages" />
+      <Label layoutX="50.0" layoutY="288.0" prefHeight="78.0" prefWidth="483.0" text=" " />
    </children>
 </AnchorPane>
