@@ -1,8 +1,9 @@
 ## Use Case Assignation
+
 ### Who has which Use Case
 
->   Fels, Jazz
->>  Adding Extras
+> Fels, Jazz
+>> Adding Extras
 >>
 >>  Cancel a Booking
 >>
@@ -16,24 +17,24 @@
 >>
 >>  View Flight Information
 
->   Filliol, Mathias
->>  Search for Booking
+> Filliol, Mathias
+>> Search for Booking
 >>
 >>  Use Management Dashboard
 >>
 >>  View Financial Sheets in Statistics
 
->   Ivanov, Martin
->>  Create a Route
+> Ivanov, Martin
+>> Create a Route
 >>
 >>  Edit a Route
 >>
 >>  Register Upcoming Flight
 >>
->>  Update incoming Flight Information 
+>>  Update incoming Flight Information
 
->   Rekers, Daniel
->>  Apply Discount
+> Rekers, Daniel
+>> Apply Discount
 >>
 >>  Apply Voucher
 >>
@@ -41,8 +42,8 @@
 >>
 >>  Register Employee
 
->   Weijs, Lucas
->>  Access previous Flight Records
+> Weijs, Lucas
+>> Access previous Flight Records
 >>
 >>  Login
 >>
@@ -50,16 +51,17 @@
 
 
 ---
+
 ## [Back to Table of Contents](../TableOfContents.md)
 
->   Test
->>  Just
+> Test
+>> Just
 
->   Playing around
+> Playing around
 >
 >   Trying
->>  Testing
+>> Testing
 >>
 >>   Enjoying
 >
->>  Destroying
+>> Destroying
