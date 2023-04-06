@@ -23,11 +23,9 @@ public interface PersistenceAPI {
     }
 
 
-
     default AirportStorageService getAirportStorageService() {
         return new AirportStorageServiceImpl();
     }
-
 
 
     default FlightStorageService getFlightStorageService() {
