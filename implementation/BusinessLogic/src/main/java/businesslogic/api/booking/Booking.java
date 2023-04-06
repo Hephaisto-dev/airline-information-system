@@ -8,9 +8,10 @@ import datarecords.BookingData;
 import datarecords.CustomerData;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public interface Booking extends StringIdentifiable, PersistantDataContainer<BookingData> {
+public interface Booking extends PersistantDataContainer<BookingData> {
 
     String getEmp();
-    ArrayList<CustomerData> getCustomersOnBooking();
+    List<CustomerData> getCustomersOnBooking();
 }

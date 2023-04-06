@@ -7,6 +7,7 @@ import datarecords.FlightData;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class BookingImpl implements Booking {
     private final BookingData bookingData;
@@ -25,7 +26,7 @@ public class BookingImpl implements Booking {
     }
 
     @Override
-    public ArrayList<CustomerData> getCustomersOnBooking() {
+    public List<CustomerData> getCustomersOnBooking() {
         return bookingData.customerInBooking();
     }
 
