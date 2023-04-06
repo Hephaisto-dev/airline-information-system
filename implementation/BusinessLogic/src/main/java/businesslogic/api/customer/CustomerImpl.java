@@ -11,7 +11,7 @@ import java.time.LocalDate;
  */
 public class CustomerImpl implements Customer {
 
-    private CustomerData customerData;
+    private final CustomerData customerData;
 
     public CustomerImpl(CustomerData customerData) {
         this.customerData = customerData;
@@ -29,27 +29,26 @@ public class CustomerImpl implements Customer {
 
     @Override
     public String getId() {
-        //TODO implement customer id
-        return null;
+        return customerData.id();
     }
 
     @Override
     public String getFirstName() {
-        return null;
+        return customerData.firstName();
     }
 
     @Override
     public String getLastName() {
-        return null;
+        return customerData.lastName();
     }
 
     @Override
     public LocalDate getDob() {
-        return null;
+        return customerData.dob();
     }
 
     @Override
     public String getName() {
-        return null;
+        return customerData.firstName() + " " + customerData.lastName();
     }
 }
