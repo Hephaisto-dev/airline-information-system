@@ -14,7 +14,7 @@ class SeatImplTest {
 
     @Test
     void getID() {
-        assertThat(sitter.getID())
+        assertThat(sitter.getId())
                 .isEqualTo("21C");
     }
 

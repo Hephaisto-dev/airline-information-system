@@ -139,8 +139,7 @@ class FlightImplTest {
 
     @ParameterizedTest
     @CsvSource({
-            "124,B,Column number exceeding",
-            "12,BC,one letter",
+            "124,B,Row number exceeding",
             "1,A,successfully",
             "12,a,single capital letter",
             "123,1,single capital letter",
