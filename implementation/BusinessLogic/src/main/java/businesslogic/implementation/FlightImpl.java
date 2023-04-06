@@ -12,6 +12,7 @@ import datarecords.FlightData;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class FlightImpl extends RouteImpl implements Flight {
 
@@ -21,7 +22,7 @@ public class FlightImpl extends RouteImpl implements Flight {
     private final LocalDateTime LDTa;
     private FlightStatus flightStatus = FlightStatus.SCHEDULED;
 
-    private ArrayList<Seat> bookedSeats;
+    private final List<Seat> bookedSeats;
 
 
     public FlightImpl(Airport from, Airport to, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
@@ -78,34 +79,22 @@ public class FlightImpl extends RouteImpl implements Flight {
     }
 
     @Override
-    public String bookSeat(int column, String row) {
-        if(column > airplane.getLength()){
-            return "Column number exceeding the amount of columns on this plane";
+    public String bookSeat(int row, char column) {
+        if (row > airplane.getLength()) {
+            return "Row number exceeding the amount of rows on this plane";
         }
-        if(row.length() != 1){
-            return "Only one letter allowed as row identification";
+        if (column < 'A' || column > 'Z') {
+            return "The column must be identified by a single capital letter of the English Alphabet (A-Z)";
         }
-        char charAt = row.charAt(0);
-        int c = Character.valueOf(charAt);
-        if(c < Character.valueOf('A') || c > Character.valueOf('Z')){
-            return "The row must be identified by a single capital letter of the English Alphabet (A-Z)";
+        int c = column - 'A';
+        if (c >= airplane.getWidth()) {
+            return "The column exceeds the amount of columns on this plane";
         }
-        c -= Character.valueOf('A');
-        if(c > airplane.getWidth()-1){
-            return "The row must be identified by a single capital letter of the English Alphabet (A-Z)";
-        }
-        Seat seat = new SeatImpl(charAt,column);
-        boolean booked = false;
-        for(Seat sit: bookedSeats){
-            if(seat.getID().equals(sit.getID())){
-                booked = true;
-                break;
-            }
-        }
-        if(!booked){
+        Seat seat = new SeatImpl(column, row);
+        if (bookedSeats.stream().noneMatch(seat1 -> seat1.getId().equals(seat.getId()))) {
             bookedSeats.add(seat);
             return "Seat was successfully booked";
-        }else{
+        } else {
             return "Seat is already booked by someone else";
         }
     }
@@ -113,8 +102,8 @@ public class FlightImpl extends RouteImpl implements Flight {
     @Override
     public String cancelBookedSeat(String targetID) {
         int size = bookedSeats.size();
-        for(int i = 0; i < size; i++){
-            if(targetID.equals(bookedSeats.get(i).getID())){
+        for (int i = 0; i < size; i++) {
+            if (targetID.equals(bookedSeats.get(i).getId())) {
                 bookedSeats.remove(i);
                 return "Seat successfully freed for booking once more";
             }

@@ -6,7 +6,6 @@ import businesslogic.api.airport.NoAirportException;
 import businesslogic.api.flight.Flight;
 import org.assertj.core.api.Assertions;
 import org.assertj.core.api.SoftAssertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -30,7 +29,7 @@ class FlightImplTest {
     private final Airplane plane2 = new AirplaneImpl("Identification", "please", 123,2);
     private final Flight flightOne = new FlightImpl(AirportFactory.createAirport(from),
             AirportFactory.createAirport(to), ldtd, ldta, dur, plane);
-    private Flight flightTwo = new FlightImpl(AirportFactory.createAirport(from),
+    private final Flight flightTwo = new FlightImpl(AirportFactory.createAirport(from),
             AirportFactory.createAirport(to), ldtd2, ldta2, plane2);
     private final Flight tooLongFlight = new FlightImpl(AirportFactory.createAirport(from),
             AirportFactory.createAirport(to), ldtd, ldta2, plane2);
@@ -147,11 +146,11 @@ class FlightImplTest {
             "1,B,already booked",
             "2,A,already booked"
     })
-    void testBookingSeat(String number, String character, String expectedResult){
+    void testBookingSeat(int number, char character, String expectedResult){
         SoftAssertions.assertSoftly(softly->{
-            flightTwo.bookSeat(1,"B");
-            flightTwo.bookSeat(2,"A");
-            softly.assertThat(flightTwo.bookSeat(Integer.valueOf(number),character))
+            flightTwo.bookSeat(1,'B');
+            flightTwo.bookSeat(2,'A');
+            softly.assertThat(flightTwo.bookSeat(number,character))
                     .contains(expectedResult);
         });
     }
@@ -162,10 +161,10 @@ class FlightImplTest {
             "1B,successfully freed",
             "2A,successfully freed"
     })
-    void testUnbookingSeats(String target, String expect){
+    void testCancelBookedSeat(String target, String expect){
         SoftAssertions.assertSoftly(softly->{
-            flightTwo.bookSeat(1,"B");
-            flightTwo.bookSeat(2,"A");
+            flightTwo.bookSeat(1,'B');
+            flightTwo.bookSeat(2,'A');
             softly.assertThat(flightTwo.cancelBookedSeat(target))
                     .contains(expect);
         });
