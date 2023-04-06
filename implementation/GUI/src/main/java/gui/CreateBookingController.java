@@ -20,6 +20,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import persistence.NoDBConnectionException;
 
@@ -40,9 +41,9 @@ public class CreateBookingController implements Initializable {
     @FXML
     public TextField empId;
     @FXML
-    public ComboBox cbFlights;
+    public ComboBox<String> cbFlights;
     @FXML
-    public ComboBox cbExtras;
+    public ComboBox<String> cbExtras;
     @FXML
     public Button btnCreateBooking;
     @FXML
@@ -54,21 +55,19 @@ public class CreateBookingController implements Initializable {
     @FXML
     public TextField email;
     @FXML
-    public ListView listViewCustomers;
+    public ListView<String> listViewCustomers;
     @FXML
     public Button btnAddCustomer;
     @FXML//Delete this after connection with the database
     public Button btnFakeInfo;
     @FXML
-    public ListView listViewExtras;
+    public ListView<String> listViewExtras;
     @FXML
     public Text result;
     private BookingCreator bookCreator;
-    private final Supplier<SceneManager> sceneManagerSupplier;
-    private BookingCreator bookingCreator;
+    private final BookingCreator bookingCreator;
     BookingManager bookingManager;
     public CreateBookingController(Supplier<SceneManager> sceneManagerSupplier, BookingManager bookingManager) {
-        this.sceneManagerSupplier = sceneManagerSupplier;
         this.bookingManager = bookingManager;
         this.bookingCreator = new BookingCreator(bookingManager);
     }
@@ -76,7 +75,7 @@ public class CreateBookingController implements Initializable {
     public void createBooking(ActionEvent actionEvent) {
 
 
-       String booking = bookingCreator.CreateBooking("0", empId.getText(), selectedFlight, tickets, LocalDateTime.now(), extras, customers);
+       String booking = bookingCreator.createBooking("0", empId.getText(), selectedFlight, tickets, LocalDateTime.now(), extras, customers);
        result.setText(booking);
 
     }
@@ -93,7 +92,7 @@ public class CreateBookingController implements Initializable {
     public void addExtra(ActionEvent actionEvent) {
 
         if(cbExtras.getValue()!=null){
-            extras.add(cbExtras.getValue().toString());
+            extras.add(cbExtras.getValue());
             listViewExtras.getItems().clear();
             for(String s: extras)
             listViewExtras.getItems().add(s);

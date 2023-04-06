@@ -13,18 +13,12 @@ public class BookingCreator {
 
     public BookingCreator(BookingManager manage) {
         this.bookingManager = manage;    }
-    public String CreateBooking(String id, String empId, FlightData flight, ArrayList<String> Tickets, LocalDateTime bookingDate, ArrayList<String> extras, ArrayList<CustomerData> customersOnBooking) {
+    public String createBooking(String id, String empId, FlightData flight, ArrayList<String> Tickets, LocalDateTime bookingDate, ArrayList<String> extras, ArrayList<CustomerData> customersOnBooking) {
 
 // TODO SILL SOME RESTRICTIONS MISSING BECAUSE OF NOT IMPLEMENTED CLASSES
 
         boolean errors = false;
-        String Id = null;
-        String EmpId = null;
-        FlightData Flight = null; //flight restrictions are in the flightCreator class
-        ArrayList<String> allTickets = null;//TODO TICKETS ARE NOT IMPLEMENTED HERE
-        LocalDateTime dateOfBooking = null;
-        ArrayList<String> Extras = null;
-        ArrayList<CustomerData> Customers = null;// customer restrictions are done in the CustomerCreator class
+
 
         StringBuilder stringBuilder = new StringBuilder();
 
