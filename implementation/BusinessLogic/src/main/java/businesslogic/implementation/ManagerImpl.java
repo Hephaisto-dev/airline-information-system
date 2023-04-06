@@ -9,7 +9,6 @@ import java.util.Set;
 
 public class ManagerImpl<T extends PersistantDataContainer<D>, D extends Record> implements Manager<T, D> {
     private final Set<T> storage = new HashSet<>();
-    //TODO use the storageService when adding, deleting or getting all
     private final StorageService<D> storageService;
 
     public ManagerImpl(StorageService<D> storageService) {
@@ -18,7 +17,11 @@ public class ManagerImpl<T extends PersistantDataContainer<D>, D extends Record>
 
     @Override
     public T add(T t) {
+        if (storage.stream().anyMatch(data -> data.getId().equals(t.getId()))) {
+            return null;
+        }
         storage.add(t);
+        storageService.add(t.getData());
         return t;
     }
 

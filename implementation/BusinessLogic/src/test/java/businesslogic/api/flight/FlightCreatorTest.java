@@ -11,7 +11,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import persistence.FlightStorageService;
-import persistence.FlightStorageServiceImpl;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -57,8 +56,7 @@ class FlightCreatorTest {
             throw new RuntimeException(e);
         }
     }
-
-    private final FlightStorageService FSSI = new FlightStorageServiceImpl();
+    private final FlightStorageService FSSI = data -> data;
     private final FlightManager FM = new FlightManager(FSSI);
     FlightCreator flightCreator = new FlightCreator(FM);
     // later
@@ -90,7 +88,6 @@ class FlightCreatorTest {
             //"FROM,,2023-12-12T12:12:12,2023-12-12T15:15:15,plane,No arrival destination was provided",
             //"FROM,TO,,2023-12-12T15:15:15,plane,No departure time was provided",
             //"FROM,TO,2023-12-12T12:12:12,,plane,No arrival time was provided",
-
             //"FROM,TO,2023-12-12T12:12:12,2023-12-12T15:15:15,,No plane was provided",
 
             //also tests about the different types of data that can be processed
@@ -98,10 +95,8 @@ class FlightCreatorTest {
     })
     void createFlight(String place1, String place2, String time1, String time2, String plane, String expectation) {
         String answer = flightCreator.createFlight(place1, place2, time1, time2, plane);
-        SoftAssertions.assertSoftly(softly -> {
-            softly.assertThat(answer)
-                    .contains(expectation);
-        });
+        SoftAssertions.assertSoftly(softly -> softly.assertThat(answer)
+                .contains(expectation));
     }
 
     @ParameterizedTest
@@ -126,9 +121,7 @@ class FlightCreatorTest {
                 LDTHash.get(time2),
                 PlaneHash.get(plane)
         );
-        SoftAssertions.assertSoftly(softly -> {
-            softly.assertThat(answer)
-                    .contains(expectation);
-        });
+        SoftAssertions.assertSoftly(softly -> softly.assertThat(answer)
+                .contains(expectation));
     }
 }

@@ -1,7 +1,8 @@
 package businesslogic.api.airplane;
 
-public interface Seat {
-    String getID();
+import businesslogic.api.common.StringIdentifiable;
+
+public interface Seat extends StringIdentifiable {
     char getColumn();
     int getRow();
 }

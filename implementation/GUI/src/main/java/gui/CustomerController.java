@@ -1,6 +1,6 @@
 package gui;
 
-import businesslogic.api.customer.Customer;
+import businesslogic.api.customer.CustomerImpl;
 import businesslogic.api.manager.CustomerManager;
 import datarecords.CustomerData;
 import javafx.fxml.FXML;
@@ -35,6 +35,8 @@ public class CustomerController implements Initializable {
     @FXML
     private TextField dob;
     @FXML
+    private TextField email;
+    @FXML
     private Button saveButton;
     @FXML
     private Button toSecondaryButton;
@@ -56,10 +58,10 @@ public class CustomerController implements Initializable {
     @FXML
     private void storeCustomer() {
 
-        CustomerData customerData = new CustomerData(0, firstName.getText(), lastName.getText(),
-                LocalDate.parse(dob.getText()));
+        CustomerData customerData = new CustomerData("0", firstName.getText(), lastName.getText(),
+                LocalDate.parse(dob.getText()), email.getText());
 
-        Customer addedCustomer = customerManager.add(new Customer(customerData));
+        CustomerImpl addedCustomer = customerManager.add(new CustomerImpl(customerData));
 
         result.setText("Customer added: " + addedCustomer.getData().toString());
     }

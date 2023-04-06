@@ -9,5 +9,5 @@ import java.time.LocalDate;
  *
  * @author Informatics Fontys Venlo
  */
-public record CustomerData(int id, String firstName, String lastName, LocalDate dob) {
+public record CustomerData(String id, String firstName, String lastName, LocalDate dob, String email) {
 }

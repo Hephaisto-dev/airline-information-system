@@ -147,11 +147,11 @@ class FlightImplTest {
             "1,B,already booked",
             "2,A,already booked"
     })
-    void testBookingSeat(String number, String character, String expectedResult){
+    void testBookingSeat(int number, char character, String expectedResult){
         SoftAssertions.assertSoftly(softly->{
-            flightTwo.bookSeat(1,"B");
-            flightTwo.bookSeat(2,"A");
-            softly.assertThat(flightTwo.bookSeat(Integer.valueOf(number),character))
+            flightTwo.bookSeat(1,'B');
+            flightTwo.bookSeat(2,'A');
+            softly.assertThat(flightTwo.bookSeat(number,character))
                     .contains(expectedResult);
         });
     }
@@ -162,10 +162,10 @@ class FlightImplTest {
             "1B,successfully freed",
             "2A,successfully freed"
     })
-    void testUnbookingSeats(String target, String expect){
+    void testCancelBookedSeat(String target, String expect){
         SoftAssertions.assertSoftly(softly->{
-            flightTwo.bookSeat(1,"B");
-            flightTwo.bookSeat(2,"A");
+            flightTwo.bookSeat(1,'B');
+            flightTwo.bookSeat(2,'A');
             softly.assertThat(flightTwo.cancelBookedSeat(target))
                     .contains(expect);
         });

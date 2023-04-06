@@ -3,8 +3,8 @@ package persistence.database;
 import org.postgresql.ds.PGSimpleDataSource;
 
 import javax.sql.DataSource;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -23,7 +23,7 @@ public class DBProvider {
 
         return cache.computeIfAbsent(sourceName,
                 (s) -> {
-                    Properties props = properties("application.properties");
+                    Properties props = properties();
 
                     PGSimpleDataSource source = new PGSimpleDataSource();
 
@@ -32,6 +32,7 @@ public class DBProvider {
                     String[] serverNames = {props.getProperty(prefix + "dbhost")};
 
                     source.setServerNames(serverNames);
+                    source.setPortNumbers(new int[]{Integer.parseInt(props.getProperty(prefix + "port"))});
                     source.setUser(props.getProperty(prefix + "username"));
                     source.setDatabaseName(props.getProperty(prefix + "dbname"));
                     source.setPassword(props.getProperty(prefix + "password"));
@@ -42,15 +43,15 @@ public class DBProvider {
         );
     }
 
-    static Properties properties(String propFileName) {
+    static Properties properties() {
         Properties properties = new Properties();
-        try (FileInputStream fis = new FileInputStream(propFileName);) {
+        try (InputStream fis = DBProvider.class.getResourceAsStream("application.properties")) {
             properties.load(fis);
-        } catch (IOException ignored) {
+        } catch (IOException exception) {
             Logger.getLogger(DBProvider.class.getName()).log(
                     Level.INFO,
                     "attempt to read file from well known location failed'",
-                    ignored);
+                    exception);
         }
         return properties;
     }
