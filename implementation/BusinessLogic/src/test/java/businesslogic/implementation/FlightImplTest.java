@@ -6,6 +6,7 @@ import businesslogic.api.airport.NoAirportException;
 import businesslogic.api.flight.Flight;
 import org.assertj.core.api.Assertions;
 import org.assertj.core.api.SoftAssertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -29,7 +30,7 @@ class FlightImplTest {
     private final Airplane plane2 = new AirplaneImpl("Identification", "please", 123,2);
     private final Flight flightOne = new FlightImpl(AirportFactory.createAirport(from),
             AirportFactory.createAirport(to), ldtd, ldta, dur, plane);
-    private final Flight flightTwo = new FlightImpl(AirportFactory.createAirport(from),
+    private Flight flightTwo = new FlightImpl(AirportFactory.createAirport(from),
             AirportFactory.createAirport(to), ldtd2, ldta2, plane2);
     private final Flight tooLongFlight = new FlightImpl(AirportFactory.createAirport(from),
             AirportFactory.createAirport(to), ldtd, ldta2, plane2);

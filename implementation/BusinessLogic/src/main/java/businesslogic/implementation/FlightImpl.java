@@ -24,7 +24,6 @@ public class FlightImpl extends RouteImpl implements Flight {
 
     private final List<Seat> bookedSeats;
 
-
     public FlightImpl(Airport from, Airport to, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
                       Duration flightDuration,
                       Airplane airplane) throws IllegalArgumentException {

@@ -3,7 +3,7 @@ package businesslogic.api.airplane;
 public class SeatImpl implements Seat{
     private final char column;
     private final int row;
-
+    
     public SeatImpl(char ColumnLR, int rowUD){
         this.column = ColumnLR;
         this.row = rowUD;
