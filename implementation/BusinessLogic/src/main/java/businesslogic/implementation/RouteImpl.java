@@ -57,7 +57,7 @@ public class RouteImpl implements Route {
     @Override
     public Duration getDuration() {
         return flightTransits.entrySet().stream()
-                .map(flightDurationEntry ->  flightDurationEntry.getKey().getFlightDuration().plus(flightDurationEntry.getValue()))
+                .map(flightDurationEntry -> flightDurationEntry.getKey().getFlightDuration().plus(flightDurationEntry.getValue()))
                 .reduce(Duration.ZERO, Duration::plus);
     }
 }

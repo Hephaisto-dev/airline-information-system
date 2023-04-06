@@ -11,7 +11,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * @author hvd
  */
 public class Main {
@@ -41,7 +40,8 @@ public class Main {
 //                int flightduration = result.getInt(3);
 //                String airplaneid = result.getString("id");
 //
-//                System.out.println("Flight with info: " + id + ", " + routedatafrom + ", " + routedatatoo + ", " + etddatetime + ", " + etadatetime + ", " + flightduration + ", " + airplaneid);
+//                System.out.println("Flight with info: " + id + ", " + routedatafrom + ", " + routedatatoo + ", " +
+//                etddatetime + ", " + etadatetime + ", " + flightduration + ", " + airplaneid);
 //
 //            }
 //
@@ -84,7 +84,8 @@ public class Main {
 //                int flightduration = result.getInt(3);
 //                String airplaneid = result.getString("id");
 //
-//                System.out.println("Flight with info: " + id + ", " + routedatafrom + ", " + routedatatoo + ", " + etddatetime + ", " + etadatetime + ", " + flightduration + ", " + airplaneid);
+//                System.out.println("Flight with info: " + id + ", " + routedatafrom + ", " + routedatatoo + ", " +
+//                etddatetime + ", " + etadatetime + ", " + flightduration + ", " + airplaneid);
 //            }
 //
 //        } catch (SQLException ex) {
@@ -113,7 +114,8 @@ public class Main {
 //            // As a result, the content is considered as a String value that is connected to
 //            // the first question mark in your query (so as a filter on firstname only!)
 //
-//            ResultSet result = pstm.executeQuery(); // No parameter needed anymore, since statement is prepared and set in lines 93/100 already!
+//            ResultSet result = pstm.executeQuery(); // No parameter needed anymore, since statement is prepared and
+//            set in lines 93/100 already!
 //
 //            while (result.next()) {
 //                String id = result.getString("1jk");
@@ -124,7 +126,8 @@ public class Main {
 //                int flightduration = result.getInt(3);
 //                String airplaneid = result.getString("id");
 //
-//                System.out.println("Flight with info: " + id + ", " + routedatafrom + ", " + routedatatoo + ", " + etddatetime + ", " + etadatetime + ", " + flightduration + ", " + airplaneid);
+//                System.out.println("Flight with info: " + id + ", " + routedatafrom + ", " + routedatatoo + ", " +
+//                etddatetime + ", " + etadatetime + ", " + flightduration + ", " + airplaneid);
 //            }
 //
 //        } catch (SQLException ex) {
@@ -135,8 +138,9 @@ public class Main {
 
         //********************************************************************************//
         System.out.println("\nExample 4 - Insert a new record using prepared statement\n");
-        
-        String query = "INSERT INTO flightdata (id, routedatafrom, routedatatoo, etddatetime, etadatetime, flightduration, airplaneid) values (?, ?, ?, ?, ?, ?, ?) returning *";
+
+        String query = "INSERT INTO flightdata (id, routedatafrom, routedatatoo, etddatetime, etadatetime, " +
+                "flightduration, airplaneid) values (?, ?, ?, ?, ?, ?, ?) returning *";
 
         // returning *   at the end of the sql statement makes, even in case of an insert
         // or update or delete statement, that a ResultSet is returned. Normally, such a query
@@ -147,7 +151,7 @@ public class Main {
         // Be aware that you can still do 'things' at the database side in stored procedures when necessary.
         // As the book also states, if you can do it at the database-level then DO IT at the database
         // level.
-        try ( Connection con = db.getConnection();  PreparedStatement pstm = con.prepareStatement(query)) {
+        try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
 
             int id = 0;
             String routedatafrom = "Bruxelles";

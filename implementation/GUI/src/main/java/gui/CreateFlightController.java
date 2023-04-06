@@ -8,7 +8,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
-import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -39,19 +38,18 @@ public class CreateFlightController implements Initializable {
     public TextField airplaneName;
     @FXML
     public Button createButton;
-    private FlightCreator flightCreator;
+    private final FlightCreator flightCreator;
     @FXML
     private Label result;
 
     @FXML
-    private ComboBox depHour;
+    private ComboBox<String> depHour;
     @FXML
-    private ComboBox depMin;
+    private ComboBox<String> depMin;
     @FXML
-    private ComboBox arriHour;
+    private ComboBox<String> arriHour;
     @FXML
-    private ComboBox arriMin;
-
+    private ComboBox<String> arriMin;
 
 
     public CreateFlightController(Supplier<SceneManager> sceneManagerSupplier, FlightManager flightManager) {
@@ -69,10 +67,10 @@ public class CreateFlightController implements Initializable {
 
     @FXML
     public void createFlight(ActionEvent actionEvent) {
-        String output =  sendFlight(departurePlace.getText(),
+        String output = sendFlight(departurePlace.getText(),
                 arrivalPlace.getText(),
-                deparureLocalDateTime.getValue().toString()+"T"+depHour.getValue().toString()+":"+depMin.getValue().toString(),
-                arrivalLocalDateTime.getValue().toString()+"T"+arriHour.getValue().toString()+":"+arriMin.getValue().toString(),
+                deparureLocalDateTime.getValue().toString() + "T" + depHour.getValue() + ":" + depMin.getValue(),
+                arrivalLocalDateTime.getValue().toString() + "T" + arriHour.getValue() + ":" + arriMin.getValue(),
                 airplaneName.getText());
         result.setText(output);
     }
@@ -92,40 +90,38 @@ public class CreateFlightController implements Initializable {
         arriHour.setValue("00");
         depMin.setValue("00");
         depHour.setValue("00");
-        for(int i = 0; 12>i;i++){
-            if(i<10){
-                arriHour.getItems().add("0"+i);
-            }
-            else{
-                arriHour.getItems().add(i);
-            }
-
-
-        }
-        for(int c = 0; 60>c;c++){
-            if(c<10){
-                arriMin.getItems().add("0"+c);
-            }
-            else{
-                arriMin.getItems().add(c);
+        for (int i = 0; 12 > i; i++) {
+            if (i < 10) {
+                arriHour.getItems().add("0" + i);
+            } else {
+                arriHour.getItems().add(String.valueOf(i));
             }
 
 
         }
-        for(int d = 0; 12>d;d++){
-            if(d<10){
-                depHour.getItems().add("0"+d);
-            }else{
-                depHour.getItems().add(d);
+        for (int c = 0; 60 > c; c++) {
+            if (c < 10) {
+                arriMin.getItems().add("0" + c);
+            } else {
+                arriMin.getItems().add(String.valueOf(c));
             }
 
 
         }
-        for(int q = 0; 60>q;q++){
-            if(q<10){
-                depMin.getItems().add("0"+q);
-            }else{
-                depMin.getItems().add(q);
+        for (int d = 0; 12 > d; d++) {
+            if (d < 10) {
+                depHour.getItems().add("0" + d);
+            } else {
+                depHour.getItems().add(String.valueOf(d));
+            }
+
+
+        }
+        for (int q = 0; 60 > q; q++) {
+            if (q < 10) {
+                depMin.getItems().add("0" + q);
+            } else {
+                depMin.getItems().add(String.valueOf(q));
             }
 
 

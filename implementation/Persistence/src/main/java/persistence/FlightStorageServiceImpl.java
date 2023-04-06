@@ -19,7 +19,8 @@ public class FlightStorageServiceImpl implements FlightStorageService {
 
         DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
 
-        String query = "INSERT INTO flightdata (id, routedatafrom, routedatatoo, etddatetime, etadatetime, flightduration, airplaneid) values (?, ?, ?, ?, ?, ?, ?) returning *";
+        String query = "INSERT INTO flightdata (id, routedatafrom, routedatatoo, etddatetime, etadatetime, " +
+                "flightduration, airplaneid) values (?, ?, ?, ?, ?, ?, ?) returning *";
 
 
         try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
@@ -30,8 +31,7 @@ public class FlightStorageServiceImpl implements FlightStorageService {
             String routedatatoo = routeData.to().id();
             String etddatetime = flightData.etaDateTime().toString();
             String etadatetime = flightData.etdDateTime().toString();
-            long seconds = flightData.flightDuration().getSeconds();
-            long flightduration = seconds;
+            long flightduration = flightData.flightDuration().getSeconds();
             String airplaneid = flightData.airplane().id();
 
             pstm.setString(1, id);

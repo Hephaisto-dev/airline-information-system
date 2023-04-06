@@ -13,7 +13,7 @@ import persistence.PersistenceFactory;
  */
 public class Assembler {
 
-    public static void  main(String[] args) {
+    public static void main(String[] args) {
 
         PersistenceAPI persistenceAPI = PersistenceFactory.getImplementation();
         BusinessLogicAPI businesslogicAPI = BusinessLogicFactory.getImplementation(persistenceAPI);

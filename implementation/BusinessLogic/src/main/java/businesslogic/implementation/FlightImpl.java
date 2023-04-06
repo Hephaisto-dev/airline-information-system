@@ -20,9 +20,8 @@ public class FlightImpl extends RouteImpl implements Flight {
     private final Airplane airplane;
     private final LocalDateTime LDTd;
     private final LocalDateTime LDTa;
-    private FlightStatus flightStatus = FlightStatus.SCHEDULED;
-
     private final List<Seat> bookedSeats;
+    private FlightStatus flightStatus = FlightStatus.SCHEDULED;
 
     public FlightImpl(Airport from, Airport to, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
                       Duration flightDuration,

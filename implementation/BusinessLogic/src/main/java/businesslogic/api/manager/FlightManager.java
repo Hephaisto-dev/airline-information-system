@@ -7,14 +7,14 @@ import persistence.FlightStorageService;
 import persistence.FlightStorageServiceImpl;
 
 public class FlightManager extends ManagerImpl<Flight, FlightData> {
+    FlightStorageServiceImpl flightStorageService = new FlightStorageServiceImpl();
+
     public FlightManager(FlightStorageService storageService) {
 
         super(storageService);
 
 
     }
-    FlightStorageServiceImpl flightStorageService = new FlightStorageServiceImpl();
-
 
     private Flight searchFlight(String searchPhrase) {
         return getAll().stream()

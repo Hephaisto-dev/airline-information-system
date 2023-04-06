@@ -2,7 +2,6 @@ package businesslogic.api.airplane;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class SeatImplTest {
@@ -14,7 +13,7 @@ class SeatImplTest {
 
     @Test
     void getID() {
-        assertThat(sitter.getID())
+        assertThat(sitter.getId())
                 .isEqualTo("21C");
     }
 
