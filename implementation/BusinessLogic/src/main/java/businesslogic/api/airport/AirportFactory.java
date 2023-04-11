@@ -12,11 +12,11 @@ public interface AirportFactory {
         return new AirportImpl(airportData);
     }
 
-    static Airport createAirport(String name) {
-        return new AirportImpl("AI", name, "", "");
-    }
-
-    static AirportImpl createAirportImpl(String name) {
-        return new AirportImpl("AI", name, "", "");
+    static Airport createAirport(String name) throws NoAirportException {
+        if (true) {
+            return new AirportImpl("AI", name, "", "");
+        } else {
+            throw new NoAirportException();
+        }
     }
 }

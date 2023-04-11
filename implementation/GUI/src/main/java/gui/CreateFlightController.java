@@ -1,20 +1,13 @@
 package gui;
 
-import businesslogic.api.airplane.AirplaneFactory;
-import businesslogic.api.airport.AirportFactory;
-import businesslogic.api.flight.Flight;
 import businesslogic.api.flight.FlightCreator;
-import businesslogic.api.flight.FlightFactory;
 import businesslogic.api.manager.FlightManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
-import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -33,23 +26,31 @@ public class CreateFlightController implements Initializable {
     private final Supplier<SceneManager> sceneManagerSupplier;
 
     private final FlightManager flightManager;
-
-    private FlightCreator flightCreator;
-
+    private final FlightCreator flightCreator;
     @FXML
     public TextField departurePlace;
     @FXML
     public TextField arrivalPlace;
     @FXML
-    public TextField deparureLocalDateTime;
+    public DatePicker deparureLocalDateTime;
     @FXML
-    public TextField arrivalLocalDateTime;
+    public DatePicker arrivalLocalDateTime;
     @FXML
     public TextField airplaneName;
     @FXML
     public Button createButton;
     @FXML
     private Label result;
+
+    @FXML
+    private ComboBox<String> depHour;
+    @FXML
+    private ComboBox<String> depMin;
+    @FXML
+    private ComboBox<String> arriHour;
+    @FXML
+    private ComboBox<String> arriMin;
+
 
     public CreateFlightController(Supplier<SceneManager> sceneManagerSupplier, FlightManager flightManager) {
         this.sceneManagerSupplier = sceneManagerSupplier;
@@ -68,13 +69,14 @@ public class CreateFlightController implements Initializable {
     public void createFlight(ActionEvent actionEvent) {
         String output = sendFlight(departurePlace.getText(),
                 arrivalPlace.getText(),
-                deparureLocalDateTime.getText(),
-                arrivalLocalDateTime.getText(),
+                deparureLocalDateTime.getValue().toString() + "T" + depHour.getValue() + ":" + depMin.getValue(),
+                arrivalLocalDateTime.getValue().toString() + "T" + arriHour.getValue() + ":" + arriMin.getValue(),
                 airplaneName.getText());
         result.setText(output);
     }
 
-    public String sendFlight(String departPlace, String arrivePlace, String departLDT, String arriveLDT, String planeName){
+    public String sendFlight(String departPlace, String arrivePlace, String departLDT, String arriveLDT,
+                             String planeName) {
         return flightCreator.createFlight(departPlace, arrivePlace, departLDT, arriveLDT, planeName);
     }
 
@@ -84,6 +86,46 @@ public class CreateFlightController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        arriMin.setValue("00");
+        arriHour.setValue("00");
+        depMin.setValue("00");
+        depHour.setValue("00");
+        for (int i = 0; 12 > i; i++) {
+            if (i < 10) {
+                arriHour.getItems().add("0" + i);
+            } else {
+                arriHour.getItems().add(String.valueOf(i));
+            }
+
+
+        }
+        for (int c = 0; 60 > c; c++) {
+            if (c < 10) {
+                arriMin.getItems().add("0" + c);
+            } else {
+                arriMin.getItems().add(String.valueOf(c));
+            }
+
+
+        }
+        for (int d = 0; 12 > d; d++) {
+            if (d < 10) {
+                depHour.getItems().add("0" + d);
+            } else {
+                depHour.getItems().add(String.valueOf(d));
+            }
+
+
+        }
+        for (int q = 0; 60 > q; q++) {
+            if (q < 10) {
+                depMin.getItems().add("0" + q);
+            } else {
+                depMin.getItems().add(String.valueOf(q));
+            }
+
+
+        }
 
     }
 

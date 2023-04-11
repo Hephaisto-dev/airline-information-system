@@ -3,8 +3,10 @@ package businesslogic;
 import businesslogic.api.airplane.Airplane;
 import businesslogic.api.airplane.AirplaneFactory;
 import businesslogic.api.airport.AirportFactory;
+import businesslogic.api.airport.NoAirportException;
 import businesslogic.api.flight.Flight;
 import businesslogic.api.flight.FlightFactory;
+import persistence.NoDBConnectionException;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -12,11 +14,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoDBConnectionException, NoAirportException {
         List<Airplane> airplanes = new ArrayList<>();
-        airplanes.add(AirplaneFactory.createAirplane("boeing-737", "Boeing 737", 150));
-        airplanes.add(AirplaneFactory.createAirplane("boeing-747", "Boeing 747", 200));
-        airplanes.add(AirplaneFactory.createAirplane("boeing-777", "Boeing 777", 250));
+        airplanes.add(AirplaneFactory.createAirplane("boeing-737", "Boeing 737", 32, 6));
+        airplanes.add(AirplaneFactory.createAirplane("boeing-747", "Boeing 747", 200, 1));
+        airplanes.add(AirplaneFactory.createAirplane("boeing-777", "Boeing 777", 250, 1));
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the airplane ID: (boeing-737, boeing-747, boeing-777)");
         Airplane airplane =

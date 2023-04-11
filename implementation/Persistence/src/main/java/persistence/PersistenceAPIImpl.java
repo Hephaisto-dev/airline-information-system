@@ -6,11 +6,4 @@ package persistence;
  * @author Informatics Fontys Venlo
  */
 class PersistenceAPIImpl implements PersistenceAPI {
-
-    @Override
-    public CustomerStorageService getCustomerStorageService() {
-        return new CustomerStorageServiceImpl();
-    }
-
-
 }

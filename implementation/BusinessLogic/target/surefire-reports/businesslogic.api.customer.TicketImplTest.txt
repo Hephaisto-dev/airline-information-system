@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: businesslogic.api.customer.TicketImplTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.079 s - in businesslogic.api.customer.TicketImplTest
