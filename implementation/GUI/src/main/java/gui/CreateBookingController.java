@@ -10,6 +10,8 @@ import businesslogic.api.customer.Customer;
 
 import businesslogic.api.booking.BookingCreator;
 
+import businesslogic.api.customer.CustomerFactory;
+import businesslogic.api.customer.Ticket;
 import businesslogic.api.flight.Flight;
 import businesslogic.api.flight.FlightFactory;
 import businesslogic.api.manager.BookingManager;
@@ -25,8 +27,10 @@ import javafx.scene.text.Text;
 import persistence.NoDBConnectionException;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.function.Supplier;
 
@@ -75,17 +79,17 @@ public class CreateBookingController implements Initializable {
     public void createBooking(ActionEvent actionEvent) {
 
 
-       String booking = bookingCreator.createBooking("0", empId.getText(), selectedFlight, tickets, LocalDateTime.now(), extras, customers);
+       String booking = bookingCreator.createBooking("1", empId.getText(), selectedFlight, tickets, LocalDateTime.now(), extras, customers);
        result.setText(booking);
 
     }
     @FXML
     public void addCustomer(ActionEvent actionEvent) {
 
-            //customers.add(new CustomerFactory(,));
-            listViewExtras.getItems().clear();
+            customers.add(new CustomerData("1",firstName.getText(),lastName.getText(), dateOfBirth.getValue(),email.getText()));
+            listViewCustomers.getItems().clear();
             for(CustomerData c: customers)
-                listViewExtras.getItems().add(c.toString());
+                listViewCustomers.getItems().add(c.toString());
 
     }
     @FXML
@@ -97,6 +101,14 @@ public class CreateBookingController implements Initializable {
             for(String s: extras)
             listViewExtras.getItems().add(s);
         }
+    }
+    public List<String> createTickets(){
+        for(CustomerData customerData: customers) {
+            tickets.add(customerData.id()+" "+customerData.firstName()+" "+customerData.lastName());
+
+        }
+
+        return tickets;
     }
     @FXML
     public void fakeInfo(ActionEvent actionEvent) throws NoDBConnectionException {
