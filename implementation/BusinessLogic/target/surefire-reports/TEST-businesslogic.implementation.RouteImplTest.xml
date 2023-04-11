@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="businesslogic.implementation.RouteImplTest" time="0.005" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="businesslogic.implementation.RouteImplTest" time="0.011" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-17.0.6.10-hotspot\bin"/>
-    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter C:\Users\marti\AppData\Local\Temp\surefire1782320198887815102 2023-04-11T10-11-25_938-jvmRun1 surefire15467460579197689566tmp surefire_07585277185433322088tmp"/>
+    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter C:\Users\marti\AppData\Local\Temp\surefire2370307098034807921 2023-04-11T10-38-54_054-jvmRun1 surefire9139658868596323260tmp surefire_015705960172302691344tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\marti\Project\prj2-2023-prj2-2023-17\implementation\BusinessLogic\target\test-classes;C:\Users\marti\.m2\repository\org\checkerframework\checker-qual\3.31.0\checker-qual-3.31.0.jar;C:\Users\marti\.m2\repository\org\assertj\assertj-core\3.22.0\assertj-core-3.22.0.jar;C:\Users\marti\.m2\repository\org\mockito\mockito-core\4.3.1\mockito-core-4.3.1.jar;C:\Users\marti\.m2\repository\net\bytebuddy\byte-buddy\1.12.7\byte-buddy-1.12.7.jar;C:\Users\marti\.m2\repository\net\bytebuddy\byte-buddy-agent\1.12.7\byte-buddy-agent-1.12.7.jar;C:\Users\marti\.m2\repository\org\objenesis\objenesis\3.2\objenesis-3.2.jar;C:\Users\marti\.m2\repository\org\mockito\mockito-junit-jupiter\4.3.1\mockito-junit-jupiter-4.3.1.jar;C:\Users\marti\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.2\junit-jupiter-api-5.8.2.jar;C:\Users\marti\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\marti\.m2\repository\org\junit\platform\junit-platform-commons\1.8.2\junit-platform-commons-1.8.2.jar;C:\Users\marti\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\marti\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.8.2\junit-jupiter-params-5.8.2.jar;C:\Users\marti\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.2\junit-jupiter-engine-5.8.2.jar;C:\Users\marti\.m2\repository\org\junit\platform\junit-platform-engine\1.8.2\junit-platform-engine-1.8.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -59,7 +59,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="getDeparturePlace" classname="businesslogic.implementation.RouteImplTest" time="0"/>
-  <testcase name="testToString" classname="businesslogic.implementation.RouteImplTest" time="0.001"/>
-  <testcase name="getArrivalPlace" classname="businesslogic.implementation.RouteImplTest" time="0.001"/>
+  <testcase name="getDeparturePlace" classname="businesslogic.implementation.RouteImplTest" time="0.001"/>
+  <testcase name="testToString" classname="businesslogic.implementation.RouteImplTest" time="0.003"/>
+  <testcase name="getArrivalPlace" classname="businesslogic.implementation.RouteImplTest" time="0.003"/>
 </testsuite>

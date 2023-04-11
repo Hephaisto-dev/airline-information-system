@@ -104,7 +104,7 @@ public class CreateBookingController implements Initializable {
         Airport airport1 = AirportFactory.createAirport("1","Myhouse","Amsterdam","Netherlands");
         Airport airport2 = AirportFactory.createAirport("2","YourHouse","Amsterdam","Netherlands");
 
-
+//change test
         Flight flight = FlightFactory.createFlight(airport1,airport2,LocalDateTime.now(),LocalDateTime.now().plusDays(1),airplane);
 
         cbFlights.getItems().add(flight.toString());
