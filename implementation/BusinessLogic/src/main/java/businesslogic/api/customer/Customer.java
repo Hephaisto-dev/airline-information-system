@@ -13,6 +13,7 @@ public interface Customer extends Nameable, PersistantDataContainer<CustomerData
     String getFirstName();
 
     String getLastName();
+
     LocalDate getDob();
 
 }
