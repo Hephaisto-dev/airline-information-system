@@ -17,6 +17,7 @@ public interface BusinessLogicAPI {
     CustomerManager getCustomerManager();
 
     FlightManager getFlightManager();
+    BookingManager getBookingManager();
 
     <U extends Manager<? extends PersistantDataContainer<D>, D>, D extends Record> U getManager(Class<U> clazz);
 }

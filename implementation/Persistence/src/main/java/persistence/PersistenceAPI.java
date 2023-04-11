@@ -23,17 +23,17 @@ public interface PersistenceAPI {
     }
 
 
-
     default AirportStorageService getAirportStorageService() {
         return new AirportStorageServiceImpl();
     }
-
 
 
     default FlightStorageService getFlightStorageService() {
         return new FlightStorageServiceImpl();
     }
 
+
+    default BookingStorageService getBookingStorageService(){return new BookingStorageServiceImpl();}
 
 
     // This interface can be extended with all services that need to be made
