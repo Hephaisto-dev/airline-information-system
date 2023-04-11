@@ -6,12 +6,10 @@ import businesslogic.api.airport.Airport;
 import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.booking.Booking;
 import businesslogic.api.booking.BookingFactory;
-import businesslogic.api.customer.Customer;
+import businesslogic.api.customer.*;
 
 import businesslogic.api.booking.BookingCreator;
 
-import businesslogic.api.customer.CustomerFactory;
-import businesslogic.api.customer.Ticket;
 import businesslogic.api.flight.Flight;
 import businesslogic.api.flight.FlightFactory;
 import businesslogic.api.manager.BookingManager;
@@ -30,6 +28,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.function.Supplier;
@@ -45,7 +44,7 @@ public class CreateBookingController implements Initializable {
     @FXML
     public TextField empId;
     @FXML
-    public ComboBox<String> cbFlights;
+    public ComboBox<Flight> cbFlights;
     @FXML
     public ComboBox<String> cbExtras;
     @FXML
@@ -70,6 +69,8 @@ public class CreateBookingController implements Initializable {
     public Text result;
     private BookingCreator bookCreator;
     private final BookingCreator bookingCreator;
+
+
     BookingManager bookingManager;
     public CreateBookingController(Supplier<SceneManager> sceneManagerSupplier, BookingManager bookingManager) {
         this.bookingManager = bookingManager;
@@ -77,7 +78,6 @@ public class CreateBookingController implements Initializable {
     }
     @FXML
     public void createBooking(ActionEvent actionEvent) {
-
 
        String booking = bookingCreator.createBooking("1", empId.getText(), selectedFlight, tickets, LocalDateTime.now(), extras, customers);
        result.setText(booking);
@@ -103,9 +103,9 @@ public class CreateBookingController implements Initializable {
         }
     }
     public List<String> createTickets(){
-        for(CustomerData customerData: customers) {
-            tickets.add(customerData.id()+" "+customerData.firstName()+" "+customerData.lastName());
-
+        for(CustomerData customer: customers) {
+            //tickets.add(new TicketImpl("Lucas",cbFlights.getValue(),""));
+            tickets.add(customer.firstName());
         }
 
         return tickets;
@@ -113,13 +113,13 @@ public class CreateBookingController implements Initializable {
     @FXML
     public void fakeInfo(ActionEvent actionEvent) throws NoDBConnectionException {
         Airplane airplane = AirplaneFactory.createAirplane("1","KML 332", 322,322);
-        Airport airport1 = AirportFactory.createAirport("1","Myhouse","Amsterdam","Netherlands");
+        Airport airport1 = AirportFactory.createAirport("1","MyHouse","Amsterdam","Netherlands");
         Airport airport2 = AirportFactory.createAirport("2","YourHouse","Amsterdam","Netherlands");
 
 
         Flight flight = FlightFactory.createFlight(airport1,airport2,LocalDateTime.now(),LocalDateTime.now().plusDays(1),airplane);
 
-        cbFlights.getItems().add(flight.toString());
+        cbFlights.getItems().add(flight);
 
     }
 

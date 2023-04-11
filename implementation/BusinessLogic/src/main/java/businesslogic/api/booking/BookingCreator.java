@@ -34,6 +34,11 @@ public class BookingCreator {
             errors = true;
             stringBuilder.append("a booking must countain at least 1 person!\n");
         }
+        if (Tickets.stream().count() == 0){
+
+            errors = true;
+            stringBuilder.append("a error happend while generating tickets!\n");
+        }
         try {
 
         } catch (Exception a) {
