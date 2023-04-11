@@ -100,7 +100,7 @@ public class CreateBookingController implements Initializable {
     }
     @FXML
     public void fakeInfo(ActionEvent actionEvent) throws NoDBConnectionException {
-        Airplane airplane = AirplaneFactory.createAirplane("1","KML 332", 322);
+        Airplane airplane = AirplaneFactory.createAirplane("1","KML", 332, 322);
         Airport airport1 = AirportFactory.createAirport("1","Myhouse","Amsterdam","Netherlands");
         Airport airport2 = AirportFactory.createAirport("2","YourHouse","Amsterdam","Netherlands");
 
