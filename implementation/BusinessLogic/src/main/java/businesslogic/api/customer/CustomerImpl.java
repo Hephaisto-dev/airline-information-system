@@ -1,53 +1,54 @@
-package businesslogic.implementation;
+package businesslogic.api.customer;
 
-import businesslogic.api.customer.Customer;
 import datarecords.CustomerData;
+
 import java.time.LocalDate;
 
+/**
+ * Wrapper class that contains CustomerData and Customer Business Logic.
+ *
+ * @author Informatics Fontys Venlo
+ */
 public class CustomerImpl implements Customer {
 
     private final CustomerData customerData;
-
-    public CustomerImpl(String id, String firstName, String lastName, LocalDate dob, String email) {
-        this.customerData = new CustomerData(id, firstName, lastName, dob, email);
-    }
 
     public CustomerImpl(CustomerData customerData) {
         this.customerData = customerData;
     }
 
-    @Override
+
+    public CustomerData getData() {
+        return customerData;
+    }
+
+    // Write Customer Business Logic (methods) here
+    // Changes to CustomerData would mean creation of a new CustomerData
+    // object and replace the existing object.
+
+
+
     public String getId() {
         return customerData.id();
     }
 
-    @Override
+
     public String getFirstName() {
         return customerData.firstName();
     }
 
-    @Override
+
     public String getLastName() {
         return customerData.lastName();
     }
 
-    @Override
+
     public LocalDate getDob() {
         return customerData.dob();
     }
 
-    @Override
-    public String toString() {
-        return "CustomerImpl{" + "customerData=" + customerData + '}';
-    }
 
-    @Override
     public String getName() {
-        return getFirstName() + " " + getLastName();
-    }
-
-    @Override
-    public CustomerData getData() {
-        return customerData;
+        return customerData.firstName() + " " + customerData.lastName();
     }
 }
