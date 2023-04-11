@@ -7,9 +7,11 @@ import datarecords.CustomerData;
 
 import java.time.LocalDate;
 
-public interface Customer extends StringIdentifiable,Nameable,PersistantDataContainer<CustomerData>{
+public interface Customer extends Nameable, PersistantDataContainer<CustomerData> {
     String getId();
+
     String getFirstName();
+
     String getLastName();
     LocalDate getDob();
 

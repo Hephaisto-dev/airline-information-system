@@ -11,4 +11,5 @@ module businesslogic_module {
     exports businesslogic.api.common;
     exports businesslogic.api.manager;
     exports businesslogic.api.airport;
+    exports businesslogic.api.booking;
 }
