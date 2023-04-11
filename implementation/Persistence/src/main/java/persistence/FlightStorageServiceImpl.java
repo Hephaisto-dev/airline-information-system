@@ -15,7 +15,6 @@ import java.util.logging.Logger;
 public class FlightStorageServiceImpl implements FlightStorageService {
 
 
-
     @Override
     public FlightData add(FlightData flightData) {
 

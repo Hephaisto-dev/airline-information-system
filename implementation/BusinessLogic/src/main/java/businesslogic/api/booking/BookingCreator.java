@@ -1,6 +1,5 @@
 package businesslogic.api.booking;
 
-import businesslogic.api.flight.FlightFactory;
 import businesslogic.api.manager.BookingManager;
 import datarecords.CustomerData;
 import datarecords.FlightData;
@@ -12,7 +11,9 @@ public class BookingCreator {
     private final BookingManager bookingManager;
 
     public BookingCreator(BookingManager manage) {
-        this.bookingManager = manage;    }
+        this.bookingManager = manage;
+    }
+
     public String createBooking(String id, String empId, FlightData flight, ArrayList<String> Tickets, LocalDateTime bookingDate, ArrayList<String> extras, ArrayList<CustomerData> customersOnBooking) {
 
 // TODO SILL SOME RESTRICTIONS MISSING BECAUSE OF NOT IMPLEMENTED CLASSES
@@ -29,7 +30,7 @@ public class BookingCreator {
             stringBuilder.append("All fields must be filled in!(except extras)\n");
         }
 
-        if (customersOnBooking.stream().count() == 0){
+        if (customersOnBooking.stream().count() == 0) {
 
             errors = true;
             stringBuilder.append("a booking must countain at least 1 person!\n");
@@ -42,10 +43,9 @@ public class BookingCreator {
         }
 
 
-
         if (!errors) {
             try {
-                Booking booking = BookingFactory.createBooking(id,empId,flight,Tickets,bookingDate,extras,customersOnBooking);
+                Booking booking = BookingFactory.createBooking(id, empId, flight, Tickets, bookingDate, extras, customersOnBooking);
                 bookingManager.add(booking);
             } catch (Exception e) {
                 return "There seems to be an issue with the database, please try again." + "\n"

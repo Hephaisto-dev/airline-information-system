@@ -12,7 +12,7 @@ import java.util.List;
 public class BookingImpl implements Booking {
     private final BookingData bookingData;
 
-    public BookingImpl(String id, String empId, FlightData flight, ArrayList<String> Tickets, LocalDateTime bookingDate, ArrayList<String> extras, ArrayList<CustomerData>customerOnBooking) {
+    public BookingImpl(String id, String empId, FlightData flight, ArrayList<String> Tickets, LocalDateTime bookingDate, ArrayList<String> extras, ArrayList<CustomerData> customerOnBooking) {
         this(new BookingData(id, empId, flight, Tickets, bookingDate, extras, customerOnBooking));
     }
 

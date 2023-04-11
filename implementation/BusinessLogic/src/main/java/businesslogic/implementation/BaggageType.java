@@ -7,8 +7,7 @@ public enum BaggageType {
     MEDIUM(new BaggageImpl(false, 70, 50, 30, 15, 2)),
     LARGE(new BaggageImpl(false, 90, 60, 40, 25, 3)),
     CARGO(new BaggageImpl(true, 100, 100, 100, 100, 4)),
-    ANIMAL(new BaggageImpl(true, 200, 200, 200, 200, 5));
-    ;
+    ANIMAL(new BaggageImpl(true, 200, 200, 200, 200, 5));;
     private final Baggage baggage;
 
     BaggageType(Baggage baggage) {

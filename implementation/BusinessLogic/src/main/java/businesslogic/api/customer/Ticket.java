@@ -1,7 +1,6 @@
 package businesslogic.api.customer;
 
 import businesslogic.api.flight.Flight;
-import businesslogic.api.route.Route;
 
 public interface Ticket {
 

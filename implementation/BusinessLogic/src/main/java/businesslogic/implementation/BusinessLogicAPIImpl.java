@@ -52,10 +52,12 @@ public class BusinessLogicAPIImpl implements BusinessLogicAPI {
     public FlightManager getFlightManager() {
         return getManager(FlightManager.class);
     }
+
     @Override
     public BookingManager getBookingManager() {
         return getManager(BookingManager.class);
     }
+
     @Override
     public EmployeeManager getEmployeeManager() {
         return getManager(EmployeeManager.class);
