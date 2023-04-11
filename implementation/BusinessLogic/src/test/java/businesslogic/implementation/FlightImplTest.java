@@ -26,9 +26,9 @@ class FlightImplTest {
     private final Duration dur2 = Duration.between(ldtd2, ldta2);
     private final Duration dur3 = Duration.between(ldtd, ldta2);
     private final Airplane plane = new AirplaneImpl("Hello", "There", 3, 3);
-    private final Airplane plane2 = new AirplaneImpl("Identification", "please", 123, 2);
-    private final Flight flightOne = new FlightImpl(AirportFactory.createAirport(from),
+    private final Flight flight1 = new FlightImpl(AirportFactory.createAirport(from),
             AirportFactory.createAirport(to), ldtd, ldta, dur, plane);
+    private final Airplane plane2 = new AirplaneImpl("Identification", "please", 123, 2);
     private final Flight tooLongFlight = new FlightImpl(AirportFactory.createAirport(from),
             AirportFactory.createAirport(to), ldtd, ldta2, plane2);
     private final Flight flightTwo = new FlightImpl(AirportFactory.createAirport(from),
@@ -40,7 +40,7 @@ class FlightImplTest {
     @Test
     void testGetETD() {
         SoftAssertions.assertSoftly(softAssertions -> {
-            softAssertions.assertThat(flightOne.getETD())
+            softAssertions.assertThat(flight1.getETD())
                     .isEqualTo(ldtd);
             softAssertions.assertThat(flightTwo.getETD())
                     .isEqualTo(ldtd2);
@@ -52,7 +52,7 @@ class FlightImplTest {
     @Test
     void testGetFlightDuration() {
         SoftAssertions.assertSoftly(softly -> {
-            softly.assertThat(flightOne.getFlightDuration())
+            softly.assertThat(flight1.getFlightDuration())
                     .isEqualTo(dur);
             softly.assertThat(flightTwo.getFlightDuration())
                     .isEqualTo(dur2);
@@ -64,7 +64,7 @@ class FlightImplTest {
     @Test
     void testGetAirplane() {
         SoftAssertions.assertSoftly(softly -> {
-            softly.assertThat(flightOne.getAirplane())
+            softly.assertThat(flight1.getAirplane())
                     .isEqualTo(plane);
             softly.assertThat(flightTwo.getAirplane())
                     .isEqualTo(plane2);
@@ -76,7 +76,7 @@ class FlightImplTest {
     @Test
     void testGetETA() {
         SoftAssertions.assertSoftly(softly -> {
-            softly.assertThat(flightOne.getETA())
+            softly.assertThat(flight1.getETA())
                     .isEqualTo(ldta);
             softly.assertThat(flightTwo.getETA())
                     .isEqualTo(ldta2);
@@ -88,8 +88,8 @@ class FlightImplTest {
     @Test
     void testGetRoute() {
         SoftAssertions.assertSoftly(softly -> {
-            softly.assertThat(flightOne.getRoute().getFrom().getName()).isEqualTo("DEPART");
-            softly.assertThat(flightOne.getRoute().getTo().getName()).isEqualTo("ARRIVE");
+            softly.assertThat(flight1.getRoute().getFrom().getName()).isEqualTo("DEPART");
+            softly.assertThat(flight1.getRoute().getTo().getName()).isEqualTo("ARRIVE");
             softly.assertThat(flightTwo.getRoute().getFrom().getName()).isEqualTo("DEPART");
             softly.assertThat(flightTwo.getRoute().getTo().getName()).isEqualTo("ARRIVE");
             softly.assertThat(tooLongFlight.getRoute().getFrom().getName()).isEqualTo("DEPART");
@@ -100,7 +100,7 @@ class FlightImplTest {
     @Test
     void testGetId() {
         SoftAssertions.assertSoftly(softly -> {
-            softly.assertThat(flightOne.getId())
+            softly.assertThat(flight1.getId())
                     .isEqualTo("FL_" + from + "-" + to + "_" +
                             ldtd + "_" + plane.getId());
             softly.assertThat(flightTwo.getId())
@@ -115,8 +115,8 @@ class FlightImplTest {
     @Test
     void testToString() {
         SoftAssertions.assertSoftly(softly -> {
-            softly.assertThat(flightOne.toString())
-                    .isEqualTo("FlightImpl{flightData=" + flightOne.getData() +
+            softly.assertThat(flight1.toString())
+                    .isEqualTo("FlightImpl{flightData=" + flight1.getData() +
                             ", airplane=" + plane + '}');
             softly.assertThat(flightTwo.toString())
                     .isEqualTo("FlightImpl{flightData=" + flightTwo.getData() +

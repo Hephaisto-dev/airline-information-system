@@ -1,10 +1,8 @@
 package businesslogic.api.customer;
 
 import businesslogic.api.flight.Flight;
-import businesslogic.api.route.Route;
-import businesslogic.implementation.RouteImpl;
 
-public class TicketImpl implements Ticket{
+public class TicketImpl implements Ticket {
 
     private String person;
     private Flight flight;
@@ -12,7 +10,7 @@ public class TicketImpl implements Ticket{
     private String seat;
     private String route;
 
-    public TicketImpl(String who, Flight flyingFromTo, String sittingPlace){
+    public TicketImpl(String who, Flight flyingFromTo, String sittingPlace) {
         this.person = who;
         this.flight = flyingFromTo;
         this.seat = sittingPlace;

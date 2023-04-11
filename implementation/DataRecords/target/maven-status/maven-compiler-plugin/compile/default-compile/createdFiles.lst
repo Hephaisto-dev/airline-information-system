@@ -1,7 +1,2 @@
-datarecords\CustomerData.class
-module-info.class
-datarecords\FlightData.class
-datarecords\AirplaneData.class
-datarecords\AirportData.class
+datarecords\EmployeeData.class
 datarecords\BookingData.class
-datarecords\RouteData.class

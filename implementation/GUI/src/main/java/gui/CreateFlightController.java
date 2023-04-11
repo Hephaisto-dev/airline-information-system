@@ -26,6 +26,7 @@ public class CreateFlightController implements Initializable {
     private final Supplier<SceneManager> sceneManagerSupplier;
 
     private final FlightManager flightManager;
+    private final FlightCreator flightCreator;
     @FXML
     public TextField departurePlace;
     @FXML
@@ -38,7 +39,6 @@ public class CreateFlightController implements Initializable {
     public TextField airplaneName;
     @FXML
     public Button createButton;
-    private final FlightCreator flightCreator;
     @FXML
     private Label result;
 

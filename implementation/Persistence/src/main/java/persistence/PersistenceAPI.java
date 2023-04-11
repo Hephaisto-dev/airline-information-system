@@ -33,7 +33,13 @@ public interface PersistenceAPI {
     }
 
 
-    default BookingStorageService getBookingStorageService(){return new BookingStorageServiceImpl();}
+    default BookingStorageService getBookingStorageService() {
+        return new BookingStorageServiceImpl();
+    }
+
+    default EmployeeStorageService getEmployeeStorageService() {
+        return new EmployeeStorageServiceImpl();
+    }
 
 
     // This interface can be extended with all services that need to be made
