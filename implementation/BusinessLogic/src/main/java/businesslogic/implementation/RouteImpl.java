@@ -16,12 +16,18 @@ public class RouteImpl implements Route {
     private final Map<Flight, Duration> flightTransits;
 
     public RouteImpl(Airport from, Airport to) {
-        this(new HashMap<>(), new RouteData(from.getData(), to.getData(), new HashMap<>()));
+        this(new HashMap<>(), new RouteData(from.getData(), to.getData(), new HashMap<>(), "RT_"));
+
     }
 
     public RouteImpl(Map<Flight, Duration> flightTransits, RouteData routeData) {
         this.routeData = routeData;
         this.flightTransits = flightTransits;
+    }
+
+    @Override
+    public String getId() {
+        return routeData.id();
     }
 
     @Override

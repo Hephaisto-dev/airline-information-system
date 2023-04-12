@@ -9,6 +9,8 @@ import java.util.Map;
 import java.util.Set;
 
 public interface Route {
+
+    String getId();
     Airport getFrom();
 
     Airport getTo();
