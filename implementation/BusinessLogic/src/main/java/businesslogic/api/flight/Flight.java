@@ -1,6 +1,7 @@
 package businesslogic.api.flight;
 
 import businesslogic.api.airplane.Airplane;
+import businesslogic.api.airplane.Seat;
 import businesslogic.api.common.PersistantDataContainer;
 import businesslogic.api.route.Route;
 import datarecords.FlightData;
@@ -27,4 +28,6 @@ public interface Flight extends PersistantDataContainer<FlightData> {
     String bookSeat(int row, char column);
 
     String cancelBookedSeat(String targetID);
+
+    Seat getSeat(String Seat_Id);
 }

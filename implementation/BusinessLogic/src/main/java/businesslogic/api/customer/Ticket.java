@@ -1,17 +1,19 @@
 package businesslogic.api.customer;
 
+import businesslogic.api.airplane.Seat;
+import businesslogic.api.common.StringIdentifiable;
 import businesslogic.api.flight.Flight;
-import businesslogic.api.route.Route;
 
-public interface Ticket {
+public interface Ticket extends StringIdentifiable {
 
-    String getTicketID();
 
     String getTicketOwner();
 
     Flight getFlight();
 
-    String getSeat();
+    String getSeatName();
+
+    Seat getSeat();
 
     String getRouteDescription();
 

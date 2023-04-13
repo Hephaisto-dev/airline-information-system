@@ -1,8 +1,7 @@
 package businesslogic.api.customer;
 
+import businesslogic.api.airplane.Seat;
 import businesslogic.api.flight.Flight;
-import businesslogic.api.route.Route;
-import businesslogic.implementation.RouteImpl;
 
 public class TicketImpl implements Ticket{
 
@@ -21,7 +20,7 @@ public class TicketImpl implements Ticket{
     }
 
     @Override
-    public String getTicketID() {
+    public String getId() {
         return this.ticketID;
     }
 
@@ -36,8 +35,13 @@ public class TicketImpl implements Ticket{
     }
 
     @Override
-    public String getSeat() {
+    public String getSeatName() {
         return this.seat;
+    }
+
+    @Override
+    public Seat getSeat(){
+        return this.flight.getSeat(seat);
     }
 
     @Override
