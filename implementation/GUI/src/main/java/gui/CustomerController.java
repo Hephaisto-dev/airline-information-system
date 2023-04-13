@@ -1,6 +1,7 @@
 package gui;
 
-import businesslogic.api.customer.CustomerImpl;
+import businesslogic.api.customer.Customer;
+import businesslogic.api.customer.CustomerFactory;
 import businesslogic.api.manager.CustomerManager;
 import datarecords.CustomerData;
 import javafx.fxml.FXML;
@@ -61,7 +62,7 @@ public class CustomerController implements Initializable {
         CustomerData customerData = new CustomerData("0", firstName.getText(), lastName.getText(),
                 LocalDate.parse(dob.getText()), email.getText());
 
-        CustomerImpl addedCustomer = customerManager.add(new CustomerImpl(customerData));
+        Customer addedCustomer = customerManager.add(CustomerFactory.createCustomer(customerData));
 
         result.setText("Customer added: " + addedCustomer.getData().toString());
     }

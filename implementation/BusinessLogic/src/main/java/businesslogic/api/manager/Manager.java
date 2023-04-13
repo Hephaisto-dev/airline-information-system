@@ -10,4 +10,6 @@ public interface Manager<T extends PersistantDataContainer<D>, D extends Record>
     void delete(T t);
 
     Set<T> getAll();
+
+    T getById(String id);
 }

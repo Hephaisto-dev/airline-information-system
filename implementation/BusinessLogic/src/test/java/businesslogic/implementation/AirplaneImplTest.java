@@ -8,8 +8,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class AirplaneImplTest {
 
-    private final Airplane Airplane = new AirplaneImpl("Id", "name", 2,1);
-    private final Airplane Plane2 = new AirplaneImpl("Id", "name", 25,4);
+    private final Airplane Airplane = new AirplaneImpl("Id", "name", 2, 1);
+    private final Airplane Plane2 = new AirplaneImpl("Id", "name", 25, 4);
 
     @Test
     void testGetId() {
@@ -30,14 +30,14 @@ class AirplaneImplTest {
     }
 
     @Test
-    void testCapacity2(){
+    void testCapacity2() {
         assertThat(Plane2.getCapacity())
                 .isEqualTo(100);
     }
 
     @Test
-    void testGetLength(){
-        SoftAssertions.assertSoftly(softly->{
+    void testGetLength() {
+        SoftAssertions.assertSoftly(softly -> {
             softly.assertThat(Airplane.getLength())
                     .isEqualTo(2);
             softly.assertThat(Plane2.getLength())
@@ -46,8 +46,8 @@ class AirplaneImplTest {
     }
 
     @Test
-    void testGetWidth(){
-        SoftAssertions.assertSoftly(softly->{
+    void testGetWidth() {
+        SoftAssertions.assertSoftly(softly -> {
             softly.assertThat(Airplane.getWidth())
                     .isEqualTo(1);
             softly.assertThat(Plane2.getWidth())

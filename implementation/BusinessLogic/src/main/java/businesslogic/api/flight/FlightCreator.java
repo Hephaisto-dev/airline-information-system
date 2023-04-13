@@ -12,7 +12,7 @@ import persistence.NoDBConnectionException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 
-public class  FlightCreator {
+public class FlightCreator {
     private final FlightManager flightManager;
 
     public FlightCreator(FlightManager manage) {
@@ -63,11 +63,11 @@ public class  FlightCreator {
                 errors = true;
                 stringBuilder.append("Ensure that the flight times aren't in the past\n");
             }
-            if(aLTD.isBefore(LocalDateTime.now())){
+            if (aLTD.isBefore(LocalDateTime.now())) {
                 errors = true;
                 stringBuilder.append("Arrival time must be in the present/future");
             }
-            if(dLTD.isBefore(LocalDateTime.now())){
+            if (dLTD.isBefore(LocalDateTime.now())) {
                 errors = true;
                 stringBuilder.append("Departure time must be in the present/future");
             }
@@ -75,7 +75,7 @@ public class  FlightCreator {
         try {
             plane = AirplaneFactory.createAirplane(planeName);
             //-------------------Martin--------------
-            if(plane.getName().equals(null)) {
+            if (plane.getName().equals(null)) {
                 errors = true;
                 stringBuilder.append("No plane was provided");
             }
