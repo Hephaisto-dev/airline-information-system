@@ -9,13 +9,15 @@ public class TicketImpl implements Ticket {
     private String ticketID;
     private String seat;
     private String route;
+    private Price ticketPrice;
 
-    public TicketImpl(String who, Flight flyingFromTo, String sittingPlace) {
+    public TicketImpl(String who, Flight flyingFromTo, String sittingPlace, Price price) {
         this.person = who;
         this.flight = flyingFromTo;
         this.seat = sittingPlace;
         this.ticketID = createID();
         this.route = flight.getData().routeData().from().id() + "-" + flight.getData().routeData().to().id();
+        this.ticketPrice = price;
     }
 
     @Override
@@ -41,6 +43,21 @@ public class TicketImpl implements Ticket {
     @Override
     public String getRouteDescription() {
         return this.route;
+    }
+
+    @Override
+    public void applyDiscount(int discount){
+        this.ticketPrice.applyDiscount(discount);
+    }
+
+    @Override
+    public void applyVoucher(int percentReduction){
+        this.ticketPrice.applyVoucher(percentReduction);
+    }
+
+    @Override
+    public Price getPrice(){
+        return this.ticketPrice;
     }
 
     private String createID() {

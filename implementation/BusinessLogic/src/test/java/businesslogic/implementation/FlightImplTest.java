@@ -3,6 +3,8 @@ package businesslogic.implementation;
 import businesslogic.api.airplane.Airplane;
 import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.airport.NoAirportException;
+import businesslogic.api.customer.Price;
+import businesslogic.api.customer.PriceImpl;
 import businesslogic.api.flight.Flight;
 import org.assertj.core.api.Assertions;
 import org.assertj.core.api.SoftAssertions;
@@ -18,6 +20,7 @@ class FlightImplTest {
 
     private final String from = "DEPART";
     private final String to = "ARRIVE";
+    private final Price cost = new PriceImpl(1250);
     private final LocalDateTime ldtd = LocalDateTime.of(2012, 12, 11, 5, 3);
     private final LocalDateTime ldta = LocalDateTime.of(2012, 12, 11, 8, 23);
     private final LocalDateTime ldtd2 = LocalDateTime.of(2012, 12, 15, 12, 34);
@@ -26,13 +29,15 @@ class FlightImplTest {
     private final Duration dur2 = Duration.between(ldtd2, ldta2);
     private final Duration dur3 = Duration.between(ldtd, ldta2);
     private final Airplane plane = new AirplaneImpl("Hello", "There", 3, 3);
+    private final Airplane plane2 = new AirplaneImpl("Identification", "please", 123, 2);
     private final Flight flight1 = new FlightImpl(AirportFactory.createAirport(from),
             AirportFactory.createAirport(to), ldtd, ldta, dur, plane);
-    private final Airplane plane2 = new AirplaneImpl("Identification", "please", 123, 2);
     private final Flight tooLongFlight = new FlightImpl(AirportFactory.createAirport(from),
             AirportFactory.createAirport(to), ldtd, ldta2, plane2);
     private final Flight flightTwo = new FlightImpl(AirportFactory.createAirport(from),
             AirportFactory.createAirport(to), ldtd2, ldta2, plane2);
+    private final Flight flightThree = new FlightImpl(AirportFactory.createAirport(from),
+            AirportFactory.createAirport(to), ldtd2, ldta2, dur2, plane2, cost);
 
     FlightImplTest() throws NoAirportException {
     }
@@ -166,6 +171,16 @@ class FlightImplTest {
             flightTwo.bookSeat(2, 'A');
             softly.assertThat(flightTwo.cancelBookedSeat(target))
                     .contains(expect);
+        });
+    }
+
+    @Test
+    void testPrice(){
+        SoftAssertions.assertSoftly(softly->{
+            softly.assertThat(flight1.getPrice().getBackendPrice())
+                    .isEqualTo(flightTwo.getPrice().getBackendPrice());
+            softly.assertThat(flightThree.getPrice().getBackendPrice())
+                    .isNotEqualTo(flight1.getPrice().getBackendPrice());
         });
     }
 }
