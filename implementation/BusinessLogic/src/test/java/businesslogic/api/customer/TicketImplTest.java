@@ -28,6 +28,7 @@ class TicketImplTest {
     LocalDateTime futureFar = LocalDateTime.of(2244,2,1,4,5);
     LocalDateTime futureNear = LocalDateTime.of(2244,2,1,3,4);
     Airplane plane = new AirplaneImpl("PLANEiD", "plane", 123,1);
+    Flight flyer = new FlightImpl(from, to, futureNear, futureFar, plane);
     Price cost = new PriceImpl(2000);
     Ticket ticket = new TicketImpl("person", flyer, "15D", cost);
 
