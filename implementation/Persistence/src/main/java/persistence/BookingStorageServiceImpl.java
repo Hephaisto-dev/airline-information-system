@@ -64,6 +64,7 @@ public class BookingStorageServiceImpl implements BookingStorageService {
         return bookingData;
     }
 
+
     @Override
     public List<BookingData> getAll() {
         DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
@@ -88,33 +89,67 @@ public class BookingStorageServiceImpl implements BookingStorageService {
         return bookingData;
     }
 
-    public BookingData getBooking(String bookingId) {
+// This won't be used because specific searching will be done by the managers
+
+//    public BookingData getBooking(String bookingId) {
+//        DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
+//        BookingData bookingdata= null;
+//
+//
+//        String query = "SELECT * FROM booking_data Where id = (id)VALUES(?)";
+//
+//
+//        try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
+//            int bookingIdInt = Integer.parseInt(bookingId);//this is done because in the database id is auto incremented
+//            pstm.setInt(1, bookingIdInt);
+//
+//            ResultSet result = pstm.executeQuery();
+//            while (result.next()) {
+//                int id = result.getInt("id");
+//                String empId = result.getString("emp_Id");
+//                String flight = result.getString("flight_Id");
+//                String bookingDate = result.getString("booking_Date");
+//                bookingdata = new BookingData(Integer.toString(id),empId,new FlightData(flight,null,null,null,null,null),null,LocalDateTime.parse(bookingDate),null,null);
+//
+//            }
+//
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//
+//        return bookingdata;
+//
+//    }
+    public boolean cancelBooking(String id){
+        boolean confirm = false;
+
         DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
-        BookingData bookingdata= null;
+        int idToDelete = Integer.parseInt(id);
 
-
-        String query = "SELECT * FROM booking_data Where id = (id)VALUES(?)";
-
+        String query = "DELETE FROM booking_Data WHERE id = (idToDelete)VALUES(?)";
 
         try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
-            int bookingIdInt = Integer.parseInt(bookingId);//this is done because in the database id is auto incremented
-            pstm.setInt(1, bookingIdInt);
+            pstm.setInt(1, idToDelete);
 
-            ResultSet result = pstm.executeQuery();
-            while (result.next()) {
-                int id = result.getInt("id");
-                String empId = result.getString("emp_Id");
-                String flight = result.getString("flight_Id");
-                String bookingDate = result.getString("booking_Date");
-                bookingdata = new BookingData(Integer.toString(id),empId,new FlightData(flight,null,null,null,null,null),null,LocalDateTime.parse(bookingDate),null,null);
+            int result = pstm.executeUpdate();
+            if(result==0){
+
+                confirm = false;
+            }
+            else {
+                confirm = true;
+            }
+/*
+            while (result.next()) { there is no result so nothing is read
 
             }
+*/
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-        return bookingdata;
+        return confirm;
 
     }
 }

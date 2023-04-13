@@ -37,7 +37,7 @@ import java.util.function.Supplier;
 public class CreateBookingController implements Initializable {
     ArrayList<String> extras = new ArrayList<>();
     ArrayList<CustomerData> customers = new ArrayList<>();
-    ArrayList<String> tickets = new ArrayList<>();
+    ArrayList<String> tickets = new ArrayList<>();//Change this from string to Ticket
     FlightData selectedFlight= null;
 
     //TODO IMPLEMENT TICKETS
@@ -61,7 +61,7 @@ public class CreateBookingController implements Initializable {
     public ListView<String> listViewCustomers;
     @FXML
     public Button btnAddCustomer;
-    @FXML//Delete this after connection with the database
+    @FXML//TODO Delete this after connection with the database
     public Button btnFakeInfo;
     @FXML
     public ListView<String> listViewExtras;
@@ -103,8 +103,9 @@ public class CreateBookingController implements Initializable {
         }
     }
     public List<String> createTickets(){
-        for(CustomerData customer: customers) {
-            //tickets.add(new TicketImpl("Lucas",cbFlights.getValue(),""));
+        for(CustomerData customer: customers) {  //TODO ADD REAL TICKET IMPLEMENTATION
+
+            //tickets.add(new TicketImpl(customer.firstName(),cbFlights.getValue(),));
             tickets.add(customer.firstName());
         }
 
