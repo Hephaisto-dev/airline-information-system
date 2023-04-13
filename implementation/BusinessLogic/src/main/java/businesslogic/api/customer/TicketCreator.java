@@ -24,16 +24,7 @@ public class TicketCreator {
             error(list, "Please select one of the flights");
         }
         //checking the letter information
-        if(CHAR != null){
-            if(CHAR.length() > 1 || CHAR.length() < 1){
-                error(list, "In the column field just add one capital letter of the English Alphabet");
-            }else{
-                letter = CHAR.charAt(0);
-                if(Character.valueOf(letter)<'A' || Character.valueOf(letter)>'Z'){
-                    error(list, "The letter in the column field must be from the English Alphabet");
-                }
-            }
-        }else{
+        if(CHAR == null){
             error(list, "Please fill in the column field");
         }
         //Checking the number information
