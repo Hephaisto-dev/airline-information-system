@@ -11,12 +11,15 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import persistence.FlightStorageServiceImpl;
+import persistence.database.DBProvider;
 
+import javax.sql.DataSource;
 import java.util.List;
 
 public class CreateTicketController {
 
-    private final FlightStorageServiceImpl FSSI = new FlightStorageServiceImpl();
+    private final DataSource dataSource = DBProvider.getDataSource("jdbc.pg.prod");
+    private final FlightStorageServiceImpl FSSI = new FlightStorageServiceImpl(dataSource);
     public AnchorPane AnchorPaneView;
 
 
