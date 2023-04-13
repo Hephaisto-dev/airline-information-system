@@ -18,4 +18,5 @@ public interface Price {
 
     int getBackendPrice();
 
+    String getCurrencySymbol();
 }
