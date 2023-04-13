@@ -1,10 +1,10 @@
 package businesslogic.api.airplane;
 
 public class SeatImpl implements Seat {
-    private final char column;
-    private final int row;
+    private final int column;
+    private final char row;
 
-    public SeatImpl(char ColumnLR, int rowUD) {
+    public SeatImpl(char rowUD, int ColumnLR) {
         this.column = ColumnLR;
         this.row = rowUD;
     }
@@ -12,16 +12,16 @@ public class SeatImpl implements Seat {
 
     @Override
     public String getId() {
-        return row + String.valueOf(column);
+        return column + String.valueOf(row);
     }
 
     @Override
-    public char getColumn() {
-        return column;
-    }
-
-    @Override
-    public int getRow() {
+    public char getRow() {
         return row;
+    }
+
+    @Override
+    public int getColumn() {
+        return column;
     }
 }

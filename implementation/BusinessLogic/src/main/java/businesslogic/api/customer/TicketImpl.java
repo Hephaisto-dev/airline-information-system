@@ -1,17 +1,20 @@
 package businesslogic.api.customer;
 
+
 import businesslogic.api.airplane.Seat;
 import businesslogic.api.flight.Flight;
 
-public class TicketImpl implements Ticket{
+public class TicketImpl implements Ticket {
+
 
     private String person;
     private Flight flight;
     private String ticketID;
     private String seat;
     private String route;
+    private Price ticketPrice;
 
-    public TicketImpl(String who, Flight flyingFromTo, String sittingPlace){
+    public TicketImpl(String who, Flight flyingFromTo, String sittingPlace, Price price) {
         this.person = who;
         this.flight = flyingFromTo;
         this.seat = sittingPlace;
@@ -43,10 +46,25 @@ public class TicketImpl implements Ticket{
     public Seat getSeat(){
         return this.flight.getSeat(seat);
     }
-
+    
     @Override
     public String getRouteDescription() {
         return this.route;
+    }
+
+    @Override
+    public void applyDiscount(int discount){
+        this.ticketPrice.applyDiscount(discount);
+    }
+
+    @Override
+    public void applyVoucher(int percentReduction){
+        this.ticketPrice.applyVoucher(percentReduction);
+    }
+
+    @Override
+    public Price getPrice(){
+        return this.ticketPrice;
     }
 
     private String createID() {

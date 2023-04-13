@@ -16,12 +16,12 @@ public interface CustomerFactory {
         return new CustomerImpl(customerData);
     }
 
-    static Customer createCustomer(String id) throws NoCustomerException {
+    static Customer createCustomer(String id) throws CustomerNotFoundException {
         if (true) {
             LocalDate loc = LocalDate.of(2002, 2, 2);
             return new CustomerImpl(id, "NameFirst", "NameSecond", loc, "example@gmail.com");
         } else {
-            throw new NoCustomerException();
+            throw new CustomerNotFoundException();
         }
     }
 }

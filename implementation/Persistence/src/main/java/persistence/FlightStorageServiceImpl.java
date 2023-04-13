@@ -13,8 +13,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class FlightStorageServiceImpl implements FlightStorageService {
+    private final DataSource dataSource;
 
-
+    public FlightStorageServiceImpl(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     @Override
     public FlightData add(FlightData flightData) {

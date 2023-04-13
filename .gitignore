@@ -39,3 +39,5 @@ Thumbs.db
 .project
 .settings
 .metadata
+.settings/
+target/

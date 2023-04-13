@@ -6,7 +6,6 @@ import businesslogic.api.flight.Flight;
 
 public interface Ticket extends StringIdentifiable {
 
-
     String getTicketOwner();
 
     Flight getFlight();
@@ -16,5 +15,11 @@ public interface Ticket extends StringIdentifiable {
     Seat getSeat();
 
     String getRouteDescription();
+
+    void applyDiscount(int discount);
+
+    void applyVoucher(int percentReduction);
+
+    Price getPrice();
 
 }

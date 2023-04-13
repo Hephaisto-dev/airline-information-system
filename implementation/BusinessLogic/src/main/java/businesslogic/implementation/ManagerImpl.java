@@ -34,4 +34,9 @@ public class ManagerImpl<T extends PersistantDataContainer<D>, D extends Record>
     public Set<T> getAll() {
         return storage;
     }
+
+    @Override
+    public T getById(String id) {
+        return storage.stream().filter(data -> data.getId().equals(id)).findFirst().orElse(null);
+    }
 }
