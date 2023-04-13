@@ -26,37 +26,52 @@ class TicketImplTest {
     Airplane plane = new AirplaneImpl("PLANEiD", "plane", 123, 1);
 
     Flight flyer = new FlightImpl(from, to, futureNear, futureFar, plane);
-    TicketImpl Ticket = new TicketImpl("person", flyer, "15D");
+    Price cost = new PriceImpl(2000);
+    Ticket ticket = new TicketImpl("person", flyer, "15D", cost);
 
 
     @Test
     void getTicketID() {
-        assertThat(Ticket.getTicketID())
+        assertThat(ticket.getTicketID())
                 .isEqualTo("Ti_PLANEiD:FROM-TO_1.FEBRUARY.2244_15D");
     }
 
     @Test
     void getTicketOwner() {
-        assertThat(Ticket.getTicketOwner())
+        assertThat(ticket.getTicketOwner())
                 .isEqualTo("person");
     }
 
     @Test
     void getFlight() {
-        assertThat(Ticket.getFlight())
+        assertThat(ticket.getFlight())
                 .isEqualTo(flyer);
     }
 
     @Test
     void getSeat() {
-        assertThat(Ticket.getSeat())
+        assertThat(ticket.getSeat())
                 .isEqualTo("15D");
     }
 
     @Test
     void getRouteDescription() {
-        assertThat(Ticket.getRouteDescription())
+        assertThat(ticket.getRouteDescription())
                 .isEqualTo(from.getId() + "-" + to.getId());
+    }
+
+    @Test
+    void applyVoucher(){
+        ticket.applyVoucher(25);
+        assertThat(ticket.getPrice().getBackendPrice())
+                .isEqualTo(1500);
+    }
+
+    @Test
+    void applyDiscount(){
+        ticket.applyDiscount(25);
+        assertThat(ticket.getPrice().getBackendPrice())
+                .isEqualTo(1975);
     }
 
     /*

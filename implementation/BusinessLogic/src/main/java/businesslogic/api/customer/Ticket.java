@@ -14,4 +14,9 @@ public interface Ticket {
 
     String getRouteDescription();
 
+    void applyDiscount(int discount);
+
+    void applyVoucher(int percentReduction);
+
+    Price getPrice();
 }
