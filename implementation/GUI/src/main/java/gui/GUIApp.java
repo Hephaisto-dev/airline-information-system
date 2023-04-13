@@ -24,6 +24,7 @@ import java.io.InputStream;
 public class GUIApp extends Application {
 
     private static final String INITIAL_VIEW = "searchBookingView";
+
     private BusinessLogicAPI businessLogicAPI;
     private SceneManager sceneManager;
     private final Callback<Class<?>, Object> controllerFactory = (Class<?> c)
