@@ -1,15 +1,7 @@
 package businesslogic.api.customer;
 
 import org.assertj.core.api.SoftAssertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-
-import java.util.HashMap;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class PriceImplTest {
 

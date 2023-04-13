@@ -39,4 +39,13 @@ public class ManagerImpl<T extends PersistantDataContainer<D>, D extends Record>
     public T getById(String id) {
         return storage.stream().filter(data -> data.getId().equals(id)).findFirst().orElse(null);
     }
+
+    @Override
+    public boolean remove(T t) {
+        boolean remove = storage.remove(t);
+        if (remove) {
+            remove = storageService.remove(t.getId());
+        }
+        return remove;
+    }
 }
