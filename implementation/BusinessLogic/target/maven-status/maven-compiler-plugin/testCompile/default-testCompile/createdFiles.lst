@@ -1,9 +1,0 @@
-businesslogic\implementation\AirplaneImplTest.class
-businesslogic\implementation\RouteImplTest.class
-businesslogic\implementation\BookingImplTest.class
-businesslogic\api\airplane\SeatImplTest.class
-businesslogic\api\manager\FlightManagerTest.class
-businesslogic\booking\BookingCreatorTest.class
-businesslogic\api\flight\FlightCreatorTest.class
-businesslogic\implementation\FlightImplTest.class
-businesslogic\api\customer\TicketImplTest.class
