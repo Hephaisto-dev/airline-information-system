@@ -15,7 +15,7 @@ public class TicketImpl implements Ticket {
         this.flight = flyingFromTo;
         this.seat = sittingPlace;
         this.ticketID = createID();
-        this.route = flight.getData().routeData().from().id() + "-" + flight.getData().routeData().to().id();
+        this.route =  flight.getDeparture().getId() + "-" + flight.getArrival().getId();
     }
 
     @Override
@@ -48,9 +48,9 @@ public class TicketImpl implements Ticket {
         stringl.append("Ti_")
                 .append(flight.getAirplane().getId())
                 .append(":")
-                .append(flight.getRoute().getFrom().getId())
+                .append(flight.getDeparture().getId())
                 .append("-")
-                .append(flight.getRoute().getTo().getId())
+                .append(flight.getArrival().getId())
                 .append("_")
                 .append(flight.getETD().getDayOfMonth())
                 .append(".")

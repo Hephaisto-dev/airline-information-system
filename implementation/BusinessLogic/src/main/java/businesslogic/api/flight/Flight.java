@@ -2,13 +2,13 @@ package businesslogic.api.flight;
 
 import businesslogic.api.airplane.Airplane;
 import businesslogic.api.common.PersistantDataContainer;
-import businesslogic.api.route.Route;
+import businesslogic.travelDestinatinations.TravelDestinations;
 import datarecords.FlightData;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-public interface Flight extends PersistantDataContainer<FlightData> {
+public interface Flight extends PersistantDataContainer<FlightData>, TravelDestinations {
 
     Duration getFlightDuration();
 
@@ -18,8 +18,6 @@ public interface Flight extends PersistantDataContainer<FlightData> {
 
     LocalDateTime getETA();
 
-    Route getRoute();
-
     FlightStatus getFlightStatus();
 
     void changeStatus(FlightStatus newStatus);
@@ -27,4 +25,9 @@ public interface Flight extends PersistantDataContainer<FlightData> {
     String bookSeat(int row, char column);
 
     String cancelBookedSeat(String targetID);
+
+
+
+
+
 }

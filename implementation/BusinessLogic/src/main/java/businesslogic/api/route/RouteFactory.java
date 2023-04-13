@@ -1,10 +1,10 @@
 package businesslogic.api.route;
 
-import businesslogic.api.airport.Airport;
 import businesslogic.implementation.RouteImpl;
+import datarecords.RouteData;
 
 public interface RouteFactory {
-    static Route createRoute(Airport from, Airport to) {
-        return new RouteImpl(from, to);
+    static Route createRoute(RouteData routeData) {
+        return new RouteImpl(routeData);
     }
 }

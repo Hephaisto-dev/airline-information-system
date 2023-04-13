@@ -4,9 +4,9 @@ import businesslogic.api.airplane.Airplane;
 import businesslogic.api.airplane.Seat;
 import businesslogic.api.airplane.SeatImpl;
 import businesslogic.api.airport.Airport;
+import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.flight.Flight;
 import businesslogic.api.flight.FlightStatus;
-import businesslogic.api.route.Route;
 import datarecords.FlightData;
 
 import java.time.Duration;
@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FlightImpl extends RouteImpl implements Flight {
+public class FlightImpl implements Flight {
 
     private final FlightData flightData;
     private final Airplane airplane;
@@ -24,27 +24,24 @@ public class FlightImpl extends RouteImpl implements Flight {
     private FlightStatus flightStatus = FlightStatus.SCHEDULED;
 
     public FlightImpl(Airport from, Airport to, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
-                      Duration flightDuration,
-                      Airplane airplane) throws IllegalArgumentException {
-        super(from, to);
+                      Duration flightDuration, Airplane airplane) throws IllegalArgumentException {
         if (etdDateTime.isAfter(etaDateTime)) {
             throw new IllegalArgumentException("ETD must be before ETA");
         }
         this.flightData = new FlightData("FL_" + from.getName() + "-" + to.getName() + "_" +
-                etdDateTime + "_" + airplane.getId(), routeData, etdDateTime, etaDateTime, flightDuration,
-                airplane.getData());
+                etdDateTime + "_" + airplane.getId(), etdDateTime, etaDateTime, flightDuration,
+                airplane.getData(), from.getData(), to.getData());
         this.airplane = airplane;
         this.LDTd = etdDateTime;
         this.LDTa = etaDateTime;
-        getFlightTransits().put(this, Duration.ZERO);
         this.bookedSeats = new ArrayList<>();
     }
 
     public FlightImpl(Airport from, Airport to, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
                       Airplane airplane) throws IllegalArgumentException {
-        this(from, to, etdDateTime, etaDateTime,
-                Duration.between(etdDateTime, etaDateTime), airplane);
+        this(from, to, etdDateTime, etaDateTime, Duration.between(etdDateTime, etaDateTime), airplane);
     }
+
 
     @Override
     public String getId() {
@@ -69,11 +66,6 @@ public class FlightImpl extends RouteImpl implements Flight {
     @Override
     public LocalDateTime getETA() {
         return this.LDTa;
-    }
-
-    @Override
-    public Route getRoute() {
-        return this;
     }
 
     @Override
@@ -130,5 +122,15 @@ public class FlightImpl extends RouteImpl implements Flight {
     @Override
     public void changeStatus(FlightStatus newStatus) {
         flightStatus = newStatus;
+    }
+
+    @Override
+    public Airport getArrival() {
+        return AirportFactory.createAirport(flightData.arrival());
+    }
+
+    @Override
+    public Airport getDeparture() {
+        return AirportFactory.createAirport(flightData.departure());
     }
 }

@@ -2,28 +2,22 @@ package businesslogic.implementation;
 
 import businesslogic.api.airport.Airport;
 import businesslogic.api.airport.AirportFactory;
-import businesslogic.api.flight.Flight;
 import businesslogic.api.route.Route;
+import datarecords.FlightData;
 import datarecords.RouteData;
 
 import java.time.Duration;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
 public class RouteImpl implements Route {
     protected final RouteData routeData;
-    private final Map<Flight, Duration> flightTransits;
+    protected FlightData flightData;
 
-    public RouteImpl(Airport from, Airport to) {
-        this(new HashMap<>(), new RouteData(from.getData(), to.getData(), new HashMap<>(), "RT_"));
-
-    }
-
-    public RouteImpl(Map<Flight, Duration> flightTransits, RouteData routeData) {
+    public RouteImpl(RouteData routeData) {
         this.routeData = routeData;
-        this.flightTransits = flightTransits;
     }
+
 
     @Override
     public String getId() {
@@ -32,17 +26,17 @@ public class RouteImpl implements Route {
 
     @Override
     public Airport getFrom() {
-        return AirportFactory.createAirport(routeData.from());
+        return AirportFactory.createAirport(flightData.departure());
     }
 
     @Override
     public Airport getTo() {
-        return AirportFactory.createAirport(routeData.to());
+        return AirportFactory.createAirport(flightData.arrival());
     }
 
     @Override
     public String toString() {
-        return routeData.from().name() + " -> " + routeData.to().name();
+        return flightData.departure() + " -> " + flightData.arrival();
     }
 
     @Override
@@ -51,19 +45,24 @@ public class RouteImpl implements Route {
     }
 
     @Override
-    public Set<Flight> getFlights() {
-        return flightTransits.keySet();
+    public Set<FlightData> getFlights() {
+        return routeData.flightTransits().keySet();
     }
 
     @Override
-    public Map<Flight, Duration> getFlightTransits() {
-        return flightTransits;
+    public Map<FlightData, Duration> getFlightTransits() {
+        return routeData.flightTransits();
     }
 
     @Override
     public Duration getDuration() {
-        return flightTransits.entrySet().stream()
-                .map(flightDurationEntry -> flightDurationEntry.getKey().getFlightDuration().plus(flightDurationEntry.getValue()))
+        return routeData.flightTransits().entrySet().stream()
+                .map(flightDurationEntry -> flightDurationEntry.getKey().flightDuration().plus(flightDurationEntry.getValue()))
                 .reduce(Duration.ZERO, Duration::plus);
+    }
+
+    @Override
+    public RouteData getData() {
+        return routeData;
     }
 }
