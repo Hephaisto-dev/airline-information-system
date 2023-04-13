@@ -9,7 +9,7 @@ import java.util.List;
 
 public class TicketCreator {
 
-    private ArrayList errorList = new ArrayList();
+    private List errorList = new ArrayList();
     private boolean errorFound = false;
 
     public String createTicket(Flight flight, String row, String column, String customer){
