@@ -20,6 +20,7 @@ public class TicketImpl implements Ticket {
         this.seat = sittingPlace;
         this.ticketID = createID();
         this.route = flight.getData().routeData().from().id() + "-" + flight.getData().routeData().to().id();
+        this.ticketPrice = price;
     }
 
     @Override
