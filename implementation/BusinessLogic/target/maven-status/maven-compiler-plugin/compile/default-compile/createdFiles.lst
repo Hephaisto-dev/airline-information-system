@@ -19,7 +19,6 @@ businesslogic\api\booking\BookingCreator.class
 businesslogic\api\manager\FlightManager.class
 businesslogic\api\flight\FlightStatus.class
 businesslogic\api\common\StringIdentifiable.class
-businesslogic\api\customer\CustomerImpl.class
 businesslogic\api\common\PersistantDataContainer.class
 businesslogic\api\customer\TicketImpl.class
 businesslogic\api\booking\NoBookingException.class
@@ -29,7 +28,6 @@ businesslogic\api\airplane\Airplane.class
 businesslogic\implementation\AirplaneImpl.class
 businesslogic\api\customer\Customer.class
 businesslogic\api\common\Nameable.class
-businesslogic\api\customer\NoCustomerException.class
 businesslogic\api\airport\Airport.class
 businesslogic\api\airplane\SeatImpl.class
 businesslogic\api\route\Route.class

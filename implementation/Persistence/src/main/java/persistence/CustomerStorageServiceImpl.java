@@ -2,6 +2,8 @@ package persistence;
 
 import datarecords.CustomerData;
 
+import javax.sql.DataSource;
+
 /**
  * This class knows everything about storing and retrieving customers from
  * the database. At the moment only returns dummy object with an id that is set.
@@ -10,6 +12,10 @@ import datarecords.CustomerData;
  * @author Informatics Fontys Venlo
  */
 class CustomerStorageServiceImpl implements CustomerStorageService {
+    private final DataSource dataSource;
+    public CustomerStorageServiceImpl(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     @Override
     public CustomerData add(CustomerData customerData) {

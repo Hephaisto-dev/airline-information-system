@@ -3,6 +3,7 @@ gui\CustomerController.class
 gui\PrimaryController.class
 gui\CreateTicketController.class
 gui\SecondaryController.class
+gui\SearchFlightController.class
 gui\SceneManager.class
 module-info.class
 gui\CreateBookingController.class
