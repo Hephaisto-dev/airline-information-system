@@ -12,9 +12,9 @@ import java.util.ArrayList;
 public class BookingCreator {
     private final BookingManager bookingManager;
 
-    public BookingCreator(BookingManager manage) {
+    public BookingCreator(BookingManager manager) {
 
-        this.bookingManager = manage;    }
+        this.bookingManager = manager;    }
 
     public String createBooking(String id, String empId, FlightData flight, ArrayList<String> Tickets, LocalDateTime bookingDate, ArrayList<String> extras, ArrayList<CustomerData> customersOnBooking) {
 

@@ -16,5 +16,5 @@ public interface Booking extends PersistantDataContainer<BookingData> {
 
     String getEmp();
     List<CustomerData> getCustomersOnBooking();
-    boolean Cancel();
+    boolean cancel();
 }

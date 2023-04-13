@@ -35,7 +35,7 @@ public class BookingImpl implements Booking {
     }
 
     @Override
-    public boolean Cancel() {
+    public boolean cancel() {
 
         return bookingStorageService.cancelBooking(getId());
 

@@ -1,5 +1,6 @@
 package businesslogic.implementation;
 
+
 import businesslogic.api.airport.Airport;
 import businesslogic.api.booking.Booking;
 import businesslogic.api.airplane.Airplane;
@@ -10,15 +11,15 @@ import java.lang.reflect.Array;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class BookingImplTest {
 
     private static ArrayList<String> tickets = new ArrayList<>();//TODO WHEN TICKETS ARE IMPLEMENTED CHANGE THIS
-
     private ArrayList<String> extras = new ArrayList<>();
    // private ArrayList<CustomerData> customers = new ArrayList<>();//TODO when customers are finished implement this
 
-    private final Airplane airplane = new AirplaneImpl("1","BigPlane",200);
+    private final Airplane airplane = new AirplaneImpl("1","BigPlane",200,200);
     private final Airport airport1 = new AirportImpl("1","MyHouse","Venlo","Netherlands");
     private final Airport airport2 = new AirportImpl("2","YourHouse","Venlo","Netherlands");
     private final Duration duration = Duration.ofDays(10);
