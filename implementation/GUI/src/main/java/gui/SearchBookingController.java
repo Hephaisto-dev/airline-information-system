@@ -1,8 +1,9 @@
 package gui;
 
-import businesslogic.api.common.Identifiable;
+import businesslogic.api.booking.Booking;
 import businesslogic.api.manager.BookingManager;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,15 +12,13 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class SearchBookingController implements Initializable {
     private final BookingManager bookingManager;
     @FXML
-    private ListView<String> bookingListView;
-    private FilteredList<String> filteredBookingIds;
+    private ListView<Booking> bookingListView;
+    private FilteredList<Booking> filteredBookingIds;
 
     @FXML
     private TextField searchField;
@@ -32,13 +31,33 @@ public class SearchBookingController implements Initializable {
     }
 
     public void onSearch() {
-        filteredBookingIds.setPredicate(bookingId -> bookingId.toLowerCase().contains(searchField.getText().toLowerCase()));
+        String lowerCase = searchField.getText().toLowerCase();
+        filteredBookingIds.setPredicate(bookingId -> bookingId.getId().toLowerCase().contains(lowerCase) ||
+                bookingId.getCustomersOnBooking().stream().anyMatch(customer ->
+                        customer.firstName().toLowerCase().contains(lowerCase) ||
+                                customer.lastName().toLowerCase().contains(lowerCase) ||
+                                customer.email().toLowerCase().contains(lowerCase)) ||
+                bookingId.getEmp().toLowerCase().contains(lowerCase));
+    }
+
+    public void onCancel() {
+        ObservableList<Booking> selectedItems = bookingListView.getSelectionModel().getSelectedItems();
+        boolean success = false;
+        for (Booking selectedItem : selectedItems) {
+            success = selectedItem.cancel() || success;
+        }
+        if (success) {
+            updateBookingList();
+        }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<String> bookingIds = new ArrayList<>(bookingManager.getAll().stream().map(Identifiable::getId).toList());
-        filteredBookingIds = new FilteredList<>(FXCollections.observableList(bookingIds));
+        updateBookingList();
+    }
+
+    private void updateBookingList() {
+        filteredBookingIds = new FilteredList<>(FXCollections.observableArrayList(bookingManager.getAll()));
         bookingListView.setItems(filteredBookingIds);
     }
 }
