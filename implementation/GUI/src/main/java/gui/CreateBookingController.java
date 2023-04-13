@@ -70,11 +70,6 @@ public class CreateBookingController implements Initializable {
 
 
     BookingManager bookingManager;
-    ArrayList<String> extras = new ArrayList<>();
-    ArrayList<CustomerData> customers = new ArrayList<>();
-    ArrayList<String> tickets = new ArrayList<>();
-    FlightData selectedFlight = null;
-    BookingManager bookingManager;
 
 
     public CreateBookingController(Supplier<SceneManager> sceneManagerSupplier, BookingManager bookingManager) {
@@ -103,8 +98,9 @@ public class CreateBookingController implements Initializable {
         if(cbExtras.getValue()!=null){
             extras.add(cbExtras.getValue());
             listViewExtras.getItems().clear();
-            for(String s: extras)
-            listViewExtras.getItems().add(s);
+            for(String s: extras) {
+                listViewExtras.getItems().add(s);
+            }
         }
     }
     public List<String> createTickets(){

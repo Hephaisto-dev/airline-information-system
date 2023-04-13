@@ -15,6 +15,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class BookingStorageServiceImpl implements BookingStorageService {
+    private final DataSource dataSource;
+    public BookingStorageServiceImpl(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
     @Override
     public BookingData add(BookingData bookingData){
 

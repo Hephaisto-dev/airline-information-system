@@ -29,8 +29,6 @@ public interface PersistenceAPI {
     EmployeeStorageService getEmployeeStorageService();
 
 
-    default BookingStorageService getBookingStorageService(){return new BookingStorageServiceImpl();}
-
 
     // This interface can be extended with all services that need to be made
     // available to the business logic, e.g. to store Products:

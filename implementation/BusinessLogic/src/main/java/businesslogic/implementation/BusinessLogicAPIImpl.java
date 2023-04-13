@@ -57,10 +57,6 @@ public class BusinessLogicAPIImpl implements BusinessLogicAPI {
         return getManager(BookingManager.class);
     }
 
-    @Override
-    public BookingManager getBookingManager() {
-        return getManager(BookingManager.class);
-    }
 
     @Override
     public EmployeeManager getEmployeeManager() {
