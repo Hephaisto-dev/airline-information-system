@@ -6,6 +6,7 @@ import java.util.List;
 public interface StorageService<D extends Record> {
     D add(D data);
 
+
     default List<D> getAll() {
         return new ArrayList<>();
     }

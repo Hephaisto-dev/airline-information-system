@@ -28,7 +28,8 @@ public class BusinessLogicAPIImpl implements BusinessLogicAPI {
                 AirplaneManager.class, new AirplaneManager(persistenceAPI.getAirplaneStorageService()),
                 AirportManager.class, new AirportManager(persistenceAPI.getAirportStorageService()),
                 FlightManager.class, new FlightManager(persistenceAPI.getFlightStorageService()),
-                BookingManager.class, new BookingManager(persistenceAPI.getBookingStorageService())
+                BookingManager.class, new BookingManager(persistenceAPI.getBookingStorageService()),
+                EmployeeManager.class, new EmployeeManager(persistenceAPI.getEmployeeStorageService())
         );
     }
 
@@ -54,6 +55,16 @@ public class BusinessLogicAPIImpl implements BusinessLogicAPI {
     @Override
     public BookingManager getBookingManager() {
         return getManager(BookingManager.class);
+    }
+
+    @Override
+    public BookingManager getBookingManager() {
+        return getManager(BookingManager.class);
+    }
+
+    @Override
+    public EmployeeManager getEmployeeManager() {
+        return getManager(EmployeeManager.class);
     }
 
     @Override

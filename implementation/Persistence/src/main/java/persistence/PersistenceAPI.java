@@ -14,23 +14,19 @@ public interface PersistenceAPI {
      * @return CustomerStorageService object that knows how to store and
      * retrieve customers.
      */
-    default CustomerStorageService getCustomerStorageService() {
-        return new CustomerStorageServiceImpl();
-    }
-
-    default AirplaneStorageService getAirplaneStorageService() {
-        return new AirplaneStorageServiceImpl();
-    }
+     CustomerStorageService getCustomerStorageService();
+    AirplaneStorageService getAirplaneStorageService();
 
 
-    default AirportStorageService getAirportStorageService() {
-        return new AirportStorageServiceImpl();
-    }
+    AirportStorageService getAirportStorageService();
 
 
-    default FlightStorageService getFlightStorageService() {
-        return new FlightStorageServiceImpl();
-    }
+    FlightStorageService getFlightStorageService();
+
+
+    BookingStorageService getBookingStorageService();
+
+    EmployeeStorageService getEmployeeStorageService();
 
 
     default BookingStorageService getBookingStorageService(){return new BookingStorageServiceImpl();}

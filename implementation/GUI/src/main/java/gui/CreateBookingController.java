@@ -7,13 +7,10 @@ import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.booking.Booking;
 import businesslogic.api.booking.BookingFactory;
 import businesslogic.api.customer.*;
-
 import businesslogic.api.booking.BookingCreator;
-
 import businesslogic.api.flight.Flight;
 import businesslogic.api.flight.FlightFactory;
 import businesslogic.api.manager.BookingManager;
-
 import datarecords.CustomerData;
 import datarecords.FlightData;
 import javafx.event.ActionEvent;
@@ -35,6 +32,7 @@ import java.util.function.Supplier;
 
 
 public class CreateBookingController implements Initializable {
+
     ArrayList<String> extras = new ArrayList<>();
     ArrayList<CustomerData> customers = new ArrayList<>();
     ArrayList<String> tickets = new ArrayList<>();//Change this from string to Ticket
@@ -72,6 +70,13 @@ public class CreateBookingController implements Initializable {
 
 
     BookingManager bookingManager;
+    ArrayList<String> extras = new ArrayList<>();
+    ArrayList<CustomerData> customers = new ArrayList<>();
+    ArrayList<String> tickets = new ArrayList<>();
+    FlightData selectedFlight = null;
+    BookingManager bookingManager;
+
+
     public CreateBookingController(Supplier<SceneManager> sceneManagerSupplier, BookingManager bookingManager) {
         this.bookingManager = bookingManager;
         this.bookingCreator = new BookingCreator(bookingManager);

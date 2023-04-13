@@ -2,14 +2,11 @@ package businesslogic.api.customer;
 
 import businesslogic.api.airplane.Airplane;
 import businesslogic.api.flight.Flight;
-import businesslogic.api.route.Route;
 import businesslogic.implementation.AirplaneImpl;
 import businesslogic.implementation.AirportImpl;
 import businesslogic.implementation.FlightImpl;
-import businesslogic.implementation.RouteImpl;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 
 import java.time.LocalDateTime;
 
@@ -24,13 +21,12 @@ class TicketImplTest {
     AirportImpl from = new AirportImpl("FROM", "FROM", "FROM", "FROM");
     AirportImpl to = new AirportImpl("TO", "TO", "TO", "TO");
     //Route route = new RouteImpl(from, to);//Saved for conveniece, if we decide to provide routes somewhere in the Ticket
-    LocalDateTime futureFar = LocalDateTime.of(2244,2,1,4,5);
-    LocalDateTime futureNear = LocalDateTime.of(2244,2,1,3,4);
-    Airplane plane = new AirplaneImpl("PLANEiD", "plane", 123,1);
+    LocalDateTime futureFar = LocalDateTime.of(2244, 2, 1, 4, 5);
+    LocalDateTime futureNear = LocalDateTime.of(2244, 2, 1, 3, 4);
+    Airplane plane = new AirplaneImpl("PLANEiD", "plane", 123, 1);
 
-    Flight flyer = new FlightImpl(from, to, futureNear, futureFar,plane);
+    Flight flyer = new FlightImpl(from, to, futureNear, futureFar, plane);
     TicketImpl Ticket = new TicketImpl("person", flyer, "15D");
-
 
 
     @Test
@@ -58,7 +54,7 @@ class TicketImplTest {
     }
 
     @Test
-    void getRouteDescription(){
+    void getRouteDescription() {
         assertThat(Ticket.getRouteDescription())
                 .isEqualTo(from.getId() + "-" + to.getId());
     }
