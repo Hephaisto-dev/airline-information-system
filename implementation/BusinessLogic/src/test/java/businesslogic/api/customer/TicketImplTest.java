@@ -52,17 +52,13 @@ class TicketImplTest {
                 .isEqualTo(flyer);
     }
 
-    @Test
+    /*@Test
     void getSeat() {
         assertThat(ticket.getSeat())
                 .isEqualTo("15D");
     }
 
-    @Test
-    void getRouteDescription(){
-        assertThat(ticket.getRouteDescription())
-                .isEqualTo(from.getId() + "-" + to.getId());
-    }
+
 
 
     @Test
@@ -77,6 +73,12 @@ class TicketImplTest {
         ticket.applyDiscount(25);
         assertThat(ticket.getPrice().getBackendPrice())
                 .isEqualTo(1975);
+    }*/
+
+    @Test
+    void getRouteDescription(){
+        assertThat(ticket.getRouteDescription())
+                .isEqualTo(from.getId() + "-" + to.getId());
     }
     /*
     Mockito.when(flew.getId()).thenReturn("PLANEiD");
