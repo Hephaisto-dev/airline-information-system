@@ -1,8 +1,9 @@
-package persistence;
+package persistence.impl;
 
 import datarecords.FlightData;
 import datarecords.RouteData;
-import persistence.database.DBProvider;
+import persistence.api.FlightStorageService;
+import persistence.impl.database.DBProvider;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -65,7 +66,7 @@ public class FlightStorageServiceImpl implements FlightStorageService {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
         }
         return flightData;
     }

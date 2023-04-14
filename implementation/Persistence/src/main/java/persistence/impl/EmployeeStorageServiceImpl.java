@@ -1,6 +1,7 @@
-package persistence;
+package persistence.impl;
 
 import datarecords.EmployeeData;
+import persistence.api.EmployeeStorageService;
 
 import javax.sql.DataSource;
 

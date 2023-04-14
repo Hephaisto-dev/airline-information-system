@@ -1,11 +1,10 @@
 package businesslogic.implementation;
 
 import businesslogic.api.booking.Booking;
+import businesslogic.api.manager.BookingManager;
 import datarecords.BookingData;
 import datarecords.CustomerData;
 import datarecords.FlightData;
-import persistence.BookingStorageServiceImpl;
-
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -13,10 +12,10 @@ import java.util.List;
 
 public class BookingImpl implements Booking {
     private final BookingData bookingData;
-    private BookingStorageServiceImpl bookingStorageService;
+    //TODO initialize bookingManager
+    private BookingManager bookingManager;
 
     public BookingImpl(String id, String empId, FlightData flight, ArrayList<String> Tickets, LocalDateTime bookingDate, ArrayList<String> extras, ArrayList<CustomerData>customerOnBooking) {
-
         this(new BookingData(id, empId, flight, Tickets, bookingDate, extras, customerOnBooking));
     }
 
@@ -37,7 +36,7 @@ public class BookingImpl implements Booking {
     @Override
     public boolean cancel() {
 
-        return bookingStorageService.remove(getId());
+        return bookingManager.remove(this);
 
     }
 

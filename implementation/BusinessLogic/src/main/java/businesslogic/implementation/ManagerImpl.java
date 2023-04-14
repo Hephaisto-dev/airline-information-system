@@ -2,7 +2,7 @@ package businesslogic.implementation;
 
 import businesslogic.api.common.PersistantDataContainer;
 import businesslogic.api.manager.Manager;
-import persistence.StorageService;
+import persistence.api.StorageService;
 
 import java.util.HashSet;
 import java.util.Set;

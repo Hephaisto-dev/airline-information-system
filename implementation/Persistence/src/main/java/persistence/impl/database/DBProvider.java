@@ -1,4 +1,4 @@
-package persistence.database;
+package persistence.impl.database;
 
 import org.postgresql.ds.PGSimpleDataSource;
 

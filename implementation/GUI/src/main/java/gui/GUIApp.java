@@ -11,7 +11,7 @@ import java.io.InputStream;
 
 
 /**
- * persistence.Main GUI App. Gets Business Logic injected. Delegates the switching of scenes
+ * persistence.impl.Main GUI App. Gets Business Logic injected. Delegates the switching of scenes
  * to the SceneManager. The controllerFactory takes care of instantiating the
  * controllers. This enables you to use parameterized constructors and to inject
  * (as in the example below regarding the CustomerController) a link to the
@@ -39,6 +39,8 @@ public class GUIApp extends Application {
                 new CreateFlightController(this::getSceneManager, businessLogicAPI.getFlightManager());
         case "gui.SearchBookingController" ->
                 new SearchBookingController(businessLogicAPI.getBookingManager());
+        case "gui.CreateTicketController" ->
+                new CreateTicketController(businessLogicAPI.getFlightManager());
         default -> null;
     };
 

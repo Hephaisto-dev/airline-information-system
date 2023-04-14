@@ -1,4 +1,4 @@
-package persistence;
+package persistence.api;
 
 /**
  * @author Informatics Fontys Venlo

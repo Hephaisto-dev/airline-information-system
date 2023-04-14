@@ -1,6 +1,7 @@
-package persistence;
+package persistence.impl;
 
-import persistence.database.DBProvider;
+import persistence.api.*;
+import persistence.impl.database.DBProvider;
 
 import javax.sql.DataSource;
 
@@ -9,8 +10,7 @@ import javax.sql.DataSource;
  *
  * @author Informatics Fontys Venlo
  */
-enum PersistenceAPIImpl implements PersistenceAPI {
-    INSTANCE;
+public class PersistenceAPIImpl implements PersistenceAPI {
     private final DataSource dataSource = DBProvider.getDataSource("jdbc.pg.prod");
     private final CustomerStorageService customerStorageService = new CustomerStorageServiceImpl(dataSource);
     private final AirplaneStorageService airplaneStorageService = new AirplaneStorageServiceImpl(dataSource);

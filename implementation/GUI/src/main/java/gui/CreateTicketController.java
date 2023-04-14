@@ -1,30 +1,24 @@
 package gui;
 
-import businesslogic.api.airplane.SeatImpl;
 import businesslogic.api.customer.TicketCreator;
 import businesslogic.api.flight.Flight;
-import datarecords.FlightData;
+import businesslogic.api.manager.FlightManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import persistence.FlightStorageServiceImpl;
-import persistence.database.DBProvider;
 
-import javax.sql.DataSource;
-import java.util.List;
+import java.util.Set;
 
 public class CreateTicketController {
-
-    private final DataSource dataSource = DBProvider.getDataSource("jdbc.pg.prod");
-    private final FlightStorageServiceImpl FSSI = new FlightStorageServiceImpl(dataSource);
+    private final FlightManager flightManager;
     public AnchorPane AnchorPaneView;
 
 
     @FXML
-    ComboBox FlightSelector;
+    ComboBox<Flight> FlightSelector;
     @FXML
     TextField SeatRowGet;
     @FXML
@@ -35,9 +29,14 @@ public class CreateTicketController {
     TextField feedbackField;
     @FXML
     Button TicketButton;
+
+    public CreateTicketController(FlightManager flightManager) {
+        this.flightManager = flightManager;
+    }
+
     public void initialize(){
-        List<FlightData> FlightList = FSSI.getAll();
-        for(FlightData flighter: FlightList){
+        Set<Flight> FlightList = flightManager.getAll();
+        for(Flight flighter: FlightList){
             FlightSelector.getItems().add(flighter);
         }
     }
@@ -46,7 +45,7 @@ public class CreateTicketController {
     @FXML
     protected void onCreateTicketPress(ActionEvent e){
         //
-        Flight flight = (Flight) FlightSelector.getValue();
+        Flight flight = FlightSelector.getValue();
         String seatRow = SeatRowGet.getText();
         String seatColumn = SeatColumnGet.getText();
         String customerName = CustomerNameGet.getText();

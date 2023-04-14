@@ -1,6 +1,7 @@
-package persistence;
+package persistence.impl;
 
 import datarecords.CustomerData;
+import persistence.api.CustomerStorageService;
 
 import javax.sql.DataSource;
 

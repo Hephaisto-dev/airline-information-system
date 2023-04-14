@@ -10,7 +10,7 @@ import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import persistence.FlightStorageService;
+import persistence.api.FlightStorageService;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;

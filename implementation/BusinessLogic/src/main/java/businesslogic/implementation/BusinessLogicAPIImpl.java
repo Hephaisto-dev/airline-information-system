@@ -3,7 +3,7 @@ package businesslogic.implementation;
 import businesslogic.api.BusinessLogicAPI;
 import businesslogic.api.common.PersistantDataContainer;
 import businesslogic.api.manager.*;
-import persistence.PersistenceAPI;
+import persistence.api.PersistenceAPI;
 
 import java.util.Map;
 
