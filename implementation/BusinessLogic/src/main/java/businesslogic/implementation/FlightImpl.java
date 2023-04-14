@@ -1,9 +1,11 @@
 package businesslogic.implementation;
 
 import businesslogic.api.airplane.Airplane;
+import businesslogic.api.airplane.AirplaneFactory;
 import businesslogic.api.airplane.Seat;
 import businesslogic.api.airplane.SeatImpl;
 import businesslogic.api.airport.Airport;
+import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.customer.Price;
 import businesslogic.api.customer.PriceImpl;
 import businesslogic.api.flight.Flight;
@@ -66,6 +68,14 @@ public class FlightImpl extends RouteImpl implements Flight {
                       Airplane airplane) throws IllegalArgumentException {
         this(from, to, etdDateTime, etaDateTime,
                 Duration.between(etdDateTime, etaDateTime), airplane);
+    }
+
+    public FlightImpl(FlightData flightData) {
+        //TODO link to the managers to retrieve airplanes.
+        this(AirportFactory.createAirport(flightData.routeData().from()),
+                AirportFactory.createAirport(flightData.routeData().to()),
+                flightData.etdDateTime(), flightData.etaDateTime(), flightData.flightDuration(),
+                AirplaneFactory.createAirplane(flightData.airplane()));
     }
 
     @Override

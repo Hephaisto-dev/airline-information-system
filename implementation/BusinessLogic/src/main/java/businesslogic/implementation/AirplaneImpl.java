@@ -11,6 +11,10 @@ public class AirplaneImpl implements Airplane {
         this.airplaneData = new AirplaneData(id, name, length, width);
     }
 
+    public AirplaneImpl(AirplaneData airplaneData) {
+        this.airplaneData = airplaneData;
+    }
+
     @Override
     public String getId() {
         return airplaneData.id();
