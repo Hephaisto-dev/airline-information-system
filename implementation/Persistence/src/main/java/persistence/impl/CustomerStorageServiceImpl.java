@@ -1,8 +1,8 @@
 package persistence.impl;
 
 import datarecords.CustomerData;
-import persistence.database.DBProvider;
 import persistence.api.CustomerStorageService;
+import persistence.impl.database.DBProvider;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -24,9 +24,10 @@ class CustomerStorageServiceImpl implements CustomerStorageService {
         this.dataSource = dataSource;
     }
 
-    public CustomerStorageServiceImpl(){
+    /*public CustomerStorageServiceImpl(){
+        DBProvider DBProvider = null;
         this.dataSource = DBProvider.getDataSource("jdbc.pg.prod");
-    }
+    }*/
 
     @Override
     public CustomerData add(CustomerData customerData) {
@@ -61,7 +62,7 @@ class CustomerStorageServiceImpl implements CustomerStorageService {
             customer = new CustomerData(id, fName, lName, lDate, mail);
 
         } catch (SQLException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("You dun fucked up (CustomerStorageServiceImplementation)");
         }
         if(customer != null){
             return customer;
