@@ -1,7 +1,6 @@
 package businesslogic.api.customer;
 
 import businesslogic.api.airplane.Seat;
-import businesslogic.api.airplane.SeatImpl;
 import businesslogic.api.flight.Flight;
 
 import java.util.ArrayList;
@@ -9,67 +8,71 @@ import java.util.List;
 
 public class TicketCreator {
 
-    private List errorList = new ArrayList();
+    private final List errorList = new ArrayList();
     private boolean errorFound = false;
 
-    public String createTicket(Flight flight, String row, String column, String customer){
+    public String createTicket(Flight flight, String row, String column, String customer) {
         return ticketCheck(flight, row, column, customer, errorList);
     }
-    private String ticketCheck(Flight fly, String CHAR, String NUM, String cus, List list){
+
+    private String ticketCheck(Flight fly, String CHAR, String NUM, String cus, List list) {
         char letter = 'A';
         int number = 0;
         Seat sit;
         //checking, if the flight was selected
-        if(fly == null){
+        if (fly == null) {
             error(list, "Please select one of the flights");
         }
         //checking the letter information
-        if(CHAR == null){
+        if (CHAR == null) {
             error(list, "Please fill in the column field");
         }
         //Checking the number information
-        if(NUM != null){
+        if (NUM != null) {
             try {
                 number = Integer.getInteger(NUM);
-            }catch(Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();//to make errormessages more precise
                 error(list, "Row must be a number without decimal point");
             }
-        }else{
+        } else {
             error(list, "Please fill in the row field");
         }
         //Checking, if there's a customer
-        if(cus == null){
+        if (cus == null) {
             error(list, "Please add a customer name");
         }
         //Booking the Seat
-        if(!errorFound){
-            if(number > fly.getAirplane().getLength()){
+        if (!errorFound) {
+            if (number > fly.getAirplane().getLength()) {
                 error(list, "The selected plane has a length of " + fly.getAirplane().getLength()
                         + ", you asked for " + number);
-            }else{
+            } else {
                 String a = fly.bookSeat(number, letter);
-                if(!a.contains("successfully")){
+                if (!a.contains("successfully")) {
                     error(list, a);
                 }
             }
         }
         //returning the end result
-        if(!errorFound){
+        if (!errorFound) {
             return "Ticket booked successfully";
         }
         return getErrors(list);
     }
-    public void setErrorStatus(boolean status){
+
+    public void setErrorStatus(boolean status) {
         errorFound = status;
     }
-    private void error(List listForErrors, String errorMessage){
+
+    private void error(List listForErrors, String errorMessage) {
         errorFound = true;
         listForErrors.add(errorMessage);
     }
-    private String getErrors(List<String> list){
+
+    private String getErrors(List<String> list) {
         StringBuilder answer = new StringBuilder();
-        for(String mistake: list){
+        for (String mistake : list) {
             answer.append(mistake);
         }
         return answer.toString();

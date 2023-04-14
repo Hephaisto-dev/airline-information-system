@@ -1,7 +1,7 @@
 package businesslogic.api;
 
 import businesslogic.implementation.BusinessLogicAPIImpl;
-import persistence.PersistenceAPI;
+import persistence.api.PersistenceAPI;
 
 /**
  * Factory to provide BusinessLogicAPI implementation.

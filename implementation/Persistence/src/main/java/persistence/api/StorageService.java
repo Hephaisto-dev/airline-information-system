@@ -11,5 +11,7 @@ public interface StorageService<D extends Record> {
         return new ArrayList<>();
     }
 
-    default boolean remove(String id) { return true; }
+    default boolean remove(String id) {
+        return true;
+    }
 }

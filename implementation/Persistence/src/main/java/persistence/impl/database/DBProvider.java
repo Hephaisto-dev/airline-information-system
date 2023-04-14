@@ -1,4 +1,4 @@
-package persistence.database;
+package persistence.impl.database;
 
 import org.postgresql.ds.PGSimpleDataSource;
 
@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  */
 public class DBProvider {
 
-    static Map<String, DataSource> cache = new HashMap<>();
+    static final Map<String, DataSource> cache = new HashMap<>();
 
     public static DataSource getDataSource(final String sourceName) {
 
@@ -51,6 +51,8 @@ public class DBProvider {
                     Level.INFO,
                     "attempt to read file from well known location failed'",
                     exception);
+        } catch (NullPointerException nullPointerException){
+
         }
         return properties;
     }

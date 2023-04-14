@@ -1,7 +1,8 @@
-package persistence;
+package persistence.impl;
 
 import datarecords.CustomerData;
 import persistence.database.DBProvider;
+import persistence.api.CustomerStorageService;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -18,6 +19,7 @@ import java.util.logging.Logger;
  */
 class CustomerStorageServiceImpl implements CustomerStorageService {
     private final DataSource dataSource;
+
     public CustomerStorageServiceImpl(DataSource dataSource) {
         this.dataSource = dataSource;
     }
