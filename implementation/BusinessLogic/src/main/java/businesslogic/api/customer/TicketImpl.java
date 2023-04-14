@@ -7,12 +7,12 @@ import businesslogic.api.flight.Flight;
 public class TicketImpl implements Ticket {
 
 
-    private String person;
-    private Flight flight;
-    private String ticketID;
-    private String seat;
-    private String route;
-    private Price ticketPrice;
+    private final String person;
+    private final Flight flight;
+    private final String ticketID;
+    private final String seat;
+    private final String route;
+    private final Price ticketPrice;
 
     public TicketImpl(String who, Flight flyingFromTo, String sittingPlace, Price price) {
         this.person = who;
@@ -44,47 +44,46 @@ public class TicketImpl implements Ticket {
     }
 
     @Override
-    public Seat getSeat(){
+    public Seat getSeat() {
         return this.flight.getSeat(seat);
     }
-    
+
     @Override
     public String getRouteDescription() {
         return this.route;
     }
 
     @Override
-    public void applyDiscount(int discount){
+    public void applyDiscount(int discount) {
         this.ticketPrice.applyDiscount(discount);
     }
 
     @Override
-    public void applyVoucher(int percentReduction){
+    public void applyVoucher(int percentReduction) {
         this.ticketPrice.applyVoucher(percentReduction);
     }
 
     @Override
-    public Price getPrice(){
+    public Price getPrice() {
         return this.ticketPrice;
     }
 
     private String createID() {
-        StringBuilder stringl = new StringBuilder();
-        stringl.append("Ti_")
-                .append(flight.getAirplane().getId())
-                .append(":")
-                .append(flight.getRoute().getFrom().getId())
-                .append("-")
-                .append(flight.getRoute().getTo().getId())
-                .append("_")
-                .append(flight.getETD().getDayOfMonth())
-                .append(".")
-                .append(flight.getETD().getMonth().toString())
-                .append(".")
-                .append(flight.getETD().getYear())
-                .append("_")
-                .append(seat);
+        String stringl = "Ti_" +
+                flight.getAirplane().getId() +
+                ":" +
+                flight.getRoute().getFrom().getId() +
+                "-" +
+                flight.getRoute().getTo().getId() +
+                "_" +
+                flight.getETD().getDayOfMonth() +
+                "." +
+                flight.getETD().getMonth().toString() +
+                "." +
+                flight.getETD().getYear() +
+                "_" +
+                seat;
         //used stringBuilder to save resources (one String, instead of every String being saved from before and after an addittion)
-        return stringl.toString();
+        return stringl;
     }
 }

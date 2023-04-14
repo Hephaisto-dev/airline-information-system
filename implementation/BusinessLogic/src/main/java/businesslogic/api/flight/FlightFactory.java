@@ -3,7 +3,7 @@ package businesslogic.api.flight;
 import businesslogic.api.airplane.Airplane;
 import businesslogic.api.airport.Airport;
 import businesslogic.implementation.FlightImpl;
-import persistence.NoDBConnectionException;
+import persistence.api.NoDBConnectionException;
 
 import java.time.LocalDateTime;
 

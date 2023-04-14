@@ -3,7 +3,7 @@ package businesslogic.api.manager;
 import businesslogic.api.flight.Flight;
 import businesslogic.implementation.ManagerImpl;
 import datarecords.FlightData;
-import persistence.FlightStorageService;
+import persistence.api.FlightStorageService;
 
 public class FlightManager extends ManagerImpl<Flight, FlightData> {
 

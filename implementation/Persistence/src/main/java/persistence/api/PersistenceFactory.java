@@ -1,4 +1,6 @@
-package persistence;
+package persistence.api;
+
+import persistence.impl.PersistenceAPIImpl;
 
 /**
  * Factory to provide PersistenceAPI implementation.
@@ -8,7 +10,7 @@ package persistence;
 public interface PersistenceFactory {
 
     static PersistenceAPI getImplementation() {
-        return PersistenceAPIImpl.INSTANCE;
+        return new PersistenceAPIImpl();
     }
 
 }

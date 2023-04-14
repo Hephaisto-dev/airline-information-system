@@ -1,4 +1,4 @@
-package persistence;
+package persistence.api;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,5 +11,7 @@ public interface StorageService<D extends Record> {
         return new ArrayList<>();
     }
 
-    default boolean remove(String id) { return true; }
+    default boolean remove(String id) {
+        return true;
+    }
 }

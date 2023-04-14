@@ -17,6 +17,7 @@ public interface BusinessLogicAPI {
     CustomerManager getCustomerManager();
 
     FlightManager getFlightManager();
+
     BookingManager getBookingManager();
 
     EmployeeManager getEmployeeManager();
