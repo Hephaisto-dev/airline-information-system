@@ -7,6 +7,7 @@ import datarecords.CustomerData;
 import datarecords.FlightData;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookingImpl implements Booking {
@@ -33,9 +34,9 @@ public class BookingImpl implements Booking {
     }
 
     @Override
-    public boolean cancel() {
+        public boolean cancel() {
 
-        return bookingManager.remove(this);
+            return bookingManager.remove(this);
 
     }
 
@@ -48,5 +49,12 @@ public class BookingImpl implements Booking {
     @Override
     public BookingData getData() {
         return bookingData;
+    }
+    public String ToString() {
+        String persons = null;
+        for (CustomerData c : getCustomersOnBooking()) {
+            persons = c.lastName()+" "+ c.email()+" ";
+        }
+        return "Booking:" + getId() + " people on the booking: " + persons + " created by" + getEmp();
     }
 }
