@@ -2,7 +2,7 @@ package persistence.impl;
 
 import datarecords.CustomerData;
 import persistence.api.CustomerStorageService;
-import persistence.impl.database.DBProvider;
+//import persistence.impl.database.DBProvider;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -37,7 +37,8 @@ class CustomerStorageServiceImpl implements CustomerStorageService {
     }
 
     public CustomerData getCustomer(String customer_Id){
-        DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
+        //DataSource db = DBProvider.getDataSource("jdbc.pg.prod");//other solution
+        DataSource db = dataSource;
         String query = "SELECT * FROM booking_data WHERE id = ?";
         CustomerData customer = null;
 

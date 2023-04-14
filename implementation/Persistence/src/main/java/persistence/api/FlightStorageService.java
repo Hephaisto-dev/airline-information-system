@@ -4,5 +4,5 @@ import datarecords.FlightData;
 import persistence.api.StorageService;
 
 public interface FlightStorageService extends StorageService<FlightData> {
-    FlightData add(FlightData flightData);
+    //FlightData add(FlightData flightData);
 }
