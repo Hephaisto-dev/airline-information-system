@@ -26,16 +26,20 @@ class FlightImplTest {
     private final LocalDateTime ldtd2 = LocalDateTime.of(2012, 12, 15, 12, 34);
     private final LocalDateTime ldta2 = LocalDateTime.of(2012, 12, 15, 15, 45);
     private final Duration dur = Duration.between(ldtd, ldta);
-    private final Flight flight1;
+    //private final Flight flight1;
     private final Duration dur2 = Duration.between(ldtd2, ldta2);
-    private final Flight flightThree;
+    //private final Flight flightThree;
     private final Duration dur3;
     private final Airplane plane = new AirplaneImpl("Hello", "There", 3, 3);
     private final Airplane plane2 = new AirplaneImpl("Identification", "please", 123, 2);
+    private Flight flight1 = new FlightImpl(AirportFactory.createAirport(from),
+            AirportFactory.createAirport(to), ldtd, ldta, dur, plane);
     private final Flight tooLongFlight = new FlightImpl(AirportFactory.createAirport(from),
             AirportFactory.createAirport(to), ldtd, ldta2, plane2);
     private final Flight flightTwo = new FlightImpl(AirportFactory.createAirport(from),
             AirportFactory.createAirport(to), ldtd2, ldta2, plane2);
+    private Flight flightThree = new FlightImpl(AirportFactory.createAirport(from),
+            AirportFactory.createAirport(to), ldtd2, ldta2, dur2, plane2, cost);
 
     FlightImplTest() throws NoAirportException {
         flight1 = new FlightImpl(AirportFactory.createAirport(from),

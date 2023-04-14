@@ -14,6 +14,7 @@ public enum CurrencyType {
 
 
     @Override
+
     public String toString() {
         return currency.getSymbol();
     }

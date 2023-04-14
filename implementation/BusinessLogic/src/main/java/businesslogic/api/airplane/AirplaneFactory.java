@@ -1,6 +1,7 @@
 package businesslogic.api.airplane;
 
 import businesslogic.implementation.AirplaneImpl;
+import datarecords.AirplaneData;
 
 public interface AirplaneFactory {
     static Airplane createAirplane(String id, String type, int length, int width) {
@@ -13,5 +14,9 @@ public interface AirplaneFactory {
         } else {
             throw new NoAirplaneException();
         }
+    }
+
+    static Airplane createAirplane(AirplaneData airplaneData) {
+        return new AirplaneImpl(airplaneData);
     }
 }
