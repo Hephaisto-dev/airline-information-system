@@ -9,6 +9,11 @@ public interface Manager<T extends PersistantDataContainer<D>, D extends Record>
 
     void delete(T t);
 
+    /**
+     * Get an undoable list of all the objects in the manager
+     *
+     * @return an unmodifiable list of all the objects in the manager
+     */
     Set<T> getAll();
 
     T getById(String id);
