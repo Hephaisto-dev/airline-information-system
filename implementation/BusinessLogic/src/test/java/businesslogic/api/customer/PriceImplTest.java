@@ -61,7 +61,7 @@ class PriceImplTest {
             softly.assertThat(Cost1.toString())
                     .isEqualTo("12,50€");
             softly.assertThat(Cost2.toString())
-                    .isEqualTo("9,30$");
+                    .isEqualTo("9,30" + CurrencyType.DOLLAR.getCurrency().getSymbol());
             softly.assertThat(Cost3.toString())
                     .isEqualTo("15,40€");
         });
