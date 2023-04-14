@@ -1,19 +1,16 @@
 package businesslogic.api.booking;
 
 import businesslogic.api.airplane.NoAirplaneException;
-
-import businesslogic.api.customer.Ticket;
-
 import businesslogic.implementation.BookingImpl;
 import datarecords.BookingData;
 import datarecords.CustomerData;
 import datarecords.FlightData;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.List;
 
 public interface BookingFactory {
-    static Booking createBooking(String id, String empId, FlightData flight, ArrayList<String> Tickets, LocalDateTime bookingDate, ArrayList<String> extras, ArrayList<CustomerData> customersOnBooking) {
+    static Booking createBooking(String id, String empId, FlightData flight, List<String> Tickets, LocalDateTime bookingDate, List<String> extras, List<CustomerData> customersOnBooking) {
         return new BookingImpl(id, empId, flight, Tickets, bookingDate, extras, customersOnBooking);
     }
 

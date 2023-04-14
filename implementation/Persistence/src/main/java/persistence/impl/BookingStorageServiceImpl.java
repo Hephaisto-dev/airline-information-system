@@ -1,13 +1,15 @@
-package persistence;
+package persistence.impl;
 
 import datarecords.BookingData;
 import datarecords.FlightData;
-import datarecords.RouteData;
-import persistence.database.DBProvider;
+import persistence.api.BookingStorageService;
+import persistence.impl.database.DBProvider;
 
 import javax.sql.DataSource;
-import java.sql.*;
-import java.time.LocalDate;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,12 +18,13 @@ import java.util.logging.Logger;
 
 public class BookingStorageServiceImpl implements BookingStorageService {
     private final DataSource dataSource;
+
     public BookingStorageServiceImpl(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
     @Override
-    public BookingData add(BookingData bookingData){
+    public BookingData add(BookingData bookingData) {
 
 //this is just to see all values of booking id, empId, flight, Tickets, bookingDate, extras, customerInBooking
         DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
@@ -41,12 +44,9 @@ public class BookingStorageServiceImpl implements BookingStorageService {
             //TODO IMPLEMENT Tickets?!
 
 
-
-
             pstm.setString(1, empId);
             pstm.setString(2, flight);
-            pstm.setString(3,bookingdate);
-
+            pstm.setString(3, bookingdate);
 
 
             ResultSet result = pstm.executeQuery();
@@ -64,7 +64,7 @@ public class BookingStorageServiceImpl implements BookingStorageService {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
         }
         return bookingData;
     }
@@ -86,7 +86,7 @@ public class BookingStorageServiceImpl implements BookingStorageService {
                 String flight = result.getString("flight_Id");
                 String bookingDate = result.getString("booking_Date");
 
-                bookingData.add(new BookingData(Integer.toString(id),empId,new FlightData(flight,null,null,null,null,null),null,LocalDateTime.parse(bookingDate),null,null));
+                bookingData.add(new BookingData(Integer.toString(id), empId, new FlightData(flight, null, null, null, null, null), null, LocalDateTime.parse(bookingDate), null, null));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -125,23 +125,24 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 //        return bookingdata;
 //
 //    }
-    public boolean cancelBooking(String id){
-        boolean confirm = false;
+
+    @Override
+    public boolean remove(String id) {
+        boolean confirm;
 
         DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
         int idToDelete = Integer.parseInt(id);
 
-        String query = "DELETE FROM booking_Data WHERE id = (idToDelete)VALUES(?)";
+        String query = "DELETE FROM booking_data WHERE id = ?";
 
         try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
             pstm.setInt(1, idToDelete);
 
             int result = pstm.executeUpdate();
-            if(result==0){
+            if (result == 0) {
 
                 confirm = false;
-            }
-            else {
+            } else {
                 confirm = true;
             }
 /*

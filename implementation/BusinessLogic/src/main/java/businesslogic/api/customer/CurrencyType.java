@@ -14,15 +14,15 @@ public enum CurrencyType {
 
 
     @Override
-    public String toString(){
+    public String toString() {
         return currency.getSymbol();
     }
 
-    public CurrencyType getCurrencyType(String ISO_Code){
-        switch(ISO_Code){
-            case("EUR"):
+    public CurrencyType getCurrencyType(String ISO_Code) {
+        switch (ISO_Code) {
+            case ("EUR"):
                 return CurrencyType.EURO;
-            case("USD"):
+            case ("USD"):
                 return CurrencyType.DOLLAR;
         }
         return null;

@@ -1,6 +1,7 @@
 # Group Expectations
 
-Communication: Encourage open and clear communication among group members. Make sure everyone has a chance to express their ideas and perspectives.
+Communication: Encourage open and clear communication among group members. Make sure everyone has a chance to express
+their ideas and perspectives.
 
 Responsibility: Assign tasks and responsibilities to each member and make sure they understand their role.
 
@@ -22,7 +23,8 @@ Celebrate successes: Take time to acknowledge and celebrate successes along the 
 
 Trust: There should be a high level of trust between team members, we need to rely on each other’s skills and abilities.
 
-Professionalism: Team members should conduct themselves in a professional manner, treat each other with respect and maintain a positive attitude.
+Professionalism: Team members should conduct themselves in a professional manner, treat each other with respect and
+maintain a positive attitude.
 
 Grade: The team aims for a score of 8 or more
 

@@ -3,7 +3,7 @@ package businesslogic.api.manager;
 import businesslogic.api.customer.Customer;
 import businesslogic.implementation.ManagerImpl;
 import datarecords.CustomerData;
-import persistence.CustomerStorageService;
+import persistence.api.CustomerStorageService;
 
 /**
  * Manages customers in the business logic.

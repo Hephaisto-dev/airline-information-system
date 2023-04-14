@@ -1,28 +1,20 @@
 package businesslogic.api.customer;
 
 import org.assertj.core.api.SoftAssertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-
-import java.util.HashMap;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class PriceImplTest {
 
     private final CurrencyType Euro = CurrencyType.EURO;
     private final CurrencyType USDoll = CurrencyType.DOLLAR;
 
-    private Price Cost1 = new PriceImpl(1250);
-    private Price Cost2 = new PriceImpl(930, CurrencyType.DOLLAR);
-    private Price Cost3 = new PriceImpl(1540, CurrencyType.EURO);
+    private final Price Cost1 = new PriceImpl(1250);
+    private final Price Cost2 = new PriceImpl(930, CurrencyType.DOLLAR);
+    private final Price Cost3 = new PriceImpl(1540, CurrencyType.EURO);
 
 
     @Test
-    void applyDiscount( ) {
+    void applyDiscount() {
         SoftAssertions.assertSoftly(softly -> {
             Cost1.applyDiscount(1250);
             Cost2.applyDiscount(1250);
@@ -53,7 +45,7 @@ class PriceImplTest {
 
     @Test
     void chooseCurrency() {
-        SoftAssertions.assertSoftly(softly->{
+        SoftAssertions.assertSoftly(softly -> {
             Cost1.applyVoucher(20);
             Cost2.applyVoucher(30);
             softly.assertThat(Cost1.getBackendPrice())
@@ -65,11 +57,11 @@ class PriceImplTest {
 
     @Test
     void testToString() {
-        SoftAssertions.assertSoftly(softly->{
+        SoftAssertions.assertSoftly(softly -> {
             softly.assertThat(Cost1.toString())
                     .isEqualTo("12,50€");
             softly.assertThat(Cost2.toString())
-                    .isEqualTo("9,30$");
+                    .isEqualTo("9,30" + CurrencyType.DOLLAR.getCurrency().getSymbol());
             softly.assertThat(Cost3.toString())
                     .isEqualTo("15,40€");
         });

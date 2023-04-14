@@ -7,7 +7,7 @@ import businesslogic.api.airport.Airport;
 import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.airport.NoAirportException;
 import businesslogic.api.manager.FlightManager;
-import persistence.NoDBConnectionException;
+import persistence.api.NoDBConnectionException;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;

@@ -2,7 +2,7 @@ package businesslogic.implementation;
 
 import businesslogic.api.common.PersistantDataContainer;
 import businesslogic.api.manager.Manager;
-import persistence.StorageService;
+import persistence.api.StorageService;
 
 import java.util.*;
 
@@ -37,5 +37,14 @@ public class ManagerImpl<T extends PersistantDataContainer<D>, D extends Record>
     @Override
     public T getById(String id) {
         return storage.stream().filter(data -> data.getId().equals(id)).findFirst().orElse(null);
+    }
+
+    @Override
+    public boolean remove(T t) {
+        boolean remove = storage.remove(t);
+        if (remove) {
+            remove = storageService.remove(t.getId());
+        }
+        return remove;
     }
 }

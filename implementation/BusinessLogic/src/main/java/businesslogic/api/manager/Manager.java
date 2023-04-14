@@ -17,4 +17,6 @@ public interface Manager<T extends PersistantDataContainer<D>, D extends Record>
     Set<T> getAll();
 
     T getById(String id);
+
+    boolean remove(T t);
 }

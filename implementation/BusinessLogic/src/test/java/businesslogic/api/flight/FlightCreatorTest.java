@@ -10,7 +10,7 @@ import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import persistence.FlightStorageService;
+import persistence.api.FlightStorageService;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -18,20 +18,20 @@ import java.util.HashMap;
 class FlightCreatorTest {
 
 
-    static HashMap<String, Airport> AirportHash = new HashMap<>();
-    static Airport port1;
-    static Airport port2;
-    static Airport port3;//This one is to be a wrong Airport, once we know
+    static final HashMap<String, Airport> AirportHash = new HashMap<>();
+    static final Airport port1;
+    static final Airport port2;
+    static final Airport port3;//This one is to be a wrong Airport, once we know
     // how to do that
-    static HashMap<String, LocalDateTime> LDTHash = new HashMap<>();
-    static LocalDateTime LDT1 = LocalDateTime.of(2024, 2, 2, 1, 23, 45);
-    static LocalDateTime LDT2 = LocalDateTime.of(2024, 2, 2, 2, 2, 2);
-    static LocalDateTime LDT3 = LocalDateTime.of(2024, 3, 4, 5, 6, 7);
-    static LocalDateTime LDT4 = LocalDateTime.of(2020, 2, 2, 2, 2, 2);
-    static LocalDateTime nullTime = null;
-    static HashMap<String, Airplane> PlaneHash = new HashMap<>();
-    static Airplane plane1 = AirplaneFactory.createAirplane("Fly", "me", 123, 1);
-    static Airplane plane2 = AirplaneFactory.createAirplane("Flighter", "planeType", 150, 1);//needs to be faulty plane
+    static final HashMap<String, LocalDateTime> LDTHash = new HashMap<>();
+    static final LocalDateTime LDT1 = LocalDateTime.of(2024, 2, 2, 1, 23, 45);
+    static final LocalDateTime LDT2 = LocalDateTime.of(2024, 2, 2, 2, 2, 2);
+    static final LocalDateTime LDT3 = LocalDateTime.of(2024, 3, 4, 5, 6, 7);
+    static final LocalDateTime LDT4 = LocalDateTime.of(2020, 2, 2, 2, 2, 2);
+    static final LocalDateTime nullTime = null;
+    static final HashMap<String, Airplane> PlaneHash = new HashMap<>();
+    static final Airplane plane1 = AirplaneFactory.createAirplane("Fly", "me", 123, 1);
+    static final Airplane plane2 = AirplaneFactory.createAirplane("Flighter", "planeType", 150, 1);//needs to be faulty plane
 
     static {
         try {
@@ -59,7 +59,7 @@ class FlightCreatorTest {
 
     private final FlightStorageService FSSI = data -> data;
     private final FlightManager FM = new FlightManager(FSSI);
-    FlightCreator flightCreator = new FlightCreator(FM);
+    final FlightCreator flightCreator = new FlightCreator(FM);
     // later
 
     @BeforeAll

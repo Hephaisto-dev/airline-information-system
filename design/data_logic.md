@@ -3,22 +3,23 @@
 ---
 
 <!-- TOC -->
+
 - [Database_tables]()
     - [AirplaneData](#table-airplanedata)
     - [AirportData](#table-airportdata)
     - [CustomerData](#table-customerdata)
     - [RouteData](#table-routedata)
     - [FlightData](#table-flightdata)
-    
+
 - [Triggers]()
     - [Flight_is_route](#trigger-flightisroute)
     - [Plane_in_flight](#trigger-planeinflight)
-     
+
 - [Diagram](#diagram)
-                      
+
 ---
 
-### Table AirplaneData  
+### Table AirplaneData
 
 ```sql
 create table AirplaneData(
@@ -28,9 +29,10 @@ create table AirplaneData(
     primary key (id)
 );
 ```                 
+
 ---
 
-### Table AirportData 
+### Table AirportData
 
 ```sql
 create table Airport(
@@ -43,6 +45,7 @@ create table Airport(
 ALTER TABLE airport
     ALTER COLUMN id TYPE varchar;
 ```
+
                       
 ---
 
@@ -60,6 +63,7 @@ create table CustomerData(
 ALTER TABLE customerdata
     ALTER COLUMN id TYPE varchar;
 ```                  
+
 ---
 
 ### Table RouteData
@@ -73,6 +77,7 @@ create table RouteData(
     foreign key (id) references flightdata (id)
 );
 ```
+
 ---
 
 ### Table FlightData
@@ -91,6 +96,7 @@ create table FlightData(
     primary key (id)
 );
 ```
+
 ---
 
 ### Trigger FlightIsRoute
@@ -111,6 +117,7 @@ $$;
 
 alter function flightisroute() owner to postgres;
 ```
+
 ---
 
 ### Trigger PlaneInFlight
