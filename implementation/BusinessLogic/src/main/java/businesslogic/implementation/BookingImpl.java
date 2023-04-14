@@ -13,7 +13,7 @@ import java.util.List;
 
 public class BookingImpl implements Booking {
     private final BookingData bookingData;
-    private BookingStorageServiceImpl bookingStorageService;
+
 
     public BookingImpl(String id, String empId, FlightData flight, ArrayList<String> Tickets, LocalDateTime bookingDate, ArrayList<String> extras, ArrayList<CustomerData>customerOnBooking) {
 
@@ -35,13 +35,6 @@ public class BookingImpl implements Booking {
     }
 
     @Override
-    public boolean cancel() {
-
-        return bookingStorageService.cancelBooking(getId());
-
-    }
-
-    @Override
 
     public String getId() {
         return bookingData.id();
@@ -50,5 +43,12 @@ public class BookingImpl implements Booking {
     @Override
     public BookingData getData() {
         return bookingData;
+    }
+    public String ToString() {
+        String persons = null;
+        for (CustomerData c : getCustomersOnBooking()) {
+            persons = c.lastName()+" "+ c.email()+" ";
+        }
+        return "Booking:" + getId() + " people on the booking: " + persons + " created by" + getEmp();
     }
 }
