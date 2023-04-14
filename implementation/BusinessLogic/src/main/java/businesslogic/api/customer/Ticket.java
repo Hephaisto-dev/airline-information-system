@@ -21,5 +21,4 @@ public interface Ticket extends StringIdentifiable {
     void applyVoucher(int percentReduction);
 
     Price getPrice();
-
 }
