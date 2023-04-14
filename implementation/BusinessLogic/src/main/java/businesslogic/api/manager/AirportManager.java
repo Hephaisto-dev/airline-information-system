@@ -11,8 +11,17 @@ public class AirportManager extends ManagerImpl<Airport, AirportData> {
         super(storageService);
     }
 
+
     @Override
     protected Airport createPersistantDataContainer(AirportData data) {
         return AirportFactory.createAirport(data);
     }
+
+    //SEARCH AIRPORT
+//    public Airport searchAirport(String searchedAirport){
+//        return getAll().stream()
+//                .filter(airport -> airport.getId().contains(searchedAirport))
+//                .findFirst()
+//                .orElse(null);
+//    }
 }
