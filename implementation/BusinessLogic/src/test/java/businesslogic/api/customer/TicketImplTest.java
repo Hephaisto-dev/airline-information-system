@@ -1,6 +1,9 @@
 package businesslogic.api.customer;
 
 import businesslogic.api.airplane.Airplane;
+
+import businesslogic.api.airport.Airport;
+
 import businesslogic.api.flight.Flight;
 import businesslogic.implementation.AirplaneImpl;
 import businesslogic.implementation.AirportImpl;
@@ -18,21 +21,22 @@ class TicketImplTest {
     @Mock
     Flight flew;
 
-    AirportImpl from = new AirportImpl("FROM", "FROM", "FROM", "FROM");
-    AirportImpl to = new AirportImpl("TO", "TO", "TO", "TO");
-    //Route route = new RouteImpl(from, to);//Saved for conveniece, if we decide to provide routes somewhere in the Ticket
-    LocalDateTime futureFar = LocalDateTime.of(2244, 2, 1, 4, 5);
-    LocalDateTime futureNear = LocalDateTime.of(2244, 2, 1, 3, 4);
-    Airplane plane = new AirplaneImpl("PLANEiD", "plane", 123, 1);
 
+    Airport from = new AirportImpl("FROM", "FROM", "FROM", "FROM");
+    Airport to = new AirportImpl("TO", "TO", "TO", "TO");
+    //Route route = new RouteImpl(from, to);//Saved for conveniece, if we decide to provide routes somewhere in the Ticket
+    LocalDateTime futureFar = LocalDateTime.of(2244,2,1,4,5);
+    LocalDateTime futureNear = LocalDateTime.of(2244,2,1,3,4);
+    Airplane plane = new AirplaneImpl("PLANEiD", "plane", 123,5);
     Flight flyer = new FlightImpl(from, to, futureNear, futureFar, plane);
     Price cost = new PriceImpl(2000);
     Ticket ticket = new TicketImpl("person", flyer, "15D", cost);
 
 
+
     @Test
     void getTicketID() {
-        assertThat(ticket.getTicketID())
+        assertThat(ticket.getId())
                 .isEqualTo("Ti_PLANEiD:FROM-TO_1.FEBRUARY.2244_15D");
     }
 
@@ -50,15 +54,13 @@ class TicketImplTest {
 
     @Test
     void getSeat() {
-        assertThat(ticket.getSeat())
+        flyer.bookSeat(15,'D');
+        assertThat(ticket.getSeat().toString())
                 .isEqualTo("15D");
     }
 
-    @Test
-    void getRouteDescription() {
-        assertThat(ticket.getRouteDescription())
-                .isEqualTo(from.getId() + "-" + to.getId());
-    }
+
+
 
     @Test
     void applyVoucher(){
@@ -74,6 +76,11 @@ class TicketImplTest {
                 .isEqualTo(1975);
     }
 
+    @Test
+    void getRouteDescription(){
+        assertThat(ticket.getRouteDescription())
+                .isEqualTo(from.getId() + "-" + to.getId());
+    }
     /*
     Mockito.when(flew.getId()).thenReturn("PLANEiD");
         Mockito.when(flew.getRoute().getFrom().getId()).thenReturn("FROM");

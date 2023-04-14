@@ -158,4 +158,14 @@ public class FlightImpl extends RouteImpl implements Flight {
     public void changeStatus(FlightStatus newStatus) {
         flightStatus = newStatus;
     }
+
+    @Override
+    public Seat getSeat(String Seat_Id){
+        for(Seat sitter: bookedSeats){
+            if(sitter.getId().equals(Seat_Id)){
+                return sitter;
+            }
+        }
+        return null;
+    }
 }

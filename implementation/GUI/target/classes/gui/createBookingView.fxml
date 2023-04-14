@@ -45,6 +45,7 @@
       <Text layoutX="27.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your total to pay:" />
       <Text fx:id="totalToPay" layoutX="127.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0,00" />
       <Button fx:id="getPrice" layoutX="14.0" layoutY="347.0" mnemonicParsing="false" onAction="#updatePrice" text="get your price" />
+
    </children>
 
 </AnchorPane>

@@ -1,15 +1,7 @@
 package businesslogic.api.customer;
 
 import org.assertj.core.api.SoftAssertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-
-import java.util.HashMap;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class PriceImplTest {
 
@@ -69,7 +61,7 @@ class PriceImplTest {
             softly.assertThat(Cost1.toString())
                     .isEqualTo("12,50€");
             softly.assertThat(Cost2.toString())
-                    .isEqualTo("9,30$");
+                    .isEqualTo("9,30" + CurrencyType.DOLLAR.getCurrency().getSymbol());
             softly.assertThat(Cost3.toString())
                     .isEqualTo("15,40€");
         });

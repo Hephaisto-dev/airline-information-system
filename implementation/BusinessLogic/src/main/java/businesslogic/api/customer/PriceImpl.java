@@ -55,4 +55,9 @@ public class PriceImpl implements Price{
                 .append(currency.toString())
                 .toString();
     }
+
+    @Override
+    public String getCurrencySymbol(){
+        return currency.getCurrency().getSymbol();
+    }
 }
