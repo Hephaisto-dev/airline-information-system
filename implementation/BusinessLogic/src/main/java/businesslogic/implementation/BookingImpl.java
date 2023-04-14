@@ -7,7 +7,6 @@ import datarecords.CustomerData;
 import datarecords.FlightData;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BookingImpl implements Booking {
@@ -15,7 +14,7 @@ public class BookingImpl implements Booking {
     //TODO initialize bookingManager
     private BookingManager bookingManager;
 
-    public BookingImpl(String id, String empId, FlightData flight, ArrayList<String> Tickets, LocalDateTime bookingDate, ArrayList<String> extras, ArrayList<CustomerData>customerOnBooking) {
+    public BookingImpl(String id, String empId, FlightData flight, List<String> Tickets, LocalDateTime bookingDate, List<String> extras, List<CustomerData> customerOnBooking) {
         this(new BookingData(id, empId, flight, Tickets, bookingDate, extras, customerOnBooking));
     }
 

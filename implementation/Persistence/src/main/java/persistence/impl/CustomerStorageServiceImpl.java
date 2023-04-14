@@ -14,6 +14,7 @@ import javax.sql.DataSource;
  */
 class CustomerStorageServiceImpl implements CustomerStorageService {
     private final DataSource dataSource;
+
     public CustomerStorageServiceImpl(DataSource dataSource) {
         this.dataSource = dataSource;
     }

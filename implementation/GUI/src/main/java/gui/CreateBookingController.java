@@ -27,11 +27,12 @@ import java.util.function.Supplier;
 
 public class CreateBookingController implements Initializable {
 
-    ArrayList<String> extras = new ArrayList<>();
-    ArrayList<CustomerData> customers = new ArrayList<>();
-    ArrayList<String> tickets = new ArrayList<>();//Change this from string to Ticket
-    FlightData selectedFlight= null;
-
+    final ArrayList<String> extras = new ArrayList<>();
+    final ArrayList<CustomerData> customers = new ArrayList<>();
+    final ArrayList<String> tickets = new ArrayList<>();//Change this from string to Ticket
+    final FlightData selectedFlight = null;
+    final BookingManager bookingManager;
+    private final BookingCreator bookingCreator;
     //TODO IMPLEMENT TICKETS
     @FXML
     public TextField empId;
@@ -60,45 +61,45 @@ public class CreateBookingController implements Initializable {
     @FXML
     public Text result;
     private BookingCreator bookCreator;
-    private final BookingCreator bookingCreator;
-
-
-    BookingManager bookingManager;
 
 
     public CreateBookingController(Supplier<SceneManager> sceneManagerSupplier, BookingManager bookingManager) {
         this.bookingManager = bookingManager;
         this.bookingCreator = new BookingCreator(bookingManager);
     }
+
     @FXML
     public void createBooking(ActionEvent actionEvent) {
 
-       String booking = bookingCreator.createBooking("1", empId.getText(), selectedFlight, tickets, LocalDateTime.now(), extras, customers);
-       result.setText(booking);
+        String booking = bookingCreator.createBooking("1", empId.getText(), selectedFlight, tickets, LocalDateTime.now(), extras, customers);
+        result.setText(booking);
 
     }
+
     @FXML
     public void addCustomer(ActionEvent actionEvent) {
 
-            customers.add(new CustomerData("1",firstName.getText(),lastName.getText(), dateOfBirth.getValue(),email.getText()));
-            listViewCustomers.getItems().clear();
-            for(CustomerData c: customers)
-                listViewCustomers.getItems().add(c.toString());
+        customers.add(new CustomerData("1", firstName.getText(), lastName.getText(), dateOfBirth.getValue(), email.getText()));
+        listViewCustomers.getItems().clear();
+        for (CustomerData c : customers)
+            listViewCustomers.getItems().add(c.toString());
 
     }
+
     @FXML
     public void addExtra(ActionEvent actionEvent) {
 
-        if(cbExtras.getValue()!=null){
+        if (cbExtras.getValue() != null) {
             extras.add(cbExtras.getValue());
             listViewExtras.getItems().clear();
-            for(String s: extras) {
+            for (String s : extras) {
                 listViewExtras.getItems().add(s);
             }
         }
     }
-    public List<String> createTickets(){
-        for(CustomerData customer: customers) {  //TODO ADD REAL TICKET IMPLEMENTATION
+
+    public List<String> createTickets() {
+        for (CustomerData customer : customers) {  //TODO ADD REAL TICKET IMPLEMENTATION
 
             //tickets.add(new TicketImpl(customer.firstName(),cbFlights.getValue(),));
             tickets.add(customer.firstName());
@@ -106,14 +107,15 @@ public class CreateBookingController implements Initializable {
 
         return tickets;
     }
+
     @FXML
     public void fakeInfo(ActionEvent actionEvent) throws NoDBConnectionException {
-        Airplane airplane = AirplaneFactory.createAirplane("1","KML 332", 322,322);
-        Airport airport1 = AirportFactory.createAirport("1","MyHouse","Amsterdam","Netherlands");
-        Airport airport2 = AirportFactory.createAirport("2","YourHouse","Amsterdam","Netherlands");
+        Airplane airplane = AirplaneFactory.createAirplane("1", "KML 332", 322, 322);
+        Airport airport1 = AirportFactory.createAirport("1", "MyHouse", "Amsterdam", "Netherlands");
+        Airport airport2 = AirportFactory.createAirport("2", "YourHouse", "Amsterdam", "Netherlands");
 
 
-        Flight flight = FlightFactory.createFlight(airport1,airport2,LocalDateTime.now(),LocalDateTime.now().plusDays(1),airplane);
+        Flight flight = FlightFactory.createFlight(airport1, airport2, LocalDateTime.now(), LocalDateTime.now().plusDays(1), airplane);
 
         cbFlights.getItems().add(flight);
 

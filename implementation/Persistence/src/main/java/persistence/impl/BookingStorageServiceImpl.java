@@ -18,12 +18,13 @@ import java.util.logging.Logger;
 
 public class BookingStorageServiceImpl implements BookingStorageService {
     private final DataSource dataSource;
+
     public BookingStorageServiceImpl(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
     @Override
-    public BookingData add(BookingData bookingData){
+    public BookingData add(BookingData bookingData) {
 
 //this is just to see all values of booking id, empId, flight, Tickets, bookingDate, extras, customerInBooking
         DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
@@ -43,12 +44,9 @@ public class BookingStorageServiceImpl implements BookingStorageService {
             //TODO IMPLEMENT Tickets?!
 
 
-
-
             pstm.setString(1, empId);
             pstm.setString(2, flight);
-            pstm.setString(3,bookingdate);
-
+            pstm.setString(3, bookingdate);
 
 
             ResultSet result = pstm.executeQuery();
@@ -88,7 +86,7 @@ public class BookingStorageServiceImpl implements BookingStorageService {
                 String flight = result.getString("flight_Id");
                 String bookingDate = result.getString("booking_Date");
 
-                bookingData.add(new BookingData(Integer.toString(id),empId,new FlightData(flight,null,null,null,null,null),null,LocalDateTime.parse(bookingDate),null,null));
+                bookingData.add(new BookingData(Integer.toString(id), empId, new FlightData(flight, null, null, null, null, null), null, LocalDateTime.parse(bookingDate), null, null));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -130,7 +128,7 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 
     @Override
     public boolean remove(String id) {
-        boolean confirm = false;
+        boolean confirm;
 
         DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
         int idToDelete = Integer.parseInt(id);
@@ -141,11 +139,10 @@ public class BookingStorageServiceImpl implements BookingStorageService {
             pstm.setInt(1, idToDelete);
 
             int result = pstm.executeUpdate();
-            if(result==0){
+            if (result == 0) {
 
                 confirm = false;
-            }
-            else {
+            } else {
                 confirm = true;
             }
 /*

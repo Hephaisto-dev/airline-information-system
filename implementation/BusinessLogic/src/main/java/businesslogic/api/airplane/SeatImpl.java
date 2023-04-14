@@ -26,7 +26,7 @@ public class SeatImpl implements Seat {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return this.getId();
     }
 }

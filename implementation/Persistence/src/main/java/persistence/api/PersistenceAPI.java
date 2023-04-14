@@ -14,7 +14,8 @@ public interface PersistenceAPI {
      * @return CustomerStorageService object that knows how to store and
      * retrieve customers.
      */
-     CustomerStorageService getCustomerStorageService();
+    CustomerStorageService getCustomerStorageService();
+
     AirplaneStorageService getAirplaneStorageService();
 
 
@@ -27,7 +28,6 @@ public interface PersistenceAPI {
     BookingStorageService getBookingStorageService();
 
     EmployeeStorageService getEmployeeStorageService();
-
 
 
     // This interface can be extended with all services that need to be made

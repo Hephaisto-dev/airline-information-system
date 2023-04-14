@@ -34,16 +34,16 @@ public class CreateTicketController {
         this.flightManager = flightManager;
     }
 
-    public void initialize(){
+    public void initialize() {
         Set<Flight> FlightList = flightManager.getAll();
-        for(Flight flighter: FlightList){
+        for (Flight flighter : FlightList) {
             FlightSelector.getItems().add(flighter);
         }
     }
 
 
     @FXML
-    protected void onCreateTicketPress(ActionEvent e){
+    protected void onCreateTicketPress(ActionEvent e) {
         //
         Flight flight = FlightSelector.getValue();
         String seatRow = SeatRowGet.getText();
@@ -53,8 +53,8 @@ public class CreateTicketController {
         feedbackField.appendText(useInfo(flight, seatRow, seatColumn, customerName));
     }
 
-    protected String useInfo(Flight f, String row, String column, String name){
+    protected String useInfo(Flight f, String row, String column, String name) {
         TicketCreator tc = new TicketCreator();
-        return tc.createTicket(f,row,column,name);
+        return tc.createTicket(f, row, column, name);
     }
 }

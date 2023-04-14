@@ -69,7 +69,7 @@ public class FlightImpl extends RouteImpl implements Flight {
     }
 
     @Override
-    public Price getPrice(){
+    public Price getPrice() {
         return this.standardPrice;
     }
 
@@ -160,9 +160,9 @@ public class FlightImpl extends RouteImpl implements Flight {
     }
 
     @Override
-    public Seat getSeat(String Seat_Id){
-        for(Seat sitter: bookedSeats){
-            if(sitter.getId().equals(Seat_Id)){
+    public Seat getSeat(String Seat_Id) {
+        for (Seat sitter : bookedSeats) {
+            if (sitter.getId().equals(Seat_Id)) {
                 return sitter;
             }
         }

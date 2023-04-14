@@ -7,6 +7,7 @@ import javax.sql.DataSource;
 
 public class AirplaneStorageServiceImpl implements AirplaneStorageService {
     private final DataSource dataSource;
+
     public AirplaneStorageServiceImpl(DataSource dataSource) {
         this.dataSource = dataSource;
     }
