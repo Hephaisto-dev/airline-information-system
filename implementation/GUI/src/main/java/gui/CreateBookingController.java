@@ -69,6 +69,7 @@ public class CreateBookingController implements Initializable {
     public Text totalToPay;
     @FXML
     public Text pricePerPerson;
+
     private BookingCreator bookCreator;
     private final BookingCreator bookingCreator;
 
@@ -110,9 +111,11 @@ public class CreateBookingController implements Initializable {
     public List<String> createTickets(){
         for(CustomerData customer: customers) {  //TODO ADD REAL TICKET IMPLEMENTATION
 
+
             //tickets.add(new TicketImpl(customer.firstName(),cbFlights.getValue(),));
             tickets.add(customer.firstName());
         }
+
 
         return tickets;
     }

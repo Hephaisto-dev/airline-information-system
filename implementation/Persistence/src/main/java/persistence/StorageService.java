@@ -10,4 +10,6 @@ public interface StorageService<D extends Record> {
     default List<D> getAll() {
         return new ArrayList<>();
     }
+
+    default boolean remove(String id) { return true; }
 }

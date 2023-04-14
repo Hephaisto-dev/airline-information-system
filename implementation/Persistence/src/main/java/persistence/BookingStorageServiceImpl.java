@@ -4,10 +4,14 @@ import datarecords.BookingData;
 import datarecords.FlightData;
 import datarecords.RouteData;
 import persistence.database.DBProvider;
-
 import javax.sql.DataSource;
 import java.sql.*;
 import java.time.LocalDate;
+import persistence.database.DBProvider;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -125,13 +129,16 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 //        return bookingdata;
 //
 //    }
-    public boolean cancelBooking(String id){
+
+
+    @Override
+    public boolean remove(String id) {
         boolean confirm = false;
 
         DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
         int idToDelete = Integer.parseInt(id);
 
-        String query = "DELETE FROM booking_Data WHERE id = (idToDelete)VALUES(?)";
+        String query = "DELETE FROM booking_data WHERE id = ?";
 
         try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
             pstm.setInt(1, idToDelete);
