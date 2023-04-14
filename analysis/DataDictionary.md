@@ -10,7 +10,7 @@
 | Customer   | Person who booked the Trip (Doesn´t has to be the Passenger)   |   |
 | Customer/Passenger | Customer doesn't has to be the Passenger   |   |
 | Dashboard   | information management tool   | <ul><li>KPI: Key performmance indicator</li></ul>   |
-| Discount   | discount refers to a situation when a security is trading for lower than its fundamental or intrinsic value | <ul><li>Id: Unique identifier for each discount</li><li>Value: The value of the discount (percentage discount, meaning a price of 200 goes to 170, if the discount is 15)</li></ul>   |
+| Discount   | discount refers to a situation when a security is trading for lower than its fundamental or intrinsic value | <ul><li>Id: Unique identifier for each discount</li><li>Value: The value of the discount (example: Voucher for 15. Original Price 200, apply voucher, price now 185)</li></ul>   |
 | Employee   | someone that another person or company hires to perform a service   | <ul><li>Birthdate: The birthdate of the employee</li><li>Email: Email address of the employee</li><li>First name: First name of the employee</li><li>Id: Unique identifier for each employee</li><li>Job title: This defines what a person's job is in the company</li><li>Last name: Last name of the employee</li><li>Phone: Phone number of the employee</li></ul>   |
 | ETA   | Estimated Time of Arrival   |   |
 | ETD   | Estimated Time of Departure   |   |
@@ -21,5 +21,5 @@
 | Seat   | a thing made or used for sitting on, such as a chair or stool.   | <ul><li>Availability: Whether the seat is available or not</li><li>Class: The class of the current seat (1st, 2nd, eco)</li><li>Column: Column identification of seat (A-Z, left-right to window)</li><li>Row: Row number of the seat (int, front-back of plane)</li><li>Number: The seat number</li></ul>   |
 | Ticket   | Ticket or entrance ticket, one ticket counts for one Flight, not for a Route   | <ul><li>Baggage: The baggage allowed for this ticket</li><li>Currency: The currency of the ticket</li><li>Discount: The discount of the booking</li><li>Price: The price of the booking</li><li>Seat: The seat of this ticket</li></ul>   |
 | Transit   | Time between different Flights on the same Route   |   |
-| Voucher   | price reductions by a pre-determined amount   | <ul><li>A Voucher adds a price reduction by a certain amount (example: Voucher for 15. Original Price 200, apply voucher, price now 185)</li><li>Size: Size of the Voucher in %</li></ul>   |
+| Voucher   | price reductions by a pre-determined amount   | <ul><li>A Voucher adds a price reduction by a certain amount (percentage discount, meaning a price of 200 goes to 170, if the discount is 15)</li><li>Size: Size of the Voucher in %</li></ul>   |
 
