@@ -5,6 +5,7 @@ import businesslogic.api.airplane.AirplaneFactory;
 import businesslogic.api.airport.Airport;
 import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.booking.BookingCreator;
+import businesslogic.api.customer.Price;
 import businesslogic.api.flight.Flight;
 import businesslogic.api.flight.FlightFactory;
 import businesslogic.api.manager.BookingManager;

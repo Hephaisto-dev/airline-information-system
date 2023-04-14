@@ -2,14 +2,10 @@ package persistence.impl;
 
 import datarecords.BookingData;
 import datarecords.FlightData;
-import persistence.database.DBProvider;
 import persistence.api.BookingStorageService;
 import persistence.impl.database.DBProvider;
 
 import javax.sql.DataSource;
-import java.sql.*;
-import java.time.LocalDate;
-import persistence.database.DBProvider;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

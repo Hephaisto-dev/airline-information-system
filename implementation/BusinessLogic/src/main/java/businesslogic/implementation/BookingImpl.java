@@ -34,13 +34,6 @@ public class BookingImpl implements Booking {
     }
 
     @Override
-    public boolean cancel() {
-
-        return bookingManager.remove(this);
-
-    }
-
-    @Override
 
     public String getId() {
         return bookingData.id();
