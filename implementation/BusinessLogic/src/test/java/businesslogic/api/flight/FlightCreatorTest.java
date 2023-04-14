@@ -58,8 +58,7 @@ class FlightCreatorTest {
     }
 
     private final FlightStorageService FSSI = data -> data;
-    private final FlightManager FM = new FlightManager(FSSI);
-    final FlightCreator flightCreator = new FlightCreator(FM);
+    final FlightCreator flightCreator = new FlightCreator(new FlightManager(FSSI));
     // later
 
     @BeforeAll
