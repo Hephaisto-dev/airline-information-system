@@ -4,8 +4,7 @@ import businesslogic.api.common.PersistantDataContainer;
 import businesslogic.api.manager.Manager;
 import persistence.api.StorageService;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public abstract class ManagerImpl<T extends PersistantDataContainer<D>, D extends Record> implements Manager<T, D> {
     private final Set<T> storage = new HashSet<>();
@@ -33,7 +32,7 @@ public abstract class ManagerImpl<T extends PersistantDataContainer<D>, D extend
 
     @Override
     public Set<T> getAll() {
-        return storage;
+        return Collections.unmodifiableSet(storage);
     }
 
     @Override
