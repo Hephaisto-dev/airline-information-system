@@ -1,4 +1,4 @@
-package persistence;
+package persistence.api;
 
 /**
  * @author Informatics Fontys Venlo
@@ -14,7 +14,8 @@ public interface PersistenceAPI {
      * @return CustomerStorageService object that knows how to store and
      * retrieve customers.
      */
-     CustomerStorageService getCustomerStorageService();
+    CustomerStorageService getCustomerStorageService();
+
     AirplaneStorageService getAirplaneStorageService();
 
 

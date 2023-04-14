@@ -1,5 +1,6 @@
 # Data Dictionary
 
+
 | Term   |Description   | Attributes   |
 |---|---|---|
 | Airplane   | a powered flying vehicle with fixed wings   | <ul><li>Capacity: Number of total seats in the airplane</li><li>Length: How many seatrows a plane has (cockpit - tail)</li><li>Seat mapping: Contains the mapping of the plane seats</li><li>Id: Unique airplane number</li><li>Type: What type of airplanes (Airbus A320, Boeing 737 -> small, medium, large)</li><li>Width: How many seats there are in a column (left side plane wing - right side plane wing)</li></ul>   |
@@ -22,4 +23,5 @@
 | Ticket   | Ticket or entrance ticket, one ticket counts for one Flight, not for a Route   | <ul><li>Baggage: The baggage allowed for this ticket</li><li>Currency: The currency of the ticket</li><li>Discount: The discount of the booking</li><li>Price: The price of the booking</li><li>Seat: The seat of this ticket</li></ul>   |
 | Transit   | Time between different Flights on the same Route   |   |
 | Voucher   | price reductions by a pre-determined amount   | <ul><li>A Voucher adds a price reduction by a certain amount (percentage discount, meaning a price of 200 goes to 170, if the discount is 15)</li><li>Size: Size of the Voucher in %</li></ul>   |
+
 

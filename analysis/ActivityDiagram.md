@@ -1,4 +1,4 @@
-##  Activity Diagram
+## Activity Diagram
 
 ![Activity Diagram](ActivityDiagram.svg)
 

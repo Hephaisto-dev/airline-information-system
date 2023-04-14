@@ -1,5 +1,6 @@
 package businesslogic.implementation;
 
+
 import businesslogic.api.airplane.Airplane;
 import businesslogic.api.airport.Airport;
 import businesslogic.api.flight.Flight;
@@ -11,14 +12,16 @@ import java.util.ArrayList;
 
 public class BookingImplTest {
 
-    private static ArrayList<String> tickets = new ArrayList<>();//TODO WHEN TICKETS ARE IMPLEMENTED CHANGE THIS
-    private final Airplane airplane = new AirplaneImpl("1", "BigPlane", 200, 10);
+    private static final ArrayList<String> tickets = new ArrayList<>();//TODO WHEN TICKETS ARE IMPLEMENTED CHANGE THIS
+    private final ArrayList<String> extras = new ArrayList<>();
     // private ArrayList<CustomerData> customers = new ArrayList<>();//TODO when customers are finished implement this
+
+    private final Airplane airplane = new AirplaneImpl("1", "BigPlane", 200, 200);
     private final Airport airport1 = new AirportImpl("1", "MyHouse", "Venlo", "Netherlands");
     private final Airport airport2 = new AirportImpl("2", "YourHouse", "Venlo", "Netherlands");
     private final Duration duration = Duration.ofDays(10);
     private final Flight flight = new FlightImpl(airport1, airport2, LocalDateTime.now().plusDays(20), LocalDateTime.now().plusDays(10), duration, airplane);
-    private ArrayList<String> extras = new ArrayList<>();
+
     //private final Booking booking = new BookingImpl("1","1",flight,tickets,LocalDateTime.now(),extras,);
 
     @BeforeAll

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="AnchorPaneView" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/17.0.2-ea"
+            fx:controller="gui.CreateTicketController">
+    <children>
+        <Label layoutX="260.0" layoutY="33.0" text="Booking Ticket"/>
+        <Label layoutX="51.0" layoutY="71.0" text="Flight"/>
+        <Label layoutX="51.0" layoutY="121.0" text="Seat row (Number)"/>
+        <Label layoutX="51.0" layoutY="171.0" text="Seat column (number)"/>
+        <Label layoutX="51.0" layoutY="221.0" text="Customer name:"/>
+        <ComboBox fx:id="FlightSelector" layoutX="376.0" layoutY="67.0" prefHeight="26.0" prefWidth="158.0"/>
+        <TextField fx:id="SeatRowGet" layoutX="479.0" layoutY="117.0" prefHeight="26.0" prefWidth="55.0"/>
+        <TextField fx:id="SeatColumnGet" layoutX="479.0" layoutY="167.0" prefHeight="26.0" prefWidth="55.0"/>
+        <TextField fx:id="CustomerNameGet" layoutX="383.0" layoutY="217.0"/>
+        <Button fx:id="TicketButton" layoutX="481.0" layoutY="252.0" mnemonicParsing="false"
+                text="Button" onAction="#onCreateTicketPress"/>
+        <Label layoutX="51.0" layoutY="256.0" text="Results / error messages"/>
+        <TextField fx:id="feedbackField" layoutX="51.0" layoutY="295.0" prefHeight="84.0" prefWidth="480.0"/>
+    </children>
+</AnchorPane>

@@ -1,6 +1,7 @@
-package persistence;
+package persistence.impl;
 
 import datarecords.CustomerData;
+import persistence.api.CustomerStorageService;
 
 import javax.sql.DataSource;
 
@@ -13,6 +14,7 @@ import javax.sql.DataSource;
  */
 class CustomerStorageServiceImpl implements CustomerStorageService {
     private final DataSource dataSource;
+
     public CustomerStorageServiceImpl(DataSource dataSource) {
         this.dataSource = dataSource;
     }
