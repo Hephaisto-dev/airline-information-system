@@ -1,6 +1,5 @@
 package businesslogic.api.booking;
 
-import businesslogic.api.airplane.NoAirplaneException;
 import businesslogic.implementation.BookingImpl;
 import datarecords.BookingData;
 import datarecords.CustomerData;
@@ -14,11 +13,7 @@ public interface BookingFactory {
         return new BookingImpl(id, empId, flight, Tickets, bookingDate, extras, customersOnBooking);
     }
 
-    static Booking createBooking(BookingData bookingData) throws NoAirplaneException, NoBookingException {
-        if (true) {//TODO implement the getting from the persistence / DB
-            return new BookingImpl(bookingData);
-        } else {
-            throw new NoBookingException();
-        }
+    static Booking createBooking(BookingData bookingData) {
+        return new BookingImpl(bookingData);
     }
 }

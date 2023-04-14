@@ -14,4 +14,6 @@ public interface Manager<T extends PersistantDataContainer<D>, D extends Record>
     T getById(String id);
 
     boolean remove(T t);
+
+    void forceUpdate();
 }

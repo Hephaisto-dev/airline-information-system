@@ -7,12 +7,13 @@ import persistence.api.StorageService;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ManagerImpl<T extends PersistantDataContainer<D>, D extends Record> implements Manager<T, D> {
+public abstract class ManagerImpl<T extends PersistantDataContainer<D>, D extends Record> implements Manager<T, D> {
     private final Set<T> storage = new HashSet<>();
     private final StorageService<D> storageService;
 
     public ManagerImpl(StorageService<D> storageService) {
         this.storageService = storageService;
+        forceUpdate();
     }
 
     @Override
@@ -48,4 +49,12 @@ public class ManagerImpl<T extends PersistantDataContainer<D>, D extends Record>
         }
         return remove;
     }
+
+    @Override
+    public void forceUpdate() {
+        storage.clear();
+        storageService.getAll().forEach(data -> storage.add(createPersistantDataContainer(data)));
+    }
+
+    protected abstract T createPersistantDataContainer(D data);
 }
