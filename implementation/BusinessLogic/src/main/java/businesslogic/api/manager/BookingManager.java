@@ -16,7 +16,7 @@ public class BookingManager extends ManagerImpl<Booking, BookingData> {
     }
     public boolean cancelBooking(String id) {
 
-        return bookingStorageService.cancelBooking(id);
+        return bookingStorageService.remove(id);
 
     }
 }
