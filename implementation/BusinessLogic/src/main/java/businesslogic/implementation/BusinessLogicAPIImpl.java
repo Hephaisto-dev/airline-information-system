@@ -3,7 +3,7 @@ package businesslogic.implementation;
 import businesslogic.api.BusinessLogicAPI;
 import businesslogic.api.common.PersistantDataContainer;
 import businesslogic.api.manager.*;
-import persistence.PersistenceAPI;
+import persistence.api.PersistenceAPI;
 
 import java.util.Map;
 
@@ -57,6 +57,7 @@ public class BusinessLogicAPIImpl implements BusinessLogicAPI {
     public BookingManager getBookingManager() {
         return getManager(BookingManager.class);
     }
+
 
     @Override
     public EmployeeManager getEmployeeManager() {

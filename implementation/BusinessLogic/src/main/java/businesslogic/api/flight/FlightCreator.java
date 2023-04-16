@@ -7,7 +7,7 @@ import businesslogic.api.airport.Airport;
 import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.airport.NoAirportException;
 import businesslogic.api.manager.FlightManager;
-import persistence.NoDBConnectionException;
+import persistence.api.NoDBConnectionException;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
@@ -75,7 +75,7 @@ public class FlightCreator {
         try {
             plane = AirplaneFactory.createAirplane(planeName);
             //-------------------Martin--------------
-            if (plane.getName().equals(null)) {
+            if (planeName == null) {
                 errors = true;
                 stringBuilder.append("No plane was provided");
             }

@@ -1,7 +1,10 @@
 package businesslogic.api.flight;
 
 import businesslogic.api.airplane.Airplane;
+import businesslogic.api.airplane.Seat;
 import businesslogic.api.common.PersistantDataContainer;
+import businesslogic.api.customer.Price;
+import businesslogic.api.route.Route;
 import businesslogic.travelDestinatinations.TravelDestinations;
 import datarecords.FlightData;
 
@@ -9,6 +12,8 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 public interface Flight extends PersistantDataContainer<FlightData>, TravelDestinations {
+
+    Price getPrice();
 
     Duration getFlightDuration();
 
@@ -26,8 +31,5 @@ public interface Flight extends PersistantDataContainer<FlightData>, TravelDesti
 
     String cancelBookedSeat(String targetID);
 
-
-
-
-
+    Seat getSeat(String Seat_Id);
 }

@@ -2,17 +2,17 @@ package businesslogic.implementation;
 
 import businesslogic.api.common.PersistantDataContainer;
 import businesslogic.api.manager.Manager;
-import persistence.StorageService;
+import persistence.api.StorageService;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
-public class ManagerImpl<T extends PersistantDataContainer<D>, D extends Record> implements Manager<T, D> {
+public abstract class ManagerImpl<T extends PersistantDataContainer<D>, D extends Record> implements Manager<T, D> {
     private final Set<T> storage = new HashSet<>();
     private final StorageService<D> storageService;
 
     public ManagerImpl(StorageService<D> storageService) {
         this.storageService = storageService;
+        forceUpdate();
     }
 
     @Override
@@ -32,6 +32,28 @@ public class ManagerImpl<T extends PersistantDataContainer<D>, D extends Record>
 
     @Override
     public Set<T> getAll() {
-        return storage;
+        return Collections.unmodifiableSet(storage);
     }
+
+    @Override
+    public T getById(String id) {
+        return storage.stream().filter(data -> data.getId().equals(id)).findFirst().orElse(null);
+    }
+
+    @Override
+    public boolean remove(T t) {
+        boolean remove = storage.remove(t);
+        if (remove) {
+            remove = storageService.remove(t.getId());
+        }
+        return remove;
+    }
+
+    @Override
+    public void forceUpdate() {
+        storage.clear();
+        storageService.getAll().forEach(data -> storage.add(createPersistantDataContainer(data)));
+    }
+
+    protected abstract T createPersistantDataContainer(D data);
 }

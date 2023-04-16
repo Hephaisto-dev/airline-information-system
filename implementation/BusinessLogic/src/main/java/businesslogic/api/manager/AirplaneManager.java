@@ -1,12 +1,18 @@
 package businesslogic.api.manager;
 
 import businesslogic.api.airplane.Airplane;
+import businesslogic.api.airplane.AirplaneFactory;
 import businesslogic.implementation.ManagerImpl;
 import datarecords.AirplaneData;
-import persistence.AirplaneStorageService;
+import persistence.api.AirplaneStorageService;
 
 public class AirplaneManager extends ManagerImpl<Airplane, AirplaneData> {
     public AirplaneManager(AirplaneStorageService storageService) {
         super(storageService);
+    }
+
+    @Override
+    protected Airplane createPersistantDataContainer(AirplaneData data) {
+        return AirplaneFactory.createAirplane(data);
     }
 }

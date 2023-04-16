@@ -1,25 +1,29 @@
 package businesslogic.api.customer;
 
+
+import businesslogic.api.airplane.Seat;
 import businesslogic.api.flight.Flight;
 
 public class TicketImpl implements Ticket {
 
-    private String person;
-    private Flight flight;
-    private String ticketID;
-    private String seat;
-    private String route;
+    private final String person;
+    private final Flight flight;
+    private final String ticketID;
+    private final String seat;
+    private final String route;
+    private final Price ticketPrice;
 
-    public TicketImpl(String who, Flight flyingFromTo, String sittingPlace) {
+    public TicketImpl(String who, Flight flyingFromTo, String sittingPlace, Price price) {
         this.person = who;
         this.flight = flyingFromTo;
         this.seat = sittingPlace;
         this.ticketID = createID();
-        this.route =  flight.getDeparture().getId() + "-" + flight.getArrival().getId();
+        this.route = flight.getData().routeData().from().id() + "-" + flight.getData().routeData().to().id();
+        this.ticketPrice = price;
     }
 
     @Override
-    public String getTicketID() {
+    public String getId() {
         return this.ticketID;
     }
 
@@ -34,8 +38,13 @@ public class TicketImpl implements Ticket {
     }
 
     @Override
-    public String getSeat() {
+    public String getSeatName() {
         return this.seat;
+    }
+
+    @Override
+    public Seat getSeat() {
+        return this.flight.getSeat(seat);
     }
 
     @Override
@@ -43,23 +52,37 @@ public class TicketImpl implements Ticket {
         return this.route;
     }
 
+    @Override
+    public void applyDiscount(int discount) {
+        this.ticketPrice.applyDiscount(discount);
+    }
+
+    @Override
+    public void applyVoucher(int percentReduction) {
+        this.ticketPrice.applyVoucher(percentReduction);
+    }
+
+    @Override
+    public Price getPrice() {
+        return this.ticketPrice;
+    }
+
     private String createID() {
-        StringBuilder stringl = new StringBuilder();
-        stringl.append("Ti_")
-                .append(flight.getAirplane().getId())
-                .append(":")
-                .append(flight.getDeparture().getId())
-                .append("-")
-                .append(flight.getArrival().getId())
-                .append("_")
-                .append(flight.getETD().getDayOfMonth())
-                .append(".")
-                .append(flight.getETD().getMonth().toString())
-                .append(".")
-                .append(flight.getETD().getYear())
-                .append("_")
-                .append(seat);
+        String stringl = "Ti_" +
+                flight.getAirplane().getId() +
+                ":" +
+                flight.getRoute().getFrom().getId() +
+                "-" +
+                flight.getRoute().getTo().getId() +
+                "_" +
+                flight.getETD().getDayOfMonth() +
+                "." +
+                flight.getETD().getMonth().toString() +
+                "." +
+                flight.getETD().getYear() +
+                "_" +
+                seat;
         //used stringBuilder to save resources (one String, instead of every String being saved from before and after an addittion)
-        return stringl.toString();
+        return stringl;
     }
 }

@@ -20,12 +20,12 @@ class SeatImplTest {
     @Test
     void getColumn() {
         assertThat(sitter.getColumn())
-                .isEqualTo('C');
+                .isEqualTo(21);
     }
 
     @Test
     void getRow() {
         assertThat(sitter.getRow())
-                .isEqualTo(21);
+                .isEqualTo('C');
     }
 }

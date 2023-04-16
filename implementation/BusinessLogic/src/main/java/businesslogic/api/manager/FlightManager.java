@@ -1,19 +1,15 @@
 package businesslogic.api.manager;
 
 import businesslogic.api.flight.Flight;
+import businesslogic.api.flight.FlightFactory;
 import businesslogic.implementation.ManagerImpl;
 import datarecords.FlightData;
-import persistence.FlightStorageService;
-import persistence.FlightStorageServiceImpl;
+import persistence.api.FlightStorageService;
 
 public class FlightManager extends ManagerImpl<Flight, FlightData> {
-    FlightStorageServiceImpl flightStorageService = new FlightStorageServiceImpl();
 
     public FlightManager(FlightStorageService storageService) {
-
         super(storageService);
-
-
     }
 
     public Flight searchFlight(String searchPhrase) {
@@ -23,4 +19,8 @@ public class FlightManager extends ManagerImpl<Flight, FlightData> {
                 .orElse(null);
     }
 
+    @Override
+    protected Flight createPersistantDataContainer(FlightData data) {
+        return FlightFactory.createFlight(data);
+    }
 }
