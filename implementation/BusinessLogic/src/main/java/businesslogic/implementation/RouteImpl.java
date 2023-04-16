@@ -1,15 +1,12 @@
 package businesslogic.implementation;
 
 import businesslogic.api.airport.Airport;
-import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.route.Route;
 import datarecords.FlightData;
 import datarecords.RouteData;
-import businesslogic.api.flight.Flight;
 
 import java.time.Duration;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class RouteImpl implements Route {
     private final RouteData routeData;
@@ -19,7 +16,6 @@ public class RouteImpl implements Route {
         this.routeData = routeData;
     }
 
-
     @Override
     public String getId() {
         return routeData.id();
@@ -27,12 +23,24 @@ public class RouteImpl implements Route {
 
     @Override
     public Airport getFrom() {
-        return fligh;
+        Map<FlightData, Duration> flightTranzits = getFlightTransits();
+        for (FlightData flightData : flightTranzits.keySet()) {
+            // Return the first key
+            return getFrom();
+        }
+        return null;
     }
 
     @Override
     public Airport getTo() {
-        return AirportFactory.createAirport(flightData.arrival());
+        Map<FlightData, Duration> flightTranzits = getFlightTransits();
+        List<FlightData> keys = new ArrayList<>(flightTranzits.keySet());
+        ListIterator<FlightData> iterator = keys.listIterator(keys.size());
+        while (iterator.hasPrevious()) {
+            // Return the last key
+            return getTo();
+        }
+        return null;
     }
 
     @Override

@@ -1,12 +1,7 @@
 package persistence.impl;
 
 import datarecords.FlightData;
-<<<<<<< Updated upstream:implementation/Persistence/src/main/java/persistence/impl/FlightStorageServiceImpl.java
-import datarecords.RouteData;
 import persistence.api.FlightStorageService;
-=======
-import persistence.database.DBProvider;
->>>>>>> Stashed changes:implementation/Persistence/src/main/java/persistence/FlightStorageServiceImpl.java
 
 import javax.sql.DataSource;
 import java.sql.Connection;

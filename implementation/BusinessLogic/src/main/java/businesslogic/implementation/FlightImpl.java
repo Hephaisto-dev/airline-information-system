@@ -45,34 +45,31 @@ public class FlightImpl implements Flight {
     public FlightImpl(Airport from, Airport to, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
                       Duration flightDuration,
                       Airplane airplane, Price price) throws IllegalArgumentException {
-        super(from, to);
         if (etdDateTime.isAfter(etaDateTime)) {
             throw new IllegalArgumentException("ETD must be before ETA");
         }
-        this.flightData = new FlightData("FL_" + from.getName() + "-" + to.getName() + "_" +
-                etdDateTime + "_" + airplane.getId(), routeData, etdDateTime, etaDateTime, flightDuration,
-                airplane.getData());
+        this.flightData = new FlightData("FL_" + from.getName() + "-" + to.getName() + "_" +etdDateTime + "_" + airplane.getId(), etdDateTime, etaDateTime, flightDuration,
+                airplane.getData(), from.getData(), to.getData());
         this.airplane = airplane;
         this.LDTd = etdDateTime;
         this.LDTa = etaDateTime;
-        getFlightTransits().put(this, Duration.ZERO);
         this.bookedSeats = new ArrayList<>();
         this.standardPrice = price;
     }
 
     public FlightImpl(Airport from, Airport to, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
                       Airplane airplane) throws IllegalArgumentException {
-        this(from, to, etdDateTime, etaDateTime, Duration.between(etdDateTime, etaDateTime), airplane);
-    }
+        this(from, to, etdDateTime, etaDateTime, Duration.between(etdDateTime, etaDateTime), airplane);    }
 
 
     public FlightImpl(FlightData flightData) {
         //TODO link to the managers to retrieve airplanes.
-        this(AirportFactory.createAirport(flightData.routeData().from()),
-                AirportFactory.createAirport(flightData.routeData().to()),
+        this(AirportFactory.createAirport(flightData.departure()),
+                AirportFactory.createAirport(flightData.arrival()),
                 flightData.etdDateTime(), flightData.etaDateTime(), flightData.flightDuration(),
                 AirplaneFactory.createAirplane(flightData.airplane()));
     }
+
 
     @Override
     public Price getPrice() {

@@ -18,7 +18,7 @@ public class TicketImpl implements Ticket {
         this.flight = flyingFromTo;
         this.seat = sittingPlace;
         this.ticketID = createID();
-        this.route = flight.getData().routeData().from().id() + "-" + flight.getData().routeData().to().id();
+        this.route = flight.getDeparture() + "-" + flight.getArrival();
         this.ticketPrice = price;
     }
 
@@ -71,9 +71,9 @@ public class TicketImpl implements Ticket {
         String stringl = "Ti_" +
                 flight.getAirplane().getId() +
                 ":" +
-                flight.getRoute().getFrom().getId() +
+                flight.getDeparture() +
                 "-" +
-                flight.getRoute().getTo().getId() +
+                flight.getArrival() +
                 "_" +
                 flight.getETD().getDayOfMonth() +
                 "." +
