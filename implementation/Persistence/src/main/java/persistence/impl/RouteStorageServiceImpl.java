@@ -1,8 +1,7 @@
-package persistence;
+package persistence.impl;
 
 import datarecords.FlightData;
 import datarecords.RouteData;
-import persistence.database.DBProvider;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -15,18 +14,21 @@ import java.util.logging.Logger;
 public class RouteStorageServiceImpl implements RouteStorageService {
 
     protected FlightData flightData;
+    private final DataSource dataSource;
+
+    public RouteStorageServiceImpl(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
 
 
     @Override
     public RouteData add(RouteData routeData) {
 
-
-        DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
-
         String query = "INSERT INTO routedata (id, fromm, too) values (?, ?, ?) returning *";
 
 
-        try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
+        try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
 
             String id = routeData.id();
             String fromm = String.valueOf(flightData.departure());
@@ -52,7 +54,7 @@ public class RouteStorageServiceImpl implements RouteStorageService {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
         }
         return routeData;
     }
