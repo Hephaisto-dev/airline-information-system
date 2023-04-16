@@ -2,6 +2,7 @@ package gui;
 
 import businesslogic.api.flight.Flight;
 import businesslogic.api.manager.FlightManager;
+import datarecords.FlightData;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -12,8 +13,15 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import persistence.api.FlightStorageService;
+import persistence.impl.FlightStorageServiceImpl;
+
+import javax.sql.DataSource;
+import java.util.Set;
 
 public class SearchFlightController {
+
+
     private final FlightManager flightManager;
     @FXML
     private ListView<Flight> flightListView;
@@ -30,12 +38,13 @@ public class SearchFlightController {
 
     @FXML
     private TextField searchField;
-
-
-
+    final ObservableList<Flight> flightObservableList = FXCollections.observableArrayList();
+    public SearchFlightController(FlightManager flightManager) {
+        this.flightManager = flightManager;
+    }
     public void initializer() {
-        final ObservableList<Flight> flightObservableList = FXCollections.observableArrayList();
 
+        this.setFlight();
         this.FlightID.setCellFactory(new PropertyValueFactory<>("id"));
         this.Departure.setCellFactory(new PropertyValueFactory<>("departure"));
         this.Arrival.setCellFactory(new PropertyValueFactory<>("arrival"));
@@ -43,13 +52,13 @@ public class SearchFlightController {
         this.eta.setCellFactory(new PropertyValueFactory<>("etaDateTime"));
         this.Duration.setCellFactory(new PropertyValueFactory<>("flightDuration"));
         this.AirplaneID.setCellFactory(new PropertyValueFactory<>("airplane"));
-        this.Table.setItems(this.flightFilteredList);
+        this.Table.setItems(this.flightObservableList);
 
 
     }
 
     private void searchFilter() {
-        FilteredList<Flight> filterData = new FilteredList(this.flightFilteredList, (e) -> {
+        FilteredList<Flight> filterData = new FilteredList(this.flightObservableList, (e) -> {
             return true;
         });
         this.searchField.setOnKeyReleased((e) -> {
@@ -84,15 +93,11 @@ public class SearchFlightController {
             this.Table.setItems(flightSortedList);
         });
     }
-    public SearchFlightController(FlightManager flightManager) {
-        this.flightManager = flightManager;
-    }
 
-//    private void setFlight() {
-//        FlightStorageServiceImpl flightStorageService = new FlightStorageServiceImpl(); // create an instance of the class
-//        Set<FlightData> flightData = flightStorageService.getAll(id, etd, eta, airplane, departureAirport, arrivalAirport);
-//
-//    }
+    private void setFlight(DataSource dataSource) {
+        FlightStorageService flightStorageService = new FlightStorageServiceImpl(dataSource);
+        Set<FlightData> allFlights = flightStorageService.getAll();
+    }
 
 //
 //    public void flightSearch() {
