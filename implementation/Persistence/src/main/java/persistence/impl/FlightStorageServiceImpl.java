@@ -1,8 +1,12 @@
 package persistence.impl;
 
 import datarecords.FlightData;
+<<<<<<< Updated upstream:implementation/Persistence/src/main/java/persistence/impl/FlightStorageServiceImpl.java
 import datarecords.RouteData;
 import persistence.api.FlightStorageService;
+=======
+import persistence.database.DBProvider;
+>>>>>>> Stashed changes:implementation/Persistence/src/main/java/persistence/FlightStorageServiceImpl.java
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -29,9 +33,8 @@ public class FlightStorageServiceImpl implements FlightStorageService {
         try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
 
             String id = flightData.id();
-            RouteData routeData = flightData.routeData();
-            String routedatafrom = routeData.from().id();
-            String routedatatoo = routeData.to().id();
+            String routedatafrom = String.valueOf(flightData.departure());
+            String routedatatoo = String.valueOf(flightData.arrival());
             String etddatetime = flightData.etaDateTime().toString();
             String etadatetime = flightData.etdDateTime().toString();
             long flightduration = flightData.flightDuration().getSeconds();

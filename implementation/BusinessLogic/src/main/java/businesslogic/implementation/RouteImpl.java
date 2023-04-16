@@ -5,13 +5,14 @@ import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.route.Route;
 import datarecords.FlightData;
 import datarecords.RouteData;
+import businesslogic.api.flight.Flight;
 
 import java.time.Duration;
 import java.util.Map;
 import java.util.Set;
 
 public class RouteImpl implements Route {
-    protected final RouteData routeData;
+    private final RouteData routeData;
     protected FlightData flightData;
 
     public RouteImpl(RouteData routeData) {
@@ -26,7 +27,7 @@ public class RouteImpl implements Route {
 
     @Override
     public Airport getFrom() {
-        return AirportFactory.createAirport(flightData.departure());
+        return fligh;
     }
 
     @Override
