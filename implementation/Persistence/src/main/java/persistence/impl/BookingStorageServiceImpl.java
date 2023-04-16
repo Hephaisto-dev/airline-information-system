@@ -85,7 +85,7 @@ public class BookingStorageServiceImpl implements BookingStorageService {
                 String flight = result.getString("flight_Id");
                 String bookingDate = result.getString("booking_Date");
 
-                bookingData.add(new BookingData(Integer.toString(id), empId, new FlightData(flight, null, null, null, null, null), null, LocalDateTime.parse(bookingDate), null, null));
+                bookingData.add(new BookingData(Integer.toString(id), empId, new FlightData(flight, null, null, null, null, null), null, null, null, null));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
