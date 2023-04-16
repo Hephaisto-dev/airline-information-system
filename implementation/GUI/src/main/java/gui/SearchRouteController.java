@@ -1,8 +1,9 @@
 package gui;
 
-import javafx.event.ActionEvent;
+import businesslogic.api.manager.RouteManager;
 
 public class SearchRouteController {
-    public void searchButtonClicked(ActionEvent actionEvent) {
+
+    public SearchRouteController(RouteManager routeManager) {
     }
 }

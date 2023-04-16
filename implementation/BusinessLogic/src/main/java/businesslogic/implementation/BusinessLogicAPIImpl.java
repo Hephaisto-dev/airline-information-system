@@ -65,6 +65,11 @@ public class BusinessLogicAPIImpl implements BusinessLogicAPI {
     }
 
     @Override
+    public RouteManager getRouteManager() {
+        return  getManager(RouteManager.class);
+    }
+
+    @Override
     public <U extends Manager<? extends PersistantDataContainer<D>, D>, D extends Record> U getManager(Class<U> clazz) {
         return clazz.cast(managerRegistry.get(clazz));
     }

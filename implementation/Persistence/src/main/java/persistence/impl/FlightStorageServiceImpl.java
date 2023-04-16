@@ -1,13 +1,20 @@
 package persistence.impl;
 
+import datarecords.AirplaneData;
+import datarecords.AirportData;
 import datarecords.FlightData;
 import persistence.api.FlightStorageService;
+import persistence.impl.database.DBProvider;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -64,6 +71,42 @@ public class FlightStorageServiceImpl implements FlightStorageService {
         }
         return flightData;
     }
+
+
+    @Override
+    public Set<FlightData> getAll(String id, LocalDateTime etd, LocalDateTime eta, AirplaneData airplane, AirportData departureAirport, AirportData arrivalAirport) {
+        DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
+
+        String query = "SELECT * FROM flightdata";
+
+        Set<FlightData> flightData = new HashSet<>();
+        try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
+            ResultSet result = pstm.executeQuery();
+            while (result.next()) {
+                String flightId = result.getString("id");
+                LocalDateTime flightEtd = result.getObject("etddatetime", LocalDateTime.class);
+                LocalDateTime flightEta = result.getObject("etadatetime", LocalDateTime.class);
+                Duration flightDuration = (Duration) result.getObject("duration");
+                String flightAirplane = result.getString("airplane");
+                String flightDepartureAirport = result.getString("departureAirport");
+                String flightArrivalAirport = result.getString("arrivalAirport");
+
+                if ((id == null || id.equals(flightId)) &&
+                        (etd == null || etd.equals(flightEtd)) &&
+                        (eta == null || eta.equals(flightEta)) &&
+                        (airplane == null || airplane.id().equals(flightAirplane)) &&
+                        (departureAirport == null || departureAirport.name().equals(flightDepartureAirport)) &&
+                        (arrivalAirport == null || arrivalAirport.name().equals(flightArrivalAirport))) {
+                    flightData.add(new FlightData(flightId, flightEtd, flightEta, flightDuration, airplane, departureAirport, arrivalAirport));
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return flightData;
+    }
+
+
 
 //    @Override
 //    public List<FlightData> getAll() {

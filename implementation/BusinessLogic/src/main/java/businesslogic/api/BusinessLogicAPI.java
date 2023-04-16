@@ -22,5 +22,7 @@ public interface BusinessLogicAPI {
 
     EmployeeManager getEmployeeManager();
 
+    RouteManager getRouteManager();
+
     <U extends Manager<? extends PersistantDataContainer<D>, D>, D extends Record> U getManager(Class<U> clazz);
 }
