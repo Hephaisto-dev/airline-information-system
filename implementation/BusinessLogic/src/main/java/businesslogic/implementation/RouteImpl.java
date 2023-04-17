@@ -1,6 +1,7 @@
 package businesslogic.implementation;
 
 import businesslogic.api.airport.Airport;
+import businesslogic.api.flight.Flight;
 import businesslogic.api.route.Route;
 import datarecords.FlightData;
 import datarecords.RouteData;
@@ -54,8 +55,8 @@ public class RouteImpl implements Route {
     }
 
     @Override
-    public Set<FlightData> getFlights() {
-        return routeData.flightTransits().keySet();
+    public Set<Flight> getFlights() {
+        return getFlights();
     }
 
     @Override

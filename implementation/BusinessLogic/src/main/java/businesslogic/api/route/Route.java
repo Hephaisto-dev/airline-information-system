@@ -2,6 +2,7 @@ package businesslogic.api.route;
 
 import businesslogic.api.airport.Airport;
 import businesslogic.api.common.PersistantDataContainer;
+import businesslogic.api.flight.Flight;
 import datarecords.FlightData;
 import datarecords.RouteData;
 
@@ -18,7 +19,7 @@ public interface Route extends PersistantDataContainer<RouteData> {
 
     RouteData getRouteData();
 
-    Set<FlightData> getFlights();
+    Set<Flight> getFlights();
 
     Map<FlightData, Duration> getFlightTransits();
 

@@ -2,64 +2,53 @@ package gui;
 
 import businesslogic.api.flight.Flight;
 import businesslogic.api.manager.FlightManager;
-import datarecords.FlightData;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import persistence.api.FlightStorageService;
-import persistence.impl.FlightStorageServiceImpl;
-import persistence.impl.database.DBProvider;
+import javafx.scene.input.KeyEvent;
 
-import javax.sql.DataSource;
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.Set;
 
-public class SearchFlightController {
+public class SearchFlightController implements Initializable {
 
-    private DataSource dataSource = DBProvider.getDataSource("prj2_ais");
     private final FlightManager flightManager;
-    @FXML
-    private ListView<Flight> flightListView;
     private FilteredList<Flight> flightFilteredList;
 
-    public TableView<Flight> Table;
-    public TableColumn FlightID;
-    public TableColumn Departure;
-    public TableColumn Arrival;
-    public TableColumn etd;
-    public TableColumn eta;
-    public TableColumn Duration;
-    public TableColumn AirplaneID;
+    @FXML
+    private ListView<Flight> flightListView;
+    @FXML
+    private TableColumn FlightID;
+    @FXML
+    private TableColumn Departure;
+    @FXML
+    private TableColumn Arrival;
+    @FXML
+    private TableColumn etd;
+    @FXML
+    private TableColumn eta;
+    @FXML
+    private TableColumn Duration;
+    @FXML
+    private TableColumn AirplaneID;
 
     @FXML
     private TextField searchField;
-    final ObservableList<Flight> flightObservableList = FXCollections.observableArrayList();
+    private final ObservableList<Flight> flightObservableList = flightListView.getSelectionModel().getSelectedItems();
     public SearchFlightController(FlightManager flightManager) {
         this.flightManager = flightManager;
     }
-    public void initializer() {
 
-        this.setFlight(dataSource);
-        this.FlightID.setCellFactory(new PropertyValueFactory<>("id"));
-        this.Departure.setCellFactory(new PropertyValueFactory<>("departure"));
-        this.Arrival.setCellFactory(new PropertyValueFactory<>("arrival"));
-        this.etd.setCellFactory(new PropertyValueFactory<>("etdDateTime"));
-        this.eta.setCellFactory(new PropertyValueFactory<>("etaDateTime"));
-        this.Duration.setCellFactory(new PropertyValueFactory<>("flightDuration"));
-        this.AirplaneID.setCellFactory(new PropertyValueFactory<>("airplane"));
-        this.Table.setItems(this.flightObservableList);
-
-
-    }
-
-    private void searchFilter() {
-        FilteredList<Flight> filterData = new FilteredList(this.flightObservableList, (e) -> {
+    @FXML
+    private void searchFilter(KeyEvent actionEvent) {
+        FilteredList<Flight> filterData = new FilteredList<>(this.flightObservableList, (e) -> {
             return true;
         });
         this.searchField.setOnKeyReleased((e) -> {
@@ -89,15 +78,25 @@ public class SearchFlightController {
                     }
                 });
             });
-            SortedList<Flight> flightSortedList = new SortedList(filterData);
-            flightSortedList.comparatorProperty().bind(this.Table.comparatorProperty());
-            this.Table.setItems(flightSortedList);
         });
     }
 
-    private void setFlight(DataSource dataSource) {
-        FlightStorageService flightStorageService = new FlightStorageServiceImpl(dataSource);
-        Set<FlightData> allFlights = flightStorageService.getAll();
+    private void setFlight(Set<Flight> all) {
+        flightFilteredList = new FilteredList<>(FXCollections.observableArrayList(flightManager.getAll()));
+        flightListView.setItems(flightFilteredList);
+    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        setFlight(flightManager.getAll());
+        this.FlightID.setCellFactory(new PropertyValueFactory<>("id"));
+        this.Departure.setCellFactory(new PropertyValueFactory<>("departure"));
+        this.Arrival.setCellFactory(new PropertyValueFactory<>("arrival"));
+        this.etd.setCellFactory(new PropertyValueFactory<>("etdDateTime"));
+        this.eta.setCellFactory(new PropertyValueFactory<>("etaDateTime"));
+        this.Duration.setCellFactory(new PropertyValueFactory<>("flightDuration"));
+        this.AirplaneID.setCellFactory(new PropertyValueFactory<>("airplane"));
+        this.flightListView.setItems(this.flightFilteredList);
+
     }
 
 //
