@@ -53,7 +53,7 @@ public class SearchFlightController {
         this.eta.setCellFactory(new PropertyValueFactory<>("etaDateTime"));
         this.Duration.setCellFactory(new PropertyValueFactory<>("flightDuration"));
         this.AirplaneID.setCellFactory(new PropertyValueFactory<>("airplane"));
-        this.Table.setItems(this.flightFilteredList);
+        this.Table.setItems(this.flightObservableList);
 
 
     }
@@ -64,32 +64,32 @@ public class SearchFlightController {
         });
         this.searchField.setOnKeyReleased((e) -> {
             this.searchField.textProperty().addListener((observable, oldValue, newValue) -> {
-                filterData.setPredicate((cust) -> {
+                filterData.setPredicate((flight) -> {
                     if (newValue == null) {
                         return true;
                     } else {
                         String toLowerCaseFilter = newValue.toLowerCase();
-                        if (cust.getId().contains(newValue)) {
+                        if (flight.getId().contains(newValue)) {
                             return true;
-                        } else if (cust.getId().toLowerCase().contains(toLowerCaseFilter)) {
+                        } else if (flight.getId().toLowerCase().contains(toLowerCaseFilter)) {
                             return true;
-                        } else if (cust.getDeparture().getId().toLowerCase().contains(toLowerCaseFilter)) {
+                        } else if (flight.getDeparture().getId().toLowerCase().contains(toLowerCaseFilter)) {
                             return true;
-                        } else if (cust.getArrival().getId().toLowerCase().contains(toLowerCaseFilter)) {
+                        } else if (flight.getArrival().getId().toLowerCase().contains(toLowerCaseFilter)) {
                             return true;
-                        } else if (cust.getETD().toString().toLowerCase().contains(toLowerCaseFilter)) {
+                        } else if (flight.getETD().toString().toLowerCase().contains(toLowerCaseFilter)) {
                             return true;
-                        } else if (cust.getETA().toString().toLowerCase().contains(toLowerCaseFilter)) {
+                        } else if (flight.getETA().toString().toLowerCase().contains(toLowerCaseFilter)) {
                             return true;
-                        } else if (cust.getFlightDuration().toString().toLowerCase().contains(toLowerCaseFilter)) {
+                        } else if (flight.getFlightDuration().toString().toLowerCase().contains(toLowerCaseFilter)) {
                             return true;
                         } else {
-                            return cust.getArrival().getId().toLowerCase().contains(toLowerCaseFilter);
+                            return flight.getArrival().getId().toLowerCase().contains(toLowerCaseFilter);
                         }
                     }
                 });
             });
-            SortedList<Flight> flightSortedList = new SortedList<>(filterData);
+            SortedList<Flight> flightSortedList = new SortedList(filterData);
             flightSortedList.comparatorProperty().bind(this.Table.comparatorProperty());
             this.Table.setItems(flightSortedList);
         });
