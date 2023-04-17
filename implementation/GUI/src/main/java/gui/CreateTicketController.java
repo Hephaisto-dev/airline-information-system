@@ -28,18 +28,23 @@ public class CreateTicketController {
     @FXML
     TextField feedbackField;
     @FXML
+    TextField DiscountGet;
+    @FXML
+    TextField VoucherGet;
+    @FXML
     Button TicketButton;
-
-    public CreateTicketController(FlightManager flightManager) {
-        this.flightManager = flightManager;
-    }
-
     public void initialize() {
         Set<Flight> FlightList = flightManager.getAll();
         for (Flight flighter : FlightList) {
             FlightSelector.getItems().add(flighter);
         }
     }
+
+    public CreateTicketController(FlightManager flightManager) {
+        this.flightManager = flightManager;
+    }
+
+
 
 
     @FXML
