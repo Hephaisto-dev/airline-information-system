@@ -15,13 +15,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import persistence.api.FlightStorageService;
 import persistence.impl.FlightStorageServiceImpl;
+import persistence.impl.database.DBProvider;
 
 import javax.sql.DataSource;
 import java.util.Set;
 
 public class SearchFlightController {
 
-
+    private DataSource dataSource = DBProvider.getDataSource("prj2_ais");
     private final FlightManager flightManager;
     @FXML
     private ListView<Flight> flightListView;
@@ -44,7 +45,7 @@ public class SearchFlightController {
     }
     public void initializer() {
 
-        this.setFlight();
+        this.setFlight(dataSource);
         this.FlightID.setCellFactory(new PropertyValueFactory<>("id"));
         this.Departure.setCellFactory(new PropertyValueFactory<>("departure"));
         this.Arrival.setCellFactory(new PropertyValueFactory<>("arrival"));
@@ -52,7 +53,7 @@ public class SearchFlightController {
         this.eta.setCellFactory(new PropertyValueFactory<>("etaDateTime"));
         this.Duration.setCellFactory(new PropertyValueFactory<>("flightDuration"));
         this.AirplaneID.setCellFactory(new PropertyValueFactory<>("airplane"));
-        this.Table.setItems(this.flightObservableList);
+        this.Table.setItems(this.flightFilteredList);
 
 
     }
