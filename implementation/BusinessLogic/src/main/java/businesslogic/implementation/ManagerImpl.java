@@ -4,10 +4,13 @@ import businesslogic.api.common.PersistantDataContainer;
 import businesslogic.api.manager.Manager;
 import persistence.api.StorageService;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public abstract class ManagerImpl<T extends PersistantDataContainer<D>, D extends Record> implements Manager<T, D> {
-    private final Set<T> storage = new HashSet<>();
+    private final Map<String, T> storage = new HashMap<>();
     private final StorageService<D> storageService;
 
     public ManagerImpl(StorageService<D> storageService) {
@@ -17,32 +20,32 @@ public abstract class ManagerImpl<T extends PersistantDataContainer<D>, D extend
 
     @Override
     public T add(T t) {
-        if (storage.stream().anyMatch(data -> data.getId().equals(t.getId()))) {
+        if (storage.containsKey(t.getId())) {
             return null;
         }
-        storage.add(t);
+        storage.put(t.getId(), t);
         storageService.add(t.getData());
         return t;
     }
 
     @Override
     public void delete(T t) {
-        storage.remove(t);
+        storage.remove(t.getId());
     }
 
     @Override
-    public Set<T> getAll() {
-        return Collections.unmodifiableSet(storage);
+    public Collection<T> getAll() {
+        return Collections.unmodifiableCollection(storage.values());
     }
 
     @Override
     public T getById(String id) {
-        return storage.stream().filter(data -> data.getId().equals(id)).findFirst().orElse(null);
+        return storage.get(id);
     }
 
     @Override
     public boolean remove(T t) {
-        boolean remove = storage.remove(t);
+        boolean remove = storage.remove(t.getId()) == null;
         if (remove) {
             remove = storageService.remove(t.getId());
         }
@@ -52,7 +55,9 @@ public abstract class ManagerImpl<T extends PersistantDataContainer<D>, D extend
     @Override
     public void forceUpdate() {
         storage.clear();
-        storageService.getAll().forEach(data -> storage.add(createPersistantDataContainer(data)));
+        storageService.getAll().stream()
+                .map(this::createPersistantDataContainer)
+                .forEach(persistantDataContainer -> storage.put(persistantDataContainer.getId(), persistantDataContainer));
     }
 
     protected abstract T createPersistantDataContainer(D data);
