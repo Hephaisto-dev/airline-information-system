@@ -4,6 +4,7 @@ import businesslogic.api.customer.Customer;
 import businesslogic.api.customer.CustomerFactory;
 import businesslogic.api.manager.CustomerManager;
 import datarecords.CustomerData;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -42,11 +43,20 @@ public class CustomerController implements Initializable {
     @FXML
     private Button toSecondaryButton;
     @FXML
+    private Button BtnBack;
+    @FXML
     private Label result;
 
     public CustomerController(Supplier<SceneManager> sceneManagerSupplier, CustomerManager customerManager) {
         this.sceneManagerSupplier = sceneManagerSupplier;
         this.customerManager = customerManager;
+    }
+
+    @FXML
+    public void BackToMain(ActionEvent actionEvent) {
+
+        sceneManagerSupplier.get().changeScene("mainGUI");
+
     }
 
     @FXML

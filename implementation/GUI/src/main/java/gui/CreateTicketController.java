@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 import java.util.Set;
+import java.util.function.Supplier;
 
 public class CreateTicketController {
     private final FlightManager flightManager;
@@ -29,9 +30,13 @@ public class CreateTicketController {
     TextField feedbackField;
     @FXML
     Button TicketButton;
+    @FXML
+    private Button BtnBack;
+    private final Supplier<SceneManager> sceneManagerSupplier;
 
-    public CreateTicketController(FlightManager flightManager) {
+    public CreateTicketController(Supplier<SceneManager> sceneManagerSupplier, FlightManager flightManager) {
         this.flightManager = flightManager;
+        this.sceneManagerSupplier = sceneManagerSupplier;
     }
 
     public void initialize() {
@@ -39,6 +44,13 @@ public class CreateTicketController {
         for (Flight flighter : FlightList) {
             FlightSelector.getItems().add(flighter);
         }
+    }
+
+    @FXML
+    public void BackToMain(ActionEvent actionEvent) {
+
+        sceneManagerSupplier.get().changeScene("mainGUI");
+
     }
 
 

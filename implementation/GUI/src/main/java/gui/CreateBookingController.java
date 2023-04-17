@@ -65,9 +65,12 @@ public class CreateBookingController implements Initializable {
     public Text totalToPay;
     @FXML
     public Text pricePerPerson;
+    @FXML
+    private Button BtnBack;
 
     private BookingCreator bookCreator;
     private final Supplier<SceneManager> sceneManagerSupplier;
+
 
 
 
@@ -82,6 +85,12 @@ public class CreateBookingController implements Initializable {
 
         String booking = bookingCreator.createBooking("1", empId.getText(), selectedFlight, tickets, LocalDateTime.now(), extras, customers);
         result.setText(booking);
+
+    }
+    @FXML
+    public void BackToMain(ActionEvent actionEvent) {
+
+        sceneManagerSupplier.get().changeScene("mainGUI");
 
     }
 

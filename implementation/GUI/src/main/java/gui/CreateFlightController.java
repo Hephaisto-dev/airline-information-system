@@ -41,6 +41,8 @@ public class CreateFlightController implements Initializable {
     public Button createButton;
     @FXML
     private Label result;
+    @FXML
+    private Button BtnBack;
 
     @FXML
     private ComboBox<String> depHour;
@@ -56,6 +58,13 @@ public class CreateFlightController implements Initializable {
         this.sceneManagerSupplier = sceneManagerSupplier;
         this.flightManager = flightManager;
         this.flightCreator = new FlightCreator(flightManager);
+    }
+
+    @FXML
+    public void BackToMain(ActionEvent actionEvent) {
+
+        sceneManagerSupplier.get().changeScene("mainGUI");
+
     }
 
     @FXML

@@ -38,6 +38,8 @@ public class CreateAirportController {
 
     @FXML
     private Button submitButton;
+    @FXML
+    private Button BtnBack;
 
     @FXML
     private Label result;
@@ -46,6 +48,12 @@ public class CreateAirportController {
         this.sceneManagerSupplier = sceneManagerSupplier;
         this.airportManager = airportManager; // this is linked to the controller,
         this.airportCreator = new AirportCreator(airportManager); // as well as this
+    }
+    @FXML
+    public void BackToMain(ActionEvent actionEvent) {
+
+        sceneManagerSupplier.get().changeScene("mainGUI");
+
     }
 
     public void airportCreator(){
