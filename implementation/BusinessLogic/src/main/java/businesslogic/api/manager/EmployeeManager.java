@@ -2,7 +2,7 @@ package businesslogic.api.manager;
 
 import businesslogic.api.employee.Employee;
 import businesslogic.api.employee.EmployeeFactory;
-import businesslogic.implementation.ManagerImpl;
+import businesslogic.impl.ManagerImpl;
 import datarecords.EmployeeData;
 import persistence.api.StorageService;
 
