@@ -2,10 +2,8 @@ package businesslogic.api.manager;
 
 import businesslogic.api.booking.Booking;
 import businesslogic.api.booking.BookingFactory;
-import businesslogic.implementation.ManagerImpl;
+import businesslogic.impl.ManagerImpl;
 import datarecords.BookingData;
-import persistence.api.BookingStorageService;
-import persistence.api.AirportStorageService;
 import persistence.api.BookingStorageService;
 
 public class BookingManager extends ManagerImpl<Booking, BookingData> {

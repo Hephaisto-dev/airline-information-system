@@ -1,6 +1,6 @@
 package businesslogic.api.airport;
 
-import businesslogic.implementation.AirportImpl;
+import businesslogic.impl.AirportImpl;
 import datarecords.AirportData;
 
 public interface AirportFactory {

@@ -10,7 +10,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-import java.util.Set;
+import java.util.Collection;
 
 public class CreateTicketController {
     private final FlightManager flightManager;
@@ -35,7 +35,7 @@ public class CreateTicketController {
     }
 
     public void initialize() {
-        Set<Flight> FlightList = flightManager.getAll();
+        Collection<Flight> FlightList = flightManager.getAll();
         for (Flight flighter : FlightList) {
             FlightSelector.getItems().add(flighter);
         }
