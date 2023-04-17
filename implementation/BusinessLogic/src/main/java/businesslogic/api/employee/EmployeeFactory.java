@@ -1,6 +1,6 @@
 package businesslogic.api.employee;
 
-import businesslogic.implementation.EmployeeImpl;
+import businesslogic.impl.EmployeeImpl;
 import datarecords.EmployeeData;
 
 public interface EmployeeFactory {

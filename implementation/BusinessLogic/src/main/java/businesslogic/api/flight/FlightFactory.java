@@ -2,7 +2,7 @@ package businesslogic.api.flight;
 
 import businesslogic.api.airplane.Airplane;
 import businesslogic.api.airport.Airport;
-import businesslogic.implementation.FlightImpl;
+import businesslogic.impl.FlightImpl;
 import datarecords.FlightData;
 import persistence.api.NoDBConnectionException;
 

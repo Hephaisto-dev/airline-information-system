@@ -1,4 +1,4 @@
-package businesslogic.implementation;
+package businesslogic.impl;
 
 import businesslogic.api.customer.Customer;
 import datarecords.CustomerData;
