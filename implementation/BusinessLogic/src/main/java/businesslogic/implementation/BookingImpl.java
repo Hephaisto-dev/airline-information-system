@@ -1,6 +1,8 @@
 package businesslogic.implementation;
 
 import businesslogic.api.booking.Booking;
+import businesslogic.api.customer.Customer;
+import businesslogic.api.customer.Ticket;
 import businesslogic.api.manager.BookingManager;
 import datarecords.BookingData;
 import datarecords.CustomerData;

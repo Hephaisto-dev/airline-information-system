@@ -1,8 +1,10 @@
 package persistence.impl;
 
 import datarecords.BookingData;
+import datarecords.CustomerData;
 import datarecords.FlightData;
 import persistence.api.BookingStorageService;
+import persistence.api.CustomerStorageService;
 import persistence.impl.database.DBProvider;
 
 import javax.sql.DataSource;
@@ -74,7 +76,11 @@ public class BookingStorageServiceImpl implements BookingStorageService {
     public List<BookingData> getAll() {
         DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
 
-        String query = "SELECT * FROM booking_data";
+        String query = "SELECT * FROM booking_data";// todo do this <------
+
+        //todo add flightdata to query
+        //todo add customerdata to query
+        String queryWithCustomers = "select c.id,c.dob,c.email,c.firstname,c.lastname,b.id,b.emp_id,b.flight_id,b. from booking_data b inner join customer_booking cb on b.id = cb.booking_id inner join customerdata c on cb.customer_id = c.id where b.id = id(?);";
 
 
         List<BookingData> bookingData = new ArrayList<>();
@@ -86,6 +92,12 @@ public class BookingStorageServiceImpl implements BookingStorageService {
                 String flight = result.getString("flight_Id");
                 String bookingDate = result.getString("booking_Date");
 
+                String customerId = 0;
+
+                if (customerId == Integer.toString(id)) {
+
+                }
+                //todo add flight data
                 bookingData.add(new BookingData(Integer.toString(id), empId, new FlightData(flight, null, null, null, null, null), null, LocalDateTime.parse(bookingDate), null, null));
             }
         } catch (SQLException e) {
@@ -159,3 +171,33 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 
     }
 }
+
+//    @Override//Not the right location
+//    public List<CustomerData> getCustomersOnBooking(String bookingId) {
+//        DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
+//
+//        String query = "select c.id,c.dob,c.email,c.firstname,c.lastname from booking_data b inner join customer_booking cb on b.id = cb.booking_id inner join customerdata c on cb.customer_id = c.id where b.id = id(?);";
+//
+//
+//        List<CustomerData> customerData = new ArrayList<>();
+//        try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
+//            pstm.setInt(1, Integer.parseInt(bookingId));
+//
+//            ResultSet result = pstm.executeQuery();
+//            while (result.next()) {
+//                String id = result.getString("id");
+//                String email = result.getString("email");
+//                LocalDateTime dob = LocalDateTime.parse(result.getDate("dob"));
+//                String firstName = result.getString("email");
+//                String lastName = result.getString("email");
+//
+//                customerData.add(new CustomerData(id,firstName,lastName,dob,email));
+//            }
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//        return customerData;
+//
+//    return customerData;
+//    }
+//}

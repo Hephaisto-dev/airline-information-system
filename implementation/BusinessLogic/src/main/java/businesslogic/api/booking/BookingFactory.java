@@ -1,5 +1,8 @@
 package businesslogic.api.booking;
 
+import businesslogic.api.airplane.NoAirplaneException;
+import businesslogic.api.customer.Customer;
+import businesslogic.api.customer.Ticket;
 import businesslogic.implementation.BookingImpl;
 import datarecords.BookingData;
 import datarecords.CustomerData;

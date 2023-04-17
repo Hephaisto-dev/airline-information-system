@@ -5,7 +5,7 @@ import businesslogic.api.airplane.AirplaneFactory;
 import businesslogic.api.airport.Airport;
 import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.booking.BookingCreator;
-import businesslogic.api.customer.Price;
+import businesslogic.api.customer.*;
 import businesslogic.api.flight.Flight;
 import businesslogic.api.flight.FlightFactory;
 import businesslogic.api.manager.BookingManager;
@@ -30,7 +30,7 @@ public class CreateBookingController implements Initializable {
 
     final ArrayList<String> extras = new ArrayList<>();
     final ArrayList<CustomerData> customers = new ArrayList<>();
-    final ArrayList<String> tickets = new ArrayList<>();//Change this from string to Ticket
+    final ArrayList<String> tickets = new ArrayList<>();//TODO it is now in strings becuase the ticket creator returns strings
     final FlightData selectedFlight = null;
     final BookingManager bookingManager;
     private final BookingCreator bookingCreator;
@@ -67,6 +67,8 @@ public class CreateBookingController implements Initializable {
     public Text pricePerPerson;
 
     private BookingCreator bookCreator;
+    private TicketCreator ticketCreator;
+    private CustomerFactory customerFactory;
 
 
     public CreateBookingController(Supplier<SceneManager> sceneManagerSupplier, BookingManager bookingManager) {
@@ -85,10 +87,12 @@ public class CreateBookingController implements Initializable {
     @FXML
     public void addCustomer(ActionEvent actionEvent) {
 
+
         customers.add(new CustomerData("1", firstName.getText(), lastName.getText(), dateOfBirth.getValue(), email.getText()));
         listViewCustomers.getItems().clear();
         for (CustomerData c : customers)
             listViewCustomers.getItems().add(c.toString());
+
 
     }
 
@@ -109,13 +113,12 @@ public class CreateBookingController implements Initializable {
 
 
             //tickets.add(new TicketImpl(customer.firstName(),cbFlights.getValue(),));
-            tickets.add(customer.firstName());
+            tickets.add(ticketCreator.createTicket(cbFlights.getValue(),"","",customer.id()));
         }
 
 
         return tickets;
     }
-
     @FXML
     public void fakeInfo(ActionEvent actionEvent) throws NoDBConnectionException {
         Airplane airplane = AirplaneFactory.createAirplane("1", "KML 332", 322, 322);
