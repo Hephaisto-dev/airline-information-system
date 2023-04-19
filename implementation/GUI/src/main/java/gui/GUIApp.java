@@ -23,7 +23,7 @@ import java.io.InputStream;
  */
 public class GUIApp extends Application {
 
-    private static final String INITIAL_VIEW = "createAirportView";
+    private static final String INITIAL_VIEW = "createFlightView";
 
     private BusinessLogicAPI businessLogicAPI;
     private SceneManager sceneManager;
@@ -36,7 +36,8 @@ public class GUIApp extends Application {
         case "gui.CreateBookingController" ->
                 new CreateBookingController(this::getSceneManager, businessLogicAPI.getBookingManager());
         case "gui.CreateFlightController" ->
-                new CreateFlightController(this::getSceneManager, businessLogicAPI.getFlightManager());
+                new CreateFlightController(this::getSceneManager, businessLogicAPI.getFlightManager(),
+                        businessLogicAPI.getAirportManager(), businessLogicAPI.getAirplaneManager());
         case "gui.CreateAirportController" -> new CreateAirportController(this::getSceneManager,
                 businessLogicAPI.getAirportManager());
         case "gui.SearchBookingController" -> new SearchBookingController(businessLogicAPI.getBookingManager());
