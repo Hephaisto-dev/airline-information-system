@@ -7,6 +7,4 @@ import java.util.List;
 
 public interface BookingStorageService extends StorageService<BookingData> {
 
-    List<CustomerData> getCustomersOnBooking(String bookingId);
-
 }

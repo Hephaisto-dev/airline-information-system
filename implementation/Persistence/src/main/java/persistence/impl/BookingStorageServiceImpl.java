@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -72,11 +73,12 @@ public class BookingStorageServiceImpl implements BookingStorageService {
     }
 
 
+
     @Override
     public List<BookingData> getAll() {
         DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
 
-        String query = "SELECT * FROM booking_data";// todo do this <------
+        String query = "SELECT * FROM everything_for_booking";// todo do this <------
 
         //todo add flightdata to query
         //todo add customerdata to query
@@ -92,7 +94,24 @@ public class BookingStorageServiceImpl implements BookingStorageService {
                 String flight = result.getString("flight_Id");
                 String bookingDate = result.getString("booking_Date");
 
-                String customerId = 0;
+
+                String airportId = result.getString("airplaneid");
+                LocalDateTime bookingDate = result.getDate("booking_date");
+                String bookingId = result.getString("bookingid");
+                String customerId = result.getString("customerid");
+                LocalDateTime dob = result.getDate("dob");
+                String email = result.getString("email");
+                String emp_id = result.getString("emp_id");
+                String etaDateTime = result.getString("etadatetime");
+                String etddatetime = result.getString("etddatetime");
+                String firstName = result.getString("firstname");
+                String flightDuration = result.getString("flightduration");
+                String flightId = result.getString("flightid");
+                String lastName = result.getString("lastname");
+                String "routedatafrom"
+                "routedatatoo"
+
+                String customerId = "0";
 
                 if (customerId == Integer.toString(id)) {
 
@@ -105,38 +124,37 @@ public class BookingStorageServiceImpl implements BookingStorageService {
         }
         return bookingData;
     }
+ This won't be used because specific searching will be done by the managers
+    public BookingData getBooking(String bookingId) {
+        DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
+        BookingData bookingdata= null;
 
-// This won't be used because specific searching will be done by the managers
 
-//    public BookingData getBooking(String bookingId) {
-//        DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
-//        BookingData bookingdata= null;
-//
-//
-//        String query = "SELECT * FROM booking_data Where id = (id)VALUES(?)";
-//
-//
-//        try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
-//            int bookingIdInt = Integer.parseInt(bookingId);//this is done because in the database id is auto incremented
-//            pstm.setInt(1, bookingIdInt);
-//
-//            ResultSet result = pstm.executeQuery();
-//            while (result.next()) {
-//                int id = result.getInt("id");
-//                String empId = result.getString("emp_Id");
-//                String flight = result.getString("flight_Id");
-//                String bookingDate = result.getString("booking_Date");
-//                bookingdata = new BookingData(Integer.toString(id),empId,new FlightData(flight,null,null,null,null,null),null,LocalDateTime.parse(bookingDate),null,null);
-//
-//            }
-//
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//
-//        return bookingdata;
-//
-//    }
+        String query = "SELECT * FROM booking_data Where id = (id)VALUES(?)";
+
+
+        try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
+            int bookingIdInt = Integer.parseInt(bookingId);//this is done because in the database id is auto incremented
+            pstm.setInt(1, bookingIdInt);
+
+            ResultSet result = pstm.executeQuery();
+            while (result.next()) {
+                int id = result.getInt("id");
+                String empId = result.getString("emp_Id");
+                String flight = result.getString("flight_Id");
+                String bookingDate = result.getString("booking_Date");
+                bookingdata = new BookingData(Integer.toString(id),empId,new FlightData(flight,null,null,null,null,null),null,LocalDateTime.parse(bookingDate),null,null);
+
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return bookingdata;
+
+    }
+
 
     @Override
     public boolean remove(String id) {
