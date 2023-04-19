@@ -7,7 +7,8 @@ public class AirportImpl implements Airport {
     private final AirportData airportData;
 
     public AirportImpl(String id, String name, String city, String country) {
-        this(new AirportData(id, name, city, country));
+        //this(new AirportData(id, name, city, country));
+        this.airportData = new AirportData(id,name,city,country);
     }
 
     public AirportImpl(AirportData airportData) {
