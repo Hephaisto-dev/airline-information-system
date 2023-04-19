@@ -1,4 +1,4 @@
-package persistence.impl.database;
+package persistence.impl;
 
 import datarecords.FlightData;
 import datarecords.RouteData;
@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sql.DataSource;
 import persistence.api.TicketStorageService;
+import persistence.impl.database.DBProvider;
 
 public class TicketStorageServiceImpl implements TicketStorageService {
     private final DataSource dataSource;

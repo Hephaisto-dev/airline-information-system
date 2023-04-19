@@ -18,6 +18,7 @@ public class PersistenceAPIImpl implements PersistenceAPI {
     private final FlightStorageService flightStorageService = new FlightStorageServiceImpl(dataSource);
     private final BookingStorageService bookingStorageService = new BookingStorageServiceImpl(dataSource);
     private final EmployeeStorageService employeeStorageService = new EmployeeStorageServiceImpl(dataSource);
+    private final TicketStorageService ticketStorageService = new TicketStorageServiceImpl(dataSource);
 
     @Override
     public CustomerStorageService getCustomerStorageService() {
@@ -43,6 +44,9 @@ public class PersistenceAPIImpl implements PersistenceAPI {
     public EmployeeStorageService getEmployeeStorageService() {
         return employeeStorageService;
     }
+
+    @Override
+    public TicketStorageService getTicketStorageService() {return ticketStorageService;}
 
     @Override
     public FlightStorageService getFlightStorageService() {
