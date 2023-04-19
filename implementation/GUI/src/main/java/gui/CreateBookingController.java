@@ -78,10 +78,13 @@ public class CreateBookingController implements Initializable {
 
     @FXML
     public void createBooking(ActionEvent actionEvent) {
-
+        if (empId.getText() == null || selectedFlight == null || tickets == null || customers == null) {
+            result.setText("all fields must be filled in!?");
+        } else 
+        {
         String booking = bookingCreator.createBooking("1", empId.getText(), selectedFlight, tickets, LocalDateTime.now(), extras, customers);
         result.setText(booking);
-
+        }
     }
 
     @FXML
