@@ -1,6 +1,6 @@
 package businesslogic.api.booking;
 
-import businesslogic.implementation.BookingImpl;
+import businesslogic.impl.BookingImpl;
 import datarecords.BookingData;
 import datarecords.CustomerData;
 import datarecords.FlightData;

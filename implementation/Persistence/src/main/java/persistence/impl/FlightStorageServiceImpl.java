@@ -3,7 +3,6 @@ package persistence.impl;
 import datarecords.FlightData;
 import datarecords.RouteData;
 import persistence.api.FlightStorageService;
-import persistence.impl.database.DBProvider;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -23,14 +22,11 @@ public class FlightStorageServiceImpl implements FlightStorageService {
     @Override
     public FlightData add(FlightData flightData) {
 
-
-        DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
-
         String query = "INSERT INTO flightdata (id, routedatafrom, routedatatoo, etddatetime, etadatetime, " +
                 "flightduration, airplaneid) values (?, ?, ?, ?, ?, ?, ?) returning *";
 
 
-        try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
+        try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
 
             String id = flightData.id();
             RouteData routeData = flightData.routeData();

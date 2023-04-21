@@ -1,6 +1,6 @@
 package businesslogic.api;
 
-import businesslogic.implementation.BusinessLogicAPIImpl;
+import businesslogic.impl.BusinessLogicAPIImpl;
 import persistence.api.PersistenceAPI;
 
 /**

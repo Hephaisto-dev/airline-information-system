@@ -11,8 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,12 +27,11 @@ public class BookingStorageServiceImpl implements BookingStorageService {
     public BookingData add(BookingData bookingData) {
 
 //this is just to see all values of booking id, empId, flight, Tickets, bookingDate, extras, customerInBooking
-        DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
 
         String query = "INSERT INTO booking_data(emp_Id, flight_Id,booking_Date) values (?, ?, ?) returning *";
 
 
-        try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
+        try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
 
 
             String empId = bookingData.empId();
@@ -71,13 +70,13 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 
 
     @Override
-    public List<BookingData> getAll() {
+    public Set<BookingData> getAll() {
         DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
 
         String query = "SELECT * FROM booking_data";
 
 
-        List<BookingData> bookingData = new ArrayList<>();
+        Set<BookingData> bookingData = new HashSet<>();
         try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
             ResultSet result = pstm.executeQuery();
             while (result.next()) {
@@ -139,12 +138,7 @@ public class BookingStorageServiceImpl implements BookingStorageService {
             pstm.setInt(1, idToDelete);
 
             int result = pstm.executeUpdate();
-            if (result == 0) {
-
-                confirm = false;
-            } else {
-                confirm = true;
-            }
+            confirm = result != 0;
 /*
             while (result.next()) { there is no result so nothing is read
 
