@@ -130,9 +130,9 @@ public class TicketCreator {
         }
         //returning the end result
         if (!errorFound) {
-            PersistenceAPI persistant = new PersistenceAPIImpl();
-            TicketStorageService TSS = persistant.getTicketStorageService();
-            TSS.add(new TicketData(fly.getId() + NUM + CHAR, fly.getId(), cus, cost.getBackendPrice()));
+            PersistenceAPI persistence = new PersistenceAPIImpl();
+            TicketStorageService ticketStorageService = persistence.getTicketStorageService();
+            ticketStorageService.add(new TicketData(fly.getId() + NUM + CHAR, fly.getId(), cus, cost.getBackendPrice()));
             return "Ticket booked successfully";
         }
         return getErrors(list);

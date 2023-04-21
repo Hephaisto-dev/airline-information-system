@@ -28,7 +28,7 @@ public class CreateTicketController {
     @FXML
     TextField feedbackField;
     @FXML
-    TextField DiscountGet;
+    TextField discountGet;
     @FXML
     TextField VoucherGet;
     @FXML
