@@ -1,6 +1,6 @@
 package businesslogic.api.airport;
 
-import businesslogic.implementation.AirportImpl;
+import businesslogic.impl.AirportImpl;
 import datarecords.AirportData;
 
 public interface AirportFactory {
@@ -13,10 +13,14 @@ public interface AirportFactory {
     }
 
     static Airport createAirport(String name) throws NoAirportException {
-        if (true) {
-            return new AirportImpl("AI", name, "", "");
+        if (true) { //TODO implement the getting from the persistence / DB
+            return new AirportImpl("AI",name,"","");
         } else {
             throw new NoAirportException();
         }
     }
+
+//    static Airport createAirport(){
+//
+//    }
 }

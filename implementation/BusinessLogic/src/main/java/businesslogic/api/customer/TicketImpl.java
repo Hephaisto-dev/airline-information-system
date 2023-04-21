@@ -6,7 +6,6 @@ import businesslogic.api.flight.Flight;
 
 public class TicketImpl implements Ticket {
 
-
     private final String person;
     private final Flight flight;
     private final String ticketID;

@@ -14,11 +14,12 @@ public interface Price {
     /**
      * Choose the currency
      */
-    void chooseCurrency(String currency);
+    void chooseCurrency(String ISO_Code);
 
     void setPrice(int price);
 
     int getBackendPrice();
 
     String getCurrencySymbol();
+
 }

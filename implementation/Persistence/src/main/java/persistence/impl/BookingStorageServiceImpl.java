@@ -2,7 +2,6 @@ package persistence.impl;
 
 import datarecords.*;
 import persistence.api.BookingStorageService;
-import persistence.api.CustomerStorageService;
 import persistence.impl.database.DBProvider;
 
 import javax.sql.DataSource;
@@ -10,11 +9,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -34,7 +34,7 @@ public class BookingStorageServiceImpl implements BookingStorageService {
         String query = "INSERT INTO booking_data(emp_Id, flight_Id,booking_Date) values (?, ?, ?) returning *";
 
 
-        try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
+        try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
 
 
             String empId = bookingData.empId();
@@ -74,7 +74,7 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 
 
     @Override
-    public List<BookingData> getAll() {
+    public Set<BookingData> getAll() {
         DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
 
         String query = "SELECT * FROM everything_for_booking";// todo do this <------
@@ -84,7 +84,7 @@ public class BookingStorageServiceImpl implements BookingStorageService {
         String queryWithCustomers = "select c.id,c.dob,c.email,c.firstname,c.lastname,b.id,b.emp_id,b.flight_id,b. from booking_data b inner join customer_booking cb on b.id = cb.booking_id inner join customerdata c on cb.customer_id = c.id where b.id = id(?);";
 
         List<CustomerData> customers = new ArrayList<>();
-        List<BookingData> bookingData = new ArrayList<>();
+        Set<BookingData> bookingData = new HashSet<BookingData>();
         try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
             ResultSet result = pstm.executeQuery();
             while (result.next()) {
@@ -204,12 +204,7 @@ public class BookingStorageServiceImpl implements BookingStorageService {
             pstm.setInt(1, idToDelete);
 
             int result = pstm.executeUpdate();
-            if (result == 0) {
-
-                confirm = false;
-            } else {
-                confirm = true;
-            }
+            confirm = result != 0;
 /*
             while (result.next()) { there is no result so nothing is read
 
@@ -224,33 +219,3 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 
     }
 }
-
-//    @Override//Not the right location
-//    public List<CustomerData> getCustomersOnBooking(String bookingId) {
-//        DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
-//
-//        String query = "select c.id,c.dob,c.email,c.firstname,c.lastname from booking_data b inner join customer_booking cb on b.id = cb.booking_id inner join customerdata c on cb.customer_id = c.id where b.id = id(?);";
-//
-//
-//        List<CustomerData> customerData = new ArrayList<>();
-//        try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
-//            pstm.setInt(1, Integer.parseInt(bookingId));
-//
-//            ResultSet result = pstm.executeQuery();
-//            while (result.next()) {
-//                String id = result.getString("id");
-//                String email = result.getString("email");
-//                LocalDateTime dob = LocalDateTime.parse(result.getDate("dob"));
-//                String firstName = result.getString("email");
-//                String lastName = result.getString("email");
-//
-//                customerData.add(new CustomerData(id,firstName,lastName,dob,email));
-//            }
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//        return customerData;
-//
-//    return customerData;
-//    }
-//}

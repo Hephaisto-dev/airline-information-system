@@ -75,7 +75,7 @@ public class FlightCreator {
         try {
             plane = AirplaneFactory.createAirplane(planeName);
             //-------------------Martin--------------
-            if (plane.getName().equals(null)) {
+            if (planeName == null) {
                 errors = true;
                 stringBuilder.append("No plane was provided");
             }

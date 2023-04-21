@@ -1,4 +1,4 @@
-package businesslogic.implementation;
+package businesslogic.impl;
 
 import businesslogic.api.booking.Booking;
 import businesslogic.api.customer.Customer;
@@ -9,7 +9,6 @@ import datarecords.CustomerData;
 import datarecords.FlightData;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BookingImpl implements Booking {

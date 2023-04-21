@@ -2,7 +2,7 @@ package businesslogic.api.manager;
 
 import businesslogic.api.common.PersistantDataContainer;
 
-import java.util.Set;
+import java.util.Collection;
 
 public interface Manager<T extends PersistantDataContainer<D>, D extends Record> {
     T add(T t);
@@ -14,7 +14,7 @@ public interface Manager<T extends PersistantDataContainer<D>, D extends Record>
      *
      * @return an unmodifiable list of all the objects in the manager
      */
-    Set<T> getAll();
+    Collection<T> getAll();
 
     T getById(String id);
 

@@ -69,9 +69,12 @@ public class CreateBookingController implements Initializable {
     private BookingCreator bookCreator;
     private TicketCreator ticketCreator;
     private CustomerFactory customerFactory;
+    private final Supplier<SceneManager> sceneManagerSupplier;
+
 
 
     public CreateBookingController(Supplier<SceneManager> sceneManagerSupplier, BookingManager bookingManager) {
+        this.sceneManagerSupplier = sceneManagerSupplier;
         this.bookingManager = bookingManager;
         this.bookingCreator = new BookingCreator(bookingManager);
     }
@@ -80,7 +83,7 @@ public class CreateBookingController implements Initializable {
     public void createBooking(ActionEvent actionEvent) {
         if (empId.getText() == null || selectedFlight == null || tickets == null || customers == null) {
             result.setText("all fields must be filled in!?");
-        } else 
+        } else
         {
         String booking = bookingCreator.createBooking("1", empId.getText(), selectedFlight, tickets, LocalDateTime.now(), extras, customers);
         result.setText(booking);
