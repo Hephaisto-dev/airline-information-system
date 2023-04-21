@@ -28,17 +28,16 @@ public class AirplaneStorageServiceImpl implements AirplaneStorageService {
 
         String query = "SELECT * FROM airplanedata";
         Set<AirplaneData> airportData = new HashSet<>();
-        try(Connection con = dataSource.getConnection(); PreparedStatement stmt = con.prepareStatement(query)){
+        try (Connection con = dataSource.getConnection(); PreparedStatement stmt = con.prepareStatement(query)) {
             ResultSet result = stmt.executeQuery();
-            while(result.next()){
+            while (result.next()) {
                 String id = result.getString("id");
                 String name = result.getString("name");
-                int capacity = result.getInt("capacity");
-                int sqrt = (int) Math.sqrt(capacity);
-                //TODO change the database to store length and width
-                airportData.add(new AirplaneData(id, name, sqrt, sqrt));
+                int length = result.getInt("length");
+                int width = result.getInt("width");
+                airportData.add(new AirplaneData(id, name, length, width));
             }
-        }catch(SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return airportData;
