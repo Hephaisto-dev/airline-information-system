@@ -4,5 +4,5 @@ module persistence_module {
     requires org.postgresql.jdbc;
     exports persistence.impl;
     requires java.naming;
-    exports persistence.api;
+    //exports persistence.api;
 }
