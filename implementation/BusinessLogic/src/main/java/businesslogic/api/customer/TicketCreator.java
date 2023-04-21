@@ -6,6 +6,7 @@ import datarecords.TicketData;
 import java.util.ArrayList;
 import java.util.List;
 import persistence.api.PersistenceAPI;
+import persistence.api.PersistenceFactory;
 import persistence.api.TicketStorageService;
 import persistence.impl.PersistenceAPIImpl;
 
@@ -130,9 +131,8 @@ public class TicketCreator {
         }
         //returning the end result
         if (!errorFound) {
-            PersistenceAPI persistence = new PersistenceAPIImpl();
-            TicketStorageService ticketStorageService = persistence.getTicketStorageService();
-            ticketStorageService.add(new TicketData(fly.getId() + NUM + CHAR, fly.getId(), cus, cost.getBackendPrice()));
+            TicketStorageService ticketStorer = PersistenceFactory.getImplementation().getTicketStorageService();
+            ticketStorer.add(new TicketData(fly.getId() + NUM + CHAR, fly.getId(), cus, cost.getBackendPrice()));
             return "Ticket booked successfully";
         }
         return getErrors(list);
