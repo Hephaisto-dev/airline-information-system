@@ -17,7 +17,7 @@ import persistence.api.CustomerStorageService;
  *
  * @author Informatics Fontys Venlo
  */
-class CustomerStorageServiceImpl implements CustomerStorageService {
+public class CustomerStorageServiceImpl implements CustomerStorageService {
     private final DataSource dataSource;
 
     public CustomerStorageServiceImpl(DataSource dataSource) {
@@ -69,4 +69,7 @@ class CustomerStorageServiceImpl implements CustomerStorageService {
         }
         return null;
     }
+    /*
+    alternative: CustomerManager.getById(customerId);
+     */
 }
