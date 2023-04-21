@@ -8,7 +8,6 @@ import java.util.List;
 import persistence.api.PersistenceAPI;
 import persistence.api.PersistenceFactory;
 import persistence.api.TicketStorageService;
-import persistence.impl.PersistenceAPIImpl;
 
 public class TicketCreator {
 
