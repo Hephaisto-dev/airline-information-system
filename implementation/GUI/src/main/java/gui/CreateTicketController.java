@@ -10,10 +10,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-import java.util.Set;
-import java.util.function.Supplier;
 import java.util.Collection;
-
 
 public class CreateTicketController {
     private final FlightManager flightManager;
@@ -31,16 +28,11 @@ public class CreateTicketController {
     @FXML
     TextField feedbackField;
     @FXML
-    Button TicketButton;
+    TextField discountGet;
     @FXML
-    private Button BtnBack;
-    private final Supplier<SceneManager> sceneManagerSupplier;
-
-    public CreateTicketController(Supplier<SceneManager> sceneManagerSupplier, FlightManager flightManager) {
-        this.flightManager = flightManager;
-        this.sceneManagerSupplier = sceneManagerSupplier;
-    }
-
+    TextField VoucherGet;
+    @FXML
+    Button TicketButton;
     public void initialize() {
         Collection<Flight> FlightList = flightManager.getAll();
         for (Flight flighter : FlightList) {
@@ -48,12 +40,11 @@ public class CreateTicketController {
         }
     }
 
-    @FXML
-    public void BackToMain(ActionEvent actionEvent) {
-
-        sceneManagerSupplier.get().changeScene("mainGUI");
-
+    public CreateTicketController(FlightManager flightManager) {
+        this.flightManager = flightManager;
     }
+
+
 
 
     @FXML
