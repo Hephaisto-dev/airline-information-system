@@ -1,4 +1,4 @@
-package businesslogic.implementation;
+package businesslogic.impl;
 
 import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.airport.NoAirportException;

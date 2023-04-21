@@ -2,7 +2,7 @@ package businesslogic.api.manager;
 
 import businesslogic.api.airplane.Airplane;
 import businesslogic.api.airplane.AirplaneFactory;
-import businesslogic.implementation.ManagerImpl;
+import businesslogic.impl.ManagerImpl;
 import datarecords.AirplaneData;
 import persistence.api.AirplaneStorageService;
 

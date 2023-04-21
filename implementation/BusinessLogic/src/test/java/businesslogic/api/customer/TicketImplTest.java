@@ -3,9 +3,9 @@ package businesslogic.api.customer;
 import businesslogic.api.airplane.Airplane;
 import businesslogic.api.airport.Airport;
 import businesslogic.api.flight.Flight;
-import businesslogic.implementation.AirplaneImpl;
-import businesslogic.implementation.AirportImpl;
-import businesslogic.implementation.FlightImpl;
+import businesslogic.impl.AirplaneImpl;
+import businesslogic.impl.AirportImpl;
+import businesslogic.impl.FlightImpl;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 

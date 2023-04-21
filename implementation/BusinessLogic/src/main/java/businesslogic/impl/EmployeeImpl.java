@@ -1,4 +1,4 @@
-package businesslogic.implementation;
+package businesslogic.impl;
 
 import businesslogic.api.employee.Employee;
 import businesslogic.api.employee.EmployeeType;
