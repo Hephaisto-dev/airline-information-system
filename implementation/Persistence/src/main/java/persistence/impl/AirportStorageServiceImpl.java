@@ -2,16 +2,16 @@ package persistence.impl;
 
 import datarecords.AirportData;
 import persistence.api.AirportStorageService;
+
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import javax.sql.DataSource;
 
 public class AirportStorageServiceImpl implements AirportStorageService {
     private final DataSource dataSource;
@@ -23,7 +23,7 @@ public class AirportStorageServiceImpl implements AirportStorageService {
     @Override
     public AirportData add(AirportData airportData) {
 //        throw new UnsupportedOperationException("Not supported yet.");
-        String query = "INSERT INTO airport(id, name, city, country) values (?, ?, ?, ?) returning *";
+        String query = "INSERT INTO airports(id, name, city, country) values (?, ?, ?, ?) returning *";
 
         try(Connection connection = dataSource.getConnection();
             PreparedStatement stmt = connection.prepareStatement(query)){
@@ -60,7 +60,7 @@ public class AirportStorageServiceImpl implements AirportStorageService {
     @Override
     public Set<AirportData> getAll(){
 
-        String query = "SELECT * FROM airport";
+        String query = "SELECT * FROM airports";
         Set<AirportData> airportData = new HashSet<>();
         try(Connection con = dataSource.getConnection(); PreparedStatement stmt = con.prepareStatement(query)){
             ResultSet result = stmt.executeQuery();
@@ -80,7 +80,7 @@ public class AirportStorageServiceImpl implements AirportStorageService {
     }
     public AirportData createAirport(String airportId){
         AirportData airportData = null;
-        String query = "SELECT * FROM airport where id = ?";
+        String query = "SELECT * FROM airports where id = ?";
                 //airportId = airport.Id";
 
         try(Connection con = dataSource.getConnection(); PreparedStatement stmt = con.prepareStatement(query)){

@@ -28,7 +28,6 @@ class TicketImplTest {
     @Mock
     Flight flew;
 
-
     /*AirportImpl from = new AirportImpl("FROM", "FROM", "FROM", "FROM");
     AirportImpl to = new AirportImpl("TO", "TO", "TO", "TO");
     //Route route = new RouteImpl(from, to);//Saved for conveniece, if we decide to provide routes somewhere in the Ticket
