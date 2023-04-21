@@ -26,7 +26,7 @@ public class AirplaneStorageServiceImpl implements AirplaneStorageService {
     @Override
     public Set<AirplaneData> getAll() {
 
-        String query = "SELECT * FROM airplanedata";
+        String query = "SELECT * FROM airplanes";
         Set<AirplaneData> airportData = new HashSet<>();
         try (Connection con = dataSource.getConnection(); PreparedStatement stmt = con.prepareStatement(query)) {
             ResultSet result = stmt.executeQuery();

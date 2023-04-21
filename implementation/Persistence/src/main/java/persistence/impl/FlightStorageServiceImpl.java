@@ -22,8 +22,8 @@ public class FlightStorageServiceImpl implements FlightStorageService {
     @Override
     public FlightData add(FlightData flightData) {
 
-        String query = "INSERT INTO flightdata (id, routedatafrom, routedatatoo, etddatetime, etadatetime, " +
-                "flightduration, airplaneid) values (?, ?, ?, ?, ?, ?, ?) returning *";
+        String query = "INSERT INTO flights (id, airport_from_id, airport_to_id, etd_date_time, eta_date_time, " +
+                "flight_duration, airplane_id) values (?, ?, ?, ?, ?, ?, ?) returning *";
 
 
         try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
