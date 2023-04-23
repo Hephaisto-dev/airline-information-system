@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="598.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.NavBarController">
+   <children>
+      <MenuBar fx:id="mainMenuBar" layoutX="-3.0" layoutY="1.0" prefHeight="28.0" prefWidth="600.0">
+        <menus>
+            <Menu fx:id="homeMenu" mnemonicParsing="false" onAction="#sendToHomePage" text="Home">
+              <items>
+                <MenuItem fx:id="homePage" mnemonicParsing="false" onAction="#sendToHomePage" text="Home Page" />
+              </items>
+            </Menu>
+          <Menu fx:id="flightMenu" mnemonicParsing="false" text="Flight">
+            <items>
+              <MenuItem fx:id="createFlight" mnemonicParsing="false" onAction="#sendToCreateFlight" text="Create Flight" />
+                  <MenuItem fx:id="editFlight" mnemonicParsing="false" onAction="#sendToEditFlight" text="Edit Flight" />
+                  <MenuItem fx:id="searchForFlight" mnemonicParsing="false" onAction="#sendToSearchForFlight" text="Search for Flight" />
+                  <MenuItem fx:id="viewFlightInformation" mnemonicParsing="false" onAction="#sendToViewFlightInformation" text="View Flight Information" />
+                  <MenuItem fx:id="viewPreviousFlights" mnemonicParsing="false" onAction="#sendToViewPreviousFlights" text="View Previous Flights" />
+            </items>
+          </Menu>
+          <Menu fx:id="routeMenu" mnemonicParsing="false" text="Route">
+            <items>
+              <MenuItem fx:id="createRoute" mnemonicParsing="false" onAction="#sendToCreateRoute" text="Create Route" />
+                  <MenuItem fx:id="editRoute" mnemonicParsing="false" onAction="#sendToEditRoute" text="Edit Route" />
+                  <MenuItem fx:id="searchForRoute" mnemonicParsing="false" onAction="#sendToSearchForRoute" text="Search for Route" />
+            </items>
+          </Menu>
+          <Menu fx:id="airportMenu" mnemonicParsing="false" text="Airport">
+            <items>
+              <MenuItem fx:id="createAirport" mnemonicParsing="false" onAction="#sendToCreateAirport" text="Create Airport" />
+                  <MenuItem fx:id="editAirport" mnemonicParsing="false" onAction="#sendToEditAirport" text="Edit Airport" />
+            </items>
+          </Menu>
+            <Menu fx:id="bookingMenu" mnemonicParsing="false" text="Booking">
+              <items>
+                <MenuItem fx:id="createBooking" mnemonicParsing="false" onAction="#sendToCreateBooking" text="Create Booking" />
+                  <MenuItem fx:id="editBooking" mnemonicParsing="false" onAction="#sendToEditBooking" text="Edit Booking" />
+                  <MenuItem fx:id="searchForBooking" mnemonicParsing="false" onAction="#sendToSearchForBooking" text="Search for Booking" />
+              </items>
+            </Menu>
+            <Menu fx:id="ticketMenu" mnemonicParsing="false" text="Ticket">
+              <items>
+                <MenuItem fx:id="createTicket" mnemonicParsing="false" onAction="#sendToCreateTicket" text="Create Ticket" />
+                  <MenuItem fx:id="editTicket" mnemonicParsing="false" onAction="#sendToEditTicket" text="Edit Ticket" />
+                  <MenuItem fx:id="purchaseTicket" mnemonicParsing="false" onAction="#sendToPurchaseTicket" text="Purchase Ticket" />
+              </items>
+            </Menu>
+            <Menu fx:id="customerMenu" mnemonicParsing="false" text="Customer">
+              <items>
+                <MenuItem fx:id="registerCustomer" mnemonicParsing="false" onAction="#sendToRegisterCustomer" text="Register a Customer" />
+                  <MenuItem fx:id="editCustomer" mnemonicParsing="false" onAction="#sendToEditCustomer" text="Edit Customer Information" />
+              </items>
+            </Menu>
+            <Menu fx:id="managementMenu" mnemonicParsing="false" text="Management">
+              <items>
+                <MenuItem fx:id="financialSheet" mnemonicParsing="false" onAction="#sendToFinancialSheet" text="View Financial Sheet" />
+                  <MenuItem fx:id="statistics" mnemonicParsing="false" onAction="#sendToStatistics" text="View Statistics" />
+                  <MenuItem fx:id="registerEmployee" mnemonicParsing="false" onAction="#sendToRegisterEmployee" text="Register Employee" />
+                  <MenuItem fx:id="startSalesProcess" mnemonicParsing="false" onAction="#sendToStartSalesProcess" text="Start Sales Process" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>

@@ -1,37 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainController">
-   <children>
-      <ButtonBar layoutX="4.0" layoutY="110.0" prefHeight="40.0" prefWidth="590.0">
-        <buttons>
-          <Button fx:id="createAirportButton" mnemonicParsing="false" onMouseClicked="#CreateAirport" prefHeight="41.0" prefWidth="84.0" text="Create Airport" />
-            <Button fx:id="createBookingButton" mnemonicParsing="false" onMouseClicked="#CreateBooking" prefHeight="40.0" prefWidth="231.0" text="Craete Booking" />
-            <Button fx:id="createFlightButton" mnemonicParsing="false" onMouseClicked="#CreateFlight" prefHeight="39.0" text="Create Flight" />
-            <Button fx:id="createTicketButton" mnemonicParsing="false" onMouseClicked="#CreateTicket" prefHeight="41.0" text="Create Ticket " />
-            <Button fx:id="customerButton" minWidth="53.0" mnemonicParsing="false" onMouseClicked="#Customer" prefHeight="40.0" text="Customer" />
-        </buttons>
-      </ButtonBar>
-      <Label layoutX="181.0" layoutY="14.0" prefHeight="25.0" prefWidth="246.0" text="Airline Information System">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="24.0" layoutY="79.0" prefHeight="17.0" prefWidth="109.0" text="Primary Functions:" />
-      <Label layoutX="34.0" layoutY="226.0" prefHeight="17.0" prefWidth="137.0" text="Secondary Functions:" />
-      <ButtonBar layoutX="1.0" layoutY="254.0" prefHeight="40.0" prefWidth="301.0">
-        <buttons>
-          <Button fx:id="searchFlightButton" mnemonicParsing="false" onMouseClicked="#SearchFlight" prefHeight="40.0" prefWidth="128.0" text="Search for Flight" />
-            <Button fx:id="searchBookingButton" mnemonicParsing="false" onMouseClicked="#SearchBooking" prefHeight="41.0" text="Search for Booking" />
-        </buttons>
-      </ButtonBar>
-      <AnchorPane layoutX="-1.0" layoutY="312.0" prefHeight="400.0" prefWidth="600.0">
 
-</AnchorPane>
-   </children>
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainController">
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+    <top>
+        <fx:include source="navBar.fxml"/>
+    </top>
+</BorderPane>
