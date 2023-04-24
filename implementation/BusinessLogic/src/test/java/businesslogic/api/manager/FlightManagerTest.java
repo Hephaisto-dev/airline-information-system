@@ -9,7 +9,7 @@ import java.util.Set;
 
 class FlightManagerTest {
 //    @Test
-//    void checkFlight(FlightData flightData) {
+//    void checkFlight(FlightData) {
 //
 //        FlightData flightData1= new FlightData(flightData.id(), flightData.routeData(), flightData.etdDateTime(), flightData.etaDateTime(), flightData.flightDuration(), flightData.airplane());
 //
@@ -25,7 +25,7 @@ class FlightManagerTest {
 //        Assertions.assertNotNull(result1);
 //
 //    }
-}
+//}
 
 
 
