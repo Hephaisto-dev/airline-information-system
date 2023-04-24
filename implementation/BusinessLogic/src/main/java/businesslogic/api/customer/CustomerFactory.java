@@ -1,6 +1,6 @@
 package businesslogic.api.customer;
 
-import businesslogic.implementation.CustomerImpl;
+import businesslogic.impl.CustomerImpl;
 import datarecords.CustomerData;
 
 import java.time.LocalDate;

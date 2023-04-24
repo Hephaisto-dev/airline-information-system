@@ -3,9 +3,9 @@ package businesslogic.api.customer;
 import businesslogic.api.airplane.Airplane;
 import businesslogic.api.airport.Airport;
 import businesslogic.api.flight.Flight;
-import businesslogic.implementation.AirplaneImpl;
-import businesslogic.implementation.AirportImpl;
-import businesslogic.implementation.FlightImpl;
+import businesslogic.impl.AirplaneImpl;
+import businesslogic.impl.AirportImpl;
+import businesslogic.impl.FlightImpl;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
@@ -27,7 +27,6 @@ class TicketImplTest {
     final Price cost = new PriceImpl(2000);
     @Mock
     Flight flew;
-
 
     /*AirportImpl from = new AirportImpl("FROM", "FROM", "FROM", "FROM");
     AirportImpl to = new AirportImpl("TO", "TO", "TO", "TO");
