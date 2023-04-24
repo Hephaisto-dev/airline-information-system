@@ -2,6 +2,7 @@ package gui;
 
 import businesslogic.api.flight.Flight;
 import businesslogic.api.manager.FlightManager;
+import datarecords.FlightData;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -10,12 +11,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.Set;
 
 public class SearchFlightController implements Initializable {
 
@@ -24,6 +24,8 @@ public class SearchFlightController implements Initializable {
 
     @FXML
     private ListView<Flight> flightListView;
+
+    private ArrayList<FlightData> flightDataArrayList = new ArrayList<>();
     @FXML
     private TableColumn FlightID;
     @FXML
@@ -48,9 +50,7 @@ public class SearchFlightController implements Initializable {
 
     @FXML
     private void searchFilter(KeyEvent actionEvent) {
-        FilteredList<Flight> filterData = new FilteredList<>(this.flightObservableList, (e) -> {
-            return true;
-        });
+        FilteredList<Flight> filterData = new FilteredList<>(this.flightObservableList, (e) -> true);
         this.searchField.setOnKeyReleased((e) -> {
             this.searchField.textProperty().addListener((observable, oldValue, newValue) -> {
                 filterData.setPredicate((flight) -> {
@@ -81,12 +81,13 @@ public class SearchFlightController implements Initializable {
         });
     }
 
-    private void setFlight(Set<Flight> all) {
+    private void setFlight() {
         flightFilteredList = new FilteredList<>(FXCollections.observableArrayList(flightManager.getAll()));
         flightListView.setItems(flightFilteredList);
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+<<<<<<< Updated upstream
         setFlight((Set<Flight>) flightManager.getAll());
         this.FlightID.setCellFactory(new PropertyValueFactory<>("id"));
         this.Departure.setCellFactory(new PropertyValueFactory<>("departure"));
@@ -96,6 +97,9 @@ public class SearchFlightController implements Initializable {
         this.Duration.setCellFactory(new PropertyValueFactory<>("flightDuration"));
         this.AirplaneID.setCellFactory(new PropertyValueFactory<>("airplane"));
         this.flightListView.setItems(this.flightFilteredList);
+=======
+        setFlight();
+>>>>>>> Stashed changes
 
     }
 

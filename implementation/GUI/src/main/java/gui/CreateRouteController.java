@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 public class CreateRouteController implements Initializable {
 
-    ArrayList<String> testData = new ArrayList<>(Arrays.asList("San Marino","Capetown","France","Amsterdam",
+    List<String> testData = new ArrayList<>(Arrays.asList("San Marino","Capetown","France","Amsterdam",
             "Netherlands","Los Angeles","Tokyo","Canada","Peru","Colombia","Ecuador","Brazil"));
     private final Supplier<SceneManager> sceneManagerSupplier;
 

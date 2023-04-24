@@ -73,9 +73,8 @@ public class FlightStorageServiceImpl implements FlightStorageService {
     }
 
 
-/*
     @Override
-    public Set<FlightData> getAll() {
+    public Set<FlightData> getAll(String id, LocalDateTime etd, LocalDateTime eta, AirplaneData airplane, AirportData departureAirport, AirportData arrivalAirport) {
         DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
 
         String query = "SELECT * FROM flightdata";
@@ -106,39 +105,37 @@ public class FlightStorageServiceImpl implements FlightStorageService {
         }
         return flightData;
     }
-*/
 
 
 
-    @Override
-    public Set<FlightData> getAll() {
-        DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
-
-        String query = "SELECT * FROM flightdata";
-
-
-        Set<FlightData> flightData = new HashSet<>();
-        try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
-            ResultSet result = pstm.executeQuery();
-            while (result.next()) {
-                String id = result.getString("id");
-                LocalDateTime flightEtd = LocalDateTime.parse(result.getString("etddatetime"));
-                LocalDateTime flightEta =  LocalDateTime.parse(result.getString("etadatetime"));
-                Duration flightDuration = Duration.ofSeconds(result.getLong("flightduration"));
-                String flightAirplane = result.getString("airplaneid");
-                String flightDepartureAirport = result.getString("routedatafrom");
-                String flightArrivalAirport = result.getString("routedatatoo");
-                flightData.add(new FlightData(id,
-                        flightEta, flightEtd,
-                        flightDuration,
-                        new AirplaneData(flightAirplane, "name", 10, 20),
-                        new AirportData(flightDepartureAirport, "oui", "non", "Baguette"),
-                        new AirportData(flightArrivalAirport, "yes", "no", "Pudding")));
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return flightData;
-    }
+//    @Override
+//    public List<FlightData> getAll() {
+//        DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
+//
+//        String query = "SELECT * FROM flightdata";
+//
+//
+//        List<FlightData> flightData = new ArrayList<>();
+//        try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
+//            ResultSet result = pstm.executeQuery();
+//            while (result.next()) {
+//                String id = result.getString("id");
+//                String routedatafrom = result.getString("routedatafrom");
+//                String routedatatoo = result.getString("routedatatoo");
+//                String etddatetime = result.getString("etddatetime");
+//                String etadatetime = result.getString("etadatetime");
+//                int flightduration = result.getInt("flightduration");
+//                String airplaneid = result.getString("airplaneid");
+//                flightData.add(new FlightData(id, new RouteData(new AirportData(routedatafrom, "oui", "non", "Baguette"),
+//                        new AirportData(routedatatoo, "yes", "no", "Pudding")),
+//                        LocalDateTime.parse(etddatetime), LocalDateTime.parse(etadatetime),
+//                        Duration.ofSeconds(flightduration),
+//                        new AirplaneData(airplaneid, "name", 10, 20)));
+//            }
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//        return flightData;
+//    }
 }
 

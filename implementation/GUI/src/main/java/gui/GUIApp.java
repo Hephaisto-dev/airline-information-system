@@ -23,7 +23,7 @@ import java.io.InputStream;
  */
 public class GUIApp extends Application {
 
-    private static final String INITIAL_VIEW = "searchFlightView";
+    private static final String INITIAL_VIEW = "searchFlightController";
 
     private BusinessLogicAPI businessLogicAPI;
     private SceneManager sceneManager;

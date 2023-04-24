@@ -4,7 +4,6 @@ import businesslogic.api.airplane.Airplane;
 import businesslogic.api.airplane.Seat;
 import businesslogic.api.common.PersistantDataContainer;
 import businesslogic.api.customer.Price;
-import businesslogic.api.route.Route;
 import businesslogic.travelDestinatinations.TravelDestinations;
 import datarecords.FlightData;
 
