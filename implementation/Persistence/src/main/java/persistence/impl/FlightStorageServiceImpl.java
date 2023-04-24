@@ -72,8 +72,6 @@ public class FlightStorageServiceImpl implements FlightStorageService {
         return flightData;
     }
 
-
-    @Override
     public Set<FlightData> getAll(String id, LocalDateTime etd, LocalDateTime eta, AirplaneData airplane, AirportData departureAirport, AirportData arrivalAirport) {
         DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
 
