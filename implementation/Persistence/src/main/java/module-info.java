@@ -6,4 +6,5 @@ module persistence_module {
     requires java.naming;
     exports persistence.api;
     exports persistence.impl.database;
+    exports persistence.impl;
 }

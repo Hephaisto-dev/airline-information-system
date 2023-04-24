@@ -1,7 +1,7 @@
 package businesslogic.api.manager;
 
 import businesslogic.api.route.Route;
-import businesslogic.implementation.ManagerImpl;
+import businesslogic.impl.ManagerImpl;
 import datarecords.RouteData;
 import persistence.impl.RouteStorageService;
 

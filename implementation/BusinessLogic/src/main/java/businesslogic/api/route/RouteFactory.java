@@ -1,6 +1,6 @@
 package businesslogic.api.route;
 
-import businesslogic.implementation.RouteImpl;
+import businesslogic.impl.RouteImpl;
 import datarecords.RouteData;
 
 public interface RouteFactory {

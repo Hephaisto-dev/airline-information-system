@@ -87,7 +87,7 @@ public class SearchFlightController implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        setFlight(flightManager.getAll());
+        setFlight((Set<Flight>) flightManager.getAll());
         this.FlightID.setCellFactory(new PropertyValueFactory<>("id"));
         this.Departure.setCellFactory(new PropertyValueFactory<>("departure"));
         this.Arrival.setCellFactory(new PropertyValueFactory<>("arrival"));
