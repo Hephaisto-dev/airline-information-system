@@ -77,7 +77,7 @@ public class FlightStorageServiceImpl implements FlightStorageService {
     public Set<FlightData> getAll(String id, LocalDateTime etd, LocalDateTime eta, AirplaneData airplane, AirportData departureAirport, AirportData arrivalAirport) {
         DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
 
-        String query = "SELECT * FROM flightdata";
+        String query = "SELECT * FROM flights";
 
         Set<FlightData> flightData = new HashSet<>();
         try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
