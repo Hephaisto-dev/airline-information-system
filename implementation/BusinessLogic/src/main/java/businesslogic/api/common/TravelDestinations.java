@@ -1,4 +1,4 @@
-package businesslogic.travelDestinatinations;
+package businesslogic.api.common;
 
 import businesslogic.api.airport.Airport;
 import businesslogic.api.common.PersistantDataContainer;

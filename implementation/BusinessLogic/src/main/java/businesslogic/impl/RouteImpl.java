@@ -1,6 +1,7 @@
 package businesslogic.impl;
 
 import businesslogic.api.airport.Airport;
+import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.flight.Flight;
 import businesslogic.api.route.Route;
 import datarecords.FlightData;
@@ -11,7 +12,6 @@ import java.util.*;
 
 public class RouteImpl implements Route {
     private final RouteData routeData;
-    protected FlightData flightData;
 
     public RouteImpl(RouteData routeData) {
         this.routeData = routeData;
@@ -24,29 +24,23 @@ public class RouteImpl implements Route {
 
     @Override
     public Airport getFrom() {
-        Map<FlightData, Duration> flightTranzits = getFlightTransits();
-        for (FlightData flightData : flightTranzits.keySet()) {
-            // Return the first key
-            return getFrom();
-        }
-        return null;
+        return this.routeData.flightTransits().keySet().stream()
+                .min(Comparator.comparing(FlightData::etdDateTime))
+                .map(flight -> AirportFactory.createAirport(flight.departure()))
+                .orElse(null);
     }
 
     @Override
     public Airport getTo() {
-        Map<FlightData, Duration> flightTranzits = getFlightTransits();
-        List<FlightData> keys = new ArrayList<>(flightTranzits.keySet());
-        ListIterator<FlightData> iterator = keys.listIterator(keys.size());
-        while (iterator.hasPrevious()) {
-            // Return the last key
-            return getTo();
-        }
-        return null;
+        return this.routeData.flightTransits().keySet().stream()
+                .max(Comparator.comparing(FlightData::etaDateTime))
+                .map(flight -> AirportFactory.createAirport(flight.arrival()))
+                .orElse(null);
     }
 
     @Override
     public String toString() {
-        return flightData.departure() + " -> " + flightData.arrival();
+        return getFrom() + " -> " + getTo();
     }
 
     @Override

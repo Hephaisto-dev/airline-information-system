@@ -4,7 +4,7 @@ import businesslogic.api.airplane.Airplane;
 import businesslogic.api.airplane.Seat;
 import businesslogic.api.common.PersistantDataContainer;
 import businesslogic.api.customer.Price;
-import businesslogic.travelDestinatinations.TravelDestinations;
+import businesslogic.api.common.TravelDestinations;
 import datarecords.FlightData;
 
 import java.time.Duration;

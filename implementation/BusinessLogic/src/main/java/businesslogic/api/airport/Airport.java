@@ -5,7 +5,6 @@ import businesslogic.api.common.PersistantDataContainer;
 import datarecords.AirportData;
 
 public interface Airport extends Nameable, PersistantDataContainer<AirportData> {
-    String getCity();
 
     String getCountry();
 
