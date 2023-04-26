@@ -11,7 +11,7 @@
         <menus>
             <Menu fx:id="homeMenu" mnemonicParsing="false" onAction="#sendToHomePage" text="Home">
               <items>
-                <MenuItem fx:id="homePage" mnemonicParsing="false" onAction="#sendToHomePage" text="Home Page" />
+                <MenuItem fx:id="homePage" mnemonicParsing="false" onAction="#sendToHomePage" text="Home Page"/>
               </items>
             </Menu>
           <Menu fx:id="flightMenu" mnemonicParsing="false" text="Flight">
