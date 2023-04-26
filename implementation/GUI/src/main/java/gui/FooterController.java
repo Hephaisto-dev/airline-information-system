@@ -1,5 +1,6 @@
 package gui;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.fxml.FXML;
 
 import java.util.function.Supplier;
