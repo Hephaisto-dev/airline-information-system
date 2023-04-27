@@ -22,4 +22,8 @@ public enum BaggageType {
         }
         return null;
     }
+
+    public Baggage getBaggage() {
+        return baggage;
+    }
 }
