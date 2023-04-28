@@ -5,4 +5,6 @@ module persistence_module {
     //exports persistence.impl;
     requires java.naming;
     exports persistence.api;
+    exports persistence.impl.database;
+    exports persistence.impl;
 }

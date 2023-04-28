@@ -98,14 +98,14 @@ class FlightImplTest {
     }
 
     @Test
-    void testGetRoute() {
+    void testArrivalDeparture() {
         SoftAssertions.assertSoftly(softly -> {
-            softly.assertThat(flight1.getRoute().getFrom().getName()).isEqualTo("DEPART");
-            softly.assertThat(flight1.getRoute().getTo().getName()).isEqualTo("ARRIVE");
-            softly.assertThat(flightTwo.getRoute().getFrom().getName()).isEqualTo("DEPART");
-            softly.assertThat(flightTwo.getRoute().getTo().getName()).isEqualTo("ARRIVE");
-            softly.assertThat(tooLongFlight.getRoute().getFrom().getName()).isEqualTo("DEPART");
-            softly.assertThat(tooLongFlight.getRoute().getTo().getName()).isEqualTo("ARRIVE");
+            softly.assertThat(flight1.getDeparture().getName()).isEqualTo("DEPART");
+            softly.assertThat(flight1.getArrival().getName()).isEqualTo("ARRIVE");
+            softly.assertThat(flightTwo.getDeparture().getName()).isEqualTo("DEPART");
+            softly.assertThat(flightTwo.getArrival().getName()).isEqualTo("ARRIVE");
+            softly.assertThat(tooLongFlight.getDeparture().getName()).isEqualTo("DEPART");
+            softly.assertThat(tooLongFlight.getArrival().getName()).isEqualTo("ARRIVE");
         });
     }
 
