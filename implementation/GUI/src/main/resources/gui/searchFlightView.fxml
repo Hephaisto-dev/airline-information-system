@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SearchFlightController">
-   <children>
-      <Label layoutX="15.0" layoutY="14.0" prefHeight="17.0" prefWidth="56.0" text="Search" />
-   </children>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19"
+            fx:controller="gui.SearchFlightController">
     <children>
-    <Label layoutX="71.0" layoutY="14.0" text="Label" />
-      <Button layoutX="517.0" layoutY="352.0" mnemonicParsing="false" text="Acceept" />
-      <Button layoutX="32.0" layoutY="352.0" mnemonicParsing="false" text="Delete" />
-      <TextField fx:id="searchField" layoutX="71.0" layoutY="10.0" onKeyTyped="#searchFilter" prefHeight="26.0" prefWidth="510.0" />
-      <ListView fx:id="flightListView" layoutX="32.0" layoutY="53.0" prefHeight="281.0" prefWidth="552.0" />
-</children>
+        <Label layoutX="15.0" layoutY="14.0" prefHeight="17.0" prefWidth="56.0" text="Search"/>
+    </children>
+    <children>
+        <Label layoutX="71.0" layoutY="14.0" text="Label"/>
+        <Button layoutX="517.0" layoutY="352.0" mnemonicParsing="false" text="Acceept"/>
+        <Button layoutX="32.0" layoutY="352.0" mnemonicParsing="false" text="Delete"/>
+        <TextField fx:id="searchField" layoutX="71.0" layoutY="10.0" onKeyTyped="#searchFilter" prefHeight="26.0"
+                   prefWidth="510.0"/>
+        <ListView fx:id="flightListView" layoutX="32.0" layoutY="53.0" prefHeight="281.0" prefWidth="552.0"/>
+    </children>
 </AnchorPane>

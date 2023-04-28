@@ -125,5 +125,4 @@ public class CreateFlightController implements Initializable {
     }
 
 
-
 }

@@ -13,6 +13,7 @@ import java.util.Set;
 public interface Route extends PersistantDataContainer<RouteData> {
 
     String getId();
+
     Airport getFrom();
 
     Airport getTo();

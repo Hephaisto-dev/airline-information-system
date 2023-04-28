@@ -30,7 +30,7 @@ public class GUIApp extends Application {
     private final Callback<Class<?>, Object> controllerFactory = (Class<?> c)
             -> switch (c.getName()) {
         case "gui.CreateCustomerController" ->
-                new CreateCustomerController(this::getSceneManager, businessLogicAPI.getCustomerManager());
+                new CreateCustomerController(businessLogicAPI.getCustomerManager());
         case "gui.PrimaryController" -> new PrimaryController(this::getSceneManager);
         case "gui.SecondaryController" -> new SecondaryController(this::getSceneManager);
         case "gui.CreateBookingController" ->

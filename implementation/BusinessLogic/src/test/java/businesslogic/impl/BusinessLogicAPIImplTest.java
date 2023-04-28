@@ -35,7 +35,7 @@ class BusinessLogicAPIImplTest {
     @Mock
     private TicketStorageService ticketStorageService;
     @Mock
-    private BusinessLogicAPI businessLogicAPI ;
+    private BusinessLogicAPI businessLogicAPI;
 
     @BeforeAll
     public void initMocks() {

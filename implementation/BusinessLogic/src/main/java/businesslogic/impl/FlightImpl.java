@@ -48,7 +48,7 @@ public class FlightImpl implements Flight {
         if (etdDateTime.isAfter(etaDateTime)) {
             throw new IllegalArgumentException("ETD must be before ETA");
         }
-        this.flightData = new FlightData("FL_" + from.getName() + "-" + to.getName() + "_" +etdDateTime + "_" + airplane.getId(), etdDateTime, etaDateTime, flightDuration,
+        this.flightData = new FlightData("FL_" + from.getName() + "-" + to.getName() + "_" + etdDateTime + "_" + airplane.getId(), etdDateTime, etaDateTime, flightDuration,
                 airplane.getData(), from.getData(), to.getData());
         this.airplane = airplane;
         this.LDTd = etdDateTime;
@@ -59,7 +59,8 @@ public class FlightImpl implements Flight {
 
     public FlightImpl(Airport from, Airport to, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
                       Airplane airplane) throws IllegalArgumentException {
-        this(from, to, etdDateTime, etaDateTime, Duration.between(etdDateTime, etaDateTime), airplane);    }
+        this(from, to, etdDateTime, etaDateTime, Duration.between(etdDateTime, etaDateTime), airplane);
+    }
 
 
     public FlightImpl(FlightData flightData) {

@@ -1,17 +1,16 @@
 package persistence.impl;
 
-import datarecords.FlightData;
-import datarecords.RouteData;
 import datarecords.TicketData;
+import persistence.api.TicketStorageService;
+import persistence.impl.database.DBProvider;
+
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.sql.DataSource;
-import persistence.api.TicketStorageService;
-import persistence.impl.database.DBProvider;
 
 public class TicketStorageServiceImpl implements TicketStorageService {
     private final DataSource dataSource;

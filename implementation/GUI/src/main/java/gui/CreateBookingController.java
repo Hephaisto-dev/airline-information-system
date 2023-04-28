@@ -34,6 +34,7 @@ public class CreateBookingController implements Initializable {
     final FlightData selectedFlight = null;
     final BookingManager bookingManager;
     private final BookingCreator bookingCreator;
+    private final Supplier<SceneManager> sceneManagerSupplier;
     //TODO IMPLEMENT TICKETS
     @FXML
     public TextField empId;
@@ -65,10 +66,7 @@ public class CreateBookingController implements Initializable {
     public Text totalToPay;
     @FXML
     public Text pricePerPerson;
-
     private BookingCreator bookCreator;
-    private final Supplier<SceneManager> sceneManagerSupplier;
-
 
 
     public CreateBookingController(Supplier<SceneManager> sceneManagerSupplier, BookingManager bookingManager) {
@@ -131,24 +129,25 @@ public class CreateBookingController implements Initializable {
         cbFlights.getItems().add(flight);
 
     }
-    @FXML
-    public void updatePrice(ActionEvent actionEvent){
 
-        if(cbFlights.getValue()!=null){
+    @FXML
+    public void updatePrice(ActionEvent actionEvent) {
+
+        if (cbFlights.getValue() != null) {
             int total = 0;
             Price perPerson = cbFlights.getValue().getPrice();
-            for (CustomerData c: customers) {
+            for (CustomerData c : customers) {
 
-                total = total + perPerson.getBackendPrice()/100;
+                total = total + perPerson.getBackendPrice() / 100;
             }
-            for(String x: extras){
+            for (String x : extras) {
                 total = total + 15;
             }
-            String currency = perPerson.toString().replace("1","").replace("2","").replace("3","").replace("4","").replace("5","").replace("6","").replace("7","").replace("8","").replace("9","").replace("0","").replace(",","").replace(".","");//TODO change this after implementation of new prices
+            String currency = perPerson.toString().replace("1", "").replace("2", "").replace("3", "").replace("4", "").replace("5", "").replace("6", "").replace("7", "").replace("8", "").replace("9", "").replace("0", "").replace(",", "").replace(".", "");//TODO change this after implementation of new prices
 
-            totalToPay.setText(Integer.toString(total)+" "+ currency);
+            totalToPay.setText(Integer.toString(total) + " " + currency);
             pricePerPerson.setText(perPerson.toString());
-        }else {
+        } else {
             totalToPay.setText("no flight selected!");
         }
 

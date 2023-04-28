@@ -9,7 +9,6 @@ import javafx.scene.control.*;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
-import java.util.function.Supplier;
 
 /**
  * FXML Customer Controller class.
@@ -21,8 +20,6 @@ import java.util.function.Supplier;
  * @author Informatics Fontys Venlo
  */
 public class CreateCustomerController implements Initializable {
-
-    private final Supplier<SceneManager> sceneManagerSupplier;
     private final CustomerCreator customerCreator;
     @FXML
     private TextField firstName;
@@ -37,8 +34,7 @@ public class CreateCustomerController implements Initializable {
     @FXML
     private Label result;
 
-    public CreateCustomerController(Supplier<SceneManager> sceneManagerSupplier, CustomerManager customerManager) {
-        this.sceneManagerSupplier = sceneManagerSupplier;
+    public CreateCustomerController(CustomerManager customerManager) {
         this.customerCreator = new CustomerCreator(customerManager);
     }
 
@@ -54,9 +50,11 @@ public class CreateCustomerController implements Initializable {
         LocalDate maxDate = LocalDate.now();
         dob.setDayCellFactory(d ->
                 new DateCell() {
-                    @Override public void updateItem(LocalDate item, boolean empty) {
+                    @Override
+                    public void updateItem(LocalDate item, boolean empty) {
                         super.updateItem(item, empty);
                         setDisable(item.isAfter(maxDate));
-                    }});
+                    }
+                });
     }
 }

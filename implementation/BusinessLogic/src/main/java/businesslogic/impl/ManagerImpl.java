@@ -23,7 +23,8 @@ public abstract class ManagerImpl<T extends PersistantDataContainer<D>, D extend
         if (storage.containsKey(t.getId()) || storageService.add(t.getData()) == null) {
             return null;
         }
-        storage.put(t.getId(), t);;
+        storage.put(t.getId(), t);
+        ;
         return t;
     }
 
