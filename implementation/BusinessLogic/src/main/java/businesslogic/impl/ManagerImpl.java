@@ -20,11 +20,10 @@ public abstract class ManagerImpl<T extends PersistantDataContainer<D>, D extend
 
     @Override
     public T add(T t) {
-        if (storage.containsKey(t.getId())) {
+        if (storage.containsKey(t.getId()) || storageService.add(t.getData()) == null) {
             return null;
         }
-        storage.put(t.getId(), t);
-        storageService.add(t.getData());
+        storage.put(t.getId(), t);;
         return t;
     }
 

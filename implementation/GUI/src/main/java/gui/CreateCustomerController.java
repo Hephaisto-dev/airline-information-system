@@ -1,9 +1,7 @@
 package gui;
 
-import businesslogic.api.customer.Customer;
-import businesslogic.api.customer.CustomerFactory;
+import businesslogic.api.customer.CustomerCreator;
 import businesslogic.api.manager.CustomerManager;
-import datarecords.CustomerData;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -25,7 +23,7 @@ import java.util.function.Supplier;
 public class CreateCustomerController implements Initializable {
 
     private final Supplier<SceneManager> sceneManagerSupplier;
-    private final CustomerManager customerManager;
+    private final CustomerCreator customerCreator;
     @FXML
     private TextField firstName;
     @FXML
@@ -41,17 +39,14 @@ public class CreateCustomerController implements Initializable {
 
     public CreateCustomerController(Supplier<SceneManager> sceneManagerSupplier, CustomerManager customerManager) {
         this.sceneManagerSupplier = sceneManagerSupplier;
-        this.customerManager = customerManager;
+        this.customerCreator = new CustomerCreator(customerManager);
     }
 
     @FXML
     private void storeCustomer() {
-        CustomerData customerData = new CustomerData("0", firstName.getText(), lastName.getText(),
-                dob.getValue(), email.getText());
-
-        Customer addedCustomer = customerManager.add(CustomerFactory.createCustomer(customerData));
-
-        result.setText("Customer added: " + addedCustomer.getData().toString());
+        String message =
+                customerCreator.createCustomer(firstName.getText(), lastName.getText(), dob.getValue(), email.getText());
+        result.setText(message);
     }
 
     @Override
