@@ -23,14 +23,14 @@ import java.io.InputStream;
  */
 public class GUIApp extends Application {
 
-    private static final String INITIAL_VIEW = "createFlightView";
+    private static final String INITIAL_VIEW = "createCustomerView";
 
     private BusinessLogicAPI businessLogicAPI;
     private SceneManager sceneManager;
     private final Callback<Class<?>, Object> controllerFactory = (Class<?> c)
             -> switch (c.getName()) {
-        case "gui.CustomerController" ->
-                new CustomerController(this::getSceneManager, businessLogicAPI.getCustomerManager());
+        case "gui.CreateCustomerController" ->
+                new CreateCustomerController(this::getSceneManager, businessLogicAPI.getCustomerManager());
         case "gui.PrimaryController" -> new PrimaryController(this::getSceneManager);
         case "gui.SecondaryController" -> new SecondaryController(this::getSceneManager);
         case "gui.CreateBookingController" ->

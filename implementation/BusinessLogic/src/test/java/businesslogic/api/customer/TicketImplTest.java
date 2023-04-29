@@ -16,8 +16,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 class TicketImplTest {
 
 
-    final Airport from = new AirportImpl("FROM", "FROM", "FROM", "FROM");
-    final Airport to = new AirportImpl("TO", "TO", "TO", "TO");
+    final Airport from = new AirportImpl("FROM", "FROM", "FROM");
+    final Airport to = new AirportImpl("TO", "TO", "TO");
     //Route route = new RouteImpl(from, to);//Saved for conveniece, if we decide to provide routes somewhere in the Ticket
     final LocalDateTime futureFar = LocalDateTime.of(2244, 2, 1, 4, 5);
     final LocalDateTime futureNear = LocalDateTime.of(2244, 2, 1, 3, 4);
