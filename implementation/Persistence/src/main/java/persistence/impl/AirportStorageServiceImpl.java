@@ -60,17 +60,17 @@ public class AirportStorageServiceImpl implements AirportStorageService {
     @Override
     public Set<AirportData> getAll(){
 
-        String query = "SELECT * FROM airport";
+        String query = "SELECT * FROM airports";
         Set<AirportData> airportData = new HashSet<>();
         try(Connection con = dataSource.getConnection(); PreparedStatement stmt = con.prepareStatement(query)){
             ResultSet result = stmt.executeQuery();
             while(result.next()){
                 String id = result.getString("id");
                 String name = result.getString("name");
-                String city = result.getString("city");
+                //String city = result.getString("city");
                 String country = result.getString("country");
 
-                airportData.add(new AirportData(id,name,city,country));
+                airportData.add(new AirportData(id,name,null,country));
 
             }
         }catch(SQLException e){
@@ -80,7 +80,7 @@ public class AirportStorageServiceImpl implements AirportStorageService {
     }
     public AirportData createAirport(String airportId){
         AirportData airportData = null;
-        String query = "SELECT * FROM airport where id = ?";
+        String query = "SELECT * FROM airports where id = ?";
                 //airportId = airport.Id";
 
         try(Connection con = dataSource.getConnection(); PreparedStatement stmt = con.prepareStatement(query)){

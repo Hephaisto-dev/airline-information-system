@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -79,9 +80,8 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 
         String query = "SELECT * FROM everything_for_booking";// todo do this <------
 
-        //todo add flightdata to query
-        //todo add customerdata to query
-        String queryWithCustomers = "select c.id,c.dob,c.email,c.firstname,c.lastname,b.id,b.emp_id,b.flight_id,b. from booking_data b inner join customer_booking cb on b.id = cb.booking_id inner join customerdata c on cb.customer_id = c.id where b.id = id(?);";
+
+        String queryWithCustomers = "select c .id,c.dob,c.email,c.firstname,c.lastname,b.id,b.emp_id,b.flight_id,b. from booking_data b inner join customer_booking cb on b.id = cb.booking_id inner join customerdata c on cb.customer_id = c.id where b.id = id(?);";
 
         List<CustomerData> customers = new ArrayList<>();
         Set<BookingData> bookingData = new HashSet<BookingData>();
@@ -93,6 +93,10 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 
 
                 String airplaneId = result.getString("airplaneid");
+                String airplaneName = result.getString("airplaneName");
+                int airplaneLenght = result.getInt("airplaneLength");
+                int airplaneWidth = result.getInt("airplaneWidth");
+
                 LocalDateTime bookingDate = LocalDateTime.parse(result.getString("booking_date"));
                 String bookingId = result.getString("bookingid");
                 String customerId = result.getString("customerid");
@@ -110,13 +114,13 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 
 
                 String airportIdFrom = result.getString("airportIdFrom");
-                String airportCityFrom = result.getString("airportCityFrom");
+               // String airportCityFrom = result.getString("airportCityFrom");
                 String airportCountryFrom = result.getString("airportCountryFrom");
                 String airportNameFrom = result.getString("airportNameFrom");
 
 
                 String airportIdTo = result.getString("airportIdTo");
-                String airportCityTo = result.getString("airportCityTo");
+               // String airportCityTo = result.getString("airportCityTo");
                 String airportCountryTo = result.getString("airportCountryTo");
                 String airportNameTo = result.getString("airportNameTo");
 
@@ -135,12 +139,12 @@ public class BookingStorageServiceImpl implements BookingStorageService {
                     if(selectedCustomerId==customerId){
                     customers.add(new CustomerData(customerId,firstName,lastName,dob,email));
                     }
-//                    selectedFlight =
-//                            new FlightData(flightId,
-//                            new RouteData(
-//                            new AirportData(airportIdFrom,airportNameFrom,airportCityFrom,airportCountryFrom),
-//                            new AirportData(airportIdTo,airportNameTo,airportCityTo,airportCountryTo), null), etdDatetime, etaDateTime, Duration.parse(flightDuration),
-//                            new AirplaneData(airplaneId,null,0,0));
+                    selectedFlight =
+                            new FlightData(flightId,
+                            new RouteData(
+                            new AirportData(airportIdFrom,airportNameFrom,null,airportCountryFrom),
+                            new AirportData(airportIdTo,airportNameTo,null,airportCountryTo), null), etdDatetime, etaDateTime, Duration.parse(flightDuration),
+                            new AirplaneData(airplaneId,airplaneName,airplaneLenght,airplaneWidth));
 
 
 
@@ -149,6 +153,7 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 
                 }
                 else{
+
                     bookingData.add(new BookingData(bookingId, emp_id, selectedFlight, null/*TODO not yet implemented*/, bookingDate, null, customers));
 
                 }
