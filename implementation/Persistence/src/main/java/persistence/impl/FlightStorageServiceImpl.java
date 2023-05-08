@@ -99,7 +99,7 @@ public class FlightStorageServiceImpl implements FlightStorageService {
                 }
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
         }
         return flightData;
     }
@@ -130,9 +130,9 @@ public class FlightStorageServiceImpl implements FlightStorageService {
 //                        new AirplaneData(airplaneid, "name", 10, 20)));
 //            }
 //        } catch (SQLException e) {
-//            throw new RuntimeException(e);
+//            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
 //        }
 //        return flightData;
-//    }
+//    }F
 }
 
