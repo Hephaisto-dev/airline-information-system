@@ -40,6 +40,7 @@ public class CustomerCreator {
                     stringBuilder.append("Customer created successfully.");
                 }
             } catch (Exception e) {
+                e.printStackTrace();
                 stringBuilder.append("Error creating customer.");
             }
         } else {

@@ -7,8 +7,6 @@ import javax.sql.DataSource;
 import java.sql.*;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * This class knows everything about storing and retrieving customers from
@@ -42,7 +40,7 @@ public class CustomerStorageServiceImpl implements CustomerStorageService {
                 return customerData;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
         return null;
     }

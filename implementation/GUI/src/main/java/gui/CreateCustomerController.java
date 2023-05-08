@@ -40,8 +40,7 @@ public class CreateCustomerController implements Initializable {
 
     @FXML
     private void storeCustomer() {
-        String message =
-                customerCreator.createCustomer(firstName.getText(), lastName.getText(), dob.getValue(), email.getText());
+        String message = customerCreator.createCustomer(firstName.getText(), lastName.getText(), dob.getValue(), email.getText());
         result.setText(message);
     }
 

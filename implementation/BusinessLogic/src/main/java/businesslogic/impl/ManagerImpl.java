@@ -24,7 +24,6 @@ public abstract class ManagerImpl<T extends PersistantDataContainer<D>, D extend
             return null;
         }
         storage.put(t.getId(), t);
-        ;
         return t;
     }
 
