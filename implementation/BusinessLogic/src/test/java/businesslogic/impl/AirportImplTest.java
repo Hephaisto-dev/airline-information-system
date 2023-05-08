@@ -9,12 +9,12 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class AirportImplTest {
 
-    private final Airport Airport = new AirportImpl("Id","airportName","cityName","countryName");
-    private final Airport Airport2 = new AirportImpl("Id","airportName","cityName","countryName");
-    @Test
+    private final Airport Airport = new AirportImpl("Id","airportName","countryName");
+    private final Airport Airport2 = new AirportImpl("Id","airportName","countryName");
+    /*@Test
     void getCity() {
         assertThat(Airport.getCity()).isEqualTo("cityName");
-    }
+    }*/
 
     @Test
     void getCountry() {
