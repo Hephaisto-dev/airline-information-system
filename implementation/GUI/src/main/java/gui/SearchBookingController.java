@@ -44,14 +44,6 @@ public class SearchBookingController implements Initializable {
                                 customer.email().toLowerCase().contains(lowerCase)) ||
                 bookingId.getEmp().toLowerCase().contains(lowerCase));
     }
-    @FXML
-    public void BackToMain(ActionEvent actionEvent) {
-
-        sceneManagerSupplier.get().changeScene("mainGUI");
-
-    }
-
-
 
     public void onCancel() {
         ObservableList<Booking> selectedItems = bookingListView.getSelectionModel().getSelectedItems();

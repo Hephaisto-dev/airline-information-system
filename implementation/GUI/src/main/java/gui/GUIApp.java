@@ -45,7 +45,7 @@ public class GUIApp extends Application {
                         businessLogicAPI.getAirportManager(), businessLogicAPI.getAirplaneManager());
         case "gui.CreateAirportController" -> new CreateAirportController(this::getSceneManager,
                 businessLogicAPI.getAirportManager());
-        case "gui.SearchBookingController" -> new SearchBookingController(businessLogicAPI.getBookingManager());
+        case "gui.SearchBookingController" -> new SearchBookingController(this::getSceneManager,businessLogicAPI.getBookingManager());
         case "gui.CreateTicketController" -> new CreateTicketController(businessLogicAPI.getFlightManager());
         case "gui.SearchFlightController" -> new SearchFlightController(businessLogicAPI.getFlightManager());
         default -> null;

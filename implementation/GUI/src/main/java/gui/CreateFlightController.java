@@ -21,7 +21,7 @@ import java.util.function.Supplier;
  * FXML Create Flight Controller class.
  * The controller class contains GUI-logic (no business logic!). It reacts on
  * GUI events like button clicks. It triggers the BusinessLogic layer
- * to do the real work. Furthermore the controller will trigger navigation
+ * to do the real work. Furthermore, the controller will trigger navigation
  * and update the GUI.
  *
  * @author Mathias Filliol

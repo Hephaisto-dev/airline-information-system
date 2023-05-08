@@ -2,6 +2,7 @@ package gui;
 
 import businesslogic.api.airport.AirportCreator;
 import businesslogic.api.manager.AirportManager;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -26,29 +27,19 @@ public class CreateAirportController {
     private TextField airportCountry;
 
     @FXML
-    private Button backButton;
+    private Label result;
 
     @FXML
     private Button submitButton;
-    @FXML
-    private Button BtnBack;
 
-    @FXML
-    private Label result;
 
     public CreateAirportController(Supplier<SceneManager> sceneManagerSupplier, AirportManager airportManager){
         this.sceneManagerSupplier = sceneManagerSupplier;
         this.airportManager = airportManager; // this is linked to the controller,
         this.airportCreator = new AirportCreator(airportManager); // as well as this
     }
-    @FXML
-    public void BackToMain(ActionEvent actionEvent) {
 
-        sceneManagerSupplier.get().changeScene("mainGUI");
-
-    }
-
-    public void airportCreator(){
+    public void airportCreator(ActionEvent actionEvent){
         String output = sendAirport(airportName.getText(),airportCountry.getText());
         result.setText(output);
     }
