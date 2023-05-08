@@ -29,11 +29,6 @@ public abstract class ManagerImpl<T extends PersistantDataContainer<D>, D extend
     }
 
     @Override
-    public void delete(T t) {
-        storage.remove(t.getId());
-    }
-
-    @Override
     public Collection<T> getAll() {
         return Collections.unmodifiableCollection(storage.values());
     }
@@ -45,7 +40,7 @@ public abstract class ManagerImpl<T extends PersistantDataContainer<D>, D extend
 
     @Override
     public boolean remove(T t) {
-        boolean remove = storage.remove(t.getId()) == null;
+        boolean remove = storage.remove(t.getId()) != null;
         if (remove) {
             remove = storageService.remove(t.getId());
         }

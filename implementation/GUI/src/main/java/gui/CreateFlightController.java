@@ -7,7 +7,10 @@ import businesslogic.api.manager.FlightManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -120,5 +123,7 @@ public class CreateFlightController implements Initializable {
         arrivalAirport.getSelectionModel().select(1);
         airplaneName.getSelectionModel().select(0);
     }
+
+
 
 }

@@ -6,18 +6,12 @@ import datarecords.AirportData;
 public class AirportImpl implements Airport {
     private final AirportData airportData;
 
-    public AirportImpl(String id, String name, String city, String country) {
-        //this(new AirportData(id, name, city, country));
-        this.airportData = new AirportData(id,name,city,country);
+    public AirportImpl(String id, String name, String country) {
+        this(new AirportData(id, name, country));
     }
 
     public AirportImpl(AirportData airportData) {
         this.airportData = airportData;
-    }
-
-    @Override
-    public String getCity() {
-        return airportData.city();
     }
 
     @Override
@@ -38,5 +32,10 @@ public class AirportImpl implements Airport {
     @Override
     public String getName() {
         return airportData.name();
+    }
+
+    @Override
+    public String toString() {
+        return getName();
     }
 }
