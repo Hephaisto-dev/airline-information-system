@@ -42,8 +42,6 @@ create table flights
     eta_date_time     varchar not null,
     flight_duration   int     not null,
     airplane_id       varchar not null,
-    airplane_name     varchar not null,
-    airplane_capacity int     not null,
     primary key (id),
     foreign key (airplane_id) references airplanes (id),
     foreign key (airport_from_id) references airports (id),
