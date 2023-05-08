@@ -23,20 +23,18 @@ public class AirportStorageServiceImpl implements AirportStorageService {
     @Override
     public AirportData add(AirportData airportData) {
 //        throw new UnsupportedOperationException("Not supported yet.");
-        String query = "INSERT INTO airports(id, name, city, country) values (?, ?, ?, ?) returning *";
+        String query = "INSERT INTO airports(id, name, country) values (?, ?, ?) returning *";
 
         try(Connection connection = dataSource.getConnection();
             PreparedStatement stmt = connection.prepareStatement(query)){
 
             String id = airportData.id();
             String name = airportData.name();
-            String city = airportData.city();
             String country = airportData.country();
 
             stmt.setString(1,id);
             stmt.setString(2,name);
-            stmt.setString(3,city);
-            stmt.setString(4,country);
+            stmt.setString(3,country);
 
             ResultSet results = stmt.executeQuery();
 
@@ -46,10 +44,9 @@ public class AirportStorageServiceImpl implements AirportStorageService {
 
                 id = results.getString("id");
                 name = results.getString("name");
-                city = results.getString("city");
                 country = results.getString("country");
 
-                System.out.println("Airport with id: " + id + ", name: " + name + ", city: " + city + ", country: " + country);
+                System.out.println("Airport with id: " + id + ", name: " + name + ", country: " + country);
 
             }
         }catch(SQLException e){
@@ -67,10 +64,9 @@ public class AirportStorageServiceImpl implements AirportStorageService {
             while(result.next()){
                 String id = result.getString("id");
                 String name = result.getString("name");
-                String city = result.getString("city");
                 String country = result.getString("country");
 
-                airportData.add(new AirportData(id,name,city,country));
+                airportData.add(new AirportData(id,name,country));
 
             }
         }catch(SQLException e){
@@ -89,9 +85,8 @@ public class AirportStorageServiceImpl implements AirportStorageService {
             ResultSet result = stmt.executeQuery();
             while(result.next()){
                 String name = result.getString("name");
-                String city = result.getString("city");
                 String country = result.getString("country");
-                airportData = new AirportData(airportId,name,city,country);
+                airportData = new AirportData(airportId,name,country);
             }
         }catch(SQLException e){
             throw new RuntimeException();

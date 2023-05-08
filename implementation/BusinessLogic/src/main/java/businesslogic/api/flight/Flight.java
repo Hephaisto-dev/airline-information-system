@@ -4,13 +4,13 @@ import businesslogic.api.airplane.Airplane;
 import businesslogic.api.airplane.Seat;
 import businesslogic.api.common.PersistantDataContainer;
 import businesslogic.api.customer.Price;
-import businesslogic.api.route.Route;
+import businesslogic.api.common.TravelDestinations;
 import datarecords.FlightData;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-public interface Flight extends PersistantDataContainer<FlightData> {
+public interface Flight extends PersistantDataContainer<FlightData>, TravelDestinations {
 
     Price getPrice();
 
@@ -21,8 +21,6 @@ public interface Flight extends PersistantDataContainer<FlightData> {
     LocalDateTime getETD();
 
     LocalDateTime getETA();
-
-    Route getRoute();
 
     FlightStatus getFlightStatus();
 

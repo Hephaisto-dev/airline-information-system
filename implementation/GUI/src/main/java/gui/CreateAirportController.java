@@ -2,16 +2,11 @@ package gui;
 
 import businesslogic.api.airport.AirportCreator;
 import businesslogic.api.manager.AirportManager;
-import businesslogic.api.manager.FlightManager;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import java.util.function.Supplier;
 
 public class CreateAirportController {
@@ -26,9 +21,6 @@ public class CreateAirportController {
 
     @FXML
     private TextField airportName;
-
-    @FXML
-    private TextField airportCity;
 
     @FXML
     private TextField airportCountry;
@@ -57,15 +49,15 @@ public class CreateAirportController {
     }
 
     public void airportCreator(){
-        String output = sendAirport(airportName.getText(),airportCity.getText(),airportCountry.getText());
+        String output = sendAirport(airportName.getText(),airportCountry.getText());
         result.setText(output);
     }
 
-    public String sendAirport(String airportName, String airportCity, String airportCountry){
+    public String sendAirport(String airportName, String airportCountry){
         String id = "AIR" + airportName.toUpperCase() + String.format("%04d",counter);
         counter++;
 
-        return airportCreator.createAirport(id,airportName, airportCity, airportCountry);
+        return airportCreator.createAirport(id,airportName, airportCountry);
     }
 
 }

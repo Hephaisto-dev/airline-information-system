@@ -10,7 +10,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Level;
@@ -85,7 +84,7 @@ public class BookingStorageServiceImpl implements BookingStorageService {
                 String flight = result.getString("flight_Id");
                 String bookingDate = result.getString("booking_Date");
 
-                bookingData.add(new BookingData(Integer.toString(id), empId, new FlightData(flight, null, null, null, null, null), null, null, null, null));
+                bookingData.add(new BookingData(Integer.toString(id), empId, new FlightData(flight, null, null, null, null, null, null), null, null, null, null));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

@@ -1,14 +1,18 @@
 package businesslogic.api.route;
 
 import businesslogic.api.airport.Airport;
+import businesslogic.api.common.PersistantDataContainer;
 import businesslogic.api.flight.Flight;
+import datarecords.FlightData;
 import datarecords.RouteData;
 
 import java.time.Duration;
 import java.util.Map;
 import java.util.Set;
 
-public interface Route {
+public interface Route extends PersistantDataContainer<RouteData> {
+
+    String getId();
     Airport getFrom();
 
     Airport getTo();
@@ -17,7 +21,8 @@ public interface Route {
 
     Set<Flight> getFlights();
 
-    Map<Flight, Duration> getFlightTransits();
+    Map<FlightData, Duration> getFlightTransits();
 
     Duration getDuration();
+
 }

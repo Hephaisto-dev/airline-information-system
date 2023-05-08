@@ -17,8 +17,8 @@ public class BookingImplTest {
     // private ArrayList<CustomerData> customers = new ArrayList<>();//TODO when customers are finished implement this
 
     private final Airplane airplane = new AirplaneImpl("1", "BigPlane", 200, 200);
-    private final Airport airport1 = new AirportImpl("1", "MyHouse", "Venlo", "Netherlands");
-    private final Airport airport2 = new AirportImpl("2", "YourHouse", "Venlo", "Netherlands");
+    private final Airport airport1 = new AirportImpl("1", "MyHouse", "Netherlands");
+    private final Airport airport2 = new AirportImpl("2", "YourHouse", "Netherlands");
     private final Duration duration = Duration.ofDays(10);
     private final Flight flight = new FlightImpl(airport1, airport2, LocalDateTime.now().plusDays(20), LocalDateTime.now().plusDays(10), duration, airplane);
 

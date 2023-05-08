@@ -32,8 +32,10 @@ public class GUIApp extends Application {
         case "gui.MainController" -> new MainController(this::getSceneManager);
         case "gui.NavBarController" -> new NavBarController(this::getSceneManager);
         case "gui.FooterController" -> new FooterController(this::getSceneManager);
-        case "gui.CustomerController" ->
-                new CustomerController(this::getSceneManager, businessLogicAPI.getCustomerManager());
+//        case "gui.CustomerController" ->
+//                new CustomerController(this::getSceneManager, businessLogicAPI.getCustomerManager());
+        case "gui.CreateCustomerController" ->
+                new CreateCustomerController(this::getSceneManager, businessLogicAPI.getCustomerManager());
         case "gui.PrimaryController" -> new PrimaryController(this::getSceneManager);
         case "gui.SecondaryController" -> new SecondaryController(this::getSceneManager);
         case "gui.CreateBookingController" ->
@@ -43,8 +45,9 @@ public class GUIApp extends Application {
                         businessLogicAPI.getAirportManager(), businessLogicAPI.getAirplaneManager());
         case "gui.CreateAirportController" -> new CreateAirportController(this::getSceneManager,
                 businessLogicAPI.getAirportManager());
-        case "gui.SearchBookingController" -> new SearchBookingController(this::getSceneManager, businessLogicAPI.getBookingManager());
+        case "gui.SearchBookingController" -> new SearchBookingController(businessLogicAPI.getBookingManager());
         case "gui.CreateTicketController" -> new CreateTicketController(businessLogicAPI.getFlightManager());
+        case "gui.SearchFlightController" -> new SearchFlightController(businessLogicAPI.getFlightManager());
         default -> null;
     };
 

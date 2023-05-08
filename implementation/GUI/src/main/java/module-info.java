@@ -4,6 +4,7 @@ module gui_module {
     requires java.logging;
     requires businesslogic_module;
     requires fontawesomefx;
+    requires java.sql;
 
     opens gui to javafx.fxml;
 
