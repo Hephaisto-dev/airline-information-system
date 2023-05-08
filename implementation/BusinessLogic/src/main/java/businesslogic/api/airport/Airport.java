@@ -8,4 +8,8 @@ public interface Airport extends Nameable, PersistantDataContainer<AirportData> 
 
     String getCountry();
 
+    String getId();
+
+    String getName();
+
 }
