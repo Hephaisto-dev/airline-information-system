@@ -6,14 +6,11 @@ import businesslogic.api.manager.CustomerManager;
 import datarecords.CustomerData;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 /**
@@ -25,7 +22,7 @@ import java.util.function.Supplier;
  *
  * @author Informatics Fontys Venlo
  */
-public class CustomerController implements Initializable {
+public class CreateCustomerController implements Initializable {
 
     private final Supplier<SceneManager> sceneManagerSupplier;
     private final CustomerManager customerManager;
@@ -34,45 +31,37 @@ public class CustomerController implements Initializable {
     @FXML
     private TextField lastName;
     @FXML
-    private TextField dob;
+    private DatePicker dob;
     @FXML
     private TextField email;
     @FXML
     private Button saveButton;
     @FXML
-    private Button toSecondaryButton;
-    @FXML
     private Label result;
 
-    public CustomerController(Supplier<SceneManager> sceneManagerSupplier, CustomerManager customerManager) {
+    public CreateCustomerController(Supplier<SceneManager> sceneManagerSupplier, CustomerManager customerManager) {
         this.sceneManagerSupplier = sceneManagerSupplier;
         this.customerManager = customerManager;
     }
 
     @FXML
-    private void toSecondary() {
-        Consumer<SecondaryController> consumer
-                = (c) -> c.setPreviousView("Customer");
-        sceneManagerSupplier.get().changeScene("secondary", consumer);
-    }
-
-    @FXML
     private void storeCustomer() {
-
         CustomerData customerData = new CustomerData("0", firstName.getText(), lastName.getText(),
-                LocalDate.parse(dob.getText()), email.getText());
+                dob.getValue(), email.getText());
 
         Customer addedCustomer = customerManager.add(CustomerFactory.createCustomer(customerData));
 
         result.setText("Customer added: " + addedCustomer.getData().toString());
     }
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        LocalDate maxDate = LocalDate.now();
+        dob.setDayCellFactory(d ->
+                new DateCell() {
+                    @Override public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty);
+                        setDisable(item.isAfter(maxDate));
+                    }});
     }
-
 }

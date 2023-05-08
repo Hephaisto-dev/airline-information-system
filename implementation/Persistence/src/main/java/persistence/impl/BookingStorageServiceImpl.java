@@ -32,12 +32,12 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 //this is just to see all values of booking id, empId, flight, Tickets, bookingDate, extras, customerInBooking
         DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
 
-        String query = "INSERT INTO booking_data(emp_Id, flight_Id,booking_Date) values (?, ?, ?) returning *";
+        String query = "INSERT INTO bookings(id,employee_id, flight_id,date) values (?,?, ?, ?) returning *";
 
 
         try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
 
-
+            String id = bookingData.id();
             String empId = bookingData.empId();
             String flight = bookingData.flight().id();
             String bookingdate = bookingData.bookingDate().toString();
@@ -46,17 +46,17 @@ public class BookingStorageServiceImpl implements BookingStorageService {
             //TODO IMPLEMENT Customers?!
             //TODO IMPLEMENT Tickets?!
 
-
-            pstm.setString(1, empId);
-            pstm.setString(2, flight);
-            pstm.setString(3, bookingdate);
+            pstm.setString(1, id);
+            pstm.setString(2, empId);
+            pstm.setString(3, flight);
+            pstm.setString(4, bookingdate);
 
 
             ResultSet result = pstm.executeQuery();
 
             System.out.println("JUST INSERTED: ");
             while (result.next()) {
-                int id = result.getInt("id");
+                id = result.getString("id");
                 empId = result.getString("emp_Id");
                 flight = result.getString("flight_Id");
                 bookingdate = result.getString("booking_Date");
@@ -203,7 +203,7 @@ public class BookingStorageServiceImpl implements BookingStorageService {
         DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
         int idToDelete = Integer.parseInt(id);
 
-        String query = "DELETE FROM booking_data WHERE id = ?";
+        String query = "DELETE FROM bookings WHERE id = ?";
 
         try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
             pstm.setInt(1, idToDelete);

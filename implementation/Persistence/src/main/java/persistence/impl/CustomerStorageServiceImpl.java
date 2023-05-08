@@ -1,14 +1,11 @@
 package persistence.impl;
 
 import datarecords.CustomerData;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.LocalDate;
-import javax.sql.DataSource;
 import persistence.api.CustomerStorageService;
+
+import javax.sql.DataSource;
+import java.sql.*;
+import java.time.LocalDate;
 
 /**
  * This class knows everything about storing and retrieving customers from
@@ -17,7 +14,7 @@ import persistence.api.CustomerStorageService;
  *
  * @author Informatics Fontys Venlo
  */
-class CustomerStorageServiceImpl implements CustomerStorageService {
+public class CustomerStorageServiceImpl implements CustomerStorageService {
     private final DataSource dataSource;
 
     public CustomerStorageServiceImpl(DataSource dataSource) {
@@ -38,7 +35,7 @@ class CustomerStorageServiceImpl implements CustomerStorageService {
     public CustomerData getCustomer(String customer_Id) {
         //DataSource db = DBProvider.getDataSource("jdbc.pg.prod");//other solution
         DataSource db = dataSource;
-        String query = "SELECT * FROM booking_data WHERE id = ?";
+        String query = "SELECT * FROM bookings WHERE id = ?";
         CustomerData customer = null;
 
         try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
@@ -69,4 +66,7 @@ class CustomerStorageServiceImpl implements CustomerStorageService {
         }
         return null;
     }
+    /*
+    alternative: CustomerManager.getById(customerId);
+     */
 }

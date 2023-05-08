@@ -1,5 +1,7 @@
 package persistence.api;
 
+import persistence.impl.TicketStorageServiceImpl;
+
 /**
  * @author Informatics Fontys Venlo
  */
@@ -29,7 +31,7 @@ public interface PersistenceAPI {
 
     EmployeeStorageService getEmployeeStorageService();
 
-
+    TicketStorageService getTicketStorageService();
     // This interface can be extended with all services that need to be made
     // available to the business logic, e.g. to store Products:
     // 
