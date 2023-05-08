@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-
 <BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SearchRouteController">
    <center>
       <AnchorPane prefHeight="400.0" prefWidth="600.0">
@@ -45,9 +44,9 @@
       </AnchorPane>
    </center>
     <top>
-        <fx:include source="navBar.fxml"/>
+        <fx:include source="navBar.fxml" />
     </top>
     <bottom>
-        <fx:include source="footer.fxml"/>
+        <fx:include source="footer.fxml" />
     </bottom>
 </BorderPane>
