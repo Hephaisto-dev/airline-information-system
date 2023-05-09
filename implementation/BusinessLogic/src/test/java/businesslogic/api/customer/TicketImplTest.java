@@ -24,10 +24,7 @@ class TicketImplTest {
     final Airplane plane = new AirplaneImpl("PLANEiD", "plane", 123, 5);
     final Flight flyer = new FlightImpl(from, to, futureNear, futureFar, plane);
     //final Ticket ticket;
-    final Price cost = new PriceImpl(2000);
-    @Mock
-    Flight flew;
-
+    Price cost = new PriceImpl(2000);
     /*AirportImpl from = new AirportImpl("FROM", "FROM", "FROM", "FROM");
     AirportImpl to = new AirportImpl("TO", "TO", "TO", "TO");
     //Route route = new RouteImpl(from, to);//Saved for conveniece, if we decide to provide routes somewhere in the Ticket
@@ -38,7 +35,8 @@ class TicketImplTest {
     Flight flyer = new FlightImpl(from, to, futureNear, futureFar, plane);*/
     //Price cost = new PriceImpl(2000);
     Ticket ticket = new TicketImpl("person", flyer, "15D", cost);
-
+    @Mock
+    Flight flew;
 
     @Test
     void getTicketID() {

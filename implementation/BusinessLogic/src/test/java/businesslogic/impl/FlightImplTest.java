@@ -30,16 +30,16 @@ class FlightImplTest {
     private final Duration dur2 = Duration.between(ldtd2, ldta2);
     //private final Flight flightThree;
     private final Duration dur3;
-    private final Airplane plane = new AirplaneImpl("Hello", "There", 3, 3);
-    private final Airplane plane2 = new AirplaneImpl("Identification", "please", 123, 2);
+    private Airplane plane = new AirplaneImpl("Hello", "There", 3, 3);
     private Flight flight1 = new FlightImpl(AirportFactory.createAirport(from),
             AirportFactory.createAirport(to), ldtd, ldta, dur, plane);
+    private Airplane plane2 = new AirplaneImpl("Identification", "please", 123, 2);
+    private Flight flightThree = new FlightImpl(AirportFactory.createAirport(from),
+            AirportFactory.createAirport(to), ldtd2, ldta2, dur2, plane2, cost);
     private final Flight tooLongFlight = new FlightImpl(AirportFactory.createAirport(from),
             AirportFactory.createAirport(to), ldtd, ldta2, plane2);
     private final Flight flightTwo = new FlightImpl(AirportFactory.createAirport(from),
             AirportFactory.createAirport(to), ldtd2, ldta2, plane2);
-    private Flight flightThree = new FlightImpl(AirportFactory.createAirport(from),
-            AirportFactory.createAirport(to), ldtd2, ldta2, dur2, plane2, cost);
 
     FlightImplTest() throws NoAirportException {
         flight1 = new FlightImpl(AirportFactory.createAirport(from),

@@ -14,7 +14,7 @@ public interface AirportFactory {
 
     static Airport createAirport(String name) throws NoAirportException {
         if (true) { //TODO implement the getting from the persistence / DB
-            return new AirportImpl("AI",name,"");
+            return new AirportImpl("AI", name, "");
         } else {
             throw new NoAirportException();
         }

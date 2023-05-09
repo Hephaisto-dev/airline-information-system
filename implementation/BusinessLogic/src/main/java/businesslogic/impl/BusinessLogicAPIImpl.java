@@ -66,7 +66,7 @@ public class BusinessLogicAPIImpl implements BusinessLogicAPI {
 
     @Override
     public RouteManager getRouteManager() {
-        return  getManager(RouteManager.class);
+        return getManager(RouteManager.class);
     }
 
     @Override
