@@ -36,13 +36,23 @@ public class AirplaneImpl implements Airplane {
     }
 
     @Override
+    public String getManufacturer() {
+        return airplaneData.manufacturer();
+    }
+
+    @Override
+    public String getModel() {
+        return airplaneData.model();
+    }
+
+    @Override
     public AirplaneData getData() {
         return airplaneData;
     }
 
     @Override
     public String getName() {
-        return airplaneData.manufacturer();
+        return airplaneData.id();
     }
 
     @Override

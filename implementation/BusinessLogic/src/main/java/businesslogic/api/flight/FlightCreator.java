@@ -2,7 +2,6 @@ package businesslogic.api.flight;
 
 import businesslogic.api.airplane.Airplane;
 import businesslogic.api.airplane.AirplaneFactory;
-import businesslogic.api.airplane.NoAirplaneException;
 import businesslogic.api.airport.Airport;
 import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.airport.NoAirportException;
@@ -73,18 +72,15 @@ public class FlightCreator {
                 stringBuilder.append("Departure time must be in the present/future");
             }
         }
-        try {
-            plane = AirplaneFactory.createAirplane(Airplane);
-            //-------------------Martin--------------
-            if (planeName == null) {
-                errors = true;
-                stringBuilder.append("No plane was provided");
-            }
-            //---------------------------------------
-        } catch (NoAirplaneException na) {
+        AirplaneData airplaneData = new AirplaneData(plane.getId(), plane.getManufacturer(), plane.getLength(), plane.getWidth(), plane.getModel(), plane.getCapacity());
+        plane = AirplaneFactory.createAirplane(airplaneData);
+
+        if (planeName == null) {
             errors = true;
-            stringBuilder.append("An airplane with the provided ID does not exist in our database\n");
+            stringBuilder.append("No plane was provided");
         }
+
+        //---------------------------------------
 
 
         if (!errors) {

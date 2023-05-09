@@ -2,6 +2,7 @@ package gui;
 
 import businesslogic.api.airplane.Airplane;
 import businesslogic.api.airplane.AirplaneFactory;
+import businesslogic.api.airplane.NoAirplaneException;
 import businesslogic.api.airport.Airport;
 import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.booking.BookingCreator;
@@ -120,8 +121,8 @@ public class CreateBookingController implements Initializable {
     }
 
     @FXML
-    public void fakeInfo(ActionEvent actionEvent) throws NoDBConnectionException {
-        Airplane airplane = AirplaneFactory.createAirplane("1", "KML 332", 322, 322);
+    public void fakeInfo(ActionEvent actionEvent) throws NoDBConnectionException, NoAirplaneException {
+        Airplane airplane = AirplaneFactory.createAirplane("1", "KML 332", 322, 322, "THC", 55);
         Airport airport1 = AirportFactory.createAirport("1", "MyHouse", "Netherlands");
         Airport airport2 = AirportFactory.createAirport("2", "YourHouse", "Netherlands");
 

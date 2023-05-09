@@ -31,10 +31,12 @@ public class AirplaneStorageServiceImpl implements AirplaneStorageService {
             ResultSet result = stmt.executeQuery();
             while (result.next()) {
                 String id = result.getString("id");
-                String name = result.getString("name");
+                String manufacturer = result.getString("manufacturer");
                 int length = result.getInt("length");
                 int width = result.getInt("width");
-                airportData.add(new AirplaneData(id, name, length, width));
+                String model = result.getString("model");
+                int seats = result.getInt("seats");
+                airportData.add(new AirplaneData(id, manufacturer, length, width, model, seats));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
