@@ -1,12 +1,10 @@
 package businesslogic.api.flight;
 
 import businesslogic.api.airplane.Airplane;
-import businesslogic.api.airplane.AirplaneFactory;
 import businesslogic.api.airport.Airport;
 import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.airport.NoAirportException;
 import businesslogic.api.manager.FlightManager;
-import datarecords.AirplaneData;
 import persistence.api.NoDBConnectionException;
 
 import java.time.LocalDateTime;
@@ -20,13 +18,12 @@ public class FlightCreator {
     }
 
     public String createFlight(String departPlace, String arrivePlace, String departLDT, String arriveLDT,
-                               String planeName) {
+                               Airplane plane) {
         boolean errors = false;
         Airport departPort = null;
         Airport arrivePort = null;
         LocalDateTime dLTD = null;
         LocalDateTime aLTD = null;
-        Airplane plane = null;
         StringBuilder stringBuilder = new StringBuilder();
 
 
@@ -72,10 +69,9 @@ public class FlightCreator {
                 stringBuilder.append("Departure time must be in the present/future");
             }
         }
-        AirplaneData airplaneData = new AirplaneData(plane.getId(), plane.getManufacturer(), plane.getLength(), plane.getWidth(), plane.getModel(), plane.getCapacity());
-        plane = AirplaneFactory.createAirplane(airplaneData);
 
-        if (planeName == null) {
+
+        if (plane == null) {
             errors = true;
             stringBuilder.append("No plane was provided");
         }

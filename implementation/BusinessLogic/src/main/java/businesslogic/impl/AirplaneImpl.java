@@ -57,8 +57,6 @@ public class AirplaneImpl implements Airplane {
 
     @Override
     public String toString() {
-        return "AirplaneImpl{" +
-                "airplaneData=" + airplaneData +
-                '}';
+        return getName();
     }
 }

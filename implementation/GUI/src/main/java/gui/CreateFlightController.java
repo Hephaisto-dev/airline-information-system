@@ -1,5 +1,6 @@
 package gui;
 
+import businesslogic.api.airplane.Airplane;
 import businesslogic.api.flight.FlightCreator;
 import businesslogic.api.manager.AirplaneManager;
 import businesslogic.api.manager.AirportManager;
@@ -41,7 +42,7 @@ public class CreateFlightController implements Initializable {
     @FXML
     public DatePicker arrivalLocalDate;
     @FXML
-    public ComboBox<String> airplaneName;
+    public ComboBox<Airplane> airplaneName;
     @FXML
     public Button createButton;
     @FXML
@@ -82,8 +83,8 @@ public class CreateFlightController implements Initializable {
     }
 
     public String sendFlight(String departPlace, String arrivePlace, String departLDT, String arriveLDT,
-                             String planeName) {
-        return flightCreator.createFlight(departPlace, arrivePlace, departLDT, arriveLDT, planeName);
+                             Airplane plane) {
+        return flightCreator.createFlight(departPlace, arrivePlace, departLDT, arriveLDT, plane);
     }
 
 
@@ -118,7 +119,7 @@ public class CreateFlightController implements Initializable {
             departureAirport.getItems().add(airport.getName());
             arrivalAirport.getItems().add(airport.getName());
         });
-        airplaneManager.getAll().forEach(airplane -> airplaneName.getItems().add(airplane.getName()));
+        airplaneManager.getAll().forEach(airplane -> airplaneName.getItems().add(airplane));
         departureAirport.getSelectionModel().select(0);
         arrivalAirport.getSelectionModel().select(1);
         airplaneName.getSelectionModel().select(0);

@@ -35,8 +35,8 @@ public class FlightStorageServiceImpl implements FlightStorageService {
         try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
 
             String id = flightData.id();
-            String routedatafrom = String.valueOf(flightData.departure());
-            String routedatatoo = String.valueOf(flightData.arrival());
+            String routedatafrom = flightData.departure().id();
+            String routedatatoo = flightData.arrival().id();
             String etddatetime = flightData.etaDateTime().toString();
             String etadatetime = flightData.etdDateTime().toString();
             long flightduration = flightData.flightDuration().getSeconds();
