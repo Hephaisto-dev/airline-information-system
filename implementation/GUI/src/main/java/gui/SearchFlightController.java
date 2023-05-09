@@ -4,14 +4,12 @@ import businesslogic.api.flight.Flight;
 import businesslogic.api.manager.FlightManager;
 import datarecords.FlightData;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -43,42 +41,21 @@ public class SearchFlightController implements Initializable {
 
     @FXML
     private TextField searchField;
-    private final ObservableList<Flight> flightObservableList = flightListView.getSelectionModel().getSelectedItems();
     public SearchFlightController(FlightManager flightManager) {
         this.flightManager = flightManager;
     }
 
     @FXML
-    private void searchFilter(KeyEvent actionEvent) {
-        FilteredList<Flight> filterData = new FilteredList<>(this.flightObservableList, (e) -> true);
-        this.searchField.setOnKeyReleased((e) -> {
-            this.searchField.textProperty().addListener((observable, oldValue, newValue) -> {
-                filterData.setPredicate((flight) -> {
-                    if (newValue == null) {
-                        return true;
-                    } else {
-                        String toLowerCaseFilter = newValue.toLowerCase();
-                        if (flight.getId().contains(newValue)) {
-                            return true;
-                        } else if (flight.getId().toLowerCase().contains(toLowerCaseFilter)) {
-                            return true;
-                        } else if (flight.getDeparture().getId().toLowerCase().contains(toLowerCaseFilter)) {
-                            return true;
-                        } else if (flight.getArrival().getId().toLowerCase().contains(toLowerCaseFilter)) {
-                            return true;
-                        } else if (flight.getETD().toString().toLowerCase().contains(toLowerCaseFilter)) {
-                            return true;
-                        } else if (flight.getETA().toString().toLowerCase().contains(toLowerCaseFilter)) {
-                            return true;
-                        } else if (flight.getFlightDuration().toString().toLowerCase().contains(toLowerCaseFilter)) {
-                            return true;
-                        } else {
-                            return flight.getArrival().getId().toLowerCase().contains(toLowerCaseFilter);
-                        }
-                    }
-                });
-            });
-        });
+    public void onSearch() {
+        String lowerCase = searchField.getText().toLowerCase();
+        flightFilteredList.setPredicate(flight ->
+                flight.getId().toLowerCase().contains(lowerCase) ||
+                        flight.getDeparture().getId().toLowerCase().contains(lowerCase) ||
+                        flight.getArrival().getId().toLowerCase().contains(lowerCase) ||
+                        flight.getETD().toString().toLowerCase().contains(lowerCase) ||
+                        flight.getETA().toString().toLowerCase().contains(lowerCase) ||
+                        String.valueOf(flight.getFlightDuration()).toLowerCase().contains(lowerCase) ||
+                        flight.getAirplane().getId().toLowerCase().contains(lowerCase));
     }
 
     private void updateFlightList() {

@@ -7,6 +7,7 @@ import businesslogic.api.airport.Airport;
 import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.airport.NoAirportException;
 import businesslogic.api.manager.FlightManager;
+import datarecords.AirplaneData;
 import persistence.api.NoDBConnectionException;
 
 import java.time.LocalDateTime;
@@ -73,7 +74,7 @@ public class FlightCreator {
             }
         }
         try {
-            plane = AirplaneFactory.createAirplane(planeName);
+            plane = AirplaneFactory.createAirplane(Airplane);
             //-------------------Martin--------------
             if (planeName == null) {
                 errors = true;

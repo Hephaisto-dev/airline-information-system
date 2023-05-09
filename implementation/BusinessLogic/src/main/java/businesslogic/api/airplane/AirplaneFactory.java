@@ -4,13 +4,10 @@ import businesslogic.impl.AirplaneImpl;
 import datarecords.AirplaneData;
 
 public interface AirplaneFactory {
-    static Airplane createAirplane(String id, String type, int length, int width) {
-        return new AirplaneImpl(id, type, length, width);
-    }
 
-    static Airplane createAirplane(String id) throws NoAirplaneException {
+    static Airplane createAirplane(String id, String manufacturer, int length, int width, String model, int seats) throws NoAirplaneException {
         if (true) {//TODO implement the getting from the persistence / DB
-            return new AirplaneImpl(id, "mockplane", 121, 2);
+            return new AirplaneImpl(id, manufacturer, length, width, model, seats);
         } else {
             throw new NoAirplaneException();
         }
