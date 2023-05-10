@@ -8,7 +8,7 @@ public interface Manager<T extends PersistantDataContainer<D>, D extends Record>
     T add(T t);
 
     /**
-     * Get an undoable list of all the objects in the manager
+     * Get an unmodifiable list of all the objects in the manager
      *
      * @return an unmodifiable list of all the objects in the manager
      */
