@@ -31,7 +31,7 @@ public class AirplaneStorageServiceImpl implements AirplaneStorageService {
             ResultSet result = stmt.executeQuery();
             while (result.next()) {
                 String id = result.getString("id");
-                String name = result.getString("name");
+                String name = result.getString("manufacturer");
                 int length = result.getInt("length");
                 int width = result.getInt("width");
                 airportData.add(new AirplaneData(id, name, length, width));
