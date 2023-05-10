@@ -41,7 +41,7 @@ public class CreateFlightController implements Initializable {
     @FXML
     public DatePicker arrivalLocalDate;
     @FXML
-    public ComboBox<String> airplaneName;
+    public ComboBox<String> airplaneId;
     @FXML
     public Button createButton;
     @FXML
@@ -77,7 +77,7 @@ public class CreateFlightController implements Initializable {
                 arrivalAirport.getValue(),
                 departureLocalDate.getValue().toString() + "T" + depHour.getValue() + ":" + depMin.getValue(),
                 arrivalLocalDate.getValue().toString() + "T" + arriHour.getValue() + ":" + arriMin.getValue(),
-                airplaneName.getValue());
+                airplaneId.getValue());
         result.setText(output);
     }
 
@@ -118,11 +118,9 @@ public class CreateFlightController implements Initializable {
             departureAirport.getItems().add(airport.getName());
             arrivalAirport.getItems().add(airport.getName());
         });
-        airplaneManager.getAll().forEach(airplane -> airplaneName.getItems().add(airplane.getName()));
-        departureAirport.getSelectionModel().select(0);
-        arrivalAirport.getSelectionModel().select(1);
-        airplaneName.getSelectionModel().select(0);
+        airplaneManager.getAll().forEach(airplane -> airplaneId.getItems().add(airplane.getId()));
+        Utils.makeComboBoxSearchable(departureAirport);
+        Utils.makeComboBoxSearchable(arrivalAirport);
+        Utils.makeComboBoxSearchable(airplaneId);
     }
-
-
 }
