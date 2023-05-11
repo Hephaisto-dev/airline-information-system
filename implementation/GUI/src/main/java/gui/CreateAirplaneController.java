@@ -2,12 +2,10 @@ package gui;
 
 import businesslogic.api.airplane.AirplaneCreator;
 import businesslogic.api.manager.AirplaneManager;
-import datarecords.AirplaneData;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import persistence.impl.AirplaneStorageServiceImpl;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,9 +13,7 @@ import java.util.function.Supplier;
 
 public class CreateAirplaneController implements Initializable {
     private final Supplier<SceneManager> sceneManagerSupplier;
-    private final AirplaneManager airplaneManager;
     private final AirplaneCreator airplaneCreator;
-    private final AirplaneStorageServiceImpl airplaneStorageService;
 
     @FXML
     private TextField manufacturer;
@@ -42,13 +38,10 @@ public class CreateAirplaneController implements Initializable {
 
     public CreateAirplaneController(
             Supplier<SceneManager> sceneManagerSupplier,
-            AirplaneManager airplaneManager,
-            AirplaneStorageServiceImpl airplaneStorageService
+            AirplaneManager airplaneManager
     ) {
         this.sceneManagerSupplier = sceneManagerSupplier;
-        this.airplaneManager = airplaneManager;
         this.airplaneCreator = new AirplaneCreator(airplaneManager);
-        this.airplaneStorageService = airplaneStorageService;
     }
 
     public void createAirplane() {
@@ -68,9 +61,6 @@ public class CreateAirplaneController implements Initializable {
     public String sendAirplane(String manufacturer, int length, int width, String model, int seats) {
         String id = manufacturer + ":" + model;
         String result = airplaneCreator.createAirplane(id, manufacturer, length, width, model, seats);
-
-        AirplaneData airplaneData = new AirplaneData(id, manufacturer, length, width, model, seats);
-        airplaneStorageService.add(airplaneData);
 
         return result;
     }

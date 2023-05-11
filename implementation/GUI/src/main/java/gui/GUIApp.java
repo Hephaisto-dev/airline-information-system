@@ -1,15 +1,12 @@
 package gui;
 
 import businesslogic.api.BusinessLogicAPI;
-import datarecords.AirplaneData;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import persistence.impl.AirplaneStorageServiceImpl;
 
-import javax.sql.DataSource;
 import java.io.InputStream;
 
 
@@ -46,7 +43,7 @@ public class GUIApp extends Application {
         case "gui.SearchBookingController" -> new SearchBookingController(businessLogicAPI.getBookingManager());
         case "gui.CreateTicketController" -> new CreateTicketController(businessLogicAPI.getFlightManager());
         case "gui.SearchFlightController" -> new SearchFlightController(businessLogicAPI.getFlightManager());
-        case "gui.CreateAirplaneController" -> new CreateAirplaneController(this::getSceneManager,businessLogicAPI.getAirplaneManager(), new AirplaneStorageServiceImpl(this.));
+        case "gui.CreateAirplaneController" -> new CreateAirplaneController(this::getSceneManager,businessLogicAPI.getAirplaneManager());
         default -> null;
     };
 
