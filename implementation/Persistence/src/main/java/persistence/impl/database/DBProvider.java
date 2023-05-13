@@ -5,7 +5,6 @@ import org.postgresql.ds.PGSimpleDataSource;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -52,7 +51,7 @@ public class DBProvider {
                     Level.INFO,
                     "attempt to read file from well known location failed'",
                     exception);
-        } catch (NullPointerException nullPointerException){
+        } catch (NullPointerException nullPointerException) {
 
         }
         return properties;

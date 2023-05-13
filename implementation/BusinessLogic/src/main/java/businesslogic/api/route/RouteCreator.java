@@ -16,9 +16,9 @@ public class RouteCreator {
         StringBuilder stringBuilder = new StringBuilder();
 
 
-        try{
+        try {
             departAirport = AirportFactory.createAirport(departPlace);
-        }catch(NoAirportException a){
+        } catch (NoAirportException a) {
             errors = true;
             stringBuilder.append("Departure Airport does not exist in our database\n");
         }

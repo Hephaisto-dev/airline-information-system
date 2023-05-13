@@ -13,13 +13,12 @@ import java.util.logging.Logger;
 
 public class RouteStorageServiceImpl implements RouteStorageService {
 
-    protected FlightData flightData;
     private final DataSource dataSource;
+    protected FlightData flightData;
 
     public RouteStorageServiceImpl(DataSource dataSource) {
         this.dataSource = dataSource;
     }
-
 
 
     @Override
@@ -40,7 +39,6 @@ public class RouteStorageServiceImpl implements RouteStorageService {
             pstm.setString(3, too);
 
 
-
             ResultSet result = pstm.executeQuery();
 
             System.out.println("JUST INSERTED: ");
@@ -50,7 +48,7 @@ public class RouteStorageServiceImpl implements RouteStorageService {
                 too = result.getString("routedatatoo");
 
 
-                System.out.println("Customer with id: " + id + ", " + fromm + ", " + too );
+                System.out.println("Customer with id: " + id + ", " + fromm + ", " + too);
             }
 
         } catch (SQLException ex) {
@@ -58,7 +56,6 @@ public class RouteStorageServiceImpl implements RouteStorageService {
         }
         return routeData;
     }
-
 
 
 //    @Override

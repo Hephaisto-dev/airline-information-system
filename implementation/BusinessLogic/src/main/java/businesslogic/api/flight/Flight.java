@@ -3,8 +3,8 @@ package businesslogic.api.flight;
 import businesslogic.api.airplane.Airplane;
 import businesslogic.api.airplane.Seat;
 import businesslogic.api.common.PersistantDataContainer;
-import businesslogic.api.customer.Price;
 import businesslogic.api.common.TravelDestinations;
+import businesslogic.api.customer.Price;
 import datarecords.FlightData;
 
 import java.time.Duration;

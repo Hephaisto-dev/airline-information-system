@@ -1,5 +1,7 @@
 package gui;
 
+import businesslogic.api.airplane.Airplane;
+import businesslogic.api.airport.Airport;
 import businesslogic.api.flight.FlightCreator;
 import businesslogic.api.manager.AirplaneManager;
 import businesslogic.api.manager.AirportManager;
@@ -7,10 +9,7 @@ import businesslogic.api.manager.FlightManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -33,15 +32,15 @@ public class CreateFlightController implements Initializable {
     private final AirplaneManager airplaneManager;
     private final FlightCreator flightCreator;
     @FXML
-    public ComboBox<String> departureAirport;
+    public ComboBox<Airport> departureAirport;
     @FXML
-    public ComboBox<String> arrivalAirport;
+    public ComboBox<Airport> arrivalAirport;
     @FXML
     public DatePicker departureLocalDate;
     @FXML
     public DatePicker arrivalLocalDate;
     @FXML
-    public ComboBox<String> airplaneName;
+    public ComboBox<Airplane> airplaneComboBox;
     @FXML
     public Button createButton;
     @FXML
@@ -86,13 +85,13 @@ public class CreateFlightController implements Initializable {
                 arrivalAirport.getValue(),
                 departureLocalDate.getValue().toString() + "T" + depHour.getValue() + ":" + depMin.getValue(),
                 arrivalLocalDate.getValue().toString() + "T" + arriHour.getValue() + ":" + arriMin.getValue(),
-                airplaneName.getValue());
+                airplaneComboBox.getValue());
         result.setText(output);
     }
 
-    public String sendFlight(String departPlace, String arrivePlace, String departLDT, String arriveLDT,
-                             String planeName) {
-        return flightCreator.createFlight(departPlace, arrivePlace, departLDT, arriveLDT, planeName);
+    public String sendFlight(Airport departPlace, Airport arrivePlace, String departLDT, String arriveLDT,
+                             Airplane planeName) {
+       return flightCreator.createFlight(departPlace, arrivePlace, departLDT, arriveLDT, planeName);
     }
 
 
@@ -124,15 +123,12 @@ public class CreateFlightController implements Initializable {
             }
         }
         airportManager.getAll().forEach(airport -> {
-            departureAirport.getItems().add(airport.getName());
-            arrivalAirport.getItems().add(airport.getName());
+            departureAirport.getItems().add(airport);
+            arrivalAirport.getItems().add(airport);
         });
-        airplaneManager.getAll().forEach(airplane -> airplaneName.getItems().add(airplane.getName()));
-        departureAirport.getSelectionModel().select(0);
-        arrivalAirport.getSelectionModel().select(1);
-        airplaneName.getSelectionModel().select(0);
+        airplaneManager.getAll().forEach(airplane -> airplaneComboBox.getItems().add(airplane));
+        Utils.makeComboBoxSearchable(departureAirport);
+        Utils.makeComboBoxSearchable(arrivalAirport);
+        Utils.makeComboBoxSearchable(airplaneComboBox);
     }
-
-
-
 }

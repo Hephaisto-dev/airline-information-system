@@ -19,10 +19,9 @@ import java.util.stream.Collectors;
 
 public class CreateRouteController implements Initializable {
 
-    List<String> testData = new ArrayList<>(Arrays.asList("San Marino","Capetown","France","Amsterdam",
-            "Netherlands","Los Angeles","Tokyo","Canada","Peru","Colombia","Ecuador","Brazil"));
     private final Supplier<SceneManager> sceneManagerSupplier;
-
+    List<String> testData = new ArrayList<>(Arrays.asList("San Marino", "Capetown", "France", "Amsterdam",
+            "Netherlands", "Los Angeles", "Tokyo", "Canada", "Peru", "Colombia", "Ecuador", "Brazil"));
     private RouteCreator routeCreator;
 
     @FXML
@@ -40,25 +39,25 @@ public class CreateRouteController implements Initializable {
     @FXML
     private Button submit;
 
-    @FXML
-    void searchAddButton(ActionEvent event){
-        addListView.getItems().clear();
-        addListView.getItems().addAll(searchButtonList(searchAdd.getText(), testData));
-    }
-    @FXML
-    void searchRemoveButton(ActionEvent event){
-        removeListView.getItems().clear();
-        removeListView.getItems().addAll(searchButtonList(searchRemove.getText(),
-                removeListView.getItems().stream().map(Button::getText).collect(Collectors.toList())));
-    }
-
     public CreateRouteController(Supplier<SceneManager> sceneManagerSupplier) {
         this.sceneManagerSupplier = sceneManagerSupplier;
         this.routeCreator = new RouteCreator();
     }
 
+    @FXML
+    void searchAddButton(ActionEvent event) {
+        addListView.getItems().clear();
+        addListView.getItems().addAll(searchButtonList(searchAdd.getText(), testData));
+    }
 
-    private List<Button> searchButtonList(String searchWords, List<String> listOfStrings){
+    @FXML
+    void searchRemoveButton(ActionEvent event) {
+        removeListView.getItems().clear();
+        removeListView.getItems().addAll(searchButtonList(searchRemove.getText(),
+                removeListView.getItems().stream().map(Button::getText).collect(Collectors.toList())));
+    }
+
+    private List<Button> searchButtonList(String searchWords, List<String> listOfStrings) {
         List<String> searchWordsArray = Arrays.asList(searchWords.trim().split(" "));
         return listOfStrings.stream().filter(input -> {
             return searchWordsArray.stream().allMatch(word -> input.toLowerCase().contains(word.toLowerCase()));

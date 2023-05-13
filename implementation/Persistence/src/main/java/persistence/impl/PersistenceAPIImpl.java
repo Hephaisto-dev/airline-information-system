@@ -46,7 +46,9 @@ public class PersistenceAPIImpl implements PersistenceAPI {
     }
 
     @Override
-    public TicketStorageService getTicketStorageService() {return ticketStorageService;}
+    public TicketStorageService getTicketStorageService() {
+        return ticketStorageService;
+    }
 
     @Override
     public FlightStorageService getFlightStorageService() {

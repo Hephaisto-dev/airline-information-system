@@ -33,19 +33,17 @@ public class CreateTicketController {
     TextField VoucherGet;
     @FXML
     Button TicketButton;
+
+    public CreateTicketController(FlightManager flightManager) {
+        this.flightManager = flightManager;
+    }
+
     public void initialize() {
         Collection<Flight> FlightList = flightManager.getAll();
         for (Flight flighter : FlightList) {
             FlightSelector.getItems().add(flighter);
         }
     }
-
-    public CreateTicketController(FlightManager flightManager) {
-        this.flightManager = flightManager;
-    }
-
-
-
 
     @FXML
     protected void onCreateTicketPress(ActionEvent e) {

@@ -33,9 +33,9 @@ public class BookingImpl implements Booking {
     }
 
     @Override
-        public boolean cancel() {
+    public boolean cancel() {
 
-            return bookingManager.remove(this);
+        return bookingManager.remove(this);
 
     }
 
@@ -49,10 +49,11 @@ public class BookingImpl implements Booking {
     public BookingData getData() {
         return bookingData;
     }
+
     public String ToString() {
         String persons = null;
         for (CustomerData c : getCustomersOnBooking()) {
-            persons = c.lastName()+" "+ c.email()+" ";
+            persons = c.lastName() + " " + c.email() + " ";
         }
         return "Booking:" + getId() + " people on the booking: " + persons + " created by" + getEmp();
     }

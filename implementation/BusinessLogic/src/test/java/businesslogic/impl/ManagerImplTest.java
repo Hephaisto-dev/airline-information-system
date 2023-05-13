@@ -13,6 +13,7 @@ import java.util.Collections;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+
 class ManagerImplTest {
     @Mock
     private Record record;
@@ -28,6 +29,7 @@ class ManagerImplTest {
         when(persistentDataContainer.getId()).thenReturn("id");
         when(persistentDataContainer.getData()).thenReturn(record);
         when(storageService.getAll()).thenReturn(Collections.singleton(record));
+        when(storageService.add(any())).thenReturn(record);
         manager = new ManagerImpl<>(storageService) {
             @Override
             protected PersistantDataContainer<Record> createPersistantDataContainer(Record record) {
