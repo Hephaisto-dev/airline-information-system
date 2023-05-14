@@ -34,8 +34,7 @@ class BusinessLogicAPIImplTest {
     private FlightStorageService flightStorageService;
     @Mock
     private TicketStorageService ticketStorageService;
-    @Mock
-    private BusinessLogicAPI businessLogicAPI;
+    private BusinessLogicAPI businessLogicAPI ;
 
     @BeforeAll
     public void initMocks() {
@@ -54,7 +53,7 @@ class BusinessLogicAPIImplTest {
         when(employeeStorageService.getAll()).thenReturn(new HashSet<>());
         when(flightStorageService.getAll()).thenReturn(new HashSet<>());
         when(ticketStorageService.getAll()).thenReturn(new HashSet<>());
-        businessLogicAPI = BusinessLogicFactory.getImplementation(persistenceAPI);
+        businessLogicAPI = BusinessLogicFactory.getImplementation();
     }
 
     @Test

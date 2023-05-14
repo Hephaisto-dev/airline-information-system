@@ -5,8 +5,9 @@ import persistence.api.CustomerStorageService;
 
 import javax.sql.DataSource;
 import java.sql.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * This class knows everything about storing and retrieving customers from
@@ -45,25 +46,34 @@ public class CustomerStorageServiceImpl implements CustomerStorageService {
         return null;
     }
 
-    @Override
-    public Set<CustomerData> getAll() {
-        String query = "SELECT * FROM customers";
+    public CustomerData getCustomer(String customer_Id) {
+        //DataSource db = DBProvider.getDataSource("jdbc.pg.prod");//other solution
+        String query = "SELECT * FROM bookings WHERE id = ?";
+        CustomerData customer = null;
 
-        Set<CustomerData> customerDatas = new HashSet<>();
         try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
+            pstm.setString(1, customer_Id);
             ResultSet result = pstm.executeQuery();
+            System.out.println("JUST RECEIVED: ");
+            String id = "";
+            String fName = "";
+            String lName = "";
+            LocalDate lDate = null;
+            String mail = "";
             while (result.next()) {
-                String id = result.getString("id");
-                String firstName = result.getString("first_name");
-                String lastName = result.getString("last_name");
-                Date dateOfBirth = result.getDate("dob");
-                String email = result.getString("email");
-
-                customerDatas.add(new CustomerData(id, firstName, lastName, dateOfBirth.toLocalDate(), email));
+                id = result.getString("id");
+                fName = result.getString("emp_Id");
+                lName = result.getString("flight_Id");
+                Date dobSQL = result.getDate("booking_Date");
+                mail = result.getString("email");
+                lDate = dobSQL.toLocalDate();
+                System.out.println("Customer with id: " + id + ", " + fName + ",id: " + lName + ", " + lDate + ", " + mail);
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+            customer = new CustomerData(id, fName, lName, lDate, mail);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
         }
-        return customerDatas;
+        return customer;
     }
 }

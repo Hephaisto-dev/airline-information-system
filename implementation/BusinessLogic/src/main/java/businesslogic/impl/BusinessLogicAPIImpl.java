@@ -4,6 +4,7 @@ import businesslogic.api.BusinessLogicAPI;
 import businesslogic.api.common.PersistantDataContainer;
 import businesslogic.api.manager.*;
 import persistence.api.PersistenceAPI;
+import persistence.api.PersistenceFactory;
 
 import java.util.Map;
 
@@ -12,7 +13,9 @@ import java.util.Map;
  *
  * @author Informatics Fontys Venlo
  */
-public class BusinessLogicAPIImpl implements BusinessLogicAPI {
+public enum BusinessLogicAPIImpl implements BusinessLogicAPI {
+    INSTANCE;
+
     /**
      * Map of all managers.
      * The key is the class of the manager.
@@ -22,15 +25,19 @@ public class BusinessLogicAPIImpl implements BusinessLogicAPI {
     private final Map<Class<? extends Manager<? extends PersistantDataContainer<? extends Record>, ? extends Record>>,
             ? extends Manager<? extends PersistantDataContainer<? extends Record>, ? extends Record>> managerRegistry;
 
-    public BusinessLogicAPIImpl(PersistenceAPI persistenceAPI) {
+    BusinessLogicAPIImpl(PersistenceAPI persistenceAPI) {
         managerRegistry = Map.of(
-                CustomerManager.class, new CustomerManager(persistenceAPI.getCustomerStorageService()),
                 AirplaneManager.class, new AirplaneManager(persistenceAPI.getAirplaneStorageService()),
                 AirportManager.class, new AirportManager(persistenceAPI.getAirportStorageService()),
-                FlightManager.class, new FlightManager(persistenceAPI.getFlightStorageService()),
                 BookingManager.class, new BookingManager(persistenceAPI.getBookingStorageService()),
-                EmployeeManager.class, new EmployeeManager(persistenceAPI.getEmployeeStorageService())
+                CustomerManager.class, new CustomerManager(persistenceAPI.getCustomerStorageService()),
+                EmployeeManager.class, new EmployeeManager(persistenceAPI.getEmployeeStorageService()),
+                FlightManager.class, new FlightManager(persistenceAPI.getFlightStorageService())
         );
+    }
+
+    BusinessLogicAPIImpl() {
+        this(PersistenceFactory.getImplementation());
     }
 
     @Override

@@ -1,7 +1,6 @@
-package persistence.impl;
+package persistence.api;
 
 import datarecords.RouteData;
-import persistence.api.StorageService;
 
 public interface RouteStorageService extends StorageService<RouteData> {
 }

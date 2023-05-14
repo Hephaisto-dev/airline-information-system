@@ -22,10 +22,6 @@ public interface Flight extends PersistantDataContainer<FlightData>, TravelDesti
 
     LocalDateTime getETA();
 
-    FlightStatus getFlightStatus();
-
-    void changeStatus(FlightStatus newStatus);
-
     String bookSeat(int row, char column);
 
     String cancelBookedSeat(String targetID);

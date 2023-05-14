@@ -44,9 +44,4 @@ public class AirplaneImpl implements Airplane {
     public String getName() {
         return airplaneData.name();
     }
-
-    @Override
-    public String toString() {
-        return getId();
-    }
 }

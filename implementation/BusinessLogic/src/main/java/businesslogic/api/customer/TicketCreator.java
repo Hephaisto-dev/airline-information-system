@@ -131,6 +131,7 @@ public class TicketCreator {
         //returning the end result
         if (!errorFound) {
             TicketStorageService ticketStorer = PersistenceFactory.getImplementation().getTicketStorageService();
+            //TODO use a ticket manager directly
             ticketStorer.add(new TicketData(fly.getId() + NUM + CHAR, fly.getId(), cus, cost.getBackendPrice()));
             return "Ticket booked successfully";
         }
