@@ -29,9 +29,9 @@ public class GUIApp extends Application {
     private SceneManager sceneManager;
     private final Callback<Class<?>, Object> controllerFactory = (Class<?> c)
             -> switch (c.getName()) {
-        case "gui.LoginController" -> new LoginController(this::getSceneManager);
+        case "gui.LoginController" -> new LoginController(this::getSceneManager, businessLogicAPI);
         case "gui.MainController" -> new MainController(this::getSceneManager);
-        case "gui.NavBarController" -> new NavBarController(this::getSceneManager);
+        case "gui.NavBarController" -> new NavBarController(businessLogicAPI, this::getSceneManager);
         case "gui.FooterController" -> new FooterController(this::getSceneManager);
 //        case "gui.CustomerController" ->
 //                new CustomerController(this::getSceneManager, businessLogicAPI.getCustomerManager());

@@ -2,6 +2,7 @@ package businesslogic.impl;
 
 import businesslogic.api.BusinessLogicAPI;
 import businesslogic.api.common.PersistantDataContainer;
+import businesslogic.api.employee.EmployeeType;
 import businesslogic.api.manager.*;
 import persistence.api.PersistenceAPI;
 import persistence.api.PersistenceFactory;
@@ -24,6 +25,8 @@ public enum BusinessLogicAPIImpl implements BusinessLogicAPI {
      */
     private final Map<Class<? extends Manager<? extends PersistantDataContainer<? extends Record>, ? extends Record>>,
             ? extends Manager<? extends PersistantDataContainer<? extends Record>, ? extends Record>> managerRegistry;
+
+    private EmployeeType loggedInEmployee;
 
     BusinessLogicAPIImpl(PersistenceAPI persistenceAPI) {
         managerRegistry = Map.of(
@@ -79,5 +82,15 @@ public enum BusinessLogicAPIImpl implements BusinessLogicAPI {
     @Override
     public <U extends Manager<? extends PersistantDataContainer<D>, D>, D extends Record> U getManager(Class<U> clazz) {
         return clazz.cast(managerRegistry.get(clazz));
+    }
+
+    @Override
+    public EmployeeType getLoggedInEmployee() {
+        return loggedInEmployee;
+    }
+
+    @Override
+    public void setLoggedInEmployee(EmployeeType loggedInEmployee) {
+        this.loggedInEmployee = loggedInEmployee;
     }
 }

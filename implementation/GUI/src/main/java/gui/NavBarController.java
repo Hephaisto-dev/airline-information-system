@@ -1,6 +1,5 @@
 package gui;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Menu;
@@ -16,7 +15,7 @@ import businesslogic.api.BusinessLogicAPI;
 
 public class NavBarController implements Initializable {
 
-    private BusinessLogicAPI businessLogicAPI;
+    private final BusinessLogicAPI businessLogicAPI;
 
     //Main menu bar
     @FXML
@@ -109,7 +108,8 @@ public class NavBarController implements Initializable {
     private MenuItem startSalesProcess;
 
     private final Supplier<SceneManager> sceneManagerSupplier;
-    public NavBarController(Supplier<SceneManager> sceneManagerSupplier){
+    public NavBarController(BusinessLogicAPI businessLogicAPI, Supplier<SceneManager> sceneManagerSupplier){
+        this.businessLogicAPI = businessLogicAPI;
         this.sceneManagerSupplier = sceneManagerSupplier;
     }
     //left customerView
