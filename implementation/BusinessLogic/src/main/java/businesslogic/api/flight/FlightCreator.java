@@ -3,8 +3,9 @@ package businesslogic.api.flight;
 import businesslogic.api.airplane.Airplane;
 import businesslogic.api.airport.Airport;
 import businesslogic.api.manager.FlightManager;
-import persistence.api.NoDBConnectionException;
+import datarecords.FlightData;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 
@@ -46,25 +47,28 @@ public class FlightCreator {
                 stringBuilder.append("Ensure that the flight times aren't in the past\n");
             }
             if (aLTD.isBefore(LocalDateTime.now())) {
-                stringBuilder.append("Arrival time must be in the present/future");
+                stringBuilder.append("Arrival time must be in the present/future\n");
             }
             if (dLTD.isBefore(LocalDateTime.now())) {
-                stringBuilder.append("Departure time must be in the present/future");
+                stringBuilder.append("Departure time must be in the present/future\n");
             }
         }
 
         if (plane == null) {
-            stringBuilder.append("No plane was provided");
+            stringBuilder.append("No plane was provided\n");
         }
 
         if (stringBuilder.isEmpty()) {
-            try {
-                Flight flight = FlightFactory.createFlight(departPort, arrivePort, dLTD, aLTD, plane);
+//            try {
+                String id = "FL_" + departPort.getName() + "-" + arrivePort.getName() + "_" + dLTD + "_" + plane.getId();
+                Flight flight = FlightFactory.createFlight(new FlightData(id,dLTD, aLTD, Duration.between(dLTD, aLTD), plane.getId(),departPort.getId(), arrivePort.getId()));
                 flightManager.add(flight);
-            } catch (NoDBConnectionException e) {
+//            }
+            //TODO throw exceptions in FlightManager
+            /*catch (NoDBConnectionException e) {
                 return "There seems to be an issue with the database, please try again." + "\n"
                         + "+If the issue persists, contact the IT department";
-            }
+            }*/
             return "Flight was successfully created";
         } else {
             stringBuilder.append("Please correct this and try again");
@@ -133,7 +137,8 @@ public class FlightCreator {
         if (!errors) {
 
             try {
-                Flight flight = FlightFactory.createFlight(departPort, arrivePort, dLTD, aLTD, plane);
+                String id = "FL_" + departPort.getName() + "-" + arrivePort.getName() + "_" + dLTD + "_" + plane.getId();
+                Flight flight = FlightFactory.createFlight(new FlightData(id,dLTD, aLTD, Duration.between(dLTD, aLTD), plane.getId(),departPort.getId(), arrivePort.getId()));
                 flightManager.add(flight);
             } catch (Exception e) {
                 return "Flight was successfully created";//DELTE WHEN ACTUAL IMPL OF .add() method has occurred

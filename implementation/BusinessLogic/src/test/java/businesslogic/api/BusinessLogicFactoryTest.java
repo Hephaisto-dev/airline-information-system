@@ -45,6 +45,6 @@ class BusinessLogicFactoryTest {
         when(employeeStorageService.getAll()).thenReturn(new HashSet<>());
         when(flightStorageService.getAll()).thenReturn(new HashSet<>());
         when(ticketStorageService.getAll()).thenReturn(new HashSet<>());
-        assertNotNull(BusinessLogicFactory.getImplementation(persistenceAPI));
+        assertNotNull(BusinessLogicFactory.getImplementation());
     }
 }

@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AirplaneStorageServiceImpl implements AirplaneStorageService {
     private final DataSource dataSource;
@@ -37,7 +39,7 @@ public class AirplaneStorageServiceImpl implements AirplaneStorageService {
                 airportData.add(new AirplaneData(id, name, length, width));
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
         }
         return airportData;
     }

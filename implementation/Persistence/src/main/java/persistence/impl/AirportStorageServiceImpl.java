@@ -90,9 +90,8 @@ public class AirportStorageServiceImpl implements AirportStorageService {
                 String country = result.getString("country");
                 airportData = new AirportData(airportId, name, country);
             }
-        } catch (SQLException e) {
-            throw new RuntimeException();
-
+        } catch(SQLException e){
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
         }
         return airportData;
     }

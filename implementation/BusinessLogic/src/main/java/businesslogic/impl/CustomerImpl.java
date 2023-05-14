@@ -39,7 +39,7 @@ public class CustomerImpl implements Customer {
 
     @Override
     public String toString() {
-        return "CustomerImpl{" + "customerData=" + customerData + '}';
+        return "CustomerImpl{" + "customerId=" + customerData + '}';
     }
 
     @Override

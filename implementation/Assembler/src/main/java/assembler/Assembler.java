@@ -14,9 +14,7 @@ import persistence.api.PersistenceFactory;
 public class Assembler {
 
     public static void main(String[] args) {
-
-        PersistenceAPI persistenceAPI = PersistenceFactory.getImplementation();
-        BusinessLogicAPI businesslogicAPI = BusinessLogicFactory.getImplementation(persistenceAPI);
+        BusinessLogicAPI businesslogicAPI = BusinessLogicFactory.getImplementation();
 
         new GUIApp(businesslogicAPI).show();
     }

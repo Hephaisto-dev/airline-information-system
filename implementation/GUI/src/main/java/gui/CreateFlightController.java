@@ -9,7 +9,10 @@ import businesslogic.api.manager.FlightManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -118,8 +121,9 @@ public class CreateFlightController implements Initializable {
             arrivalAirport.getItems().add(airport);
         });
         airplaneManager.getAll().forEach(airplane -> airplaneComboBox.getItems().add(airplane));
-        Utils.makeComboBoxSearchable(departureAirport);
-        Utils.makeComboBoxSearchable(arrivalAirport);
-        Utils.makeComboBoxSearchable(airplaneComboBox);
+        //TODO change from string
+        Utils.makeComboBoxSearchable(departureAirport, Airport::getName);
+        Utils.makeComboBoxSearchable(arrivalAirport, Airport::getName);
+        Utils.makeComboBoxSearchable(airplaneComboBox, Airplane::getId);
     }
 }
