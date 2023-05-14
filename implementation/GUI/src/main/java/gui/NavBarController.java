@@ -11,7 +11,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.function.Supplier;
 
+import businesslogic.api.employee.EmployeeType;
+import businesslogic.api.BusinessLogicAPI;
+
 public class NavBarController implements Initializable {
+
+    private BusinessLogicAPI businessLogicAPI;
+
     //Main menu bar
     @FXML
     private MenuBar mainMenuBar;
@@ -107,102 +113,100 @@ public class NavBarController implements Initializable {
         this.sceneManagerSupplier = sceneManagerSupplier;
     }
     //left customerView
-    public void sendToHomePage(ActionEvent actionEvent) {
+    public void sendToHomePage() {
         sceneManagerSupplier.get().changeScene("mainGUI");
     }
 
-    public void sendToCreateFlight(ActionEvent actionEvent) {
+    public void sendToCreateFlight() {
         sceneManagerSupplier.get().changeScene("createFlightView");
     }
-    public void sendToEditFlight(ActionEvent actionEvent) {
+    public void sendToEditFlight() {
 
     }
-    public void sendToSearchForFlight(ActionEvent actionEvent) {
+    public void sendToSearchForFlight() {
         sceneManagerSupplier.get().changeScene("searchFlightView");
     }
-    public void sendToViewFlightInformation(ActionEvent actionEvent) {
+    public void sendToViewFlightInformation() {
 
     }
-    public void sendToViewPreviousFlights(ActionEvent actionEvent) {
-
-    }
-
-
-    public void sendToCreateRoute(ActionEvent actionEvent) {
-
-    }
-    public void sendToEditRoute(ActionEvent actionEvent) {
-
-    }
-    public void sendToSearchForRoute(ActionEvent actionEvent) {
+    public void sendToViewPreviousFlights() {
 
     }
 
 
-    public void sendToCreateAirport(ActionEvent actionEvent) {
+    public void sendToCreateRoute() {
+        sceneManagerSupplier.get().changeScene("createRouteView");
+    }
+    public void sendToEditRoute() {
+
+    }
+    public void sendToSearchForRoute() {
+        sceneManagerSupplier.get().changeScene("searchRouteView");
+    }
+
+
+    public void sendToCreateAirport() {
         sceneManagerSupplier.get().changeScene("createAirportView");
     }
-    public void sendToEditAirport(ActionEvent actionEvent) {
+    public void sendToEditAirport() {
 
     }
 
 
-    public void sendToCreateBooking(ActionEvent actionEvent) {
+    public void sendToCreateBooking() {
         sceneManagerSupplier.get().changeScene("createBookingView");
     }
-    public void sendToEditBooking(ActionEvent actionEvent) {
+    public void sendToEditBooking() {
 
     }
-    public void sendToSearchForBooking(ActionEvent actionEvent) {
+    public void sendToSearchForBooking() {
         sceneManagerSupplier.get().changeScene("searchBookingView");
     }
 
 
-    public void sendToCreateTicket(ActionEvent actionEvent) {
+    public void sendToCreateTicket() {
         sceneManagerSupplier.get().changeScene("createTicketView");
     }
-    public void sendToEditTicket(ActionEvent actionEvent) {
+    public void sendToEditTicket() {
 
     }
-    public void sendToPurchaseTicket(ActionEvent actionEvent) {
-
-    }
-
-
-    public void sendToRegisterCustomer(ActionEvent actionEvent) {
-
-    }
-    public void sendToEditCustomer(ActionEvent actionEvent) {
+    public void sendToPurchaseTicket() {
 
     }
 
 
-    public void sendToFinancialSheet(ActionEvent actionEvent) {
+    public void sendToRegisterCustomer() {
+        sceneManagerSupplier.get().changeScene("createCustomerView");
+    }
+    public void sendToEditCustomer() {
 
     }
-    public void sendToStatistics(ActionEvent actionEvent) {
+
+
+    public void sendToFinancialSheet() {
 
     }
-    public void sendToRegisterEmployee(ActionEvent actionEvent) {
+    public void sendToStatistics() {
 
     }
-    public void sendToStartSalesProcess(ActionEvent actionEvent) {
+    public void sendToRegisterEmployee() {
+
+    }
+    public void sendToStartSalesProcess() {
 
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //When the login is done the role-type will be gathered from DB and
         //depending on the role-type different options will be visible
-        //role-types can be either a string or int
 
         //what about all the cancel options - take a look at the gui and give feedback
         //also look at who does what and fix the analysis - should the search for... be an option in itself
         //also test visibility of the menu
-        //Change every Anchor pane to Border pane - to display the navbar
-        //include the navbar on every page
         //make it dynamic - resizable - either in fxml or css file(if css where do I put it and make it apply for all files)
+        EmployeeType permissions = businessLogicAPI.getLoggedInEmployee();
 
-        String permission = "salesOfficer/1-allVisibleTest";
+        //in here the fromId(0) needs to be gotten based on what the user typed (check in login)
 
 //        createFlight.setVisible(false);
 //        editFlight.setVisible(false);
@@ -214,7 +218,7 @@ public class NavBarController implements Initializable {
         //editRoute.setVisible(false);
         searchForRoute.setVisible(false);
 
-        createAirport.setVisible(false);
+
         editAirport.setVisible(false);
 
 //        createBooking.setVisible(false);
@@ -233,21 +237,21 @@ public class NavBarController implements Initializable {
 //        registerEmployee.setVisible(false);
 //        startSalesProcess.setVisible(false);
 
-        switch (permission){
-            case "salesOfficer":
+        switch (permissions){
+            case SALES_OFFICER:
                 createRoute.setVisible(true);
                 editRoute.setVisible(true);
                 createFlight.setVisible(true);
                 editFlight.setVisible(true);
-
+                createAirport.setVisible(true);
                 startSalesProcess.setVisible(true);
-                break;
-            case "salesManager":
+
+            case SALES_MANAGER:
                 financialSheet.setVisible(true);
                 statistics.setVisible(true);
                 registerEmployee.setVisible(true);
-                break;
-            case "salesEmployee":
+
+            case SALES_EMPLOYEE:
                 createBooking.setVisible(true);
                 editBooking.setVisible(true);
                 searchForBooking.setVisible(true);
@@ -283,6 +287,7 @@ public class NavBarController implements Initializable {
                 financialSheet.setVisible(true);
                 statistics.setVisible(true);
                 registerEmployee.setVisible(true);
+                startSalesProcess.setVisible(true);
                 break;
         }
     }

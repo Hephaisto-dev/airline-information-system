@@ -2,6 +2,7 @@ package gui;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 
 import java.io.IOException;
 import java.net.URI;

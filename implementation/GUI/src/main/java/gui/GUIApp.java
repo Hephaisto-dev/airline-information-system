@@ -23,12 +23,13 @@ import java.io.InputStream;
  */
 public class GUIApp extends Application {
 
-    private static final String INITIAL_VIEW = "mainGUI";
+    private static final String INITIAL_VIEW = "loginView";
 
     private BusinessLogicAPI businessLogicAPI;
     private SceneManager sceneManager;
     private final Callback<Class<?>, Object> controllerFactory = (Class<?> c)
             -> switch (c.getName()) {
+        case "gui.LoginController" -> new LoginController(this::getSceneManager);
         case "gui.MainController" -> new MainController(this::getSceneManager);
         case "gui.NavBarController" -> new NavBarController(this::getSceneManager);
         case "gui.FooterController" -> new FooterController(this::getSceneManager);

@@ -15,7 +15,4 @@
     <top>
         <fx:include source="navBar.fxml"/>
     </top>
-<!--    <bottom>-->
-<!--        <fx:include>-->
-<!--    </bottom>-->
 </BorderPane>
