@@ -242,6 +242,7 @@ public class NavBarController implements Initializable {
                 purchaseTicket.setVisible(true);
                 searchForFlight.setVisible(true);
                 searchForRoute.setVisible(true);
+                homePage.setVisible(true);
                 break;
             default:
                 createFlight.setVisible(true);
@@ -273,6 +274,17 @@ public class NavBarController implements Initializable {
                 registerEmployee.setVisible(true);
                 startSalesProcess.setVisible(true);
                 break;
+        }
+
+        for (Menu menu : mainMenuBar.getMenus()) {
+            boolean hide = true;
+            for (MenuItem item : menu.getItems()) {
+                if (item.isVisible()) {
+                    hide = false;
+                    break;
+                }
+            }
+            menu.setVisible(!hide);
         }
     }
 }
