@@ -29,8 +29,8 @@ public class GUIApp extends Application {
     private SceneManager sceneManager;
     private final Callback<Class<?>, Object> controllerFactory = (Class<?> c)
             -> switch (c.getName()) {
-        case "gui.CustomerController" ->
-                new CustomerController(this::getSceneManager, businessLogicAPI.getCustomerManager());
+        case "gui.CreateCustomerController" ->
+                new CreateCustomerController(businessLogicAPI.getCustomerManager());
         case "gui.PrimaryController" -> new PrimaryController(this::getSceneManager);
         case "gui.SecondaryController" -> new SecondaryController(this::getSceneManager);
         case "gui.CreateBookingController" ->
@@ -42,6 +42,7 @@ public class GUIApp extends Application {
                 businessLogicAPI.getAirportManager());
         case "gui.SearchBookingController" -> new SearchBookingController(businessLogicAPI.getBookingManager());
         case "gui.CreateTicketController" -> new CreateTicketController(businessLogicAPI.getFlightManager());
+        case "gui.SearchFlightController" -> new SearchFlightController(businessLogicAPI.getFlightManager());
         default -> null;
     };
 

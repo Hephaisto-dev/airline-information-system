@@ -1,42 +1,48 @@
 package businesslogic.impl;
 
+import businesslogic.api.BusinessLogicFactory;
 import businesslogic.api.airport.Airport;
-import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.flight.Flight;
 import businesslogic.api.route.Route;
 import datarecords.RouteData;
 
 import java.time.Duration;
-import java.util.HashMap;
+import java.util.Comparator;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class RouteImpl implements Route {
-    protected final RouteData routeData;
-    private final Map<Flight, Duration> flightTransits;
+    private final RouteData routeData;
 
-    public RouteImpl(Airport from, Airport to) {
-        this(new HashMap<>(), new RouteData(from.getData(), to.getData(), new HashMap<>()));
+    public RouteImpl(RouteData routeData) {
+        this.routeData = routeData;
     }
 
-    public RouteImpl(Map<Flight, Duration> flightTransits, RouteData routeData) {
-        this.routeData = routeData;
-        this.flightTransits = flightTransits;
+    @Override
+    public String getId() {
+        return routeData.id();
     }
 
     @Override
     public Airport getFrom() {
-        return AirportFactory.createAirport(routeData.from());
+        return this.getFlights().stream()
+                .min(Comparator.comparing(Flight::getETD))
+                .map(Flight::getDeparture)
+                .orElse(null);
     }
 
     @Override
     public Airport getTo() {
-        return AirportFactory.createAirport(routeData.to());
+        return this.getFlights().stream()
+                .max(Comparator.comparing(Flight::getETA))
+                .map(Flight::getArrival)
+                .orElse(null);
     }
 
     @Override
     public String toString() {
-        return routeData.from().name() + " -> " + routeData.to().name();
+        return getFrom() + " -> " + getTo();
     }
 
     @Override
@@ -46,18 +52,27 @@ public class RouteImpl implements Route {
 
     @Override
     public Set<Flight> getFlights() {
-        return flightTransits.keySet();
+        return BusinessLogicFactory.getImplementation().getFlightManager().getAll().stream()
+                .filter(flight -> routeData.flightIdsTransits().containsKey(flight.getId()))
+                .collect(Collectors.toSet());
     }
 
     @Override
     public Map<Flight, Duration> getFlightTransits() {
-        return flightTransits;
+        return routeData.flightIdsTransits().entrySet().stream()
+                .collect(Collectors.toMap(
+                        entry -> BusinessLogicFactory.getImplementation().getFlightManager().getById(entry.getKey()),
+                        Map.Entry::getValue
+                ));
     }
 
     @Override
     public Duration getDuration() {
-        return flightTransits.entrySet().stream()
-                .map(flightDurationEntry -> flightDurationEntry.getKey().getFlightDuration().plus(flightDurationEntry.getValue()))
-                .reduce(Duration.ZERO, Duration::plus);
+        return routeData.flightIdsTransits().values().stream().reduce(Duration.ZERO, Duration::plus);
+    }
+
+    @Override
+    public RouteData getData() {
+        return routeData;
     }
 }

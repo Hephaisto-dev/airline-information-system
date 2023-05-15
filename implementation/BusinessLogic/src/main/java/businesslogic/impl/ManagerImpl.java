@@ -20,17 +20,11 @@ public abstract class ManagerImpl<T extends PersistantDataContainer<D>, D extend
 
     @Override
     public T add(T t) {
-        if (storage.containsKey(t.getId())) {
+        if (storage.containsKey(t.getId()) || storageService.add(t.getData()) == null) {
             return null;
         }
         storage.put(t.getId(), t);
-        storageService.add(t.getData());
         return t;
-    }
-
-    @Override
-    public void delete(T t) {
-        storage.remove(t.getId());
     }
 
     @Override
@@ -45,7 +39,7 @@ public abstract class ManagerImpl<T extends PersistantDataContainer<D>, D extend
 
     @Override
     public boolean remove(T t) {
-        boolean remove = storage.remove(t.getId()) == null;
+        boolean remove = storage.remove(t.getId()) != null;
         if (remove) {
             remove = storageService.remove(t.getId());
         }

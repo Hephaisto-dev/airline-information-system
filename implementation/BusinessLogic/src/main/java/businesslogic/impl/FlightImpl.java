@@ -1,16 +1,13 @@
 package businesslogic.impl;
 
+import businesslogic.api.BusinessLogicFactory;
 import businesslogic.api.airplane.Airplane;
-import businesslogic.api.airplane.AirplaneFactory;
 import businesslogic.api.airplane.Seat;
 import businesslogic.api.airplane.SeatImpl;
 import businesslogic.api.airport.Airport;
-import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.customer.Price;
 import businesslogic.api.customer.PriceImpl;
 import businesslogic.api.flight.Flight;
-import businesslogic.api.flight.FlightStatus;
-import businesslogic.api.route.Route;
 import datarecords.FlightData;
 
 import java.time.Duration;
@@ -18,69 +15,22 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FlightImpl extends RouteImpl implements Flight {
+public class FlightImpl implements Flight {
 
     private final FlightData flightData;
-    private final Airplane airplane;
-    private final LocalDateTime LDTd;
-    private final LocalDateTime LDTa;
-    private final List<Seat> bookedSeats;
-    private final Price standardPrice;
-    private FlightStatus flightStatus = FlightStatus.SCHEDULED;
 
-    public FlightImpl(Airport from, Airport to, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
-                      Duration flightDuration,
-                      Airplane airplane) throws IllegalArgumentException {
-        super(from, to);
-        if (etdDateTime.isAfter(etaDateTime)) {
-            throw new IllegalArgumentException("ETD must be before ETA");
-        }
-        this.flightData = new FlightData("FL_" + from.getName() + "-" + to.getName() + "_" +
-                etdDateTime + "_" + airplane.getId(), routeData, etdDateTime, etaDateTime, flightDuration,
-                airplane.getData());
-        this.airplane = airplane;
-        this.LDTd = etdDateTime;
-        this.LDTa = etaDateTime;
-        getFlightTransits().put(this, Duration.ZERO);
-        this.bookedSeats = new ArrayList<>();
-        this.standardPrice = new PriceImpl(2000);
-    }
-
-    public FlightImpl(Airport from, Airport to, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
-                      Duration flightDuration,
-                      Airplane airplane, Price price) throws IllegalArgumentException {
-        super(from, to);
-        if (etdDateTime.isAfter(etaDateTime)) {
-            throw new IllegalArgumentException("ETD must be before ETA");
-        }
-        this.flightData = new FlightData("FL_" + from.getName() + "-" + to.getName() + "_" +
-                etdDateTime + "_" + airplane.getId(), routeData, etdDateTime, etaDateTime, flightDuration,
-                airplane.getData());
-        this.airplane = airplane;
-        this.LDTd = etdDateTime;
-        this.LDTa = etaDateTime;
-        getFlightTransits().put(this, Duration.ZERO);
-        this.bookedSeats = new ArrayList<>();
-        this.standardPrice = price;
-    }
-
-    public FlightImpl(Airport from, Airport to, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
-                      Airplane airplane) throws IllegalArgumentException {
-        this(from, to, etdDateTime, etaDateTime,
-                Duration.between(etdDateTime, etaDateTime), airplane);
-    }
+    @Deprecated(forRemoval = true)
+    private final List<Seat> bookedSeats = new ArrayList<>();
 
     public FlightImpl(FlightData flightData) {
-        //TODO link to the managers to retrieve airplanes.
-        this(AirportFactory.createAirport(flightData.routeData().from()),
-                AirportFactory.createAirport(flightData.routeData().to()),
-                flightData.etdDateTime(), flightData.etaDateTime(), flightData.flightDuration(),
-                AirplaneFactory.createAirplane(flightData.airplane()));
+        this.flightData = flightData;
     }
 
+    @Deprecated
     @Override
     public Price getPrice() {
-        return this.standardPrice;
+        //TODO adapt to bew architecture
+        return new PriceImpl(0);
     }
 
     @Override
@@ -95,34 +45,29 @@ public class FlightImpl extends RouteImpl implements Flight {
 
     @Override
     public Airplane getAirplane() {
-        return airplane;
+        return BusinessLogicFactory.getImplementation().getAirplaneManager().getById(flightData.airplaneId());
     }
 
     @Override
     public LocalDateTime getETD() {
-        return this.LDTd;
+        return flightData.etdDateTime();
     }
 
     @Override
     public LocalDateTime getETA() {
-        return this.LDTa;
-    }
-
-    @Override
-    public Route getRoute() {
-        return this;
+        return flightData.etaDateTime();
     }
 
     @Override
     public String bookSeat(int column, char row) {
-        if (column > airplane.getLength()) {
+        if (column > getAirplane().getLength()) {
             return "Row number exceeding the amount of rows on this plane";
         }
         if (row < 'A' || row > 'Z') {
             return "The column must be identified by a single capital letter of the English Alphabet (A-Z)";
         }
         int r = row - 'A';
-        if (r >= airplane.getWidth()) {
+        if (r >= getAirplane().getWidth()) {
             return "The column exceeds the amount of columns on this plane";
         }
         Seat seat = new SeatImpl(row, column);
@@ -153,20 +98,7 @@ public class FlightImpl extends RouteImpl implements Flight {
 
     @Override
     public String toString() {
-        return "FlightImpl{" +
-                "flightData=" + flightData +
-                ", airplane=" + airplane +
-                '}';
-    }
-
-    @Override
-    public FlightStatus getFlightStatus() {
-        return flightStatus;
-    }
-
-    @Override
-    public void changeStatus(FlightStatus newStatus) {
-        flightStatus = newStatus;
+        return flightData.id();
     }
 
     @Override
@@ -177,5 +109,15 @@ public class FlightImpl extends RouteImpl implements Flight {
             }
         }
         return null;
+    }
+
+    @Override
+    public Airport getArrival() {
+        return BusinessLogicFactory.getImplementation().getAirportManager().getById(flightData.arrivalAirportId());
+    }
+
+    @Override
+    public Airport getDeparture() {
+        return BusinessLogicFactory.getImplementation().getAirportManager().getById(flightData.departureAirportId());
     }
 }

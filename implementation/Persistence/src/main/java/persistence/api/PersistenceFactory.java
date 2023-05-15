@@ -9,8 +9,13 @@ import persistence.impl.PersistenceAPIImpl;
  */
 public interface PersistenceFactory {
 
+    /**
+     * Get PersistenceAPI implementation.
+     *
+     * @return a singleton instance of the PersistenceAPI implementation.
+     */
     static PersistenceAPI getImplementation() {
-        return new PersistenceAPIImpl();
+        return PersistenceAPIImpl.INSTANCE;
     }
 
 }

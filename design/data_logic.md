@@ -22,10 +22,12 @@
 ### Table AirplaneData
 
 ```sql
-create table AirplaneData(
-    id       varchar not null,
-    name     varchar not null,
-    capacity int,
+create table AirplaneData
+(
+    id     varchar not null,
+    name   varchar not null,
+    length int not null,
+    width  int not null,
     primary key (id)
 );
 ```                 

@@ -1,10 +1,10 @@
 package businesslogic.api.booking;
 
 import businesslogic.api.manager.BookingManager;
-import datarecords.CustomerData;
-import datarecords.FlightData;
+import datarecords.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookingCreator {
@@ -15,7 +15,8 @@ public class BookingCreator {
         this.bookingManager = manager;
     }
 
-    public String createBooking(String id, String empId, FlightData flight, List<String> Tickets, LocalDateTime bookingDate, List<String> extras, List<CustomerData> customersOnBooking) {
+    // Change signature according to record
+    public String createBooking(String id, EmployeeData employeeData, FlightData flight, List<TicketData> Tickets, LocalDate bookingDate, List<String> extras, List<CustomerData> customersOnBooking) {
 
 // TODO SILL SOME RESTRICTIONS MISSING BECAUSE OF NOT IMPLEMENTED CLASSES
 
@@ -25,38 +26,33 @@ public class BookingCreator {
         StringBuilder stringBuilder = new StringBuilder();
 
 
-        if (id == null || empId == null || flight == null || Tickets == null || bookingDate == null || customersOnBooking == null)//Extras can be null
+        if (id == null || employeeData == null || flight == null || Tickets == null || bookingDate == null || customersOnBooking == null)//Extras can be null
         {
             errors = true;
-            stringBuilder.append("All fields must be filled in!(except extras)\n");
+            stringBuilder.append("All fields must be filled in!(except extraIds)\n");
         }
 
 
-        if (customersOnBooking.stream().count() == 0) {
+        if (customersOnBooking != null && (long) customersOnBooking.size() == 0) {
 
 
             errors = true;
             stringBuilder.append("a booking must countain at least 1 person!\n");
         }
 
-        if (Tickets.stream().count() == 0) {
+        if (Tickets != null && Tickets.size() == 0) {
 
             errors = true;
-            stringBuilder.append("a error happend while generating tickets!\n");
-        }
-
-        try {
-
-        } catch (Exception a) {
-            errors = true;
-            stringBuilder.append("Error?!\n");
+            stringBuilder.append("a error happend while generating ticketIds!\n");
         }
 
 
         if (!errors) {
             try {
-                Booking booking = BookingFactory.createBooking(id, empId, flight, Tickets, bookingDate, extras, customersOnBooking);
-
+                //TODO input the list of tickets as a string list
+                //TODO input the list of customers as a string list
+                //TODO input the list of extras as a string list
+                Booking booking = BookingFactory.createBooking(new BookingData(id, employeeData.id(), new ArrayList<>(), bookingDate, extras, new ArrayList<>()));
                 bookingManager.add(booking);
             } catch (Exception e) {
                 return "There seems to be an issue with the database, please try again." + "\n"
