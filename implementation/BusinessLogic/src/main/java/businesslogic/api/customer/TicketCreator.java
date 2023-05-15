@@ -3,11 +3,11 @@ package businesslogic.api.customer;
 import businesslogic.api.airplane.Seat;
 import businesslogic.api.flight.Flight;
 import datarecords.TicketData;
-import java.util.ArrayList;
-import java.util.List;
-import persistence.api.PersistenceAPI;
 import persistence.api.PersistenceFactory;
 import persistence.api.TicketStorageService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TicketCreator {
 
@@ -97,18 +97,18 @@ public class TicketCreator {
             error(list, "Please add a customer name");
         }
         //voucher
-        if(voucher != null){
-            try{
+        if (voucher != null) {
+            try {
                 voucherAmount = Integer.valueOf(voucher);
-            }catch(NumberFormatException nfe){
+            } catch (NumberFormatException nfe) {
                 error(list, "Voucher is declared by a non-decimal number (1,2,...)");
             }
         }
         //discount
-        if(discount != null){
-            try{
+        if (discount != null) {
+            try {
                 discountAmount = Integer.valueOf(discount);
-            }catch(NumberFormatException nfe){
+            } catch (NumberFormatException nfe) {
                 error(list, "Discount is declared by a non-decimal number (1,2,...)");
             }
         }
@@ -121,7 +121,7 @@ public class TicketCreator {
                 String a = fly.bookSeat(number, letter);
                 if (!a.contains("successfully")) {
                     error(list, a);
-                }else{
+                } else {
                     cost = fly.getPrice();
                     cost.applyVoucher(voucherAmount);
                     cost.applyDiscount(discountAmount);
@@ -131,6 +131,7 @@ public class TicketCreator {
         //returning the end result
         if (!errorFound) {
             TicketStorageService ticketStorer = PersistenceFactory.getImplementation().getTicketStorageService();
+            //TODO use a ticket manager directly
             ticketStorer.add(new TicketData(fly.getId() + NUM + CHAR, fly.getId(), cus, cost.getBackendPrice()));
             return "Ticket booked successfully";
         }

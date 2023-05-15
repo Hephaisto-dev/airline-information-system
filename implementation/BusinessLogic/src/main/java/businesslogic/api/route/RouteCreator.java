@@ -7,6 +7,7 @@ import datarecords.RouteData;
 import persistence.api.NoDBConnectionException;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class RouteCreator {
     public String createRoute(String departPlace, String arrivePlace) throws NoDBConnectionException {
@@ -16,9 +17,9 @@ public class RouteCreator {
         StringBuilder stringBuilder = new StringBuilder();
 
 
-        try{
+        try {
             departAirport = AirportFactory.createAirport(departPlace);
-        }catch(NoAirportException a){
+        } catch (NoAirportException a) {
             errors = true;
             stringBuilder.append("Departure Airport does not exist in our database\n");
         }
@@ -30,7 +31,7 @@ public class RouteCreator {
         }
 
         if (!errors) {
-            Route route = RouteFactory.createRoute(new RouteData("RT_"));
+            Route route = RouteFactory.createRoute(new RouteData("RT_", new HashMap<>()));
             // flightManager.add(flight);
             return "Route was successfully created";
         } else {

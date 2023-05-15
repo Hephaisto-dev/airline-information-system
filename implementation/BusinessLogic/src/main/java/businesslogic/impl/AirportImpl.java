@@ -33,9 +33,4 @@ public class AirportImpl implements Airport {
     public String getName() {
         return airportData.name();
     }
-
-    @Override
-    public String toString() {
-        return getName();
-    }
 }

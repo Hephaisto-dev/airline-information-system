@@ -3,7 +3,7 @@ package businesslogic.api.manager;
 import businesslogic.api.route.Route;
 import businesslogic.impl.ManagerImpl;
 import datarecords.RouteData;
-import persistence.impl.RouteStorageService;
+import persistence.api.RouteStorageService;
 
 public class RouteManager extends ManagerImpl<Route, RouteData> {
 

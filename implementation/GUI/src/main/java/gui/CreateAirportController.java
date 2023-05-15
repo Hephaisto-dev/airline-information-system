@@ -34,22 +34,22 @@ public class CreateAirportController {
     @FXML
     private Label result;
 
-    public CreateAirportController(Supplier<SceneManager> sceneManagerSupplier, AirportManager airportManager){
+    public CreateAirportController(Supplier<SceneManager> sceneManagerSupplier, AirportManager airportManager) {
         this.sceneManagerSupplier = sceneManagerSupplier;
         this.airportManager = airportManager; // this is linked to the controller,
         this.airportCreator = new AirportCreator(airportManager); // as well as this
     }
 
-    public void airportCreator(){
-        String output = sendAirport(airportName.getText(),airportCountry.getText());
+    public void airportCreator() {
+        String output = sendAirport(airportName.getText(), airportCountry.getText());
         result.setText(output);
     }
 
-    public String sendAirport(String airportName, String airportCountry){
-        String id = "AIR" + airportName.toUpperCase() + String.format("%04d",counter);
+    public String sendAirport(String airportName, String airportCountry) {
+        String id = "AIR" + airportName.toUpperCase() + String.format("%04d", counter);
         counter++;
 
-        return airportCreator.createAirport(id,airportName, airportCountry);
+        return airportCreator.createAirport(id, airportName, airportCountry);
     }
 
 }

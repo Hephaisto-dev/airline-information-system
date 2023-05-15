@@ -37,7 +37,7 @@ public class AirplaneStorageServiceImpl implements AirplaneStorageService {
                 airportData.add(new AirplaneData(id, manufacturer, length, width, model, seats));
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
         }
         return airportData;
     }

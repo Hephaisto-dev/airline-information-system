@@ -1,16 +1,11 @@
 package persistence.impl;
 
-import datarecords.AirplaneData;
-import datarecords.AirportData;
 import datarecords.FlightData;
 import persistence.api.FlightStorageService;
-import persistence.impl.database.DBProvider;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -26,26 +21,25 @@ public class FlightStorageServiceImpl implements FlightStorageService {
 
     @Override
     public FlightData add(FlightData flightData) {
-
-        String query = "INSERT INTO flights (id, airport_from_id, airport_to_id, etd_date_time, eta_date_time, " +
+        String query = "INSERT INTO flights (id, airport_from_id, airport_to_id, etd, eta, " +
                 "flight_duration, airplane_id) values (?, ?, ?, ?, ?, ?, ?) returning *";
 
 
         try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
 
             String id = flightData.id();
-            String routedatafrom = flightData.departure().id();
-            String routedatatoo = flightData.arrival().id();
-            String etddatetime = flightData.etaDateTime().toString();
-            String etadatetime = flightData.etdDateTime().toString();
+            String departureAirportId = flightData.departureAirportId();
+            String arrivalAirportId = flightData.arrivalAirportId();
+            Timestamp etd = Timestamp.valueOf(flightData.etdDateTime());
+            Timestamp eta = Timestamp.valueOf(flightData.etaDateTime());
             long flightduration = flightData.flightDuration().getSeconds();
-            String airplaneid = flightData.airplane().id();
+            String airplaneid = flightData.airplaneId();
 
             pstm.setString(1, id);
-            pstm.setString(2, routedatafrom);
-            pstm.setString(3, routedatatoo);
-            pstm.setString(4, etddatetime);
-            pstm.setString(5, etadatetime);
+            pstm.setString(2, departureAirportId);
+            pstm.setString(3, arrivalAirportId);
+            pstm.setTimestamp(4, etd);
+            pstm.setTimestamp(5, eta);
             pstm.setLong(6, flightduration);
             pstm.setString(7, airplaneid);
 
@@ -55,14 +49,14 @@ public class FlightStorageServiceImpl implements FlightStorageService {
             System.out.println("JUST INSERTED: ");
             while (result.next()) {
                 id = result.getString("id");
-                routedatafrom = result.getString("airport_from_id");
-                routedatatoo = result.getString("airport_to_id");
-                etddatetime = result.getString("etd_date_time");
-                etadatetime = result.getString("eta_date_time");
+                departureAirportId = result.getString("airport_from_id");
+                arrivalAirportId = result.getString("airport_to_id");
+                etd = result.getTimestamp("etd");
+                eta = result.getTimestamp("eta");
                 flightduration = result.getInt("flight_duration");
                 airplaneid = result.getString("airplane_id");
 
-                System.out.println("Customer with id: " + id + ", " + routedatafrom + ", " + routedatatoo + ", " + etddatetime + ", " + etadatetime + ", " + flightduration + ", " + airplaneid);
+                System.out.println("Customer with id: " + id + ", " + departureAirportId + ", " + arrivalAirportId + ", " + etd + ", " + eta + ", " + flightduration + ", " + airplaneid);
             }
 
         } catch (SQLException ex) {
@@ -71,59 +65,23 @@ public class FlightStorageServiceImpl implements FlightStorageService {
         return flightData;
     }
 
-//    public Set<FlightData> getAll(String id, LocalDateTime etd, LocalDateTime eta, AirplaneData airplane, AirportData departureAirport, AirportData arrivalAirport) {
-//        DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
-//
-//        String query = "SELECT * FROM flights";
-//
-//        Set<FlightData> flightData = new HashSet<>();
-//        try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
-//            ResultSet result = pstm.executeQuery();
-//            while (result.next()) {
-//                String flightId = result.getString("id");
-//                LocalDateTime flightEtd = result.getObject("etd_date_time", LocalDateTime.class);
-//                LocalDateTime flightEta = result.getObject("eta_date_time", LocalDateTime.class);
-//                Duration flightDuration = (Duration) result.getObject("duration");
-//                String flightAirplane = result.getString("airplane");
-//                String flightDepartureAirport = result.getString("departureAirport");
-//                String flightArrivalAirport = result.getString("arrivalAirport");
-//
-//                if ((id == null || id.equals(flightId)) &&
-//                        (etd == null || etd.equals(flightEtd)) &&
-//                        (eta == null || eta.equals(flightEta)) &&
-//                        (airplane == null || airplane.id().equals(flightAirplane)) &&
-//                        (departureAirport == null || departureAirport.name().equals(flightDepartureAirport)) &&
-//                        (arrivalAirport == null || arrivalAirport.name().equals(flightArrivalAirport))) {
-//                    flightData.add(new FlightData(flightId, flightEtd, flightEta, flightDuration, airplane, departureAirport, arrivalAirport));
-//                }
-//            }
-//        } catch (SQLException e) {
-//            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
-//        }
-//        return flightData;
-//    }
-
-
-
     @Override
     public Set<FlightData> getAll() {
-        DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
-
         String query = "SELECT * FROM flights";
 
-
         Set<FlightData> flightData = new HashSet<>();
-        try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
+        try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
             ResultSet result = pstm.executeQuery();
             while (result.next()) {
-                String flightId = result.getString("id");
-                String flightEtd = result.getString("etd_date_time");
-                String flightEta = result.getString("eta_date_time");
-                int flightDuration = result.getInt("flight_duration");
-                String flightAirplane = result.getString("airplane_id");
-                String flightDepartureAirport = result.getString("airport_from_id");
-                String flightArrivalAirport = result.getString("airport_to_id");
-                flightData.add(new FlightData(flightId, LocalDateTime.parse(flightEta), LocalDateTime.parse(flightEtd), null, new AirplaneData(flightAirplane, null, 0, 0, null, 0), new AirportData(null, flightDepartureAirport, null), new AirportData(null, flightArrivalAirport, null)));
+                String id = result.getString("id");
+                String departureAirportId = result.getString("airport_from_id");
+                String arrivalAirportId = result.getString("airport_to_id");
+                LocalDateTime etd = result.getTimestamp("etd").toLocalDateTime();
+                LocalDateTime eta = result.getTimestamp("eta").toLocalDateTime();
+                Duration flightduration = Duration.ofSeconds(result.getLong("flight_duration"));
+                String airplaneid = result.getString("airplane_id");
+
+                flightData.add(new FlightData(id, etd, eta, flightduration, airplaneid, departureAirportId, arrivalAirportId));
             }
         } catch (SQLException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);

@@ -11,5 +11,4 @@ public interface Airport extends Nameable, PersistantDataContainer<AirportData> 
     String getId();
 
     String getName();
-
 }
