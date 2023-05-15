@@ -10,7 +10,7 @@ public class AirplaneCreator {
     }
 
     public String createAirplane(String id, String manufacturer, int length, int width, String model, int seats) {
-        Airplane airplane = null;
+
         StringBuilder stringBuilder = new StringBuilder();
 
         if (id == null || id.isEmpty()) {
@@ -19,16 +19,12 @@ public class AirplaneCreator {
             stringBuilder.append("No model was provided");
         } else if (manufacturer == null || manufacturer.isEmpty()) {
             stringBuilder.append("No manufacturer was provided");
-        } else {
-            try {
-                airplane = AirplaneFactory.createAirplane(id, manufacturer, width, length, model, seats);
-            } catch (NoAirplaneException na) {
-                stringBuilder.append("An airplane with the provided ID does not exist in our database\n");
-            }
         }
+        
 
         if (stringBuilder.length() == 0) {
             try {
+                Airplane airplane = AirplaneFactory.createAirplane(id, manufacturer, width, length, model, seats);
                 airplaneManager.add(airplane);
                 return "Airplane was successfully created";
             } catch (Exception e) {
