@@ -108,7 +108,7 @@ public class TicketCreator {
         }
         //returning the end result
         if (!errorFound) {
-            //TSS.add(new TicketData(fly.getId() + NUM + CHAR, fly.getId(), cus, cost.getBackendPrice()));
+            TSS.add(new TicketData(fly.getId() + NUM + CHAR, fly.getId(), cus, cost.getBackendPrice()));
             return "Ticket booked successfully";
         }
         return getErrors(list);

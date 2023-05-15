@@ -53,7 +53,7 @@ public class TicketStorageServiceImpl implements TicketStorageService {
                 C_id = result.getString("customer_id");
                 price = result.getInt("price");
 
-                System.out.println("Customer with id: " + T_id + ", " + F_id + ", " + C_id + ", " + price);
+                System.out.println("Ticket with id: " + T_id + ", " + F_id + ", " + C_id + ", " + price);
             }
 
         } catch (SQLException ex) {
