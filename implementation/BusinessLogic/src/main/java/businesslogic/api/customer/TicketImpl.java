@@ -3,6 +3,7 @@ package businesslogic.api.customer;
 
 import businesslogic.api.airplane.Seat;
 import businesslogic.api.flight.Flight;
+import datarecords.TicketData;
 
 public class TicketImpl implements Ticket {
 
@@ -84,5 +85,10 @@ public class TicketImpl implements Ticket {
                 seat;
         //used stringBuilder to save resources (one String, instead of every String being saved from before and after an addittion)
         return stringl;
+    }
+
+    @Override
+    public TicketData getData() {
+        return null;
     }
 }
