@@ -124,6 +124,7 @@ public class TicketCreator {
         StringBuilder answer = new StringBuilder();
         for (String mistake : list) {
             answer.append(mistake);
+            answer.append("\n");
         }
         list.clear();
         return answer.toString();
