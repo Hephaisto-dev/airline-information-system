@@ -203,32 +203,11 @@ public class NavBarController implements Initializable {
         //make it dynamic - resizable - either in fxml or css file(make it apply for all files)
         EmployeeType permissions = businessLogicAPI.getLoggedInEmployee();
 
-
-        createFlight.setVisible(false);
-        editFlight.setVisible(false);
-        searchForFlight.setVisible(false);
-        viewFlightInformation.setVisible(false);
-        viewPreviousFlights.setVisible(false);
-
-        createRoute.setVisible(false);
-        editRoute.setVisible(false);
-        searchForRoute.setVisible(false);
-
-        createAirport.setVisible(false);
-        editAirport.setVisible(false);
-        createBooking.setVisible(false);
-        editBooking.setVisible(false);
-        searchForBooking.setVisible(false);
-        createTicket.setVisible(false);
-        editTicket.setVisible(false);
-        purchaseTicket.setVisible(false);
-        registerCustomer.setVisible(false);
-        editCustomer.setVisible(false);
-
-        financialSheet.setVisible(false);
-        statistics.setVisible(false);
-        registerEmployee.setVisible(false);
-        startSalesProcess.setVisible(false);
+        for (Menu menu : mainMenuBar.getMenus()) {
+            for (MenuItem item : menu.getItems()) {
+                item.setVisible(false);
+            }
+        }
 
         switch (permissions){
             case SALES_OFFICER:
