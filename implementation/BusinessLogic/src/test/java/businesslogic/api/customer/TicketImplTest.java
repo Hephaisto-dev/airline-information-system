@@ -6,6 +6,7 @@ import businesslogic.api.flight.Flight;
 import businesslogic.api.flight.FlightFactory;
 import businesslogic.impl.AirplaneImpl;
 import businesslogic.impl.AirportImpl;
+import datarecords.AirplaneData;
 import datarecords.FlightData;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -22,11 +23,10 @@ class TicketImplTest {
 
     final Airport from = new AirportImpl("FROM", "FROM", "FROM");
     final Airport to = new AirportImpl("TO", "TO", "TO");
-    //Route route = new RouteImpl(from, to);//Saved for conveniece, if we decide to provide routes somewhere in the Ticket
     final LocalDateTime futureFar = LocalDateTime.of(2244, 2, 1, 4, 5);
     final LocalDateTime futureNear = LocalDateTime.of(2244, 2, 1, 3, 4);
+    final Airplane plane = new AirplaneImpl(new AirplaneData("id", "manufacturer", 5, 5, "model", 55));
     final Flight flyer = FlightFactory.createFlight(new FlightData("FLIGHTID", futureNear, futureFar, Duration.between(futureFar, futureNear), plane.getId(), from.getId(), to.getId()));
-    final Airplane plane = new AirplaneImpl("PLANEiD", , 123, 5, "model", 55);
 
     Price cost = new PriceImpl(2000);
     /*AirportImpl from = new AirportImpl("FROM", "FROM", "FROM", "FROM");

@@ -1,6 +1,7 @@
 package businesslogic.impl;
 
 import businesslogic.api.airplane.Airplane;
+import datarecords.AirplaneData;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 
@@ -8,8 +9,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class AirplaneImplTest {
 
-    private final Airplane Airplane = new AirplaneImpl("Id", "name", 2, 1, "model", 55);
-    private final Airplane Plane2 = new AirplaneImpl("Id", "name", 25, 4, "model", 55);
+    private final Airplane Airplane = new AirplaneImpl(new AirplaneData("ids", "manufacturers", 7, 7, "models", 77));
+    private final Airplane Plane2 = new AirplaneImpl(new AirplaneData("ids", "manufacturers", 7, 7, "models", 78));
 
     @Test
     void testGetId() {
