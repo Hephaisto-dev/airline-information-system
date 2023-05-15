@@ -44,7 +44,8 @@ public class CreateAirplaneController implements Initializable {
         this.airplaneCreator = new AirplaneCreator(airplaneManager);
     }
 
-    public void createAirplane() {
+    public String createAirplane() {
+        String id = manufacturer + ":" + model;
         String manufacturerValue = manufacturer.getText();
         String lengthValue = length.getText();
         String widthValue = width.getText();
@@ -55,13 +56,7 @@ public class CreateAirplaneController implements Initializable {
         int convertedWidth = Integer.parseInt(widthValue);
         int convertedSeats = Integer.parseInt(seatsValue);
 
-        sendAirplane(manufacturerValue, convertedLength, convertedWidth, modelValue, convertedSeats);
-    }
-
-    public String sendAirplane(String manufacturer, int length, int width, String model, int seats) {
-        String id = manufacturer + ":" + model;
-        String result = airplaneCreator.createAirplane(id, manufacturer, length, width, model, seats);
-
+        String result = airplaneCreator.createAirplane(id, manufacturerValue, convertedLength, convertedWidth, modelValue, convertedSeats);
         return result;
     }
 

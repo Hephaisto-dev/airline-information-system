@@ -7,9 +7,6 @@ public class AirplaneImpl implements Airplane {
 
     private final AirplaneData airplaneData;
 
-    public AirplaneImpl(String id, String manufacturer, int length, int width, String model, int seats) {
-        this.airplaneData = new AirplaneData(id, manufacturer, length, width, model, seats);
-    }
 
     public AirplaneImpl(AirplaneData airplaneData) {
         this.airplaneData = airplaneData;
@@ -55,8 +52,9 @@ public class AirplaneImpl implements Airplane {
         return airplaneData.id();
     }
 
-    @Override
-    public String toString() {
-        return getName();
-    }
+//    @Override
+//    public String toString() {
+//        return getName();
+//    }
+//    //Generate this code with the IDE!
 }
