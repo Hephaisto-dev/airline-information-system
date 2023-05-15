@@ -3,8 +3,8 @@ package businesslogic.api.flight;
 import businesslogic.api.airplane.Airplane;
 import businesslogic.api.airplane.Seat;
 import businesslogic.api.common.PersistantDataContainer;
-import businesslogic.api.customer.Price;
 import businesslogic.api.common.TravelDestinations;
+import businesslogic.api.customer.Price;
 import datarecords.FlightData;
 
 import java.time.Duration;
@@ -21,10 +21,6 @@ public interface Flight extends PersistantDataContainer<FlightData>, TravelDesti
     LocalDateTime getETD();
 
     LocalDateTime getETA();
-
-    FlightStatus getFlightStatus();
-
-    void changeStatus(FlightStatus newStatus);
 
     String bookSeat(int row, char column);
 

@@ -1,44 +1,33 @@
 package businesslogic.impl;
 
+import businesslogic.api.BusinessLogicFactory;
 import businesslogic.api.booking.Booking;
 import businesslogic.api.customer.Customer;
-import businesslogic.api.customer.Ticket;
-import businesslogic.api.manager.BookingManager;
+import businesslogic.api.employee.Employee;
 import datarecords.BookingData;
-import datarecords.CustomerData;
-import datarecords.FlightData;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class BookingImpl implements Booking {
     private final BookingData bookingData;
-    //TODO initialize bookingManager
-    private BookingManager bookingManager;
-
-    public BookingImpl(String id, String empId, FlightData flight, List<String> Tickets, LocalDateTime bookingDate, List<String> extras, List<CustomerData> customerOnBooking) {
-        this(new BookingData(id, empId, flight, Tickets, bookingDate, extras, customerOnBooking));
-    }
 
     public BookingImpl(BookingData bookingData) {
         this.bookingData = bookingData;
     }
 
     @Override
-    public String getEmp() {
-        return bookingData.empId();
+    public Employee getEmployee() {
+        return BusinessLogicFactory.getImplementation().getEmployeeManager().getById(bookingData.employeeId());
     }
 
     @Override
-    public List<CustomerData> getCustomersOnBooking() {
-        return bookingData.customerInBooking();
+    public List<Customer> getCustomersOnBooking() {
+        return BusinessLogicFactory.getImplementation().getCustomerManager().getAll().stream().filter(customer -> bookingData.customerIds().contains(customer.getId())).toList();
     }
 
     @Override
-        public boolean cancel() {
-
-            return bookingManager.remove(this);
-
+    public boolean cancel() {
+        return BusinessLogicFactory.getImplementation().getBookingManager().remove(this);
     }
 
     @Override
@@ -51,11 +40,13 @@ public class BookingImpl implements Booking {
     public BookingData getData() {
         return bookingData;
     }
-    public String ToString() {
+
+    @Override
+    public String toString() {
         String persons = null;
-        for (CustomerData c : getCustomersOnBooking()) {
-            persons = c.lastName()+" "+ c.email()+" ";
+        for (Customer c : getCustomersOnBooking()) {
+            persons = c.getLastName()+" "+ c.getData().email()+" ";
         }
-        return "Booking:" + getId() + " people on the booking: " + persons + " created by" + getEmp();
+        return "Booking:" + getId() + " people on the booking: " + persons + " created by" + getEmployee();
     }
 }

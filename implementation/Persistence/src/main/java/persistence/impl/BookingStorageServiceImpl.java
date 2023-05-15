@@ -1,17 +1,12 @@
 package persistence.impl;
 
-import datarecords.*;
+import datarecords.BookingData;
 import persistence.api.BookingStorageService;
 import persistence.impl.database.DBProvider;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.Duration;
+import java.sql.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -29,27 +24,24 @@ public class BookingStorageServiceImpl implements BookingStorageService {
     @Override
     public BookingData add(BookingData bookingData) {
 
-//this is just to see all values of booking id, empId, flight, Tickets, bookingDate, extras, customerInBooking
-        DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
+//this is just to see all values of booking id, empId, flightIds, ticketIds, bookingDate, extraIds, customerIds
 
-        String query = "INSERT INTO bookings(id,employee_id, flight_id,date) values (?,?, ?, ?) returning *";
+        String query = "INSERT INTO bookings(id,employee_id,date) values (?,?, ?, ?) returning *";
 
 
         try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
 
             String id = bookingData.id();
-            String empId = bookingData.empId();
-            String flight = bookingData.flight().id();
-            String bookingdate = bookingData.bookingDate().toString();
+            String empId = bookingData.employeeId();
+            LocalDate bookingdate = bookingData.bookingDate();
 
             //TODO IMPLEMENT Extras?!
             //TODO IMPLEMENT Customers?!
-            //TODO IMPLEMENT Tickets?!
+            //TODO IMPLEMENT ticketIds?!
 
             pstm.setString(1, id);
             pstm.setString(2, empId);
-            pstm.setString(3, flight);
-            pstm.setString(4, bookingdate);
+            pstm.setDate(3, Date.valueOf(bookingdate));
 
 
             ResultSet result = pstm.executeQuery();
@@ -57,11 +49,10 @@ public class BookingStorageServiceImpl implements BookingStorageService {
             System.out.println("JUST INSERTED: ");
             while (result.next()) {
                 id = result.getString("id");
-                empId = result.getString("emp_Id");
-                flight = result.getString("flight_Id");
-                bookingdate = result.getString("booking_Date");
+                empId = result.getString("employee_id");
+                bookingdate = result.getDate("date").toLocalDate();
 
-                System.out.println("Booking with id: " + id + ", " + empId + ",id: " + flight + ", " + bookingdate);
+                System.out.println("Booking with id: " + id + ", " + empId + ", " + bookingdate);
 
 
             }
@@ -73,98 +64,32 @@ public class BookingStorageServiceImpl implements BookingStorageService {
     }
 
 
-
     @Override
     public Set<BookingData> getAll() {
-        DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
-
-        String query = "SELECT * FROM everything_for_booking";// todo do this <------
+        String query = "SELECT * FROM bookings";
 
 
-        String queryWithCustomers = "select c .id,c.dob,c.email,c.firstname,c.lastname,b.id,b.emp_id,b.flight_id,b. from booking_data b inner join customer_booking cb on b.id = cb.booking_id inner join customerdata c on cb.customer_id = c.id where b.id = id(?);";
-
-        List<CustomerData> customers = new ArrayList<>();
-        Set<BookingData> bookingData = new HashSet<BookingData>();
-        try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
+        Set<BookingData> bookingData = new HashSet<>();
+        try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
             ResultSet result = pstm.executeQuery();
             while (result.next()) {
+                int id = result.getInt("id");
+                String empId = result.getString("employee_id");
+                LocalDate bookingDate = result.getDate("date").toLocalDate();
 
-
-
-
-                String airplaneId = result.getString("airplaneid");
-                String airplaneName = result.getString("airplaneName");
-                int airplaneLenght = result.getInt("airplaneLength");
-                int airplaneWidth = result.getInt("airplaneWidth");
-
-                LocalDateTime bookingDate = LocalDateTime.parse(result.getString("booking_date"));
-                String bookingId = result.getString("bookingid");
-                String customerId = result.getString("customerid");
-
-                LocalDate dob = LocalDate.parse(result.getString("dob"));
-                String email = result.getString("email");
-                String emp_id = result.getString("emp_id");
-                LocalDateTime etaDateTime = LocalDateTime.parse(result.getString("etadatetime"));
-                LocalDateTime etdDatetime = LocalDateTime.parse(result.getString("etddatetime"));
-                String firstName = result.getString("firstname");
-                String flightDuration = result.getString("flightduration");
-                String flightId = result.getString("flightid");
-                String lastName = result.getString("lastname");
-
-
-
-                String airportIdFrom = result.getString("airportIdFrom");
-               // String airportCityFrom = result.getString("airportCityFrom");
-                String airportCountryFrom = result.getString("airportCountryFrom");
-                String airportNameFrom = result.getString("airportNameFrom");
-
-
-                String airportIdTo = result.getString("airportIdTo");
-               // String airportCityTo = result.getString("airportCityTo");
-                String airportCountryTo = result.getString("airportCountryTo");
-                String airportNameTo = result.getString("airportNameTo");
-
-                String bookingIdInUse="0";
-                String selectedCustomerId="0";
-                FlightData selectedFlight=null;
-                AirportData selectedAirportFrom=null;
-                AirportData selectedAirportTo=null;
-                CustomerData selectedCustomer=null;
-
-                if(bookingIdInUse=="0"){
-                    bookingIdInUse=bookingId;
-                }
-                if(bookingIdInUse==bookingId){
-
-                    if(selectedCustomerId==customerId){
-                    customers.add(new CustomerData(customerId,firstName,lastName,dob,email));
-                    }
-                    selectedFlight =
-                            new FlightData(flightId,
-                            new RouteData(
-                            new AirportData(airportIdFrom,airportNameFrom,null,airportCountryFrom),
-                            new AirportData(airportIdTo,airportNameTo,null,airportCountryTo), null), etdDatetime, etaDateTime, Duration.parse(flightDuration),
-                            new AirplaneData(airplaneId,airplaneName,airplaneLenght,airplaneWidth));
-
-
-
-
-
-
-                }
-                else{
-
-                    bookingData.add(new BookingData(bookingId, emp_id, selectedFlight, null/*TODO not yet implemented*/, bookingDate, null, customers));
-
-                }
-                bookingIdInUse = bookingId;
+                // TODO get the tickets from the database
+                // TODO get the customerIds from the database
+                // TODO get the extras from the database
+                bookingData.add(new BookingData(Integer.toString(id), empId, new ArrayList<>(), bookingDate, new ArrayList<>(), new ArrayList<>()));
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
         }
         return bookingData;
     }
+
 // This won't be used because specific searching will be done by the managers
+
 //    public BookingData getBooking(String bookingId) {
 //        DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
 //        BookingData bookingdata= null;
@@ -181,9 +106,9 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 //            while (result.next()) {
 //                int id = result.getInt("id");
 //                String empId = result.getString("emp_Id");
-//                String flight = result.getString("flight_Id");
+//                String flightIds = result.getString("flight_Id");
 //                String bookingDate = result.getString("booking_Date");
-//                bookingdata = new BookingData(Integer.toString(id),empId,new FlightData(flight,null,null,null,null,null),null,LocalDateTime.parse(bookingDate),null,null);
+//                bookingdata = new BookingData(Integer.toString(id),empId,new FlightData(flightIds,null,null,null,null,null),null,LocalDateTime.parse(bookingDate),null,null);
 //
 //            }
 //
@@ -195,10 +120,9 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 //
 //    }
 
-
     @Override
     public boolean remove(String id) {
-        boolean confirm;
+        boolean confirm = false;
 
         DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
         int idToDelete = Integer.parseInt(id);
@@ -217,7 +141,7 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 */
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
         }
 
         return confirm;

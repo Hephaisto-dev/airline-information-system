@@ -24,7 +24,7 @@ public class SearchFlightController implements Initializable {
 
     @FXML
     private ListView<Flight> flightListView;
-
+    private final ObservableList<Flight> flightObservableList = flightListView.getSelectionModel().getSelectedItems();
     private ArrayList<FlightData> flightDataArrayList = new ArrayList<>();
     @FXML
     private TableColumn FlightID;
@@ -40,10 +40,9 @@ public class SearchFlightController implements Initializable {
     private TableColumn Duration;
     @FXML
     private TableColumn AirplaneID;
-
     @FXML
     private TextField searchField;
-    private final ObservableList<Flight> flightObservableList = flightListView.getSelectionModel().getSelectedItems();
+
     public SearchFlightController(FlightManager flightManager) {
         this.flightManager = flightManager;
     }
@@ -85,6 +84,7 @@ public class SearchFlightController implements Initializable {
         flightFilteredList = new FilteredList<>(FXCollections.observableArrayList(flightManager.getAll()));
         flightListView.setItems(flightFilteredList);
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateFlightList();
@@ -108,8 +108,6 @@ public class SearchFlightController implements Initializable {
 //            System.out.println("The flight could not be found.");
 //        }
 //    }
-
-
 
 
 }

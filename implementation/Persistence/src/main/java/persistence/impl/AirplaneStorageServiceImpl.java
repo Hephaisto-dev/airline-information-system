@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AirplaneStorageServiceImpl implements AirplaneStorageService {
     private final DataSource dataSource;
@@ -31,13 +33,13 @@ public class AirplaneStorageServiceImpl implements AirplaneStorageService {
             ResultSet result = stmt.executeQuery();
             while (result.next()) {
                 String id = result.getString("id");
-                String name = result.getString("name");
+                String name = result.getString("manufacturer");
                 int length = result.getInt("length");
                 int width = result.getInt("width");
                 airportData.add(new AirplaneData(id, name, length, width));
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
         }
         return airportData;
     }

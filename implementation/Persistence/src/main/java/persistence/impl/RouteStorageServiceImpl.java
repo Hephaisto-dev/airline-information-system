@@ -2,6 +2,7 @@ package persistence.impl;
 
 import datarecords.FlightData;
 import datarecords.RouteData;
+import persistence.api.RouteStorageService;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -13,26 +14,25 @@ import java.util.logging.Logger;
 
 public class RouteStorageServiceImpl implements RouteStorageService {
 
-    protected FlightData flightData;
     private final DataSource dataSource;
+    protected FlightData flightData;
 
     public RouteStorageServiceImpl(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
 
-
     @Override
     public RouteData add(RouteData routeData) {
 
-        String query = "INSERT INTO routedata (id, fromm, too) values (?, ?, ?) returning *";
+        String query = "INSERT INTO routes (id, fromm, too) values (?, ?, ?) returning *";
 
 
         try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
 
             String id = routeData.id();
-            String fromm = String.valueOf(flightData.departure());
-            String too = String.valueOf(flightData.arrival());
+            String fromm = flightData.departureAirportId();
+            String too = flightData.arrivalAirportId();
 
 
             pstm.setString(1, id);
@@ -40,17 +40,16 @@ public class RouteStorageServiceImpl implements RouteStorageService {
             pstm.setString(3, too);
 
 
-
             ResultSet result = pstm.executeQuery();
 
             System.out.println("JUST INSERTED: ");
             while (result.next()) {
                 id = result.getString("id");
-                fromm = result.getString("routedatafrom");
-                too = result.getString("routedatatoo");
+                fromm = result.getString("fromm");
+                too = result.getString("too");
 
 
-                System.out.println("Customer with id: " + id + ", " + fromm + ", " + too );
+                System.out.println("Customer with id: " + id + ", " + fromm + ", " + too);
             }
 
         } catch (SQLException ex) {
@@ -58,7 +57,6 @@ public class RouteStorageServiceImpl implements RouteStorageService {
         }
         return routeData;
     }
-
 
 
 //    @Override

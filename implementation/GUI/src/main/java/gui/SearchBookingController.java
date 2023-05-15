@@ -18,7 +18,7 @@ public class SearchBookingController implements Initializable {
     private final BookingManager bookingManager;
     @FXML
     private ListView<Booking> bookingListView;
-    private FilteredList<Booking> filteredBookingIds;
+    private FilteredList<Booking> filteredBooking;
 
     @FXML
     private TextField searchField;
@@ -32,12 +32,12 @@ public class SearchBookingController implements Initializable {
 
     public void onSearch() {
         String lowerCase = searchField.getText().toLowerCase();
-        filteredBookingIds.setPredicate(bookingId -> bookingId.getId().toLowerCase().contains(lowerCase) ||
-                bookingId.getCustomersOnBooking().stream().anyMatch(customer ->
-                        customer.firstName().toLowerCase().contains(lowerCase) ||
-                                customer.lastName().toLowerCase().contains(lowerCase) ||
-                                customer.email().toLowerCase().contains(lowerCase)) ||
-                bookingId.getEmp().toLowerCase().contains(lowerCase));
+        filteredBooking.setPredicate(booking -> booking.getId().toLowerCase().contains(lowerCase) ||
+                booking.getCustomersOnBooking().stream().anyMatch(customer ->
+                        customer.getFirstName().toLowerCase().contains(lowerCase) ||
+                                customer.getLastName().toLowerCase().contains(lowerCase) ||
+                                customer.getData().email().toLowerCase().contains(lowerCase)) ||
+                booking.getData().employeeId().toLowerCase().contains(lowerCase));
     }
 
     public void onCancel() {
@@ -57,7 +57,7 @@ public class SearchBookingController implements Initializable {
     }
 
     private void updateBookingList() {
-        filteredBookingIds = new FilteredList<>(FXCollections.observableArrayList(bookingManager.getAll()));
-        bookingListView.setItems(filteredBookingIds);
+        filteredBooking = new FilteredList<>(FXCollections.observableArrayList(bookingManager.getAll()));
+        bookingListView.setItems(filteredBooking);
     }
 }
