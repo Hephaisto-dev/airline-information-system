@@ -6,6 +6,7 @@ import businesslogic.api.airport.NoAirportException;
 import businesslogic.api.flight.Flight;
 import businesslogic.impl.AirplaneImpl;
 import businesslogic.impl.FlightImpl;
+import datarecords.FlightData;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
