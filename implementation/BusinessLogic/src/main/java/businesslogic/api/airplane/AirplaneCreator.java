@@ -20,7 +20,7 @@ public class AirplaneCreator {
         } else if (manufacturer == null || manufacturer.isEmpty()) {
             stringBuilder.append("No manufacturer was provided");
         }
-        
+
 
         if (stringBuilder.length() == 0) {
             try {

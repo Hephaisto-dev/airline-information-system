@@ -25,9 +25,9 @@ class TicketImplTest {
     //Route route = new RouteImpl(from, to);//Saved for conveniece, if we decide to provide routes somewhere in the Ticket
     final LocalDateTime futureFar = LocalDateTime.of(2244, 2, 1, 4, 5);
     final LocalDateTime futureNear = LocalDateTime.of(2244, 2, 1, 3, 4);
-    final Airplane plane = new AirplaneImpl("PLANEiD", "plane", 123, 5);
     final Flight flyer = FlightFactory.createFlight(new FlightData("FLIGHTID", futureNear, futureFar, Duration.between(futureFar, futureNear), plane.getId(), from.getId(), to.getId()));
-    //final Ticket ticket;
+    final Airplane plane = new AirplaneImpl("PLANEiD", , 123, 5, "model", 55);
+
     Price cost = new PriceImpl(2000);
     /*AirportImpl from = new AirportImpl("FROM", "FROM", "FROM", "FROM");
     AirportImpl to = new AirportImpl("TO", "TO", "TO", "TO");

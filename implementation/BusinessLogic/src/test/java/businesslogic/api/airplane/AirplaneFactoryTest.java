@@ -9,7 +9,7 @@ class AirplaneFactoryTest {
 
     @Test
     void createAirplane() {
-        AirplaneData airplaneData = new AirplaneData("id", "type", 1, 2);
+        AirplaneData airplaneData = new AirplaneData("id", "type", 1, 2, "martin", 2);
         Airplane airplane = AirplaneFactory.createAirplane(airplaneData);
         assertEquals(airplane.getData(), airplaneData);
     }

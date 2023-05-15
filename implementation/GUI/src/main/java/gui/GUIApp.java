@@ -23,7 +23,7 @@ import java.io.InputStream;
  */
 public class GUIApp extends Application {
 
-    private static final String INITIAL_VIEW = "createBookingView";
+    private static final String INITIAL_VIEW = "createAirplaneView";
 
     private BusinessLogicAPI businessLogicAPI;
     private SceneManager sceneManager;
