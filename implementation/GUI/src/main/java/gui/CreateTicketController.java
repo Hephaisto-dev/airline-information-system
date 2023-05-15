@@ -49,17 +49,18 @@ public class CreateTicketController {
 
     @FXML
     protected void onCreateTicketPress(ActionEvent e) {
-        //
         Flight flight = FlightSelector.getValue();
         String seatRow = SeatRowGet.getText();
         String seatColumn = SeatColumnGet.getText();
         String customerName = CustomerNameGet.getText();
+        String discountField = discountGet.getText();
+        String voucherField = VoucherGet.getText();
         feedbackField.clear();
-        feedbackField.appendText(useInfo(flight, seatRow, seatColumn, customerName));
+        feedbackField.appendText(useInfo(flight, seatRow, seatColumn, customerName,discountField, voucherField));
     }
 
-    protected String useInfo(Flight f, String row, String column, String name) {
+    protected String useInfo(Flight f, String row, String column, String name, String discount, String voucher) {
         TicketCreator tc = new TicketCreator();
-        return tc.createTicket(f, row, column, name);
+        return tc.createTicket(f, row, column, name, discount, voucher);
     }
 }
