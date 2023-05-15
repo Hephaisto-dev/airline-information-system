@@ -208,34 +208,31 @@ public class NavBarController implements Initializable {
 
         //in here the fromId(0) needs to be gotten based on what the user typed (check in login)
 
-//        createFlight.setVisible(false);
-//        editFlight.setVisible(false);
+        createFlight.setVisible(false);
+        editFlight.setVisible(false);
         searchForFlight.setVisible(false);
         viewFlightInformation.setVisible(false);
         viewPreviousFlights.setVisible(false);
 
-        //createRoute.setVisible(false);
-        //editRoute.setVisible(false);
+        createRoute.setVisible(false);
+        editRoute.setVisible(false);
         searchForRoute.setVisible(false);
 
-
+        createAirport.setVisible(false);
         editAirport.setVisible(false);
-
-//        createBooking.setVisible(false);
-//        editBooking.setVisible(false);
-//        searchForBooking.setVisible(false);
-
+        createBooking.setVisible(false);
+        editBooking.setVisible(false);
+        searchForBooking.setVisible(false);
         createTicket.setVisible(false);
         editTicket.setVisible(false);
         purchaseTicket.setVisible(false);
+        registerCustomer.setVisible(false);
+        editCustomer.setVisible(false);
 
-//        registerCustomer.setVisible(false);
-//        editCustomer.setVisible(false);
-
-//        financialSheet.setVisible(false);
-//        statistics.setVisible(false);
-//        registerEmployee.setVisible(false);
-//        startSalesProcess.setVisible(false);
+        financialSheet.setVisible(false);
+        statistics.setVisible(false);
+        registerEmployee.setVisible(false);
+        startSalesProcess.setVisible(false);
 
         switch (permissions){
             case SALES_OFFICER:
