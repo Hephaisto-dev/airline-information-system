@@ -3,6 +3,7 @@ package datarecords;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-public record FlightData(String id, RouteData routeData, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
-                         Duration flightDuration, AirplaneData airplane) {
+// TODO ask if flightDuration shoyld be stored in the database
+public record FlightData(String id, LocalDateTime etdDateTime, LocalDateTime etaDateTime,
+                         Duration flightDuration, String airplaneId, String departureAirportId, String arrivalAirportId) {
 }

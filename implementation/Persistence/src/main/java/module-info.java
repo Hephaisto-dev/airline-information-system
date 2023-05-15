@@ -5,5 +5,6 @@ module persistence_module {
     //exports persistence.impl;
     requires java.naming;
     exports persistence.api;
+    //exports persistence.impl.database;//commented out in case this merge conflict was mmore severe than thought
     exports persistence.impl;
 }

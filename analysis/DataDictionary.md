@@ -23,4 +23,4 @@
 | Transit   | Time between different Flights on the same Route   |   |
 | Voucher   | price reductions by a pre-determined amount   | <ul><li>A Voucher adds a price reduction by a certain amount (percentage discount, meaning a price of 200 goes to 170, if the discount is 15)</li><li>Size: Size of the Voucher in %</li></ul>   |
 
-
+## [Back to Table of Contents](../TableOfContents.md)

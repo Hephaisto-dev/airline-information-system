@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AirplaneStorageServiceImpl implements AirplaneStorageService {
     private final DataSource dataSource;
@@ -25,21 +27,19 @@ public class AirplaneStorageServiceImpl implements AirplaneStorageService {
 
     @Override
     public Set<AirplaneData> getAll() {
-
-        String query = "SELECT * FROM airplanedata";
+        String query = "SELECT * FROM airplanes";
         Set<AirplaneData> airportData = new HashSet<>();
-        try(Connection con = dataSource.getConnection(); PreparedStatement stmt = con.prepareStatement(query)){
+        try (Connection con = dataSource.getConnection(); PreparedStatement stmt = con.prepareStatement(query)) {
             ResultSet result = stmt.executeQuery();
-            while(result.next()){
+            while (result.next()) {
                 String id = result.getString("id");
-                String name = result.getString("name");
-                int capacity = result.getInt("capacity");
-                int sqrt = (int) Math.sqrt(capacity);
-                //TODO change the database to store length and width
-                airportData.add(new AirplaneData(id, name, sqrt, sqrt));
+                String name = result.getString("manufacturer");
+                int length = result.getInt("length");
+                int width = result.getInt("width");
+                airportData.add(new AirplaneData(id, name, length, width));
             }
-        }catch(SQLException e){
-            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
         }
         return airportData;
     }

@@ -1,8 +1,13 @@
 package persistence.impl;
 
-import datarecords.FlightData;
-import datarecords.RouteData;
 import datarecords.TicketData;
+import persistence.api.TicketStorageService;
+import persistence.impl.database.DBProvider;
+
+import javax.sql.DataSource;
+import persistence.api.TicketStorageService;
+
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,15 +28,12 @@ public class TicketStorageServiceImpl implements TicketStorageService {
     @Override
     public TicketData add(TicketData ticketData) {
 
-
-        DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
-
-        String query = "INSERT INTO tickets (ticket_id, flight_id, customer_id, price) values (?, ?, ?, ?) returning *";
+        String query = "INSERT INTO tickets (id, flight_id, customer_id, price) values (?, ?, ?, ?) returning *";
 
 
-        try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
+        try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
 
-            String T_id = ticketData.ticketId();
+            String T_id = ticketData.id();
             String F_id = ticketData.flightId();
             String C_id = ticketData.customerId();
             int price = ticketData.price();
@@ -46,7 +48,7 @@ public class TicketStorageServiceImpl implements TicketStorageService {
 
             System.out.println("JUST INSERTED: ");
             while (result.next()) {
-                T_id = result.getString("ticket_id");
+                T_id = result.getString("id");
                 F_id = result.getString("flight_id");
                 C_id = result.getString("customer_id");
                 price = result.getInt("price");

@@ -39,14 +39,11 @@ public class CreateTicketController {
             FlightSelector.getItems().add(flighter);
         }
     }
-
+  
     public CreateTicketController(FlightManager flightManager) {
         this.flightManager = flightManager;
     }
-
-
-
-
+  
     @FXML
     protected void onCreateTicketPress(ActionEvent e) {
         Flight flight = FlightSelector.getValue();
