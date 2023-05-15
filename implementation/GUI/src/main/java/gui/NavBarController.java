@@ -197,16 +197,12 @@ public class NavBarController implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //When the login is done the role-type will be gathered from DB and
-        //depending on the role-type different options will be visible
-
         //what about all the cancel options - take a look at the gui and give feedback
         //also look at who does what and fix the analysis - should the search for... be an option in itself
         //also test visibility of the menu
-        //make it dynamic - resizable - either in fxml or css file(if css where do I put it and make it apply for all files)
+        //make it dynamic - resizable - either in fxml or css file(make it apply for all files)
         EmployeeType permissions = businessLogicAPI.getLoggedInEmployee();
 
-        //in here the fromId(0) needs to be gotten based on what the user typed (check in login)
 
         createFlight.setVisible(false);
         editFlight.setVisible(false);
@@ -237,24 +233,36 @@ public class NavBarController implements Initializable {
         switch (permissions){
             case SALES_OFFICER:
                 createRoute.setVisible(true);
-                editRoute.setVisible(true);
+                //editRoute.setVisible(true);
                 createFlight.setVisible(true);
-                editFlight.setVisible(true);
+                //editFlight.setVisible(true);
                 createAirport.setVisible(true);
-                startSalesProcess.setVisible(true);
+                //startSalesProcess.setVisible(true);
 
+
+                searchForFlight.setVisible(true);
+                searchForRoute.setVisible(true);
+                createTicket.setVisible(true);
             case SALES_MANAGER:
-                financialSheet.setVisible(true);
-                statistics.setVisible(true);
+                //financialSheet.setVisible(true);
+                //statistics.setVisible(true);
                 registerEmployee.setVisible(true);
 
+
+                searchForFlight.setVisible(true);
+                searchForRoute.setVisible(true);
             case SALES_EMPLOYEE:
                 createBooking.setVisible(true);
-                editBooking.setVisible(true);
+                //editBooking.setVisible(true);
                 searchForBooking.setVisible(true);
 
                 registerCustomer.setVisible(true);
-                editCustomer.setVisible(true);
+                //editCustomer.setVisible(true);
+
+
+                purchaseTicket.setVisible(true);
+                searchForFlight.setVisible(true);
+                searchForRoute.setVisible(true);
                 break;
             default:
                 createFlight.setVisible(true);
