@@ -9,7 +9,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class AirplaneImplTest {
 
-    private final Airplane Airplane = new AirplaneImpl(new AirplaneData("Id", "manufacturers", 2, 1, "models", 2));
+    private final Airplane Airplane = new AirplaneImpl(new AirplaneData("Id", "manufacturers", 2, 1, "models", 100));
     private final Airplane Plane2 = new AirplaneImpl(new AirplaneData("name", "manufacturers", 25, 1, "models", 100));
 
     @Test
@@ -20,19 +20,19 @@ class AirplaneImplTest {
 
     @Test
     void testGetPlaneName() {
-        assertThat(Airplane.getName())
+        assertThat(Plane2.getId())
                 .isEqualTo("name");
     }
 
     @Test
     void testGetMaxCapacity() {
-        assertThat(Airplane.getCapacity())
-                .isEqualTo(2);
+        assertThat(Airplane.getSeats())
+                .isEqualTo(100);
     }
 
     @Test
     void testCapacity2() {
-        assertThat(Plane2.getCapacity())
+        assertThat(Plane2.getSeats())
                 .isEqualTo(100);
     }
 
@@ -52,7 +52,7 @@ class AirplaneImplTest {
             softly.assertThat(Airplane.getWidth())
                     .isEqualTo(1);
             softly.assertThat(Plane2.getWidth())
-                    .isEqualTo(4);
+                    .isEqualTo(1);
         });
     }
 }

@@ -18,8 +18,8 @@ public class AirplaneImpl implements Airplane {
     }
 
     @Override
-    public int getCapacity() {
-        return airplaneData.length() * airplaneData.width();
+    public int getSeats() {
+        return airplaneData.seats();
     }
 
     @Override
