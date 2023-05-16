@@ -16,12 +16,11 @@ public class BookingImplTest {
     private final List<String> extras = new ArrayList<>();
     // private List<CustomerData> customers = new ArrayList<>();//TODO when customers are finished implement this
 
-    private final Airplane airplane = new AirplaneImpl(new AirplaneData("ids", "manufacturers", 7, 7, "models", 77));
+    private final Airplane airplane = new AirplaneImpl(new AirplaneData("id", "manufacturers", 7, 7, "models", 77));
     private final Airport airport1 = new AirportImpl("1", "MyHouse", "Netherlands");
     private final Airport airport2 = new AirportImpl("2", "YourHouse", "Netherlands");
     private final Duration duration = Duration.ofDays(10);
 
-    //private final Booking booking = new BookingImpl("1","1",flightIds,ticketIds,LocalDateTime.now(),extraIds,);
 
     @BeforeAll
     static void prepare() {

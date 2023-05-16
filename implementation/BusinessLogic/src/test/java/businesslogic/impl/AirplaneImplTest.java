@@ -9,8 +9,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class AirplaneImplTest {
 
-    private final Airplane Airplane = new AirplaneImpl(new AirplaneData("ids", "manufacturers", 7, 7, "models", 77));
-    private final Airplane Plane2 = new AirplaneImpl(new AirplaneData("ids", "manufacturers", 7, 7, "models", 78));
+    private final Airplane Airplane = new AirplaneImpl(new AirplaneData("Id", "manufacturers", 2, 1, "models", 2));
+    private final Airplane Plane2 = new AirplaneImpl(new AirplaneData("name", "manufacturers", 25, 1, "models", 100));
 
     @Test
     void testGetId() {

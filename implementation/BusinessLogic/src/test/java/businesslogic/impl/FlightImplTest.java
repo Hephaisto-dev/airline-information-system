@@ -32,8 +32,8 @@ class FlightImplTest {
     //private final Flight flightThree;
     private final Duration dur3 = Duration.between(ldtd, ldta2);
     private final Airplane plane = new AirplaneImpl(new AirplaneData("id", "manufacturer", 5, 5, "model", 55));
-    private final Flight flight1 = FlightFactory.createFlight(new FlightData("FL_DEPART-ARRIVE_2012-12-11T05:03_Hello", ldtd, ldta, dur, plane.getId(), from, to));
-    private final Airplane plane2 = new AirplaneImpl(new AirplaneData("lets", "go", 6, 6, "lucas", 69));
+    private final Flight flight1 = FlightFactory.createFlight(new FlightData("FL_DEPART-ARRIVE_2012-12-11T05:03_id", ldtd, ldta, dur, plane.getId(), from, to));
+    private final Airplane plane2 = new AirplaneImpl(new AirplaneData("Identification", "go", 6, 6, "lucas", 69));
     private final Flight flightThree = FlightFactory.createFlight(new FlightData("", ldtd2, ldta2, dur2, plane2.getId(), from, to));
     private final Flight tooLongFlight = FlightFactory.createFlight(new FlightData("FL_DEPART-ARRIVE_2012-12-11T05:03_Identification", ldtd, ldta2, dur3, plane2.getId(), from, to));
     private final Flight flightTwo = FlightFactory.createFlight(new FlightData("FL_DEPART-ARRIVE_2012-12-15T12:34_Identification", ldtd2, ldta2, dur2, plane2.getId(), from, to));
