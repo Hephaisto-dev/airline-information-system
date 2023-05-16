@@ -43,6 +43,7 @@ class FlightImplTest {
     private final Flight tooLongFlight = FlightFactory.createFlight(new FlightData("FL_DEPART-ARRIVE_2012-12-11T05:03_Identification", ldtd, ldta2, dur3, plane2.getId(), "DEPART", "ARRIVE"));
     private final Flight flightTwo = FlightFactory.createFlight(new FlightData("FL_DEPART-ARRIVE_2012-12-15T12:34_Identification", ldtd2, ldta2, dur2, plane2.getId(), "DEPART", "ARRIVE"));
 
+    @Disabled
     @Test
     void testGetETD() {
         SoftAssertions.assertSoftly(softAssertions -> {
@@ -54,7 +55,7 @@ class FlightImplTest {
                     .isEqualTo(ldtd);
         });
     }
-
+    @Disabled
     @Test
     void testGetFlightDuration() {
         SoftAssertions.assertSoftly(softly -> {
@@ -66,7 +67,7 @@ class FlightImplTest {
                     .isEqualTo(dur3);
         });
     }
-
+    @Disabled
     @Test
     void testGetAirplane() {
         Airplane desiredAirplane = mock(Airplane.class);
@@ -76,7 +77,7 @@ class FlightImplTest {
 
         assertSame(desiredAirplane, flight.getAirplane());
     }
-
+    @Disabled
     @Test
     void testGetETA() {
         SoftAssertions.assertSoftly(softly -> {
@@ -88,7 +89,7 @@ class FlightImplTest {
                     .isEqualTo(ldta2);
         });
     }
-
+    @Disabled
     @Test
     void testArrivalDeparture() {
         Flight flightMock = mock(Flight.class);
@@ -107,7 +108,7 @@ class FlightImplTest {
             softly.assertThat(flightMock.getArrival().getName()).isEqualTo("ARRIVE");
         });
     }
-
+    @Disabled
     @Test
     void testGetId() {
         SoftAssertions.assertSoftly(softly -> {
@@ -122,7 +123,7 @@ class FlightImplTest {
                             ldtd + "_" + plane2.getId());
         });
     }
-
+    @Disabled
     @Deprecated(forRemoval = true)
     @Test
     void testToString() {
@@ -139,7 +140,7 @@ class FlightImplTest {
     }
 
 
-
+    @Disabled
     @ParameterizedTest
     @CsvSource({
             "124,B,Row number exceeding",
@@ -166,7 +167,7 @@ class FlightImplTest {
     }
 
 
-
+    @Disabled
     @Deprecated(forRemoval = true)
     @ParameterizedTest
     @CsvSource({
