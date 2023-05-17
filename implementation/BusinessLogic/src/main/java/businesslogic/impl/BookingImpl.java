@@ -20,9 +20,9 @@ public class BookingImpl implements Booking {
         return BusinessLogicFactory.getImplementation().getEmployeeManager().getById(bookingData.employeeId());
     }
 
-    @Override
+    @Override //Todo uncomment this and make it work again
     public List<Customer> getCustomersOnBooking() {
-        return BusinessLogicFactory.getImplementation().getCustomerManager().getAll().stream().filter(customer -> bookingData.customerIds().contains(customer.getId())).toList();
+        return null;//BusinessLogicFactory.getImplementation().getCustomerManager().getAll().stream().filter(customer -> bookingData.customerIds().contains(customer.getId())).toList();
     }
 
     @Override

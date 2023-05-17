@@ -1,11 +1,15 @@
 package gui;
 
+import businesslogic.api.airplane.Airplane;
 import businesslogic.api.booking.BookingCreator;
+import businesslogic.api.customer.Customer;
 import businesslogic.api.customer.Price;
+import businesslogic.api.customer.TicketCreator;
 import businesslogic.api.employee.Employee;
 import businesslogic.api.flight.Flight;
 import businesslogic.api.flight.FlightFactory;
 import businesslogic.api.manager.BookingManager;
+import businesslogic.api.manager.CustomerManager;
 import businesslogic.api.manager.FlightManager;
 import datarecords.CustomerData;
 import datarecords.FlightData;
@@ -16,7 +20,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import persistence.api.NoDBConnectionException;
-import utilities.FxUtilTest;
 
 import java.net.URL;
 import java.time.Duration;
@@ -32,13 +35,13 @@ import static java.util.Arrays.stream;
 public class CreateBookingController implements Initializable {
 
     final ArrayList<String> extras = new ArrayList<>();
-    final ArrayList<CustomerData> customers = new ArrayList<>();
+    final ArrayList<String> customers = new ArrayList<>();
+    CustomerData MainCustomer = null;
     final List<TicketData> tickets = new ArrayList<>();//Change this from string to Ticket
     final FlightData selectedFlight = null;
     final BookingManager bookingManager;
     private final BookingCreator bookingCreator;
     private final Supplier<SceneManager> sceneManagerSupplier;
-    //TODO IMPLEMENT TICKETS
     @FXML
     public ComboBox<Employee> employeeComboBox;
     @FXML
@@ -50,6 +53,8 @@ public class CreateBookingController implements Initializable {
     @FXML
     public TextField firstName;
     @FXML
+    public TextField passengerName;
+    @FXML
     public TextField lastName;
     @FXML
     public DatePicker dateOfBirth;
@@ -59,6 +64,8 @@ public class CreateBookingController implements Initializable {
     public ListView<String> listViewCustomers;
     @FXML
     public Button btnAddCustomer;
+    @FXML
+    public Label lblMainCustomer;
     @FXML//TODO Delete this after connection with the database
     public Button btnFakeInfo;
     @FXML
@@ -70,34 +77,34 @@ public class CreateBookingController implements Initializable {
     @FXML
     public Text pricePerPerson;
     private BookingCreator bookCreator;
+    private FlightManager flightManager;
 
 
-    public CreateBookingController(Supplier<SceneManager> sceneManagerSupplier, BookingManager bookingManager) {
+    public CreateBookingController(Supplier<SceneManager> sceneManagerSupplier, BookingManager bookingManager, FlightManager flightManager) {
         this.sceneManagerSupplier = sceneManagerSupplier;
         this.bookingManager = bookingManager;
         this.bookingCreator = new BookingCreator(bookingManager);
+        this.flightManager = flightManager;
     }
 
     @FXML
     public void createBooking(ActionEvent actionEvent) {
 
-        String booking = bookingCreator.createBooking("1",employeeComboBox.getSelectionModel().getSelectedItem().getData(), selectedFlight, tickets, LocalDate.now(), extras, customers);
+        String booking = bookingCreator.createBooking("1",employeeComboBox.getSelectionModel().getSelectedItem().getData(), selectedFlight, tickets, LocalDate.now(), extras, customers,MainCustomer);
         result.setText(booking);
+
+
+            //in the bookingcreator are the customer and ticket creator
+
 
     }
 
     @FXML
     public void addCustomer(ActionEvent actionEvent) {
 
-
-        customers.add(new CustomerData("1", firstName.getText(), lastName.getText(), dateOfBirth.getValue(), email.getText()));
-        listViewCustomers.getItems().clear();
-        for (CustomerData c : customers)
-            listViewCustomers.getItems().add(c.toString());
-
-
+        MainCustomer = new CustomerData("1", firstName.getText(), lastName.getText(), dateOfBirth.getValue(), email.getText());
+        lblMainCustomer.setText(MainCustomer.firstName()+" "+MainCustomer.lastName());
     }
-
     @FXML
     public void addExtra(ActionEvent actionEvent) {
 
@@ -110,19 +117,17 @@ public class CreateBookingController implements Initializable {
         }
     }
 
-    public List<TicketData> createTickets() {
-        for (CustomerData customer : customers) {  //TODO ADD REAL TICKET IMPLEMENTATION
-
-            //tickets.add(new TicketImpl(customer.firstName(),cbFlights.getValue(),));
-        }
-        return tickets;
-    }
 
     @FXML
-    public void fakeInfo(ActionEvent actionEvent) throws NoDBConnectionException {
-        Flight flight = FlightFactory.createFlight(new FlightData("1", LocalDateTime.now(), LocalDateTime.now(), Duration.ZERO, "1", "2", "3"));
+    public void addPassengerToBooking(){
+        if(passengerName.getText()!=null){
+            customers.add(passengerName.getText());
 
-        cbFlights.getItems().add(flight);
+        }
+        listViewCustomers.getItems().clear();
+        for(String c : customers){
+            listViewCustomers.getItems().add(c);
+        }
 
     }
 
@@ -132,10 +137,11 @@ public class CreateBookingController implements Initializable {
         if (cbFlights.getValue() != null) {
             int total = 0;
             Price perPerson = cbFlights.getValue().getPrice();
-            for (CustomerData c : customers) {
+            for (String c : customers) {
 
                 total = total + perPerson.getBackendPrice() / 100;
             }
+
             for (String x : extras) {
                 total = total + 15;
             }
@@ -155,6 +161,8 @@ public class CreateBookingController implements Initializable {
         cbExtras.getItems().add("vegetarian food");
         cbExtras.getItems().add("Extra luggage");
         cbExtras.getItems().add("Prepaid food");
+        cbFlights.getItems().addAll(flightManager.getAll());
+        Utils.makeComboBoxSearchable(cbFlights, Flight::getId);
         result.setText("");
 
     }

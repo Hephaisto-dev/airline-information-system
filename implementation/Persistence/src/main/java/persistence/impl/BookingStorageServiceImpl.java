@@ -75,12 +75,10 @@ public class BookingStorageServiceImpl implements BookingStorageService {
             while (result.next()) {
                 int id = result.getInt("id");
                 String empId = result.getString("employee_id");
+                String mainCustomer = result.getString("main_customer");
                 LocalDate bookingDate = result.getDate("date").toLocalDate();
 
-                // TODO get the tickets from the database
-                // TODO get the customerIds from the database
-                // TODO get the extras from the database
-                bookingData.add(new BookingData(Integer.toString(id), empId, new ArrayList<>(), bookingDate, new ArrayList<>(), new ArrayList<>()));
+                bookingData.add(new BookingData(Integer.toString(id), empId, new ArrayList<>(), bookingDate, new ArrayList<>(),mainCustomer ));
             }
         } catch (SQLException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
