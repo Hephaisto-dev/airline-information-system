@@ -24,7 +24,7 @@ class TicketCreatorTest {
     private TicketStorageServiceImpl TSS;
     @Mock
     private Flight flyer;
-    private TicketCreator Creator;
+    private TicketCreator creator;
     private PriceImpl cost1 = new PriceImpl(1000);
     @Mock
     private Airplane planeMock;
