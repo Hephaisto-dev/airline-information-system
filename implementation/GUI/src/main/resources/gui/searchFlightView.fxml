@@ -16,7 +16,7 @@
         <Button layoutX="517.0" layoutY="352.0" mnemonicParsing="false" text="Acceept" />
         <Button layoutX="32.0" layoutY="352.0" mnemonicParsing="false" text="Delete" />
         <TextField fx:id="searchField" layoutX="71.0" layoutY="10.0" onKeyTyped="#onSearch" prefHeight="26.0" prefWidth="510.0" />
-      <TableView layoutX="32.0" layoutY="64.0" prefHeight="269.0" prefWidth="546.0">
+      <TableView fx:id="flightTableView" layoutX="32.0" layoutY="64.0" prefHeight="269.0" prefWidth="546.0">
         <columns>
           <TableColumn fx:id="id" prefWidth="56.0" text="ID" />
           <TableColumn fx:id="from" prefWidth="110.0" text="From" />

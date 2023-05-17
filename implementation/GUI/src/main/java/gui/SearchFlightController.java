@@ -2,7 +2,8 @@ package gui;
 
 import businesslogic.api.flight.Flight;
 import businesslogic.api.manager.FlightManager;
-import datarecords.FlightData;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
@@ -58,18 +59,22 @@ public class SearchFlightController implements Initializable {
     private void updateFlightList() {
         flightFilteredList = new FilteredList<>(FXCollections.observableArrayList(flightManager.getAll()));
         flightTableView.setItems(flightFilteredList);
+
+        id.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getId()));
+        from.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDeparture().getId()));
+        to.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getArrival().getId()));
+        etd.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getETD().toString()));
+        eta.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getETA().toString()));
+        duration.setCellValueFactory(cellData -> {
+            int flightDuration = (int) cellData.getValue().getFlightDuration().toSeconds();
+            return new SimpleIntegerProperty(flightDuration).asObject();});
+        airplane.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAirplane().getId()));
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateFlightList();
-        id.setCellValueFactory(cellData -> cellData.getValue().idProperty());
-        from.setCellValueFactory(cellData -> cellData.getValue().fromProperty());
-        to.setCellValueFactory(cellData -> cellData.getValue().toProperty());
-        etd.setCellValueFactory(cellData -> cellData.getValue().etdProperty());
-        eta.setCellValueFactory(cellData -> cellData.getValue().etaProperty());
-        duration.setCellValueFactory(cellData -> cellData.getValue().durationProperty().asObject());
-        airplane.setCellValueFactory(cellData -> cellData.getValue().airplaneProperty());
+
     }
 }
 
@@ -95,4 +100,4 @@ public class SearchFlightController implements Initializable {
 
 
 
-}
+
