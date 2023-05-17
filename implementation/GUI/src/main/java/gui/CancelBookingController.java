@@ -14,7 +14,7 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SearchBookingController implements Initializable {
+public class CancelBookingController implements Initializable {
     private final BookingManager bookingManager;
     @FXML
     private ListView<Booking> bookingListView;
@@ -23,10 +23,7 @@ public class SearchBookingController implements Initializable {
     @FXML
     private TextField searchField;
 
-    @FXML
-    private Button cancelButton;
-
-    public SearchBookingController(BookingManager bookingManager) {
+    public CancelBookingController(BookingManager bookingManager) {
         this.bookingManager = bookingManager;
     }
 

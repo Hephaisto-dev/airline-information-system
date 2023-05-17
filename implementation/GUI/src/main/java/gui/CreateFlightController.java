@@ -85,7 +85,7 @@ public class CreateFlightController implements Initializable {
 
     public String sendFlight(Airport departPlace, Airport arrivePlace, String departLDT, String arriveLDT,
                              Airplane planeName) {
-       return flightCreator.createFlight(departPlace, arrivePlace, departLDT, arriveLDT, planeName);
+        return flightCreator.createFlight(departPlace, arrivePlace, departLDT, arriveLDT, planeName);
     }
 
 

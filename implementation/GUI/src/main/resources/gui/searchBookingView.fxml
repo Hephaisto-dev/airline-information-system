@@ -39,12 +39,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19"
-      fx:controller="gui.SearchBookingController">
+      fx:controller="gui.CancelBookingController">
     <AnchorPane VBox.vgrow="ALWAYS">
         <TextField fx:id="searchField" layoutX="346.0" layoutY="31.0" onKeyTyped="#onSearch"/>
         <ListView fx:id="bookingListView" layoutX="57.0" layoutY="84.0" prefHeight="240.0" prefWidth="526.0"/>
         <Label layoutX="248.0" layoutY="35.0" text="Search booking :"/>
-        <Button fx:id="cancelButton" layoutX="270.0" layoutY="343.0" mnemonicParsing="false" prefHeight="26.0"
-                prefWidth="100.0" text="Cancel"/>
+        <Button layoutX="270.0" layoutY="343.0" mnemonicParsing="false" prefHeight="26.0"
+                prefWidth="100.0" text="Cancel" onAction="#onCancel"/>
     </AnchorPane>
 </VBox>

@@ -23,14 +23,13 @@ import java.io.InputStream;
  */
 public class GUIApp extends Application {
 
-    private static final String INITIAL_VIEW = "createFlightView";
+    private static final String INITIAL_VIEW = "deleteCustomerView";
 
     private BusinessLogicAPI businessLogicAPI;
     private SceneManager sceneManager;
     private final Callback<Class<?>, Object> controllerFactory = (Class<?> c)
             -> switch (c.getName()) {
-        case "gui.CreateCustomerController" ->
-                new CreateCustomerController(businessLogicAPI.getCustomerManager());
+        case "gui.CreateCustomerController" -> new CreateCustomerController(businessLogicAPI.getCustomerManager());
         case "gui.PrimaryController" -> new PrimaryController(this::getSceneManager);
         case "gui.SecondaryController" -> new SecondaryController(this::getSceneManager);
         case "gui.CreateBookingController" ->
@@ -40,9 +39,10 @@ public class GUIApp extends Application {
                         businessLogicAPI.getAirportManager(), businessLogicAPI.getAirplaneManager());
         case "gui.CreateAirportController" -> new CreateAirportController(this::getSceneManager,
                 businessLogicAPI.getAirportManager());
-        case "gui.SearchBookingController" -> new SearchBookingController(businessLogicAPI.getBookingManager());
+        case "gui.SearchBookingController" -> new CancelBookingController(businessLogicAPI.getBookingManager());
         case "gui.CreateTicketController" -> new CreateTicketController(businessLogicAPI.getFlightManager());
         case "gui.SearchFlightController" -> new SearchFlightController(businessLogicAPI.getFlightManager());
+        case "gui.DeleteCustomerController" -> new DeleteCustomerController(businessLogicAPI.getCustomerManager());
         default -> null;
     };
 

@@ -1,5 +1,6 @@
 package businesslogic.impl;
 
+import businesslogic.api.BusinessLogicFactory;
 import businesslogic.api.customer.Customer;
 import datarecords.CustomerData;
 
@@ -33,6 +34,11 @@ public class CustomerImpl implements Customer {
     }
 
     @Override
+    public String getEmail() {
+        return customerData.email();
+    }
+
+    @Override
     public LocalDate getDob() {
         return customerData.dob();
     }
@@ -50,5 +56,10 @@ public class CustomerImpl implements Customer {
     @Override
     public CustomerData getData() {
         return customerData;
+    }
+
+    @Override
+    public boolean delete() {
+        return BusinessLogicFactory.getImplementation().getCustomerManager().remove(this);
     }
 }
