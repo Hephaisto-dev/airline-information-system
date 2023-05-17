@@ -43,7 +43,7 @@ class TicketCreatorTest {
         Mockito.when(planeMock.getLength()).thenReturn(12);
         Mockito.when(planeMock.getWidth()).thenReturn(6);
         Mockito.when(flyer.getPrice()).thenReturn(cost1);
-        Creator = new TicketCreator(TSS);
+        creator = new TicketCreator(TSS);
     }
 
     @ParameterizedTest
@@ -58,7 +58,7 @@ class TicketCreatorTest {
     void createTicket(String CHAR, String NUM, String cus, String discount, String voucher,String expectation) {
 
         SoftAssertions.assertSoftly(softly->{
-            softly.assertThat(Creator.createTicket(flyer, CHAR, NUM, cus, discount, voucher))
+            softly.assertThat(creator.createTicket(flyer, CHAR, NUM, cus, discount, voucher))
                     .contains(expectation);
         });
     }
@@ -66,7 +66,7 @@ class TicketCreatorTest {
     @Test
     void createEmpty(){
         SoftAssertions.assertSoftly(softly->{
-            softly.assertThat(Creator.createTicket(null, null, null, null, null,null))
+            softly.assertThat(creator.createTicket(null, null, null, null, null,null))
                     .contains("Please");
         });
     }
