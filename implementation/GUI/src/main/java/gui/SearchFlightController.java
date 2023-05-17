@@ -5,9 +5,11 @@ import businesslogic.api.manager.FlightManager;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -38,6 +40,8 @@ public class SearchFlightController implements Initializable {
     private TableColumn<Flight, String> airplane;
     @FXML
     private TextField searchField;
+    @FXML
+    private Button delete;
 
     public SearchFlightController(FlightManager flightManager) {
         this.flightManager = flightManager;
@@ -48,12 +52,12 @@ public class SearchFlightController implements Initializable {
         String lowerCase = searchField.getText().toLowerCase();
         flightFilteredList.setPredicate(flight ->
                 flight.getId().toLowerCase().contains(lowerCase) ||
-                        flight.getDeparture().getId().toLowerCase().contains(lowerCase) ||
-                        flight.getArrival().getId().toLowerCase().contains(lowerCase) ||
+                        flight.getData().departureAirportId().toLowerCase().contains(lowerCase) ||
+                        flight.getData().arrivalAirportId().toLowerCase().contains(lowerCase) ||
                         flight.getETD().toString().toLowerCase().contains(lowerCase) ||
                         flight.getETA().toString().toLowerCase().contains(lowerCase) ||
                         String.valueOf(flight.getFlightDuration()).toLowerCase().contains(lowerCase) ||
-                        flight.getAirplane().getId().toLowerCase().contains(lowerCase));
+                        flight.getData().airplaneId().toLowerCase().contains(lowerCase));
     }
 
     private void updateFlightList() {
@@ -61,14 +65,25 @@ public class SearchFlightController implements Initializable {
         flightTableView.setItems(flightFilteredList);
 
         id.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getId()));
-        from.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDeparture().getId()));
-        to.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getArrival().getId()));
+        from.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getData().departureAirportId()));
+        to.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getData().arrivalAirportId()));
         etd.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getETD().toString()));
         eta.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getETA().toString()));
         duration.setCellValueFactory(cellData -> {
             int flightDuration = (int) cellData.getValue().getFlightDuration().toSeconds();
             return new SimpleIntegerProperty(flightDuration).asObject();});
         airplane.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAirplane().getId()));
+    }
+
+    public void delete() {
+        ObservableList<Flight> selectedItems = flightTableView.getSelectionModel().getSelectedItems();
+        boolean success = false;
+        for (Flight flight : selectedItems) {
+            success = flight.cancel() || success;
+        }
+        if (success) {
+            updateFlightList();
+        }
     }
 
     @Override
