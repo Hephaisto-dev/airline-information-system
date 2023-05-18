@@ -120,25 +120,13 @@ public class NavBarController implements Initializable {
     public void sendToCreateFlight() {
         sceneManagerSupplier.get().changeScene("createFlightView");
     }
-    public void sendToEditFlight() {
 
-    }
     public void sendToSearchForFlight() {
         sceneManagerSupplier.get().changeScene("searchFlightView");
     }
-    public void sendToViewFlightInformation() {
-
-    }
-    public void sendToViewPreviousFlights() {
-
-    }
-
 
     public void sendToCreateRoute() {
         sceneManagerSupplier.get().changeScene("createRouteView");
-    }
-    public void sendToEditRoute() {
-
     }
     public void sendToSearchForRoute() {
         sceneManagerSupplier.get().changeScene("searchRouteView");
@@ -148,17 +136,11 @@ public class NavBarController implements Initializable {
     public void sendToCreateAirport() {
         sceneManagerSupplier.get().changeScene("createAirportView");
     }
-    public void sendToEditAirport() {
-
-    }
-
 
     public void sendToCreateBooking() {
         sceneManagerSupplier.get().changeScene("createBookingView");
     }
-    public void sendToEditBooking() {
 
-    }
     public void sendToSearchForBooking() {
         sceneManagerSupplier.get().changeScene("searchBookingView");
     }
@@ -167,34 +149,13 @@ public class NavBarController implements Initializable {
     public void sendToCreateTicket() {
         sceneManagerSupplier.get().changeScene("createTicketView");
     }
-    public void sendToEditTicket() {
-
-    }
-    public void sendToPurchaseTicket() {
-
-    }
 
 
     public void sendToRegisterCustomer() {
         sceneManagerSupplier.get().changeScene("createCustomerView");
     }
-    public void sendToEditCustomer() {
-
-    }
 
 
-    public void sendToFinancialSheet() {
-
-    }
-    public void sendToStatistics() {
-
-    }
-    public void sendToRegisterEmployee() {
-
-    }
-    public void sendToStartSalesProcess() {
-
-    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //what about all the cancel options - take a look at the gui and give feedback
