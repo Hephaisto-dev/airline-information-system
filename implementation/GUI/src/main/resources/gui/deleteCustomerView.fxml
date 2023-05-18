@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19"
-            fx:controller="gui.DeleteCustomerController">
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DeleteCustomerController">
     <center>
         <AnchorPane>
-            <TextField fx:id="searchField" layoutX="346.0" layoutY="31.0" onKeyTyped="#onSearch"/>
-            <ListView fx:id="customerListView" layoutX="57.0" layoutY="84.0" prefHeight="240.0" prefWidth="526.0"/>
-            <Label layoutX="248.0" layoutY="35.0" text="Search customer :"/>
-            <Button layoutX="270.0" layoutY="343.0" mnemonicParsing="false" prefHeight="26.0"
-                    prefWidth="100.0" text="Delete" onAction="#onDelete"/>
+            <TextField fx:id="searchField" layoutX="346.0" layoutY="31.0" onKeyTyped="#onSearch" />
+            <ListView fx:id="customerListView" layoutX="57.0" layoutY="84.0" prefHeight="203.0" prefWidth="526.0" />
+            <Label layoutX="248.0" layoutY="35.0" text="Search customer :" />
+            <Button layoutX="270.0" layoutY="343.0" mnemonicParsing="false" onAction="#onDelete" prefHeight="26.0" prefWidth="100.0" text="Delete" />
+            <Label fx:id="result" layoutX="58.0" layoutY="279.0" prefHeight="69.0" prefWidth="515.0" text="Result" wrapText="true" />
         </AnchorPane>
     </center>
 </BorderPane>

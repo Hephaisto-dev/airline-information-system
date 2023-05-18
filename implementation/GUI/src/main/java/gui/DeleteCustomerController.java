@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -16,6 +17,8 @@ import java.util.ResourceBundle;
 
 public class DeleteCustomerController implements Initializable {
     private final CustomerManager customerManager;
+    @FXML
+    public Label result;
     @FXML
     private ListView<Customer> customerListView;
     private FilteredList<Customer> filteredCustomers;
@@ -45,17 +48,16 @@ public class DeleteCustomerController implements Initializable {
         }
         if (success) {
             updateCustomersList();
+            result.setText("Successfully deleted customer(s)");
+        }
+        else {
+            result.setText("Failed to delete customer(s)");
         }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateCustomersList();
-    }
-
-    private void updateCustomersList() {
-        filteredCustomers = new FilteredList<>(FXCollections.observableArrayList(customerManager.getAll()));
-        customerListView.setItems(filteredCustomers);
         customerListView.setCellFactory(param -> new ListCell<>() {
             @Override
             protected void updateItem(Customer customer, boolean b) {
@@ -67,5 +69,10 @@ public class DeleteCustomerController implements Initializable {
                 }
             }
         });
+    }
+
+    private void updateCustomersList() {
+        filteredCustomers = new FilteredList<>(FXCollections.observableArrayList(customerManager.getAll()));
+        customerListView.setItems(filteredCustomers);
     }
 }

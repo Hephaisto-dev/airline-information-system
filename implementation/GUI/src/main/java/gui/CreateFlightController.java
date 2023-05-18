@@ -9,12 +9,10 @@ import businesslogic.api.manager.FlightManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -125,5 +123,23 @@ public class CreateFlightController implements Initializable {
         Utils.makeComboBoxSearchable(departureAirport, Airport::getName);
         Utils.makeComboBoxSearchable(arrivalAirport, Airport::getName);
         Utils.makeComboBoxSearchable(airplaneComboBox, Airplane::getId);
+
+        departureLocalDate.setDayCellFactory(d ->
+                new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty);
+                        setDisable(item.isBefore(LocalDate.now()));
+                    }
+                });
+
+        arrivalLocalDate.setDayCellFactory(d ->
+                new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty);
+                        setDisable(item.isBefore(departureLocalDate.getValue()));
+                    }
+                });
     }
 }
