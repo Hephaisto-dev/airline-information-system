@@ -17,51 +17,51 @@
           <Menu fx:id="flightMenu" mnemonicParsing="false" text="Flight">
             <items>
               <MenuItem fx:id="createFlight" mnemonicParsing="false" onAction="#sendToCreateFlight" text="Create Flight" />
-                  <MenuItem fx:id="editFlight" mnemonicParsing="false" onAction="#sendToEditFlight" text="Edit Flight" />
+                  <MenuItem fx:id="editFlight" mnemonicParsing="false" text="Edit Flight" />
                   <MenuItem fx:id="searchForFlight" mnemonicParsing="false" onAction="#sendToSearchForFlight" text="Search for Flight" />
-                  <MenuItem fx:id="viewFlightInformation" mnemonicParsing="false" onAction="#sendToViewFlightInformation" text="View Flight Information" />
-                  <MenuItem fx:id="viewPreviousFlights" mnemonicParsing="false" onAction="#sendToViewPreviousFlights" text="View Previous Flights" />
+                  <MenuItem fx:id="viewFlightInformation" mnemonicParsing="false"  text="View Flight Information" />
+                  <MenuItem fx:id="viewPreviousFlights" mnemonicParsing="false" text="View Previous Flights" />
             </items>
           </Menu>
           <Menu fx:id="routeMenu" mnemonicParsing="false" text="Route">
             <items>
               <MenuItem fx:id="createRoute" mnemonicParsing="false" onAction="#sendToCreateRoute" text="Create Route" />
-                  <MenuItem fx:id="editRoute" mnemonicParsing="false" onAction="#sendToEditRoute" text="Edit Route" />
+                  <MenuItem fx:id="editRoute" mnemonicParsing="false" text="Edit Route" />
                   <MenuItem fx:id="searchForRoute" mnemonicParsing="false" onAction="#sendToSearchForRoute" text="Search for Route" />
             </items>
           </Menu>
           <Menu fx:id="airportMenu" mnemonicParsing="false" text="Airport">
             <items>
               <MenuItem fx:id="createAirport" mnemonicParsing="false" onAction="#sendToCreateAirport" text="Create Airport" />
-                  <MenuItem fx:id="editAirport" mnemonicParsing="false" onAction="#sendToEditAirport" text="Edit Airport" />
+                  <MenuItem fx:id="editAirport" mnemonicParsing="false" text="Edit Airport" />
             </items>
           </Menu>
             <Menu fx:id="bookingMenu" mnemonicParsing="false" text="Booking">
               <items>
                 <MenuItem fx:id="createBooking" mnemonicParsing="false" onAction="#sendToCreateBooking" text="Create Booking" />
-                  <MenuItem fx:id="editBooking" mnemonicParsing="false" onAction="#sendToEditBooking" text="Edit Booking" />
+                  <MenuItem fx:id="editBooking" mnemonicParsing="false" text="Edit Booking" />
                   <MenuItem fx:id="searchForBooking" mnemonicParsing="false" onAction="#sendToSearchForBooking" text="Search for Booking" />
               </items>
             </Menu>
             <Menu fx:id="ticketMenu" mnemonicParsing="false" text="Ticket">
               <items>
                 <MenuItem fx:id="createTicket" mnemonicParsing="false" onAction="#sendToCreateTicket" text="Create Ticket" />
-                  <MenuItem fx:id="editTicket" mnemonicParsing="false" onAction="#sendToEditTicket" text="Edit Ticket" />
-                  <MenuItem fx:id="purchaseTicket" mnemonicParsing="false" onAction="#sendToPurchaseTicket" text="Purchase Ticket" />
+                  <MenuItem fx:id="editTicket" mnemonicParsing="false" text="Edit Ticket" />
+                  <MenuItem fx:id="purchaseTicket" mnemonicParsing="false" text="Purchase Ticket" />
               </items>
             </Menu>
             <Menu fx:id="customerMenu" mnemonicParsing="false" text="Customer">
               <items>
                 <MenuItem fx:id="registerCustomer" mnemonicParsing="false" onAction="#sendToRegisterCustomer" text="Register a Customer" />
-                  <MenuItem fx:id="editCustomer" mnemonicParsing="false" onAction="#sendToEditCustomer" text="Edit Customer Information" />
+                  <MenuItem fx:id="editCustomer" mnemonicParsing="false" text="Edit Customer Information" />
               </items>
             </Menu>
             <Menu fx:id="managementMenu" mnemonicParsing="false" text="Management">
               <items>
-                <MenuItem fx:id="financialSheet" mnemonicParsing="false" onAction="#sendToFinancialSheet" text="View Financial Sheet" />
-                  <MenuItem fx:id="statistics" mnemonicParsing="false" onAction="#sendToStatistics" text="View Statistics" />
-                  <MenuItem fx:id="registerEmployee" mnemonicParsing="false" onAction="#sendToRegisterEmployee" text="Register Employee" />
-                  <MenuItem fx:id="startSalesProcess" mnemonicParsing="false" onAction="#sendToStartSalesProcess" text="Start Sales Process" />
+                <MenuItem fx:id="financialSheet" mnemonicParsing="false" text="View Financial Sheet" />
+                  <MenuItem fx:id="statistics" mnemonicParsing="false" text="View Statistics" />
+                  <MenuItem fx:id="registerEmployee" mnemonicParsing="false" text="Register Employee" />
+                  <MenuItem fx:id="startSalesProcess" mnemonicParsing="false" text="Start Sales Process" />
               </items>
             </Menu>
         </menus>
