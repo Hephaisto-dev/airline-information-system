@@ -69,6 +69,7 @@ public class CreateBookingController implements Initializable {
     private BookingCreator bookCreator;
 
 
+
     public CreateBookingController(Supplier<SceneManager> sceneManagerSupplier, BookingManager bookingManager) {
         this.sceneManagerSupplier = sceneManagerSupplier;
         this.bookingManager = bookingManager;

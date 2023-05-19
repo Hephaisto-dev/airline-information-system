@@ -11,8 +11,6 @@ import java.util.function.Supplier;
 
 public class CreateAirportController {
 
-    private static int counter = 1;
-
     private final Supplier<SceneManager> sceneManagerSupplier;
 
     private final AirportManager airportManager;
@@ -26,13 +24,11 @@ public class CreateAirportController {
     private TextField airportCountry;
 
     @FXML
-    private Button backButton;
+    private Label result;
 
     @FXML
     private Button submitButton;
 
-    @FXML
-    private Label result;
 
     public CreateAirportController(Supplier<SceneManager> sceneManagerSupplier, AirportManager airportManager) {
         this.sceneManagerSupplier = sceneManagerSupplier;
@@ -46,10 +42,7 @@ public class CreateAirportController {
     }
 
     public String sendAirport(String airportName, String airportCountry) {
-        String id = "AIR" + airportName.toUpperCase() + String.format("%04d", counter);
-        counter++;
-
-        return airportCreator.createAirport(id, airportName, airportCountry);
+        return airportCreator.createAirport(airportName, airportCountry);
     }
 
 }
