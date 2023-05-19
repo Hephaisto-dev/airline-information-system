@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
 
 <AnchorPane prefHeight="38.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FooterController">
    <children>
-      <FontAwesomeIcon fx:id="facebookIcon" fill="#3b5998" glyphName="FACEBOOK" layoutX="479.0" layoutY="29.0" size="2em" stroke="BLACK" strokeWidth="0.5" textAlignment="CENTER" wrappingWidth="20.380972862243652" />
       <Label layoutX="6.0" layoutY="10.0" prefHeight="17.0" prefWidth="247.0" text="©®All rights reserved to Project Group 17™" />
-      <FontAwesomeIcon fx:id="twitterIcon" fill="#00acee" glyphName="TWITTER" layoutX="507.0" layoutY="29.0" size="2em" stroke="BLACK" strokeWidth="0.5" text="" textAlignment="CENTER" />
-      <FontAwesomeIcon fx:id="InstagramIcon" fill="#962fbf" glyphName="INSTAGRAM" layoutX="538.0" layoutY="27.0" selectionStart="0" size="1.75em" stroke="BLACK" strokeWidth="0.5" textAlignment="CENTER" />
-      <FontAwesomeIcon fx:id="emailIcon" fill="#00a2ed" glyphName="ENVELOPE" layoutX="565.0" layoutY="27.0" size="1.75em" stroke="BLACK" strokeWidth="0.5" text="" />
    </children>
 </AnchorPane>
