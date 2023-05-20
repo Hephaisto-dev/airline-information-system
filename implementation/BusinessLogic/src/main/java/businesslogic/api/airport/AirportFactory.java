@@ -4,8 +4,9 @@ import businesslogic.impl.AirportImpl;
 import datarecords.AirportData;
 
 public interface AirportFactory {
-    static Airport createAirport(String id, String name, String country) {
-        return new AirportImpl(id, name, country);
+    static Airport createAirport(String name, String country) {
+        String id = "AIR_" + name + ":" + country;
+        return createAirport(id,name,country);
     }
 
     static Airport createAirport(AirportData airportData) {
@@ -19,8 +20,7 @@ public interface AirportFactory {
             throw new NoAirportException();
         }
     }
-
-//    static Airport createAirport(){
-//
-//    }
+    static Airport createAirport(String id, String name, String country) {
+        return createAirport(new AirportData(id, name, country));
+    }
 }

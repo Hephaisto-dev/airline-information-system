@@ -81,12 +81,19 @@ public class FlightStorageServiceImpl implements FlightStorageService {
                 Duration flightduration = Duration.ofSeconds(result.getLong("flight_duration"));
                 String airplaneid = result.getString("airplane_id");
 
-                flightData.add(new FlightData(id, etd, eta, flightduration, airplaneid, departureAirportId, arrivalAirportId));
+                if (departureAirportId == null) {
+                    continue;
+                }
+
+                FlightData flight = new FlightData(id, etd, eta, flightduration, airplaneid, departureAirportId, arrivalAirportId);
+                flightData.add(flight);
             }
         } catch (SQLException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
         }
         return flightData;
     }
+
+
 }
 

@@ -6,6 +6,7 @@ import businesslogic.api.airport.Airport;
 import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.airport.NoAirportException;
 import businesslogic.api.manager.FlightManager;
+import datarecords.AirplaneData;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -31,8 +32,8 @@ class FlightCreatorTest {
     static final LocalDateTime LDT4 = LocalDateTime.of(2020, 2, 2, 2, 2, 2);
     static final LocalDateTime nullTime = null;
     static final HashMap<String, Airplane> PlaneHash = new HashMap<>();
-    static final Airplane plane1 = AirplaneFactory.createAirplane("Fly", "me", 123, 1);
-    static final Airplane plane2 = AirplaneFactory.createAirplane("Flighter", "planeType", 150, 1);//needs to be faulty plane
+    static final Airplane plane1 = AirplaneFactory.createAirplane(new AirplaneData("ids", "manufacturers", 7, 7, "models", 77));
+    static final Airplane plane2 = AirplaneFactory.createAirplane(new AirplaneData("ids", "manufacturers", 7, 7, "models", 77));//needs to be faulty plane
 
     static {
         try {
