@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DeleteCustomerController">
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DeleteCustomerController">
     <center>
         <AnchorPane>
             <TextField fx:id="searchField" layoutX="346.0" layoutY="31.0" onKeyTyped="#onSearch" />
@@ -13,4 +13,10 @@
             <Label fx:id="result" layoutX="58.0" layoutY="279.0" prefHeight="69.0" prefWidth="515.0" text="Result" wrapText="true" />
         </AnchorPane>
     </center>
+    <top>
+        <fx:include source="navBar.fxml" />
+    </top>
+    <bottom>
+        <fx:include source="footer.fxml" />
+    </bottom>
 </BorderPane>

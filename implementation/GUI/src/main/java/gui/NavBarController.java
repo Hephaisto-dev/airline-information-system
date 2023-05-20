@@ -92,7 +92,7 @@ public class NavBarController implements Initializable {
     @FXML
     private MenuItem registerCustomer;
     @FXML
-    private MenuItem editCustomer;
+    private MenuItem deleteCustomer;
 
 
     //Management and all its options
@@ -155,6 +155,10 @@ public class NavBarController implements Initializable {
         sceneManagerSupplier.get().changeScene("createCustomerView");
     }
 
+    public void sendToDeleteCustomer() {
+        sceneManagerSupplier.get().changeScene("deleteCustomerView");
+    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -197,8 +201,7 @@ public class NavBarController implements Initializable {
                 searchForBooking.setVisible(true);
 
                 registerCustomer.setVisible(true);
-                //editCustomer.setVisible(true);
-
+                deleteCustomer.setVisible(true);
 
                 purchaseTicket.setVisible(true);
                 searchForFlight.setVisible(true);
@@ -228,7 +231,7 @@ public class NavBarController implements Initializable {
                 purchaseTicket.setVisible(true);
 
                 registerCustomer.setVisible(true);
-                editCustomer.setVisible(true);
+                deleteCustomer.setVisible(true);
 
                 financialSheet.setVisible(true);
                 statistics.setVisible(true);
