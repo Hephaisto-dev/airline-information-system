@@ -28,7 +28,7 @@ public class TicketStorageServiceImpl implements TicketStorageService {
     @Override
     public TicketData add(TicketData ticketData) {
 
-        String query = "INSERT INTO tickets (id, flight_id, customer_id, price) values (?, ?, ?, ?) returning *";
+        String query = "INSERT INTO tickets (id, flight_id, customer_id, price, seat_id) values (?, ?, ?, ?, ?) returning *";
 
 
         try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
@@ -37,11 +37,13 @@ public class TicketStorageServiceImpl implements TicketStorageService {
             String F_id = ticketData.flightId();
             String C_id = ticketData.customerId();
             int price = ticketData.price();
+            String seat = ticketData.seatId();
 
             pstm.setString(1, T_id);
             pstm.setString(2, F_id);
             pstm.setString(3, C_id);
             pstm.setInt(4, price);
+            pstm.setString(5,seat);
 
 
             ResultSet result = pstm.executeQuery();
@@ -52,8 +54,9 @@ public class TicketStorageServiceImpl implements TicketStorageService {
                 F_id = result.getString("flight_id");
                 C_id = result.getString("customer_id");
                 price = result.getInt("price");
+                seat = result.getString("seat_id");
 
-                System.out.println("Ticket with id: " + T_id + ", " + F_id + ", " + C_id + ", " + price);
+                System.out.println("Ticket with id: " + T_id + ", " + F_id + ", " + C_id + ", " + price + ", " + seat);
             }
 
         } catch (SQLException ex) {

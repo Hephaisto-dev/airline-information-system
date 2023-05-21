@@ -30,7 +30,7 @@ public class FlightImpl implements Flight {
     @Override
     public Price getPrice() {
         //TODO adapt to bew architecture
-        return new PriceImpl(0);
+        return new PriceImpl(1000);
     }
 
     @Override

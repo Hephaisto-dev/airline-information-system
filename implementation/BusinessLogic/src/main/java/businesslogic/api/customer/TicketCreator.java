@@ -29,7 +29,7 @@ public class TicketCreator {
     }
 
 
-    private String ticketCheck(Flight fly, String CHAR, String NUM, String cus, List list, String discount, String voucher) {
+    private String ticketCheck(Flight fly, String NUM, String CHAR, String cus, List list, String discount, String voucher) {
         errorFound = false;
         char letter = 'A';
         int number = 0;
@@ -108,7 +108,7 @@ public class TicketCreator {
         }
         //returning the end result
         if (!errorFound) {
-            TSS.add(new TicketData(fly.getId() + NUM + CHAR, fly.getId(), cus, cost.getBackendPrice()));
+            TSS.add(new TicketData(fly.getId() + NUM + CHAR, fly.getId(), cus, cost.getBackendPrice(), ""+NUM+CHAR));
             return "Ticket booked successfully";
         }
         return getErrors(list);

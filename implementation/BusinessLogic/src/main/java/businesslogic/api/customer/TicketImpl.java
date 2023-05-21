@@ -89,6 +89,6 @@ public class TicketImpl implements Ticket {
 
     @Override
     public TicketData getData() {
-        return new TicketData(createID(), flight.getId(), person, ticketPrice.getBackendPrice());
+        return new TicketData(createID(), flight.getId(), person, ticketPrice.getBackendPrice(), seat);
     }
 }
