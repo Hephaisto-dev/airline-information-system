@@ -11,13 +11,13 @@ public class AirportCreator {
     }
 
     //change the airport city to dropdown ?
-    public String createAirport(String id, String airportName, String airportCountry) {
+    public String createAirport(String airportName, String airportCountry) {
         boolean errors = false;
 
         StringBuilder stringBuilder = new StringBuilder();
         //implementation for incorrect id format
 
-        if (id == null || airportName == null || airportCountry == null) {
+        if (airportName == null || airportCountry == null) {
             errors = true;
             stringBuilder.append("All fields must be filled in!");
         }
@@ -33,7 +33,7 @@ public class AirportCreator {
 
         if (!errors) {
             try {
-                Airport airport = AirportFactory.createAirport(id, airportName, airportCountry);
+                Airport airport = AirportFactory.createAirport(airportName, airportCountry);
                 airportManager.add(airport);
             } catch (Exception e) {
                 return "There seems to be an issue with the database, please try again." + "\n"

@@ -5,32 +5,43 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane prefHeight="419.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CreateFlightController">
-    <Label alignment="CENTER" layoutY="-22.0" maxWidth="Infinity" prefHeight="100" prefWidth="100" style="-fx-font-size: 15; -fx-font-weight: bold" text="Create Flight" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-    <Label layoutX="58.0" layoutY="56.0" text="Departure airport" />
-    <Label layoutX="58.0" layoutY="94.0" text="Arrival airport" />
-    <Label layoutX="58.0" layoutY="129.0" text="Departure date" />
-    <Label layoutX="58.0" layoutY="198.0" text="Arrival date" />
-    <ComboBox fx:id="departureAirport" layoutX="340.0" layoutY="52.0" prefWidth="150.0" />
-    <ComboBox fx:id="arrivalAirport" layoutX="341.0" layoutY="90.0" prefWidth="150.0" />
-    <TextFlow layoutY="260.0" textAlignment="CENTER" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" />
-    <DatePicker fx:id="departureLocalDate" layoutX="340.0" layoutY="125.0" />
-    <Text layoutX="58.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Departure time" />
-    <Text layoutX="292.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hours:" />
-    <ComboBox fx:id="depHour" layoutX="340.0" layoutY="160.0" prefHeight="26.0" prefWidth="65.0" />
-    <Text layoutX="416.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Min:" />
-    <ComboBox fx:id="depMin" layoutX="451.0" layoutY="160.0" prefHeight="26.0" prefWidth="66.0" />
-    <Text layoutX="58.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arrival time:(HH:MM)" />
-    <DatePicker fx:id="arrivalLocalDate" layoutX="340.0" layoutY="194.0" />
-    <Text layoutX="293.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hours:" />
-    <ComboBox fx:id="arriHour" layoutX="341.0" layoutY="226.0" prefHeight="26.0" prefWidth="65.0" />
-    <Text layoutX="416.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Min:" />
-    <ComboBox fx:id="arriMin" layoutX="453.0" layoutY="226.0" prefHeight="26.0" prefWidth="66.0" />
-    <Label layoutX="58.0" layoutY="264.0" text="Airplane" />
-    <ComboBox fx:id="airplaneComboBox" layoutX="341.0" layoutY="260.0" prefWidth="150.0" />
-    <Button fx:id="createButton" layoutX="489.0" layoutY="297.0" mnemonicParsing="false" onAction="#createFlight" text="Create Flight" />
-    <Label fx:id="result" layoutX="52.0" layoutY="323.0" prefHeight="69.0" prefWidth="515.0" text="Result" wrapText="true" />
-</AnchorPane>
+<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CreateFlightController">
+   <center>
+      <AnchorPane prefHeight="419.0" prefWidth="600.0">
+          <Label alignment="CENTER" layoutY="-22.0" maxWidth="Infinity" prefHeight="100" prefWidth="100" style="-fx-font-size: 15; -fx-font-weight: bold" text="Create Flight" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+          <Label layoutX="58.0" layoutY="56.0" text="Departure airport" />
+          <Label layoutX="58.0" layoutY="94.0" text="Arrival airport" />
+          <Label layoutX="58.0" layoutY="129.0" text="Departure date" />
+          <Label layoutX="58.0" layoutY="198.0" text="Arrival date" />
+          <Label layoutX="58.0" layoutY="264.0" text="Airplane name" />
+          <TextFlow layoutY="260.0" textAlignment="CENTER" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" />
+          <Label fx:id="result" layoutX="52.0" layoutY="323.0" prefHeight="69.0" prefWidth="515.0" text="Result" wrapText="true" />
+          <DatePicker fx:id="departureLocalDate" layoutX="340.0" layoutY="125.0" />
+          <DatePicker fx:id="arrivalLocalDate" layoutX="340.0" layoutY="194.0" />
+          <Button fx:id="createButton" layoutX="489.0" layoutY="297.0" mnemonicParsing="false" onAction="#createFlight" text="Create Flight" />
+          <Text layoutX="58.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Departure time" />
+          <Text layoutX="58.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arrival time:(HH:MM)" />
+          <ComboBox fx:id="depHour" layoutX="340.0" layoutY="160.0" prefHeight="26.0" prefWidth="65.0" />
+          <ComboBox fx:id="depMin" layoutX="451.0" layoutY="160.0" prefHeight="26.0" prefWidth="66.0" />
+          <Text layoutX="292.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hours:" />
+          <Text layoutX="416.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Min:" />
+          <ComboBox fx:id="arriHour" layoutX="341.0" layoutY="226.0" prefHeight="26.0" prefWidth="65.0" />
+          <ComboBox fx:id="arriMin" layoutX="453.0" layoutY="226.0" prefHeight="26.0" prefWidth="66.0" />
+          <Text layoutX="293.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hours:" />
+          <Text layoutX="416.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Min:" />
+         <ComboBox fx:id="departureAirport" layoutX="340.0" layoutY="52.0" prefWidth="150.0" />
+         <ComboBox fx:id="arrivalAirport" layoutX="341.0" layoutY="90.0" prefWidth="150.0" />
+         <ComboBox fx:id="airplaneComboBox" layoutX="341.0" layoutY="260.0" prefWidth="150.0" />
+      </AnchorPane>
+   </center>
+    <top>
+        <fx:include source="navBar.fxml" />
+    </top>
+    <bottom>
+        <fx:include source="footer.fxml" />
+    </bottom>
+</BorderPane>
