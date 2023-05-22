@@ -27,8 +27,6 @@ class TicketImplTest {
     final LocalDateTime futureNear = LocalDateTime.of(2244, 2, 1, 3, 4);
     final Airplane plane = new AirplaneImpl(new AirplaneData("id", "manufacturer", 5, 5, "model", 55));
     final Flight flyer = FlightFactory.createFlight(new FlightData("FLIGHTID", futureNear, futureFar, Duration.between(futureFar, futureNear), plane.getId(), from.getId(), to.getId()));
-
-    Price cost = new PriceImpl(2000);
     /*AirportImpl from = new AirportImpl("FROM", "FROM", "FROM", "FROM");
     AirportImpl to = new AirportImpl("TO", "TO", "TO", "TO");
     //Route route = new RouteImpl(from, to);//Saved for conveniece, if we decide to provide routes somewhere in the Ticket
@@ -38,10 +36,14 @@ class TicketImplTest {
 
     Flight flyer = new FlightImpl(from, to, futureNear, futureFar, plane);*/
     //Price cost = new PriceImpl(2000);
-    Ticket ticket = new TicketImpl("person", flyer, "15D", cost);
+    final Ticket ticket;
+    final Price cost = new PriceImpl(2000);
     @Mock
     Flight flew;
 
+    public TicketImplTest() {
+        this.ticket = new TicketImpl("person", flyer, "15D", cost);
+    }
 
     @Test
     void getTicketID() {

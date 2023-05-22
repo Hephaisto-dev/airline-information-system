@@ -49,8 +49,7 @@ public class DeleteCustomerController implements Initializable {
         if (success) {
             updateCustomersList();
             result.setText("Successfully deleted customer(s)");
-        }
-        else {
+        } else {
             result.setText("Failed to delete customer(s)");
         }
     }

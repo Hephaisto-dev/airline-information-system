@@ -65,7 +65,6 @@ public class AirplaneStorageServiceImpl implements AirplaneStorageService {
             pstm.setInt(6, seats);
 
 
-
             ResultSet result = pstm.executeQuery();
 
             System.out.println("JUST INSERTED: ");
