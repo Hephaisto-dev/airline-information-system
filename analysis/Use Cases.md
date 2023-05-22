@@ -14,7 +14,7 @@
     - [Use Case Search For Booking \<Mathias\>](#use-case-search-for-booking--mathias)
     - [Use Case Use Management Dashboard \<Mathias\>](#use-case-use-management-dashboard--mathias)
     - [Use Case View Financial Sheets In Statistics \<Mathias\>](#use-case-view-financial-sheets-in-statistics--mathias)
-    - [Use Case Searching For A Flight \<Jazz\>](#use-case-searching-for-a-flight--jazz)
+    - [Use Case Searching For A Flight and Delete it\<Jazz\>](#use-case-searching-for-a-flight-and-delete-it--jazz)
     - [Use Case Search For A Route \<Jazz\>](#use-case-search-for-a-route--jazz)
     - [Use Case View Flight Information \<Jazz\>](#use-case-view-flight-information--jazz)
     - [Use Case Edit Personal Information For A Customer \<Jazz\>](#use-case-edit-personal-information-for-a-customer--jazz)
