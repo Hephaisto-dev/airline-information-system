@@ -1,13 +1,6 @@
 package persistence.impl;
 
 import datarecords.TicketData;
-import persistence.api.TicketStorageService;
-import persistence.impl.database.DBProvider;
-
-import javax.sql.DataSource;
-import persistence.api.TicketStorageService;
-
-import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,7 +9,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sql.DataSource;
 import persistence.api.TicketStorageService;
-import persistence.impl.database.DBProvider;
+import persistence.api.exceptions.CustomerException;
+import persistence.api.exceptions.PersistanceException;
 
 public class TicketStorageServiceImpl implements TicketStorageService {
     private final DataSource dataSource;
@@ -26,7 +20,7 @@ public class TicketStorageServiceImpl implements TicketStorageService {
     }
 
     @Override
-    public TicketData add(TicketData ticketData) {
+    public TicketData add(TicketData ticketData) throws CustomerException {
 
         String query = "INSERT INTO tickets (id, flight_id, customer_id, price, seat_id) values (?, ?, ?, ?, ?) returning *";
 
@@ -61,6 +55,14 @@ public class TicketStorageServiceImpl implements TicketStorageService {
 
         } catch (SQLException ex) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getErrorCode());
+            System.out.println(ex.getMessage());
+            String exception = ex.getMessage();
+            char quotationMarks = '"';
+            if(exception.contains("Detail: Key (customer_id)=(")
+                && exception.contains(") is not present in table " + quotationMarks + "customers" + quotationMarks)){
+                throw new CustomerException("Customer_ID not in our Database");
+            }
         }
         return ticketData;
     }

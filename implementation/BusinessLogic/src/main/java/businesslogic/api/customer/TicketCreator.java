@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import persistence.api.PersistenceFactory;
 import persistence.api.TicketStorageService;
+import persistence.api.exceptions.CustomerException;
 import persistence.impl.TicketStorageServiceImpl;
 
 public class TicketCreator {
@@ -110,12 +111,17 @@ public class TicketCreator {
         if (!errorFound) {
             try{
                 TSS.add(new TicketData(fly.getId() + NUM + CHAR, fly.getId(), cus, cost.getBackendPrice(), ""+NUM+CHAR));
+            }catch(CustomerException custi){
+                if(custi.getMessage().contains("Customer_ID not in our Database")){
+                    error(list,"Please ensure validity of customer id (not present in database)");
+                }
             }catch(Exception e){
                 e.printStackTrace();
                 error(list, "Unhandled exception");
+            }
+            if(errorFound){
                 return getErrors(list);
             }
-
             return "Ticket booked successfully";
         }
         return getErrors(list);
