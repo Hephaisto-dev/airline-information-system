@@ -3,32 +3,30 @@
 ---
 
 <!-- TOC -->
-
-- [USE CASES](#use-cases)
-    - [Use Case Purchase Ticket \<Daniel\>](#use-case-purchase-ticket--daniel)
-    - [Use Case Apply Discount \<Daniel\>](#use-case-apply-discount--daniel)
-    - [Use Case Apply Voucher \<Daniel\>](#use-case-apply-voucher--daniel)
-    - [Use Case Login \<Lucas\>](#use-case-login--lucas)
-    - [Use Case Access Previous Flight Records \<Lucas\>](#use-case-access-previous-flight-records--lucas)
-    - [Use Case Start Sales Process \<Lucas\>](#use-case-start-sales-process--lucas)
-    - [Use Case Search For Booking \<Mathias\>](#use-case-search-for-booking--mathias)
-    - [Use Case Use Management Dashboard \<Mathias\>](#use-case-use-management-dashboard--mathias)
-    - [Use Case View Financial Sheets In Statistics \<Mathias\>](#use-case-view-financial-sheets-in-statistics--mathias)
-    - [Use Case Searching For A Flight \<Jazz\>](#use-case-searching-for-a-flight--jazz)
-    - [Use Case Search For A Route \<Jazz\>](#use-case-search-for-a-route--jazz)
-    - [Use Case View Flight Information \<Jazz\>](#use-case-view-flight-information--jazz)
-    - [Use Case Edit Personal Information For A Customer \<Jazz\>](#use-case-edit-personal-information-for-a-customer--jazz)
-    - [Use Case Cancel A Booking \<Jazz\>](#use-case-cancel-a-booking--jazz)
-    - [Use Case Register Employee \<Daniel\>](#use-case-register-employee--daniel)
-    - [Use Case Create A Route \<Martin\>](#use-case-create-a-route--martin)
-    - [Use Case Edit A Route \<Martin\>](#use-case-edit-a-route--martin)
-    - [Use Case Update Upcoming Flight Information \<Martin\>](#use-case-update-upcoming-flight-information--martin)
-    - [Use Case Register Upcoming Flight \<Martin\>](#use-case-register-upcoming-flight--martin)
-    - [Use Case Create A Booking \<Jazz\>](#use-case-create-a-booking--jazz)
-    - [Use Case Adding Extras \<Jazz\>](#use-case-adding-extras--jazz)
-    - [Use Case Cancel A Booking \<Jazz\>](#use-case-cancel-a-booking--jazz-1)
-- [Back to Table of Contents](#back-to-table-of-contents)
-
+* [USE CASES](#use-cases)
+    * [Use Case Purchase Ticket  <Daniel\>](#use-case-purchase-ticket-daniel)
+    * [Use Case Apply Discount  <Daniel\>](#use-case-apply-discount-daniel)
+    * [Use Case Apply Voucher  <Daniel\>](#use-case-apply-voucher-daniel)
+    * [Use Case Login  <Lucas\>](#use-case-login-lucas)
+    * [Use Case Access Previous Flight Records  <Lucas\>](#use-case-access-previous-flight-records-lucas)
+    * [Use Case Start Sales Process  <Lucas\>](#use-case-start-sales-process-lucas)
+    * [Use Case Search For Booking  <Mathias\>](#use-case-search-for-booking-mathias)
+    * [Use Case Use Management Dashboard  <Mathias\>](#use-case-use-management-dashboard-mathias)
+    * [Use Case View Financial Sheets In Statistics  <Mathias\>](#use-case-view-financial-sheets-in-statistics-mathias)
+    * [Use Case Searching For A Flight  <Jazz\>](#use-case-searching-for-a-flight-jazz)
+    * [Use Case Search For A Route  <Jazz\>](#use-case-search-for-a-route-jazz)
+    * [Use Case View Flight Information  <Jazz\>](#use-case-view-flight-information-jazz)
+    * [Use Case Delete Customer  <Mathias\>](#use-case-delete-customer-mathias)
+    * [Use Case Cancel A Booking  <Jazz\>](#use-case-cancel-a-booking-jazz)
+    * [Use Case Register Employee  <Daniel\>](#use-case-register-employee-daniel)
+    * [Use Case Create A Route  <Martin\>](#use-case-create-a-route-martin)
+    * [Use Case Edit A Route  <Martin\>](#use-case-edit-a-route-martin)
+    * [Use Case Update Upcoming Flight Information  <Martin\>](#use-case-update-upcoming-flight-information-martin)
+    * [Use Case Register Upcoming Flight  <Martin\>](#use-case-register-upcoming-flight-martin)
+    * [Use Case Create A Booking  <Jazz\>](#use-case-create-a-booking-jazz)
+    * [Use Case Adding Extras  <Jazz\>](#use-case-adding-extras-jazz)
+    * [Use Case Cancel A Booking  <Jazz\>](#use-case-cancel-a-booking-jazz-1)
+* [Back to Table of Contents](#back-to-table-of-contents)
 <!-- TOC -->
 
 |               | Description                                                                                                                                                                                                                                                                                                                                                                 |
@@ -225,18 +223,18 @@
 
 -----
 
-### Use Case Edit Personal Information For A Customer  <Jazz\>
+### Use Case Delete Customer  <Mathias\>
 
-|               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Name          | Edit personal information for a custumer                                                                                                                                                                                                                                                                                                                                                                                                        |
-| Actor         | Sales employee                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| Description   | A sales employee is editing custumers personal information                                                                                                                                                                                                                                                                                                                                                                                      |
-| Pre-condition | <ul><li>Sales Employee is signed into their account</li></ul>                                                                                                                                                                                                                                                                                                                                                                                   |
-| Scenario      | <ol><li>Actor navigates to the page for editing customers' information</li><li>System displays that page</li><li>Actor searches for a customer by name</li><li>System displays additional information about the customer, like their names, birth-date, </li><li>Actor edits the First name, Last name, e-mail, phone number for the customer</li><li>Actor confirms the modified data</li><li>System confirms the made modifications</li></ol> |
-| Result        | The actor has edited the customers' information                                                                                                                                                                                                                                                                                                                                                                                                 |
-| Extensions    | None                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| Exceptions    | <ol start = "6"><li><ol type = "a"><li>System informs the user that something went wrong while editing the information<ol><li>Use case ends here</li></ol></li></ol></li></ol>                                                                                                                                                                                                                                                                  |
+|               | Description                                                                                                                                                                                                                                                                                                                                            |
+|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | Delete customer                                                                                                                                                                                                                                                                                                                                        |
+| Actor         | Sales employee                                                                                                                                                                                                                                                                                                                                         |
+| Description   | A sales employee is deleting a customer                                                                                                                                                                                                                                                                                                                |
+| Pre-condition | <ul><li>Sales Employee is signed into their account</li></ul>                                                                                                                                                                                                                                                                                          |
+| Scenario      | <ol><li>Actor navigates to the page for deleting customers</li><li>System displays that page</li><li>Actor searches for a customer by id, first name, last name, email or date of birth</li><li>System displays customers that match the search</li><li>Actor select the customer to delete</li><li>System confirms the customer was deleted</li></ol> |
+| Result        | The actor has deleted a customer                                                                                                                                                                                                                                                                                                                       |
+| Extensions    | None                                                                                                                                                                                                                                                                                                                                                   |
+| Exceptions    | <ol start = "6"><li><ol type = "a"><li>System informs the user that the customer can't be deleted<ol><li>Use case ends here</li></ol></li></ol></li></ol>                                                                                                                                                                                              |
 
 ----
 
