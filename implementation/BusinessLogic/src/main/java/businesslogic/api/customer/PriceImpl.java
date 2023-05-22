@@ -42,6 +42,7 @@ public class PriceImpl implements Price {
         return stringBuilder.append(amount / 100)
                 .append(',')
                 .append((amount % 100))
+                .append(CurrencyType.EURO.toString())
                 .toString();
     }
 }

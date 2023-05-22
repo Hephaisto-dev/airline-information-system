@@ -5,12 +5,9 @@ import org.junit.jupiter.api.Test;
 
 class PriceImplTest {
 
-    private final CurrencyType Euro = CurrencyType.EURO;
-    private final CurrencyType USDoll = CurrencyType.DOLLAR;
-
     private Price Cost1 = new PriceImpl(1250);
-    private Price Cost2 = new PriceImpl(930, CurrencyType.DOLLAR);
-    private Price Cost3 = new PriceImpl(1540, CurrencyType.EURO);
+    private Price Cost2 = new PriceImpl(930);
+    private Price Cost3 = new PriceImpl(1540);
 
 
     @Test
@@ -61,7 +58,7 @@ class PriceImplTest {
             softly.assertThat(Cost1.toString())
                     .isEqualTo("12,50€");
             softly.assertThat(Cost2.toString())
-                    .isEqualTo("9,30" + CurrencyType.DOLLAR.getCurrency().getSymbol());
+                    .isEqualTo("9,30€");
             softly.assertThat(Cost3.toString())
                     .isEqualTo("15,40€");
         });

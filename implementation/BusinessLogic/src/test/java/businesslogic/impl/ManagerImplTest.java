@@ -24,7 +24,10 @@ class ManagerImplTest {
     private ManagerImpl<PersistantDataContainer<Record>, Record> manager;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws Exception {
+        /**
+         * No Exception is actually thrown due to mocking, but java is a whiny bitch
+         */
         MockitoAnnotations.openMocks(this);
         when(persistentDataContainer.getId()).thenReturn("id");
         when(persistentDataContainer.getData()).thenReturn(record);
@@ -40,14 +43,14 @@ class ManagerImplTest {
     }
 
     @Test
-    void addDuplicateReturnNull() {
+    void addDuplicateReturnNull() throws Exception {
         assertThat(manager.add(persistentDataContainer))
                 .as("Duplicate should return null")
                 .isEqualTo(null);
     }
 
     @Test
-    void addReturnAddedObject() {
+    void addReturnAddedObject() throws Exception {
         manager.remove(persistentDataContainer);
         assertThat(manager.add(persistentDataContainer))
                 .as("Should return added object")

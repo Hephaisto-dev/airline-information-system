@@ -29,12 +29,13 @@ class TicketCreatorTest {
     @Mock
     private Airplane planeMock;
 
-    private TicketData ticketInfo = new TicketData("MockPlane1A","MockPlane","Customer",49);
+    private TicketData ticketInfo = new TicketData("MockPlane1A","MockPlane","Customer",49, "4D");
 
     @BeforeEach
-    public void initMock(){
+    public void initMock() throws Exception {
+        //It doesn't throw an Exception due to mocking, but Java is a whiny bitch
         MockitoAnnotations.openMocks(this);
-        Mockito.when(TSS.add(new TicketData("MockPlane1A","MockPlane","Customer",49)))
+        Mockito.when(TSS.add(new TicketData("MockPlane1A","MockPlane","Customer",49, "4D")))
                         .thenReturn(ticketInfo);
         Mockito.when(flyer.bookSeat(1, 'A')).thenReturn("successfully");
         Mockito.when(flyer.bookSeat(141,'B')).thenReturn("Failure");
@@ -58,7 +59,7 @@ class TicketCreatorTest {
     void createTicket(String CHAR, String NUM, String cus, String discount, String voucher,String expectation) {
 
         SoftAssertions.assertSoftly(softly->{
-            softly.assertThat(creator.createTicket(flyer, CHAR, NUM, cus, discount, voucher))
+            softly.assertThat(creator.createTicket(flyer, NUM, CHAR, cus, discount, voucher))
                     .contains(expectation);
         });
     }
