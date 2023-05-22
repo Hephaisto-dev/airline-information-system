@@ -7,14 +7,13 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CancelBookingController implements Initializable {
+public class SearchBookingController implements Initializable {
     private final BookingManager bookingManager;
     @FXML
     private ListView<Booking> bookingListView;
@@ -23,7 +22,7 @@ public class CancelBookingController implements Initializable {
     @FXML
     private TextField searchField;
 
-    public CancelBookingController(BookingManager bookingManager) {
+    public SearchBookingController(BookingManager bookingManager) {
         this.bookingManager = bookingManager;
     }
 

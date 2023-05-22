@@ -40,14 +40,14 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CancelBookingController">
+<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SearchBookingController">
    <center>
       <VBox prefHeight="400.0" prefWidth="640.0">
           <AnchorPane VBox.vgrow="ALWAYS">
               <TextField fx:id="searchField" layoutX="287.0" layoutY="31.0" onKeyTyped="#onSearch" prefHeight="25.0" prefWidth="182.0" />
               <ListView fx:id="bookingListView" layoutX="57.0" layoutY="84.0" prefHeight="240.0" prefWidth="526.0" />
               <Label layoutX="198.0" layoutY="35.0" text="Search booking :" />
-              <Button fx:id="cancelButton" layoutX="270.0" layoutY="343.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Cancel" onAction="#onCancel"/>
+              <Button layoutX="270.0" layoutY="343.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Cancel" onAction="#onCancel"/>
           </AnchorPane>
       </VBox>
    </center>
