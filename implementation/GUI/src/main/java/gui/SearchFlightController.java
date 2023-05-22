@@ -84,6 +84,9 @@ public class SearchFlightController implements Initializable {
         if (success) {
             updateFlightList();
         }
+//        try(SQLDataException exception) {
+//
+//        }
     }
 
     @Override
