@@ -108,7 +108,14 @@ public class TicketCreator {
         }
         //returning the end result
         if (!errorFound) {
-            TSS.add(new TicketData(fly.getId() + NUM + CHAR, fly.getId(), cus, cost.getBackendPrice(), ""+NUM+CHAR));
+            try{
+                TSS.add(new TicketData(fly.getId() + NUM + CHAR, fly.getId(), cus, cost.getBackendPrice(), ""+NUM+CHAR));
+            }catch(Exception e){
+                e.printStackTrace();
+                error(list, "Unhandled exception");
+                return getErrors(list);
+            }
+
             return "Ticket booked successfully";
         }
         return getErrors(list);
