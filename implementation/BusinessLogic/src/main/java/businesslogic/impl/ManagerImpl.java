@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import persistence.api.exceptions.PersistanceException;
 
 public abstract class ManagerImpl<T extends PersistantDataContainer<D>, D extends Record> implements Manager<T, D> {
     private final Map<String, T> storage = new HashMap<>();
@@ -19,7 +20,7 @@ public abstract class ManagerImpl<T extends PersistantDataContainer<D>, D extend
     }
 
     @Override
-    public T add(T t) {
+    public T add(T t) throws Exception {
         if (storage.containsKey(t.getId()) || storageService.add(t.getData()) == null) {
             return null;
         }

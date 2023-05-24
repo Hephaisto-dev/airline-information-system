@@ -11,15 +11,8 @@ public interface Price {
      */
     void applyVoucher(int percentage);
 
-    /**
-     * Choose the currency
-     */
-    void chooseCurrency(String ISO_Code);
-
     void setPrice(int price);
 
     int getBackendPrice();
-
-    String getCurrencySymbol();
 
 }

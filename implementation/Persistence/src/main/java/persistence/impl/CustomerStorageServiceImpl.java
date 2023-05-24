@@ -85,4 +85,7 @@ public class CustomerStorageServiceImpl implements CustomerStorageService {
         }
         return false;
     }
+    /*
+    alternative: CustomerManager.getById(customerId);
+     */
 }

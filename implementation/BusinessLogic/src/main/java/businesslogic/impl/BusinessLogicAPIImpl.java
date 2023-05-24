@@ -35,7 +35,8 @@ public enum BusinessLogicAPIImpl implements BusinessLogicAPI {
                 BookingManager.class, new BookingManager(persistenceAPI.getBookingStorageService()),
                 CustomerManager.class, new CustomerManager(persistenceAPI.getCustomerStorageService()),
                 EmployeeManager.class, new EmployeeManager(persistenceAPI.getEmployeeStorageService()),
-                FlightManager.class, new FlightManager(persistenceAPI.getFlightStorageService())
+                FlightManager.class, new FlightManager(persistenceAPI.getFlightStorageService()),
+                TicketManager.class, new TicketManager(persistenceAPI.getTicketStorageService())
         );
     }
 
@@ -77,6 +78,11 @@ public enum BusinessLogicAPIImpl implements BusinessLogicAPI {
     @Override
     public RouteManager getRouteManager() {
         return getManager(RouteManager.class);
+    }
+
+    @Override
+    public TicketManager getTicketManager() {
+        return getManager(TicketManager.class);
     }
 
     @Override
