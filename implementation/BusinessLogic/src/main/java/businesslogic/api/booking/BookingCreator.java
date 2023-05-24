@@ -2,9 +2,11 @@ package businesslogic.api.booking;
 
 import businesslogic.api.customer.CustomerCreator;
 import businesslogic.api.customer.TicketCreator;
+import businesslogic.api.flight.Flight;
 import businesslogic.api.manager.BookingManager;
 import businesslogic.api.manager.CustomerManager;
 import datarecords.*;
+import businesslogic.api.flight.FlightFactory;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -14,6 +16,9 @@ public class BookingCreator {
     private final BookingManager bookingManager;
     private TicketCreator ticketCreator;
     private CustomerCreator customerCreator;
+    private FlightFactory flightFactory;
+    private final static String emailRegex = "^((?!\\.)[\\w-_.]*[^.])(@\\w+)(\\.\\w+(\\.\\w+)?[^.\\W])$";
+
 
 
     public BookingCreator(BookingManager manager) {
@@ -22,9 +27,8 @@ public class BookingCreator {
     }
 
     // Change signature according to record
-    public String createBooking(String id, EmployeeData employeeData, FlightData flight, List<TicketData> Tickets, LocalDate bookingDate, List<String> extras, List<String> customersOnBooking, CustomerData mainCustomer) {
+    public String createBooking(String id, String employeeData, FlightData flight, List<TicketData> Tickets, LocalDate bookingDate, List<String> extras, List<String> customersOnBooking, CustomerData mainCustomer) {
 
-// TODO SILL SOME RESTRICTIONS MISSING BECAUSE OF NOT IMPLEMENTED CLASSES
 
         boolean errors = false;
 
@@ -46,22 +50,32 @@ public class BookingCreator {
             stringBuilder.append("a booking must countain at least 1 person!\n");
         }
 
-        if (Tickets != null && Tickets.size() == 0) {
-
-            errors = true;
-            stringBuilder.append("a error happend while generating ticketIds!\n");
-        }
+//        if (Tickets != null && Tickets.size() == 0) {
+//
+//            errors = true;
+//            stringBuilder.append("a error happend while generating ticketIds!\n");
+//        }
 
 
         if (!errors) {
             try {
 
-                String customerId = null;//todo make this a code ASK TEAM
-                Booking booking = BookingFactory.createBooking(new BookingData(id, employeeData.id(), new ArrayList<>(), bookingDate, extras, customerId));
+                String customerId = mainCustomer.id();
+                Booking booking = BookingFactory.createBooking(new BookingData(id, employeeData, null, bookingDate, extras, customerId,flight.id()));
+
                 bookingManager.add(booking);
-                //todo ticketCreator.createTicket(,);
-                //todo customerCreator.createCustomer();
+                System.out.println("wow a booking has been created");
+
+                Flight flight1 = FlightFactory.createFlight(flight);
+                for (String c:customersOnBooking)
+                {
+                    System.out.println("wow a ticket has been created");
+                    ticketCreator.createTicket(flight1,"A","1",c);
+                }
+                System.out.println("wow a customer has been created");
+                customerCreator.createCustomer(mainCustomer.firstName(), mainCustomer.lastName(), mainCustomer.dob(),mainCustomer.email());
             } catch (Exception e) {
+
                 return "There seems to be an issue with the database, please try again." + "\n"
                         + "+If the issue persists, contact the IT department";
             }
