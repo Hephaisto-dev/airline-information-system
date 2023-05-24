@@ -1,6 +1,7 @@
 package businesslogic.api.manager;
 
 import businesslogic.api.customer.Ticket;
+import businesslogic.api.customer.TicketFactory;
 import businesslogic.impl.ManagerImpl;
 import datarecords.TicketData;
 import persistence.api.TicketStorageService;
@@ -11,6 +12,6 @@ public class TicketManager extends ManagerImpl<Ticket, TicketData> {
     }
     @Override
     protected Ticket createPersistantDataContainer(TicketData data) {
-        return null;
+        return TicketFactory.createTicket(data);
     }
 }
