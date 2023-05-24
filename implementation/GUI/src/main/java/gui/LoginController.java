@@ -9,19 +9,16 @@ import javafx.scene.control.Button;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.function.Supplier;
+
 public class LoginController implements Initializable {
     private final Supplier<SceneManager> sceneManagerSupplier;
-
+    private final BusinessLogicAPI businessLogicAPI;
     @FXML
     private Button employeeBtn;
-
     @FXML
     private Button managerBtn;
-
     @FXML
     private Button officerBtn;
-
-    private final BusinessLogicAPI businessLogicAPI;
 
     public LoginController(Supplier<SceneManager> sceneManagerSupplier, BusinessLogicAPI businessLogicAPI) {
         this.sceneManagerSupplier = sceneManagerSupplier;

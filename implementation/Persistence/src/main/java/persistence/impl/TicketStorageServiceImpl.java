@@ -2,10 +2,6 @@ package persistence.impl;
 
 import datarecords.TicketData;
 import persistence.api.TicketStorageService;
-import persistence.impl.database.DBProvider;
-
-import javax.sql.DataSource;
-import persistence.api.TicketStorageService;
 
 import javax.sql.DataSource;
 import java.sql.Connection;

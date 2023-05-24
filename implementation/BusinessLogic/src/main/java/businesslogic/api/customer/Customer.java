@@ -5,4 +5,5 @@ import businesslogic.api.common.Person;
 import datarecords.CustomerData;
 
 public interface Customer extends PersistantDataContainer<CustomerData>, Person {
+    boolean delete();
 }

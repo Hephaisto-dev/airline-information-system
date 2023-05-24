@@ -7,5 +7,7 @@ public interface Person extends Nameable {
 
     String getLastName();
 
+    String getEmail();
+
     LocalDate getDob();
 }

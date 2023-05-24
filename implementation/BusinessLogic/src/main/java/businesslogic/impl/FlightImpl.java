@@ -120,6 +120,7 @@ public class FlightImpl implements Flight {
     public Airport getDeparture() {
         return BusinessLogicFactory.getImplementation().getAirportManager().getById(flightData.departureAirportId());
     }
+
     @Override
     public boolean delete() {
         return BusinessLogicFactory.getImplementation().getFlightManager().remove(this);
