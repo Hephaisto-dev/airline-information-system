@@ -28,5 +28,5 @@ public interface Flight extends PersistantDataContainer<FlightData>, TravelDesti
 
     Seat getSeat(String Seat_Id);
 
-    boolean cancel();
+    boolean delete();
 }
