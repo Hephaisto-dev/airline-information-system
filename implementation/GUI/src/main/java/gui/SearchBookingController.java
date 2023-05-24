@@ -5,6 +5,7 @@ import businesslogic.api.manager.BookingManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -13,6 +14,7 @@ import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.Supplier;
 
 public class SearchBookingController implements Initializable {
     private final BookingManager bookingManager;
@@ -25,9 +27,12 @@ public class SearchBookingController implements Initializable {
 
     @FXML
     private Button cancelButton;
+    private final Supplier<SceneManager> sceneManagerSupplier;
 
-    public SearchBookingController(BookingManager bookingManager) {
+
+    public SearchBookingController(Supplier<SceneManager> sceneManagerSupplier,BookingManager bookingManager) {
         this.bookingManager = bookingManager;
+        this.sceneManagerSupplier = sceneManagerSupplier;
     }
 
     public void onSearch() {

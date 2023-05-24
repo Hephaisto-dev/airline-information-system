@@ -8,7 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="800" minWidth="1000" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SearchFlightController">
+<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SearchFlightController">
+    <center>
+        <AnchorPane minHeight="800" minWidth="1000">
     <children>
         <Button layoutX="919.0" layoutY="760.0" mnemonicParsing="false" text="Acceept" />
         <Button fx:id="delete" layoutX="18.0" layoutY="747.0" onAction="#delete" mnemonicParsing="false" text="Delete" />
@@ -27,5 +29,44 @@
       <Text layoutX="20.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search:" wrappingWidth="52.5" />
       <Button layoutX="19.0" layoutY="27.0" mnemonicParsing="false" text="Back" />
       <Label fx:id="result" layoutX="34.0" layoutY="695.0" text="Result:" />
-    </children>
+
 </AnchorPane>
+        </center>
+<top>
+<fx:include source="navBar.fxml"/>
+</top>
+<bottom>
+<fx:include source="footer.fxml"/>
+</bottom>
+</BorderPane>
+
+<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SearchFlightController">
+   <center>
+      <AnchorPane minHeight="800" minWidth="1000">
+          <children>
+              <Button layoutX="919.0" layoutY="760.0" mnemonicParsing="false" text="Acceept" />
+              <Button fx:id="delete" layoutX="18.0" layoutY="747.0" mnemonicParsing="false" text="Delete" />
+              <TextField fx:id="searchField" layoutX="71.0" layoutY="130.0" onKeyTyped="#onSearch" prefHeight="33.0" prefWidth="900.0" />
+            <TableView fx:id="flightTableView" layoutX="32.0" layoutY="233.0" prefHeight="475.0" prefWidth="950.0">
+              <columns>
+                <TableColumn fx:id="id" prefWidth="320.0" text="ID" />
+                <TableColumn fx:id="from" prefWidth="70.0" text="From" />
+                  <TableColumn fx:id="to" minWidth="5.0" prefWidth="70.0" text="To" />
+                  <TableColumn fx:id="etd" prefWidth="120.0" text="ETD" />
+                  <TableColumn fx:id="eta" prefWidth="120.0" text="ETA" />
+                  <TableColumn fx:id="duration" prefWidth="120.0" text="Duration" />
+                  <TableColumn fx:id="airplane" prefWidth="149.0" text="Airplane" />
+              </columns>
+            </TableView>
+            <Text layoutX="20.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search:" wrappingWidth="52.5" />
+            <Button layoutX="19.0" layoutY="27.0" mnemonicParsing="false" text="Back" />
+          </children>
+      </AnchorPane>
+   </center>
+    <top>
+        <fx:include source="navBar.fxml"/>
+    </top>
+    <bottom>
+        <fx:include source="footer.fxml"/>
+    </bottom>
+</BorderPane>

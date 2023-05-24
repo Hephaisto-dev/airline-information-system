@@ -14,7 +14,7 @@
     - [Use Case Search For Booking \<Mathias\>](#use-case-search-for-booking--mathias)
     - [Use Case Use Management Dashboard \<Mathias\>](#use-case-use-management-dashboard--mathias)
     - [Use Case View Financial Sheets In Statistics \<Mathias\>](#use-case-view-financial-sheets-in-statistics--mathias)
-    - [Use Case Searching For A Flight \<Jazz\>](#use-case-searching-for-a-flight--jazz)
+    - [Use Case Searching For A Flight and Delete it\<Jazz\>](#use-case-searching-for-a-flight-and-delete-it--jazz)
     - [Use Case Search For A Route \<Jazz\>](#use-case-search-for-a-route--jazz)
     - [Use Case View Flight Information \<Jazz\>](#use-case-view-flight-information--jazz)
     - [Use Case Edit Personal Information For A Customer \<Jazz\>](#use-case-edit-personal-information-for-a-customer--jazz)
@@ -180,16 +180,16 @@
 
 ---
 
-### Use Case Searching For A Flight  <Jazz\>
+### Use Case Searching For A Flight and Delete it  <Jazz\>
 
 |               | Description                                                                                                                                                                                                                                                                                                         |
 |---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Name          | Search for a flight                                                                                                                                                                                                                                                                                                 |
+| Name          | Search for a flight and delete it                                                                                                                                                                                                                                                                                                |
 | Actor         | Sales employee                                                                                                                                                                                                                                                                                                      |
-| Description   | A sales employee is searching for one or more flights                                                                                                                                                                                                                                                               |
+| Description   | A sales employee is searching for one or more flights that he wants to delete                                                                                                                                                                                                                                                               |
 | Pre-condition | <ul><li>Sales Employee is signed into their account</li></ul>                                                                                                                                                                                                                                                       |
-| Scenario      | <ol><li>Actor navigates to the page for searching flights</li><li>System displays that page</li><li>Actor enters the necessary information for searching a flight and confirms it</li><li>System gives the necessary information, that was asked for</li><li>Actor chooses the information that they need</li></ol> |
-| Result        | The actor has successfully found a flight                                                                                                                                                                                                                                                                           |
+| Scenario      | <ol><li>Actor navigates to the page for searching flights</li><li>System displays that page</li><li>Actor enters the necessary information for searching a flight</li><li>System gives the necessary information, that was asked for</li><li>Actor chooses the information that they need and delets ti</li><li>System confirms the action by displaying a message</li></ol> |
+| Result        | The actor has successfully deleted a flight                                                                                                                                                                                                                                                                         |
 | Extensions    | None                                                                                                                                                                                                                                                                                                                |
 | Exceptions    | <ol start = "4"><li><ol type = "a"><li>System informs the user that something went wrong while searching for a route<ol><li>Use case ends here</li></ol></li></ol></li></ol>                                                                                                                                        |
 
