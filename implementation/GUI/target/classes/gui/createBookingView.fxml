@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -13,30 +12,23 @@
 
 <AnchorPane prefHeight="588.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CreateBookingController">
     <children>
-        <Button fx:id="btnCreateBooking" layoutX="118.0" layoutY="347.0" mnemonicParsing="false" onAction="#createBooking" text="Create the booking" />
-        <ComboBox fx:id="cbFlights" layoutX="234.0" layoutY="111.0" onAction="#updatePrice" prefWidth="150.0" />
+        <Button fx:id="btnCreateBooking" layoutX="633.0" layoutY="482.0" mnemonicParsing="false" onAction="#createBooking" text="Create the booking" />
         <Text layoutX="98.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create a Booking" />
-        <Text layoutX="485.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add customer to your booking" />
+        <Text layoutX="414.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add main customer to your booking" />
         <Text layoutX="714.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passengers in the booking:" />
-        <Button fx:id="btnAddCustomer" layoutX="532.0" layoutY="271.0" mnemonicParsing="false" onAction="#addCustomer" text="Save the customer" />
-        <Text layoutX="73.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee id:" />
-        <Text layoutX="70.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Flight:" wrappingWidth="32.197265625" />
-        <Text layoutX="72.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Extra" />
-        <TextField fx:id="empId" layoutX="234.0" layoutY="78.0" />
-        <ComboBox fx:id="cbExtras" layoutX="234.0" layoutY="147.0" prefWidth="150.0" />
-        <Button fx:id="btnExtra" disable="true" layoutX="384.0" layoutY="146.0" mnemonicParsing="false" onAction="#addExtra" prefHeight="26.0" prefWidth="67.0" text="Add Extra" />
-        <Text layoutX="70.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Added Extras:" />
-        <Text layoutX="456.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First name:" />
-        <Text layoutX="455.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last name:" />
-        <Text layoutX="456.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of birth" />
-        <Text layoutX="456.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" />
-        <TextField fx:id="lastName" layoutX="532.0" layoutY="119.0" prefHeight="26.0" prefWidth="139.0" />
-        <TextField fx:id="email" layoutX="532.0" layoutY="193.0" prefHeight="26.0" prefWidth="139.0" />
-        <TextField fx:id="firstName" layoutX="532.0" layoutY="81.0" prefHeight="26.0" prefWidth="139.0" />
-        <DatePicker fx:id="dateOfBirth" layoutX="532.0" layoutY="159.0" prefHeight="26.0" prefWidth="150.0" />
-        <ListView fx:id="listViewExtras" layoutX="149.0" layoutY="185.0" prefHeight="130.0" prefWidth="237.0" />
-        <ListView fx:id="listViewCustomers" layoutX="700.0" layoutY="141.0" prefHeight="130.0" prefWidth="212.0" />
-        <Text fx:id="result" layoutX="14.0" layoutY="403.0" strokeType="OUTSIDE" strokeWidth="0.0" text="result" wrappingWidth="382.9367370605469">
+        <Button fx:id="btnAddCustomer" layoutX="463.0" layoutY="280.0" mnemonicParsing="false" onAction="#addCustomer" text="save main customer" />
+        <Text layoutX="27.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee id:" />
+        <TextField fx:id="empId" layoutX="114.0" layoutY="69.0" />
+        <Text layoutX="387.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First name:" />
+        <Text layoutX="386.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last name:" />
+        <Text layoutX="387.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of birth" />
+        <Text layoutX="387.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" />
+        <TextField fx:id="lastName" layoutX="463.0" layoutY="142.0" prefHeight="26.0" prefWidth="139.0" />
+        <TextField fx:id="email" layoutX="463.0" layoutY="216.0" prefHeight="26.0" prefWidth="139.0" />
+        <TextField fx:id="firstName" layoutX="463.0" layoutY="104.0" prefHeight="26.0" prefWidth="139.0" />
+        <DatePicker fx:id="dateOfBirth" layoutX="463.0" layoutY="182.0" prefHeight="26.0" prefWidth="150.0" />
+        <ListView fx:id="listViewCustomers" layoutX="700.0" layoutY="140.0" prefHeight="130.0" prefWidth="212.0" />
+        <Text fx:id="result" layoutX="533.0" layoutY="551.0" strokeType="OUTSIDE" strokeWidth="0.0" text="result" wrappingWidth="382.9367370605469">
             <font>
                 <Font size="14.0" />
             </font>
@@ -44,24 +36,25 @@
             <Blend />
          </effect>
         </Text>
-        <Text fx:id="pricePerPerson" layoutX="544.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0,00" />
-        <Text layoutX="439.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price per person:" />
-        <Text layoutX="27.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your total to pay:" />
-        <Text fx:id="totalToPay" layoutX="127.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0,00" />
-        <Button fx:id="getPrice" layoutX="14.0" layoutY="347.0" mnemonicParsing="false" onAction="#updatePrice" text="get your price" />
-      <Text layoutX="700.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" />
-      <TextField fx:id="passengerName" layoutX="776.0" layoutY="81.0" prefHeight="26.0" prefWidth="139.0" />
-      <Button layoutX="819.0" layoutY="111.0" mnemonicParsing="false" onAction="#addPassengerToBooking" text="Add passenger" />
-      <Label fx:id="lblMainCustomer" layoutX="520.0" layoutY="305.0" prefHeight="19.0" prefWidth="186.0" text="No main customer on booking yet!" />
-      <Label layoutX="427.0" layoutY="306.0" text="Main customer:" />
-      <Label layoutX="427.0" layoutY="327.0" prefHeight="26.0" prefWidth="403.0" text="if the main customer wants to recieve a ticket add it to the list of passengers" />
-      <ListView fx:id="lvFlights" layoutX="424.0" layoutY="428.0" prefHeight="146.0" prefWidth="482.0" />
-      <TextField layoutX="515.0" layoutY="398.0" />
-      <TextField layoutX="755.0" layoutY="398.0" />
-      <Text layoutX="428.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="departure:" />
-      <Text layoutX="685.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="arrival:" />
+        <Text fx:id="pricePerPerson" layoutX="844.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0,00" />
+        <Text layoutX="705.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price per person:" />
+        <Text layoutX="542.0" layoutY="469.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your total to pay:" />
+        <Text fx:id="totalToPay" layoutX="642.0" layoutY="472.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0,00" />
+        <Button fx:id="getPrice" layoutX="529.0" layoutY="482.0" mnemonicParsing="false" onAction="#updatePrice" text="get your price" />
+      <Text layoutX="700.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="first name + last name:" />
+      <TextField fx:id="passengerName" layoutX="700.0" layoutY="81.0" prefHeight="26.0" prefWidth="139.0" />
+      <Button layoutX="819.0" layoutY="110.0" mnemonicParsing="false" onAction="#addPassengerToBooking" text="Add passenger" />
+      <Label fx:id="lblMainCustomer" layoutX="486.0" layoutY="251.0" prefHeight="19.0" prefWidth="186.0" text="No main customer on booking yet!" />
+      <Label layoutX="387.0" layoutY="252.0" text="Main customer:" />
+      <Label layoutX="532.0" layoutY="430.0" prefHeight="26.0" prefWidth="403.0" text="if the main customer wants to recieve a ticket add it to the list of passengers" />
+      <ListView fx:id="lvFlights" layoutX="28.0" layoutY="346.0" prefHeight="210.0" prefWidth="482.0" />
+      <TextField fx:id="tfDep" layoutX="99.0" layoutY="271.0" />
+      <TextField fx:id="tfArri" layoutX="99.0" layoutY="311.0" />
+      <Text layoutX="35.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="departure:" />
+      <Text layoutX="54.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="arrival:" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text layoutX="428.0" layoutY="383.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Flight:" />
+      <Text layoutX="27.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Flight:" />
+      <Button fx:id="btnSearch" layoutX="270.0" layoutY="304.0" mnemonicParsing="false" onAction="#search" text="search" />
 
     </children>
 
