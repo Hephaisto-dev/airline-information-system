@@ -51,7 +51,7 @@ public class DBProvider {
                     Level.INFO,
                     "attempt to read file from well known location failed'",
                     exception);
-        } catch (NullPointerException nullPointerException){
+        } catch (NullPointerException nullPointerException) {
 
         }
         return properties;

@@ -1,6 +1,7 @@
 package businesslogic.api;
 
 import businesslogic.api.common.PersistantDataContainer;
+import businesslogic.api.employee.EmployeeType;
 import businesslogic.api.manager.*;
 
 /**
@@ -21,6 +22,14 @@ public interface BusinessLogicAPI {
     BookingManager getBookingManager();
 
     EmployeeManager getEmployeeManager();
+
+    RouteManager getRouteManager();
+
+    TicketManager getTicketManager();
+
+    EmployeeType getLoggedInEmployee();
+
+    void setLoggedInEmployee(EmployeeType loggedInEmployee);
 
     <U extends Manager<? extends PersistantDataContainer<D>, D>, D extends Record> U getManager(Class<U> clazz);
 }

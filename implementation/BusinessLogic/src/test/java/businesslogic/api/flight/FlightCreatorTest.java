@@ -6,10 +6,12 @@ import businesslogic.api.airport.Airport;
 import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.airport.NoAirportException;
 import businesslogic.api.manager.FlightManager;
+import datarecords.AirplaneData;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.mockito.Mockito;
 import persistence.api.FlightStorageService;
 
 import java.time.LocalDateTime;
@@ -30,8 +32,8 @@ class FlightCreatorTest {
     static final LocalDateTime LDT4 = LocalDateTime.of(2020, 2, 2, 2, 2, 2);
     static final LocalDateTime nullTime = null;
     static final HashMap<String, Airplane> PlaneHash = new HashMap<>();
-    static final Airplane plane1 = AirplaneFactory.createAirplane("Fly", "me", 123, 1);
-    static final Airplane plane2 = AirplaneFactory.createAirplane("Flighter", "planeType", 150, 1);//needs to be faulty plane
+    static final Airplane plane1 = AirplaneFactory.createAirplane(new AirplaneData("ids", "manufacturers", 7, 7, "models", 77));
+    static final Airplane plane2 = AirplaneFactory.createAirplane(new AirplaneData("ids", "manufacturers", 7, 7, "models", 77));//needs to be faulty plane
 
     static {
         try {
@@ -58,8 +60,7 @@ class FlightCreatorTest {
     }
 
     private final FlightStorageService FSSI = data -> data;
-    private final FlightManager FM = new FlightManager(FSSI);
-    final FlightCreator flightCreator = new FlightCreator(FM);
+    final FlightCreator flightCreator = new FlightCreator(new FlightManager(FSSI));
     // later
 
     @BeforeAll
@@ -98,7 +99,13 @@ class FlightCreatorTest {
 
     })
     void createFlight(String place1, String place2, String time1, String time2, String plane, String expectation) {
-        String answer = flightCreator.createFlight(place1, place2, time1, time2, plane);
+        Airport departure = Mockito.mock(Airport.class);
+        Airport arrival = Mockito.mock(Airport.class);
+        Mockito.when(departure.getName()).thenReturn(place1);
+        Mockito.when(arrival.getName()).thenReturn(place2);
+        Airplane airplane = Mockito.mock(Airplane.class);
+        Mockito.when(airplane.getId()).thenReturn(plane);
+        String answer = flightCreator.createFlight(departure, arrival, time1, time2, airplane);
         SoftAssertions.assertSoftly(softly -> softly.assertThat(answer)
                 .contains(expectation));
     }

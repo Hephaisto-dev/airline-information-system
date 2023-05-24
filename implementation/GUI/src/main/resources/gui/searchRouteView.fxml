@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19"
+            fx:controller="gui.SearchRouteController">
+    <center>
+        <AnchorPane prefHeight="400.0" prefWidth="600.0">
+            <children>
+                <AnchorPane prefHeight="400.0" prefWidth="600.0">
+                    <children>
+                        <TableView fx:id="Table1" layoutX="31.0" layoutY="42.0" prefHeight="286.0" prefWidth="549.0">
+                            <columns>
+                                <TableColumn prefWidth="84.0" text="Id"/>
+                                <TableColumn prefWidth="74.0" text="From"/>
+                                <TableColumn prefWidth="74.0" text="Too"/>
+                                <TableColumn prefWidth="74.0" text="ETD"/>
+                                <TableColumn prefWidth="82.0" text="ETA"/>
+                                <TableColumn text="Duration"/>
+                                <TableColumn text="Airplane"/>
+                            </columns>
+                        </TableView>
+                        <Label layoutX="15.0" layoutY="14.0" prefHeight="17.0" prefWidth="56.0" text="Search"/>
+                        <TextField layoutX="71.0" layoutY="10.0" prefHeight="25.0" prefWidth="510.0" text="Type here"/>
+                    </children>
+                    <children>
+                        <TableView fx:id="Table" layoutX="32.0" layoutY="42.0" prefHeight="200.0" prefWidth="549.0">
+                            <columns>
+                                <TableColumn fx:id="flightID" prefWidth="548.0" text="Flight Data"/>
+                            </columns>
+                        </TableView>
+                        <Label layoutX="71.0" layoutY="14.0" text="Label"/>
+                        <TextField layoutX="71.0" layoutY="10.0" prefHeight="25.0" prefWidth="511.0"/>
+                        <Button layoutX="518.0" layoutY="350.0" mnemonicParsing="false" text="Accept"/>
+                        <Button layoutX="32.0" layoutY="350.0" mnemonicParsing="false" text="Delete"/>
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+    </center>
+    <top>
+        <fx:include source="navBar.fxml"/>
+    </top>
+    <bottom>
+        <fx:include source="footer.fxml"/>
+    </bottom>
+</BorderPane>

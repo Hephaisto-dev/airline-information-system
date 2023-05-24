@@ -1,14 +1,15 @@
 package persistence.api;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+import persistence.api.exceptions.PersistanceException;
 
 public interface StorageService<D extends Record> {
-    D add(D data);
+    D add(D data) throws PersistanceException;
 
 
-    default List<D> getAll() {
-        return new ArrayList<>();
+    default Set<D> getAll() {
+        return new HashSet<>();
     }
 
     default boolean remove(String id) {

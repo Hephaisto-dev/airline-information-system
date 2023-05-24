@@ -1,7 +1,6 @@
 package businesslogic.api;
 
-import businesslogic.implementation.BusinessLogicAPIImpl;
-import persistence.api.PersistenceAPI;
+import businesslogic.impl.BusinessLogicAPIImpl;
 
 /**
  * Factory to provide BusinessLogicAPI implementation.
@@ -10,7 +9,12 @@ import persistence.api.PersistenceAPI;
  */
 public interface BusinessLogicFactory {
 
-    static BusinessLogicAPI getImplementation(PersistenceAPI persistenceAPI) {
-        return new BusinessLogicAPIImpl(persistenceAPI);
+    /**
+     * Get BusinessLogicAPI implementation.
+     *
+     * @return a singleton instance of the BusinessLogicAPI implementation.
+     */
+    static BusinessLogicAPI getImplementation() {
+        return BusinessLogicAPIImpl.INSTANCE;
     }
 }

@@ -8,4 +8,5 @@ import datarecords.CustomerData;
  * @author Informatics Fontys Venlo
  */
 public interface CustomerStorageService extends StorageService<CustomerData> {
+    CustomerData add(CustomerData customerData);
 }

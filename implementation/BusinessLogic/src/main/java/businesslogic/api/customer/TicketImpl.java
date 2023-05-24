@@ -1,8 +1,11 @@
 package businesslogic.api.customer;
 
 
+import businesslogic.api.BusinessLogicFactory;
 import businesslogic.api.airplane.Seat;
 import businesslogic.api.flight.Flight;
+import businesslogic.api.manager.TicketManager;
+import datarecords.TicketData;
 
 public class TicketImpl implements Ticket {
 
@@ -18,8 +21,19 @@ public class TicketImpl implements Ticket {
         this.flight = flyingFromTo;
         this.seat = sittingPlace;
         this.ticketID = createID();
-        this.route = flight.getData().routeData().from().id() + "-" + flight.getData().routeData().to().id();
+        this.route = flight.getDeparture().getName() + "-" + flight.getArrival().getName();
         this.ticketPrice = price;
+    }
+
+    public TicketImpl(TicketData ticketData){
+        //String id, String flightId, String customerId, int price, String seatId
+        this.ticketID = ticketData.id();
+        this.flight = BusinessLogicFactory.getImplementation().getFlightManager().getById(ticketData.flightId());
+
+        this.route = flight.getDeparture().getName() + "-" + flight.getArrival().getName();
+        this.person = ticketData.customerId();
+        this.ticketPrice = new PriceImpl(ticketData.price());
+        this.seat = ticketData.seatId();
     }
 
     @Override
@@ -71,9 +85,9 @@ public class TicketImpl implements Ticket {
         String stringl = "Ti_" +
                 flight.getAirplane().getId() +
                 ":" +
-                flight.getRoute().getFrom().getId() +
+                flight.getDeparture().getName() +
                 "-" +
-                flight.getRoute().getTo().getId() +
+                flight.getArrival().getName() +
                 "_" +
                 flight.getETD().getDayOfMonth() +
                 "." +
@@ -84,5 +98,10 @@ public class TicketImpl implements Ticket {
                 seat;
         //used stringBuilder to save resources (one String, instead of every String being saved from before and after an addittion)
         return stringl;
+    }
+
+    @Override
+    public TicketData getData() {
+        return new TicketData(createID(), flight.getId(), person, ticketPrice.getBackendPrice(), seat);
     }
 }

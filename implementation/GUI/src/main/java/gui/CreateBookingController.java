@@ -1,16 +1,14 @@
 package gui;
 
-import businesslogic.api.airplane.Airplane;
-import businesslogic.api.airplane.AirplaneFactory;
-import businesslogic.api.airport.Airport;
-import businesslogic.api.airport.AirportFactory;
 import businesslogic.api.booking.BookingCreator;
 import businesslogic.api.customer.Price;
+import businesslogic.api.employee.Employee;
 import businesslogic.api.flight.Flight;
 import businesslogic.api.flight.FlightFactory;
 import businesslogic.api.manager.BookingManager;
 import datarecords.CustomerData;
 import datarecords.FlightData;
+import datarecords.TicketData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,6 +17,8 @@ import javafx.scene.text.Text;
 import persistence.api.NoDBConnectionException;
 
 import java.net.URL;
+import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,13 +30,14 @@ public class CreateBookingController implements Initializable {
 
     final ArrayList<String> extras = new ArrayList<>();
     final ArrayList<CustomerData> customers = new ArrayList<>();
-    final ArrayList<String> tickets = new ArrayList<>();//Change this from string to Ticket
+    final List<TicketData> tickets = new ArrayList<>();//Change this from string to Ticket
     final FlightData selectedFlight = null;
     final BookingManager bookingManager;
     private final BookingCreator bookingCreator;
+    private final Supplier<SceneManager> sceneManagerSupplier;
     //TODO IMPLEMENT TICKETS
     @FXML
-    public TextField empId;
+    public ComboBox<Employee> employeeComboBox;
     @FXML
     public ComboBox<Flight> cbFlights;
     @FXML
@@ -65,11 +66,11 @@ public class CreateBookingController implements Initializable {
     public Text totalToPay;
     @FXML
     public Text pricePerPerson;
-
     private BookingCreator bookCreator;
 
 
     public CreateBookingController(Supplier<SceneManager> sceneManagerSupplier, BookingManager bookingManager) {
+        this.sceneManagerSupplier = sceneManagerSupplier;
         this.bookingManager = bookingManager;
         this.bookingCreator = new BookingCreator(bookingManager);
     }
@@ -77,7 +78,7 @@ public class CreateBookingController implements Initializable {
     @FXML
     public void createBooking(ActionEvent actionEvent) {
 
-        String booking = bookingCreator.createBooking("1", empId.getText(), selectedFlight, tickets, LocalDateTime.now(), extras, customers);
+        String booking = bookingCreator.createBooking("1", employeeComboBox.getSelectionModel().getSelectedItem().getData(), selectedFlight, tickets, LocalDate.now(), extras, customers);
         result.setText(booking);
 
     }
@@ -104,48 +105,40 @@ public class CreateBookingController implements Initializable {
         }
     }
 
-    public List<String> createTickets() {
+    public List<TicketData> createTickets() {
         for (CustomerData customer : customers) {  //TODO ADD REAL TICKET IMPLEMENTATION
 
-
             //tickets.add(new TicketImpl(customer.firstName(),cbFlights.getValue(),));
-            tickets.add(customer.firstName());
         }
-
-
         return tickets;
     }
 
     @FXML
     public void fakeInfo(ActionEvent actionEvent) throws NoDBConnectionException {
-        Airplane airplane = AirplaneFactory.createAirplane("1", "KML 332", 322, 322);
-        Airport airport1 = AirportFactory.createAirport("1", "MyHouse", "Amsterdam", "Netherlands");
-        Airport airport2 = AirportFactory.createAirport("2", "YourHouse", "Amsterdam", "Netherlands");
-
-
-        Flight flight = FlightFactory.createFlight(airport1, airport2, LocalDateTime.now(), LocalDateTime.now().plusDays(1), airplane);
+        Flight flight = FlightFactory.createFlight(new FlightData("1", LocalDateTime.now(), LocalDateTime.now(), Duration.ZERO, "1", "2", "3"));
 
         cbFlights.getItems().add(flight);
 
     }
-    @FXML
-    public void updatePrice(ActionEvent actionEvent){
 
-        if(cbFlights.getValue()!=null){
+    @FXML
+    public void updatePrice(ActionEvent actionEvent) {
+
+        if (cbFlights.getValue() != null) {
             int total = 0;
             Price perPerson = cbFlights.getValue().getPrice();
-            for (CustomerData c: customers) {
+            for (CustomerData c : customers) {
 
-                total = total + perPerson.getBackendPrice()/100;
+                total = total + perPerson.getBackendPrice() / 100;
             }
-            for(String x: extras){
+            for (String x : extras) {
                 total = total + 15;
             }
-            String currency = perPerson.toString().replace("1","").replace("2","").replace("3","").replace("4","").replace("5","").replace("6","").replace("7","").replace("8","").replace("9","").replace("0","").replace(",","").replace(".","");//TODO change this after implementation of new prices
+            String currency = perPerson.toString().replace("1", "").replace("2", "").replace("3", "").replace("4", "").replace("5", "").replace("6", "").replace("7", "").replace("8", "").replace("9", "").replace("0", "").replace(",", "").replace(".", "");//TODO change this after implementation of new prices
 
-            totalToPay.setText(Integer.toString(total)+" "+ currency);
+            totalToPay.setText(Integer.toString(total) + " " + currency);
             pricePerPerson.setText(perPerson.toString());
-        }else {
+        } else {
             totalToPay.setText("no flight selected!");
         }
 
@@ -158,7 +151,6 @@ public class CreateBookingController implements Initializable {
         cbExtras.getItems().add("Extra luggage");
         cbExtras.getItems().add("Prepaid food");
         result.setText("");
-
 
     }
 }

@@ -1,14 +1,10 @@
 package businesslogic.api.flight;
 
 import businesslogic.api.airplane.Airplane;
-import businesslogic.api.airplane.AirplaneFactory;
-import businesslogic.api.airplane.NoAirplaneException;
 import businesslogic.api.airport.Airport;
-import businesslogic.api.airport.AirportFactory;
-import businesslogic.api.airport.NoAirportException;
 import businesslogic.api.manager.FlightManager;
-import persistence.api.NoDBConnectionException;
-
+import datarecords.FlightData;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 
@@ -19,80 +15,58 @@ public class FlightCreator {
         this.flightManager = manage;
     }
 
-    public String createFlight(String departPlace, String arrivePlace, String departLDT, String arriveLDT,
-                               String planeName) {
-        boolean errors = false;
-        Airport departPort = null;
-        Airport arrivePort = null;
+    public String createFlight(Airport departPort, Airport arrivePort, String departLDT, String arriveLDT,
+                               Airplane plane) {
         LocalDateTime dLTD = null;
         LocalDateTime aLTD = null;
-        Airplane plane = null;
         StringBuilder stringBuilder = new StringBuilder();
 
 
-        try {
-            departPort = AirportFactory.createAirport(departPlace);
-        } catch (NoAirportException a) {
-            errors = true;
-            stringBuilder.append("Departure Airport does not exist in our database\n");
+        if (departPort == null) {
+            stringBuilder.append("Departure Airport does not exist\n");
         }
-        try {
-            arrivePort = AirportFactory.createAirport(arrivePlace);
-        } catch (NoAirportException a) {
-            errors = true;
-            stringBuilder.append("Arrival Airport does not exist in our database\n");
+        if (arrivePort == null) {
+            stringBuilder.append("Arrival Airport does not exist\n");
         }
         try {
             dLTD = LocalDateTime.parse(departLDT);
         } catch (DateTimeParseException dtpe) {
-            errors = true;
             stringBuilder.append("Departure Time is not entered correctly\n");
         }
         try {
             aLTD = LocalDateTime.parse(arriveLDT);
         } catch (DateTimeParseException dtpe) {
-            errors = true;
             stringBuilder.append("Arrival Time is not entered correctly\n");
         }
         if (aLTD != null && dLTD != null) {
             if (!aLTD.isAfter(dLTD)) {
-                errors = true;
                 stringBuilder.append("Time of departure must be before time of arrival\n");
             }
             if (aLTD.isBefore(LocalDateTime.now()) || dLTD.isBefore(LocalDateTime.now())) {
-                errors = true;
                 stringBuilder.append("Ensure that the flight times aren't in the past\n");
             }
             if (aLTD.isBefore(LocalDateTime.now())) {
-                errors = true;
-                stringBuilder.append("Arrival time must be in the present/future");
+                stringBuilder.append("Arrival time must be in the present/future\n");
             }
             if (dLTD.isBefore(LocalDateTime.now())) {
-                errors = true;
-                stringBuilder.append("Departure time must be in the present/future");
+                stringBuilder.append("Departure time must be in the present/future\n");
             }
         }
-        try {
-            plane = AirplaneFactory.createAirplane(planeName);
-            //-------------------Martin--------------
-            if (plane.getName().equals(null)) {
-                errors = true;
-                stringBuilder.append("No plane was provided");
-            }
-            //---------------------------------------
-        } catch (NoAirplaneException na) {
-            errors = true;
-            stringBuilder.append("An airplane with the provided ID does not exist in our database\n");
+
+        if (plane == null) {
+            stringBuilder.append("No plane was provided\n");
         }
 
-
-        if (!errors) {
+        if (stringBuilder.isEmpty()) {
             try {
-                Flight flight = FlightFactory.createFlight(departPort, arrivePort, dLTD, aLTD, plane);
+                String id = "FL_" + departPort.getName() + "-" + arrivePort.getName() + "_" + dLTD + "_" + plane.getId();
+                Flight flight = FlightFactory.createFlight(new FlightData(id,dLTD, aLTD, Duration.between(dLTD, aLTD), plane.getId(),departPort.getId(), arrivePort.getId()));
                 flightManager.add(flight);
-            } catch (NoDBConnectionException e) {
-                return "There seems to be an issue with the database, please try again." + "\n"
-                        + "+If the issue persists, contact the IT department";
+            }
+            //TODO throw exceptions in FlightManager
+            catch (Exception e){
+                e.printStackTrace();
+                //TODO: Identify and handle Exceptions properly
             }
             return "Flight was successfully created";
         } else {
@@ -162,7 +136,8 @@ public class FlightCreator {
         if (!errors) {
 
             try {
-                Flight flight = FlightFactory.createFlight(departPort, arrivePort, dLTD, aLTD, plane);
+                String id = "FL_" + departPort.getName() + "-" + arrivePort.getName() + "_" + dLTD + "_" + plane.getId();
+                Flight flight = FlightFactory.createFlight(new FlightData(id, dLTD, aLTD, Duration.between(dLTD, aLTD), plane.getId(), departPort.getId(), arrivePort.getId()));
                 flightManager.add(flight);
             } catch (Exception e) {
                 return "Flight was successfully created";//DELTE WHEN ACTUAL IMPL OF .add() method has occurred

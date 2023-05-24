@@ -6,9 +6,16 @@ import datarecords.AirplaneData;
 
 public interface Airplane extends Nameable, PersistantDataContainer<AirplaneData> {
 
-    int getCapacity();
+    int getSeats();
+
+    String getId();
+
+    String getManufacturer();
 
     int getLength();
 
     int getWidth();
+
+    String getModel();
+
 }

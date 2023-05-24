@@ -10,7 +10,8 @@ import javax.sql.DataSource;
  *
  * @author Informatics Fontys Venlo
  */
-public class PersistenceAPIImpl implements PersistenceAPI {
+public enum PersistenceAPIImpl implements PersistenceAPI {
+    INSTANCE;
     private final DataSource dataSource = DBProvider.getDataSource("jdbc.pg.prod");
     private final CustomerStorageService customerStorageService = new CustomerStorageServiceImpl(dataSource);
     private final AirplaneStorageService airplaneStorageService = new AirplaneStorageServiceImpl(dataSource);
@@ -18,6 +19,7 @@ public class PersistenceAPIImpl implements PersistenceAPI {
     private final FlightStorageService flightStorageService = new FlightStorageServiceImpl(dataSource);
     private final BookingStorageService bookingStorageService = new BookingStorageServiceImpl(dataSource);
     private final EmployeeStorageService employeeStorageService = new EmployeeStorageServiceImpl(dataSource);
+    private final TicketStorageService ticketStorageService = new TicketStorageServiceImpl(dataSource);
 
     @Override
     public CustomerStorageService getCustomerStorageService() {
@@ -42,6 +44,11 @@ public class PersistenceAPIImpl implements PersistenceAPI {
     @Override
     public EmployeeStorageService getEmployeeStorageService() {
         return employeeStorageService;
+    }
+
+    @Override
+    public TicketStorageService getTicketStorageService() {
+        return ticketStorageService;
     }
 
     @Override

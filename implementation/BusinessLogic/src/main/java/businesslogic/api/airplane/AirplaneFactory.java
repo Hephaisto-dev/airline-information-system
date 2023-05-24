@@ -1,16 +1,14 @@
 package businesslogic.api.airplane;
 
-import businesslogic.implementation.AirplaneImpl;
+import businesslogic.impl.AirplaneImpl;
 import datarecords.AirplaneData;
 
 public interface AirplaneFactory {
-    static Airplane createAirplane(String id, String type, int length, int width) {
-        return new AirplaneImpl(id, type, length, width);
-    }
 
-    static Airplane createAirplane(String id) throws NoAirplaneException {
-        if (true) {//TODO implement the getting from the persistence / DB
-            return new AirplaneImpl(id, "mockplane", 121, 2);
+    static Airplane createAirplane(String id, String manufacturer, int length, int width, String model, int seats) throws NoAirplaneException {
+        // TODO: Implement the logic to retrieve airplane data from the persistence/DB
+        if (airplaneDataExists()) {
+            return new AirplaneImpl(new AirplaneData(id, manufacturer, length, width, model, seats));
         } else {
             throw new NoAirplaneException();
         }
@@ -18,5 +16,10 @@ public interface AirplaneFactory {
 
     static Airplane createAirplane(AirplaneData airplaneData) {
         return new AirplaneImpl(airplaneData);
+    }
+
+    private static boolean airplaneDataExists() {
+        // TODO: Implement the logic to check if airplane data exists in the persistence/DB
+        return true;
     }
 }
