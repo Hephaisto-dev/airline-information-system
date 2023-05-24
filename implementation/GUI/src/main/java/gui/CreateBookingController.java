@@ -109,7 +109,7 @@ public class CreateBookingController implements Initializable {
     public void createBooking(ActionEvent actionEvent) {
 
 
-        String booking = bookingCreator.createBooking(cbFlights.getValue().toString()+MainCustomer.firstName()+MainCustomer.lastName(),empId.getText(), lvFlights.getSelectionModel().getSelectedItem().getData(), tickets, LocalDate.now(), extras, customers,MainCustomer);
+        String booking = bookingCreator.createBooking(lvFlights.getSelectionModel().getSelectedItem().toString()+MainCustomer.firstName()+MainCustomer.lastName(),empId.getText(), lvFlights.getSelectionModel().getSelectedItem().getData(), tickets, LocalDate.now(), extras, customers,MainCustomer);
         result.setText(booking);
 
 
