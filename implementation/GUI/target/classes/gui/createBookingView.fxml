@@ -55,7 +55,7 @@
       <Label fx:id="lblMainCustomer" layoutX="520.0" layoutY="305.0" prefHeight="19.0" prefWidth="186.0" text="No main customer on booking yet!" />
       <Label layoutX="427.0" layoutY="306.0" text="Main customer:" />
       <Label layoutX="427.0" layoutY="327.0" prefHeight="26.0" prefWidth="403.0" text="if the main customer wants to recieve a ticket add it to the list of passengers" />
-      <ListView layoutX="424.0" layoutY="428.0" prefHeight="146.0" prefWidth="482.0" />
+      <ListView fx:id="lvFlights" layoutX="424.0" layoutY="428.0" prefHeight="146.0" prefWidth="482.0" />
       <TextField layoutX="515.0" layoutY="398.0" />
       <TextField layoutX="755.0" layoutY="398.0" />
       <Text layoutX="428.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="departure:" />

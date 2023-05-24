@@ -12,6 +12,7 @@ import businesslogic.api.manager.BookingManager;
 import businesslogic.api.manager.CustomerManager;
 import businesslogic.api.manager.FlightManager;
 import datarecords.CustomerData;
+import datarecords.EmployeeData;
 import datarecords.FlightData;
 import datarecords.TicketData;
 import javafx.event.ActionEvent;
@@ -36,7 +37,7 @@ public class CreateBookingController implements Initializable {
 
     final ArrayList<String> extras = new ArrayList<>();
     final ArrayList<String> customers = new ArrayList<>();
-    CustomerData MainCustomer = null;
+    private CustomerData MainCustomer;
     final List<TicketData> tickets = new ArrayList<>();//Change this from string to Ticket
     final FlightData selectedFlight = null;
     final BookingManager bookingManager;
@@ -50,6 +51,8 @@ public class CreateBookingController implements Initializable {
     public ComboBox<String> cbExtras;
     @FXML
     public Button btnCreateBooking;
+    @FXML
+    public TextField empId;
     @FXML
     public TextField firstName;
     @FXML
@@ -75,6 +78,8 @@ public class CreateBookingController implements Initializable {
     @FXML
     public Text totalToPay;
     @FXML
+    public ListView<Flight> lvFlight;
+    @FXML
     public Text pricePerPerson;
     private BookingCreator bookCreator;
     private FlightManager flightManager;
@@ -90,7 +95,8 @@ public class CreateBookingController implements Initializable {
     @FXML
     public void createBooking(ActionEvent actionEvent) {
 
-        String booking = bookingCreator.createBooking("1",employeeComboBox.getSelectionModel().getSelectedItem().getData(), selectedFlight, tickets, LocalDate.now(), extras, customers,MainCustomer);
+
+        String booking = bookingCreator.createBooking(cbFlights.getValue().toString()+MainCustomer.firstName()+MainCustomer.lastName(),empId.getText(), cbFlights.getValue().getData(), tickets, LocalDate.now(), extras, customers,MainCustomer);
         result.setText(booking);
 
 
@@ -102,8 +108,9 @@ public class CreateBookingController implements Initializable {
     @FXML
     public void addCustomer(ActionEvent actionEvent) {
 
-        MainCustomer = new CustomerData("1", firstName.getText(), lastName.getText(), dateOfBirth.getValue(), email.getText());
+        MainCustomer = new CustomerData("CU_" + email.getText(), firstName.getText(), lastName.getText(), dateOfBirth.getValue(), email.getText());
         lblMainCustomer.setText(MainCustomer.firstName()+" "+MainCustomer.lastName());
+        btnAddCustomer.setDisable(true);
     }
     @FXML
     public void addExtra(ActionEvent actionEvent) {
@@ -161,9 +168,10 @@ public class CreateBookingController implements Initializable {
         cbExtras.getItems().add("vegetarian food");
         cbExtras.getItems().add("Extra luggage");
         cbExtras.getItems().add("Prepaid food");
+
+        //lvFlight.getItems().addAll(flightManager.getAll());
         cbFlights.getItems().addAll(flightManager.getAll());
         Utils.makeComboBoxSearchable(cbFlights, Flight::getId);
         result.setText("");
-
     }
 }
