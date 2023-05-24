@@ -26,7 +26,7 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 
 //this is just to see all values of booking id, empId, flightIds, ticketIds, bookingDate, extraIds, customerIds
 
-        String query = "INSERT INTO bookings(id,employee_id,date) values (?,?, ?, ?) returning *";
+        String query = "INSERT INTO bookings(id,employee_id,date,main_customer,flight_id) values (?,?, ?, ?,?) returning *";
 
 
         try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
@@ -34,14 +34,14 @@ public class BookingStorageServiceImpl implements BookingStorageService {
             String id = bookingData.id();
             String empId = bookingData.employeeId();
             LocalDate bookingdate = bookingData.bookingDate();
-
-            //TODO IMPLEMENT Extras?!
-            //TODO IMPLEMENT Customers?!
-            //TODO IMPLEMENT ticketIds?!
+            String mainCustomer = bookingData.mainCustomerId();
+            String flightId = bookingData.flightId();
 
             pstm.setString(1, id);
             pstm.setString(2, empId);
             pstm.setDate(3, Date.valueOf(bookingdate));
+            pstm.setString(4,mainCustomer);
+            pstm.setString(5,flightId);
 
 
             ResultSet result = pstm.executeQuery();
@@ -77,8 +77,11 @@ public class BookingStorageServiceImpl implements BookingStorageService {
                 String empId = result.getString("employee_id");
                 String mainCustomer = result.getString("main_customer");
                 LocalDate bookingDate = result.getDate("date").toLocalDate();
+                String flightId = result.getString("flight_id");
 
-                bookingData.add(new BookingData(id, empId, new ArrayList<>(), bookingDate, new ArrayList<>(),mainCustomer ));
+
+
+                bookingData.add(new BookingData(id, empId, new ArrayList<>(), bookingDate, new ArrayList<>(),mainCustomer,flightId));
             }
         } catch (SQLException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
