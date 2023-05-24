@@ -26,6 +26,8 @@ public interface BusinessLogicAPI {
 
     RouteManager getRouteManager();
 
+    TicketManager getTicketManager();
+
     EmployeeType getLoggedInEmployee();
 
     void setLoggedInEmployee(EmployeeType loggedInEmployee);
