@@ -71,7 +71,8 @@ public class SearchFlightController implements Initializable {
         eta.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getETA().toString()));
         duration.setCellValueFactory(cellData -> {
             int flightDuration = (int) cellData.getValue().getFlightDuration().toSeconds();
-            return new SimpleIntegerProperty(flightDuration).asObject();});
+            return new SimpleIntegerProperty(flightDuration).asObject();
+        });
         airplane.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAirplane().getId()));
     }
 

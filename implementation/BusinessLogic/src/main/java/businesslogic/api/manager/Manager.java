@@ -7,6 +7,7 @@ import java.util.Collection;
 public interface Manager<T extends PersistantDataContainer<D>, D extends Record> {
     /**
      * Add a new {@link PersistantDataContainer} to the manager
+     *
      * @param t the {@link PersistantDataContainer} to add
      * @return the added {@link PersistantDataContainer} or null if the {@link PersistantDataContainer} already exists
      */

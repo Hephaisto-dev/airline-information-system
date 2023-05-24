@@ -69,7 +69,6 @@ public class CreateBookingController implements Initializable {
     private BookingCreator bookCreator;
 
 
-
     public CreateBookingController(Supplier<SceneManager> sceneManagerSupplier, BookingManager bookingManager) {
         this.sceneManagerSupplier = sceneManagerSupplier;
         this.bookingManager = bookingManager;
@@ -79,7 +78,7 @@ public class CreateBookingController implements Initializable {
     @FXML
     public void createBooking(ActionEvent actionEvent) {
 
-        String booking = bookingCreator.createBooking("1",employeeComboBox.getSelectionModel().getSelectedItem().getData(), selectedFlight, tickets, LocalDate.now(), extras, customers);
+        String booking = bookingCreator.createBooking("1", employeeComboBox.getSelectionModel().getSelectedItem().getData(), selectedFlight, tickets, LocalDate.now(), extras, customers);
         result.setText(booking);
 
     }
