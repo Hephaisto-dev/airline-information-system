@@ -70,7 +70,7 @@ public class BookingCreator {
                 for (String c:customersOnBooking)
                 {
                     System.out.println("wow a ticket has been created");
-                    ticketCreator.createTicket(flight1,"A","1",c);
+                    ticketCreator.createTicket(flight1,"A","1",c,"","");
                 }
                 System.out.println("wow a customer has been created");
                 customerCreator.createCustomer(mainCustomer.firstName(), mainCustomer.lastName(), mainCustomer.dob(),mainCustomer.email());
