@@ -42,14 +42,12 @@
                     </children>
                 </AnchorPane>
             </children>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
-   </center>
+        </AnchorPane>
+    </center>
     <top>
-        <fx:include source="navBar.fxml" />
+        <fx:include source="navBar.fxml"/>
     </top>
     <bottom>
-        <fx:include source="footer.fxml" />
+        <fx:include source="footer.fxml"/>
     </bottom>
 </BorderPane>
