@@ -53,7 +53,7 @@ public class GUIAppTest {
 
     @Disabled
     @Test
-    void testAddCustomer(FxRobot robot) {
+    void testAddCustomer(FxRobot robot) throws Exception {
         when(customerManager.add(any()))
                 .thenReturn(CustomerFactory.createCustomer(new CustomerData("1", "Elon", "Musk", LocalDate.of(1971, Month.JUNE, 28)
                         , "elonMusk@tesla.com")));

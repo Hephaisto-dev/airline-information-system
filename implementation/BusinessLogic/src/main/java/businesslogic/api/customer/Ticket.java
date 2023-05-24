@@ -1,10 +1,12 @@
 package businesslogic.api.customer;
 
 import businesslogic.api.airplane.Seat;
+import businesslogic.api.common.PersistantDataContainer;
 import businesslogic.api.common.StringIdentifiable;
 import businesslogic.api.flight.Flight;
+import datarecords.TicketData;
 
-public interface Ticket extends StringIdentifiable {
+public interface Ticket extends PersistantDataContainer<TicketData> {
 
     String getTicketOwner();
 

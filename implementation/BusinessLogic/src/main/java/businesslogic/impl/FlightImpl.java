@@ -30,7 +30,7 @@ public class FlightImpl implements Flight {
     @Override
     public Price getPrice() {
         //TODO adapt to bew architecture
-        return new PriceImpl(0);
+        return new PriceImpl(1000);
     }
 
     @Override
@@ -119,5 +119,10 @@ public class FlightImpl implements Flight {
     @Override
     public Airport getDeparture() {
         return BusinessLogicFactory.getImplementation().getAirportManager().getById(flightData.departureAirportId());
+    }
+
+    @Override
+    public boolean cancel() {
+        return BusinessLogicFactory.getImplementation().getFlightManager().remove(this);
     }
 }

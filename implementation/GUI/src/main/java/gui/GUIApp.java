@@ -23,14 +23,17 @@ import java.io.InputStream;
  */
 public class GUIApp extends Application {
 
-    private static final String INITIAL_VIEW = "CreateBookingView";
+    private static final String INITIAL_VIEW = "loginView";
 
     private BusinessLogicAPI businessLogicAPI;
     private SceneManager sceneManager;
     private final Callback<Class<?>, Object> controllerFactory = (Class<?> c)
             -> switch (c.getName()) {
-        case "gui.CreateCustomerController" ->
-                new CreateCustomerController(businessLogicAPI.getCustomerManager());
+        case "gui.LoginController" -> new LoginController(this::getSceneManager, businessLogicAPI);
+        case "gui.MainController" -> new MainController(this::getSceneManager);
+        case "gui.NavBarController" -> new NavBarController(businessLogicAPI, this::getSceneManager);
+        case "gui.FooterController" -> new FooterController(this::getSceneManager);
+        case "gui.CreateCustomerController" -> new CreateCustomerController(businessLogicAPI.getCustomerManager());
         case "gui.PrimaryController" -> new PrimaryController(this::getSceneManager);
         case "gui.SecondaryController" -> new SecondaryController(this::getSceneManager);
         case "gui.CreateBookingController" ->
@@ -43,6 +46,10 @@ public class GUIApp extends Application {
         case "gui.SearchBookingController" -> new SearchBookingController(businessLogicAPI.getBookingManager());
         case "gui.CreateTicketController" -> new CreateTicketController(businessLogicAPI.getFlightManager());
         case "gui.SearchFlightController" -> new SearchFlightController(businessLogicAPI.getFlightManager());
+        case "gui.DeleteCustomerController" -> new DeleteCustomerController(businessLogicAPI.getCustomerManager());
+        case "gui.CreateAirplaneController" ->
+                new CreateAirplaneController(this::getSceneManager, businessLogicAPI.getAirplaneManager());
+        case "gui.CreateRouteController" -> new CreateRouteController(this::getSceneManager);
         default -> null;
     };
 

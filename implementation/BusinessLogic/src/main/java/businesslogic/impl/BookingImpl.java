@@ -45,7 +45,7 @@ public class BookingImpl implements Booking {
     public String toString() {
         String persons = null;
         for (Customer c : getCustomersOnBooking()) {
-            persons = c.getLastName()+" "+ c.getData().email()+" ";
+            persons = c.getLastName() + " " + c.getData().email() + " ";
         }
         return "Booking:" + getId() + " people on the booking: " + persons + " created by" + getEmployee();
     }

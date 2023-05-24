@@ -35,13 +35,13 @@ create table routes
 
 create table flights
 (
-    id                varchar not null,
-    airport_from_id   varchar not null,
-    airport_to_id     varchar not null,
-    etd_date_time     varchar not null,
-    eta_date_time     varchar not null,
-    flight_duration   int     not null,
-    airplane_id       varchar not null,
+    id              varchar not null,
+    airport_from_id varchar not null,
+    airport_to_id   varchar not null,
+    etd_date_time   varchar not null,
+    eta_date_time   varchar not null,
+    flight_duration int     not null,
+    airplane_id     varchar not null,
     primary key (id),
     foreign key (airplane_id) references airplanes (id),
     foreign key (airport_from_id) references airports (id),

@@ -4,7 +4,6 @@ import businesslogic.api.airplane.Airplane;
 import businesslogic.api.airport.Airport;
 import businesslogic.api.manager.FlightManager;
 import datarecords.FlightData;
-
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
@@ -59,16 +58,16 @@ public class FlightCreator {
         }
 
         if (stringBuilder.isEmpty()) {
-//            try {
+            try {
                 String id = "FL_" + departPort.getName() + "-" + arrivePort.getName() + "_" + dLTD + "_" + plane.getId();
                 Flight flight = FlightFactory.createFlight(new FlightData(id,dLTD, aLTD, Duration.between(dLTD, aLTD), plane.getId(),departPort.getId(), arrivePort.getId()));
                 flightManager.add(flight);
-//            }
+            }
             //TODO throw exceptions in FlightManager
-            /*catch (NoDBConnectionException e) {
-                return "There seems to be an issue with the database, please try again." + "\n"
-                        + "+If the issue persists, contact the IT department";
-            }*/
+            catch (Exception e){
+                e.printStackTrace();
+                //TODO: Identify and handle Exceptions properly
+            }
             return "Flight was successfully created";
         } else {
             stringBuilder.append("Please correct this and try again");
@@ -138,7 +137,7 @@ public class FlightCreator {
 
             try {
                 String id = "FL_" + departPort.getName() + "-" + arrivePort.getName() + "_" + dLTD + "_" + plane.getId();
-                Flight flight = FlightFactory.createFlight(new FlightData(id,dLTD, aLTD, Duration.between(dLTD, aLTD), plane.getId(),departPort.getId(), arrivePort.getId()));
+                Flight flight = FlightFactory.createFlight(new FlightData(id, dLTD, aLTD, Duration.between(dLTD, aLTD), plane.getId(), departPort.getId(), arrivePort.getId()));
                 flightManager.add(flight);
             } catch (Exception e) {
                 return "Flight was successfully created";//DELTE WHEN ACTUAL IMPL OF .add() method has occurred

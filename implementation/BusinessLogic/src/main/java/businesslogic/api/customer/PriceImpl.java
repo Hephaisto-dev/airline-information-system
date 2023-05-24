@@ -4,17 +4,12 @@ package businesslogic.api.customer;
 public class PriceImpl implements Price {
 
     private int amount;
-    private CurrencyType currency;
 
     public PriceImpl(int money) {
         this.amount = money;
-        this.currency = CurrencyType.EURO;//Euro as basic, bc we are in Europe
+        //Currency will always be Euro because we are from Europe
     }
 
-    public PriceImpl(int money, CurrencyType Currency) {
-        this.amount = money;
-        this.currency = Currency;
-    }
 
     @Override
     public void applyDiscount(int reduceBy) {
@@ -30,10 +25,6 @@ public class PriceImpl implements Price {
         }
     }
 
-    @Override
-    public void chooseCurrency(String ISO_Code) {
-        this.currency = currency.getCurrencyType(ISO_Code);
-    }
 
     @Override
     public void setPrice(int price) {
@@ -51,12 +42,7 @@ public class PriceImpl implements Price {
         return stringBuilder.append(amount / 100)
                 .append(',')
                 .append((amount % 100))
-                .append(currency.toString())
+                .append(CurrencyType.EURO.toString())
                 .toString();
-    }
-
-    @Override
-    public String getCurrencySymbol() {
-        return currency.getCurrency().getSymbol();
     }
 }

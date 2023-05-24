@@ -3,14 +3,16 @@ package businesslogic.api.manager;
 import businesslogic.api.common.PersistantDataContainer;
 
 import java.util.Collection;
+import persistence.api.exceptions.PersistanceException;
 
 public interface Manager<T extends PersistantDataContainer<D>, D extends Record> {
     /**
      * Add a new {@link PersistantDataContainer} to the manager
+     *
      * @param t the {@link PersistantDataContainer} to add
      * @return the added {@link PersistantDataContainer} or null if the {@link PersistantDataContainer} already exists
      */
-    T add(T t);
+    T add(T t) throws Exception;
 
     /**
      * Retrpieve all the {@link PersistantDataContainer} stored in the manager

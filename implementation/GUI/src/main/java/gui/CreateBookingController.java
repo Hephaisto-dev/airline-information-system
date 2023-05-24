@@ -66,8 +66,6 @@ public class CreateBookingController implements Initializable {
     public Button btnAddCustomer;
     @FXML
     public Label lblMainCustomer;
-    @FXML//TODO Delete this after connection with the database
-    public Button btnFakeInfo;
     @FXML
     public ListView<String> listViewExtras;
     @FXML
@@ -92,10 +90,6 @@ public class CreateBookingController implements Initializable {
 
         String booking = bookingCreator.createBooking("1",employeeComboBox.getSelectionModel().getSelectedItem().getData(), selectedFlight, tickets, LocalDate.now(), extras, customers,MainCustomer);
         result.setText(booking);
-
-
-            //in the bookingcreator are the customer and ticket creator
-
 
     }
 

@@ -73,12 +73,12 @@ public class BookingStorageServiceImpl implements BookingStorageService {
         try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
             ResultSet result = pstm.executeQuery();
             while (result.next()) {
-                int id = result.getInt("id");
+                String id = result.getString("id");
                 String empId = result.getString("employee_id");
                 String mainCustomer = result.getString("main_customer");
                 LocalDate bookingDate = result.getDate("date").toLocalDate();
 
-                bookingData.add(new BookingData(Integer.toString(id), empId, new ArrayList<>(), bookingDate, new ArrayList<>(),mainCustomer ));
+                bookingData.add(new BookingData(id, empId, new ArrayList<>(), bookingDate, new ArrayList<>(),mainCustomer ));
             }
         } catch (SQLException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);

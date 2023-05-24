@@ -2,21 +2,34 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19"
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19"
             fx:controller="gui.CreateRouteController">
-    <ListView fx:id="removeListView" layoutX="31.0" layoutY="110.0" prefHeight="236.0" prefWidth="265.0"/>
-    <ListView fx:id="addListView" layoutX="311.0" layoutY="110.0" prefHeight="236.0" prefWidth="265.0"/>
-    <Label layoutX="265.0" layoutY="14.0" prefHeight="17.0" prefWidth="120.0" text="Create route"/>
-    <Button fx:id="submit" layoutX="518.0" layoutY="11.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="67.0"
-            text="Submit"/>
-    <Button layoutX="14.0" layoutY="10.0" mnemonicParsing="false" text="back"/>
-    <TextField fx:id="searchRemove" layoutX="31.0" layoutY="65.0" prefHeight="39.0" prefWidth="202.0"/>
-    <TextField fx:id="searchAdd" layoutX="311.0" layoutY="65.0" prefHeight="39.0" prefWidth="202.0"/>
-    <TextField layoutX="35.0" layoutY="355.0" prefHeight="25.0" prefWidth="257.0" text="Remove a flight from route:"/>
-    <TextField layoutX="311.0" layoutY="355.0" prefHeight="25.0" prefWidth="265.0" text="Add a flight to route:"/>
-    <Button fx:id="searchRemoveButton" layoutX="233.0" layoutY="65.0" mnemonicParsing="false" prefHeight="39.0"
-            prefWidth="52.0" text="Search" onAction="#searchRemoveButton"/>
-    <Button fx:id="searchAddButton" layoutX="513.0" layoutY="65.0" mnemonicParsing="false" prefHeight="39.0"
-            prefWidth="52.0" text="Search" onAction="#searchAddButton"/>
-</AnchorPane>
+    <center>
+        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                    prefHeight="400.0" prefWidth="600.0">
+            <ListView fx:id="removeListView" layoutX="31.0" layoutY="110.0" prefHeight="236.0" prefWidth="265.0"/>
+            <ListView fx:id="addListView" layoutX="311.0" layoutY="110.0" prefHeight="236.0" prefWidth="265.0"/>
+            <Label layoutX="265.0" layoutY="14.0" prefHeight="17.0" prefWidth="120.0" text="Create route"/>
+            <Button fx:id="submit" layoutX="518.0" layoutY="11.0" mnemonicParsing="false" prefHeight="39.0"
+                    prefWidth="67.0" text="Submit"/>
+            <Button layoutX="14.0" layoutY="10.0" mnemonicParsing="false" text="back"/>
+            <TextField fx:id="searchRemove" layoutX="31.0" layoutY="65.0" prefHeight="39.0" prefWidth="202.0"/>
+            <TextField fx:id="searchAdd" layoutX="311.0" layoutY="65.0" prefHeight="39.0" prefWidth="202.0"/>
+            <TextField layoutX="35.0" layoutY="355.0" prefHeight="25.0" prefWidth="257.0"
+                       text="Remove a flight from route:"/>
+            <TextField layoutX="311.0" layoutY="355.0" prefHeight="25.0" prefWidth="265.0"
+                       text="Add a flight to route:"/>
+            <Button fx:id="searchRemoveButton" layoutX="233.0" layoutY="65.0" mnemonicParsing="false"
+                    onAction="#searchRemoveButton" prefHeight="39.0" prefWidth="52.0" text="Search"/>
+            <Button fx:id="searchAddButton" layoutX="513.0" layoutY="65.0" mnemonicParsing="false"
+                    onAction="#searchAddButton" prefHeight="39.0" prefWidth="52.0" text="Search"/>
+        </AnchorPane>
+    </center>
+    <top>
+        <fx:include source="navBar.fxml"/>
+    </top>
+    <bottom>
+        <fx:include source="footer.fxml"/>
+    </bottom>
+</BorderPane>

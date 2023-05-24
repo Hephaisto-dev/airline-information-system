@@ -7,7 +7,6 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
@@ -22,9 +21,6 @@ public class SearchBookingController implements Initializable {
 
     @FXML
     private TextField searchField;
-
-    @FXML
-    private Button cancelButton;
 
     public SearchBookingController(BookingManager bookingManager) {
         this.bookingManager = bookingManager;

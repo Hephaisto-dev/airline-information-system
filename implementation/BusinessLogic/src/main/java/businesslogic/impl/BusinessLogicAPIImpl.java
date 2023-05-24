@@ -2,6 +2,7 @@ package businesslogic.impl;
 
 import businesslogic.api.BusinessLogicAPI;
 import businesslogic.api.common.PersistantDataContainer;
+import businesslogic.api.employee.EmployeeType;
 import businesslogic.api.manager.*;
 import persistence.api.PersistenceAPI;
 import persistence.api.PersistenceFactory;
@@ -25,6 +26,8 @@ public enum BusinessLogicAPIImpl implements BusinessLogicAPI {
     private final Map<Class<? extends Manager<? extends PersistantDataContainer<? extends Record>, ? extends Record>>,
             ? extends Manager<? extends PersistantDataContainer<? extends Record>, ? extends Record>> managerRegistry;
 
+    private EmployeeType loggedInEmployee;
+
     BusinessLogicAPIImpl(PersistenceAPI persistenceAPI) {
         managerRegistry = Map.of(
                 AirplaneManager.class, new AirplaneManager(persistenceAPI.getAirplaneStorageService()),
@@ -32,7 +35,8 @@ public enum BusinessLogicAPIImpl implements BusinessLogicAPI {
                 BookingManager.class, new BookingManager(persistenceAPI.getBookingStorageService()),
                 CustomerManager.class, new CustomerManager(persistenceAPI.getCustomerStorageService()),
                 EmployeeManager.class, new EmployeeManager(persistenceAPI.getEmployeeStorageService()),
-                FlightManager.class, new FlightManager(persistenceAPI.getFlightStorageService())
+                FlightManager.class, new FlightManager(persistenceAPI.getFlightStorageService()),
+                TicketManager.class, new TicketManager(persistenceAPI.getTicketStorageService())
         );
     }
 
@@ -77,7 +81,22 @@ public enum BusinessLogicAPIImpl implements BusinessLogicAPI {
     }
 
     @Override
+    public TicketManager getTicketManager() {
+        return getManager(TicketManager.class);
+    }
+
+    @Override
     public <U extends Manager<? extends PersistantDataContainer<D>, D>, D extends Record> U getManager(Class<U> clazz) {
         return clazz.cast(managerRegistry.get(clazz));
+    }
+
+    @Override
+    public EmployeeType getLoggedInEmployee() {
+        return loggedInEmployee;
+    }
+
+    @Override
+    public void setLoggedInEmployee(EmployeeType loggedInEmployee) {
+        this.loggedInEmployee = loggedInEmployee;
     }
 }

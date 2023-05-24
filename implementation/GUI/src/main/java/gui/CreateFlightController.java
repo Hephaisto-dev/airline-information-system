@@ -9,12 +9,10 @@ import businesslogic.api.manager.FlightManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -23,7 +21,7 @@ import java.util.function.Supplier;
  * FXML Create Flight Controller class.
  * The controller class contains GUI-logic (no business logic!). It reacts on
  * GUI events like button clicks. It triggers the BusinessLogic layer
- * to do the real work. Furthermore the controller will trigger navigation
+ * to do the real work. Furthermore, the controller will trigger navigation
  * and update the GUI.
  *
  * @author Mathias Filliol
@@ -48,6 +46,8 @@ public class CreateFlightController implements Initializable {
     public Button createButton;
     @FXML
     private Label result;
+    @FXML
+    private Button BtnBack;
 
     @FXML
     private ComboBox<String> depHour;
@@ -64,6 +64,13 @@ public class CreateFlightController implements Initializable {
         this.flightCreator = new FlightCreator(flightManager);
         this.airportManager = airportManager;
         this.airplaneManager = airplaneManager;
+    }
+
+    @FXML
+    public void BackToMain(ActionEvent actionEvent) {
+
+        sceneManagerSupplier.get().changeScene("mainGUI");
+
     }
 
     @FXML
@@ -85,7 +92,7 @@ public class CreateFlightController implements Initializable {
 
     public String sendFlight(Airport departPlace, Airport arrivePlace, String departLDT, String arriveLDT,
                              Airplane planeName) {
-       return flightCreator.createFlight(departPlace, arrivePlace, departLDT, arriveLDT, planeName);
+        return flightCreator.createFlight(departPlace, arrivePlace, departLDT, arriveLDT, planeName);
     }
 
 
@@ -125,5 +132,23 @@ public class CreateFlightController implements Initializable {
         Utils.makeComboBoxSearchable(departureAirport, Airport::getName);
         Utils.makeComboBoxSearchable(arrivalAirport, Airport::getName);
         Utils.makeComboBoxSearchable(airplaneComboBox, Airplane::getId);
+
+        departureLocalDate.setDayCellFactory(d ->
+                new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty);
+                        setDisable(item.isBefore(LocalDate.now()));
+                    }
+                });
+
+        arrivalLocalDate.setDayCellFactory(d ->
+                new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty);
+                        setDisable(item.isBefore(departureLocalDate.getValue()));
+                    }
+                });
     }
 }

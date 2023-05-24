@@ -2,19 +2,19 @@ package gui;
 
 import businesslogic.api.flight.Flight;
 import businesslogic.api.manager.FlightManager;
-import datarecords.FlightData;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ListView;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class SearchFlightController implements Initializable {
@@ -23,72 +23,76 @@ public class SearchFlightController implements Initializable {
     private FilteredList<Flight> flightFilteredList;
 
     @FXML
-    private ListView<Flight> flightListView;
-    private final ObservableList<Flight> flightObservableList = flightListView.getSelectionModel().getSelectedItems();
-    private ArrayList<FlightData> flightDataArrayList = new ArrayList<>();
+    private TableView<Flight> flightTableView;
     @FXML
-    private TableColumn FlightID;
+    private TableColumn<Flight, String> id;
     @FXML
-    private TableColumn Departure;
+    private TableColumn<Flight, String> from;
     @FXML
-    private TableColumn Arrival;
+    private TableColumn<Flight, String> to;
     @FXML
-    private TableColumn etd;
+    private TableColumn<Flight, String> etd;
     @FXML
-    private TableColumn eta;
+    private TableColumn<Flight, String> eta;
     @FXML
-    private TableColumn Duration;
+    private TableColumn<Flight, Integer> duration;
     @FXML
-    private TableColumn AirplaneID;
+    private TableColumn<Flight, String> airplane;
     @FXML
     private TextField searchField;
+    @FXML
+    private Button delete;
 
     public SearchFlightController(FlightManager flightManager) {
         this.flightManager = flightManager;
     }
 
     @FXML
-    private void searchFilter(KeyEvent actionEvent) {
-        FilteredList<Flight> filterData = new FilteredList<>(this.flightObservableList, (e) -> true);
-        this.searchField.setOnKeyReleased((e) -> {
-            this.searchField.textProperty().addListener((observable, oldValue, newValue) -> {
-                filterData.setPredicate((flight) -> {
-                    if (newValue == null) {
-                        return true;
-                    } else {
-                        String toLowerCaseFilter = newValue.toLowerCase();
-                        if (flight.getId().contains(newValue)) {
-                            return true;
-                        } else if (flight.getId().toLowerCase().contains(toLowerCaseFilter)) {
-                            return true;
-                        } else if (flight.getDeparture().getId().toLowerCase().contains(toLowerCaseFilter)) {
-                            return true;
-                        } else if (flight.getArrival().getId().toLowerCase().contains(toLowerCaseFilter)) {
-                            return true;
-                        } else if (flight.getETD().toString().toLowerCase().contains(toLowerCaseFilter)) {
-                            return true;
-                        } else if (flight.getETA().toString().toLowerCase().contains(toLowerCaseFilter)) {
-                            return true;
-                        } else if (flight.getFlightDuration().toString().toLowerCase().contains(toLowerCaseFilter)) {
-                            return true;
-                        } else {
-                            return flight.getArrival().getId().toLowerCase().contains(toLowerCaseFilter);
-                        }
-                    }
-                });
-            });
-        });
+    public void onSearch() {
+        String lowerCase = searchField.getText().toLowerCase();
+        flightFilteredList.setPredicate(flight ->
+                flight.getId().toLowerCase().contains(lowerCase) ||
+                        flight.getData().departureAirportId().toLowerCase().contains(lowerCase) ||
+                        flight.getData().arrivalAirportId().toLowerCase().contains(lowerCase) ||
+                        flight.getETD().toString().toLowerCase().contains(lowerCase) ||
+                        flight.getETA().toString().toLowerCase().contains(lowerCase) ||
+                        String.valueOf(flight.getFlightDuration()).toLowerCase().contains(lowerCase) ||
+                        flight.getData().airplaneId().toLowerCase().contains(lowerCase));
     }
 
     private void updateFlightList() {
         flightFilteredList = new FilteredList<>(FXCollections.observableArrayList(flightManager.getAll()));
-        flightListView.setItems(flightFilteredList);
+        flightTableView.setItems(flightFilteredList);
+
+        id.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getId()));
+        from.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getData().departureAirportId()));
+        to.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getData().arrivalAirportId()));
+        etd.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getETD().toString()));
+        eta.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getETA().toString()));
+        duration.setCellValueFactory(cellData -> {
+            int flightDuration = (int) cellData.getValue().getFlightDuration().toSeconds();
+            return new SimpleIntegerProperty(flightDuration).asObject();
+        });
+        airplane.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAirplane().getId()));
+    }
+
+    public void delete() {
+        ObservableList<Flight> selectedItems = flightTableView.getSelectionModel().getSelectedItems();
+        boolean success = false;
+        for (Flight flight : selectedItems) {
+            success = flight.cancel() || success;
+        }
+        if (success) {
+            updateFlightList();
+        }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateFlightList();
+
     }
+}
 
 //
 //    public void flightSearch() {
@@ -110,4 +114,6 @@ public class SearchFlightController implements Initializable {
 //    }
 
 
-}
+
+
+
