@@ -267,7 +267,7 @@
 
 ---
 
-### Use Case Create A Route  <Martin\>
+### Use Case Create Special Route  <Martin\>
 
 |               | Description                                                                                                                                                                                                                                                                                                                                                                     |
 |---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -275,10 +275,10 @@
 | Actor         | Sales officer                                                                                                                                                                                                                                                                                                                                                                   |
 | Description   | A sales officer creates one or more routes                                                                                                                                                                                                                                                                                                                                      |
 | Pre-condition | Sales officer is signed into their account                                                                                                                                                                                                                                                                                                                                      |
-| Scenario      | <ol><li>Actor navigates to the page for creating route</li><li>System displays that page</li><li>Actor enters the necessary information for creating a route, including all of the flights in that route and stopover times.</li><li>Actor saves the made changes</li><li>System indicates the success of the execution of the action</li></ol> |
+| Scenario      | <ol><li>Actor navigates to the page for creating route</li><li>System displays that page</li><li>Actor enters all of the flights in the route, stopover times and the name of the special route.</li><li>Actor saves the made changes</li></ol> |
 | Result        | The actor has successfully created a route                                                                                                                                                                                                                                                                                                                                      |
 | Extensions    | None                                                                                                                                                                                                                                                                                                                                                                            |
-| Exceptions    | <ol start = "6"><li><ol type = "a"><li>System informs the user that something went wrong when creating the route<ol><li>Use case ends here</li></ol></li></ol>                                                                                           |
+| Exceptions    | <ol start = "4"><li><ol type = "a"><li>System informs the user that something went wrong when creating the route<ol><li>Use case ends here</li></ol></li></ol>                                                                                           |
 
 ---
 
