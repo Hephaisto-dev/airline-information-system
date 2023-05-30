@@ -54,12 +54,6 @@ public class BookingCreator {
             stringBuilder.append("a booking must countain at least 1 person!\n");
         }
 
-//        if (Tickets != null && Tickets.size() == 0) {
-//
-//            errors = true;
-//            stringBuilder.append("a error happend while generating ticketIds!\n");
-//        }
-
 
         if (!errors) {
             try {
@@ -78,7 +72,7 @@ public class BookingCreator {
                 {
 
                     System.out.println("wow a ticket has been created");
-                    ticketCreator.createTicket(flight1,"A","1",c.firstName()+" "+c.lastName(),"","");
+                    ticketCreator.createTicket(flight1,"A","1",c.firstName()+" "+c.lastName(),"","");//discount and voucher not yet implemented and seats algorithm is not yet made
                     if(mainCustomer!=c){
                         customerCreator.createCustomer(c.firstName(), c.lastName(), c.dob(),c.email());
 
@@ -87,6 +81,7 @@ public class BookingCreator {
                 }
                 System.out.println("wow a customer has been created");
             } catch (Exception e) {
+                e.printStackTrace();
 
                 return "There seems to be an issue with the database, please try again." + "\n"
                         + "+If the issue persists, contact the IT department";
