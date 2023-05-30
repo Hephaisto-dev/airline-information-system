@@ -9,8 +9,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane prefHeight="588.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CreateBookingController">
+<BorderPane  xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19"
+             fx:controller="gui.CreateBookingController">
+<center>
+
+<AnchorPane prefHeight="588.0" prefWidth="1020.0">
     <children>
         <Button fx:id="btnCreateBooking" layoutX="633.0" layoutY="482.0" mnemonicParsing="false" onAction="#createBooking" text="Create the booking" />
         <Text layoutX="98.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create a Booking" />
@@ -57,3 +62,11 @@
     </children>
 
 </AnchorPane>
+</center>
+    <top>
+        <fx:include source="navBar.fxml"/>
+    </top>
+    <bottom>
+        <fx:include source="footer.fxml"/>
+    </bottom>
+</BorderPane>
