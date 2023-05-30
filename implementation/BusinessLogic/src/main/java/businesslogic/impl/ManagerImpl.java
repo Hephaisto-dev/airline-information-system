@@ -20,7 +20,7 @@ public abstract class ManagerImpl<T extends PersistantDataContainer<D>, D extend
     }
 
     @Override
-    public T add(T t) throws Exception {
+    public T add(T t) throws PersistanceException {
         if (storage.containsKey(t.getId()) || storageService.add(t.getData()) == null) {
             return null;
         }

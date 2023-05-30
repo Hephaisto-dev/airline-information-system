@@ -1,6 +1,7 @@
 package businesslogic.api.customer;
 
 import businesslogic.api.manager.CustomerManager;
+import persistence.api.exceptions.PersistanceException;
 
 import java.time.LocalDate;
 
@@ -39,8 +40,7 @@ public class CustomerCreator {
                 } else {
                     stringBuilder.append("Customer created successfully.");
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (PersistanceException e) {
                 stringBuilder.append("Error creating customer.");
             }
         } else {

@@ -2,6 +2,8 @@ package persistence.impl;
 
 import datarecords.CustomerData;
 import persistence.api.CustomerStorageService;
+import persistence.api.exceptions.DataBaseException;
+import persistence.api.exceptions.PersistanceException;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -26,7 +28,7 @@ public class CustomerStorageServiceImpl implements CustomerStorageService {
     }
 
     @Override
-    public CustomerData add(CustomerData customerData) {
+    public CustomerData add(CustomerData customerData) throws PersistanceException {
 
         String query = "INSERT INTO customers values (?,?,?,?,?)";
 
@@ -42,8 +44,9 @@ public class CustomerStorageServiceImpl implements CustomerStorageService {
             if (i == 1) {
                 return customerData;
             }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
+            throw new DataBaseException(e.getMessage());
         }
         return null;
     }
@@ -85,7 +88,4 @@ public class CustomerStorageServiceImpl implements CustomerStorageService {
         }
         return false;
     }
-    /*
-    alternative: CustomerManager.getById(customerId);
-     */
 }
