@@ -11,6 +11,8 @@ Here we collect the links to all our files of the Analysis folder for easier nav
 
 ## [Use Cases](Use%20Cases.md)
 
+## [Use Cases Sequence Diagrams](UseCasesSequenceDiagrams.md)
+
 ## [Use Case Diagram](UseCaseDiagram.md)
 
 ## [User Stories](UserStories.md)
