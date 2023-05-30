@@ -93,6 +93,20 @@ public class FlightStorageServiceImpl implements FlightStorageService {
         }
         return flightData;
     }
+    @Override
+    public boolean remove(String id) {
+        String query = "DELETE FROM flights WHERE id = ?";
+        try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
+            pstm.setString(1, id);
+            int i = pstm.executeUpdate();
+            if (i == 1) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 
 
 }
