@@ -28,7 +28,6 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 
         String query = "INSERT INTO bookings(id,employee_id,date,main_customer,flight_id) values (?,?, ?, ?,?) returning *";
 
-
         try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
 
             String id = bookingData.id();
@@ -59,6 +58,9 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 
         } catch (SQLException ex) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
+        }
+        for (String c:bookingData.customerIds()){
+            addCustomerToBooking(bookingData.id(),c);
         }
         return bookingData;
     }
@@ -148,4 +150,36 @@ public class BookingStorageServiceImpl implements BookingStorageService {
         return confirm;
 
     }
+
+    private String addCustomerToBooking(String bookingId,String customerId) {
+
+//this is just to see all values of booking id, empId, flightIds, ticketIds, bookingDate, extraIds, customerIds
+
+        String query =  "INSERT INTO customers_bookings(customer_id,booking_id) values(?,?) returning *";
+
+        try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
+
+
+            pstm.setString(1, customerId);
+            pstm.setString(2, bookingId);
+
+
+
+            ResultSet result = pstm.executeQuery();
+
+            System.out.println("JUST INSERTED: ");
+            while (result.next()) {
+
+
+                System.out.println("added customer to booking with id: " + customerId + "to " + bookingId);
+
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
+        }
+        return "success!";
+    }
+
 }

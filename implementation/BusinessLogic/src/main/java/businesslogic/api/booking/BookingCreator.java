@@ -1,5 +1,6 @@
 package businesslogic.api.booking;
 
+import businesslogic.api.customer.Customer;
 import businesslogic.api.customer.CustomerCreator;
 import businesslogic.api.customer.TicketCreator;
 import businesslogic.api.flight.Flight;
@@ -10,13 +11,16 @@ import businesslogic.api.flight.FlightFactory;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 public class BookingCreator {
     private final BookingManager bookingManager;
     private TicketCreator ticketCreator;
     private CustomerCreator customerCreator;
     private FlightFactory flightFactory;
+    private CustomerManager customerManager;
     private final static String emailRegex = "^((?!\\.)[\\w-_.]*[^.])(@\\w+)(\\.\\w+(\\.\\w+)?[^.\\W])$";
 
 
@@ -27,7 +31,7 @@ public class BookingCreator {
     }
 
     // Change signature according to record
-    public String createBooking(String id, String employeeData, FlightData flight, List<TicketData> Tickets, LocalDate bookingDate, List<String> extras, List<String> customersOnBooking, CustomerData mainCustomer) {
+    public String createBooking(String id, String employeeData, FlightData flight, List<TicketData> Tickets, LocalDate bookingDate, List<String> extras, List<CustomerData> customersOnBooking, CustomerData mainCustomer) {
 
 
         boolean errors = false;
@@ -62,18 +66,26 @@ public class BookingCreator {
 
                 String customerId = mainCustomer.id();
                 Booking booking = BookingFactory.createBooking(new BookingData(id, employeeData, null, bookingDate, extras, customerId,flight.id()));
+                Flight flight1 = FlightFactory.createFlight(flight);
+                    customerCreator.createCustomer(mainCustomer.firstName(), mainCustomer.lastName(), mainCustomer.dob(),mainCustomer.email());
+
 
                 bookingManager.add(booking);
                 System.out.println("wow a booking has been created");
 
-                Flight flight1 = FlightFactory.createFlight(flight);
-                for (String c:customersOnBooking)
+
+                for (CustomerData c:customersOnBooking)
                 {
+
                     System.out.println("wow a ticket has been created");
-                    ticketCreator.createTicket(flight1,"A","1",c,"","");
+                    ticketCreator.createTicket(flight1,"A","1",c.firstName()+" "+c.lastName(),"","");
+                    if(mainCustomer!=c){
+                        customerCreator.createCustomer(c.firstName(), c.lastName(), c.dob(),c.email());
+
+                    }
+
                 }
                 System.out.println("wow a customer has been created");
-                customerCreator.createCustomer(mainCustomer.firstName(), mainCustomer.lastName(), mainCustomer.dob(),mainCustomer.email());
             } catch (Exception e) {
 
                 return "There seems to be an issue with the database, please try again." + "\n"

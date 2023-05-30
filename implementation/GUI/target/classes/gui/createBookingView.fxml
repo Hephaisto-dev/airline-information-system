@@ -15,8 +15,8 @@
         <Button fx:id="btnCreateBooking" layoutX="633.0" layoutY="482.0" mnemonicParsing="false" onAction="#createBooking" text="Create the booking" />
         <Text layoutX="98.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create a Booking" />
         <Text layoutX="414.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add main customer to your booking" />
-        <Text layoutX="714.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passengers in the booking:" />
-        <Button fx:id="btnAddCustomer" layoutX="463.0" layoutY="280.0" mnemonicParsing="false" onAction="#addCustomer" text="save main customer" />
+        <Text layoutX="714.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passengers that will recieve a ticket:" />
+        <Button fx:id="btnAddCustomer" layoutX="381.0" layoutY="281.0" mnemonicParsing="false" onAction="#addCustomer" text="save main customer" />
         <Text layoutX="27.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee id:" />
         <TextField fx:id="empId" layoutX="114.0" layoutY="69.0" />
         <Text layoutX="387.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First name:" />
@@ -27,7 +27,7 @@
         <TextField fx:id="email" layoutX="463.0" layoutY="216.0" prefHeight="26.0" prefWidth="139.0" />
         <TextField fx:id="firstName" layoutX="463.0" layoutY="104.0" prefHeight="26.0" prefWidth="139.0" />
         <DatePicker fx:id="dateOfBirth" layoutX="463.0" layoutY="182.0" prefHeight="26.0" prefWidth="150.0" />
-        <ListView fx:id="listViewCustomers" layoutX="700.0" layoutY="140.0" prefHeight="130.0" prefWidth="212.0" />
+        <ListView fx:id="listViewCustomers" layoutX="700.0" layoutY="60.0" prefHeight="210.0" prefWidth="212.0" />
         <Text fx:id="result" layoutX="533.0" layoutY="551.0" strokeType="OUTSIDE" strokeWidth="0.0" text="result" wrappingWidth="382.9367370605469">
             <font>
                 <Font size="14.0" />
@@ -41,9 +41,7 @@
         <Text layoutX="542.0" layoutY="469.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your total to pay:" />
         <Text fx:id="totalToPay" layoutX="642.0" layoutY="472.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0,00" />
         <Button fx:id="getPrice" layoutX="529.0" layoutY="482.0" mnemonicParsing="false" onAction="#updatePrice" text="get your price" />
-      <Text layoutX="700.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="first name + last name:" />
-      <TextField fx:id="passengerName" layoutX="700.0" layoutY="81.0" prefHeight="26.0" prefWidth="139.0" />
-      <Button layoutX="819.0" layoutY="110.0" mnemonicParsing="false" onAction="#addPassengerToBooking" text="Add passenger" />
+      <Button layoutX="510.0" layoutY="281.0" mnemonicParsing="false" onAction="#addPassengerToBooking" text="Add passenger" />
       <Label fx:id="lblMainCustomer" layoutX="486.0" layoutY="251.0" prefHeight="19.0" prefWidth="186.0" text="No main customer on booking yet!" />
       <Label layoutX="387.0" layoutY="252.0" text="Main customer:" />
       <Label layoutX="532.0" layoutY="430.0" prefHeight="26.0" prefWidth="403.0" text="if the main customer wants to recieve a ticket add it to the list of passengers" />

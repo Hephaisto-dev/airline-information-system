@@ -1,43 +1,39 @@
 package gui;
 
-import businesslogic.api.airplane.Airplane;
 import businesslogic.api.booking.BookingCreator;
-import businesslogic.api.customer.Customer;
 import businesslogic.api.customer.Price;
-import businesslogic.api.customer.TicketCreator;
 import businesslogic.api.employee.Employee;
 import businesslogic.api.flight.Flight;
-import businesslogic.api.flight.FlightFactory;
 import businesslogic.api.manager.AirportManager;
 import businesslogic.api.manager.BookingManager;
-import businesslogic.api.manager.CustomerManager;
 import businesslogic.api.manager.FlightManager;
 import datarecords.CustomerData;
-import datarecords.EmployeeData;
 import datarecords.FlightData;
 import datarecords.TicketData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import persistence.api.NoDBConnectionException;
 
 import java.net.URL;
-import java.time.Duration;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.ResourceBundle;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
-
-import static java.util.Arrays.stream;
 
 
 public class CreateBookingController implements Initializable {
 
     final ArrayList<String> extras = new ArrayList<>();
-    final ArrayList<String> customers = new ArrayList<>();
+    ArrayList<CustomerData> customers = new ArrayList<>();
     private CustomerData MainCustomer;
     final List<TicketData> tickets = new ArrayList<>();//Change this from string to Ticket
     final FlightData selectedFlight = null;
@@ -120,6 +116,13 @@ public class CreateBookingController implements Initializable {
         btnAddCustomer.setDisable(true);
     }
     @FXML
+    public void addCustomerWithTicket(ActionEvent actionEvent) {
+
+        MainCustomer = new CustomerData("CU_" + email.getText(), firstName.getText(), lastName.getText(), dateOfBirth.getValue(), email.getText());
+        listViewCustomers.getItems().add(MainCustomer.firstName()+" "+MainCustomer.lastName());
+        btnAddCustomer.setDisable(true);
+    }
+    @FXML
     public void search(ActionEvent actionEvent){
         filteredFlights.clear();
         for(Flight f: allFlights){
@@ -147,13 +150,14 @@ public class CreateBookingController implements Initializable {
 
     @FXML
     public void addPassengerToBooking(){
-        if(passengerName.getText()!=null){
-            customers.add(passengerName.getText());
+        if(firstName.getText()!=null){
+
+            customers.add(new CustomerData("CU_" + email.getText(), firstName.getText(), lastName.getText(), dateOfBirth.getValue(), email.getText()));
 
         }
         listViewCustomers.getItems().clear();
-        for(String c : customers){
-            listViewCustomers.getItems().add(c);
+        for(CustomerData c : customers){
+            listViewCustomers.getItems().add(c.firstName()+" "+c.lastName());
         }
 
     }
@@ -161,10 +165,10 @@ public class CreateBookingController implements Initializable {
     @FXML
     public void updatePrice(ActionEvent actionEvent) {
 
-        if (cbFlights.getValue() != null) {
+        if (lvFlights.getSelectionModel().getSelectedItem() != null) {
             int total = 0;
             Price perPerson = cbFlights.getValue().getPrice();
-            for (String c : customers) {
+            for (CustomerData c : customers) {
 
                 total = total + perPerson.getBackendPrice() / 100;
             }
