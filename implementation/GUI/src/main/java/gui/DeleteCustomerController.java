@@ -30,7 +30,8 @@ public class DeleteCustomerController implements Initializable {
         this.customerManager = customerManager;
     }
 
-    public void onSearch() {
+    @FXML
+    private void onSearch() {
         String lowerCase = searchField.getText().toLowerCase();
         filteredCustomers.setPredicate(customer ->
                 customer.getId().toLowerCase().contains(lowerCase) ||
@@ -40,7 +41,8 @@ public class DeleteCustomerController implements Initializable {
                         customer.getFirstName().toLowerCase().contains(lowerCase));
     }
 
-    public void onDelete() {
+    @FXML
+    private void onDelete() {
         ObservableList<Customer> selectedItems = customerListView.getSelectionModel().getSelectedItems();
         boolean success = false;
         for (Customer selectedItem : selectedItems) {
