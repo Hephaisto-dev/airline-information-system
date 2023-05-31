@@ -42,7 +42,7 @@ public class TicketCreator {
             error(list, "Please select one of the flights");
         }
         //checking the letter information
-        if (CHAR == null) {
+        if (CHAR == null || CHAR.isEmpty()) {
             error(list, "Please fill in the column field");
         }else{
             if(CHAR.length() > 1){
