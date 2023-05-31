@@ -24,16 +24,21 @@ public class BookingCreator {
     private CustomerManager customerManager;
     private final static String emailRegex = "^((?!\\.)[\\w-_.]*[^.])(@\\w+)(\\.\\w+(\\.\\w+)?[^.\\W])$";
 
+     private Collection<Customer> allCustomer = new ArrayList<>();
+
 
 
     public BookingCreator(BookingManager manager, TicketManager ticketManager, CustomerManager customerManager) {
         this.bookingManager = manager;
+        this.customerManager = customerManager;
         this.customerCreator = new CustomerCreator(customerManager);
-        this.ticketCreator = new TicketCreator(ticketManager);
+        //this.ticketCreator = new TicketCreator(ticketManager);TODO FIX THIS TO WORK
     }
+
 
     // Change signature according to record
     public String createBooking(String id, String employeeData, FlightData flight, List<TicketData> Tickets, LocalDate bookingDate, List<String> extras, List<CustomerData> customersOnBooking, CustomerData mainCustomer) {
+        allCustomer.addAll(customerManager.getAll());
 
 
         boolean errors = false;
@@ -72,7 +77,9 @@ public class BookingCreator {
 
                 for (CustomerData c:customersOnBooking)
                 {
-
+                    if(allCustomer.contains(c)){//TODO this does not work yet
+                        break;
+                    }
                     System.out.println("wow a ticket has been created");
                     ticketCreator.createTicket(flight1,"A","1",c.firstName()+" "+c.lastName(),"","");//discount and voucher not yet implemented and seats algorithm is not yet made
                     if(mainCustomer!=c){
