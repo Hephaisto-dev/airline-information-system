@@ -2,15 +2,13 @@ package gui;
 
 import businesslogic.api.customer.Customer;
 import businesslogic.api.manager.CustomerManager;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,7 +18,7 @@ public class DeleteCustomerController implements Initializable {
     @FXML
     public Label result;
     @FXML
-    private ListView<Customer> customerListView;
+    private TableView<Customer> customerTableView;
     private FilteredList<Customer> filteredCustomers;
 
     @FXML
@@ -43,7 +41,7 @@ public class DeleteCustomerController implements Initializable {
 
     @FXML
     private void onDelete() {
-        ObservableList<Customer> selectedItems = customerListView.getSelectionModel().getSelectedItems();
+        ObservableList<Customer> selectedItems = customerTableView.getSelectionModel().getSelectedItems();
         boolean success = false;
         for (Customer selectedItem : selectedItems) {
             success = selectedItem.delete() || success;
@@ -59,21 +57,28 @@ public class DeleteCustomerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateCustomersList();
-        customerListView.setCellFactory(param -> new ListCell<>() {
-            @Override
-            protected void updateItem(Customer customer, boolean b) {
-                super.updateItem(customer, b);
-                if (customer != null) {
-                    setText(customer.getName());
-                } else {
-                    setText("");
-                }
-            }
-        });
+        // Compute a percentage to size the columns based on the table size, 0.01 offset to prevent scrollbars
+        double percentage = (1.0 / 4) - 0.01;
+        TableColumn<Customer, String> firstName = new TableColumn<>("First name");
+        firstName.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getFirstName()));
+        firstName.prefWidthProperty().bind(customerTableView.prefWidthProperty().multiply(percentage));
+        customerTableView.getColumns().add(firstName);
+        TableColumn<Customer, String> lastName = new TableColumn<>("Last name");
+        lastName.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getLastName()));
+        lastName.prefWidthProperty().bind(customerTableView.prefWidthProperty().multiply(percentage));
+        customerTableView.getColumns().add(lastName);
+        TableColumn<Customer, String> email = new TableColumn<>("Email");
+        email.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getEmail()));
+        email.prefWidthProperty().bind(customerTableView.prefWidthProperty().multiply(percentage));
+        customerTableView.getColumns().add(email);
+        TableColumn<Customer, String> dob = new TableColumn<>("Date of birth");
+        dob.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getDob().toString()));
+        dob.prefWidthProperty().bind(customerTableView.prefWidthProperty().multiply(percentage));
+        customerTableView.getColumns().add(dob);
     }
 
     private void updateCustomersList() {
         filteredCustomers = new FilteredList<>(FXCollections.observableArrayList(customerManager.getAll()));
-        customerListView.setItems(filteredCustomers);
+        customerTableView.setItems(filteredCustomers);
     }
 }
