@@ -20,9 +20,7 @@
 
 ## [Design](design/DesignNavigation.md)
 
-> [Class Diagram](design/ClassDiagram.md)
->
-> [Class Diagram: Create a Flight](design/ClassDiagramCreateFlight.md)
+> [Class Diagrams](design/ClassDiagrams.md)
 
 ## [Implementation](implementation/ImplementationNavigation.md)
 

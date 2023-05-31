@@ -11,6 +11,6 @@
 ## Use case delete customer <Mathias\>
 
 ---
-![DeleteCustomerSequenceDiagram.svg](use_cases_images/delete_customer/DeleteCustomerSequenceDiagram.svg)
+![DeleteCustomerSequenceDiagram.svg](sequence_diagrams/DeleteCustomerSequenceDiagram.svg)
 
 # [Back to Table of Contents](../TableOfContents.md)
