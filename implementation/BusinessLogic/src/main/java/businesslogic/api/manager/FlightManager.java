@@ -10,15 +10,8 @@ import persistence.api.TicketStorageService;
 
 public class FlightManager extends ManagerImpl<Flight, FlightData> {
 
-    /*public FlightManager(FlightStorageService storageService) {
+    public FlightManager(FlightStorageService storageService) {
         super(storageService);
-    }*/
-    private final StorageService storageService;
-
-    public FlightManager(StorageService storageService) {
-        super(storageService);
-        this.storageService = storageService;
-        forceUpdate();
     }
 
 
@@ -32,9 +25,5 @@ public class FlightManager extends ManagerImpl<Flight, FlightData> {
     @Override
     protected Flight createPersistantDataContainer(FlightData data) {
         return FlightFactory.createFlight(data);
-    }
-
-    public StorageService getStorer(){
-        return this.storageService;
     }
 }
