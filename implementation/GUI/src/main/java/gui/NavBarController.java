@@ -1,5 +1,7 @@
 package gui;
 
+import businesslogic.api.BusinessLogicAPI;
+import businesslogic.api.employee.EmployeeType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Menu;
@@ -10,25 +12,18 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.function.Supplier;
 
-import businesslogic.api.employee.EmployeeType;
-import businesslogic.api.BusinessLogicAPI;
-
 public class NavBarController implements Initializable {
 
     private final BusinessLogicAPI businessLogicAPI;
-
+    private final Supplier<SceneManager> sceneManagerSupplier;
     //Main menu bar
     @FXML
     private MenuBar mainMenuBar;
-
-
     //Home page
     @FXML
     private Menu homeMenu;
     @FXML
     private MenuItem homePage;
-
-
     //Flight Menu and all flight options
     @FXML
     private Menu flightMenu;
@@ -42,8 +37,6 @@ public class NavBarController implements Initializable {
     private MenuItem viewFlightInformation;
     @FXML
     private MenuItem viewPreviousFlights;
-
-
     //Route menu and all its options
     @FXML
     private Menu routeMenu;
@@ -53,8 +46,6 @@ public class NavBarController implements Initializable {
     private MenuItem editRoute;
     @FXML
     private MenuItem searchForRoute;
-
-
     //Airport and all its options
     @FXML
     private Menu airportMenu;
@@ -62,8 +53,6 @@ public class NavBarController implements Initializable {
     private MenuItem createAirport;
     @FXML
     private MenuItem editAirport;
-
-
     //Booking and all its options
     @FXML
     private Menu bookingMenu;
@@ -73,8 +62,6 @@ public class NavBarController implements Initializable {
     private MenuItem editBooking;
     @FXML
     private MenuItem searchForBooking;
-
-
     //Ticket and all its options
     @FXML
     private Menu ticketMenu;
@@ -84,17 +71,13 @@ public class NavBarController implements Initializable {
     private MenuItem editTicket;
     @FXML
     private MenuItem purchaseTicket;
-
-
     //Customer and all its options
     @FXML
     private Menu customerMenu;
     @FXML
     private MenuItem registerCustomer;
     @FXML
-    private MenuItem editCustomer;
-
-
+    private MenuItem deleteCustomer;
     //Management and all its options
     @FXML
     private Menu managementMenu;
@@ -107,11 +90,11 @@ public class NavBarController implements Initializable {
     @FXML
     private MenuItem startSalesProcess;
 
-    private final Supplier<SceneManager> sceneManagerSupplier;
-    public NavBarController(BusinessLogicAPI businessLogicAPI, Supplier<SceneManager> sceneManagerSupplier){
+    public NavBarController(BusinessLogicAPI businessLogicAPI, Supplier<SceneManager> sceneManagerSupplier) {
         this.businessLogicAPI = businessLogicAPI;
         this.sceneManagerSupplier = sceneManagerSupplier;
     }
+
     //left customerView
     public void sendToHomePage() {
         sceneManagerSupplier.get().changeScene("mainGUI");
@@ -128,6 +111,7 @@ public class NavBarController implements Initializable {
     public void sendToCreateRoute() {
         sceneManagerSupplier.get().changeScene("createRouteView");
     }
+
     public void sendToSearchForRoute() {
         sceneManagerSupplier.get().changeScene("searchRouteView");
     }
@@ -155,6 +139,10 @@ public class NavBarController implements Initializable {
         sceneManagerSupplier.get().changeScene("createCustomerView");
     }
 
+    public void sendToDeleteCustomer() {
+        sceneManagerSupplier.get().changeScene("deleteCustomerView");
+    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -170,7 +158,7 @@ public class NavBarController implements Initializable {
             }
         }
 
-        switch (permissions){
+        switch (permissions) {
             case SALES_OFFICER:
                 createRoute.setVisible(true);
                 //editRoute.setVisible(true);
@@ -197,8 +185,7 @@ public class NavBarController implements Initializable {
                 searchForBooking.setVisible(true);
 
                 registerCustomer.setVisible(true);
-                //editCustomer.setVisible(true);
-
+                deleteCustomer.setVisible(true);
 
                 purchaseTicket.setVisible(true);
                 searchForFlight.setVisible(true);
@@ -228,7 +215,7 @@ public class NavBarController implements Initializable {
                 purchaseTicket.setVisible(true);
 
                 registerCustomer.setVisible(true);
-                editCustomer.setVisible(true);
+                deleteCustomer.setVisible(true);
 
                 financialSheet.setVisible(true);
                 statistics.setVisible(true);

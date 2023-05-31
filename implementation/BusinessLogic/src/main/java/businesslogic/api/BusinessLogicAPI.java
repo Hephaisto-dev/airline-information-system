@@ -1,7 +1,6 @@
 package businesslogic.api;
 
 import businesslogic.api.common.PersistantDataContainer;
-import businesslogic.api.employee.Employee;
 import businesslogic.api.employee.EmployeeType;
 import businesslogic.api.manager.*;
 

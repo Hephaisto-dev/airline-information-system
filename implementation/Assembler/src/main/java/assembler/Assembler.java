@@ -3,8 +3,6 @@ package assembler;
 import businesslogic.api.BusinessLogicAPI;
 import businesslogic.api.BusinessLogicFactory;
 import gui.GUIApp;
-import persistence.api.PersistenceAPI;
-import persistence.api.PersistenceFactory;
 
 /**
  * Assembler to setup layers and start the GUI.

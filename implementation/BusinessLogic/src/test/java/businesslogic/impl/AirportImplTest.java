@@ -2,15 +2,14 @@ package businesslogic.impl;
 
 import businesslogic.api.airport.Airport;
 import org.junit.jupiter.api.Test;
-import org.assertj.core.api.SoftAssertions;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 //import static org.junit.jupiter.api.Assertions.*;
 
 class AirportImplTest {
 
-    private final Airport Airport = new AirportImpl("Id","airportName","countryName");
-    private final Airport Airport2 = new AirportImpl("Id","airportName","countryName");
+    private final Airport Airport = new AirportImpl("Id", "airportName", "countryName");
+    private final Airport Airport2 = new AirportImpl("Id", "airportName", "countryName");
     /*@Test
     void getCity() {
         assertThat(Airport.getCity()).isEqualTo("cityName");
