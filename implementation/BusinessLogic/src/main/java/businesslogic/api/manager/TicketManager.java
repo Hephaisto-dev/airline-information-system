@@ -24,7 +24,7 @@ public class TicketManager extends ManagerImpl<Ticket, TicketData> {
     protected Ticket createPersistantDataContainer(TicketData data) {
         return TicketFactory.createTicket(data);
     }
-    public StorageService getStorageService(){
-        return this.storageService;
+    public TicketStorageService getStorageService(){
+        return (TicketStorageService) this.storageService;
     }
 }
