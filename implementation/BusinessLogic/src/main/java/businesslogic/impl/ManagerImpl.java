@@ -8,6 +8,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+
+import persistence.api.exceptions.DataBaseException;
 import persistence.api.exceptions.PersistanceException;
 
 public abstract class ManagerImpl<T extends PersistantDataContainer<D>, D extends Record> implements Manager<T, D> {
@@ -40,7 +42,11 @@ public abstract class ManagerImpl<T extends PersistantDataContainer<D>, D extend
 
     @Override
     public boolean remove(T t) {
-        return storageService.remove(t.getId()) && storage.remove(t.getId()) != null;
+        try {
+            return storageService.remove(t.getId()) && storage.remove(t.getId()) != null;
+        } catch (DataBaseException e) {
+            return false;
+        }
     }
 
     @Override

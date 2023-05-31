@@ -75,7 +75,7 @@ public class CustomerStorageServiceImpl implements CustomerStorageService {
     }
 
     @Override
-    public boolean remove(String id) {
+    public boolean remove(String id) throws DataBaseException {
         String query = "DELETE FROM customers WHERE id = ?";
         try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
             pstm.setString(1, id);
@@ -85,6 +85,7 @@ public class CustomerStorageServiceImpl implements CustomerStorageService {
             }
         } catch (SQLException ex) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
+            throw new DataBaseException(ex.getMessage());
         }
         return false;
     }

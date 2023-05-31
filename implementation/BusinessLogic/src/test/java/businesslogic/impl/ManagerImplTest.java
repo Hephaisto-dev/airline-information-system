@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import persistence.api.StorageService;
+import persistence.api.exceptions.DataBaseException;
 
 import java.util.Collections;
 
@@ -25,9 +26,6 @@ class ManagerImplTest {
 
     @BeforeEach
     void setUp() throws Exception {
-        /**
-         * No Exception is actually thrown due to mocking, but java is a whiny bitch
-         */
         MockitoAnnotations.openMocks(this);
         when(persistentDataContainer.getId()).thenReturn("id");
         when(persistentDataContainer.getData()).thenReturn(record);
@@ -73,7 +71,7 @@ class ManagerImplTest {
     }
 
     @Test
-    void remove() {
+    void remove() throws DataBaseException {
         when(storageService.remove(any())).thenReturn(true);
         SoftAssertions.assertSoftly(softly -> {
             softly.assertThat(manager.remove(persistentDataContainer))
