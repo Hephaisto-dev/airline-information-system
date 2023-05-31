@@ -62,6 +62,8 @@ public class TicketStorageServiceImpl implements TicketStorageService {
             if(exception.contains("Detail: Key (customer_id)=(")
                 && exception.contains(") is not present in table " + quotationMarks + "customers" + quotationMarks)){
                 throw new CustomerException("Customer_ID not in our Database");
+            }else{
+                ex.printStackTrace();
             }
         }
         return ticketData;
