@@ -5,8 +5,6 @@ import businesslogic.api.flight.FlightFactory;
 import businesslogic.impl.ManagerImpl;
 import datarecords.FlightData;
 import persistence.api.FlightStorageService;
-import persistence.api.StorageService;
-import persistence.api.TicketStorageService;
 
 public class FlightManager extends ManagerImpl<Flight, FlightData> {
 
