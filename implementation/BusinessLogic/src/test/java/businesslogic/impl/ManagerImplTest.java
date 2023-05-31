@@ -33,6 +33,7 @@ class ManagerImplTest {
         when(persistentDataContainer.getData()).thenReturn(record);
         when(storageService.getAll()).thenReturn(Collections.singleton(record));
         when(storageService.add(any())).thenReturn(record);
+        when(storageService.remove(any())).thenReturn(true);
         manager = new ManagerImpl<>(storageService) {
             @Override
             protected PersistantDataContainer<Record> createPersistantDataContainer(Record record) {

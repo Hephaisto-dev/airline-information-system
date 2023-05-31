@@ -81,6 +81,10 @@ public class SceneManager {
 
     void displayOn(Stage stage) {
         stage.setScene(scene);
+        scene.rootProperty().addListener(observable -> {
+            stage.sizeToScene();
+            stage.centerOnScreen();
+        });
         stage.show();
     }
 
@@ -126,7 +130,6 @@ public class SceneManager {
 
         parent.getChildren().add(row);
     }
-
 
 
 }

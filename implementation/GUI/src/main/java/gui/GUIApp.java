@@ -33,23 +33,22 @@ public class GUIApp extends Application {
         case "gui.MainController" -> new MainController(this::getSceneManager);
         case "gui.NavBarController" -> new NavBarController(businessLogicAPI, this::getSceneManager);
         case "gui.FooterController" -> new FooterController(this::getSceneManager);
-//        case "gui.CustomerController" ->
-//                new CustomerController(this::getSceneManager, businessLogicAPI.getCustomerManager());
-        case "gui.CreateCustomerController" ->
-                new CreateCustomerController(businessLogicAPI.getCustomerManager());
+        case "gui.CreateCustomerController" -> new CreateCustomerController(businessLogicAPI.getCustomerManager());
         case "gui.PrimaryController" -> new PrimaryController(this::getSceneManager);
         case "gui.SecondaryController" -> new SecondaryController(this::getSceneManager);
         case "gui.CreateBookingController" ->
-                new CreateBookingController(this::getSceneManager, businessLogicAPI.getBookingManager());
+                new CreateBookingController(this::getSceneManager, businessLogicAPI.getBookingManager(), businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager());
         case "gui.CreateFlightController" ->
                 new CreateFlightController(this::getSceneManager, businessLogicAPI.getFlightManager(),
                         businessLogicAPI.getAirportManager(), businessLogicAPI.getAirplaneManager());
         case "gui.CreateAirportController" -> new CreateAirportController(this::getSceneManager,
                 businessLogicAPI.getAirportManager());
-        case "gui.SearchBookingController" -> new SearchBookingController(this::getSceneManager,businessLogicAPI.getBookingManager());
+        case "gui.SearchBookingController" -> new SearchBookingController(businessLogicAPI.getBookingManager());
         case "gui.CreateTicketController" -> new CreateTicketController(businessLogicAPI.getFlightManager());
         case "gui.SearchFlightController" -> new SearchFlightController(businessLogicAPI.getFlightManager());
-        case "gui.CreateAirplaneController" -> new CreateAirplaneController(this::getSceneManager,businessLogicAPI.getAirplaneManager());
+        case "gui.DeleteCustomerController" -> new DeleteCustomerController(businessLogicAPI.getCustomerManager());
+        case "gui.CreateAirplaneController" ->
+                new CreateAirplaneController(this::getSceneManager, businessLogicAPI.getAirplaneManager());
         case "gui.CreateRouteController" -> new CreateRouteController(this::getSceneManager);
         default -> null;
     };

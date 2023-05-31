@@ -9,10 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,6 +19,9 @@ public class SearchFlightController implements Initializable {
     private final FlightManager flightManager;
     private FilteredList<Flight> flightFilteredList;
 
+
+    @FXML
+    private Label result;
     @FXML
     private TableView<Flight> flightTableView;
     @FXML
@@ -71,18 +71,23 @@ public class SearchFlightController implements Initializable {
         eta.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getETA().toString()));
         duration.setCellValueFactory(cellData -> {
             int flightDuration = (int) cellData.getValue().getFlightDuration().toSeconds();
-            return new SimpleIntegerProperty(flightDuration).asObject();});
+            return new SimpleIntegerProperty(flightDuration).asObject();
+        });
         airplane.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAirplane().getId()));
     }
 
-    public void delete() {
+    public void onDelete() {
         ObservableList<Flight> selectedItems = flightTableView.getSelectionModel().getSelectedItems();
         boolean success = false;
-        for (Flight flight : selectedItems) {
-            success = flight.cancel() || success;
+        for (Flight selectedItem : selectedItems) {
+            success = selectedItem.delete() || success;
         }
         if (success) {
             updateFlightList();
+            result.setText("Successfully deleted flight(s)");
+        }
+        else {
+            result.setText("Failed to delete flight(s)");
         }
     }
 
