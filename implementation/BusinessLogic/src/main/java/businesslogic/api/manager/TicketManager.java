@@ -4,6 +4,7 @@ import businesslogic.api.customer.Ticket;
 import businesslogic.api.customer.TicketFactory;
 import businesslogic.impl.ManagerImpl;
 import datarecords.TicketData;
+import persistence.api.StorageService;
 import persistence.api.TicketStorageService;
 
 public class TicketManager extends ManagerImpl<Ticket, TicketData> {

@@ -6,6 +6,7 @@ import businesslogic.api.customer.TicketCreator;
 import businesslogic.api.flight.Flight;
 import businesslogic.api.manager.BookingManager;
 import businesslogic.api.manager.CustomerManager;
+import businesslogic.api.manager.TicketManager;
 import datarecords.*;
 import businesslogic.api.flight.FlightFactory;
 
@@ -25,9 +26,10 @@ public class BookingCreator {
 
 
 
-    public BookingCreator(BookingManager manager) {
+    public BookingCreator(BookingManager manager, TicketManager ticketManager, CustomerManager customerManager) {
         this.bookingManager = manager;
-
+        this.customerCreator = new CustomerCreator(customerManager);
+        this.ticketCreator = new TicketCreator(ticketManager);
     }
 
     // Change signature according to record
