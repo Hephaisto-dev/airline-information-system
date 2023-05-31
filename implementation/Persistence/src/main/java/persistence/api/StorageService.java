@@ -2,8 +2,6 @@ package persistence.api;
 
 import java.util.HashSet;
 import java.util.Set;
-
-import persistence.api.exceptions.DataBaseException;
 import persistence.api.exceptions.PersistanceException;
 
 public interface StorageService<D extends Record> {
@@ -14,7 +12,7 @@ public interface StorageService<D extends Record> {
         return new HashSet<>();
     }
 
-    default boolean remove(String id) throws DataBaseException {
+    default boolean remove(String id) {
         return true;
     }
 }
