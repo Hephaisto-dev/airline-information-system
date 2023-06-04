@@ -11,7 +11,7 @@ public class FlightManager extends ManagerImpl<Flight, FlightData> {
     public FlightManager(FlightStorageService storageService) {
         super(storageService);
     }
-
+    
     public Flight searchFlight(String searchPhrase) {
         return getAll().stream()
                 .filter(flight -> flight.getId().contains(searchPhrase))
