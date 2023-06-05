@@ -23,7 +23,7 @@
     * [Use Case Create Special Route  <Martin\>](#use-case-create-special-route-martin)
     * [Use Case Edit A Route  <Martin\>](#use-case-edit-a-route-martin)
     * [Use Case Update Upcoming Flight Information  <Martin\>](#use-case-update-upcoming-flight-information-martin)
-    * [Use Case Create A Flight  <Martin\>](#use-case-create-a-flight--jazz)
+    * [Use Case Create A Flight  <Jazz\>](#use-case-create-a-flight--jazz)
     * [Use Case Create A Booking  <Jazz\>](#use-case-create-a-booking-jazz)
     * [Use Case Adding Extras  <Jazz\>](#use-case-adding-extras-jazz)
 * [Back to Table of Contents](#back-to-table-of-contents)
