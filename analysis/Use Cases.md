@@ -13,13 +13,14 @@
     * [Use Case Search For Booking  <Mathias\>](#use-case-search-for-booking-mathias)
     * [Use Case Use Management Dashboard  <Mathias\>](#use-case-use-management-dashboard-mathias)
     * [Use Case View Financial Sheets In Statistics  <Mathias\>](#use-case-view-financial-sheets-in-statistics-mathias)
-    * [Use Case Searching For A Flight And Delete It  <Jazz\>](#use-case-searching-for-a-flight-and-delete-it-jazz)
-    * [Use Case Search For A Route  <Jazz\>](#use-case-search-for-a-route-jazz)
+    * [Use Case Searching For A Flight And Delete it  <Jazz\>](#use-case-searching-for-a-flight-and-delete-it-jazz)
+    * [Use Case Search For A Route  <Martin\>](#use-case-search-for-a-route-martin)
     * [Use Case View Flight Information  <Jazz\>](#use-case-view-flight-information-jazz)
     * [Use Case Delete Customer  <Mathias\>](#use-case-delete-customer-mathias)
+    * [Use Case Create Customer  <Mathias\>](#use-case-create-customer-mathias)
     * [Use Case Cancel A Booking  <Mathias\>](#use-case-cancel-a-booking-mathias)
     * [Use Case Register Employee  <Daniel\>](#use-case-register-employee-daniel)
-    * [Use Case Create A Route  <Martin\>](#use-case-create-a-route-martin)
+    * [Use Case Create Special Route  <Martin\>](#use-case-create-special-route-martin)
     * [Use Case Edit A Route  <Martin\>](#use-case-edit-a-route-martin)
     * [Use Case Update Upcoming Flight Information  <Martin\>](#use-case-update-upcoming-flight-information-martin)
     * [Use Case Register Upcoming Flight  <Martin\>](#use-case-register-upcoming-flight-martin)
@@ -237,6 +238,21 @@
 
 ----
 
+### Use Case Create Customer  <Mathias\>
+
+|               | Description                                                                                                                                                                                                                                                                                                                                                       |
+|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | Create customer                                                                                                                                                                                                                                                                                                                                                   |
+| Actor         | Sales employee                                                                                                                                                                                                                                                                                                                                                    |
+| Description   | A sales employee is creating a customer                                                                                                                                                                                                                                                                                                                           |
+| Pre-condition | <ul><li>Sales Employee is signed into their account</li></ul>                                                                                                                                                                                                                                                                                                     |
+| Scenario      | <ol><li>Actor navigates to the page for creating customers</li><li>System displays that page</li><li>Actor fill a form with id, first name, last name, email and date of birth of the customer</li><li>Actor submit the form</li><li>System confirms the customer was created</li></ol>                                                                           |
+| Result        | The actor has created a customer                                                                                                                                                                                                                                                                                                                                  |
+| Extensions    | None                                                                                                                                                                                                                                                                                                                                                              |
+| Exceptions    | <ol start = "5"><li><ol type = "a"><li>One or more fields are not in the correct format<ol><li>System informs the user which fields are incorrect</li><li>Back to step 3</li></ol></li><li>An error occured when creating the customer<ol><li>System informs the user that the customer can't be created</li><li>Use case ends here</li></ol></li></ol></li></ol> |
+
+----
+
 ### Use Case Cancel A Booking  <Mathias\>
 
 |               | Description                                                                                                                                                                                                                      |
@@ -248,7 +264,7 @@
 | Scenario      | <ol><li>Actor [<ins>search for a booking</ins>](Use%20Cases.md#use-case-search-for-booking-mathias)</li><li>Actor selects </li><li>Actor select the booking to cancel</li><li>System confirms the booking was canceled</li></ol> |
 | Result        | The booking has been successfully canceled.                                                                                                                                                                                      |
 | Extensions    | None                                                                                                                                                                                                                             |
-| Exceptions    | <ol start = "3"><li><ol type = "a"><li>There was an error while cancelling the booking<ol><li>System informs the user that the booking can't be deleted</li><li>Use case ends here</li></ol></li></ol></li></ol>                 |
+| Exceptions    | <ol start = "3"><li><ol type = "a"><li>An error occured when cancelling the booking<ol><li>System informs the user that the booking can't be deleted</li><li>Use case ends here</li></ol></li></ol></li></ol>                    |
 
 ---
 
