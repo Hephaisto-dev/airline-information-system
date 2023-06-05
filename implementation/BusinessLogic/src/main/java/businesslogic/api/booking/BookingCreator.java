@@ -6,8 +6,11 @@ import businesslogic.api.customer.TicketCreator;
 import businesslogic.api.flight.Flight;
 import businesslogic.api.manager.BookingManager;
 import businesslogic.api.manager.CustomerManager;
+import businesslogic.api.manager.TicketManager;
 import datarecords.*;
 import businesslogic.api.flight.FlightFactory;
+import persistence.api.TicketStorageService;
+import persistence.impl.TicketStorageServiceImpl;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -23,15 +26,30 @@ public class BookingCreator {
     private CustomerManager customerManager;
     private final static String emailRegex = "^((?!\\.)[\\w-_.]*[^.])(@\\w+)(\\.\\w+(\\.\\w+)?[^.\\W])$";
 
+    private Collection<String> allCustomer = new ArrayList<>();
+    List<String> customerIds= new ArrayList<>();
 
 
-    public BookingCreator(BookingManager manager) {
+
+
+    public BookingCreator(BookingManager manager, TicketManager ticketManager, CustomerManager customerManager) {
         this.bookingManager = manager;
-
+        this.customerManager = customerManager;
+        this.customerCreator = new CustomerCreator(customerManager);
+        this.ticketCreator = new TicketCreator(ticketManager.getStorageService());
     }
+
 
     // Change signature according to record
     public String createBooking(String id, String employeeData, FlightData flight, List<TicketData> Tickets, LocalDate bookingDate, List<String> extras, List<CustomerData> customersOnBooking, CustomerData mainCustomer) {
+
+        for(Customer c: customerManager.getAll()){
+        allCustomer.add(c.getId());
+        }
+        for(CustomerData c: customersOnBooking){
+            customerIds.add("CU_" + c.email());
+        }
+
 
 
         boolean errors = false;
@@ -59,7 +77,7 @@ public class BookingCreator {
             try {
 
                 String customerId = mainCustomer.id();
-                Booking booking = BookingFactory.createBooking(new BookingData(id, employeeData, null, bookingDate, extras, customerId,flight.id()));
+                Booking booking = BookingFactory.createBooking(new BookingData(id, employeeData,customerIds , bookingDate, extras, customerId,flight.id()));
                 Flight flight1 = FlightFactory.createFlight(flight);
                     customerCreator.createCustomer(mainCustomer.firstName(), mainCustomer.lastName(), mainCustomer.dob(),mainCustomer.email());
 
@@ -70,13 +88,17 @@ public class BookingCreator {
 
                 for (CustomerData c:customersOnBooking)
                 {
-
                     System.out.println("wow a ticket has been created");
-                    ticketCreator.createTicket(flight1,"A","1",c.firstName()+" "+c.lastName(),"","");//discount and voucher not yet implemented and seats algorithm is not yet made
-                    if(mainCustomer!=c){
-                        customerCreator.createCustomer(c.firstName(), c.lastName(), c.dob(),c.email());
+                    String Ticketresult = ticketCreator.createTicket(flight1,"2","B",c.firstName()+" "+c.lastName(),null,null);//discount and voucher not yet implemented and seats algorithm is not yet made
+                    System.out.println(Ticketresult);
 
+                    if(!allCustomer.contains(c.id())){//this makes sure the tickets are created for everyone even is the account already exists
+                        if(mainCustomer!=c){
+                            customerCreator.createCustomer(c.firstName(), c.lastName(), c.dob(),c.email());
+                        }
                     }
+                    //this makes sure the main customer is not added twice
+
 
                 }
                 System.out.println("wow a customer has been created");

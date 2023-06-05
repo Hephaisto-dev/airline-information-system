@@ -2,6 +2,7 @@ package businesslogic.api.flight;
 
 import businesslogic.api.airplane.Airplane;
 import businesslogic.api.airplane.Seat;
+import businesslogic.api.common.Deleteable;
 import businesslogic.api.common.PersistantDataContainer;
 import businesslogic.api.common.TravelDestinations;
 import businesslogic.api.customer.Price;
@@ -10,7 +11,7 @@ import datarecords.FlightData;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-public interface Flight extends PersistantDataContainer<FlightData>, TravelDestinations {
+public interface Flight extends PersistantDataContainer<FlightData>, TravelDestinations, Deleteable {
 
     Price getPrice();
 
@@ -27,6 +28,4 @@ public interface Flight extends PersistantDataContainer<FlightData>, TravelDesti
     String cancelBookedSeat(String targetID);
 
     Seat getSeat(String Seat_Id);
-
-    boolean delete();
 }
