@@ -40,7 +40,7 @@ public class SearchBookingController implements Initializable {
         ObservableList<Booking> selectedItems = bookingListView.getSelectionModel().getSelectedItems();
         boolean success = false;
         for (Booking selectedItem : selectedItems) {
-            success = selectedItem.cancel() || success;
+            success = selectedItem.delete() || success;
         }
         if (success) {
             updateBookingList();

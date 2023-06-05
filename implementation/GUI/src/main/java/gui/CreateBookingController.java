@@ -4,9 +4,7 @@ import businesslogic.api.booking.BookingCreator;
 import businesslogic.api.customer.Price;
 import businesslogic.api.employee.Employee;
 import businesslogic.api.flight.Flight;
-import businesslogic.api.manager.AirportManager;
-import businesslogic.api.manager.BookingManager;
-import businesslogic.api.manager.FlightManager;
+import businesslogic.api.manager.*;
 import datarecords.CustomerData;
 import datarecords.FlightData;
 import datarecords.TicketData;
@@ -91,10 +89,10 @@ public class CreateBookingController implements Initializable {
 
 
 
-    public CreateBookingController(Supplier<SceneManager> sceneManagerSupplier, BookingManager bookingManager, FlightManager flightManager, AirportManager airportManager) {
+    public CreateBookingController(Supplier<SceneManager> sceneManagerSupplier, BookingManager bookingManager, FlightManager flightManager, AirportManager airportManager, TicketManager ticketManager, CustomerManager customerManager) {
         this.sceneManagerSupplier = sceneManagerSupplier;
         this.bookingManager = bookingManager;
-        this.bookingCreator = new BookingCreator(bookingManager);
+        this.bookingCreator = new BookingCreator(bookingManager,ticketManager,customerManager);
         this.flightManager = flightManager;
         this.airportManager= airportManager;
     }
