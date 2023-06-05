@@ -18,7 +18,7 @@
     * [Test Scenario Creating A New Route  <Martin\>](#test-scenario-creating-a-new-route-martin)
     * [Test Scenario Edit A Route  <Martin\>](#test-scenario-edit-a-route-martin)
     * [Test Scenario Update Upcoming Flight Information  <Martin\>](#test-scenario-update-upcoming-flight-information-martin)
-    * [Test Scenario Register Upcoming Flight  <Martin\>](#test-scenario-register-upcoming-flight-martin)
+    * [Test Scenario Create A New Flight  <Jazz\>](#test-scenario-create-a-new-flight-jazz)
     * [Test Scenario Searching For A Flight and Delete it <Jazz\>](#test-scenario-searching-for-a-flight-and-delete-it-jazz)
     * [Test Scenario Search For A Route  <Jazz\>](#test-scenario-search-for-a-route-jazz)
     * [Test Scenario View Flight Information  <Jazz\>](#test-scenario-view-flight-information-jazz)
