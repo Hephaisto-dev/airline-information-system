@@ -3,14 +3,14 @@ package gui;
 import businesslogic.api.customer.TicketCreator;
 import businesslogic.api.flight.Flight;
 import businesslogic.api.manager.FlightManager;
+import java.util.Collection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-
-import java.util.Collection;
 
 public class CreateTicketController {
     private final FlightManager flightManager;
@@ -26,7 +26,7 @@ public class CreateTicketController {
     @FXML
     TextField CustomerNameGet;
     @FXML
-    TextField feedbackField;
+    TextArea feedbackField;
     @FXML
     TextField discountGet;
     @FXML
