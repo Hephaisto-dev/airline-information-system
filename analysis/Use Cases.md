@@ -5,43 +5,29 @@
 <!-- TOC -->
 * [USE CASES](#use-cases)
     * [Use Case Purchase Ticket](#use-case-purchase-ticket)
-    * [Use Case Apply Discount  <Daniel\>](#use-case-apply-discount-daniel)
-    * [Use Case Apply Voucher  <Daniel\>](#use-case-apply-voucher-daniel)
-    * [Use Case Login  <Lucas\>](#use-case-login-lucas)
-    * [Use Case Access Previous Flight Records  <Lucas\>](#use-case-access-previous-flight-records-lucas)
-    * [Use Case Start Sales Process  <Lucas\>](#use-case-start-sales-process-lucas)
-    * [Use Case Use Management Dashboard  <Mathias\>](#use-case-use-management-dashboard-mathias)
-    * [Use Case View Financial Sheets In Statistics  <Mathias\>](#use-case-view-financial-sheets-in-statistics-mathias)
-    * [Use Case Searching For A Flight And Delete it  <Jazz\>](#use-case-searching-for-a-flight-and-delete-it-jazz)
-    * [Use Case Search For A Route  <Martin\>](#use-case-search-for-a-route-martin)
-    * [Use Case View Flight Information  <Jazz\>](#use-case-view-flight-information-jazz)
-    * [Use Case Delete Customer  <Mathias\>](#use-case-delete-customer-mathias)
-    * [Use Case Create Customer  <Mathias\>](#use-case-create-customer-mathias)
-    * [Use Case Cancel A Booking  <Mathias\>](#use-case-cancel-a-booking-mathias)
-    * [Use Case Search For Booking  <Mathias\>](#use-case-search-for-booking-mathias)
-    * [Use Case Register Employee  <Daniel\>](#use-case-register-employee-daniel)
-    * [Use Case Create Special Route  <Martin\>](#use-case-create-special-route-martin)
-    * [Use Case Edit A Route  <Martin\>](#use-case-edit-a-route-martin)
-    * [Use Case Update Upcoming Flight Information  <Martin\>](#use-case-update-upcoming-flight-information-martin)
-    * [Use Case Create A Flight  <Jazz\>](#use-case-create-a-flight--jazz)
-    * [Use Case Create A Booking  <Jazz\>](#use-case-create-a-booking-jazz)
-    * [Use Case Adding Extras  <Jazz\>](#use-case-adding-extras-jazz)
+    * [Use Case Apply Discount](#use-case-apply-discount)
+    * [Use Case Apply Voucher](#use-case-apply-voucher)
+    * [Use Case Login](#use-case-login)
+    * [Use Case Access Previous Flight Records](#use-case-access-previous-flight-records)
+    * [Use Case Start Sales Process](#use-case-start-sales-process)
+    * [Use Case Use Management Dashboard](#use-case-use-management-dashboard)
+    * [Use Case View Financial Sheets In Statistics](#use-case-view-financial-sheets-in-statistics)
+    * [Use Case Searching For A Flight And Delete it](#use-case-searching-for-a-flight-and-delete-it)
+    * [Use Case Search For A Route](#use-case-search-for-a-route)
+    * [Use Case View Flight Information](#use-case-view-flight-information)
+    * [Use Case Delete Customer](#use-case-delete-customer)
+    * [Use Case Create Customer](#use-case-create-customer)
+    * [Use Case Cancel A Booking](#use-case-cancel-a-booking)
+    * [Use Case Search For Booking](#use-case-search-for-booking)
+    * [Use Case Register Employee](#use-case-register-employee)
+    * [Use Case Create Special Route](#use-case-create-special-route)
+    * [Use Case Edit A Route](#use-case-edit-a-route)
+    * [Use Case Update Upcoming Flight Information](#use-case-update-upcoming-flight-information)
+    * [Use Case Create A Flight](#use-case-create-a-flight)
+    * [Use Case Create A Booking](#use-case-create-a-booking)
+    * [Use Case Adding Extras](#use-case-adding-extras)
 * [Back to Table of Contents](#back-to-table-of-contents)
 <!-- TOC -->
-
-|               | Description                                                                                                                                                                                                                                                                                                                                                                 |
-|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Name          | Template                                                                                                                                                                                                                                                                                                                                                                    |
-| Actor         | Developers                                                                                                                                                                                                                                                                                                                                                                  |
-| Description   | *The void stares back at you*                                                                                                                                                                                                                                                                                                                                               |
-| Pre-condition | Understanding how to write these                                                                                                                                                                                                                                                                                                                                            |
-| Scenario      | <ol><li>Open the .md file in Visual Studio Code</li><li>VSCode opens the code</li><li>Edit the file to include the new Use Case and save</li><li>Switch to GitHub Desktop and click on the "Fetch origin" button, wait for it to finish</li><li>After asserting that there are no issues / conflicts, name the commit, add brief description if needed and commit</li></ol> |
-| Result        | The Use Cases have been updated, by adding, editing or deletion of one or multiple Use Cases                                                                                                                                                                                                                                                                                |
-| Extensions    | None                                                                                                                                                                                                                                                                                                                                                                        |
-| Exceptions    | <ol start = "5"><li>If there is an issue, handle it before committing</li></ol>                                                                                                                                                                                                                                                                                             |
-
----
-<!-- Further Use Cases can be edited now-->
 
 ### Use Case Purchase Ticket
 
@@ -53,12 +39,12 @@
 | Pre-condition | Logged in as Sales Employee                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | Scenario      | <ol><li>Actor navigates to the place for purchasing tickets</li><li>System provides the according GUI/page</li><li>Actor selects the flight their customer desires</li><li>System shows that this flight has been selected<li>System asks further instructions</li></li><li>Actor denies the question</li><li>System provides the GUI to enter the personal information for the ticket</li><li>Actor either enters the information on behalf of the customer and finalizes the purchase</li><li>System provides the ticket and returns back to initial screen</li></ol> |
 | Result        | The Sales Employee gets a ticket to the according flight for their customer                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| Extensions    | <ol start = "6"><li><ol type = "a"><li>Actor selects the option "Apply discount". Handled by the Use Case "Apply discount" (#use-case-apply-discount--daniel)</li><li>Actor selects the option "Apply voucher" (#use-case-apply-voucher--daniel). Handled by the use Case "Apply voucher"</li><li>Actor selects the option "Add extras". Handled by the Use Case "Choose Travel extras / options" (#use-case-adding-extras--janis)</li></ol></li></ol>                                                                                                                  |
+| Extensions    | <ol start = "6"><li><ol type = "a"><li>Actor selects the option "Apply discount". Handled by the Use Case "Apply discount" (#use-case-apply-discount)</li><li>Actor selects the option "Apply voucher" (#use-case-apply-voucher). Handled by the use Case "Apply voucher"</li><li>Actor selects the option "Add extras". Handled by the Use Case "Choose Travel extras / options" (#use-case-adding-extras)</li></ol></li></ol>                                                                                                                                         |
 | Exceptions    | <ol start = "5"><li><ol type = "a"><li>Actor cancels the ticket selection</li><ol><li>System moves back to the initial screen</li></ol></ol></li></ol>                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
 ---
 
-### Use Case Apply Discount  <Daniel\>
+### Use Case Apply Discount
 
 |               | Description                                                                                                                                                                                                                                                                                                                                                                        |
 |---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -73,7 +59,7 @@
 
 ---
 
-### Use Case Apply Voucher  <Daniel\>
+### Use Case Apply Voucher
 
 |               | Description                                                                                                                                                                                                                                                                                                                                                                                    |
 |---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -88,7 +74,7 @@
 
 ---
 
-### Use Case Login  <Lucas\>
+### Use Case Login
 
 |               | Description                                                                                                                                                                                                                                                                                                          |
 |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -103,7 +89,7 @@
 
 ---
 
-### Use Case Access Previous Flight Records  <Lucas\>
+### Use Case Access Previous Flight Records
 
 |               | Description                                                                                                                                                                                                                                                 |
 |---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -118,7 +104,7 @@
 
 ---
 
-### Use Case Start Sales Process  <Lucas\>
+### Use Case Start Sales Process
 
 |               | Description                                                                                                                                                                                                                                                                                                                   |
 |---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -133,22 +119,22 @@
 
 ---
 
-### Use Case Use Management Dashboard  <Mathias\>
+### Use Case Use Management Dashboard
 
-|               | Description                                                                                                                                                                                                                                                                   |
-|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Name          | Use Management Dashboard                                                                                                                                                                                                                                                      |
-| Actor         | Sales manager                                                                                                                                                                                                                                                                 |
-| Description   | Sales manager uses the management dashboard to view key performance indicators                                                                                                                                                                                                |
-| Pre-condition | Sales manager is signed into his account                                                                                                                                                                                                                                      |
-| Scenario      | <ol><li>Actor selects management dashboard</li><li>System displays the management dashboard</li><li>Actor interact with the dashboard (e.g., [<ins>view financial sheets in statistics</ins>](Use%20Cases.md#use-case-view-financial-sheets-in-statistics-mathias))</li></ol> |
-| Result        | Sales manager viewed the key performance indicators and other important data                                                                                                                                                                                                  |
-| Extensions    | None                                                                                                                                                                                                                                                                          |
-| Exceptions    | <ol start = "3"><li><ol type = "a"><li>System shows that an error occurred when using the dashboard<ol><li>Use case ends here</li></ol></li></ol></li></ol>                                                                                                                   |
+|               | Description                                                                                                                                                                                                                                                           |
+|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | Use Management Dashboard                                                                                                                                                                                                                                              |
+| Actor         | Sales manager                                                                                                                                                                                                                                                         |
+| Description   | Sales manager uses the management dashboard to view key performance indicators                                                                                                                                                                                        |
+| Pre-condition | Sales manager is signed into his account                                                                                                                                                                                                                              |
+| Scenario      | <ol><li>Actor selects management dashboard</li><li>System displays the management dashboard</li><li>Actor interact with the dashboard (e.g., [<ins>view financial sheets in statistics</ins>](Use%20Cases.md#use-case-view-financial-sheets-in-statistics))</li></ol> |
+| Result        | Sales manager viewed the key performance indicators and other important data                                                                                                                                                                                          |
+| Extensions    | None                                                                                                                                                                                                                                                                  |
+| Exceptions    | <ol start = "3"><li><ol type = "a"><li>System shows that an error occurred when using the dashboard<ol><li>Use case ends here</li></ol></li></ol></li></ol>                                                                                                           |
 
 ---
 
-### Use Case View Financial Sheets In Statistics  <Mathias\>
+### Use Case View Financial Sheets In Statistics
 
 |               | Description                                                                                                                                                                                                     |
 |---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -163,9 +149,8 @@
 
 ---
 
-### Use Case Searching For A Flight And Delete it  <Jazz\>
+### Use Case Searching For A Flight And Delete it
 
-|               | Description                                                                                                                                                                                                                                                                                                                                                |
 |               | Description                                                                                                                                                                                                                                                                                                                                                |
 |---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Name          | Search for a flight And Delete It                                                                                                                                                                                                                                                                                                                          |
@@ -179,7 +164,7 @@
 
 ---
 
-### Use Case Search For A Route  <Martin\>
+### Use Case Search For A Route
 
 |               | Description                                                                                                                                                                                                                                                                                                                                                               |
 |---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -194,7 +179,7 @@
 
 ---
 
-### Use Case View Flight Information  <Jazz\>
+### Use Case View Flight Information
 
 |               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 |---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -209,7 +194,7 @@
 
 -----
 
-### Use Case Delete Customer  <Mathias\>
+### Use Case Delete Customer
 
 |               | Description                                                                                                                                                                                                                                                                                                                                            |
 |---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -224,7 +209,7 @@
 
 ----
 
-### Use Case Create Customer  <Mathias\>
+### Use Case Create Customer
 
 |               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 |---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -239,22 +224,22 @@
 
 ----
 
-### Use Case Cancel A Booking  <Mathias\>
+### Use Case Cancel A Booking
 
-|               | Description                                                                                                                                                                                                                      |
-|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Name          | Cancel a booking                                                                                                                                                                                                                 |
-| Actor         | Sales employee                                                                                                                                                                                                                   |
-| Description   | Sales Employee cancels a booking                                                                                                                                                                                             |
-| Pre-condition | Logged in as a Sales Officer                                                                                                                                                                                                     |
-| Scenario      | <ol><li>Actor [<ins>search for a booking</ins>](Use%20Cases.md#use-case-search-for-booking-mathias)</li><li>Actor selects </li><li>Actor select the booking to cancel</li><li>System confirms the booking was canceled</li></ol> |
-| Result        | Booking has been successfully canceled.                                                                                                                                                                                          |
-| Extensions    | None                                                                                                                                                                                                                             |
-| Exceptions    | <ol start = "3"><li><ol type = "a"><li>An error occured when cancelling the booking<ol><li>System informs the user that the booking can't be deleted</li><li>Use case ends here</li></ol></li></ol></li></ol>                    |
+|               | Description                                                                                                                                                                                                              |
+|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | Cancel a booking                                                                                                                                                                                                         |
+| Actor         | Sales employee                                                                                                                                                                                                           |
+| Description   | Sales Employee cancels a booking                                                                                                                                                                                         |
+| Pre-condition | Logged in as a Sales Officer                                                                                                                                                                                             |
+| Scenario      | <ol><li>Actor [<ins>search for a booking</ins>](Use%20Cases.md#use-case-search-for-booking)</li><li>Actor selects </li><li>Actor select the booking to cancel</li><li>System confirms the booking was canceled</li></ol> |
+| Result        | Booking has been successfully canceled.                                                                                                                                                                                  |
+| Extensions    | None                                                                                                                                                                                                                     |
+| Exceptions    | <ol start = "3"><li><ol type = "a"><li>An error occured when cancelling the booking<ol><li>System informs the user that the booking can't be deleted</li><li>Use case ends here</li></ol></li></ol></li></ol>            |
 
 ---
 
-### Use Case Search For Booking  <Mathias\>
+### Use Case Search For Booking
 
 |               | Description                                                                                                                                                                                                                                                         |
 |---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -269,7 +254,7 @@
 
 ---
 
-### Use Case Register Employee  <Daniel\>
+### Use Case Register Employee
 
 |               | Description                                                                                                                                                                                                                                                   |
 |---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -284,7 +269,7 @@
 
 ---
 
-### Use Case Create Special Route  <Martin\>
+### Use Case Create Special Route
 
 |               | Description                                                                                                                                                                                                                                     |
 |---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -299,7 +284,7 @@
 
 ---
 
-### Use Case Edit A Route  <Martin\>
+### Use Case Edit A Route
 
 |               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 |---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -314,7 +299,7 @@
 
 ---  
 
-### Use Case Update Upcoming Flight Information  <Martin\>
+### Use Case Update Upcoming Flight Information
 
 |               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -329,22 +314,22 @@
 
 ---  
 
-### Use Case Create A Flight  <Jazz\>
+### Use Case Create A Flight
 
-|               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Name          | Create a flight                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| Actor         | Sales officer                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| Description   | Sales officer creates a flight                                                                                                                                                                                                                                                                                                                                                                                                         |
-| Pre-condition | <ul><li>Sales officer is signed into their account</li></ul>                                                                                                                                                                                                                                                                                                                                                                                             |                                                                                                                                                                |
+|               | Description                                                                                                                                                                                                                                                                                                                                             |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | Create a flight                                                                                                                                                                                                                                                                                                                                         |
+| Actor         | Sales officer                                                                                                                                                                                                                                                                                                                                           |
+| Description   | Sales officer creates a flight                                                                                                                                                                                                                                                                                                                          |
+| Pre-condition | <ul><li>Sales officer is signed into their account</li></ul>                                                                                                                                                                                                                                                                                            |                                                                                                                                                                |
 | Scenario      | <ol><li>Actor navigates to the page for creating a flight</li><li>System displays an editing page for creating a flight</li><li>Actor enters the flight number, departure and arrival airport,as well as the departure and arrival dates and times</li><li>Actor confirms the creatin of a  flight</li><li>System displays a success message.</li></ol> |
-| Result        | The actor has successfully created a new flight                                                                                                                                                                                                                                                                                                                                                                                                |
-| Extensions    | <ol start = "5"><li><ol type = "a"><li>Actor does not confirm the changes<ol><li>System returns the actor to the editing page</li></ol></li></ol></li></ol>                                                                                                                                                                                                                                                                                              |
-| Exceptions    | <ol start = "7"><li><ol type = "a"><li>System informs the user that something went wrong when creating a flight<ol><li>System displays an error message and allows the actor to try again</li></ol></li></ol></li></ol>                                                                                                                                                                                                                             |
+| Result        | The actor has successfully created a new flight                                                                                                                                                                                                                                                                                                         |
+| Extensions    | <ol start = "5"><li><ol type = "a"><li>Actor does not confirm the changes<ol><li>System returns the actor to the editing page</li></ol></li></ol></li></ol>                                                                                                                                                                                             |
+| Exceptions    | <ol start = "7"><li><ol type = "a"><li>System informs the user that something went wrong when creating a flight<ol><li>System displays an error message and allows the actor to try again</li></ol></li></ol></li></ol>                                                                                                                                 |
 
 ----
 
-### Use Case Create A Booking  <Jazz\>
+### Use Case Create A Booking
 
 |               | Description                                                                                                                                                                                                                                                                                                                                                                                             |
 |---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -359,17 +344,17 @@
 
 ----
 
-### Use Case Adding Extras  <Jazz\>
+### Use Case Adding Extras
 
-|               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Name          | Adding Extras                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| Actor         | Sales employee                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| Description   | Sales employee is adding Extras for a Customer                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| Pre-condition | <ul><li>Sales employee is signed into their account</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                      |
-| Scenario      | <ol><li>Actor selects to add extras while in the "Purchasing a ticket"([Use Case Purchase Ticket](#use-case-purchase-ticket-daniel)) use case </li><li>System displays a page where the actor can select the desired extras</li><li>Actor selects the desired extras and saves the changes</li><li>System asks the actor to confirm their choice</li><li>Actor confirms their choice</li><li>Systeam informs the user of the successful execution of the operation and allows them to move to the next step of purchasing a ticket</li></ol> |
-| Result        | The actor has successfully added extras                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| Extensions    | <ol start = "5"><li><ol type = "a"><li>Actor does not confirm their choice</li><ol><li>System returns the actor to the editing page</li></ol></ol></li></ol>                                                                                                                                                                                                                                                                                                                                                                                 |
-| Exceptions    | <ol start = "6"><li><ol type = "a"><li>System informs the user that something went wrong while adding extras<ol><li>System displays an error message and allows the actor to try again</li></ol></li></ol></li></ol>                                                                                                                                                                                                                                                                                                                         |
+|               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | Adding Extras                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Actor         | Sales employee                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| Description   | Sales employee is adding Extras for a Customer                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| Pre-condition | <ul><li>Sales employee is signed into their account</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |                                                                                                      |
+| Scenario      | <ol><li>Actor selects to add extras while in the "Purchasing a ticket"([Use Case Purchase Ticket](#use-case-purchase-ticket)) use case </li><li>System displays a page where the actor can select the desired extras</li><li>Actor selects the desired extras and saves the changes</li><li>System asks the actor to confirm their choice</li><li>Actor confirms their choice</li><li>Systeam informs the user of the successful execution of the operation and allows them to move to the next step of purchasing a ticket</li></ol> |
+| Result        | The actor has successfully added extras                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Extensions    | <ol start = "5"><li><ol type = "a"><li>Actor does not confirm their choice</li><ol><li>System returns the actor to the editing page</li></ol></ol></li></ol>                                                                                                                                                                                                                                                                                                                                                                          |
+| Exceptions    | <ol start = "6"><li><ol type = "a"><li>System informs the user that something went wrong while adding extras<ol><li>System displays an error message and allows the actor to try again</li></ol></li></ol></li></ol>                                                                                                                                                                                                                                                                                                                  |
 
 # [Back to Table of Contents](../TableOfContents.md)
