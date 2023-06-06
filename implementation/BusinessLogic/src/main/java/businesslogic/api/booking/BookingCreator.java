@@ -1,24 +1,56 @@
 package businesslogic.api.booking;
 
+import businesslogic.api.customer.Customer;
+import businesslogic.api.customer.CustomerCreator;
+import businesslogic.api.customer.TicketCreator;
+import businesslogic.api.flight.Flight;
 import businesslogic.api.manager.BookingManager;
+import businesslogic.api.manager.CustomerManager;
+import businesslogic.api.manager.TicketManager;
 import datarecords.*;
+import businesslogic.api.flight.FlightFactory;
+import persistence.api.TicketStorageService;
+import persistence.impl.TicketStorageServiceImpl;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 public class BookingCreator {
     private final BookingManager bookingManager;
+    private TicketCreator ticketCreator;
+    private CustomerCreator customerCreator;
+    private FlightFactory flightFactory;
+    private CustomerManager customerManager;
+    private final static String emailRegex = "^((?!\\.)[\\w-_.]*[^.])(@\\w+)(\\.\\w+(\\.\\w+)?[^.\\W])$";
 
-    public BookingCreator(BookingManager manager) {
+    private Collection<String> allCustomer = new ArrayList<>();
+    List<String> customerIds= new ArrayList<>();
 
+
+
+
+    public BookingCreator(BookingManager manager, TicketManager ticketManager, CustomerManager customerManager) {
         this.bookingManager = manager;
+        this.customerManager = customerManager;
+        this.customerCreator = new CustomerCreator(customerManager);
+        this.ticketCreator = new TicketCreator(ticketManager.getStorageService());
     }
 
-    // Change signature according to record
-    public String createBooking(String id, EmployeeData employeeData, FlightData flight, List<TicketData> Tickets, LocalDate bookingDate, List<String> extras, List<CustomerData> customersOnBooking) {
 
-// TODO SILL SOME RESTRICTIONS MISSING BECAUSE OF NOT IMPLEMENTED CLASSES
+    // Change signature according to record
+    public String createBooking(String id, String employeeData, FlightData flight, List<TicketData> Tickets, LocalDate bookingDate, List<String> extras, List<CustomerData> customersOnBooking, CustomerData mainCustomer) {
+
+        for(Customer c: customerManager.getAll()){
+        allCustomer.add(c.getId());
+        }
+        for(CustomerData c: customersOnBooking){
+            customerIds.add("CU_" + c.email());
+        }
+
+
 
         boolean errors = false;
 
@@ -40,21 +72,39 @@ public class BookingCreator {
             stringBuilder.append("a booking must countain at least 1 person!\n");
         }
 
-        if (Tickets != null && Tickets.size() == 0) {
-
-            errors = true;
-            stringBuilder.append("a error happend while generating ticketIds!\n");
-        }
-
 
         if (!errors) {
             try {
-                //TODO input the list of tickets as a string list
-                //TODO input the list of customers as a string list
-                //TODO input the list of extras as a string list
-                Booking booking = BookingFactory.createBooking(new BookingData(id, employeeData.id(), new ArrayList<>(), bookingDate, extras, new ArrayList<>()));
+
+                String customerId = mainCustomer.id();
+                Booking booking = BookingFactory.createBooking(new BookingData(id, employeeData,customerIds , bookingDate, extras, customerId,flight.id()));
+                Flight flight1 = FlightFactory.createFlight(flight);
+                    customerCreator.createCustomer(mainCustomer.firstName(), mainCustomer.lastName(), mainCustomer.dob(),mainCustomer.email());
+
+
                 bookingManager.add(booking);
+                System.out.println("wow a booking has been created");
+
+
+                for (CustomerData c:customersOnBooking)
+                {
+                    System.out.println("wow a ticket has been created");
+                    String Ticketresult = ticketCreator.createTicket(flight1,"2","B",c.firstName()+" "+c.lastName(),null,null);//discount and voucher not yet implemented and seats algorithm is not yet made
+                    System.out.println(Ticketresult);
+
+                    if(!allCustomer.contains(c.id())){//this makes sure the tickets are created for everyone even is the account already exists
+                        if(mainCustomer!=c){
+                            customerCreator.createCustomer(c.firstName(), c.lastName(), c.dob(),c.email());
+                        }
+                    }
+                    //this makes sure the main customer is not added twice
+
+
+                }
+                System.out.println("wow a customer has been created");
             } catch (Exception e) {
+                e.printStackTrace();
+
                 return "There seems to be an issue with the database, please try again." + "\n"
                         + "+If the issue persists, contact the IT department";
             }
