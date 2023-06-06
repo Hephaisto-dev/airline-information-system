@@ -4,7 +4,7 @@
 
 <!-- TOC -->
 * [USE CASES](#use-cases)
-    * [Use Case Purchase Ticket  <Daniel\>](#use-case-purchase-ticket-daniel)
+    * [Use Case Purchase Ticket](#use-case-purchase-ticket)
     * [Use Case Apply Discount  <Daniel\>](#use-case-apply-discount-daniel)
     * [Use Case Apply Voucher  <Daniel\>](#use-case-apply-voucher-daniel)
     * [Use Case Login  <Lucas\>](#use-case-login-lucas)
@@ -43,7 +43,7 @@
 ---
 <!-- Further Use Cases can be edited now-->
 
-### Use Case Purchase Ticket  <Daniel\>
+### Use Case Purchase Ticket
 
 |               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 |---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
