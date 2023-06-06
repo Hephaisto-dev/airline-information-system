@@ -11,8 +11,6 @@
 > [Test Scenarios](analysis/TestScenarios.md)
 >
 > [Use Cases](analysis/Use%20Cases.md)
-> 
-> [Use Cases Sequence Diagrams](analysis/UseCasesSequenceDiagrams.md)
 >
 > [Use Case Diagram](analysis/UseCaseDiagram.md)
 >
@@ -20,6 +18,8 @@
 
 ## [Design](design/DesignNavigation.md)
 
+> [Sequence Diagrams](design/UseCasesSequenceDiagrams.md)
+> 
 > [Class Diagrams](design/ClassDiagrams.md)
 
 ## [Implementation](implementation/ImplementationNavigation.md)
