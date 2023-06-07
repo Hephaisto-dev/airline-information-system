@@ -75,7 +75,7 @@ public class FlightCreator {
         }
     }
 
-    public String createFlight(Airport departPlace, Airport arrivePlace, LocalDateTime departLDT,
+    /*public String createFlight(Airport departPlace, Airport arrivePlace, LocalDateTime departLDT,
                                LocalDateTime arriveLDT, Airplane planeName) {
         boolean errors = false;
         String errorMessages = "";
@@ -141,17 +141,12 @@ public class FlightCreator {
                 flightManager.add(flight);
             } catch (Exception e) {
                 return "Flight was successfully created";//DELTE WHEN ACTUAL IMPL OF .add() method has occurred
-                /*
-                e.printStackTrace();
-                //figuring out what kind of exception we're dealing with here in order for this to be more precisely
-                handled
-                return "There seems to be an issue with the database, please try again." + "\n"
-                        + "+If the issue persists, contact the IT department";*/
+
             }
             return "Flight was successfully created";
         } else {
             errorMessages += "Please correct this and try again";
             return errorMessages;
         }
-    }
+    }*/
 }
