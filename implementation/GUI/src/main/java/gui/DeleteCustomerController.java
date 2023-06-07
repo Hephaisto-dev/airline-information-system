@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 public class DeleteCustomerController implements Initializable {
     private final CustomerManager customerManager;
@@ -24,19 +25,23 @@ public class DeleteCustomerController implements Initializable {
     @FXML
     private TextField searchField;
 
+    private Predicate<Customer> currentPredicate = customer -> true;
+
     public DeleteCustomerController(CustomerManager customerManager) {
         this.customerManager = customerManager;
     }
 
     @FXML
     private void onSearch() {
-        String lowerCase = searchField.getText().toLowerCase();
-        filteredCustomers.setPredicate(customer ->
-                customer.getId().toLowerCase().contains(lowerCase) ||
-                        customer.getLastName().toLowerCase().contains(lowerCase) ||
-                        customer.getEmail().toLowerCase().contains(lowerCase) ||
-                        customer.getDob().toString().toLowerCase().contains(lowerCase) ||
-                        customer.getFirstName().toLowerCase().contains(lowerCase));
+        currentPredicate = customer -> {
+            String lowerCase = searchField.getText().toLowerCase();
+            return customer.getId().toLowerCase().contains(lowerCase) ||
+                    customer.getLastName().toLowerCase().contains(lowerCase) ||
+                    customer.getEmail().toLowerCase().contains(lowerCase) ||
+                    customer.getDob().toString().toLowerCase().contains(lowerCase) ||
+                    customer.getFirstName().toLowerCase().contains(lowerCase);
+        };
+        filteredCustomers.setPredicate(currentPredicate);
     }
 
     @FXML
@@ -56,7 +61,6 @@ public class DeleteCustomerController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        updateCustomersList();
         // Compute a percentage to size the columns based on the table size, 0.01 offset to prevent scrollbars
         double percentage = (1.0 / 4) - 0.01;
         TableColumn<Customer, String> firstName = new TableColumn<>("First name");
@@ -75,10 +79,12 @@ public class DeleteCustomerController implements Initializable {
         dob.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getDob().toString()));
         dob.prefWidthProperty().bind(customerTableView.prefWidthProperty().multiply(percentage));
         customerTableView.getColumns().add(dob);
+        Utils.autoUpdateList(this::updateCustomersList);
     }
 
     private void updateCustomersList() {
         filteredCustomers = new FilteredList<>(FXCollections.observableArrayList(customerManager.getAll()));
+        filteredCustomers.setPredicate(currentPredicate);
         customerTableView.setItems(filteredCustomers);
     }
 }

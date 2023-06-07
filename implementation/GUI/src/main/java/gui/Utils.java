@@ -9,6 +9,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.skin.ComboBoxListViewSkin;
 import javafx.util.StringConverter;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
 public class Utils {
@@ -43,5 +46,11 @@ public class Utils {
                 }
             });
         });
+    }
+
+    public static void autoUpdateList(Runnable updateFunction) {
+        ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
+        // Update the storage every minute
+        scheduledExecutorService.scheduleAtFixedRate(updateFunction, 0, 20, TimeUnit.SECONDS);
     }
 }
