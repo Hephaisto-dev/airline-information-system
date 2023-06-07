@@ -26,7 +26,7 @@ public class BookingImpl implements Booking {
     }
 
     @Override
-    public boolean cancel() {
+    public boolean delete() {
         return BusinessLogicFactory.getImplementation().getBookingManager().remove(this);
     }
 

@@ -30,8 +30,6 @@ public class CreateCustomerController implements Initializable {
     @FXML
     private TextField email;
     @FXML
-    private Button saveButton;
-    @FXML
     private Label result;
 
     public CreateCustomerController(CustomerManager customerManager) {
