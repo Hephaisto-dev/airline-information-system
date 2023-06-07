@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import persistence.api.PersistenceFactory;
 import persistence.api.TicketStorageService;
+import persistence.api.exceptions.ConnectionException;
 import persistence.api.exceptions.CustomerException;
 import persistence.impl.TicketStorageServiceImpl;
 
@@ -42,7 +43,7 @@ public class TicketCreator {
             error(list, "Please select one of the flights");
         }
         //checking the letter information
-        if (CHAR == null) {
+        if (CHAR == null || CHAR.isEmpty()) {
             error(list, "Please fill in the column field");
         }else{
             if(CHAR.length() > 1){
@@ -115,7 +116,10 @@ public class TicketCreator {
                 if(custi.getMessage().contains("Customer_ID not in our Database")){
                     error(list,"Please ensure validity of customer id (not present in database)");
                 }
-            }catch(Exception e){
+            }catch(ConnectionException conni){
+                error(list, "You or the server is having connectivity problems");
+            }
+            catch(Exception e){
                 e.printStackTrace();
                 error(list, "Unhandled exception");
             }

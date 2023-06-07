@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sql.DataSource;
 import persistence.api.TicketStorageService;
+import persistence.api.exceptions.ConnectionException;
 import persistence.api.exceptions.CustomerException;
 import persistence.api.exceptions.PersistanceException;
 
@@ -22,7 +23,7 @@ public class TicketStorageServiceImpl implements TicketStorageService {
     }
 
     @Override
-    public TicketData add(TicketData ticketData) throws CustomerException {
+    public TicketData add(TicketData ticketData) throws CustomerException, ConnectionException {
 
         String query = "INSERT INTO tickets (id, flight_id, customer_id, price, seat_id) values (?, ?, ?, ?, ?) returning *";
 
@@ -64,6 +65,8 @@ public class TicketStorageServiceImpl implements TicketStorageService {
             if(exception.contains("Detail: Key (customer_id)=(")
                 && exception.contains(") is not present in table " + quotationMarks + "customers" + quotationMarks)){
                 throw new CustomerException("Customer_ID not in our Database");
+            }else if(exception.contains("Connection") && exception.contains("refused")){
+                throw new ConnectionException("Connection problem");
             }else{
                 ex.printStackTrace();
             }

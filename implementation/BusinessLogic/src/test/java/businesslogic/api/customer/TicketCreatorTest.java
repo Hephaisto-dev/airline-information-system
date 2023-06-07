@@ -16,16 +16,20 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import org.mockito.MockitoAnnotations;
+import persistence.api.exceptions.CustomerException;
 import persistence.impl.TicketStorageServiceImpl;
 
 class TicketCreatorTest {
 
+    private TicketCreator creator;
+    private TicketCreator noCustomerCreator;
+    private PriceImpl cost1 = new PriceImpl(1000);
     @Mock
     private TicketStorageServiceImpl TSS;
     @Mock
+    private TicketStorageServiceImpl NoCustomerTSS;
+    @Mock
     private Flight flyer;
-    private TicketCreator creator;
-    private PriceImpl cost1 = new PriceImpl(1000);
     @Mock
     private Airplane planeMock;
 
@@ -37,14 +41,18 @@ class TicketCreatorTest {
         MockitoAnnotations.openMocks(this);
         Mockito.when(TSS.add(new TicketData("MockPlane1A","MockPlane","Customer",49, "4D")))
                         .thenReturn(ticketInfo);
+        Mockito.when(NoCustomerTSS.add(new TicketData("MockPlane3C","MockPlane","Customer",1000, "3C")))
+                .thenThrow(new CustomerException("Customer_ID not in our Database"));
         Mockito.when(flyer.bookSeat(1, 'A')).thenReturn("successfully");
         Mockito.when(flyer.bookSeat(141,'B')).thenReturn("Failure");
+        Mockito.when(flyer.bookSeat(3,'C')).thenReturn("successfully");
         Mockito.when(flyer.getId()).thenReturn("MockPlane");
         Mockito.when(flyer.getAirplane()).thenReturn(planeMock);
         Mockito.when(planeMock.getLength()).thenReturn(12);
         Mockito.when(planeMock.getWidth()).thenReturn(6);
         Mockito.when(flyer.getPrice()).thenReturn(cost1);
         creator = new TicketCreator(TSS);
+        noCustomerCreator = new TicketCreator(NoCustomerTSS);
     }
 
     @ParameterizedTest
@@ -61,6 +69,14 @@ class TicketCreatorTest {
         SoftAssertions.assertSoftly(softly->{
             softly.assertThat(creator.createTicket(flyer, NUM, CHAR, cus, discount, voucher))
                     .contains(expectation);
+        });
+    }
+
+    @Test
+    void noCustomer(){
+        SoftAssertions.assertSoftly(softly->{
+            softly.assertThat(noCustomerCreator.createTicket(flyer, "3","C","Customer","0", "0"))
+                    .contains("not present in database");
         });
     }
 
