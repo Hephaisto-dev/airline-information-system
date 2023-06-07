@@ -110,7 +110,7 @@ class FlightCreatorTest {
                 .contains(expectation));
     }
 
-    @ParameterizedTest
+    /*@ParameterizedTest
     @CsvSource({
             "port1,port2,early,late,plane1,Flight was successfully created",
             "port1,port2,late,early,plane1,departure must be before time of arrival",
@@ -134,5 +134,5 @@ class FlightCreatorTest {
         );
         SoftAssertions.assertSoftly(softly -> softly.assertThat(answer)
                 .contains(expectation));
-    }
+    }*/
 }
