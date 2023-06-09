@@ -3,7 +3,6 @@ package businesslogic.api.manager;
 import businesslogic.api.common.PersistantDataContainer;
 
 import java.util.Collection;
-import persistence.api.exceptions.PersistanceException;
 
 public interface Manager<T extends PersistantDataContainer<D>, D extends Record> {
     /**

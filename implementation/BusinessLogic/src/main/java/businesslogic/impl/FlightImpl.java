@@ -71,8 +71,8 @@ public class FlightImpl implements Flight {
         }
         Seat seat = new SeatImpl(row, column);
         //if (bookedSeats.stream().noneMatch(seat1 -> seat1.getId().equals(seat.getId()))) { THIS IS COMMENTED BECAUSE THE ALGORITHM FOR SEATS IS NOT IMPLEMENTED
-            bookedSeats.add(seat);
-            return "Seat was successfully booked";
+        bookedSeats.add(seat);
+        return "Seat was successfully booked";
 //        } else {
 //            return "Seat is already booked by someone else";
 //        }
