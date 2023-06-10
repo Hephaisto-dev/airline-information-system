@@ -52,9 +52,4 @@ public class AirplaneImpl implements Airplane {
         return airplaneData.id();
     }
 
-//    @Override
-//    public String toString() {
-//        return getName();
-//    }
-//    //Generate this code with the IDE!
 }

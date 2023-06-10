@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 public class SearchBookingController implements Initializable {
     private final BookingManager bookingManager;
@@ -22,18 +23,21 @@ public class SearchBookingController implements Initializable {
     @FXML
     private TextField searchField;
 
+    private Predicate<Booking> currentPredicate = booking -> true;
+
     public SearchBookingController(BookingManager bookingManager) {
         this.bookingManager = bookingManager;
     }
 
     public void onSearch() {
         String lowerCase = searchField.getText().toLowerCase();
-        filteredBooking.setPredicate(booking -> booking.getId().toLowerCase().contains(lowerCase) ||
+        currentPredicate = booking -> booking.getId().toLowerCase().contains(lowerCase) ||
                 booking.getCustomersOnBooking().stream().anyMatch(customer ->
                         customer.getFirstName().toLowerCase().contains(lowerCase) ||
                                 customer.getLastName().toLowerCase().contains(lowerCase) ||
                                 customer.getData().email().toLowerCase().contains(lowerCase)) ||
-                booking.getData().employeeId().toLowerCase().contains(lowerCase));
+                booking.getData().employeeId().toLowerCase().contains(lowerCase);
+        filteredBooking.setPredicate(currentPredicate);
     }
 
     public void onCancel() {
@@ -54,6 +58,7 @@ public class SearchBookingController implements Initializable {
 
     private void updateBookingList() {
         filteredBooking = new FilteredList<>(FXCollections.observableArrayList(bookingManager.getAll()));
+        filteredBooking.setPredicate(currentPredicate);
         bookingListView.setItems(filteredBooking);
     }
 }

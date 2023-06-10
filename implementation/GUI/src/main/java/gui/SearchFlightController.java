@@ -85,8 +85,7 @@ public class SearchFlightController implements Initializable {
         if (success) {
             updateFlightList();
             result.setText("Successfully deleted flight(s)");
-        }
-        else {
+        } else {
             result.setText("Failed to delete flight(s)");
         }
     }

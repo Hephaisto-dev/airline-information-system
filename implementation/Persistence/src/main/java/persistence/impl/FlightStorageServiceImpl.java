@@ -93,6 +93,7 @@ public class FlightStorageServiceImpl implements FlightStorageService {
         }
         return flightData;
     }
+
     @Override
     public boolean remove(String id) {
         String query = "DELETE FROM flights WHERE id = ?";

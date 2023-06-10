@@ -1,8 +1,9 @@
 package persistence.api;
 
+import persistence.api.exceptions.PersistanceException;
+
 import java.util.HashSet;
 import java.util.Set;
-import persistence.api.exceptions.PersistanceException;
 
 public interface StorageService<D extends Record> {
     D add(D data) throws PersistanceException;

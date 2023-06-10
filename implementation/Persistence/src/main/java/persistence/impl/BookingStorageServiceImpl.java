@@ -10,7 +10,6 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,8 +39,8 @@ public class BookingStorageServiceImpl implements BookingStorageService {
             pstm.setString(1, id);
             pstm.setString(2, empId);
             pstm.setDate(3, Date.valueOf(bookingdate));
-            pstm.setString(4,mainCustomer);
-            pstm.setString(5,flightId);
+            pstm.setString(4, mainCustomer);
+            pstm.setString(5, flightId);
 
 
             ResultSet result = pstm.executeQuery();
@@ -63,8 +62,8 @@ public class BookingStorageServiceImpl implements BookingStorageService {
             if(exception.contains("Connection") && exception.contains("refused")){
                 throw new ConnectionException("Connection problem");}
         }
-        for (String c:bookingData.customerIds()){
-            addCustomerToBooking(bookingData.id(),c);
+        for (String c : bookingData.customerIds()) {
+            addCustomerToBooking(bookingData.id(), c);
         }
         return bookingData;
     }
@@ -86,8 +85,7 @@ public class BookingStorageServiceImpl implements BookingStorageService {
                 String flightId = result.getString("flight_id");
 
 
-
-                bookingData.add(new BookingData(id, empId, new ArrayList<>(), bookingDate, new ArrayList<>(),mainCustomer,flightId));
+                bookingData.add(new BookingData(id, empId, new ArrayList<>(), bookingDate, new ArrayList<>(), mainCustomer, flightId));
             }
         } catch (SQLException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
@@ -160,14 +158,13 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 
 //this is just to see all values of booking id, empId, flightIds, ticketIds, bookingDate, extraIds, customerIds
 
-        String query =  "INSERT INTO customers_bookings(customer_id,booking_id) values(?,?) returning *";
+        String query = "INSERT INTO customers_bookings(customer_id,booking_id) values(?,?) returning *";
 
         try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
 
 
             pstm.setString(1, customerId);
             pstm.setString(2, bookingId);
-
 
 
             ResultSet result = pstm.executeQuery();

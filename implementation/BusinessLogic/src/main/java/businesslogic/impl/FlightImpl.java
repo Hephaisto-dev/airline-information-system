@@ -9,7 +9,6 @@ import businesslogic.api.customer.Price;
 import businesslogic.api.customer.PriceImpl;
 import businesslogic.api.flight.Flight;
 import datarecords.FlightData;
-
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -18,6 +17,7 @@ import java.util.List;
 public class FlightImpl implements Flight {
 
     private final FlightData flightData;
+    private final Price ticketCost = new PriceImpl(1000);
 
     @Deprecated(forRemoval = true)
     private final List<Seat> bookedSeats = new ArrayList<>();
@@ -26,11 +26,10 @@ public class FlightImpl implements Flight {
         this.flightData = flightData;
     }
 
-    @Deprecated
+
     @Override
     public Price getPrice() {
-        //TODO adapt to bew architecture
-        return new PriceImpl(1000);
+        return this.ticketCost;
     }
 
     @Override
@@ -72,8 +71,8 @@ public class FlightImpl implements Flight {
         }
         Seat seat = new SeatImpl(row, column);
         //if (bookedSeats.stream().noneMatch(seat1 -> seat1.getId().equals(seat.getId()))) { THIS IS COMMENTED BECAUSE THE ALGORITHM FOR SEATS IS NOT IMPLEMENTED
-            bookedSeats.add(seat);
-            return "Seat was successfully booked";
+        bookedSeats.add(seat);
+        return "Seat was successfully booked";
 //        } else {
 //            return "Seat is already booked by someone else";
 //        }

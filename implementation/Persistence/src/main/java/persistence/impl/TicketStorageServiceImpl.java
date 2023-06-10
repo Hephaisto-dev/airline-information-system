@@ -2,6 +2,9 @@ package persistence.impl;
 
 import datarecords.TicketData;
 import persistence.api.TicketStorageService;
+import persistence.api.exceptions.ConnectionException;
+import persistence.api.exceptions.CustomerException;
+
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,11 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.sql.DataSource;
-import persistence.api.TicketStorageService;
-import persistence.api.exceptions.ConnectionException;
-import persistence.api.exceptions.CustomerException;
-import persistence.api.exceptions.PersistanceException;
 
 public class TicketStorageServiceImpl implements TicketStorageService {
     private final DataSource dataSource;
@@ -40,7 +38,7 @@ public class TicketStorageServiceImpl implements TicketStorageService {
             pstm.setString(2, F_id);
             pstm.setString(3, C_id);
             pstm.setInt(4, price);
-            pstm.setString(5,seat);
+            pstm.setString(5, seat);
 
 
             ResultSet result = pstm.executeQuery();
@@ -62,12 +60,12 @@ public class TicketStorageServiceImpl implements TicketStorageService {
             System.out.println(ex.getMessage());
             String exception = ex.getMessage();
             char quotationMarks = '"';
-            if(exception.contains("Detail: Key (customer_id)=(")
-                && exception.contains(") is not present in table " + quotationMarks + "customers" + quotationMarks)){
+            if (exception.contains("Detail: Key (customer_id)=(")
+                    && exception.contains(") is not present in table " + quotationMarks + "customers" + quotationMarks)) {
                 throw new CustomerException("Customer_ID not in our Database");
-            }else if(exception.contains("Connection") && exception.contains("refused")){
+            } else if (exception.contains("Connection") && exception.contains("refused")) {
                 throw new ConnectionException("Connection problem");
-            }else{
+            } else {
                 ex.printStackTrace();
             }
         }

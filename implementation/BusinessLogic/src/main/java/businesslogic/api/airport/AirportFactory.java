@@ -13,15 +13,7 @@ public interface AirportFactory {
         return new AirportImpl(airportData);
     }
 
-    static Airport createAirport(String name) throws NoAirportException {
-        if (true) { //TODO implement the getting from the persistence / DB
-            return new AirportImpl("AI", name, "");
-        } else {
-            throw new NoAirportException();
-        }
-    }
-
     static Airport createAirport(String id, String name, String country) {
-        return createAirport(new AirportData(id, name, country));
+        return new AirportImpl(id, name, country);
     }
 }
