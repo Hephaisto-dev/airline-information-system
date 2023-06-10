@@ -6,4 +6,6 @@ Here we collect the links of our files in this folder to make traversal as smoot
 
 ## [Class Diagrams](UseCasesSequenceDiagrams.md)
 
+## [Database Schema](DatabaseSchema.md)
+
 ## [Back to Table of Contents](../TableOfContents.md)
