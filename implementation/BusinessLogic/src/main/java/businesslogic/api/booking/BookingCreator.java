@@ -41,7 +41,7 @@ public class BookingCreator {
 
 
     // Change signature according to record
-    public String createBooking(String id, String employeeData, FlightData flight, List<TicketData> Tickets, LocalDate bookingDate, List<String> extras, List<CustomerData> customersOnBooking, CustomerData mainCustomer) {
+    public String createBooking(String id, String employeeData, Flight flight, List<TicketData> Tickets, LocalDate bookingDate, List<String> extras, List<CustomerData> customersOnBooking, CustomerData mainCustomer) {
 
         for(Customer c: customerManager.getAll()){
         allCustomer.add(c.getId());
@@ -58,14 +58,14 @@ public class BookingCreator {
         StringBuilder stringBuilder = new StringBuilder();
 
 
-        if (id == null || employeeData == null || flight == null || Tickets == null || bookingDate == null || customersOnBooking == null)//Extras can be null
+        if (id == null || employeeData == null || flight == null || bookingDate == null || customersOnBooking == null)//Extras can be null
         {
             errors = true;
             stringBuilder.append("All fields must be filled in!(except extraIds)\n");
         }
 
 
-        if (customersOnBooking != null && (long) customersOnBooking.size() == 0) {
+        if ((long) customersOnBooking.size() == 0) {
 
 
             errors = true;
@@ -77,8 +77,8 @@ public class BookingCreator {
             try {
 
                 String customerId = mainCustomer.id();
-                Booking booking = BookingFactory.createBooking(new BookingData(id, employeeData,customerIds , bookingDate, extras, customerId,flight.id()));
-                Flight flight1 = FlightFactory.createFlight(flight);
+                Booking booking = BookingFactory.createBooking(new BookingData(id, employeeData,customerIds , bookingDate, extras, customerId,flight.getId()));
+
                     customerCreator.createCustomer(mainCustomer.firstName(), mainCustomer.lastName(), mainCustomer.dob(),mainCustomer.email());
 
 
@@ -89,7 +89,7 @@ public class BookingCreator {
                 for (CustomerData c:customersOnBooking)
                 {
                     System.out.println("wow a ticket has been created");
-                    String Ticketresult = ticketCreator.createTicket(flight1,"2","B",c.firstName()+" "+c.lastName(),null,null);//discount and voucher not yet implemented and seats algorithm is not yet made
+                    String Ticketresult = ticketCreator.createTicket(flight,"2","B",c.firstName()+" "+c.lastName(),null,null);//discount and voucher not yet implemented and seats algorithm is not yet made
                     System.out.println(Ticketresult);
 
                     if(!allCustomer.contains(c.id())){//this makes sure the tickets are created for everyone even is the account already exists

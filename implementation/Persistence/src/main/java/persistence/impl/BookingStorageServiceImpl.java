@@ -2,6 +2,7 @@ package persistence.impl;
 
 import datarecords.BookingData;
 import persistence.api.BookingStorageService;
+import persistence.api.exceptions.ConnectionException;
 import persistence.impl.database.DBProvider;
 
 import javax.sql.DataSource;
@@ -22,7 +23,7 @@ public class BookingStorageServiceImpl implements BookingStorageService {
     }
 
     @Override
-    public BookingData add(BookingData bookingData) {
+    public BookingData add(BookingData bookingData) throws ConnectionException {
 
 //this is just to see all values of booking id, empId, flightIds, ticketIds, bookingDate, extraIds, customerIds
 
@@ -58,6 +59,9 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 
         } catch (SQLException ex) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
+            String exception = ex.getMessage();
+            if(exception.contains("Connection") && exception.contains("refused")){
+                throw new ConnectionException("Connection problem");}
         }
         for (String c:bookingData.customerIds()){
             addCustomerToBooking(bookingData.id(),c);
@@ -145,13 +149,14 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 
         } catch (SQLException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
+
         }
 
         return confirm;
 
     }
 
-    private String addCustomerToBooking(String bookingId,String customerId) {
+    private String addCustomerToBooking(String bookingId,String customerId) throws ConnectionException {
 
 //this is just to see all values of booking id, empId, flightIds, ticketIds, bookingDate, extraIds, customerIds
 
@@ -178,6 +183,9 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 
         } catch (SQLException ex) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
+            String exception = ex.getMessage();
+            if(exception.contains("Connection") && exception.contains("refused")){
+                throw new ConnectionException("Connection problem");}
         }
         return "success!";
     }
