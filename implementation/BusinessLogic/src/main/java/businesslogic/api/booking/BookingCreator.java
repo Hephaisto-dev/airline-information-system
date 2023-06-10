@@ -61,7 +61,7 @@ public class BookingCreator {
         }
 
 
-        if ((long) customersOnBooking.size() == 0) {
+        if (customersOnBooking.size() == 0) {
 
 
             errors = true;
@@ -73,18 +73,15 @@ public class BookingCreator {
             try {
 
                 String customerId = mainCustomer.id();
-                Booking booking = BookingFactory.createBooking(new BookingData(id, employeeData,customerIds , bookingDate, extras, customerId,flight.getId()));
-
-                    customerCreator.createCustomer(mainCustomer.firstName(), mainCustomer.lastName(), mainCustomer.dob(),mainCustomer.email());
-
-
+                Booking booking = BookingFactory.createBooking(new BookingData(id, employeeData, customerIds, bookingDate, extras, customerId, flight.getId()));
+                customerCreator.createCustomer(mainCustomer.firstName(), mainCustomer.lastName(), mainCustomer.dob(), mainCustomer.email());
                 bookingManager.add(booking);
                 System.out.println("wow a booking has been created");
 
 
                 for (CustomerData c : customersOnBooking) {
                     System.out.println("wow a ticket has been created");
-                    String Ticketresult = ticketCreator.createTicket(flight,"2","B",c.firstName()+" "+c.lastName(),null,null);//discount and voucher not yet implemented and seats algorithm is not yet made
+                    String Ticketresult = ticketCreator.createTicket(flight, "2", "B", c.firstName() + " " + c.lastName(), null, null);//discount and voucher not yet implemented and seats algorithm is not yet made
                     System.out.println(Ticketresult);
 
                     if (!allCustomer.contains(c.id())) {//this makes sure the tickets are created for everyone even is the account already exists

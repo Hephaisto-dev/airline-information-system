@@ -59,8 +59,9 @@ public class BookingStorageServiceImpl implements BookingStorageService {
         } catch (SQLException ex) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
             String exception = ex.getMessage();
-            if(exception.contains("Connection") && exception.contains("refused")){
-                throw new ConnectionException("Connection problem");}
+            if (exception.contains("Connection") && exception.contains("refused")) {
+                throw new ConnectionException("Connection problem");
+            }
         }
         for (String c : bookingData.customerIds()) {
             addCustomerToBooking(bookingData.id(), c);
@@ -154,7 +155,7 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 
     }
 
-    private String addCustomerToBooking(String bookingId,String customerId) throws ConnectionException {
+    private String addCustomerToBooking(String bookingId, String customerId) throws ConnectionException {
 
 //this is just to see all values of booking id, empId, flightIds, ticketIds, bookingDate, extraIds, customerIds
 
@@ -181,8 +182,9 @@ public class BookingStorageServiceImpl implements BookingStorageService {
         } catch (SQLException ex) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
             String exception = ex.getMessage();
-            if(exception.contains("Connection") && exception.contains("refused")){
-                throw new ConnectionException("Connection problem");}
+            if (exception.contains("Connection") && exception.contains("refused")) {
+                throw new ConnectionException("Connection problem");
+            }
         }
         return "success!";
     }
