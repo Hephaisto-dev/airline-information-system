@@ -169,7 +169,7 @@ public class CreateBookingController implements Initializable {
 
         if (lvFlights.getSelectionModel().getSelectedItem() != null) {
             int total = 0;
-            Price perPerson = cbFlights.getValue().getPrice();
+            Price perPerson = lvFlights.getSelectionModel().getSelectedItem().getPrice();
             for (CustomerData c : customers) {
 
                 total = total + perPerson.getBackendPrice() / 100;
