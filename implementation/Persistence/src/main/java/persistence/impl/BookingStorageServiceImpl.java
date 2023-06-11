@@ -119,11 +119,13 @@ public class BookingStorageServiceImpl implements BookingStorageService {
         int idToDelete = Integer.parseInt(id);
 
         String query = "DELETE FROM bookings WHERE id = ?";
+        String query2 = "DELETE FROM customers_bookings WHERE booking_id = ?";
 
-        try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
+        try(Connection con = dataSource.getConnection();PreparedStatement pstm = con.prepareStatement(query);PreparedStatement pstm2 = con.prepareStatement(query2)){
             pstm.setInt(1, idToDelete);
 
             int result = pstm.executeUpdate();
+            pstm2.executeUpdate();
             confirm = result != 0;
 /*
             while (result.next()) { there is no result so nothing is read
