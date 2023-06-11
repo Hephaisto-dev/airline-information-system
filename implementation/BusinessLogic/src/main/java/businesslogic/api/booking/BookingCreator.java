@@ -2,6 +2,7 @@ package businesslogic.api.booking;
 
 import businesslogic.api.customer.Customer;
 import businesslogic.api.customer.CustomerCreator;
+import businesslogic.api.customer.Ticket;
 import businesslogic.api.customer.TicketCreator;
 import businesslogic.api.flight.Flight;
 import businesslogic.api.flight.FlightFactory;
@@ -17,18 +18,19 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Random;
 
 public class BookingCreator {
     private final static String emailRegex = "^((?!\\.)[\\w-_.]*[^.])(@\\w+)(\\.\\w+(\\.\\w+)?[^.\\W])$";
     private final BookingManager bookingManager;
     List<String> customerIds = new ArrayList<>();
     private TicketCreator ticketCreator;
+    private TicketManager ticketManager;
     private CustomerCreator customerCreator;
     private FlightFactory flightFactory;
     private CustomerManager customerManager;
     private Collection<String> allCustomer = new ArrayList<>();
-    private int counter=1;
+    private Collection<Ticket> tickets = ticketManager.getAll();
+
 
 
     public BookingCreator(BookingManager manager, TicketManager ticketManager, CustomerManager customerManager) {
@@ -80,11 +82,13 @@ public class BookingCreator {
                 bookingManager.add(booking);
                 System.out.println("wow a booking has been created");
 
-
+                int seatNum = ticketsDivider(flight);
                 for (CustomerData c : customersOnBooking) {
                     System.out.println("wow a ticket has been created");
-                    String Ticketresult = ticketCreator.createTicket(flight, String.valueOf(counter), "B", c.firstName() + " " + c.lastName(), null, null);//discount and voucher not yet implemented and seats algorithm is not yet made
-                    counter++;
+
+
+                    String Ticketresult = ticketCreator.createTicket(flight, String.valueOf(seatNum), "B", c.firstName() + " " + c.lastName(), null, null);//discount and voucher not yet implemented and seats algorithm is not yet made
+                    seatNum--;
                     System.out.println(Ticketresult);
 
                     if (!allCustomer.contains(c.id())) {//this makes sure the tickets are created for everyone even is the account already exists
@@ -109,4 +113,15 @@ public class BookingCreator {
             return stringBuilder.toString();
         }
     }
+
+    private int ticketsDivider(Flight flight) {
+        int total = flight.getAirplane().getSeats();
+        for (Ticket t : tickets) {
+            if (t.getFlight() == flight) {
+                total = total - 1;
+            }
+        }
+        return total;
+    }
 }
+
