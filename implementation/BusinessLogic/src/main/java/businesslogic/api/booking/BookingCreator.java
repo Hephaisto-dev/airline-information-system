@@ -41,13 +41,13 @@ public class BookingCreator {
 
 
     // Change signature according to record
-    public String createBooking(String id, String employeeData, Flight flight, List<TicketData> Tickets, LocalDate bookingDate, List<String> extras, List<CustomerData> customersOnBooking, CustomerData mainCustomer) {
+    public String createBooking(String id, String employeeData, Flight flight, List<TicketData> Tickets, LocalDate bookingDate, List<String> extras, List<Customer> customersOnBooking, Customer mainCustomer) {
 
         for (Customer c : customerManager.getAll()) {
             allCustomer.add(c.getId());
         }
-        for (CustomerData c : customersOnBooking) {
-            customerIds.add("CU_" + c.email());
+        for (Customer c : customersOnBooking) {
+            customerIds.add("CU_" + c.getEmail());
         }
 
 
@@ -75,24 +75,24 @@ public class BookingCreator {
         if (!errors) {
             try {
 
-                String customerId = mainCustomer.id();
+                String customerId = mainCustomer.getId();
                 Booking booking = BookingFactory.createBooking(new BookingData(id, employeeData, customerIds, bookingDate, extras, customerId, flight.getId()));
-                customerCreator.createCustomer(mainCustomer.firstName(), mainCustomer.lastName(), mainCustomer.dob(), mainCustomer.email());
+                customerCreator.createCustomer(mainCustomer.getFirstName(), mainCustomer.getLastName(), mainCustomer.getDob(), mainCustomer.getEmail());
                 bookingManager.add(booking);
                 System.out.println("wow a booking has been created");
 
                 int seatNum = ticketsDivider(flight);
-                for (CustomerData c : customersOnBooking) {
+                for (Customer c : customersOnBooking) {
                     System.out.println("wow a ticket has been created");
 
 
-                    String Ticketresult = ticketCreator.createTicket(flight, String.valueOf(seatNum), "B", c.firstName() + " " + c.lastName(), null, null);//discount and voucher not yet implemented and seats algorithm is not yet made
+                    String Ticketresult = ticketCreator.createTicket(flight, String.valueOf(seatNum), "B", c.getFirstName() + " " + c.getLastName(), null, null);//discount and voucher not yet implemented and seats algorithm is not yet made
                     seatNum--;
                     System.out.println(Ticketresult);
 
-                    if (!allCustomer.contains(c.id())) {//this makes sure the tickets are created for everyone even is the account already exists
+                    if (!allCustomer.contains(c.getId())) {//this makes sure the tickets are created for everyone even is the account already exists
                         if (mainCustomer != c) {
-                            customerCreator.createCustomer(c.firstName(), c.lastName(), c.dob(), c.email());
+                            customerCreator.createCustomer(c.getFirstName(), c.getLastName(), c.getDob(), c.getEmail());
                         }
                     }
                     //this makes sure the main customer is not added twice
@@ -114,7 +114,7 @@ public class BookingCreator {
     }
 
     private int ticketsDivider(Flight flight) {
-        int total = flight.getAirplane().getSeats();
+        int total = 12;//flight.getAirplane().getSeats();apparently not implemented yet
         for (TicketData t : tickets) {
             if (t.flightId() == flight.getId()) {
                 total = total - 1;
