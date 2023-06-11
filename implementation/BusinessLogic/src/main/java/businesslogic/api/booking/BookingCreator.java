@@ -26,9 +26,9 @@ public class BookingCreator {
     private TicketManager ticketManager;
     private CustomerCreator customerCreator;
     private FlightFactory flightFactory;
-    private CustomerManager customerManager;
+    private final CustomerManager customerManager;
     private Collection<String> allCustomer = new ArrayList<>();
-    private Collection<Ticket> tickets = ticketManager.getAll();
+    private final Collection<TicketData> tickets = new ArrayList<>();//ticketManager.getStorageService().getAll(); aparently this is not implemented yet
 
 
 
@@ -115,8 +115,8 @@ public class BookingCreator {
 
     private int ticketsDivider(Flight flight) {
         int total = flight.getAirplane().getSeats();
-        for (Ticket t : tickets) {
-            if (t.getFlight() == flight) {
+        for (TicketData t : tickets) {
+            if (t.flightId() == flight.getId()) {
                 total = total - 1;
             }
         }
