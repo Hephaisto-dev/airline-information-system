@@ -20,7 +20,6 @@ import java.util.Collection;
 import java.util.List;
 
 public class BookingCreator {
-    private final static String emailRegex = "^((?!\\.)[\\w-_.]*[^.])(@\\w+)(\\.\\w+(\\.\\w+)?[^.\\W])$";
     private final BookingManager bookingManager;
     List<String> customerIds = new ArrayList<>();
     private TicketCreator ticketCreator;

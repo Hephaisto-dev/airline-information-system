@@ -6,8 +6,11 @@ import persistence.api.exceptions.ConnectionException;
 import persistence.impl.database.DBProvider;
 
 import javax.sql.DataSource;
-import java.sql.*;
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.logging.Level;
