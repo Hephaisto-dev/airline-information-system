@@ -94,11 +94,6 @@ class BusinessLogicAPIImplTest {
     }
 
     @Test
-    void getRouteManager() {
-        assertNotNull(businessLogicAPI.getRouteManager());
-    }
-
-    @Test
     void loggedInEmployee() {
         businessLogicAPI.setLoggedInEmployee(EmployeeType.SALES_EMPLOYEE);
         assertEquals(businessLogicAPI.getLoggedInEmployee(), EmployeeType.SALES_EMPLOYEE);

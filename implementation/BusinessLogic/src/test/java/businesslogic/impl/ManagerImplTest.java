@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import persistence.api.StorageService;
-import persistence.api.exceptions.DataBaseException;
 
 import java.util.Collections;
 
@@ -71,7 +70,7 @@ class ManagerImplTest {
     }
 
     @Test
-    void remove() throws DataBaseException {
+    void remove() {
         when(storageService.remove(any())).thenReturn(true);
         SoftAssertions.assertSoftly(softly -> {
             softly.assertThat(manager.remove(persistentDataContainer))
