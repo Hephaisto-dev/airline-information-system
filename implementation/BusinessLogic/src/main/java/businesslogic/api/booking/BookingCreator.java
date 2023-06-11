@@ -78,8 +78,7 @@ public class BookingCreator {
                 String customerId = mainCustomer.getId();
                 Booking booking = BookingFactory.createBooking(new BookingData(id, employeeData, customerIds, bookingDate, extras, customerId, flight.getId()));
                 customerCreator.createCustomer(mainCustomer.getFirstName(), mainCustomer.getLastName(), mainCustomer.getDob(), mainCustomer.getEmail());
-                bookingManager.add(booking);
-                System.out.println("wow a booking has been created");
+
 
                 int seatNum = ticketsDivider(flight);
                 for (Customer c : customersOnBooking) {
@@ -90,6 +89,7 @@ public class BookingCreator {
                     if(Ticketresult!="Ticket booked successfully"){
                         errors=true;
                         stringBuilder.append(Ticketresult);
+
                     }
                     seatNum--;
                     System.out.println(Ticketresult);
@@ -108,13 +108,22 @@ public class BookingCreator {
 
                 }
                 System.out.println("wow a customer has been created");
+                bookingManager.add(booking);
+                System.out.println("wow a booking has been created");
             } catch (Exception e) {
                 e.printStackTrace();
 
                 return "There seems to be an issue with the database, please try again." + "\n"
                         + "+If the issue persists, contact the IT department";
             }
-            return "Booking was successfully created";
+            if(!errors){
+                return "Booking was successfully created";
+            }
+            else {
+                stringBuilder.append("Please correct this and try again");
+                return stringBuilder.toString();
+            }
+
         } else {
             stringBuilder.append("Please correct this and try again");
             return stringBuilder.toString();
