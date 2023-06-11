@@ -74,10 +74,11 @@ public class BookingStorageServiceImpl implements BookingStorageService {
     @Override
     public Set<BookingData> getAll() {
         String query = "SELECT * FROM bookings";
+        String query2 = "SELECT * FROM customer_bookings";
 
 
         Set<BookingData> bookingData = new HashSet<>();
-        try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
+        try(Connection con = dataSource.getConnection();PreparedStatement pstm = con.prepareStatement(query);PreparedStatement pstm2 = con.prepareStatement(query2)){
             ResultSet result = pstm.executeQuery();
             while (result.next()) {
                 String id = result.getString("id");
@@ -89,43 +90,26 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 
                 bookingData.add(new BookingData(id, empId, new ArrayList<>(), bookingDate, new ArrayList<>(), mainCustomer, flightId));
             }
+            ResultSet result2 = pstm2.executeQuery();
+            while (result2.next()) {
+                String bookingId = result.getString("booking_id");
+                String customerId = result.getString("customer_id");
+                for(BookingData b: bookingData){
+
+                    if(bookingId==b.id()){
+                        b.customerIds().add(customerId);
+                    }
+                }
+            }
         } catch (SQLException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
         }
         return bookingData;
     }
 
-// This won't be used because specific searching will be done by the managers
 
-//    public BookingData getBooking(String bookingId) {
-//        DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
-//        BookingData bookingdata= null;
-//
-//
-//        String query = "SELECT * FROM booking_data Where id = (id)VALUES(?)";
-//
-//
-//        try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
-//            int bookingIdInt = Integer.parseInt(bookingId);//this is done because in the database id is auto incremented
-//            pstm.setInt(1, bookingIdInt);
-//
-//            ResultSet result = pstm.executeQuery();
-//            while (result.next()) {
-//                int id = result.getInt("id");
-//                String empId = result.getString("emp_Id");
-//                String flightIds = result.getString("flight_Id");
-//                String bookingDate = result.getString("booking_Date");
-//                bookingdata = new BookingData(Integer.toString(id),empId,new FlightData(flightIds,null,null,null,null,null),null,LocalDateTime.parse(bookingDate),null,null);
-//
-//            }
-//
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//
-//        return bookingdata;
-//
-//    }
+
+
 
     @Override
     public boolean remove(String id) {
@@ -156,38 +140,5 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 
     }
 
-//    private String addCustomerToBooking(String bookingId, String customerId) throws ConnectionException {
-//
-////this is just to see all values of booking id, empId, flightIds, ticketIds, bookingDate, extraIds, customerIds
-//
-//        String query = "INSERT INTO customers_bookings(customer_id,booking_id) values(?,?) returning *";
-//
-//        try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
-//
-//
-//            pstm.setString(1, customerId);
-//            pstm.setString(2, bookingId);
-//
-//
-//            ResultSet result = pstm.executeQuery();
-//
-//            System.out.println("JUST INSERTED: ");
-//            while (result.next()) {
-//
-//
-//                System.out.println("added customer to booking with id: " + customerId + "to " + bookingId);
-//
-//
-//            }
-//
-//        } catch (SQLException ex) {
-//            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
-//            String exception = ex.getMessage();
-//            if (exception.contains("Connection") && exception.contains("refused")) {
-//                throw new ConnectionException("Connection problem");
-//            }
-//        }
-//        return "success!";
-//    }
 
 }
