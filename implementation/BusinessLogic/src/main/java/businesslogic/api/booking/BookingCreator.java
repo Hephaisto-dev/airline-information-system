@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Random;
 
 public class BookingCreator {
     private final static String emailRegex = "^((?!\\.)[\\w-_.]*[^.])(@\\w+)(\\.\\w+(\\.\\w+)?[^.\\W])$";
@@ -27,6 +28,7 @@ public class BookingCreator {
     private FlightFactory flightFactory;
     private CustomerManager customerManager;
     private Collection<String> allCustomer = new ArrayList<>();
+    private int counter=1;
 
 
     public BookingCreator(BookingManager manager, TicketManager ticketManager, CustomerManager customerManager) {
@@ -81,7 +83,8 @@ public class BookingCreator {
 
                 for (CustomerData c : customersOnBooking) {
                     System.out.println("wow a ticket has been created");
-                    String Ticketresult = ticketCreator.createTicket(flight, "2", "B", c.firstName() + " " + c.lastName(), null, null);//discount and voucher not yet implemented and seats algorithm is not yet made
+                    String Ticketresult = ticketCreator.createTicket(flight, String.valueOf(counter), "B", c.firstName() + " " + c.lastName(), null, null);//discount and voucher not yet implemented and seats algorithm is not yet made
+                    counter++;
                     System.out.println(Ticketresult);
 
                     if (!allCustomer.contains(c.id())) {//this makes sure the tickets are created for everyone even is the account already exists
