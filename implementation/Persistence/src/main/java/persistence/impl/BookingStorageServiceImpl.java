@@ -7,10 +7,9 @@ import persistence.impl.database.DBProvider;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.sql.Date;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -74,7 +73,7 @@ public class BookingStorageServiceImpl implements BookingStorageService {
     @Override
     public Set<BookingData> getAll() {
         String query = "SELECT * FROM bookings";
-        String query2 = "SELECT * FROM customer_bookings";
+        String query2 = "SELECT * FROM customer_bookings where id =?";
 
 
         Set<BookingData> bookingData = new HashSet<>();
@@ -87,19 +86,15 @@ public class BookingStorageServiceImpl implements BookingStorageService {
                 LocalDate bookingDate = result.getDate("date").toLocalDate();
                 String flightId = result.getString("flight_id");
 
-
-                bookingData.add(new BookingData(id, empId, new ArrayList<>(), bookingDate, new ArrayList<>(), mainCustomer, flightId));
-            }
-            ResultSet result2 = pstm2.executeQuery();
-            while (result2.next()) {
-                String bookingId = result.getString("booking_id");
-                String customerId = result.getString("customer_id");
-                for(BookingData b: bookingData){
-
-                    if(bookingId==b.id()){
-                        b.customerIds().add(customerId);
-                    }
+                pstm2.setString(1,id);
+                ResultSet resultSet1 = pstm2.executeQuery();
+                ArrayList<String> customerId = new ArrayList<>();
+                while(resultSet1.next()){
+                    String cId = resultSet1.getString("customer_id");
+                    customerId.add(cId);
                 }
+
+                bookingData.add(new BookingData(id, empId, new ArrayList<>(), bookingDate, customerId, mainCustomer, flightId));
             }
         } catch (SQLException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
