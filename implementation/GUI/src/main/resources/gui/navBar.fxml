@@ -46,7 +46,7 @@
         </Menu>
         <Menu fx:id="customerMenu" mnemonicParsing="false" text="Customer">
             <MenuItem fx:id="registerCustomer" mnemonicParsing="false" onAction="#sendToRegisterCustomer"
-                      text="Register a Customer"/>
+                      text="Create a Customer"/>
             <MenuItem fx:id="deleteCustomer" mnemonicParsing="false" onAction="#sendToDeleteCustomer"
                       text="Delete Customer"/>
         </Menu>
