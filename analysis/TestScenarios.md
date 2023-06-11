@@ -407,7 +407,7 @@
 | Scenario   | <ol><li>Actor searching for customer Martin.</li><li>System displays the page and personal information about a customer named Martin Smith with email martin.smith@mail.com and with date of birth 02/02/02</li><li>Actor selects to delete the customer Martin</li><li>The system confirms the deletion</li></ol> |
 | Result     | The actor has deleted the customer Martin                                                                                                                                                                                                                                                                          |
 | Extensions | None.                                                                                                                                                                                                                                                                                                              |
-| Exceptions | <ol start = "4"><li><ol type = "a"><li>There was an error while deleting the customer Martin<ol><li>System informs the user that the customer can't be deleted</li><li>Test scenario ends here</li></ol></li></ol></li></ol>                                                                                       |
+| Exceptions | <ol start = "4"><li><ol type = "a"><li>There was an error while deleting the customer Martin in the database (connection issue or Martin is already in a ticket or a booking)<ol><li>System informs the user that the customer can't be deleted</li><li>Test scenario ends here</li></ol></li></ol></li></ol>                                                                                       |
 
 ---
 
