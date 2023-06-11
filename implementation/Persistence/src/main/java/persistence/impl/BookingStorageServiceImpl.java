@@ -73,7 +73,7 @@ public class BookingStorageServiceImpl implements BookingStorageService {
     @Override
     public Set<BookingData> getAll() {
         String query = "SELECT * FROM bookings";
-        String query2 = "SELECT * FROM customer_bookings where id =?";
+        String query2 = "SELECT * FROM customers_bookings where id =?";
 
 
         Set<BookingData> bookingData = new HashSet<>();
