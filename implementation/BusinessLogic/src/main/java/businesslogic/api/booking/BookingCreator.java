@@ -87,12 +87,20 @@ public class BookingCreator {
 
 
                     String Ticketresult = ticketCreator.createTicket(flight, String.valueOf(seatNum), "B", c.getFirstName() + " " + c.getLastName(), null, null);//discount and voucher not yet implemented and seats algorithm is not yet made
+                    if(Ticketresult!="Ticket booked successfully"){
+                        errors=true;
+                        stringBuilder.append(Ticketresult);
+                    }
                     seatNum--;
                     System.out.println(Ticketresult);
 
                     if (!allCustomer.contains(c.getId())) {//this makes sure the tickets are created for everyone even is the account already exists
                         if (mainCustomer != c) {
-                            customerCreator.createCustomer(c.getFirstName(), c.getLastName(), c.getDob(), c.getEmail());
+                            String Customerresult = customerCreator.createCustomer(c.getFirstName(), c.getLastName(), c.getDob(), c.getEmail());
+                            if(Customerresult!="Customer created successfully."){
+                                errors=true;
+                                stringBuilder.append(Customerresult);
+                            }
                         }
                     }
                     //this makes sure the main customer is not added twice
