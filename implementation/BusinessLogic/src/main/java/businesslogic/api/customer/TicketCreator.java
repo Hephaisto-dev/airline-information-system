@@ -24,10 +24,9 @@ public class TicketCreator {
         TSS = ticketStorageService;
     }
 
-
-    public String createTicket(Flight flight, String column, String row, String customer, String discount, String voucher) {
+    public String createTicket(Flight flight, String row, String column, String customer, String discount, String voucher){
         errorList.clear();
-        return ticketCheck(flight, column, row, customer, errorList, discount, voucher);
+        return ticketCheck(flight, row, column, customer, errorList, discount, voucher);
     }
 
 
