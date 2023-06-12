@@ -44,11 +44,6 @@ public class CustomerImpl implements Customer {
     }
 
     @Override
-    public String toString() {
-        return "CustomerImpl{" + "customerId=" + customerData + '}';
-    }
-
-    @Override
     public String getName() {
         return getFirstName() + " " + getLastName();
     }

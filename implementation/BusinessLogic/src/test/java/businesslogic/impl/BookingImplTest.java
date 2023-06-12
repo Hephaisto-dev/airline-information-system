@@ -3,18 +3,16 @@ package businesslogic.impl;
 
 import businesslogic.api.airplane.Airplane;
 import businesslogic.api.airport.Airport;
-import businesslogic.api.baggage.Baggage;
 import businesslogic.api.booking.Booking;
+import businesslogic.api.booking.BookingFactory;
 import datarecords.AirplaneData;
 import datarecords.BookingData;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import businesslogic.api.booking.BookingFactory;
 
 import java.time.Duration;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 

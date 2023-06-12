@@ -4,17 +4,16 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity"
             prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19"
             fx:controller="gui.MainController">
     <center>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-            <children>
-                <Label layoutX="167.0" layoutY="14.0" prefHeight="17.0" prefWidth="265.0"
-                       text="Welcome to the Airline Information System app!"/>
-                <Button fx:id="logout" layoutX="500.0" layoutY="319.0" mnemonicParsing="false" onAction="#sendToLogin"
-                        prefHeight="37.0" prefWidth="73.0" text="Logout"/>
-            </children>
+            <Label layoutX="167.0" layoutY="14.0" prefHeight="17.0" prefWidth="265.0"
+                   text="Welcome to the Airline Information System app!"/>
+            <Button layoutX="500.0" layoutY="319.0" mnemonicParsing="false" onAction="#sendToLogin"
+                    prefHeight="37.0" prefWidth="73.0" text="Logout"/>
         </AnchorPane>
     </center>
     <top>

@@ -76,11 +76,6 @@ public enum BusinessLogicAPIImpl implements BusinessLogicAPI {
     }
 
     @Override
-    public RouteManager getRouteManager() {
-        return getManager(RouteManager.class);
-    }
-
-    @Override
     public TicketManager getTicketManager() {
         return getManager(TicketManager.class);
     }

@@ -17,6 +17,7 @@ public class TicketManager extends ManagerImpl<Ticket, TicketData> {
         this.storageService = storageService;
         forceUpdate();
     }
+
     /*public TicketManager(TicketStorageService ticki){
         super(ticki);
     }*/
@@ -24,7 +25,8 @@ public class TicketManager extends ManagerImpl<Ticket, TicketData> {
     protected Ticket createPersistantDataContainer(TicketData data) {
         return TicketFactory.createTicket(data);
     }
-    public TicketStorageService getStorageService(){
+
+    public TicketStorageService getStorageService() {
         return (TicketStorageService) this.storageService;
     }
 }

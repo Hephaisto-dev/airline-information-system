@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 
 public interface Flight extends PersistantDataContainer<FlightData>, TravelDestinations, Deleteable {
 
+
     Price getPrice();
 
     Duration getFlightDuration();

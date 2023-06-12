@@ -4,6 +4,7 @@ import businesslogic.api.airplane.Airplane;
 import businesslogic.api.airport.Airport;
 import businesslogic.api.manager.FlightManager;
 import datarecords.FlightData;
+
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
@@ -60,11 +61,11 @@ public class FlightCreator {
         if (stringBuilder.isEmpty()) {
             try {
                 String id = "FL_" + departPort.getName() + "-" + arrivePort.getName() + "_" + dLTD + "_" + plane.getId();
-                Flight flight = FlightFactory.createFlight(new FlightData(id,dLTD, aLTD, Duration.between(dLTD, aLTD), plane.getId(),departPort.getId(), arrivePort.getId()));
+                Flight flight = FlightFactory.createFlight(new FlightData(id, dLTD, aLTD, Duration.between(dLTD, aLTD), plane.getId(), departPort.getId(), arrivePort.getId()));
                 flightManager.add(flight);
             }
             //TODO throw exceptions in FlightManager
-            catch (Exception e){
+            catch (Exception e) {
                 e.printStackTrace();
                 //TODO: Identify and handle Exceptions properly
             }
