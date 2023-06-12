@@ -669,11 +669,6 @@ a { color: #007bff; }
       <path cell-id="rirTdcTdMe-woOqbE8zs-45" d="M 953.03 460.12 L 947.03 448.12 L 941.03 460.12" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="all" />
     </g>
     <g shape-node="">
-      <g cell-id="rirTdcTdMe-woOqbE8zs-45" fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="11px">
-        <text cell-id="rirTdcTdMe-woOqbE8zs-45" x="904.74" y="499">&lt;&lt;instantiate&gt;&gt;</text>
-      </g>
-    </g>
-    <g shape-node="">
       <rect cell-id="LtKBVd2IvJRb5p7JQ_mR-2" x="1308.87" y="632" width="46.23" height="20" fill="#e68cb4" stroke="none" pointer-events="all" />
       <rect cell-id="LtKBVd2IvJRb5p7JQ_mR-2" x="1308.87" y="652" width="231.13" height="194" fill="#e68cb4" stroke="none" pointer-events="all" />
       <path cell-id="LtKBVd2IvJRb5p7JQ_mR-2" d="M 1308.87 652 L 1540 652 L 1540 846 L 1308.87 846 L 1308.87 632 L 1355.1 632 L 1355.1 652" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="all" />
@@ -1544,11 +1539,6 @@ a { color: #007bff; }
     <g shape-node="">
       <path cell-id="rirTdcTdMe-woOqbE8zs-45" d="M 820 519.19 L 820 512.1 Q 820 505 830 505 L 937.03 505 Q 947.03 505 947.03 495 L 947.03 449.24" fill="none" stroke="#000000" stroke-miterlimit="10" stroke-dasharray="5" pointer-events="stroke" />
       <path cell-id="rirTdcTdMe-woOqbE8zs-45" d="M 953.03 460.12 L 947.03 448.12 L 941.03 460.12" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="all" />
-    </g>
-    <g shape-node="">
-      <g cell-id="rirTdcTdMe-woOqbE8zs-45" fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="11px">
-        <text cell-id="rirTdcTdMe-woOqbE8zs-45" x="904.74" y="499">&lt;&lt;instantiate&gt;&gt;</text>
-      </g>
     </g>
     <g shape-node="">
       <path cell-id="8pL1wDQtpufhYvN-4PMu-40" d="M 964.75 337.86 L 1031 337.86 Q 1041 337.86 1041 347.86 L 1041 699 Q 1041 709 1051 709 L 1334.34 709" fill="none" stroke="#000000" stroke-miterlimit="10" stroke-dasharray="5" pointer-events="stroke" />
