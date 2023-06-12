@@ -2,8 +2,10 @@
 
 Here we collect the links of our files in this folder to make traversal as smooth as possible
 
-> [Class Diagram](ClassDiagrams.md)
->
->   [Class Diagram](ClassDiagramCreateFlight.md)
+## [Sequence Diagrams](ClassDiagrams.md)
+
+## [Class Diagrams](UseCasesSequenceDiagrams.md)
+
+## [Database Schema](DatabaseSchema.md)
 
 ## [Back to Table of Contents](../TableOfContents.md)

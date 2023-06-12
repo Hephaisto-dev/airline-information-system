@@ -1,7 +1,5 @@
 package persistence.api;
 
-import persistence.impl.TicketStorageServiceImpl;
-
 /**
  * @author Informatics Fontys Venlo
  */

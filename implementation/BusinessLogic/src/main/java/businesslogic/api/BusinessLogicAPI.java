@@ -23,8 +23,6 @@ public interface BusinessLogicAPI {
 
     EmployeeManager getEmployeeManager();
 
-    RouteManager getRouteManager();
-
     TicketManager getTicketManager();
 
     EmployeeType getLoggedInEmployee();

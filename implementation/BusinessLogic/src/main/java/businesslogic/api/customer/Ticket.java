@@ -2,7 +2,6 @@ package businesslogic.api.customer;
 
 import businesslogic.api.airplane.Seat;
 import businesslogic.api.common.PersistantDataContainer;
-import businesslogic.api.common.StringIdentifiable;
 import businesslogic.api.flight.Flight;
 import datarecords.TicketData;
 

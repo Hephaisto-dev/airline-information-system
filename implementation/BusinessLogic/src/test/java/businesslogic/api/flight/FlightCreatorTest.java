@@ -1,138 +1,128 @@
 package businesslogic.api.flight;
 
 import businesslogic.api.airplane.Airplane;
-import businesslogic.api.airplane.AirplaneFactory;
 import businesslogic.api.airport.Airport;
-import businesslogic.api.airport.AirportFactory;
-import businesslogic.api.airport.NoAirportException;
 import businesslogic.api.manager.FlightManager;
-import datarecords.AirplaneData;
-import org.assertj.core.api.SoftAssertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.mockito.Mockito;
-import persistence.api.FlightStorageService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verifyNoInteractions;
 
 class FlightCreatorTest {
+    @Mock
+    private FlightManager flightManager;
 
+    private FlightCreator flightCreator;
 
-    static final HashMap<String, Airport> AirportHash = new HashMap<>();
-    static final Airport port1;
-    static final Airport port2;
-    static final Airport port3;//This one is to be a wrong Airport, once we know
-    // how to do that
-    static final HashMap<String, LocalDateTime> LDTHash = new HashMap<>();
-    static final LocalDateTime LDT1 = LocalDateTime.of(2024, 2, 2, 1, 23, 45);
-    static final LocalDateTime LDT2 = LocalDateTime.of(2024, 2, 2, 2, 2, 2);
-    static final LocalDateTime LDT3 = LocalDateTime.of(2024, 3, 4, 5, 6, 7);
-    static final LocalDateTime LDT4 = LocalDateTime.of(2020, 2, 2, 2, 2, 2);
-    static final LocalDateTime nullTime = null;
-    static final HashMap<String, Airplane> PlaneHash = new HashMap<>();
-    static final Airplane plane1 = AirplaneFactory.createAirplane(new AirplaneData("ids", "manufacturers", 7, 7, "models", 77));
-    static final Airplane plane2 = AirplaneFactory.createAirplane(new AirplaneData("ids", "manufacturers", 7, 7, "models", 77));//needs to be faulty plane
-
-    static {
-        try {
-            port1 = AirportFactory.createAirport("DUS");
-        } catch (NoAirportException e) {
-            throw new RuntimeException(e);
-        }
+    @BeforeEach
+    void setup() {
+        MockitoAnnotations.openMocks(this);
+        flightCreator = new FlightCreator(flightManager);
     }
 
-    static {
-        try {
-            port2 = AirportFactory.createAirport("NYC");
-        } catch (NoAirportException e) {
-            throw new RuntimeException(e);
-        }
+    
+    @Test
+    void flightDepartureError() {
+        Airport departPort = null;
+        Airport arrivePort = mock(Airport.class);
+        LocalDateTime departLDT = LocalDateTime.now().plusHours(1);
+        LocalDateTime arriveLDT = LocalDateTime.now().plusHours(2);
+        Airplane plane = mock(Airplane.class);
+
+        String result = flightCreator.createFlight(departPort, arrivePort, departLDT.toString(), arriveLDT.toString(), plane);
+
+        assertThat(result).contains("Departure Airport does not exist");
+        verifyNoInteractions(flightManager);
     }
 
-    static {
-        try {
-            port3 = AirportFactory.createAirport("WRONG");
-        } catch (NoAirportException e) {
-            throw new RuntimeException(e);
-        }
+    @Test
+    void flightArrivalError() {
+        Airport departPort = mock(Airport.class);
+        Airport arrivePort = null;
+        LocalDateTime departLDT = LocalDateTime.now().plusHours(1);
+        LocalDateTime arriveLDT = LocalDateTime.now().plusHours(2);
+        Airplane plane = mock(Airplane.class);
+
+        String result = flightCreator.createFlight(departPort, arrivePort, departLDT.toString(), arriveLDT.toString(), plane);
+
+        assertThat(result).contains("Arrival Airport does not exist");
+        verifyNoInteractions(flightManager);
     }
 
-    private final FlightStorageService FSSI = data -> data;
-    final FlightCreator flightCreator = new FlightCreator(new FlightManager(FSSI));
-    // later
+    @Test
+    void flightDepartureTimeError() {
+        Airport departPort = mock(Airport.class);
+        Airport arrivePort = mock(Airport.class);
+        LocalDateTime departLDT = LocalDateTime.now();
+        LocalDateTime arriveLDT = LocalDateTime.now().plusHours(2);
+        Airplane plane = mock(Airplane.class);
 
-    @BeforeAll
-    static void prepareHashMaps() {
-        AirportHash.put("works1", port1);
-        AirportHash.put("works2", port2);
-        AirportHash.put("notwork", port3);
-        LDTHash.put("early", LDT1);
-        LDTHash.put("middle", LDT2);
-        LDTHash.put("late", LDT3);
-        LDTHash.put("nuTime", nullTime);
-        LDTHash.put("pastTime", LDT4);
-        PlaneHash.put("workingPlane", plane1);
-        PlaneHash.put("faultyPlane", plane2);
+        String result = flightCreator.createFlight(departPort, arrivePort, departLDT.toString(), arriveLDT.toString(), plane);
+
+        assertThat(result).contains("Ensure that the flight times aren't in the past");
+        verifyNoInteractions(flightManager);
     }
 
-    @ParameterizedTest
-    @CsvSource({
+    @Test
+    void flightArrivalTimeError() {
+        Airport departPort = mock(Airport.class);
+        Airport arrivePort = mock(Airport.class);
+        LocalDateTime departLDT = LocalDateTime.now().plusHours(1);
+        LocalDateTime arriveLDT = LocalDateTime.now();
+        Airplane plane = mock(Airplane.class);
 
-            "FROM,TO,2020-02-02T02:02:02,2020-02-02T03:02:01,plane,Ensure that the flight times aren't in the past",
-            //correct
-            "FROM,TO,2023-12-12T12:12:12,2023-12-11T11:11:11,plane,Time of departure must be before time of arrival",
-            //correct
-            "FROM,TO,2023-12-12T12:12:12,2023-12-12T15:15:15,plane,Flight was successfully created", //correct
-            "FROM,TO,2021-12-12T12:12:12,2023-12-12T15:15:15,plane,Departure time must be in the present/future",
-            "FROM,TO,2023-12-12T12:12:12,2021-12-12T15:15:15,plane,Arrival time must be in the present/future",
-            "FROM,TO,2023-12-1212:12:12,2023-12-1215:15:15,plane,Arrival Time is not entered correctly",
-            //",TO,2023-12-12T12:12:12,2023-12-12T15:15:15,plane,No departure destination was provided", -> line 87
-            // to 91 i cannot do sorry
-            //"FROM,,2023-12-12T12:12:12,2023-12-12T15:15:15,plane,No arrival destination was provided",
-            //"FROM,TO,,2023-12-12T15:15:15,plane,No departure time was provided",
-            //"FROM,TO,2023-12-12T12:12:12,,plane,No arrival time was provided",
-            //"FROM,TO,2023-12-12T12:12:12,2023-12-12T15:15:15,,No plane was provided",
+        String result = flightCreator.createFlight(departPort, arrivePort, departLDT.toString(), arriveLDT.toString(), plane);
 
-            //also tests about the different types of data that can be processed
-
-    })
-    void createFlight(String place1, String place2, String time1, String time2, String plane, String expectation) {
-        Airport departure = Mockito.mock(Airport.class);
-        Airport arrival = Mockito.mock(Airport.class);
-        Mockito.when(departure.getName()).thenReturn(place1);
-        Mockito.when(arrival.getName()).thenReturn(place2);
-        Airplane airplane = Mockito.mock(Airplane.class);
-        Mockito.when(airplane.getId()).thenReturn(plane);
-        String answer = flightCreator.createFlight(departure, arrival, time1, time2, airplane);
-        SoftAssertions.assertSoftly(softly -> softly.assertThat(answer)
-                .contains(expectation));
+        assertThat(result).contains("Time of departure must be before time of arrival");
+        verifyNoInteractions(flightManager);
     }
 
-    /*@ParameterizedTest
-    @CsvSource({
-            "port1,port2,early,late,plane1,Flight was successfully created",
-            "port1,port2,late,early,plane1,departure must be before time of arrival",
-            //"port3,port2,early,normal,plane1,Departure airport does not exist",
-            //"port1,port3,early, normal,plane1,Arrival airport does not exist",
-            "port1,port2,nuTime,late,plane1,Departure Time is not entered",
-            "port1,port2,early,nuTime,plane1,Arrival Time is not entered",
-            "port1,port2,pastTime,early,plane1,times aren't in the past",
-            "port1,port2,early,pastTime,plane1,times aren't in the past"
-            //"port1,port2,early,late,plane2,provided ID does not exist in our database"
-    })
-//Commented out Tests are ready, but the implementation is lagging behind. Once it isn't anymore, we can use them
-    void createFlightOverload(String place1, String place2, String time1, String time2, String plane,
-                              String expectation) {
-        String answer = flightCreator.createFlight(
-                AirportHash.get(place1),
-                AirportHash.get(place2),
-                LDTHash.get(time1),
-                LDTHash.get(time2),
-                PlaneHash.get(plane)
-        );
-        SoftAssertions.assertSoftly(softly -> softly.assertThat(answer)
-                .contains(expectation));
-    }*/
+    @Test
+    void flightTimeOrderError() {
+        Airport departPort = mock(Airport.class);
+        Airport arrivePort = mock(Airport.class);
+        LocalDateTime departLDT = LocalDateTime.now().plusHours(2);
+        LocalDateTime arriveLDT = LocalDateTime.now().plusHours(1);
+        Airplane plane = mock(Airplane.class);
+
+        String result = flightCreator.createFlight(departPort, arrivePort, departLDT.toString(), arriveLDT.toString(), plane);
+
+        assertThat(result).contains("Time of departure must be before time of arrival");
+        verifyNoInteractions(flightManager);
+    }
+
+    @Test
+    void flightPastTimeError() {
+        Airport departPort = mock(Airport.class);
+        Airport arrivePort = mock(Airport.class);
+        LocalDateTime departLDT = LocalDateTime.now().minusHours(1);
+        LocalDateTime arriveLDT = LocalDateTime.now().plusHours(1);
+        Airplane plane = mock(Airplane.class);
+
+        String result = flightCreator.createFlight(departPort, arrivePort, departLDT.toString(), arriveLDT.toString(), plane);
+
+        assertThat(result).contains("Ensure that the flight times aren't in the past");
+        verifyNoInteractions(flightManager);
+    }
+
+    @Test
+    void flightPlaneError() {
+        Airport departPort = mock(Airport.class);
+        Airport arrivePort = mock(Airport.class);
+        LocalDateTime departLDT = LocalDateTime.now().plusHours(1);
+        LocalDateTime arriveLDT = LocalDateTime.now().plusHours(2);
+        Airplane plane = null;
+
+        String result = flightCreator.createFlight(departPort, arrivePort, departLDT.toString(), arriveLDT.toString(), plane);
+
+        assertThat(result).contains("No plane was provided");
+        verifyNoInteractions(flightManager);
+    }
+
 }

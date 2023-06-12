@@ -13,11 +13,11 @@ public class BookingFactoryTest {
     private List<String> customerIds = new ArrayList<>();
 
     @Test
-    void createBooking(){
+    void createBooking() {
         customerIds.add("1");
         BookingData bookingData = new BookingData("1", "1", customerIds, LocalDate.now(), null, "1", "1");
 
         Booking booking = BookingFactory.createBooking(bookingData);
-        assertEquals(booking.getData(),bookingData);
+        assertEquals(booking.getData(), bookingData);
     }
 }

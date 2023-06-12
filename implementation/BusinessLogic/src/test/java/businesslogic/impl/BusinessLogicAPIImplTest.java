@@ -2,6 +2,7 @@ package businesslogic.impl;
 
 import businesslogic.api.BusinessLogicAPI;
 import businesslogic.api.BusinessLogicFactory;
+import businesslogic.api.employee.EmployeeType;
 import businesslogic.api.manager.*;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -13,6 +14,7 @@ import persistence.api.*;
 
 import java.util.HashSet;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -84,6 +86,17 @@ class BusinessLogicAPIImplTest {
     @Test
     void getEmployeeManager() {
         assertNotNull(businessLogicAPI.getEmployeeManager());
+    }
+
+    @Test
+    void getTicketManager() {
+        assertNotNull(businessLogicAPI.getTicketManager());
+    }
+
+    @Test
+    void loggedInEmployee() {
+        businessLogicAPI.setLoggedInEmployee(EmployeeType.SALES_EMPLOYEE);
+        assertEquals(businessLogicAPI.getLoggedInEmployee(), EmployeeType.SALES_EMPLOYEE);
     }
 
     @Test
