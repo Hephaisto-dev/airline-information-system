@@ -23,5 +23,6 @@
     </dependencies>
     <properties>
         <exec.mainClass>assembler.Assembler</exec.mainClass>
+        <exec.main>assembler.Assembler</exec.main>
     </properties>
 </project>
