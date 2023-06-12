@@ -59,7 +59,7 @@ class FlightCreatorTest {
     void flightDepartureTimeError() {
         Airport departPort = mock(Airport.class);
         Airport arrivePort = mock(Airport.class);
-        LocalDateTime departLDT = LocalDateTime.now();
+        LocalDateTime departLDT = LocalDateTime.now().minusHours(3);
         LocalDateTime arriveLDT = LocalDateTime.now().plusHours(2);
         Airplane plane = mock(Airplane.class);
 
