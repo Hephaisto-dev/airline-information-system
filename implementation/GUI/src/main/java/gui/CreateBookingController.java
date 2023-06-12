@@ -1,9 +1,12 @@
 package gui;
 
 import businesslogic.api.booking.BookingCreator;
+import businesslogic.api.customer.Customer;
+import businesslogic.api.customer.CustomerFactory;
 import businesslogic.api.customer.Price;
 import businesslogic.api.employee.Employee;
 import businesslogic.api.flight.Flight;
+import businesslogic.api.flight.FlightFactory;
 import businesslogic.api.manager.*;
 import datarecords.CustomerData;
 import datarecords.FlightData;
@@ -71,10 +74,10 @@ public class CreateBookingController implements Initializable {
     public ListView<Flight> lvFlights;
     @FXML
     public Text pricePerPerson;
-    ArrayList<CustomerData> customers = new ArrayList<>();
+    ArrayList<Customer> customers = new ArrayList<>();
     Collection<Flight> filteredFlights = new ArrayList<Flight>();
     Collection<Flight> allFlights = new ArrayList<Flight>();
-    private CustomerData MainCustomer;
+    private Customer MainCustomer;
     private BookingCreator bookCreator;
     private FlightManager flightManager;
     private AirportManager airportManager;
@@ -91,25 +94,34 @@ public class CreateBookingController implements Initializable {
     @FXML
     public void createBooking(ActionEvent actionEvent) {
 
+        if(lvFlights.getSelectionModel().getSelectedItem()!=null&&empId.getText()!=null&&lvFlights.getSelectionModel().getSelectedItem()!=null&&customers!=null&&MainCustomer!=null){
+            String booking = bookingCreator.createBooking(lvFlights.getSelectionModel().getSelectedItem().toString()+MainCustomer.getFirstName()+MainCustomer.getLastName(),empId.getText(), FlightFactory.createFlight(lvFlights.getSelectionModel().getSelectedItem().getData()), tickets, LocalDate.now(), extras, customers,MainCustomer);
+            result.setText(booking);
+        }
+        else{
+            result.setText("all fields need to be filled in!");
+        }
 
-        String booking = bookingCreator.createBooking(lvFlights.getSelectionModel().getSelectedItem().toString() + MainCustomer.firstName() + MainCustomer.lastName(), empId.getText(), lvFlights.getSelectionModel().getSelectedItem().getData(), tickets, LocalDate.now(), extras, customers, MainCustomer);
-        result.setText(booking);
+
 
     }
 
     @FXML
     public void addCustomer(ActionEvent actionEvent) {
 
-        MainCustomer = new CustomerData("CU_" + email.getText(), firstName.getText(), lastName.getText(), dateOfBirth.getValue(), email.getText());
-        lblMainCustomer.setText(MainCustomer.firstName() + " " + MainCustomer.lastName());
-        btnAddCustomer.setDisable(true);
+        MainCustomer = CustomerFactory.createCustomer(new CustomerData("CU_" + email.getText(), firstName.getText(), lastName.getText(), dateOfBirth.getValue(), email.getText()));
+        lblMainCustomer.setText(MainCustomer.getFirstName()+" "+MainCustomer.getLastName());
+        if(MainCustomer!=null){
+            btnAddCustomer.setDisable(true);
+
+        }
     }
 
     @FXML
     public void addCustomerWithTicket(ActionEvent actionEvent) {
 
-        MainCustomer = new CustomerData("CU_" + email.getText(), firstName.getText(), lastName.getText(), dateOfBirth.getValue(), email.getText());
-        listViewCustomers.getItems().add(MainCustomer.firstName() + " " + MainCustomer.lastName());
+        MainCustomer = CustomerFactory.createCustomer(new CustomerData("CU_" + email.getText(), firstName.getText(), lastName.getText(), dateOfBirth.getValue(), email.getText()));
+        listViewCustomers.getItems().add(MainCustomer.getFirstName() + " " + MainCustomer.getLastName());
         btnAddCustomer.setDisable(true);
     }
 
@@ -144,12 +156,12 @@ public class CreateBookingController implements Initializable {
     public void addPassengerToBooking() {
         if (firstName.getText() != null) {
 
-            customers.add(new CustomerData("CU_" + email.getText(), firstName.getText(), lastName.getText(), dateOfBirth.getValue(), email.getText()));
+            customers.add(CustomerFactory.createCustomer(new CustomerData("CU_" + email.getText(), firstName.getText(), lastName.getText(), dateOfBirth.getValue(), email.getText())));
 
         }
         listViewCustomers.getItems().clear();
-        for (CustomerData c : customers) {
-            listViewCustomers.getItems().add(c.firstName() + " " + c.lastName());
+        for (Customer c : customers) {
+            listViewCustomers.getItems().add(c.getFirstName() + " " + c.getLastName());
         }
 
     }
@@ -159,13 +171,13 @@ public class CreateBookingController implements Initializable {
 
         if (lvFlights.getSelectionModel().getSelectedItem() != null) {
             int total = 0;
-            Price perPerson = cbFlights.getValue().getPrice();
-            for (CustomerData c : customers) {
+            Price perPerson = lvFlights.getSelectionModel().getSelectedItem().getPrice();
+            for (Customer c : customers) {
 
                 total = total + perPerson.getBackendPrice() / 100;
             }
 
-            for (String x : extras) {
+            for (String x : extras) {// not used at the moment
                 total = total + 15;
             }
             String currency = perPerson.toString().replace("1", "").replace("2", "").replace("3", "").replace("4", "").replace("5", "").replace("6", "").replace("7", "").replace("8", "").replace("9", "").replace("0", "").replace(",", "").replace(".", "");//TODO change this after implementation of new prices
@@ -183,5 +195,14 @@ public class CreateBookingController implements Initializable {
         allFlights = flightManager.getAll();
         lvFlights.getItems().addAll(allFlights);
         result.setText("");
+        LocalDate maxDate = LocalDate.now();
+        dateOfBirth.setDayCellFactory(d ->
+                new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty);
+                        setDisable(item.isAfter(maxDate));
+                    }
+                });
     }
 }

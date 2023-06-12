@@ -2,10 +2,15 @@ package persistence.impl;
 
 import datarecords.BookingData;
 import persistence.api.BookingStorageService;
+import persistence.api.exceptions.ConnectionException;
 import persistence.impl.database.DBProvider;
 
 import javax.sql.DataSource;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -26,8 +31,9 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 //this is just to see all values of booking id, empId, flightIds, ticketIds, bookingDate, extraIds, customerIds
 
         String query = "INSERT INTO bookings(id,employee_id,date,main_customer,flight_id) values (?,?, ?, ?,?) returning *";
+        String query2 = "INSERT INTO customers_bookings(customer_id,booking_id) values(?,?) returning *";
 
-        try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
+        try(Connection con = dataSource.getConnection();PreparedStatement pstm = con.prepareStatement(query);PreparedStatement pstm2 = con.prepareStatement(query2)){
 
             String id = bookingData.id();
             String empId = bookingData.employeeId();
@@ -52,15 +58,19 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 
                 System.out.println("Booking with id: " + id + ", " + empId + ", " + bookingdate);
 
+                for (String c : bookingData.customerIds()) {
+                    pstm2.setString(1, c);
+                    pstm2.setString(2, id);
+                    pstm2.addBatch();
+                }
+                pstm2.executeBatch();
 
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
         }
-        for (String c : bookingData.customerIds()) {
-            addCustomerToBooking(bookingData.id(), c);
-        }
+
         return bookingData;
     }
 
@@ -68,10 +78,11 @@ public class BookingStorageServiceImpl implements BookingStorageService {
     @Override
     public Set<BookingData> getAll() {
         String query = "SELECT * FROM bookings";
+        String query2 = "SELECT * FROM customers_bookings where booking_id =?";
 
 
         Set<BookingData> bookingData = new HashSet<>();
-        try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
+        try(Connection con = dataSource.getConnection();PreparedStatement pstm = con.prepareStatement(query);PreparedStatement pstm2 = con.prepareStatement(query2)){
             ResultSet result = pstm.executeQuery();
             while (result.next()) {
                 String id = result.getString("id");
@@ -80,8 +91,15 @@ public class BookingStorageServiceImpl implements BookingStorageService {
                 LocalDate bookingDate = result.getDate("date").toLocalDate();
                 String flightId = result.getString("flight_id");
 
+                pstm2.setString(1,id);
+                ResultSet resultSet1 = pstm2.executeQuery();
+                ArrayList<String> customerId = new ArrayList<>();
+                while(resultSet1.next()){
+                    String cId = resultSet1.getString("customer_id");
+                    customerId.add(cId);
+                }
 
-                bookingData.add(new BookingData(id, empId, new ArrayList<>(), bookingDate, new ArrayList<>(), mainCustomer, flightId));
+                bookingData.add(new BookingData(id, empId, new ArrayList<>(), bookingDate, customerId, mainCustomer, flightId));
             }
         } catch (SQLException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
@@ -89,37 +107,9 @@ public class BookingStorageServiceImpl implements BookingStorageService {
         return bookingData;
     }
 
-// This won't be used because specific searching will be done by the managers
 
-//    public BookingData getBooking(String bookingId) {
-//        DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
-//        BookingData bookingdata= null;
-//
-//
-//        String query = "SELECT * FROM booking_data Where id = (id)VALUES(?)";
-//
-//
-//        try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
-//            int bookingIdInt = Integer.parseInt(bookingId);//this is done because in the database id is auto incremented
-//            pstm.setInt(1, bookingIdInt);
-//
-//            ResultSet result = pstm.executeQuery();
-//            while (result.next()) {
-//                int id = result.getInt("id");
-//                String empId = result.getString("emp_Id");
-//                String flightIds = result.getString("flight_Id");
-//                String bookingDate = result.getString("booking_Date");
-//                bookingdata = new BookingData(Integer.toString(id),empId,new FlightData(flightIds,null,null,null,null,null),null,LocalDateTime.parse(bookingDate),null,null);
-//
-//            }
-//
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//
-//        return bookingdata;
-//
-//    }
+
+
 
     @Override
     public boolean remove(String id) {
@@ -129,11 +119,13 @@ public class BookingStorageServiceImpl implements BookingStorageService {
         int idToDelete = Integer.parseInt(id);
 
         String query = "DELETE FROM bookings WHERE id = ?";
+        String query2 = "DELETE FROM customers_bookings WHERE booking_id = ?";
 
-        try (Connection con = db.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
+        try(Connection con = dataSource.getConnection();PreparedStatement pstm = con.prepareStatement(query);PreparedStatement pstm2 = con.prepareStatement(query2)){
             pstm.setInt(1, idToDelete);
 
             int result = pstm.executeUpdate();
+            pstm2.executeUpdate();
             confirm = result != 0;
 /*
             while (result.next()) { there is no result so nothing is read
@@ -143,40 +135,12 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 
         } catch (SQLException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
+
         }
 
         return confirm;
 
     }
 
-    private String addCustomerToBooking(String bookingId, String customerId) {
-
-//this is just to see all values of booking id, empId, flightIds, ticketIds, bookingDate, extraIds, customerIds
-
-        String query = "INSERT INTO customers_bookings(customer_id,booking_id) values(?,?) returning *";
-
-        try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query)) {
-
-
-            pstm.setString(1, customerId);
-            pstm.setString(2, bookingId);
-
-
-            ResultSet result = pstm.executeQuery();
-
-            System.out.println("JUST INSERTED: ");
-            while (result.next()) {
-
-
-                System.out.println("added customer to booking with id: " + customerId + "to " + bookingId);
-
-
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
-        }
-        return "success!";
-    }
 
 }
