@@ -83,10 +83,10 @@ public class CreateBookingController implements Initializable {
     private AirportManager airportManager;
 
 
-    public CreateBookingController(Supplier<SceneManager> sceneManagerSupplier, BookingManager bookingManager, FlightManager flightManager, AirportManager airportManager, TicketManager ticketManager, CustomerManager customerManager) {
+    public CreateBookingController(Supplier<SceneManager> sceneManagerSupplier, BookingManager bookingManager,EmployeeManager employeeManager, FlightManager flightManager, AirportManager airportManager, TicketManager ticketManager, CustomerManager customerManager) {
         this.sceneManagerSupplier = sceneManagerSupplier;
         this.bookingManager = bookingManager;
-        this.bookingCreator = new BookingCreator(bookingManager, ticketManager, customerManager);
+        this.bookingCreator = new BookingCreator(bookingManager, ticketManager,employeeManager, customerManager);
         this.flightManager = flightManager;
         this.airportManager = airportManager;
     }

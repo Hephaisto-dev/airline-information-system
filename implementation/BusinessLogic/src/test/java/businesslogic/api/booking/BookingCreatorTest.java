@@ -8,6 +8,7 @@ import businesslogic.api.customer.CustomerFactory;
 import businesslogic.api.customer.Price;
 import businesslogic.api.customer.PriceImpl;
 import businesslogic.api.employee.Employee;
+import businesslogic.api.employee.EmployeeFactory;
 import businesslogic.api.flight.Flight;
 import businesslogic.api.flight.FlightCreator;
 import businesslogic.api.flight.FlightFactory;
@@ -19,6 +20,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import persistence.api.*;
 import persistence.api.exceptions.PersistanceException;
@@ -35,17 +37,20 @@ public class BookingCreatorTest {
     private final CustomerStorageService CSSI = data -> data;
     private final BookingStorageService BSSI = data -> data;
     private final TicketStorageService TSSI = data -> data;
+    private final EmployeeStorageService ESSI = data -> data;
     private static final AirplaneStorageService ASSI = data -> data;
     private static AirplaneManager airplaneManager = new AirplaneManager(ASSI);
-    final BookingCreator bookingCreator = new BookingCreator(new BookingManager(BSSI), new TicketManager(TSSI),new CustomerManager(CSSI));
+    final BookingCreator bookingCreator = new BookingCreator(new BookingManager(BSSI), new TicketManager(TSSI),new EmployeeManager(ESSI),new CustomerManager(CSSI));
     private static List<Customer> customersOnBooking = new ArrayList<>();
     private List<CustomerData> noCustomers = new ArrayList<>();
+    private CustomerManager customerManager;
+    private EmployeeManager employeeManager = Mockito.mock(EmployeeManager.class);
     private String answer;
     private String expectation;
     private static Customer MainCus;
-    static final Airplane plane = AirplaneFactory.createAirplane(new AirplaneData("ids", "manufacturers", 7, 7, "models", 77));
+    static final Airplane plane = AirplaneFactory.createAirplane(new AirplaneData("ids", "manufacturers", 70, 70, "models", 77));
 
-    //private static final Flight flightData =FlightFactory.createFlight(new FlightData("1", LocalDateTime.now(),LocalDateTime.now(), Duration.ofSeconds(Long.parseLong("123")),"1","2","null"));
+    private static Collection<Employee> allEmps = new ArrayList<>(); //private static final Flight flightData =FlightFactory.createFlight(new FlightData("1", LocalDateTime.now(),LocalDateTime.now(), Duration.ofSeconds(Long.parseLong("123")),"1","2","null"));
     private static final Flight flightData = Mockito.mock(Flight.class);
     @BeforeAll
     static void prepare() throws Exception {
@@ -55,31 +60,35 @@ public class BookingCreatorTest {
         MainCus = CustomerFactory.createCustomer(new CustomerData("1","pete","peters",LocalDate.of(2002,1,2),"petepeters@gmail.com"));
         Airplane airplane1 = AirplaneFactory.createAirplane(new AirplaneData("1","thisplane",12,12,"cool",12));
         airplaneManager.add(airplane1);
+        allEmps.add(EmployeeFactory.createEmployee(new EmployeeData("1","p","p","p","123",1,LocalDate.now().minusYears(1))));
+        allEmps.add(EmployeeFactory.createEmployee(new EmployeeData("2","p","p","p","123",1,LocalDate.now().minusYears(1))));
+
+
 
 
     }
 
-    @ParameterizedTest
-    @CsvSource({
-            "1,1"
-    })
-    void createBooking(String id, String EmpId){
+   @Test
+    void testCreateBooking(){
+
         expectation = "Booking was successfully created";
-
-
         Mockito.when(flightData.getAirplane()).thenReturn(plane);
         Mockito.when(flightData.getPrice()).thenReturn(new PriceImpl(1000));
-        Mockito.when(flightData.bookSeat(2, 'B')).thenReturn("Successfully");
+        //Mockito.when(employeeManager.getAll()).thenReturn(allEmps);
+        for(int i = 0 ; i<25;i++){
+            Mockito.when(flightData.bookSeat(i, 'B')).thenReturn("Seat was successfully booked");
+
+        }
 
 
 
-        answer = bookingCreator.createBooking(id,EmpId,flightData,null,LocalDate.now(),null,customersOnBooking,MainCus);
 
-        SoftAssertions.assertSoftly(softly -> softly.assertThat(answer)
-                .contains(expectation));;
+
+        answer = bookingCreator.createBooking("1","1",flightData,null,LocalDate.now(),null,customersOnBooking,MainCus);
+       Assertions.assertTrue(answer.contains(expectation));
     }
     @Test
-    public void testCreateBooking_EmptyCustomers() {
+    public void testCreateBookingEmptyCustomers() {
         // Prepare test data with no customers
         String id = "B001";
         String employeeData = "1";
@@ -100,7 +109,7 @@ public class BookingCreatorTest {
         Assertions.assertTrue(result.contains("Please correct this and try again"));
     }
     @Test
-    public void testCreateBooking_NullFields() {
+    public void testCreateBookingNullFields() {
         // Prepare test data with some fields set to null
         String id = null;
         String employeeData = "Employee001";

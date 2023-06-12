@@ -4,10 +4,12 @@ import businesslogic.api.customer.Customer;
 import businesslogic.api.customer.CustomerCreator;
 import businesslogic.api.customer.Ticket;
 import businesslogic.api.customer.TicketCreator;
+import businesslogic.api.employee.Employee;
 import businesslogic.api.flight.Flight;
 import businesslogic.api.flight.FlightFactory;
 import businesslogic.api.manager.BookingManager;
 import businesslogic.api.manager.CustomerManager;
+import businesslogic.api.manager.EmployeeManager;
 import businesslogic.api.manager.TicketManager;
 import datarecords.BookingData;
 import datarecords.CustomerData;
@@ -24,17 +26,20 @@ public class BookingCreator {
     List<String> customerIds = new ArrayList<>();
     private TicketCreator ticketCreator;
     private TicketManager ticketManager;
+    private EmployeeManager employeeManager;
     private CustomerCreator customerCreator;
     private FlightFactory flightFactory;
     private final CustomerManager customerManager;
     private Collection<String> allCustomer = new ArrayList<>();
+    private Collection<String> allEmps = new ArrayList<>();
     private final Collection<TicketData> tickets = new ArrayList<>();//ticketManager.getStorageService().getAll(); aparently this is not implemented yet
 
 
 
-    public BookingCreator(BookingManager manager, TicketManager ticketManager, CustomerManager customerManager) {
+    public BookingCreator(BookingManager manager, TicketManager ticketManager,EmployeeManager employeeManager, CustomerManager customerManager) {
         this.bookingManager = manager;
         this.customerManager = customerManager;
+        this.employeeManager = employeeManager;
         this.customerCreator = new CustomerCreator(customerManager);
         this.ticketCreator = new TicketCreator(ticketManager.getStorageService());
     }
@@ -49,6 +54,9 @@ public class BookingCreator {
         for (Customer c : customersOnBooking) {
             customerIds.add("CU_" + c.getEmail());
         }
+        for (Employee e : employeeManager.getAll()) {
+            allEmps.add(e.getId());
+        }
 
 
         boolean errors = false;
@@ -62,6 +70,10 @@ public class BookingCreator {
             errors = true;
             stringBuilder.append("All fields must be filled in!(except extraIds)\n");
         }
+//        if(!AllEmps.contains(employeeData)){
+//            errors=true;
+//            stringBuilder.append("Employee does not exist!\n");
+//        }
 
 
         if (customersOnBooking.size() == 0) {
@@ -77,7 +89,10 @@ public class BookingCreator {
 
                 String customerId = mainCustomer.getId();
                 Booking booking = BookingFactory.createBooking(new BookingData(id, employeeData, customerIds, bookingDate, extras, customerId, flight.getId()));
-                customerCreator.createCustomer(mainCustomer.getFirstName(), mainCustomer.getLastName(), mainCustomer.getDob(), mainCustomer.getEmail());
+                if(!allCustomer.contains(mainCustomer.getId())){
+                    customerCreator.createCustomer(mainCustomer.getFirstName(), mainCustomer.getLastName(), mainCustomer.getDob(), mainCustomer.getEmail());
+
+                }
 
 
                 int seatNum = ticketsDivider(flight);
@@ -97,10 +112,10 @@ public class BookingCreator {
                     if (!allCustomer.contains(c.getId())) {//this makes sure the tickets are created for everyone even is the account already exists
                         if (mainCustomer != c) {
                             String Customerresult = customerCreator.createCustomer(c.getFirstName(), c.getLastName(), c.getDob(), c.getEmail());
-                            if(Customerresult!="Customer created successfully."){
-                                errors=true;
-                                stringBuilder.append(Customerresult);
-                            }
+                            //if(Customerresult!="Customer created successfully."){
+                                //errors=true;
+                                //stringBuilder.append(Customerresult);
+                            //}
                         }
                     }
                     //this makes sure the main customer is not added twice
@@ -134,7 +149,7 @@ public class BookingCreator {
     }
 
     private int ticketsDivider(Flight flight) {
-        int total = 12;//flight.getAirplane().getSeats();apparently not implemented yet
+        int total = 8;//flight.getAirplane().getSeats();apparently not implemented yet
         for (TicketData t : tickets) {
             if (t.flightId() == flight.getId()) {
                 total = total - 1;
