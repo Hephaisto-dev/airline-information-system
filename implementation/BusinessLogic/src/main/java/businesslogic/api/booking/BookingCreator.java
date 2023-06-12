@@ -108,7 +108,10 @@ public class BookingCreator {
 
                 }
                 System.out.println("wow a customer has been created");
-                bookingManager.add(booking);
+                if(!errors){
+                    bookingManager.add(booking);
+                }
+
                 System.out.println("wow a booking has been created");
             } catch (Exception e) {
                 e.printStackTrace();
