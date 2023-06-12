@@ -19,6 +19,8 @@ public enum PersistenceAPIImpl implements PersistenceAPI {
     private final FlightStorageService flightStorageService = new FlightStorageServiceImpl(dataSource);
     private final BookingStorageService bookingStorageService = new BookingStorageServiceImpl(dataSource);
     private final EmployeeStorageService employeeStorageService = new EmployeeStorageServiceImpl(dataSource);
+
+    private final RouteStorageService routeStorageService = new RouteStorageServiceImpl(dataSource);
     private final TicketStorageService ticketStorageService = new TicketStorageServiceImpl(dataSource);
 
     @Override
@@ -54,5 +56,10 @@ public enum PersistenceAPIImpl implements PersistenceAPI {
     @Override
     public FlightStorageService getFlightStorageService() {
         return flightStorageService;
+    }
+
+    @Override
+    public RouteStorageService getRouteStorageService() {
+        return routeStorageService;
     }
 }

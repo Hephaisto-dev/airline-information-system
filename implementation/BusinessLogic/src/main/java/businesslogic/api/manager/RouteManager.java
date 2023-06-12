@@ -1,16 +1,14 @@
 package businesslogic.api.manager;
 
 import businesslogic.api.route.Route;
+import businesslogic.api.route.RouteFactory;
 import businesslogic.impl.ManagerImpl;
 import datarecords.RouteData;
 import persistence.api.RouteStorageService;
 
 public class RouteManager extends ManagerImpl<Route, RouteData> {
 
-    public RouteManager(RouteStorageService storageService) {
-        super(storageService);
-    }
-
+    public RouteManager(RouteStorageService storageService) {super(storageService);}
 
     public Route searchRoute(String searchRoute) {
         return getAll().stream()
@@ -21,6 +19,6 @@ public class RouteManager extends ManagerImpl<Route, RouteData> {
 
     @Override
     protected Route createPersistantDataContainer(RouteData data) {
-        return null;
+        return RouteFactory.createRoute(data);
     }
 }

@@ -36,6 +36,8 @@ class BusinessLogicAPIImplTest {
     private FlightStorageService flightStorageService;
     @Mock
     private TicketStorageService ticketStorageService;
+    @Mock
+    private RouteStorageService routeStorageService;
     private BusinessLogicAPI businessLogicAPI;
 
     @BeforeAll
@@ -55,6 +57,7 @@ class BusinessLogicAPIImplTest {
         when(employeeStorageService.getAll()).thenReturn(new HashSet<>());
         when(flightStorageService.getAll()).thenReturn(new HashSet<>());
         when(ticketStorageService.getAll()).thenReturn(new HashSet<>());
+        when(routeStorageService.getAll()).thenReturn(new HashSet<>());
         businessLogicAPI = BusinessLogicFactory.getImplementation();
     }
 
@@ -92,6 +95,8 @@ class BusinessLogicAPIImplTest {
     void getTicketManager() {
         assertNotNull(businessLogicAPI.getTicketManager());
     }
+    @Test
+    void getRouteManager(){assertNotNull(businessLogicAPI.getRouteManager());}
 
     @Test
     void loggedInEmployee() {
@@ -108,6 +113,7 @@ class BusinessLogicAPIImplTest {
             softly.assertThat(businessLogicAPI.getManager(FlightManager.class)).isNotNull();
             softly.assertThat(businessLogicAPI.getManager(BookingManager.class)).isNotNull();
             softly.assertThat(businessLogicAPI.getManager(EmployeeManager.class)).isNotNull();
+            softly.assertThat(businessLogicAPI.getManager(RouteManager.class)).isNotNull();
         });
     }
 }

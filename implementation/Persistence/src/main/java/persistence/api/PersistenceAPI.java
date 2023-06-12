@@ -29,6 +29,8 @@ public interface PersistenceAPI {
 
     EmployeeStorageService getEmployeeStorageService();
 
+    RouteStorageService getRouteStorageService();
+
     TicketStorageService getTicketStorageService();
     // This interface can be extended with all services that need to be made
     // available to the business logic, e.g. to store Products:

@@ -1,7 +1,6 @@
 package datarecords;
 
-import java.time.Duration;
 import java.util.Map;
 
-public record RouteData(String id, Map<String, Duration> flightIdsTransits) {
+public record RouteData(String name, String id, Map<String,Long> flightIdsAndTransits, int price) {
 }

@@ -3,30 +3,30 @@
 ---
 
 <!-- TOC -->
-* [USE CASES](#use-cases)
-    * [Use Case Purchase Ticket](#use-case-purchase-ticket)
-    * [Use Case Apply Discount](#use-case-apply-discount)
-    * [Use Case Apply Voucher](#use-case-apply-voucher)
-    * [Use Case Login](#use-case-login)
-    * [Use Case Access Previous Flight Records](#use-case-access-previous-flight-records)
-    * [Use Case Start Sales Process](#use-case-start-sales-process)
-    * [Use Case Use Management Dashboard](#use-case-use-management-dashboard)
-    * [Use Case View Financial Sheets In Statistics](#use-case-view-financial-sheets-in-statistics)
-    * [Use Case Searching For A Flight And Delete it](#use-case-searching-for-a-flight-and-delete-it)
-    * [Use Case Search For A Route](#use-case-search-for-a-route)
-    * [Use Case View Flight Information](#use-case-view-flight-information)
-    * [Use Case Delete Customer](#use-case-delete-customer)
-    * [Use Case Create Customer](#use-case-create-customer)
-    * [Use Case Cancel A Booking](#use-case-cancel-a-booking)
-    * [Use Case Search For Booking](#use-case-search-for-booking)
-    * [Use Case Register Employee](#use-case-register-employee)
-    * [Use Case Create Special Route](#use-case-create-special-route)
-    * [Use Case Edit A Route](#use-case-edit-a-route)
-    * [Use Case Update Upcoming Flight Information](#use-case-update-upcoming-flight-information)
-    * [Use Case Create A Flight](#use-case-create-a-flight)
-    * [Use Case Create A Booking](#use-case-create-a-booking)
-    * [Use Case Adding Extras](#use-case-adding-extras)
-* [Back to Table of Contents](#back-to-table-of-contents)
+- [USE CASES](#use-cases)
+    - [Use Case Purchase Ticket](#use-case-purchase-ticket)
+    - [Use Case Apply Discount](#use-case-apply-discount)
+    - [Use Case Apply Voucher](#use-case-apply-voucher)
+    - [Use Case Login](#use-case-login)
+    - [Use Case Access Previous Flight Records](#use-case-access-previous-flight-records)
+    - [Use Case Start Sales Process](#use-case-start-sales-process)
+    - [Use Case Use Management Dashboard](#use-case-use-management-dashboard)
+    - [Use Case View Financial Sheets In Statistics](#use-case-view-financial-sheets-in-statistics)
+    - [Use Case Searching For A Flight And Delete it](#use-case-searching-for-a-flight-and-delete-it)
+    - [Use Case Search For A Route](#use-case-search-for-a-route)
+    - [Use Case View Flight Information](#use-case-view-flight-information)
+    - [Use Case Delete Customer](#use-case-delete-customer)
+    - [Use Case Create Customer](#use-case-create-customer)
+    - [Use Case Cancel A Booking](#use-case-cancel-a-booking)
+    - [Use Case Search For Booking](#use-case-search-for-booking)
+    - [Use Case Register Employee](#use-case-register-employee)
+    - [Use Case Create Special Route](#use-case-create-special-route)
+    - [Use Case Edit A Route](#use-case-edit-a-route)
+    - [Use Case Update Upcoming Flight Information](#use-case-update-upcoming-flight-information)
+    - [Use Case Create A Flight](#use-case-create-a-flight)
+    - [Use Case Create A Booking](#use-case-create-a-booking)
+    - [Use Case Adding Extras](#use-case-adding-extras)
+- [Back to Table of Contents](#back-to-table-of-contents)
 <!-- TOC -->
 
 ### Use Case Purchase Ticket
@@ -305,16 +305,16 @@
 
 [Back to table of content](#use-cases)
 
-|               | Description                                                                                                                                                                                                                                     |
-|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Name          | Create a route                                                                                                                                                                                                                                  |
-| Actor         | Sales officer                                                                                                                                                                                                                                   |
-| Description   | A sales officer creates one or more routes                                                                                                                                                                                                      |
-| Pre-condition | Sales officer is signed into their account                                                                                                                                                                                                      |
-| Scenario      | <ol><li>Actor navigates to the page for creating route</li><li>System displays that page</li><li>Actor enters all of the flights in the route, stopover times and the name of the special route.</li><li>Actor saves the made changes</li></ol> |
-| Result        | The actor has successfully created a route                                                                                                                                                                                                      |
-| Extensions    | None                                                                                                                                                                                                                                            |
-| Exceptions    | <ol start = "4"><li><ol type = "a"><li>System informs the user that something went wrong when creating the route<ol><li>Use case ends here</li></ol></li></ol>                                                                                  |
+|               | Description                                                                                                                                                                                                                                                                                                                                                                     |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | Create a special route                                                                                                                                                                                                                                                                                                                                                                  |
+| Actor         | Sales officer                                                                                                                                                                                                                                                                                                                                                                   |
+| Description   | A sales officer creates a special route                                                                                                                                                                                                                                                                                                                                     |
+| Pre-condition | Sales officer is signed into their account                                                                                                                                                                                                                                                                                                                                      |
+| Scenario      | <ol><li>Actor navigates to the page for creating route</li><li>System displays that page</li><li>Actor selects which flights should be in the route, transit times between the corresponding flights and the name of the special route.</li><li>System saves the made changes and notifies the actor</li></ol> |
+| Result        | The actor has successfully created a special route                                                                                                                                                                                                                                                                                                                                      |
+| Extensions    | None                                                                                                                                                                                                                                                                                                                                                                            |
+| Exceptions | <ul>4. System informs the user that the name of the Special route has to be at least 10 character long.<ol>1.return to step 2.</ol></ul><ul>4. System informs the user that the name of the Special route can not be null.<ol>1.return to step 2.</ol></ul><ul>4. System informs the user that the transit time has to be at least 24 hours.<ol>1.return to step 2.</ol></ul><ul>4. System informs the user that the transit time cannot be longer than 30 days.<ol>1.return to step 2.</ol></ul><ul>4. System informs the user that the name of the special Route cannot contain any special characters.<ol>1.return to step 2.</ol></ul><ul>4. System informs the user that the format of the transit time is incorrect.<ol>1.return to step 2.</ol></ul><ul>4. System informs the user that the route must contain at least 2 flights.<ol>1.return to step 2.</ol></ul> |
 
 ---
 

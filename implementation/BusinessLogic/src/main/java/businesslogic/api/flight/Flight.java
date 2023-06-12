@@ -29,4 +29,7 @@ public interface Flight extends PersistantDataContainer<FlightData>, TravelDesti
     String cancelBookedSeat(String targetID);
 
     Seat getSeat(String Seat_Id);
+
+//    boolean delete();
+//    Flight getById(String id);
 }

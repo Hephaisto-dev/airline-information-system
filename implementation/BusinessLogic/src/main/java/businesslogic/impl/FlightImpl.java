@@ -124,4 +124,5 @@ public class FlightImpl implements Flight {
     public boolean delete() {
         return BusinessLogicFactory.getImplementation().getFlightManager().remove(this);
     }
+
 }
