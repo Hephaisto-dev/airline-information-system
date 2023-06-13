@@ -9,6 +9,7 @@ import persistence.api.exceptions.CustomerException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class TicketCreator {
 
@@ -85,8 +86,8 @@ public class TicketCreator {
                 error(list, "Discount is declared by a non-decimal number (1,2,...)");
             }
         }
-        if (!errorFound && fly != null) {
-            cost = fly.getPrice();
+        if (!errorFound) {
+            cost = Objects.requireNonNull(fly).getPrice();
             if (discount != null) {
                 cost.applyDiscount(discountAmount);
             }
@@ -95,7 +96,7 @@ public class TicketCreator {
             }
         }
         //Booking the Seat
-        if (!errorFound && fly != null) {
+        if (!errorFound) {
             if (number > fly.getAirplane().getLength()) {
                 error(list, "The selected plane has a length of " + fly.getAirplane().getLength()
                         + ", you asked for " + number);
@@ -107,7 +108,7 @@ public class TicketCreator {
             }
         }
         //returning the end result
-        if (!errorFound && cost != null) {
+        if (!errorFound) {
             try {
                 TSS.add(new TicketData(fly.getId() + NUM + CHAR, fly.getId(), cus, cost.getBackendPrice(), NUM + CHAR));
             } catch (CustomerException custi) {
