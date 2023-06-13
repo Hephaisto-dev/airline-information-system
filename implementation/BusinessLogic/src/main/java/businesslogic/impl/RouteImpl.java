@@ -18,7 +18,7 @@ public class RouteImpl implements Route {
     }
 
     @Override
-    public Map<String,Long> getFlightIdAndTransit(){
+    public Map<String, Long> getFlightIdAndTransit() {
         return routeData.flightIdsAndTransits();
     }
 
@@ -27,23 +27,25 @@ public class RouteImpl implements Route {
     public RouteData getRouteData() {
         return routeData;
     }
+
     @Override
     public RouteData getData() {
         return routeData;
     }
 
-//    @Override
+    //    @Override
 //    public Set<Flight> getFlights() {
 //        return BusinessLogicFactory.getImplementation().getFlightManager().getAll().stream()
 //                .filter(flight -> routeData.flightIds().contains(flight.getId()))
 //                .collect(Collectors.toSet());
 //    }
     @Override
-    public int getPrice(){
+    public int getPrice() {
         return routeData.price();
     }
+
     @Override
-    public String getName(){
+    public String getName() {
         return routeData.name();
     }
 

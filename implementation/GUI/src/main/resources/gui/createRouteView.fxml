@@ -1,77 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.text.Font?>
-
-<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CreateRouteController">
+<?import javafx.scene.text.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19"
+            fx:controller="gui.CreateRouteController">
     <top>
-        <fx:include source="navBar.fxml" />
+        <fx:include source="navBar.fxml"/>
     </top>
     <bottom>
-        <fx:include source="footer.fxml" />
+        <fx:include source="footer.fxml"/>
     </bottom>
-   <right>
-        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="831.0" BorderPane.alignment="CENTER">
+    <right>
+        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                    prefHeight="535.0" prefWidth="831.0" BorderPane.alignment="CENTER">
             <Label layoutX="297.0" prefHeight="27.0" prefWidth="161.0" text="Create special route">
                 <font>
-                    <Font size="18.0" />
+                    <Font size="18.0"/>
                 </font>
             </Label>
-            <Button fx:id="submit" layoutX="665.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleSubmit"  prefHeight="39.0" prefWidth="67.0" text="Submit" />
-            <TextField fx:id="searchBar" layoutX="14.0" layoutY="49.0" onKeyTyped="#onSearch" prefHeight="33.0" prefWidth="243.0">
+            <Button fx:id="submit" layoutX="665.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleSubmit"
+                    prefHeight="39.0" prefWidth="67.0" text="Submit"/>
+            <TextField fx:id="searchBar" layoutX="14.0" layoutY="49.0" onKeyTyped="#onSearch" prefHeight="33.0"
+                       prefWidth="243.0">
                 <font>
-                    <Font size="15.0" />
+                    <Font size="15.0"/>
                 </font>
             </TextField>
             <TableView fx:id="flightTableView" layoutX="14.0" layoutY="92.0" prefHeight="117.0" prefWidth="529.0">
                 <columns>
-                    <TableColumn fx:id="flightID" prefWidth="75.0" text="ID" />
-                    <TableColumn fx:id="flightFrom" prefWidth="75.0" text="From" />
-                    <TableColumn fx:id="flightTo" prefWidth="75.0" text="To" />
-                    <TableColumn fx:id="flightETD" prefWidth="75.0" text="ETD" />
-                    <TableColumn fx:id="flightETA" prefWidth="75.0" text="ETA" />
-                    <TableColumn fx:id="flightDuration" prefWidth="75.0" text="Duration" />
-                    <TableColumn fx:id="flightAirplane" prefWidth="75.0" text="Airplane" />
+                    <TableColumn fx:id="flightID" prefWidth="75.0" text="ID"/>
+                    <TableColumn fx:id="flightFrom" prefWidth="75.0" text="From"/>
+                    <TableColumn fx:id="flightTo" prefWidth="75.0" text="To"/>
+                    <TableColumn fx:id="flightETD" prefWidth="75.0" text="ETD"/>
+                    <TableColumn fx:id="flightETA" prefWidth="75.0" text="ETA"/>
+                    <TableColumn fx:id="flightDuration" prefWidth="75.0" text="Duration"/>
+                    <TableColumn fx:id="flightAirplane" prefWidth="75.0" text="Airplane"/>
                 </columns>
             </TableView>
             <TableView fx:id="routeTableView" layoutX="14.0" layoutY="245.0" prefHeight="200.0" prefWidth="604.0">
                 <columns>
-                    <TableColumn fx:id="routeID" prefWidth="75.0" text="ID" />
-                    <TableColumn fx:id="routeFrom" prefWidth="75.0" text="From" />
-                    <TableColumn fx:id="routeTo" prefWidth="75.0" text="To" />
-                    <TableColumn fx:id="routeETD" prefWidth="75.0" text="ETD" />
-                    <TableColumn fx:id="routeETA" prefWidth="75.0" text="ETA" />
-                    <TableColumn fx:id="routeDuration" prefWidth="75.0" text="Duration" />
-                    <TableColumn fx:id="routeAirplane" prefWidth="75.0" text="Airplane" />
-                    <TableColumn fx:id="routeTransitTime" prefWidth="75.0" text="Transit time" />
+                    <TableColumn fx:id="routeID" prefWidth="75.0" text="ID"/>
+                    <TableColumn fx:id="routeFrom" prefWidth="75.0" text="From"/>
+                    <TableColumn fx:id="routeTo" prefWidth="75.0" text="To"/>
+                    <TableColumn fx:id="routeETD" prefWidth="75.0" text="ETD"/>
+                    <TableColumn fx:id="routeETA" prefWidth="75.0" text="ETA"/>
+                    <TableColumn fx:id="routeDuration" prefWidth="75.0" text="Duration"/>
+                    <TableColumn fx:id="routeAirplane" prefWidth="75.0" text="Airplane"/>
+                    <TableColumn fx:id="routeTransitTime" prefWidth="75.0" text="Transit time"/>
                 </columns>
             </TableView>
-            <Label layoutX="14.0" layoutY="218.0" prefHeight="27.0" prefWidth="693.0" text="Enter transit time for the Route, minimum 24 hours (24h for 24 hours, 1d for 1day and 1w for one week)">
+            <Label layoutX="14.0" layoutY="218.0" prefHeight="27.0" prefWidth="693.0"
+                   text="Enter transit time for the Route, minimum 24 hours (24h for 24 hours, 1d for 1day and 1w for one week)">
                 <font>
-                    <Font size="15.0" />
+                    <Font size="15.0"/>
                 </font>
             </Label>
-            <Label fx:id="result" layoutX="13.0" layoutY="448.0" prefHeight="83.0" prefWidth="653.0" text="Result:" />
-            <Label layoutX="14.0" layoutY="27.0" prefHeight="17.0" prefWidth="243.0" text="Search for Flight to add to Route" />
-            <Button fx:id="addFlightToRoute" layoutX="547.0" layoutY="117.0" mnemonicParsing="false" onAction="#handleAddFlightToRoute" prefHeight="67.0" prefWidth="47.0" text="Add" />
-         <Label fx:id="originalPriceLabel" layoutX="622.0" layoutY="245.0" prefHeight="21.0" prefWidth="208.0" text="Original price:">
-            <font>
-               <Font size="15.0" />
-            </font>
-         </Label>
-         <Label fx:id="currentPriceLabel" layoutX="623.0" layoutY="309.0" prefHeight="21.0" prefWidth="207.0" text="Current price:">
-            <font>
-               <Font size="15.0" />
-            </font>
-         </Label>
-         <TextField fx:id="name" layoutX="477.0" layoutY="53.0" prefHeight="25.0" prefWidth="156.0" />
-         <Label layoutX="477.0" layoutY="28.0" prefHeight="17.0" prefWidth="169.0" text="Enter name for Special Route" />
+            <Label fx:id="result" layoutX="13.0" layoutY="448.0" prefHeight="83.0" prefWidth="653.0" text="Result:"/>
+            <Label layoutX="14.0" layoutY="27.0" prefHeight="17.0" prefWidth="243.0"
+                   text="Search for Flight to add to Route"/>
+            <Button layoutX="547.0" layoutY="117.0" mnemonicParsing="false"
+                    onAction="#handleAddFlightToRoute" prefHeight="67.0" prefWidth="47.0" text="Add"/>
+            <Label fx:id="originalPriceLabel" layoutX="622.0" layoutY="245.0" prefHeight="21.0" prefWidth="208.0"
+                   text="Original price:">
+                <font>
+                    <Font size="15.0"/>
+                </font>
+            </Label>
+            <Label fx:id="currentPriceLabel" layoutX="623.0" layoutY="309.0" prefHeight="21.0" prefWidth="207.0"
+                   text="Current price:">
+                <font>
+                    <Font size="15.0"/>
+                </font>
+            </Label>
+            <TextField fx:id="name" layoutX="477.0" layoutY="53.0" prefHeight="25.0" prefWidth="156.0"/>
+            <Label layoutX="477.0" layoutY="28.0" prefHeight="17.0" prefWidth="169.0"
+                   text="Enter name for Special Route"/>
         </AnchorPane>
-   </right>
+    </right>
 </BorderPane>

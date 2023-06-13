@@ -37,7 +37,7 @@ public class GUIApp extends Application {
         case "gui.PrimaryController" -> new PrimaryController(this::getSceneManager);
         case "gui.SecondaryController" -> new SecondaryController(this::getSceneManager);
         case "gui.CreateBookingController" ->
-                new CreateBookingController(this::getSceneManager, businessLogicAPI.getBookingManager(),businessLogicAPI.getEmployeeManager(), businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(), businessLogicAPI.getTicketManager(), businessLogicAPI.getCustomerManager());
+                new CreateBookingController(businessLogicAPI.getBookingManager(), businessLogicAPI.getEmployeeManager(), businessLogicAPI.getFlightManager(), businessLogicAPI.getTicketManager(), businessLogicAPI.getCustomerManager());
         case "gui.CreateFlightController" ->
                 new CreateFlightController(this::getSceneManager, businessLogicAPI.getFlightManager(),
                         businessLogicAPI.getAirportManager(), businessLogicAPI.getAirplaneManager());
@@ -51,7 +51,7 @@ public class GUIApp extends Application {
         case "gui.CreateAirplaneController" ->
                 new CreateAirplaneController(this::getSceneManager, businessLogicAPI.getAirplaneManager());
         case "gui.CreateRouteController" ->
-                new CreateRouteController(this::getSceneManager, businessLogicAPI.getFlightManager(), businessLogicAPI.getRouteManager());
+                new CreateRouteController(businessLogicAPI.getFlightManager(), businessLogicAPI.getRouteManager());
         default -> null;
     };
 
@@ -68,32 +68,17 @@ public class GUIApp extends Application {
      * Toolkit. From a GUI test context, typically the init() method will be
      * invoked with 'false' as parameter, since the JavaFXToolkit doesn't need
      * to be initialized in that case.
-     *
-     * @return GUIApp
      */
-    public GUIApp show() {
-        return init(true);
-    }
+    public void show() {
+        Platform.startup(() -> {
+        });
 
-    GUIApp init(boolean startJavaFXToolkit) {
+        initializeSceneManager();
 
-        if (startJavaFXToolkit) {
-
-            Platform.startup(() -> {
-            });
-
-            initializeSceneManager();
-
-            Platform.runLater(() -> {
-                Stage stage = new Stage();
-                start(stage);
-            });
-
-        } else {
-            initializeSceneManager();
-        }
-
-        return this;
+        Platform.runLater(() -> {
+            Stage stage = new Stage();
+            start(stage);
+        });
     }
 
     private void initializeSceneManager() {

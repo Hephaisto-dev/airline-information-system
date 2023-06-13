@@ -9,6 +9,7 @@ import businesslogic.api.customer.Price;
 import businesslogic.api.customer.PriceImpl;
 import businesslogic.api.flight.Flight;
 import datarecords.FlightData;
+
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -19,7 +20,6 @@ public class FlightImpl implements Flight {
     private final FlightData flightData;
     private final Price ticketCost = new PriceImpl(1000);
 
-    @Deprecated(forRemoval = true)
     private final List<Seat> bookedSeats = new ArrayList<>();
 
     public FlightImpl(FlightData flightData) {

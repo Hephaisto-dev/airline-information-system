@@ -11,8 +11,9 @@ public interface Route extends PersistantDataContainer<RouteData> {
 
     RouteData getRouteData();
 
-    Map<String,Long> getFlightIdAndTransit();
+    Map<String, Long> getFlightIdAndTransit();
 
     int getPrice();
+
     String getName();
 }

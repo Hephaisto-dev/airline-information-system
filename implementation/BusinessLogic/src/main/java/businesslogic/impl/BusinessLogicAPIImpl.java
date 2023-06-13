@@ -80,8 +80,11 @@ public enum BusinessLogicAPIImpl implements BusinessLogicAPI {
     public TicketManager getTicketManager() {
         return getManager(TicketManager.class);
     }
+
     @Override
-    public RouteManager getRouteManager(){return getManager(RouteManager.class);}
+    public RouteManager getRouteManager() {
+        return getManager(RouteManager.class);
+    }
 
     @Override
     public <U extends Manager<? extends PersistantDataContainer<D>, D>, D extends Record> U getManager(Class<U> clazz) {

@@ -26,7 +26,7 @@ class FlightCreatorTest {
         flightCreator = new FlightCreator(flightManager);
     }
 
-    
+
     @Test
     void flightDepartureError() {
         Airport departPort = null;
