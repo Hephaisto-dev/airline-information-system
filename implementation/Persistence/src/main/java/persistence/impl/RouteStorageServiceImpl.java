@@ -30,15 +30,15 @@ public class RouteStorageServiceImpl implements RouteStorageService {
         String query = "INSERT INTO routes (id,price,name) values (?, ?, ?)";
         String query2 = "INSERT INTO flights_for_route (route_id,flight_id,transit_seconds) VALUES (?, ?, ?)";
 
-        try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query);PreparedStatement preparedStatement = con.prepareStatement(query2)) {
+        try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query); PreparedStatement preparedStatement = con.prepareStatement(query2)) {
             //query 1 for the route table
             String id = routeData.id();
             int price = routeData.price();
             String name = routeData.name();
 
             pstm.setString(1, id);
-            pstm.setInt(2,price);
-            pstm.setString(3,name);
+            pstm.setInt(2, price);
+            pstm.setString(3, name);
 
             pstm.execute();
 
@@ -47,7 +47,7 @@ public class RouteStorageServiceImpl implements RouteStorageService {
             for (Map.Entry<String, Long> entry : routeData.flightIdsAndTransits().entrySet()) {
                 preparedStatement.setString(1, id);
                 preparedStatement.setString(2, entry.getKey());
-                preparedStatement.setLong(3,entry.getValue());
+                preparedStatement.setLong(3, entry.getValue());
                 preparedStatement.addBatch();
             }
             preparedStatement.executeBatch();
@@ -59,31 +59,31 @@ public class RouteStorageServiceImpl implements RouteStorageService {
     }
 
     @Override
-    public Set<RouteData> getAll(){
+    public Set<RouteData> getAll() {
         String query = "SELECT * FROM routes";
         String query2 = "SELECT * FROM flights_for_route where route_id = ?";
 
         Set<RouteData> routeData = new HashSet<>();
-        try(Connection con = dataSource.getConnection();PreparedStatement pstm = con.prepareStatement(query);PreparedStatement pstm2 = con.prepareStatement(query2)){
+        try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query); PreparedStatement pstm2 = con.prepareStatement(query2)) {
             ResultSet resultSet = pstm.executeQuery();
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 String id = resultSet.getString("id");
                 int price = resultSet.getInt("price");
                 String name = resultSet.getString("name");
 
-                pstm2.setString(1,id);
+                pstm2.setString(1, id);
                 ResultSet resultSet1 = pstm2.executeQuery();
-                Map<String,Long> flightIdAndTransit = new HashMap<>();
-                while(resultSet1.next()){
+                Map<String, Long> flightIdAndTransit = new HashMap<>();
+                while (resultSet1.next()) {
                     String flights = resultSet1.getString("flight_id");
                     long timeInSeconds = resultSet1.getLong("transit_seconds");
-                    flightIdAndTransit.put(flights,timeInSeconds);
+                    flightIdAndTransit.put(flights, timeInSeconds);
                 }
-                RouteData route = new RouteData(name,id,flightIdAndTransit,price);
+                RouteData route = new RouteData(name, id, flightIdAndTransit, price);
                 routeData.add(route);
 
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
         }
         return routeData;

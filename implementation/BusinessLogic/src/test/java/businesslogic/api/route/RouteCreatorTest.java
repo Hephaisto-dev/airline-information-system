@@ -1,6 +1,5 @@
 package businesslogic.api.route;
 
-import businesslogic.api.manager.FlightManager;
 import businesslogic.api.manager.RouteManager;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,30 +14,26 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RouteCreatorTest {
     //format of the data
-    //what do i need to test
+    //what do I need to test
     //run a test with correct data and one with incorrect data and see if the app can pick up on it
 
-    @Mock
-    private FlightManager flightManager;
+    Map<String, Long> mapForRoute1 = new HashMap<>() {{
+        put("Flight1", 86400L);
+        put("Flight2", 86400L);
+        put("Flight3", 86400L);
+        put("Flight4", 0L);
+    }};
+    HashMap<Integer, String> rawTransits = new HashMap<>() {{
+        put(1, "23h");
+        put(2, "24h");
+    }};
+    HashMap<Integer, String> rawTransits1 = new HashMap<>() {{
+        put(1, "31d");
+        put(2, "28d");
+    }};
     @Mock
     private RouteManager routeManager;
-
     private RouteCreator routeCreator;
-
-    Map<String, Long> mapForRoute1 = new HashMap<String,Long>(){{
-        put("Flight1", 86400L);
-        put("Flight2",86400L);
-        put("Flight3", 86400L);
-        put("Flight4",0L);
-    }};
-    HashMap<Integer,String> rawTransits = new HashMap<>(){{
-       put(1,"23h");
-       put(2,"24h");
-    }};
-    HashMap<Integer,String> rawTransits1 = new HashMap<>(){{
-        put(1,"31d");
-        put(2,"28d");
-    }};
 
     @BeforeEach
     void setUp() {
@@ -48,27 +43,14 @@ public class RouteCreatorTest {
     }
 
     @Test
-    void testWithCorrectData() throws Exception {
-        String name = "Correct Name For Route";
-        HashMap<Integer,String> rawTransitss = new HashMap<>(){{
-            put(1,"27d");
-            put(2,"24h");
-        }};
-
-        String result = routeCreator.createRoute(name, "routeId", mapForRoute1, 100, rawTransits);
-    }
-    @Test
     void testNameNotNull() throws Exception {
-        // Arrange
-        String routeName = null;
-
-
         // Act
-        String result = routeCreator.createRoute(routeName, "routeId", new HashMap<>(), 100, new HashMap<>());
+        String result = routeCreator.createRoute(null, "routeId", new HashMap<>(), 100, new HashMap<>());
 
         // Assert
         assertTrue(result.contains("Please enter a name for the Special Route!"));
     }
+
     @Test
     void testNameLengthAtLeastTenCharacters() throws Exception {
         // Arrange
@@ -81,6 +63,7 @@ public class RouteCreatorTest {
         // Assert
         assertTrue(result.contains("The name of the Special Route has to be at least 10 characters long!"));
     }
+
     @Test
     void testNameDoesNotContainAnySpecialCharacter() throws Exception {
         // Arrange
@@ -98,8 +81,6 @@ public class RouteCreatorTest {
         // Arrange
         String routeName = "Common Name For This";
         // Act
-        boolean errors = false;
-        StringBuilder stringBuilder = new StringBuilder();
         String result = routeCreator.createRoute(routeName, "routeId", mapForRoute1, 100, rawTransits);
 
 
@@ -111,8 +92,6 @@ public class RouteCreatorTest {
     void testTransitTimeMaximumDuration() throws Exception {
         String routeName = "CommonNameForThis";
         // Act
-        boolean errors = false;
-        StringBuilder stringBuilder = new StringBuilder();
         String result = routeCreator.createRoute(routeName, "routeId", mapForRoute1, 100, rawTransits1);
 
 

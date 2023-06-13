@@ -9,12 +9,13 @@ import persistence.api.exceptions.CustomerException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class TicketCreator {
 
-    private final List<String> errorList = new ArrayList();
-    private boolean errorFound = false;
+    private final List<String> errorList = new ArrayList<>();
     private final TicketStorageService TSS;
+    private boolean errorFound = false;
 
     public TicketCreator() {
         TSS = PersistenceFactory.getImplementation().getTicketStorageService();
@@ -24,13 +25,13 @@ public class TicketCreator {
         TSS = ticketStorageService;
     }
 
-    public String createTicket(Flight flight, String row, String column, String customer, String discount, String voucher){
+    public String createTicket(Flight flight, String row, String column, String customer, String discount, String voucher) {
         errorList.clear();
         return ticketCheck(flight, row, column, customer, errorList, discount, voucher);
     }
 
 
-    private String ticketCheck(Flight fly, String NUM, String CHAR, String cus, List list, String discount, String voucher) {
+    private String ticketCheck(Flight fly, String NUM, String CHAR, String cus, List<String> list, String discount, String voucher) {
         errorFound = false;
         char letter = 'A';
         int number = 0;
@@ -49,8 +50,7 @@ public class TicketCreator {
                 error(list, "Please only add a single letter to the column field");
             } else {
                 letter = CHAR.charAt(0);
-                if (Character.valueOf(letter).compareTo('A') < 0 ||
-                        Character.valueOf(letter).compareTo('Z') > 0) {
+                if (letter < 'A' || letter > 'Z') {
                     error(list, "Please designate the column with a capital letter of the english alphabet");
                 }
             }
@@ -73,7 +73,7 @@ public class TicketCreator {
         //voucher
         if (voucher != null) {
             try {
-                voucherAmount = Integer.valueOf(voucher);
+                voucherAmount = Integer.parseInt(voucher);
             } catch (NumberFormatException nfe) {
                 error(list, "Voucher is declared by a non-decimal number (1,2,...)");
             }
@@ -81,13 +81,13 @@ public class TicketCreator {
         //discount
         if (discount != null) {
             try {
-                discountAmount = Integer.valueOf(discount);
+                discountAmount = Integer.parseInt(discount);
             } catch (NumberFormatException nfe) {
                 error(list, "Discount is declared by a non-decimal number (1,2,...)");
             }
         }
         if (!errorFound) {
-            cost = fly.getPrice();
+            cost = Objects.requireNonNull(fly).getPrice();
             if (discount != null) {
                 cost.applyDiscount(discountAmount);
             }
@@ -110,7 +110,7 @@ public class TicketCreator {
         //returning the end result
         if (!errorFound) {
             try {
-                TSS.add(new TicketData(fly.getId() + NUM + CHAR, fly.getId(), cus, cost.getBackendPrice(), "" + NUM + CHAR));
+                TSS.add(new TicketData(fly.getId() + NUM + CHAR, fly.getId(), cus, cost.getBackendPrice(), NUM + CHAR));
             } catch (CustomerException custi) {
                 if (custi.getMessage().contains("Customer_ID not in our Database")) {
                     error(list, "Please ensure validity of customer id (not present in database)");

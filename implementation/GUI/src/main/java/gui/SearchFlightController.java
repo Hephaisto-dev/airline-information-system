@@ -2,11 +2,6 @@ package gui;
 
 import businesslogic.api.flight.Flight;
 import businesslogic.api.manager.FlightManager;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -14,8 +9,10 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class SearchFlightController implements Initializable {
 
@@ -43,8 +40,6 @@ public class SearchFlightController implements Initializable {
     private TableColumn<Flight, String> airplane;
     @FXML
     private TextField searchField;
-    @FXML
-    private Button delete;
 
     public SearchFlightController(FlightManager flightManager) {
         this.flightManager = flightManager;
@@ -88,8 +83,7 @@ public class SearchFlightController implements Initializable {
         if (success) {
             updateFlightList();
             result.setText("Successfully deleted flight(s)");
-        }
-        else {
+        } else {
             result.setText("Failed to delete flight(s)");
         }
     }

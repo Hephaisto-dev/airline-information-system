@@ -2,18 +2,14 @@ package businesslogic.api.booking;
 
 import businesslogic.api.customer.Customer;
 import businesslogic.api.customer.CustomerCreator;
-import businesslogic.api.customer.Ticket;
 import businesslogic.api.customer.TicketCreator;
 import businesslogic.api.employee.Employee;
 import businesslogic.api.flight.Flight;
-import businesslogic.api.flight.FlightFactory;
 import businesslogic.api.manager.BookingManager;
 import businesslogic.api.manager.CustomerManager;
 import businesslogic.api.manager.EmployeeManager;
 import businesslogic.api.manager.TicketManager;
 import datarecords.BookingData;
-import datarecords.CustomerData;
-import datarecords.FlightData;
 import datarecords.TicketData;
 
 import java.time.LocalDate;
@@ -23,20 +19,17 @@ import java.util.List;
 
 public class BookingCreator {
     private final BookingManager bookingManager;
-    List<String> customerIds = new ArrayList<>();
-    private TicketCreator ticketCreator;
-    private TicketManager ticketManager;
-    private EmployeeManager employeeManager;
-    private CustomerCreator customerCreator;
-    private FlightFactory flightFactory;
     private final CustomerManager customerManager;
-    private Collection<String> allCustomer = new ArrayList<>();
-    private Collection<String> allEmps = new ArrayList<>();
     private final Collection<TicketData> tickets = new ArrayList<>();//ticketManager.getStorageService().getAll(); aparently this is not implemented yet
+    List<String> customerIds = new ArrayList<>();
+    private final TicketCreator ticketCreator;
+    private final EmployeeManager employeeManager;
+    private final CustomerCreator customerCreator;
+    private final Collection<String> allCustomer = new ArrayList<>();
+    private final Collection<String> allEmps = new ArrayList<>();
 
 
-
-    public BookingCreator(BookingManager manager, TicketManager ticketManager,EmployeeManager employeeManager, CustomerManager customerManager) {
+    public BookingCreator(BookingManager manager, TicketManager ticketManager, EmployeeManager employeeManager, CustomerManager customerManager) {
         this.bookingManager = manager;
         this.customerManager = customerManager;
         this.employeeManager = employeeManager;
@@ -80,7 +73,7 @@ public class BookingCreator {
 
 
             errors = true;
-            stringBuilder.append("a booking must countain at least 1 person!\n");
+            stringBuilder.append("a booking must contain at least 1 person!\n");
         }
 
 
@@ -89,7 +82,7 @@ public class BookingCreator {
 
                 String customerId = mainCustomer.getId();
                 Booking booking = BookingFactory.createBooking(new BookingData(id, employeeData, customerIds, bookingDate, extras, customerId, flight.getId()));
-                if(!allCustomer.contains(mainCustomer.getId())){
+                if (!allCustomer.contains(mainCustomer.getId())) {
                     customerCreator.createCustomer(mainCustomer.getFirstName(), mainCustomer.getLastName(), mainCustomer.getDob(), mainCustomer.getEmail());
 
                 }
@@ -101,8 +94,8 @@ public class BookingCreator {
 
 
                     String Ticketresult = ticketCreator.createTicket(flight, String.valueOf(seatNum), "B", c.getFirstName() + " " + c.getLastName(), null, null);//discount and voucher not yet implemented and seats algorithm is not yet made
-                    if(Ticketresult!="Ticket booked successfully"){
-                        errors=true;
+                    if (!Ticketresult.equals("Ticket booked successfully")) {
+                        errors = true;
                         stringBuilder.append(Ticketresult);
 
                     }
@@ -113,8 +106,8 @@ public class BookingCreator {
                         if (mainCustomer != c) {
                             String Customerresult = customerCreator.createCustomer(c.getFirstName(), c.getLastName(), c.getDob(), c.getEmail());
                             //if(Customerresult!="Customer created successfully."){
-                                //errors=true;
-                                //stringBuilder.append(Customerresult);
+                            //errors=true;
+                            //stringBuilder.append(Customerresult);
                             //}
                         }
                     }
@@ -123,7 +116,7 @@ public class BookingCreator {
 
                 }
                 System.out.println("wow a customer has been created");
-                if(!errors){
+                if (!errors) {
                     bookingManager.add(booking);
                 }
 
@@ -134,10 +127,9 @@ public class BookingCreator {
                 return "There seems to be an issue with the database, please try again." + "\n"
                         + "+If the issue persists, contact the IT department";
             }
-            if(!errors){
+            if (!errors) {
                 return "Booking was successfully created";
-            }
-            else {
+            } else {
                 stringBuilder.append("Please correct this and try again");
                 return stringBuilder.toString();
             }
@@ -151,7 +143,7 @@ public class BookingCreator {
     private int ticketsDivider(Flight flight) {
         int total = 8;//flight.getAirplane().getSeats();apparently not implemented yet
         for (TicketData t : tickets) {
-            if (t.flightId() == flight.getId()) {
+            if (t.flightId().equals(flight.getId())) {
                 total = total - 1;
             }
         }

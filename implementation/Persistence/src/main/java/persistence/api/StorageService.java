@@ -8,7 +8,6 @@ import java.util.Set;
 public interface StorageService<D extends Record> {
     D add(D data) throws PersistanceException;
 
-
     default Set<D> getAll() {
         return new HashSet<>();
     }

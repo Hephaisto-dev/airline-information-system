@@ -2,15 +2,9 @@ package persistence.impl;
 
 import datarecords.BookingData;
 import persistence.api.BookingStorageService;
-import persistence.api.exceptions.ConnectionException;
-import persistence.impl.database.DBProvider;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -33,7 +27,7 @@ public class BookingStorageServiceImpl implements BookingStorageService {
         String query = "INSERT INTO bookings(id,employee_id,date,main_customer,flight_id) values (?,?, ?, ?,?) returning *";
         String query2 = "INSERT INTO customers_bookings(customer_id,booking_id) values(?,?) returning *";
 
-        try(Connection con = dataSource.getConnection();PreparedStatement pstm = con.prepareStatement(query);PreparedStatement pstm2 = con.prepareStatement(query2)){
+        try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query); PreparedStatement pstm2 = con.prepareStatement(query2)) {
 
             String id = bookingData.id();
             String empId = bookingData.employeeId();
@@ -82,7 +76,7 @@ public class BookingStorageServiceImpl implements BookingStorageService {
 
 
         Set<BookingData> bookingData = new HashSet<>();
-        try(Connection con = dataSource.getConnection();PreparedStatement pstm = con.prepareStatement(query);PreparedStatement pstm2 = con.prepareStatement(query2)){
+        try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query); PreparedStatement pstm2 = con.prepareStatement(query2)) {
             ResultSet result = pstm.executeQuery();
             while (result.next()) {
                 String id = result.getString("id");
@@ -91,10 +85,10 @@ public class BookingStorageServiceImpl implements BookingStorageService {
                 LocalDate bookingDate = result.getDate("date").toLocalDate();
                 String flightId = result.getString("flight_id");
 
-                pstm2.setString(1,id);
+                pstm2.setString(1, id);
                 ResultSet resultSet1 = pstm2.executeQuery();
                 ArrayList<String> customerId = new ArrayList<>();
-                while(resultSet1.next()){
+                while (resultSet1.next()) {
                     String cId = resultSet1.getString("customer_id");
                     customerId.add(cId);
                 }
@@ -108,20 +102,16 @@ public class BookingStorageServiceImpl implements BookingStorageService {
     }
 
 
-
-
-
     @Override
     public boolean remove(String id) {
         boolean confirm = false;
 
-        DataSource db = DBProvider.getDataSource("jdbc.pg.prod");
         int idToDelete = Integer.parseInt(id);
 
         String query = "DELETE FROM bookings WHERE id = ?";
         String query2 = "DELETE FROM customers_bookings WHERE booking_id = ?";
 
-        try(Connection con = dataSource.getConnection();PreparedStatement pstm = con.prepareStatement(query);PreparedStatement pstm2 = con.prepareStatement(query2)){
+        try (Connection con = dataSource.getConnection(); PreparedStatement pstm = con.prepareStatement(query); PreparedStatement pstm2 = con.prepareStatement(query2)) {
             pstm.setInt(1, idToDelete);
 
             int result = pstm.executeUpdate();

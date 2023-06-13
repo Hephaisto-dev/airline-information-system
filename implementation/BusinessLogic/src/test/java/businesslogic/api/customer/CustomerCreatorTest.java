@@ -10,7 +10,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import persistence.api.CustomerStorageService;
-import persistence.api.exceptions.DataBaseException;
 import persistence.api.exceptions.PersistanceException;
 
 import java.time.LocalDate;
@@ -21,9 +20,9 @@ import static org.mockito.Mockito.when;
 
 class CustomerCreatorTest {
     @Mock
-    CustomerStorageService customerStorageService;
+    private CustomerStorageService customerStorageService;
 
-    CustomerCreator customerCreator;
+    private CustomerCreator customerCreator;
 
     @BeforeEach
     void setUp() {
@@ -55,7 +54,7 @@ class CustomerCreatorTest {
 
     @Test
     void addCustomerPersistanceException() throws PersistanceException {
-        when(customerStorageService.add(Mockito.any(CustomerData.class))).thenThrow(new DataBaseException("Error"));
+        when(customerStorageService.add(Mockito.any())).thenThrow(new PersistanceException("Error"));
         assertThat(customerCreator.createCustomer("John", "Doe", LocalDate.of(1990, 1, 1),
                 "johndoe@mail.com")).containsOnlyOnce("Error creating customer.");
         verify(customerStorageService).add(Mockito.any(CustomerData.class));

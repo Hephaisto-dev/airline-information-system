@@ -95,8 +95,11 @@ class BusinessLogicAPIImplTest {
     void getTicketManager() {
         assertNotNull(businessLogicAPI.getTicketManager());
     }
+
     @Test
-    void getRouteManager(){assertNotNull(businessLogicAPI.getRouteManager());}
+    void getRouteManager() {
+        assertNotNull(businessLogicAPI.getRouteManager());
+    }
 
     @Test
     void loggedInEmployee() {

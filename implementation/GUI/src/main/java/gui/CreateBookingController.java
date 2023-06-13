@@ -4,12 +4,10 @@ import businesslogic.api.booking.BookingCreator;
 import businesslogic.api.customer.Customer;
 import businesslogic.api.customer.CustomerFactory;
 import businesslogic.api.customer.Price;
-import businesslogic.api.employee.Employee;
 import businesslogic.api.flight.Flight;
 import businesslogic.api.flight.FlightFactory;
 import businesslogic.api.manager.*;
 import datarecords.CustomerData;
-import datarecords.FlightData;
 import datarecords.TicketData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,23 +21,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.function.Supplier;
 
 
 public class CreateBookingController implements Initializable {
 
     final ArrayList<String> extras = new ArrayList<>();
     final List<TicketData> tickets = new ArrayList<>();//Change this from string to Ticket
-    final FlightData selectedFlight = null;
     final BookingManager bookingManager;
     private final BookingCreator bookingCreator;
-    private final Supplier<SceneManager> sceneManagerSupplier;
-    @FXML
-    public ComboBox<Employee> employeeComboBox;
-    @FXML
-    public ComboBox<Flight> cbFlights;
-    @FXML
-    public ComboBox<String> cbExtras;
     @FXML
     public Button btnCreateBooking;
     @FXML
@@ -50,8 +39,6 @@ public class CreateBookingController implements Initializable {
     public TextField tfDep;
     @FXML
     public TextField firstName;
-    @FXML
-    public TextField passengerName;
     @FXML
     public TextField lastName;
     @FXML
@@ -65,8 +52,6 @@ public class CreateBookingController implements Initializable {
     @FXML
     public Label lblMainCustomer;
     @FXML
-    public ListView<String> listViewExtras;
-    @FXML
     public Text result;
     @FXML
     public Text totalToPay;
@@ -75,58 +60,44 @@ public class CreateBookingController implements Initializable {
     @FXML
     public Text pricePerPerson;
     ArrayList<Customer> customers = new ArrayList<>();
-    Collection<Flight> filteredFlights = new ArrayList<Flight>();
-    Collection<Flight> allFlights = new ArrayList<Flight>();
+    Collection<Flight> filteredFlights = new ArrayList<>();
+    Collection<Flight> allFlights = new ArrayList<>();
     private Customer MainCustomer;
-    private BookingCreator bookCreator;
-    private FlightManager flightManager;
-    private AirportManager airportManager;
+    private final FlightManager flightManager;
 
 
-    public CreateBookingController(Supplier<SceneManager> sceneManagerSupplier, BookingManager bookingManager,EmployeeManager employeeManager, FlightManager flightManager, AirportManager airportManager, TicketManager ticketManager, CustomerManager customerManager) {
-        this.sceneManagerSupplier = sceneManagerSupplier;
+    public CreateBookingController(BookingManager bookingManager, EmployeeManager employeeManager, FlightManager flightManager, TicketManager ticketManager, CustomerManager customerManager) {
         this.bookingManager = bookingManager;
-        this.bookingCreator = new BookingCreator(bookingManager, ticketManager,employeeManager, customerManager);
+        this.bookingCreator = new BookingCreator(bookingManager, ticketManager, employeeManager, customerManager);
         this.flightManager = flightManager;
-        this.airportManager = airportManager;
     }
 
     @FXML
-    public void createBooking(ActionEvent actionEvent) {
+    public void createBooking(ActionEvent ignoredActionEvent) {
 
-        if(lvFlights.getSelectionModel().getSelectedItem()!=null&&empId.getText()!=null&&lvFlights.getSelectionModel().getSelectedItem()!=null&&customers!=null&&MainCustomer!=null){
-            String booking = bookingCreator.createBooking(lvFlights.getSelectionModel().getSelectedItem().toString()+MainCustomer.getFirstName()+MainCustomer.getLastName(),empId.getText(), FlightFactory.createFlight(lvFlights.getSelectionModel().getSelectedItem().getData()), tickets, LocalDate.now(), extras, customers,MainCustomer);
+        if (lvFlights.getSelectionModel().getSelectedItem() != null && empId.getText() != null && lvFlights.getSelectionModel().getSelectedItem() != null && customers != null && MainCustomer != null) {
+            String booking = bookingCreator.createBooking(lvFlights.getSelectionModel().getSelectedItem().toString() + MainCustomer.getFirstName() + MainCustomer.getLastName(), empId.getText(), FlightFactory.createFlight(lvFlights.getSelectionModel().getSelectedItem().getData()), tickets, LocalDate.now(), extras, customers, MainCustomer);
             result.setText(booking);
-        }
-        else{
+        } else {
             result.setText("all fields need to be filled in!");
         }
 
 
-
     }
 
     @FXML
-    public void addCustomer(ActionEvent actionEvent) {
+    public void addCustomer(ActionEvent ignoredActionEvent) {
 
         MainCustomer = CustomerFactory.createCustomer(new CustomerData("CU_" + email.getText(), firstName.getText(), lastName.getText(), dateOfBirth.getValue(), email.getText()));
-        lblMainCustomer.setText(MainCustomer.getFirstName()+" "+MainCustomer.getLastName());
-        if(MainCustomer!=null){
+        lblMainCustomer.setText(MainCustomer.getFirstName() + " " + MainCustomer.getLastName());
+        if (MainCustomer != null) {
             btnAddCustomer.setDisable(true);
 
         }
     }
 
     @FXML
-    public void addCustomerWithTicket(ActionEvent actionEvent) {
-
-        MainCustomer = CustomerFactory.createCustomer(new CustomerData("CU_" + email.getText(), firstName.getText(), lastName.getText(), dateOfBirth.getValue(), email.getText()));
-        listViewCustomers.getItems().add(MainCustomer.getFirstName() + " " + MainCustomer.getLastName());
-        btnAddCustomer.setDisable(true);
-    }
-
-    @FXML
-    public void search(ActionEvent actionEvent) {
+    public void search(ActionEvent ignoredActionEvent) {
         filteredFlights.clear();
         for (Flight f : allFlights) {
             if (f.getArrival().getName().contains(tfArri.getText()) && f.getDeparture().getName().contains(tfDep.getText())) {
@@ -138,19 +109,6 @@ public class CreateBookingController implements Initializable {
         lvFlights.getItems().addAll(filteredFlights);
 
     }
-
-    @FXML
-    public void addExtra(ActionEvent actionEvent) {
-
-        if (cbExtras.getValue() != null) {
-            extras.add(cbExtras.getValue());
-            listViewExtras.getItems().clear();
-            for (String s : extras) {
-                listViewExtras.getItems().add(s);
-            }
-        }
-    }
-
 
     @FXML
     public void addPassengerToBooking() {
@@ -167,22 +125,22 @@ public class CreateBookingController implements Initializable {
     }
 
     @FXML
-    public void updatePrice(ActionEvent actionEvent) {
+    public void updatePrice(ActionEvent ignoredActionEvent) {
 
         if (lvFlights.getSelectionModel().getSelectedItem() != null) {
             int total = 0;
             Price perPerson = lvFlights.getSelectionModel().getSelectedItem().getPrice();
-            for (Customer c : customers) {
+            for (Customer ignored : customers) {
 
                 total = total + perPerson.getBackendPrice() / 100;
             }
 
-            for (String x : extras) {// not used at the moment
+            for (String ignored : extras) {// not used at the moment
                 total = total + 15;
             }
             String currency = perPerson.toString().replace("1", "").replace("2", "").replace("3", "").replace("4", "").replace("5", "").replace("6", "").replace("7", "").replace("8", "").replace("9", "").replace("0", "").replace(",", "").replace(".", "");//TODO change this after implementation of new prices
 
-            totalToPay.setText(Integer.toString(total) + " " + currency);
+            totalToPay.setText(total + " " + currency);
             pricePerPerson.setText(perPerson.toString());
         } else {
             totalToPay.setText("no flight selected!");

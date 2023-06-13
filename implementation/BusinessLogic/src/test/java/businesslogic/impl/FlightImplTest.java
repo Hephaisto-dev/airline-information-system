@@ -26,33 +26,32 @@ import static org.mockito.Mockito.*;
 
 public class FlightImplTest {
 
-    @Mock
-    private AirplaneManager mockAirplaneManager;
-
-    @Mock
-    private BusinessLogicAPI businessLogicAPI;
-
     private static MockedStatic<BusinessLogicFactory> businessLogicFactoryMockedStatic;
-
-    private final FlightData   flightData = new FlightData("flightId", LocalDateTime.now(), LocalDateTime.now().plusHours(1),
+    private final FlightData flightData = new FlightData("flightId", LocalDateTime.now(), LocalDateTime.now().plusHours(1),
             Duration.ofHours(1), "airplaneId", "departureAirportId", "arrivalAirportId");
     private final Flight flight = new FlightImpl(flightData);
+    @Mock
+    private AirplaneManager mockAirplaneManager;
+    @Mock
+    private BusinessLogicAPI businessLogicAPI;
 
     @BeforeAll
     static void setupStatic() {
         businessLogicFactoryMockedStatic = Mockito.mockStatic(BusinessLogicFactory.class);
     }
 
+    @AfterAll
+    static void closeStatic() {
+        businessLogicFactoryMockedStatic.close();
+    }
+
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.initMocks(this); // Initialize mocks
+        MockitoAnnotations.openMocks(this); // Initialize mocks
         businessLogicFactoryMockedStatic.when(BusinessLogicFactory::getImplementation).thenReturn(businessLogicAPI);
         when(businessLogicAPI.getAirplaneManager()).thenReturn(mockAirplaneManager);
     }
-    @AfterAll
-    static void closeStatic(){
-        businessLogicFactoryMockedStatic.close();
-    }
+
     @Test
     void getId() {
         String expectedId = "flightId";
@@ -89,6 +88,7 @@ public class FlightImplTest {
     void getETA() {
         assertEquals(flight.getETA(), flightData.etaDateTime());
     }
+
     @Test
     void testToString() {
         // Arrange

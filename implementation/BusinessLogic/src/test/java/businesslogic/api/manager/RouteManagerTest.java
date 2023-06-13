@@ -5,13 +5,14 @@ import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class RouteManagerTest {
 
     @Test
     void createPersistantDataContainer() {
         RouteManager routeManager = new RouteManager(null);
-        RouteData routeData = new RouteData("CommonName","id",new HashMap<>(),1000);
-        assertEquals(routeManager.createPersistantDataContainer(routeData).getData(),routeData);
+        RouteData routeData = new RouteData("CommonName", "id", new HashMap<>(), 1000);
+        assertEquals(routeManager.createPersistantDataContainer(routeData).getData(), routeData);
     }
 }
