@@ -84,10 +84,10 @@ public class RouteCreatorTest {
     @Test
     void testNameDoesNotContainAnySpecialCharacter() throws Exception {
         // Arrange
-        String routeName = "N@me For Route That Is Incorrect";
+        String routeNamee = "N@me For Route That Is Incorrect";
 
         // Act
-        String result = routeCreator.createRoute(routeName, "routeId", new HashMap<>(), 100, new HashMap<>());
+        String result = routeCreator.createRoute(routeNamee, "routeId", new HashMap<>(), 100, new HashMap<>());
 
         // Assert
         Assertions.assertThat(result).contains("The name of the Special Route can not contain any special characters!");
